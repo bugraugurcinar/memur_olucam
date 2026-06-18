@@ -1,6 +1,16 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { LayerStatus } from "./components/LayerStatus";
 import {
+  economicFeatureCategories,
+  economicFeatureTopics,
+  getEconomicFeatureCategory,
+  getEconomicFeatures,
+  type EconomicFeature,
+  type EconomicFeatureCategory,
+  type EconomicFeatureProperties,
+  type EconomicFeatureTopic,
+} from "./geojson/economicFeatures";
+import {
   getPhysicalFeatureCategory,
   getPhysicalFeatures,
   physicalFeatureCategories,
@@ -24,9 +34,11 @@ type QuizResult = {
   isCorrect: boolean;
 };
 
+type QuizFeature = PhysicalFeature | EconomicFeature;
+
 const QUIZ_CORRECT_RADIUS_KM = 75;
 
-function getFeaturePoint(feature: PhysicalFeature): QuizPoint | null {
+function getFeaturePoint(feature: QuizFeature): QuizPoint | null {
   const [lng, lat] = feature.geometry.coordinates;
 
   if (typeof lat !== "number" || typeof lng !== "number") {
@@ -57,7 +69,7 @@ function formatDistanceKm(distanceKm: number) {
   return distanceKm < 10 ? distanceKm.toFixed(1) : Math.round(distanceKm).toString();
 }
 
-function getNextQuizFeatureId(features: PhysicalFeature[], previousFeatureId: string | null) {
+function getNextQuizFeatureId(features: QuizFeature[], previousFeatureId: string | null) {
   if (features.length === 0) {
     return null;
   }
@@ -74,6 +86,8 @@ function getNextQuizFeatureId(features: PhysicalFeature[], previousFeatureId: st
 function App() {
   const [selectedProvinceName, setSelectedProvinceName] = useState<string | null>(null);
   const [selectedFeature, setSelectedFeature] = useState<PhysicalFeatureProperties | null>(null);
+  const [selectedEconomicFeature, setSelectedEconomicFeature] =
+    useState<EconomicFeatureProperties | null>(null);
   const [isQuizActive, setIsQuizActive] = useState(false);
   const [quizFeatureId, setQuizFeatureId] = useState<string | null>(null);
   const [quizGuess, setQuizGuess] = useState<QuizPoint | null>(null);
@@ -84,16 +98,33 @@ function App() {
   const [activeCategories, setActiveCategories] = useState<PhysicalFeatureCategory[]>(() =>
     physicalFeatureCategories.map((category) => category.id),
   );
+  const [activeEconomicTopics, setActiveEconomicTopics] = useState<EconomicFeatureTopic[]>(() =>
+    economicFeatureTopics.map((topic) => topic.id),
+  );
+  const [activeEconomicCategories, setActiveEconomicCategories] = useState<EconomicFeatureCategory[]>(() =>
+    economicFeatureCategories.map((category) => category.id),
+  );
   const [expandedTopics, setExpandedTopics] = useState<PhysicalFeatureTopic[]>(["mountain"]);
+  const [expandedEconomicTopics, setExpandedEconomicTopics] = useState<EconomicFeatureTopic[]>([
+    "agriculture",
+  ]);
   const [expandedQuizTopics, setExpandedQuizTopics] = useState<PhysicalFeatureTopic[]>(["mountain"]);
+  const [expandedQuizEconomicTopics, setExpandedQuizEconomicTopics] = useState<EconomicFeatureTopic[]>([
+    "agriculture",
+  ]);
   const country = useGeoJson(geoJsonSources.country.url);
   const provinces = useGeoJson(geoJsonSources.provinces.url);
   const physicalFeaturesData = useGeoJson(geoJsonSources.physicalFeatures.url);
+  const economicFeaturesData = useGeoJson(geoJsonSources.economicFeatures.url);
 
   const provinceCount = provinces.data?.features.length ?? 0;
   const physicalFeatures = useMemo(
     () => getPhysicalFeatures(physicalFeaturesData.data),
     [physicalFeaturesData.data],
+  );
+  const economicFeatures = useMemo(
+    () => getEconomicFeatures(economicFeaturesData.data),
+    [economicFeaturesData.data],
   );
   const visiblePhysicalFeatures = useMemo(
     () =>
@@ -104,14 +135,18 @@ function App() {
       ),
     [activeCategories, activeTopics, physicalFeatures],
   );
-  const quizQuestionPool = useMemo(
+  const visibleEconomicFeatures = useMemo(
     () =>
-      physicalFeatures.filter(
+      economicFeatures.filter(
         (feature) =>
-          activeTopics.includes(feature.properties.topic) &&
-          activeCategories.includes(feature.properties.category),
+          activeEconomicTopics.includes(feature.properties.topic) &&
+          activeEconomicCategories.includes(feature.properties.category),
       ),
-    [activeCategories, activeTopics, physicalFeatures],
+    [activeEconomicCategories, activeEconomicTopics, economicFeatures],
+  );
+  const quizQuestionPool = useMemo(
+    () => [...visiblePhysicalFeatures, ...visibleEconomicFeatures],
+    [visibleEconomicFeatures, visiblePhysicalFeatures],
   );
   const quizTargetFeature = useMemo(
     () => quizQuestionPool.find((feature) => feature.properties.id === quizFeatureId) ?? null,
@@ -121,12 +156,19 @@ function App() {
     () => (quizTargetFeature ? getFeaturePoint(quizTargetFeature) : null),
     [quizTargetFeature],
   );
-  const isLoading = country.isLoading || provinces.isLoading || physicalFeaturesData.isLoading;
-  const error = country.error ?? provinces.error ?? physicalFeaturesData.error;
-  const shouldUseCategoryColors = activeTopics.length === 1;
-  const canStartQuiz = quizQuestionPool.length > 0 && !physicalFeaturesData.isLoading;
-  const activeQuizCategoryCount = physicalFeatureCategories.filter(
+  const isLoading =
+    country.isLoading || provinces.isLoading || physicalFeaturesData.isLoading || economicFeaturesData.isLoading;
+  const error = country.error ?? provinces.error ?? physicalFeaturesData.error ?? economicFeaturesData.error;
+  const shouldUsePhysicalCategoryColors = activeTopics.length === 1;
+  const shouldUseEconomicCategoryColors = activeEconomicTopics.length === 1;
+  const canStartQuiz =
+    quizQuestionPool.length > 0 && !physicalFeaturesData.isLoading && !economicFeaturesData.isLoading;
+  const activePhysicalQuizCategoryCount = physicalFeatureCategories.filter(
     (category) => activeTopics.includes(category.topic) && activeCategories.includes(category.id),
+  ).length;
+  const activeEconomicQuizCategoryCount = economicFeatureCategories.filter(
+    (category) =>
+      activeEconomicTopics.includes(category.topic) && activeEconomicCategories.includes(category.id),
   ).length;
 
   const selectedText = useMemo(
@@ -144,6 +186,16 @@ function App() {
   }, [activeCategories, activeTopics, selectedFeature]);
 
   useEffect(() => {
+    if (
+      selectedEconomicFeature &&
+      (!activeEconomicTopics.includes(selectedEconomicFeature.topic) ||
+        !activeEconomicCategories.includes(selectedEconomicFeature.category))
+    ) {
+      setSelectedEconomicFeature(null);
+    }
+  }, [activeEconomicCategories, activeEconomicTopics, selectedEconomicFeature]);
+
+  useEffect(() => {
     if (quizFeatureId && !quizQuestionPool.some((feature) => feature.properties.id === quizFeatureId)) {
       setIsQuizActive(false);
       setQuizFeatureId(null);
@@ -155,11 +207,19 @@ function App() {
   const handleProvinceSelect = useCallback((provinceName: string) => {
     setSelectedProvinceName(provinceName);
     setSelectedFeature(null);
+    setSelectedEconomicFeature(null);
   }, []);
 
   const handlePhysicalFeatureSelect = useCallback((feature: PhysicalFeatureProperties) => {
     setSelectedFeature(feature);
     setSelectedProvinceName(null);
+    setSelectedEconomicFeature(null);
+  }, []);
+
+  const handleEconomicFeatureSelect = useCallback((feature: EconomicFeatureProperties) => {
+    setSelectedEconomicFeature(feature);
+    setSelectedProvinceName(null);
+    setSelectedFeature(null);
   }, []);
 
   const handleTopicToggle = useCallback((topicId: PhysicalFeatureTopic) => {
@@ -183,6 +243,33 @@ function App() {
 
   const handleCategoryToggle = useCallback((categoryId: PhysicalFeatureCategory) => {
     setActiveCategories((currentCategories) =>
+      currentCategories.includes(categoryId)
+        ? currentCategories.filter((currentCategory) => currentCategory !== categoryId)
+        : [...currentCategories, categoryId],
+    );
+  }, []);
+
+  const handleEconomicTopicToggle = useCallback((topicId: EconomicFeatureTopic) => {
+    setExpandedEconomicTopics((currentTopics) =>
+      currentTopics.includes(topicId) ? currentTopics : [...currentTopics, topicId],
+    );
+    setActiveEconomicTopics((currentTopics) =>
+      currentTopics.includes(topicId)
+        ? currentTopics.filter((currentTopic) => currentTopic !== topicId)
+        : [...currentTopics, topicId],
+    );
+  }, []);
+
+  const handleEconomicTopicExpansionToggle = useCallback((topicId: EconomicFeatureTopic) => {
+    setExpandedEconomicTopics((currentTopics) =>
+      currentTopics.includes(topicId)
+        ? currentTopics.filter((currentTopic) => currentTopic !== topicId)
+        : [...currentTopics, topicId],
+    );
+  }, []);
+
+  const handleEconomicCategoryToggle = useCallback((categoryId: EconomicFeatureCategory) => {
+    setActiveEconomicCategories((currentCategories) =>
       currentCategories.includes(categoryId)
         ? currentCategories.filter((currentCategory) => currentCategory !== categoryId)
         : [...currentCategories, categoryId],
@@ -218,6 +305,35 @@ function App() {
     );
   }, []);
 
+  const handleQuizEconomicTopicToggle = useCallback((topicId: EconomicFeatureTopic) => {
+    setActiveEconomicTopics((currentTopics) =>
+      currentTopics.includes(topicId)
+        ? currentTopics.filter((currentTopic) => currentTopic !== topicId)
+        : [...currentTopics, topicId],
+    );
+  }, []);
+
+  const handleQuizEconomicTopicExpansionToggle = useCallback((topicId: EconomicFeatureTopic) => {
+    setExpandedQuizEconomicTopics((currentTopics) =>
+      currentTopics.includes(topicId)
+        ? currentTopics.filter((currentTopic) => currentTopic !== topicId)
+        : [...currentTopics, topicId],
+    );
+  }, []);
+
+  const handleQuizEconomicCategoryToggle = useCallback((categoryId: EconomicFeatureCategory) => {
+    const category = getEconomicFeatureCategory(categoryId);
+
+    setActiveEconomicCategories((currentCategories) =>
+      currentCategories.includes(categoryId)
+        ? currentCategories.filter((currentCategory) => currentCategory !== categoryId)
+        : [...currentCategories, categoryId],
+    );
+    setActiveEconomicTopics((currentTopics) =>
+      currentTopics.includes(category.topic) ? currentTopics : [...currentTopics, category.topic],
+    );
+  }, []);
+
   const handleQuizStart = useCallback(() => {
     const nextFeatureId = getNextQuizFeatureId(quizQuestionPool, quizFeatureId);
 
@@ -231,6 +347,7 @@ function App() {
     setQuizResult(null);
     setSelectedProvinceName(null);
     setSelectedFeature(null);
+    setSelectedEconomicFeature(null);
   }, [quizFeatureId, quizQuestionPool]);
 
   const handleQuizClose = useCallback(() => {
@@ -256,6 +373,7 @@ function App() {
       });
       setSelectedProvinceName(null);
       setSelectedFeature(null);
+      setSelectedEconomicFeature(null);
     },
     [quizTargetPoint],
   );
@@ -292,7 +410,7 @@ function App() {
     <div className="app-shell">
       <header className="app-header">
         <div>
-          <span className="phase-label">Phase 2 · Fiziki Katmanlar</span>
+          <span className="phase-label">Phase 2 · KPSS Katmanları</span>
           <h1>KPSS Coğrafya Atlas</h1>
         </div>
         <div className="header-metrics" aria-label="Harita veri durumu">
@@ -302,6 +420,8 @@ function App() {
           <strong>{provinceCount || "..."}</strong>
           <span>Fiziki</span>
           <strong>{physicalFeatures.length || "..."}</strong>
+          <span>Ekonomik</span>
+          <strong>{economicFeatures.length || "..."}</strong>
         </div>
       </header>
 
@@ -311,11 +431,16 @@ function App() {
             countryData={country.data}
             provincesData={provinces.data}
             physicalFeaturesData={physicalFeaturesData.data}
+            economicFeaturesData={economicFeaturesData.data}
             activePhysicalTopics={activeTopics}
             activePhysicalCategories={activeCategories}
-            shouldUseCategoryColors={shouldUseCategoryColors}
+            activeEconomicTopics={activeEconomicTopics}
+            activeEconomicCategories={activeEconomicCategories}
+            shouldUsePhysicalCategoryColors={shouldUsePhysicalCategoryColors}
+            shouldUseEconomicCategoryColors={shouldUseEconomicCategoryColors}
             selectedProvinceName={selectedProvinceName}
             selectedPhysicalFeatureId={selectedFeature?.id ?? null}
+            selectedEconomicFeatureId={selectedEconomicFeature?.id ?? null}
             isQuizActive={isQuizActive && Boolean(quizTargetPoint)}
             quizGuessPoint={quizGuess}
             quizResultStatus={quizResult ? (quizResult.isCorrect ? "correct" : "wrong") : null}
@@ -323,13 +448,14 @@ function App() {
             quizTargetPoint={quizTargetPoint}
             onProvinceSelect={handleProvinceSelect}
             onPhysicalFeatureSelect={handlePhysicalFeatureSelect}
+            onEconomicFeatureSelect={handleEconomicFeatureSelect}
             onQuizGuess={handleQuizGuess}
           />
 
           {(isLoading || error) && (
             <div className="map-state" role="status">
               <strong>{error ? "Harita verisi yüklenemedi" : "Harita hazırlanıyor"}</strong>
-              <span>{error ?? "Türkiye, il sınırları ve fiziki GeoJSON katmanları yükleniyor."}</span>
+              <span>{error ?? "Türkiye, il sınırları, fiziki ve ekonomik GeoJSON katmanları yükleniyor."}</span>
             </div>
           )}
         </section>
@@ -373,10 +499,10 @@ function App() {
 
             <div className="quiz-filter-panel">
               <div className="quiz-filter-heading">
-                <strong>Soru kategorileri</strong>
-                <span>{activeQuizCategoryCount} aktif</span>
+                <strong>Fiziki soru kategorileri</strong>
+                <span>{activePhysicalQuizCategoryCount} aktif</span>
               </div>
-              <div className="topic-filter-list" aria-label="Soru kategorileri">
+              <div className="topic-filter-list" aria-label="Fiziki soru kategorileri">
                 {physicalFeatureTopics.map((topic) => {
                   const isActive = activeTopics.includes(topic.id);
                   const isExpanded = expandedQuizTopics.includes(topic.id);
@@ -436,6 +562,74 @@ function App() {
                   );
                 })}
               </div>
+              <div className="quiz-filter-heading">
+                <strong>Ekonomik soru kategorileri</strong>
+                <span>{activeEconomicQuizCategoryCount} aktif</span>
+              </div>
+              <div className="topic-filter-list" aria-label="Ekonomik soru kategorileri">
+                {economicFeatureTopics.map((topic) => {
+                  const isActive = activeEconomicTopics.includes(topic.id);
+                  const isExpanded = expandedQuizEconomicTopics.includes(topic.id);
+                  const topicCount = economicFeatures.filter((feature) => feature.properties.topic === topic.id).length;
+                  const topicCategories = economicFeatureCategories.filter((category) => category.topic === topic.id);
+
+                  return (
+                    <div className="topic-filter-group" key={`quiz-${topic.id}`}>
+                      <div className="topic-filter-header">
+                        <label className="category-toggle topic-toggle quiz-toggle">
+                          <input
+                            checked={isActive}
+                            onChange={() => handleQuizEconomicTopicToggle(topic.id)}
+                            type="checkbox"
+                          />
+                          <span className="category-toggle__swatch" style={{ backgroundColor: topic.color }} />
+                          <span>
+                            {topic.label}
+                            <small>{topicCount} soru</small>
+                          </span>
+                          <strong>{isActive ? "Açık" : "Kapalı"}</strong>
+                        </label>
+                        <button
+                          aria-expanded={isExpanded}
+                          aria-label={`${topic.label} soru kategorilerini ${isExpanded ? "kapat" : "aç"}`}
+                          className="topic-expand-button"
+                          onClick={() => handleQuizEconomicTopicExpansionToggle(topic.id)}
+                          type="button"
+                        >
+                          {isExpanded ? "−" : "+"}
+                        </button>
+                      </div>
+
+                      {isExpanded ? (
+                        <div className="topic-category-list" aria-label={`${topic.label} soru kategorileri`}>
+                          {topicCategories.map((category) => {
+                            const isCategoryActive = activeEconomicCategories.includes(category.id);
+                            const categoryCount = economicFeatures.filter(
+                              (feature) => feature.properties.category === category.id,
+                            ).length;
+
+                            return (
+                              <label className="category-toggle category-toggle--nested quiz-toggle" key={`quiz-${category.id}`}>
+                                <input
+                                  checked={isCategoryActive}
+                                  onChange={() => handleQuizEconomicCategoryToggle(category.id)}
+                                  type="checkbox"
+                                />
+                                <span className="category-toggle__swatch" style={{ backgroundColor: category.color }} />
+                                <span>
+                                  {category.label}
+                                  <small>{topic.label}</small>
+                                </span>
+                                <strong>{categoryCount}</strong>
+                              </label>
+                            );
+                          })}
+                        </div>
+                      ) : null}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
 
@@ -459,6 +653,15 @@ function App() {
                   : `${visiblePhysicalFeatures.length || 0} / ${physicalFeatures.length || 196} görünür`
               }
               isReady={Boolean(physicalFeaturesData.data)}
+            />
+            <LayerStatus
+              label={geoJsonSources.economicFeatures.label}
+              detail={
+                isQuizActive
+                  ? "Soru modunda gizli"
+                  : `${visibleEconomicFeatures.length || 0} / ${economicFeatures.length || 172} görünür`
+              }
+              isReady={Boolean(economicFeaturesData.data)}
             />
           </div>
 
@@ -499,7 +702,7 @@ function App() {
                         {topicCategories.map((category) => {
                           const isCategoryActive = activeCategories.includes(category.id);
                           const categoryColor =
-                            shouldUseCategoryColors && activeTopics[0] === category.topic
+                            shouldUsePhysicalCategoryColors && activeTopics[0] === category.topic
                               ? getPhysicalFeatureCategory(category.id).color
                               : topic.color;
                           const categoryCount = physicalFeatures.filter(
@@ -511,6 +714,78 @@ function App() {
                               <input
                                 checked={isCategoryActive}
                                 onChange={() => handleCategoryToggle(category.id)}
+                                type="checkbox"
+                              />
+                              <span className="category-toggle__swatch" style={{ backgroundColor: categoryColor }} />
+                              <span>
+                                {category.label}
+                                <small>{topic.label}</small>
+                              </span>
+                              <strong>{categoryCount}</strong>
+                            </label>
+                          );
+                        })}
+                      </div>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="panel-section">
+            <h2>Ekonomik konular</h2>
+            <div className="topic-filter-list" aria-label="Ekonomik konular">
+              {economicFeatureTopics.map((topic) => {
+                const isActive = activeEconomicTopics.includes(topic.id);
+                const isExpanded = expandedEconomicTopics.includes(topic.id);
+                const topicCount = economicFeatures.filter((feature) => feature.properties.topic === topic.id).length;
+                const topicCategories = economicFeatureCategories.filter((category) => category.topic === topic.id);
+
+                return (
+                  <div className="topic-filter-group" key={topic.id}>
+                    <div className="topic-filter-header">
+                      <label className="category-toggle topic-toggle">
+                        <input
+                          checked={isActive}
+                          onChange={() => handleEconomicTopicToggle(topic.id)}
+                          type="checkbox"
+                        />
+                        <span className="category-toggle__swatch" style={{ backgroundColor: topic.color }} />
+                        <span>
+                          {topic.label}
+                          <small>{topicCount} nokta</small>
+                        </span>
+                        <strong>{isActive ? "Açık" : "Kapalı"}</strong>
+                      </label>
+                      <button
+                        aria-expanded={isExpanded}
+                        aria-label={`${topic.label} kategorilerini ${isExpanded ? "kapat" : "aç"}`}
+                        className="topic-expand-button"
+                        onClick={() => handleEconomicTopicExpansionToggle(topic.id)}
+                        type="button"
+                      >
+                        {isExpanded ? "−" : "+"}
+                      </button>
+                    </div>
+
+                    {isExpanded ? (
+                      <div className="topic-category-list" aria-label={`${topic.label} kategorileri`}>
+                        {topicCategories.map((category) => {
+                          const isCategoryActive = activeEconomicCategories.includes(category.id);
+                          const categoryColor =
+                            shouldUseEconomicCategoryColors && activeEconomicTopics[0] === category.topic
+                              ? getEconomicFeatureCategory(category.id).color
+                              : topic.color;
+                          const categoryCount = economicFeatures.filter(
+                            (feature) => feature.properties.category === category.id,
+                          ).length;
+
+                          return (
+                            <label className="category-toggle category-toggle--nested" key={category.id}>
+                              <input
+                                checked={isCategoryActive}
+                                onChange={() => handleEconomicCategoryToggle(category.id)}
                                 type="checkbox"
                               />
                               <span className="category-toggle__swatch" style={{ backgroundColor: categoryColor }} />
@@ -546,6 +821,24 @@ function App() {
                 <p>{selectedFeature.kpssNote}</p>
                 <a href={selectedFeature.sourceUrl} rel="noreferrer" target="_blank">
                   {selectedFeature.sourceName}
+                </a>
+              </div>
+            ) : (
+              <p className="selected-province">Henüz seçilmedi</p>
+            )}
+          </div>
+
+          <div className="panel-section">
+            <h2>Seçili ekonomik unsur</h2>
+            {selectedEconomicFeature ? (
+              <div className="selected-feature">
+                <strong>{selectedEconomicFeature.name}</strong>
+                <span>{selectedEconomicFeature.topicLabel}</span>
+                <span>{selectedEconomicFeature.categoryLabel}</span>
+                <span>{selectedEconomicFeature.location}</span>
+                <p>{selectedEconomicFeature.kpssNote}</p>
+                <a href={selectedEconomicFeature.sourceUrl} rel="noreferrer" target="_blank">
+                  {selectedEconomicFeature.sourceName}
                 </a>
               </div>
             ) : (

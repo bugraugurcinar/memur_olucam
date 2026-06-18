@@ -2,6 +2,13 @@ import { useEffect, useRef } from "react";
 import L, { type LatLngBoundsExpression, type Layer, type LeafletMouseEvent } from "leaflet";
 import type { Feature, FeatureCollection, GeoJsonProperties } from "geojson";
 import {
+  getEconomicFeatureColor,
+  isEconomicFeature,
+  type EconomicFeatureCategory,
+  type EconomicFeatureProperties,
+  type EconomicFeatureTopic,
+} from "../geojson/economicFeatures";
+import {
   getPhysicalFeatureColor,
   isPhysicalFeature,
   type PhysicalFeatureCategory,
@@ -20,11 +27,16 @@ type TurkeyMapProps = {
   countryData: FeatureCollection | null;
   provincesData: FeatureCollection | null;
   physicalFeaturesData: FeatureCollection | null;
+  economicFeaturesData: FeatureCollection | null;
   activePhysicalTopics: PhysicalFeatureTopic[];
   activePhysicalCategories: PhysicalFeatureCategory[];
-  shouldUseCategoryColors: boolean;
+  activeEconomicTopics: EconomicFeatureTopic[];
+  activeEconomicCategories: EconomicFeatureCategory[];
+  shouldUsePhysicalCategoryColors: boolean;
+  shouldUseEconomicCategoryColors: boolean;
   selectedProvinceName: string | null;
   selectedPhysicalFeatureId: string | null;
+  selectedEconomicFeatureId: string | null;
   isQuizActive: boolean;
   quizGuessPoint: QuizPoint | null;
   quizResultStatus: QuizResultStatus;
@@ -32,6 +44,7 @@ type TurkeyMapProps = {
   quizTargetPoint: QuizPoint | null;
   onProvinceSelect: (provinceName: string) => void;
   onPhysicalFeatureSelect: (feature: PhysicalFeatureProperties) => void;
+  onEconomicFeatureSelect: (feature: EconomicFeatureProperties) => void;
   onQuizGuess: (point: QuizPoint) => void;
 };
 
@@ -43,11 +56,16 @@ type PhysicalFeatureLayer = Layer & {
   feature?: Feature;
 };
 
+type EconomicFeatureLayer = Layer & {
+  feature?: Feature;
+};
+
 const TURKEY_BOUNDS: LatLngBoundsExpression = [
   [35.45, 25.2],
   [42.35, 45.3],
 ];
 const PHYSICAL_FEATURE_PANE = "physical-feature-pane";
+const ECONOMIC_FEATURE_PANE = "economic-feature-pane";
 const QUIZ_PANE = "quiz-pane";
 
 function getShapeName(properties: GeoJsonProperties | null | undefined) {
@@ -118,6 +136,24 @@ function physicalFeatureStyle(
   };
 }
 
+function economicFeatureStyle(
+  feature: EconomicFeatureProperties,
+  selectedFeatureId: string | null,
+  shouldUseCategoryColors: boolean,
+): L.CircleMarkerOptions {
+  const isSelected = feature.id === selectedFeatureId;
+
+  return {
+    pane: ECONOMIC_FEATURE_PANE,
+    radius: isSelected ? 8 : 5.5,
+    color: isSelected ? "#fbbf24" : "#111827",
+    fillColor: getEconomicFeatureColor(feature, shouldUseCategoryColors),
+    fillOpacity: isSelected ? 0.96 : 0.82,
+    opacity: 1,
+    weight: isSelected ? 2.5 : 1.25,
+  };
+}
+
 function createQuizIcon(markerType: "guess" | "answer", resultStatus: QuizResultStatus = null) {
   const markerClass = markerType === "guess" ? "quiz-guess-marker" : "quiz-answer-marker";
   const statusClass = resultStatus ? ` quiz-map-marker--${resultStatus}` : "";
@@ -135,11 +171,16 @@ export function TurkeyMap({
   countryData,
   provincesData,
   physicalFeaturesData,
+  economicFeaturesData,
   activePhysicalTopics,
   activePhysicalCategories,
-  shouldUseCategoryColors,
+  activeEconomicTopics,
+  activeEconomicCategories,
+  shouldUsePhysicalCategoryColors,
+  shouldUseEconomicCategoryColors,
   selectedProvinceName,
   selectedPhysicalFeatureId,
+  selectedEconomicFeatureId,
   isQuizActive,
   quizGuessPoint,
   quizResultStatus,
@@ -147,6 +188,7 @@ export function TurkeyMap({
   quizTargetPoint,
   onProvinceSelect,
   onPhysicalFeatureSelect,
+  onEconomicFeatureSelect,
   onQuizGuess,
 }: TurkeyMapProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -154,11 +196,13 @@ export function TurkeyMap({
   const countryLayerRef = useRef<L.GeoJSON | null>(null);
   const provinceLayerRef = useRef<L.GeoJSON | null>(null);
   const physicalFeatureLayerRef = useRef<L.GeoJSON | null>(null);
+  const economicFeatureLayerRef = useRef<L.GeoJSON | null>(null);
   const quizLayerRef = useRef<L.LayerGroup | null>(null);
   const isQuizActiveRef = useRef(isQuizActive);
   const onQuizGuessRef = useRef(onQuizGuess);
   const selectedProvinceRef = useRef<string | null>(selectedProvinceName);
   const selectedFeatureRef = useRef<string | null>(selectedPhysicalFeatureId);
+  const selectedEconomicFeatureRef = useRef<string | null>(selectedEconomicFeatureId);
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) {
@@ -176,13 +220,20 @@ export function TurkeyMap({
 
     L.control.zoom({ position: "bottomright" }).addTo(map);
     map.createPane(PHYSICAL_FEATURE_PANE);
+    map.createPane(ECONOMIC_FEATURE_PANE);
     map.createPane(QUIZ_PANE);
     const physicalFeaturePane = map.getPane(PHYSICAL_FEATURE_PANE);
+    const economicFeaturePane = map.getPane(ECONOMIC_FEATURE_PANE);
     const quizPane = map.getPane(QUIZ_PANE);
 
     if (physicalFeaturePane) {
       physicalFeaturePane.style.zIndex = "625";
       physicalFeaturePane.style.pointerEvents = "auto";
+    }
+
+    if (economicFeaturePane) {
+      economicFeaturePane.style.zIndex = "640";
+      economicFeaturePane.style.pointerEvents = "auto";
     }
 
     if (quizPane) {
@@ -248,11 +299,26 @@ export function TurkeyMap({
       const feature = layer.feature;
 
       if (feature && isPhysicalFeature(feature) && layer instanceof L.CircleMarker) {
-        layer.setStyle(physicalFeatureStyle(feature.properties, selectedPhysicalFeatureId, shouldUseCategoryColors));
+        layer.setStyle(physicalFeatureStyle(feature.properties, selectedPhysicalFeatureId, shouldUsePhysicalCategoryColors));
         layer.setRadius(feature.properties.id === selectedPhysicalFeatureId ? 8 : 5.5);
       }
     });
-  }, [selectedPhysicalFeatureId, shouldUseCategoryColors]);
+  }, [selectedPhysicalFeatureId, shouldUsePhysicalCategoryColors]);
+
+  useEffect(() => {
+    selectedEconomicFeatureRef.current = selectedEconomicFeatureId;
+
+    economicFeatureLayerRef.current?.eachLayer((layer: EconomicFeatureLayer) => {
+      const feature = layer.feature;
+
+      if (feature && isEconomicFeature(feature) && layer instanceof L.CircleMarker) {
+        layer.setStyle(
+          economicFeatureStyle(feature.properties, selectedEconomicFeatureId, shouldUseEconomicCategoryColors),
+        );
+        layer.setRadius(feature.properties.id === selectedEconomicFeatureId ? 8 : 5.5);
+      }
+    });
+  }, [selectedEconomicFeatureId, shouldUseEconomicCategoryColors]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -369,7 +435,9 @@ export function TurkeyMap({
           mouseout: () => {
             if (layer instanceof L.CircleMarker) {
               layer.closeTooltip();
-              layer.setStyle(physicalFeatureStyle(physicalFeature, selectedFeatureRef.current, shouldUseCategoryColors));
+              layer.setStyle(
+                physicalFeatureStyle(physicalFeature, selectedFeatureRef.current, shouldUsePhysicalCategoryColors),
+              );
               layer.setRadius(physicalFeature.id === selectedFeatureRef.current ? 8 : 5.5);
             }
           },
@@ -391,7 +459,7 @@ export function TurkeyMap({
         if (isPhysicalFeature(feature)) {
           return L.circleMarker(
             latlng,
-            physicalFeatureStyle(feature.properties, selectedFeatureRef.current, shouldUseCategoryColors),
+            physicalFeatureStyle(feature.properties, selectedFeatureRef.current, shouldUsePhysicalCategoryColors),
           );
         }
 
@@ -410,7 +478,108 @@ export function TurkeyMap({
     activePhysicalTopics,
     isQuizActive,
     onPhysicalFeatureSelect,
-    shouldUseCategoryColors,
+    shouldUsePhysicalCategoryColors,
+  ]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+
+    if (!map || !economicFeaturesData) {
+      return;
+    }
+
+    economicFeatureLayerRef.current?.remove();
+    economicFeatureLayerRef.current = null;
+
+    if (isQuizActive) {
+      return;
+    }
+
+    const visibleTopics = new Set(activeEconomicTopics);
+    const visibleCategories = new Set(activeEconomicCategories);
+    const economicFeatureLayer = L.geoJSON(economicFeaturesData, {
+      filter: (feature) =>
+        isEconomicFeature(feature) &&
+        visibleTopics.has(feature.properties.topic) &&
+        visibleCategories.has(feature.properties.category),
+      onEachFeature: (feature, layer: EconomicFeatureLayer) => {
+        if (!isEconomicFeature(feature)) {
+          return;
+        }
+
+        const economicFeature = feature.properties;
+
+        layer.bindTooltip(`${economicFeature.name} · ${economicFeature.categoryLabel}`, {
+          direction: "top",
+          opacity: 0.96,
+          sticky: true,
+        });
+
+        layer.bindPopup(
+          `<strong>${escapeHtml(economicFeature.name)}</strong><br />${escapeHtml(
+            economicFeature.topicLabel,
+          )}<br />${escapeHtml(economicFeature.categoryLabel)}<br />${escapeHtml(
+            economicFeature.location,
+          )}`,
+        );
+
+        layer.on({
+          click: () => onEconomicFeatureSelect(economicFeature),
+          mouseout: () => {
+            if (layer instanceof L.CircleMarker) {
+              layer.closeTooltip();
+              layer.setStyle(
+                economicFeatureStyle(
+                  economicFeature,
+                  selectedEconomicFeatureRef.current,
+                  shouldUseEconomicCategoryColors,
+                ),
+              );
+              layer.setRadius(economicFeature.id === selectedEconomicFeatureRef.current ? 8 : 5.5);
+            }
+          },
+          mouseover: () => {
+            if (layer instanceof L.CircleMarker) {
+              layer.openTooltip();
+              layer.setStyle({
+                color: "#fbbf24",
+                fillOpacity: 1,
+                weight: 2.5,
+              });
+              layer.setRadius(8);
+              layer.bringToFront();
+            }
+          },
+        });
+      },
+      pointToLayer: (feature, latlng) => {
+        if (isEconomicFeature(feature)) {
+          return L.circleMarker(
+            latlng,
+            economicFeatureStyle(
+              feature.properties,
+              selectedEconomicFeatureRef.current,
+              shouldUseEconomicCategoryColors,
+            ),
+          );
+        }
+
+        return L.circleMarker(latlng);
+      },
+    }).addTo(map);
+
+    economicFeatureLayerRef.current = economicFeatureLayer;
+
+    return () => {
+      economicFeatureLayer.remove();
+    };
+  }, [
+    economicFeaturesData,
+    activeEconomicCategories,
+    activeEconomicTopics,
+    isQuizActive,
+    onEconomicFeatureSelect,
+    shouldUseEconomicCategoryColors,
   ]);
 
   useEffect(() => {

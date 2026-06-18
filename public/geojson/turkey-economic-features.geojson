@@ -1,0 +1,4306 @@
+{
+  "type": "FeatureCollection",
+  "name": "turkey-economic-features",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_bugday_konya",
+        "name": "Buğday",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_cereal_legume",
+        "categoryLabel": "Tahıl / baklagil",
+        "region": "İç Anadolu / Güneydoğu Anadolu",
+        "location": "Konya",
+        "kpssNote": "Buğday, karasal iklimin yaygın olduğu İç Anadolu ve Güneydoğu Anadolu'da temel tarım ürünüdür.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Konya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Konya, Türkiye",
+        "sourceDisplayName": "Konya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.484,
+          37.871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_bugday_polatli_ankara",
+        "name": "Buğday",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_cereal_legume",
+        "categoryLabel": "Tahıl / baklagil",
+        "region": "İç Anadolu / Güneydoğu Anadolu",
+        "location": "Polatlı / Ankara",
+        "kpssNote": "Buğday, karasal iklimin yaygın olduğu İç Anadolu ve Güneydoğu Anadolu'da temel tarım ürünüdür.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Polatl%C4%B1%20%2F%20Ankara%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Polatlı / Ankara, Türkiye",
+        "sourceDisplayName": "Polatlı / Ankara"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.147,
+          39.584
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_bugday_sanliurfa",
+        "name": "Buğday",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_cereal_legume",
+        "categoryLabel": "Tahıl / baklagil",
+        "region": "İç Anadolu / Güneydoğu Anadolu",
+        "location": "Şanlıurfa",
+        "kpssNote": "Buğday, karasal iklimin yaygın olduğu İç Anadolu ve Güneydoğu Anadolu'da temel tarım ürünüdür.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=%C5%9Eanl%C4%B1urfa%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Şanlıurfa, Türkiye",
+        "sourceDisplayName": "Şanlıurfa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.796,
+          37.159
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_pamuk_harran_sanliurfa",
+        "name": "Pamuk",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_industrial",
+        "categoryLabel": "Sanayi bitkisi",
+        "region": "Güneydoğu Anadolu / Akdeniz / Ege / Doğu Anadolu",
+        "location": "Harran / Şanlıurfa",
+        "kpssNote": "Pamuk, yaz kuraklığı ve sulama isteyen sanayi bitkisidir; GAP, Çukurova ve Ege ovaları KPSS'de öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Harran%20%2F%20%C5%9Eanl%C4%B1urfa%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Harran / Şanlıurfa, Türkiye",
+        "sourceDisplayName": "Harran / Şanlıurfa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.015,
+          36.902
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_pamuk_cukurova_adana",
+        "name": "Pamuk",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_industrial",
+        "categoryLabel": "Sanayi bitkisi",
+        "region": "Güneydoğu Anadolu / Akdeniz / Ege / Doğu Anadolu",
+        "location": "Çukurova / Adana",
+        "kpssNote": "Pamuk, yaz kuraklığı ve sulama isteyen sanayi bitkisidir; GAP, Çukurova ve Ege ovaları KPSS'de öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=%C3%87ukurova%20%2F%20Adana%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Çukurova / Adana, Türkiye",
+        "sourceDisplayName": "Çukurova / Adana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.33,
+          36.91
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_pamuk_soke_aydin",
+        "name": "Pamuk",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_industrial",
+        "categoryLabel": "Sanayi bitkisi",
+        "region": "Güneydoğu Anadolu / Akdeniz / Ege / Doğu Anadolu",
+        "location": "Söke / Aydın",
+        "kpssNote": "Pamuk, yaz kuraklığı ve sulama isteyen sanayi bitkisidir; GAP, Çukurova ve Ege ovaları KPSS'de öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=S%C3%B6ke%20%2F%20Ayd%C4%B1n%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Söke / Aydın, Türkiye",
+        "sourceDisplayName": "Söke / Aydın"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.41,
+          37.75
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_pamuk_igdir_ovasi",
+        "name": "Pamuk",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_industrial",
+        "categoryLabel": "Sanayi bitkisi",
+        "region": "Güneydoğu Anadolu / Akdeniz / Ege / Doğu Anadolu",
+        "location": "Iğdır Ovası",
+        "kpssNote": "Pamuk, yaz kuraklığı ve sulama isteyen sanayi bitkisidir; GAP, Çukurova ve Ege ovaları KPSS'de öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=I%C4%9Fd%C4%B1r%20Ovas%C4%B1%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Iğdır Ovası, Türkiye",
+        "sourceDisplayName": "Iğdır Ovası"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.04,
+          39.92
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_seker_pancari_konya",
+        "name": "Şeker pancarı",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_industrial",
+        "categoryLabel": "Sanayi bitkisi",
+        "region": "İç Anadolu",
+        "location": "Konya",
+        "kpssNote": "Şeker pancarı çabuk bozulduğu için şeker fabrikalarına yakın alanlarda yoğunlaşır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Konya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Konya, Türkiye",
+        "sourceDisplayName": "Konya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.484,
+          37.871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_seker_pancari_eskisehir",
+        "name": "Şeker pancarı",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_industrial",
+        "categoryLabel": "Sanayi bitkisi",
+        "region": "İç Anadolu",
+        "location": "Eskişehir",
+        "kpssNote": "Şeker pancarı çabuk bozulduğu için şeker fabrikalarına yakın alanlarda yoğunlaşır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Eski%C5%9Fehir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Eskişehir, Türkiye",
+        "sourceDisplayName": "Eskişehir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.53,
+          39.78
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_seker_pancari_yozgat",
+        "name": "Şeker pancarı",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_industrial",
+        "categoryLabel": "Sanayi bitkisi",
+        "region": "İç Anadolu",
+        "location": "Yozgat",
+        "kpssNote": "Şeker pancarı çabuk bozulduğu için şeker fabrikalarına yakın alanlarda yoğunlaşır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Yozgat%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Yozgat, Türkiye",
+        "sourceDisplayName": "Yozgat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.81,
+          39.82
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_seker_pancari_kayseri",
+        "name": "Şeker pancarı",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_industrial",
+        "categoryLabel": "Sanayi bitkisi",
+        "region": "İç Anadolu",
+        "location": "Kayseri",
+        "kpssNote": "Şeker pancarı çabuk bozulduğu için şeker fabrikalarına yakın alanlarda yoğunlaşır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Kayseri%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Kayseri, Türkiye",
+        "sourceDisplayName": "Kayseri"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.48,
+          38.72
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_tutun_akhisar_manisa",
+        "name": "Tütün",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_industrial",
+        "categoryLabel": "Sanayi bitkisi",
+        "region": "Ege / Karadeniz / Güneydoğu Anadolu",
+        "location": "Akhisar / Manisa",
+        "kpssNote": "Tütün, kalite farkı ve devlet kontrolü nedeniyle KPSS'de bölgesel tarım ürünü olarak sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Akhisar%20%2F%20Manisa%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Akhisar / Manisa, Türkiye",
+        "sourceDisplayName": "Akhisar / Manisa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.84,
+          38.924
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_tutun_denizli",
+        "name": "Tütün",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_industrial",
+        "categoryLabel": "Sanayi bitkisi",
+        "region": "Ege / Karadeniz / Güneydoğu Anadolu",
+        "location": "Denizli",
+        "kpssNote": "Tütün, kalite farkı ve devlet kontrolü nedeniyle KPSS'de bölgesel tarım ürünü olarak sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Denizli%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Denizli, Türkiye",
+        "sourceDisplayName": "Denizli"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.086,
+          37.776
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_tutun_bafra_samsun",
+        "name": "Tütün",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_industrial",
+        "categoryLabel": "Sanayi bitkisi",
+        "region": "Ege / Karadeniz / Güneydoğu Anadolu",
+        "location": "Bafra / Samsun",
+        "kpssNote": "Tütün, kalite farkı ve devlet kontrolü nedeniyle KPSS'de bölgesel tarım ürünü olarak sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Bafra%20%2F%20Samsun%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Bafra / Samsun, Türkiye",
+        "sourceDisplayName": "Bafra / Samsun"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.906,
+          41.568
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_tutun_adiyaman",
+        "name": "Tütün",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_industrial",
+        "categoryLabel": "Sanayi bitkisi",
+        "region": "Ege / Karadeniz / Güneydoğu Anadolu",
+        "location": "Adıyaman",
+        "kpssNote": "Tütün, kalite farkı ve devlet kontrolü nedeniyle KPSS'de bölgesel tarım ürünü olarak sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Ad%C4%B1yaman%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Adıyaman, Türkiye",
+        "sourceDisplayName": "Adıyaman"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.278,
+          37.764
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_aycicegi_tekirdag",
+        "name": "Ayçiçeği",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_industrial",
+        "categoryLabel": "Sanayi bitkisi",
+        "region": "Marmara / İç Anadolu",
+        "location": "Tekirdağ",
+        "kpssNote": "Ayçiçeği üretiminde Ergene Havzası ve Trakya çevresi KPSS'de ana örnektir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Tekirda%C4%9F%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Tekirdağ, Türkiye",
+        "sourceDisplayName": "Tekirdağ"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.512,
+          40.978
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_aycicegi_edirne",
+        "name": "Ayçiçeği",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_industrial",
+        "categoryLabel": "Sanayi bitkisi",
+        "region": "Marmara / İç Anadolu",
+        "location": "Edirne",
+        "kpssNote": "Ayçiçeği üretiminde Ergene Havzası ve Trakya çevresi KPSS'de ana örnektir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Edirne%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Edirne, Türkiye",
+        "sourceDisplayName": "Edirne"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.556,
+          41.677
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_aycicegi_konya",
+        "name": "Ayçiçeği",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_industrial",
+        "categoryLabel": "Sanayi bitkisi",
+        "region": "Marmara / İç Anadolu",
+        "location": "Konya",
+        "kpssNote": "Ayçiçeği üretiminde Ergene Havzası ve Trakya çevresi KPSS'de ana örnektir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Konya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Konya, Türkiye",
+        "sourceDisplayName": "Konya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.484,
+          37.871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_findik_ordu",
+        "name": "Fındık",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_climate_selective",
+        "categoryLabel": "İklim seçiciliği fazla",
+        "region": "Karadeniz",
+        "location": "Ordu",
+        "kpssNote": "Fındık, nemli Karadeniz iklimiyle özdeşleşen ve özellikle Ordu-Giresun çevresinde yoğunlaşan üründür.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Ordu%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Ordu, Türkiye",
+        "sourceDisplayName": "Ordu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.879,
+          40.986
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_findik_giresun",
+        "name": "Fındık",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_climate_selective",
+        "categoryLabel": "İklim seçiciliği fazla",
+        "region": "Karadeniz",
+        "location": "Giresun",
+        "kpssNote": "Fındık, nemli Karadeniz iklimiyle özdeşleşen ve özellikle Ordu-Giresun çevresinde yoğunlaşan üründür.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Giresun%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Giresun, Türkiye",
+        "sourceDisplayName": "Giresun"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.392,
+          40.917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_findik_duzce",
+        "name": "Fındık",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_climate_selective",
+        "categoryLabel": "İklim seçiciliği fazla",
+        "region": "Karadeniz",
+        "location": "Düzce",
+        "kpssNote": "Fındık, nemli Karadeniz iklimiyle özdeşleşen ve özellikle Ordu-Giresun çevresinde yoğunlaşan üründür.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=D%C3%BCzce%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Düzce, Türkiye",
+        "sourceDisplayName": "Düzce"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.159,
+          40.839
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_findik_sakarya",
+        "name": "Fındık",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_climate_selective",
+        "categoryLabel": "İklim seçiciliği fazla",
+        "region": "Karadeniz",
+        "location": "Sakarya",
+        "kpssNote": "Fındık, nemli Karadeniz iklimiyle özdeşleşen ve özellikle Ordu-Giresun çevresinde yoğunlaşan üründür.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Sakarya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Sakarya, Türkiye",
+        "sourceDisplayName": "Sakarya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.378,
+          40.756
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_cay_rize",
+        "name": "Çay",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_climate_selective",
+        "categoryLabel": "İklim seçiciliği fazla",
+        "region": "Doğu Karadeniz",
+        "location": "Rize",
+        "kpssNote": "Çay, bol yağış ve yıkanmış toprak koşulları nedeniyle Doğu Karadeniz kıyılarında toplanır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Rize%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Rize, Türkiye",
+        "sourceDisplayName": "Rize"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.517,
+          41.025
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_cay_trabzon",
+        "name": "Çay",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_climate_selective",
+        "categoryLabel": "İklim seçiciliği fazla",
+        "region": "Doğu Karadeniz",
+        "location": "Trabzon",
+        "kpssNote": "Çay, bol yağış ve yıkanmış toprak koşulları nedeniyle Doğu Karadeniz kıyılarında toplanır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Trabzon%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Trabzon, Türkiye",
+        "sourceDisplayName": "Trabzon"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.722,
+          41.005
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_cay_artvin",
+        "name": "Çay",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_climate_selective",
+        "categoryLabel": "İklim seçiciliği fazla",
+        "region": "Doğu Karadeniz",
+        "location": "Artvin",
+        "kpssNote": "Çay, bol yağış ve yıkanmış toprak koşulları nedeniyle Doğu Karadeniz kıyılarında toplanır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Artvin%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Artvin, Türkiye",
+        "sourceDisplayName": "Artvin"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.819,
+          41.183
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_zeytin_edremit_balikesir",
+        "name": "Zeytin",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_climate_selective",
+        "categoryLabel": "İklim seçiciliği fazla",
+        "region": "Ege / Marmara / Doğu Karadeniz",
+        "location": "Edremit / Balıkesir",
+        "kpssNote": "Zeytin, kış ılıklığı isteyen Akdeniz iklimi ürünüdür; Yusufeli mikroklima örneği olarak ayrıca bilinir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Edremit%20%2F%20Bal%C4%B1kesir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Edremit / Balıkesir, Türkiye",
+        "sourceDisplayName": "Edremit / Balıkesir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.024,
+          39.596
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_zeytin_aydin",
+        "name": "Zeytin",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_climate_selective",
+        "categoryLabel": "İklim seçiciliği fazla",
+        "region": "Ege / Marmara / Doğu Karadeniz",
+        "location": "Aydın",
+        "kpssNote": "Zeytin, kış ılıklığı isteyen Akdeniz iklimi ürünüdür; Yusufeli mikroklima örneği olarak ayrıca bilinir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Ayd%C4%B1n%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Aydın, Türkiye",
+        "sourceDisplayName": "Aydın"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.839,
+          37.845
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_zeytin_gemlik_bursa",
+        "name": "Zeytin",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_climate_selective",
+        "categoryLabel": "İklim seçiciliği fazla",
+        "region": "Ege / Marmara / Doğu Karadeniz",
+        "location": "Gemlik / Bursa",
+        "kpssNote": "Zeytin, kış ılıklığı isteyen Akdeniz iklimi ürünüdür; Yusufeli mikroklima örneği olarak ayrıca bilinir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Gemlik%20%2F%20Bursa%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Gemlik / Bursa, Türkiye",
+        "sourceDisplayName": "Gemlik / Bursa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.159,
+          40.43
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_zeytin_yusufeli_artvin",
+        "name": "Zeytin",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_climate_selective",
+        "categoryLabel": "İklim seçiciliği fazla",
+        "region": "Ege / Marmara / Doğu Karadeniz",
+        "location": "Yusufeli / Artvin",
+        "kpssNote": "Zeytin, kış ılıklığı isteyen Akdeniz iklimi ürünüdür; Yusufeli mikroklima örneği olarak ayrıca bilinir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Yusufeli%20%2F%20Artvin%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Yusufeli / Artvin, Türkiye",
+        "sourceDisplayName": "Yusufeli / Artvin"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.537,
+          40.82
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_turuncgil_mersin",
+        "name": "Turunçgil",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_climate_selective",
+        "categoryLabel": "İklim seçiciliği fazla",
+        "region": "Akdeniz / Ege / Doğu Karadeniz",
+        "location": "Mersin",
+        "kpssNote": "Turunçgiller don olayına duyarlıdır; Akdeniz kıyıları ve Rize mikrokliması KPSS'de öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Mersin%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Mersin, Türkiye",
+        "sourceDisplayName": "Mersin"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.641,
+          36.812
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_turuncgil_antalya",
+        "name": "Turunçgil",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_climate_selective",
+        "categoryLabel": "İklim seçiciliği fazla",
+        "region": "Akdeniz / Ege / Doğu Karadeniz",
+        "location": "Antalya",
+        "kpssNote": "Turunçgiller don olayına duyarlıdır; Akdeniz kıyıları ve Rize mikrokliması KPSS'de öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Antalya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Antalya, Türkiye",
+        "sourceDisplayName": "Antalya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.707,
+          36.887
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_turuncgil_cukurova_adana",
+        "name": "Turunçgil",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_climate_selective",
+        "categoryLabel": "İklim seçiciliği fazla",
+        "region": "Akdeniz / Ege / Doğu Karadeniz",
+        "location": "Çukurova / Adana",
+        "kpssNote": "Turunçgiller don olayına duyarlıdır; Akdeniz kıyıları ve Rize mikrokliması KPSS'de öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=%C3%87ukurova%20%2F%20Adana%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Çukurova / Adana, Türkiye",
+        "sourceDisplayName": "Çukurova / Adana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.33,
+          36.91
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_turuncgil_rize",
+        "name": "Turunçgil",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_climate_selective",
+        "categoryLabel": "İklim seçiciliği fazla",
+        "region": "Akdeniz / Ege / Doğu Karadeniz",
+        "location": "Rize",
+        "kpssNote": "Turunçgiller don olayına duyarlıdır; Akdeniz kıyıları ve Rize mikrokliması KPSS'de öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Rize%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Rize, Türkiye",
+        "sourceDisplayName": "Rize"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.517,
+          41.025
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_arpa_konya",
+        "name": "Arpa",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_cereal_legume",
+        "categoryLabel": "Tahıl / baklagil",
+        "region": "İç Anadolu / Marmara / Karadeniz / Güneydoğu Anadolu",
+        "location": "Konya",
+        "kpssNote": "Arpa, mısır, pirinç ve baklagiller KPSS'de iklim ve sulama koşullarıyla birlikte sorulan temel tarım ürünleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Konya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Konya, Türkiye",
+        "sourceDisplayName": "Konya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.484,
+          37.871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_arpa_ankara",
+        "name": "Arpa",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_cereal_legume",
+        "categoryLabel": "Tahıl / baklagil",
+        "region": "İç Anadolu / Marmara / Karadeniz / Güneydoğu Anadolu",
+        "location": "Ankara",
+        "kpssNote": "Arpa, mısır, pirinç ve baklagiller KPSS'de iklim ve sulama koşullarıyla birlikte sorulan temel tarım ürünleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Ankara%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Ankara, Türkiye",
+        "sourceDisplayName": "Ankara"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.859,
+          39.933
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_misir_cukurova_adana",
+        "name": "Mısır",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_cereal_legume",
+        "categoryLabel": "Tahıl / baklagil",
+        "region": "İç Anadolu / Marmara / Karadeniz / Güneydoğu Anadolu",
+        "location": "Çukurova / Adana",
+        "kpssNote": "Arpa, mısır, pirinç ve baklagiller KPSS'de iklim ve sulama koşullarıyla birlikte sorulan temel tarım ürünleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=%C3%87ukurova%20%2F%20Adana%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Çukurova / Adana, Türkiye",
+        "sourceDisplayName": "Çukurova / Adana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.33,
+          36.91
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_misir_carsamba_samsun",
+        "name": "Mısır",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_cereal_legume",
+        "categoryLabel": "Tahıl / baklagil",
+        "region": "İç Anadolu / Marmara / Karadeniz / Güneydoğu Anadolu",
+        "location": "Çarşamba / Samsun",
+        "kpssNote": "Arpa, mısır, pirinç ve baklagiller KPSS'de iklim ve sulama koşullarıyla birlikte sorulan temel tarım ürünleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=%C3%87ar%C5%9Famba%20%2F%20Samsun%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Çarşamba / Samsun, Türkiye",
+        "sourceDisplayName": "Çarşamba / Samsun"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.721,
+          41.198
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_misir_sakarya",
+        "name": "Mısır",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_cereal_legume",
+        "categoryLabel": "Tahıl / baklagil",
+        "region": "İç Anadolu / Marmara / Karadeniz / Güneydoğu Anadolu",
+        "location": "Sakarya",
+        "kpssNote": "Arpa, mısır, pirinç ve baklagiller KPSS'de iklim ve sulama koşullarıyla birlikte sorulan temel tarım ürünleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Sakarya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Sakarya, Türkiye",
+        "sourceDisplayName": "Sakarya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.378,
+          40.756
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_pirinc_ipsala_edirne",
+        "name": "Pirinç",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_cereal_legume",
+        "categoryLabel": "Tahıl / baklagil",
+        "region": "İç Anadolu / Marmara / Karadeniz / Güneydoğu Anadolu",
+        "location": "İpsala / Edirne",
+        "kpssNote": "Arpa, mısır, pirinç ve baklagiller KPSS'de iklim ve sulama koşullarıyla birlikte sorulan temel tarım ürünleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=%C4%B0psala%20%2F%20Edirne%2C%20T%C3%BCrkiye",
+        "sourceQuery": "İpsala / Edirne, Türkiye",
+        "sourceDisplayName": "İpsala / Edirne"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.383,
+          40.921
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_pirinc_gonen_balikesir",
+        "name": "Pirinç",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_cereal_legume",
+        "categoryLabel": "Tahıl / baklagil",
+        "region": "İç Anadolu / Marmara / Karadeniz / Güneydoğu Anadolu",
+        "location": "Gönen / Balıkesir",
+        "kpssNote": "Arpa, mısır, pirinç ve baklagiller KPSS'de iklim ve sulama koşullarıyla birlikte sorulan temel tarım ürünleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=G%C3%B6nen%20%2F%20Bal%C4%B1kesir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Gönen / Balıkesir, Türkiye",
+        "sourceDisplayName": "Gönen / Balıkesir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.654,
+          40.104
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_pirinc_tosya_kastamonu",
+        "name": "Pirinç",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_cereal_legume",
+        "categoryLabel": "Tahıl / baklagil",
+        "region": "İç Anadolu / Marmara / Karadeniz / Güneydoğu Anadolu",
+        "location": "Tosya / Kastamonu",
+        "kpssNote": "Arpa, mısır, pirinç ve baklagiller KPSS'de iklim ve sulama koşullarıyla birlikte sorulan temel tarım ürünleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Tosya%20%2F%20Kastamonu%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Tosya / Kastamonu, Türkiye",
+        "sourceDisplayName": "Tosya / Kastamonu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.041,
+          41.015
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_mercimek_diyarbakir",
+        "name": "Mercimek",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_cereal_legume",
+        "categoryLabel": "Tahıl / baklagil",
+        "region": "İç Anadolu / Marmara / Karadeniz / Güneydoğu Anadolu",
+        "location": "Diyarbakır",
+        "kpssNote": "Arpa, mısır, pirinç ve baklagiller KPSS'de iklim ve sulama koşullarıyla birlikte sorulan temel tarım ürünleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Diyarbak%C4%B1r%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Diyarbakır, Türkiye",
+        "sourceDisplayName": "Diyarbakır"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.23,
+          37.914
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_mercimek_sanliurfa",
+        "name": "Mercimek",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_cereal_legume",
+        "categoryLabel": "Tahıl / baklagil",
+        "region": "İç Anadolu / Marmara / Karadeniz / Güneydoğu Anadolu",
+        "location": "Şanlıurfa",
+        "kpssNote": "Arpa, mısır, pirinç ve baklagiller KPSS'de iklim ve sulama koşullarıyla birlikte sorulan temel tarım ürünleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=%C5%9Eanl%C4%B1urfa%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Şanlıurfa, Türkiye",
+        "sourceDisplayName": "Şanlıurfa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.796,
+          37.159
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_mercimek_mardin",
+        "name": "Mercimek",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_cereal_legume",
+        "categoryLabel": "Tahıl / baklagil",
+        "region": "İç Anadolu / Marmara / Karadeniz / Güneydoğu Anadolu",
+        "location": "Mardin",
+        "kpssNote": "Arpa, mısır, pirinç ve baklagiller KPSS'de iklim ve sulama koşullarıyla birlikte sorulan temel tarım ürünleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Mardin%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Mardin, Türkiye",
+        "sourceDisplayName": "Mardin"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.735,
+          37.313
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_nohut_konya",
+        "name": "Nohut",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_cereal_legume",
+        "categoryLabel": "Tahıl / baklagil",
+        "region": "İç Anadolu / Marmara / Karadeniz / Güneydoğu Anadolu",
+        "location": "Konya",
+        "kpssNote": "Arpa, mısır, pirinç ve baklagiller KPSS'de iklim ve sulama koşullarıyla birlikte sorulan temel tarım ürünleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Konya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Konya, Türkiye",
+        "sourceDisplayName": "Konya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.484,
+          37.871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_nohut_yozgat",
+        "name": "Nohut",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_cereal_legume",
+        "categoryLabel": "Tahıl / baklagil",
+        "region": "İç Anadolu / Marmara / Karadeniz / Güneydoğu Anadolu",
+        "location": "Yozgat",
+        "kpssNote": "Arpa, mısır, pirinç ve baklagiller KPSS'de iklim ve sulama koşullarıyla birlikte sorulan temel tarım ürünleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Yozgat%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Yozgat, Türkiye",
+        "sourceDisplayName": "Yozgat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.81,
+          39.82
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_nohut_kirsehir",
+        "name": "Nohut",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_cereal_legume",
+        "categoryLabel": "Tahıl / baklagil",
+        "region": "İç Anadolu / Marmara / Karadeniz / Güneydoğu Anadolu",
+        "location": "Kırşehir",
+        "kpssNote": "Arpa, mısır, pirinç ve baklagiller KPSS'de iklim ve sulama koşullarıyla birlikte sorulan temel tarım ürünleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=K%C4%B1r%C5%9Fehir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Kırşehir, Türkiye",
+        "sourceDisplayName": "Kırşehir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.16,
+          39.146
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_soya_adana",
+        "name": "Soya",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_industrial",
+        "categoryLabel": "Sanayi bitkisi",
+        "region": "Akdeniz / Ege / İç Anadolu",
+        "location": "Adana",
+        "kpssNote": "Soya, haşhaş ve yer fıstığı; yağ, ilaç ve gıda sanayisiyle bağlantılı KPSS sanayi bitkisi örnekleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Adana%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Adana, Türkiye",
+        "sourceDisplayName": "Adana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.331,
+          36.991
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_soya_osmaniye",
+        "name": "Soya",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_industrial",
+        "categoryLabel": "Sanayi bitkisi",
+        "region": "Akdeniz / Ege / İç Anadolu",
+        "location": "Osmaniye",
+        "kpssNote": "Soya, haşhaş ve yer fıstığı; yağ, ilaç ve gıda sanayisiyle bağlantılı KPSS sanayi bitkisi örnekleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Osmaniye%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Osmaniye, Türkiye",
+        "sourceDisplayName": "Osmaniye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.247,
+          37.074
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_hashas_afyonkarahisar",
+        "name": "Haşhaş",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_industrial",
+        "categoryLabel": "Sanayi bitkisi",
+        "region": "Akdeniz / Ege / İç Anadolu",
+        "location": "Afyonkarahisar",
+        "kpssNote": "Soya, haşhaş ve yer fıstığı; yağ, ilaç ve gıda sanayisiyle bağlantılı KPSS sanayi bitkisi örnekleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Afyonkarahisar%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Afyonkarahisar, Türkiye",
+        "sourceDisplayName": "Afyonkarahisar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.538,
+          38.756
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_hashas_kutahya",
+        "name": "Haşhaş",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_industrial",
+        "categoryLabel": "Sanayi bitkisi",
+        "region": "Akdeniz / Ege / İç Anadolu",
+        "location": "Kütahya",
+        "kpssNote": "Soya, haşhaş ve yer fıstığı; yağ, ilaç ve gıda sanayisiyle bağlantılı KPSS sanayi bitkisi örnekleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=K%C3%BCtahya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Kütahya, Türkiye",
+        "sourceDisplayName": "Kütahya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.985,
+          39.419
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_hashas_usak",
+        "name": "Haşhaş",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_industrial",
+        "categoryLabel": "Sanayi bitkisi",
+        "region": "Akdeniz / Ege / İç Anadolu",
+        "location": "Uşak",
+        "kpssNote": "Soya, haşhaş ve yer fıstığı; yağ, ilaç ve gıda sanayisiyle bağlantılı KPSS sanayi bitkisi örnekleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=U%C5%9Fak%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Uşak, Türkiye",
+        "sourceDisplayName": "Uşak"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.405,
+          38.674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_yer_fistigi_osmaniye",
+        "name": "Yer fıstığı",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_industrial",
+        "categoryLabel": "Sanayi bitkisi",
+        "region": "Akdeniz / Ege / İç Anadolu",
+        "location": "Osmaniye",
+        "kpssNote": "Soya, haşhaş ve yer fıstığı; yağ, ilaç ve gıda sanayisiyle bağlantılı KPSS sanayi bitkisi örnekleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Osmaniye%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Osmaniye, Türkiye",
+        "sourceDisplayName": "Osmaniye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.247,
+          37.074
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_yer_fistigi_adana",
+        "name": "Yer fıstığı",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_industrial",
+        "categoryLabel": "Sanayi bitkisi",
+        "region": "Akdeniz / Ege / İç Anadolu",
+        "location": "Adana",
+        "kpssNote": "Soya, haşhaş ve yer fıstığı; yağ, ilaç ve gıda sanayisiyle bağlantılı KPSS sanayi bitkisi örnekleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Adana%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Adana, Türkiye",
+        "sourceDisplayName": "Adana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.331,
+          36.991
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_uzum_manisa",
+        "name": "Üzüm",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_special_crop",
+        "categoryLabel": "Meyve / özel ürün",
+        "region": "Ege / Akdeniz / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Manisa",
+        "kpssNote": "Meyve ve özel ürünler, KPSS'de belirli il-ürün eşleştirmeleriyle harita sorularında sık kullanılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Manisa%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Manisa, Türkiye",
+        "sourceDisplayName": "Manisa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.429,
+          38.619
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_uzum_denizli",
+        "name": "Üzüm",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_special_crop",
+        "categoryLabel": "Meyve / özel ürün",
+        "region": "Ege / Akdeniz / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Denizli",
+        "kpssNote": "Meyve ve özel ürünler, KPSS'de belirli il-ürün eşleştirmeleriyle harita sorularında sık kullanılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Denizli%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Denizli, Türkiye",
+        "sourceDisplayName": "Denizli"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.086,
+          37.776
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_uzum_izmir",
+        "name": "Üzüm",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_special_crop",
+        "categoryLabel": "Meyve / özel ürün",
+        "region": "Ege / Akdeniz / İç Anadolu / Güneydoğu Anadolu",
+        "location": "İzmir",
+        "kpssNote": "Meyve ve özel ürünler, KPSS'de belirli il-ürün eşleştirmeleriyle harita sorularında sık kullanılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=%C4%B0zmir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "İzmir, Türkiye",
+        "sourceDisplayName": "İzmir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.142,
+          38.423
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_incir_aydin",
+        "name": "İncir",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_special_crop",
+        "categoryLabel": "Meyve / özel ürün",
+        "region": "Ege / Akdeniz / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Aydın",
+        "kpssNote": "Meyve ve özel ürünler, KPSS'de belirli il-ürün eşleştirmeleriyle harita sorularında sık kullanılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Ayd%C4%B1n%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Aydın, Türkiye",
+        "sourceDisplayName": "Aydın"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.839,
+          37.845
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_kayisi_malatya",
+        "name": "Kayısı",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_special_crop",
+        "categoryLabel": "Meyve / özel ürün",
+        "region": "Ege / Akdeniz / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Malatya",
+        "kpssNote": "Meyve ve özel ürünler, KPSS'de belirli il-ürün eşleştirmeleriyle harita sorularında sık kullanılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Malatya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Malatya, Türkiye",
+        "sourceDisplayName": "Malatya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.309,
+          38.355
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_antep_fistigi_gaziantep",
+        "name": "Antep fıstığı",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_special_crop",
+        "categoryLabel": "Meyve / özel ürün",
+        "region": "Ege / Akdeniz / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Gaziantep",
+        "kpssNote": "Meyve ve özel ürünler, KPSS'de belirli il-ürün eşleştirmeleriyle harita sorularında sık kullanılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Gaziantep%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Gaziantep, Türkiye",
+        "sourceDisplayName": "Gaziantep"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.383,
+          37.066
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_antep_fistigi_sanliurfa",
+        "name": "Antep fıstığı",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_special_crop",
+        "categoryLabel": "Meyve / özel ürün",
+        "region": "Ege / Akdeniz / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Şanlıurfa",
+        "kpssNote": "Meyve ve özel ürünler, KPSS'de belirli il-ürün eşleştirmeleriyle harita sorularında sık kullanılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=%C5%9Eanl%C4%B1urfa%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Şanlıurfa, Türkiye",
+        "sourceDisplayName": "Şanlıurfa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.796,
+          37.159
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_antep_fistigi_siirt",
+        "name": "Antep fıstığı",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_special_crop",
+        "categoryLabel": "Meyve / özel ürün",
+        "region": "Ege / Akdeniz / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Siirt",
+        "kpssNote": "Meyve ve özel ürünler, KPSS'de belirli il-ürün eşleştirmeleriyle harita sorularında sık kullanılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Siirt%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Siirt, Türkiye",
+        "sourceDisplayName": "Siirt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.95,
+          37.933
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_elma_isparta",
+        "name": "Elma",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_special_crop",
+        "categoryLabel": "Meyve / özel ürün",
+        "region": "Ege / Akdeniz / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Isparta",
+        "kpssNote": "Meyve ve özel ürünler, KPSS'de belirli il-ürün eşleştirmeleriyle harita sorularında sık kullanılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Isparta%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Isparta, Türkiye",
+        "sourceDisplayName": "Isparta"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.556,
+          37.764
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_elma_nigde",
+        "name": "Elma",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_special_crop",
+        "categoryLabel": "Meyve / özel ürün",
+        "region": "Ege / Akdeniz / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Niğde",
+        "kpssNote": "Meyve ve özel ürünler, KPSS'de belirli il-ürün eşleştirmeleriyle harita sorularında sık kullanılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Ni%C4%9Fde%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Niğde, Türkiye",
+        "sourceDisplayName": "Niğde"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.683,
+          37.966
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_elma_karaman",
+        "name": "Elma",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_special_crop",
+        "categoryLabel": "Meyve / özel ürün",
+        "region": "Ege / Akdeniz / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Karaman",
+        "kpssNote": "Meyve ve özel ürünler, KPSS'de belirli il-ürün eşleştirmeleriyle harita sorularında sık kullanılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Karaman%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Karaman, Türkiye",
+        "sourceDisplayName": "Karaman"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.215,
+          37.181
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_muz_anamur_mersin",
+        "name": "Muz",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_special_crop",
+        "categoryLabel": "Meyve / özel ürün",
+        "region": "Ege / Akdeniz / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Anamur / Mersin",
+        "kpssNote": "Meyve ve özel ürünler, KPSS'de belirli il-ürün eşleştirmeleriyle harita sorularında sık kullanılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Anamur%20%2F%20Mersin%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Anamur / Mersin, Türkiye",
+        "sourceDisplayName": "Anamur / Mersin"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.836,
+          36.075
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_muz_alanya_antalya",
+        "name": "Muz",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_special_crop",
+        "categoryLabel": "Meyve / özel ürün",
+        "region": "Ege / Akdeniz / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Alanya / Antalya",
+        "kpssNote": "Meyve ve özel ürünler, KPSS'de belirli il-ürün eşleştirmeleriyle harita sorularında sık kullanılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Alanya%20%2F%20Antalya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Alanya / Antalya, Türkiye",
+        "sourceDisplayName": "Alanya / Antalya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.999,
+          36.543
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_gul_isparta",
+        "name": "Gül",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_special_crop",
+        "categoryLabel": "Meyve / özel ürün",
+        "region": "Ege / Akdeniz / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Isparta",
+        "kpssNote": "Meyve ve özel ürünler, KPSS'de belirli il-ürün eşleştirmeleriyle harita sorularında sık kullanılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Isparta%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Isparta, Türkiye",
+        "sourceDisplayName": "Isparta"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.556,
+          37.764
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_patates_nigde",
+        "name": "Patates",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_special_crop",
+        "categoryLabel": "Meyve / özel ürün",
+        "region": "Ege / Akdeniz / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Niğde",
+        "kpssNote": "Meyve ve özel ürünler, KPSS'de belirli il-ürün eşleştirmeleriyle harita sorularında sık kullanılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Ni%C4%9Fde%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Niğde, Türkiye",
+        "sourceDisplayName": "Niğde"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.683,
+          37.966
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "agriculture_patates_nevsehir",
+        "name": "Patates",
+        "topic": "agriculture",
+        "topicLabel": "Tarım",
+        "category": "agriculture_special_crop",
+        "categoryLabel": "Meyve / özel ürün",
+        "region": "Ege / Akdeniz / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Nevşehir",
+        "kpssNote": "Meyve ve özel ürünler, KPSS'de belirli il-ürün eşleştirmeleriyle harita sorularında sık kullanılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Nev%C5%9Fehir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Nevşehir, Türkiye",
+        "sourceDisplayName": "Nevşehir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.714,
+          38.624
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_buyukbas_mera_erzurum",
+        "name": "Büyükbaş mera",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_pasture",
+        "categoryLabel": "Mera hayvancılığı",
+        "region": "Doğu Anadolu",
+        "location": "Erzurum",
+        "kpssNote": "Erzurum-Kars-Ardahan çevresi yaz yağışlı çayırlarıyla büyükbaş mera hayvancılığının klasik KPSS alanıdır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Erzurum%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Erzurum, Türkiye",
+        "sourceDisplayName": "Erzurum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.273,
+          39.906
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_buyukbas_mera_kars",
+        "name": "Büyükbaş mera",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_pasture",
+        "categoryLabel": "Mera hayvancılığı",
+        "region": "Doğu Anadolu",
+        "location": "Kars",
+        "kpssNote": "Erzurum-Kars-Ardahan çevresi yaz yağışlı çayırlarıyla büyükbaş mera hayvancılığının klasik KPSS alanıdır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Kars%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Kars, Türkiye",
+        "sourceDisplayName": "Kars"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.095,
+          40.602
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_buyukbas_mera_ardahan",
+        "name": "Büyükbaş mera",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_pasture",
+        "categoryLabel": "Mera hayvancılığı",
+        "region": "Doğu Anadolu",
+        "location": "Ardahan",
+        "kpssNote": "Erzurum-Kars-Ardahan çevresi yaz yağışlı çayırlarıyla büyükbaş mera hayvancılığının klasik KPSS alanıdır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Ardahan%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Ardahan, Türkiye",
+        "sourceDisplayName": "Ardahan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          42.702,
+          41.11
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_buyukbas_besi_marmara_istanbul_cevresi",
+        "name": "Büyükbaş besi",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_stall",
+        "categoryLabel": "Besi / ahır",
+        "region": "Marmara / Ege / İç Anadolu",
+        "location": "Marmara / İstanbul çevresi",
+        "kpssNote": "Besi ve ahır hayvancılığı pazar, yem ve sanayi olanaklarına yakın gelişir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Marmara%20%2F%20%C4%B0stanbul%20%C3%A7evresi%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Marmara / İstanbul çevresi, Türkiye",
+        "sourceDisplayName": "Marmara / İstanbul çevresi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.96,
+          41.01
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_buyukbas_besi_ege_izmir_cevresi",
+        "name": "Büyükbaş besi",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_stall",
+        "categoryLabel": "Besi / ahır",
+        "region": "Marmara / Ege / İç Anadolu",
+        "location": "Ege / İzmir çevresi",
+        "kpssNote": "Besi ve ahır hayvancılığı pazar, yem ve sanayi olanaklarına yakın gelişir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Ege%20%2F%20%C4%B0zmir%20%C3%A7evresi%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Ege / İzmir çevresi, Türkiye",
+        "sourceDisplayName": "Ege / İzmir çevresi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.14,
+          38.42
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_buyukbas_besi_konya",
+        "name": "Büyükbaş besi",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_stall",
+        "categoryLabel": "Besi / ahır",
+        "region": "Marmara / Ege / İç Anadolu",
+        "location": "Konya",
+        "kpssNote": "Besi ve ahır hayvancılığı pazar, yem ve sanayi olanaklarına yakın gelişir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Konya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Konya, Türkiye",
+        "sourceDisplayName": "Konya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.484,
+          37.871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_koyun_konya",
+        "name": "Koyun",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_small_ruminant",
+        "categoryLabel": "Küçükbaş",
+        "region": "İç Anadolu / Güneydoğu Anadolu",
+        "location": "Konya",
+        "kpssNote": "Koyun yetiştiriciliği bozkır bitki örtüsünün yaygın olduğu İç Anadolu ve Güneydoğu Anadolu'da öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Konya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Konya, Türkiye",
+        "sourceDisplayName": "Konya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.484,
+          37.871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_koyun_polatli_ankara",
+        "name": "Koyun",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_small_ruminant",
+        "categoryLabel": "Küçükbaş",
+        "region": "İç Anadolu / Güneydoğu Anadolu",
+        "location": "Polatlı / Ankara",
+        "kpssNote": "Koyun yetiştiriciliği bozkır bitki örtüsünün yaygın olduğu İç Anadolu ve Güneydoğu Anadolu'da öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Polatl%C4%B1%20%2F%20Ankara%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Polatlı / Ankara, Türkiye",
+        "sourceDisplayName": "Polatlı / Ankara"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.147,
+          39.584
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_koyun_sanliurfa",
+        "name": "Koyun",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_small_ruminant",
+        "categoryLabel": "Küçükbaş",
+        "region": "İç Anadolu / Güneydoğu Anadolu",
+        "location": "Şanlıurfa",
+        "kpssNote": "Koyun yetiştiriciliği bozkır bitki örtüsünün yaygın olduğu İç Anadolu ve Güneydoğu Anadolu'da öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=%C5%9Eanl%C4%B1urfa%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Şanlıurfa, Türkiye",
+        "sourceDisplayName": "Şanlıurfa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.796,
+          37.159
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_koyun_diyarbakir",
+        "name": "Koyun",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_small_ruminant",
+        "categoryLabel": "Küçükbaş",
+        "region": "İç Anadolu / Güneydoğu Anadolu",
+        "location": "Diyarbakır",
+        "kpssNote": "Koyun yetiştiriciliği bozkır bitki örtüsünün yaygın olduğu İç Anadolu ve Güneydoğu Anadolu'da öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Diyarbak%C4%B1r%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Diyarbakır, Türkiye",
+        "sourceDisplayName": "Diyarbakır"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.23,
+          37.914
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_kil_kecisi_teke_platosu",
+        "name": "Kıl keçisi",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_small_ruminant",
+        "categoryLabel": "Küçükbaş",
+        "region": "Akdeniz",
+        "location": "Teke Platosu",
+        "kpssNote": "Kıl keçisi, engebeli ve makilik alanlarda; Teke ve Taşeli platoları çevresinde yaygındır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Teke%20Platosu%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Teke Platosu, Türkiye",
+        "sourceDisplayName": "Teke Platosu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.92,
+          36.92
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_kil_kecisi_taseli_platosu",
+        "name": "Kıl keçisi",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_small_ruminant",
+        "categoryLabel": "Küçükbaş",
+        "region": "Akdeniz",
+        "location": "Taşeli Platosu",
+        "kpssNote": "Kıl keçisi, engebeli ve makilik alanlarda; Teke ve Taşeli platoları çevresinde yaygındır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Ta%C5%9Feli%20Platosu%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Taşeli Platosu, Türkiye",
+        "sourceDisplayName": "Taşeli Platosu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.72,
+          36.76
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_tiftik_kecisi_ankara",
+        "name": "Tiftik keçisi",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_specialized",
+        "categoryLabel": "Özel hayvancılık",
+        "region": "İç Anadolu",
+        "location": "Ankara",
+        "kpssNote": "Tiftik keçisi Ankara ve çevresiyle özdeşleşen özel hayvancılık örneğidir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Ankara%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Ankara, Türkiye",
+        "sourceDisplayName": "Ankara"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.859,
+          39.933
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_aricilik_mugla",
+        "name": "Arıcılık",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_specialized",
+        "categoryLabel": "Özel hayvancılık",
+        "region": "Ege / Karadeniz / Doğu Anadolu",
+        "location": "Muğla",
+        "kpssNote": "Arıcılık, bitki çeşitliliği ve yaylacılık koşullarıyla Muğla, Rize-Anzer, Ordu, Hakkari ve Kars çevresinde sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Mu%C4%9Fla%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Muğla, Türkiye",
+        "sourceDisplayName": "Muğla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.363,
+          37.215
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_aricilik_anzer_rize",
+        "name": "Arıcılık",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_specialized",
+        "categoryLabel": "Özel hayvancılık",
+        "region": "Ege / Karadeniz / Doğu Anadolu",
+        "location": "Anzer / Rize",
+        "kpssNote": "Arıcılık, bitki çeşitliliği ve yaylacılık koşullarıyla Muğla, Rize-Anzer, Ordu, Hakkari ve Kars çevresinde sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Anzer%20%2F%20Rize%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Anzer / Rize, Türkiye",
+        "sourceDisplayName": "Anzer / Rize"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.52,
+          40.642
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_aricilik_ordu",
+        "name": "Arıcılık",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_specialized",
+        "categoryLabel": "Özel hayvancılık",
+        "region": "Ege / Karadeniz / Doğu Anadolu",
+        "location": "Ordu",
+        "kpssNote": "Arıcılık, bitki çeşitliliği ve yaylacılık koşullarıyla Muğla, Rize-Anzer, Ordu, Hakkari ve Kars çevresinde sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Ordu%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Ordu, Türkiye",
+        "sourceDisplayName": "Ordu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.879,
+          40.986
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_aricilik_hakkari",
+        "name": "Arıcılık",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_specialized",
+        "categoryLabel": "Özel hayvancılık",
+        "region": "Ege / Karadeniz / Doğu Anadolu",
+        "location": "Hakkari",
+        "kpssNote": "Arıcılık, bitki çeşitliliği ve yaylacılık koşullarıyla Muğla, Rize-Anzer, Ordu, Hakkari ve Kars çevresinde sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Hakkari%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Hakkari, Türkiye",
+        "sourceDisplayName": "Hakkari"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.74,
+          37.574
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_aricilik_kars",
+        "name": "Arıcılık",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_specialized",
+        "categoryLabel": "Özel hayvancılık",
+        "region": "Ege / Karadeniz / Doğu Anadolu",
+        "location": "Kars",
+        "kpssNote": "Arıcılık, bitki çeşitliliği ve yaylacılık koşullarıyla Muğla, Rize-Anzer, Ordu, Hakkari ve Kars çevresinde sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Kars%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Kars, Türkiye",
+        "sourceDisplayName": "Kars"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.095,
+          40.602
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_ipekbocekciligi_diyarbakir",
+        "name": "İpekböcekçiliği",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_specialized",
+        "categoryLabel": "Özel hayvancılık",
+        "region": "Güneydoğu Anadolu / Marmara / Akdeniz",
+        "location": "Diyarbakır",
+        "kpssNote": "İpekböcekçiliği dut yetiştiriciliğiyle ilişkilidir; Diyarbakır, Bursa ve Antalya KPSS örnekleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Diyarbak%C4%B1r%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Diyarbakır, Türkiye",
+        "sourceDisplayName": "Diyarbakır"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.23,
+          37.914
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_ipekbocekciligi_bursa",
+        "name": "İpekböcekçiliği",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_specialized",
+        "categoryLabel": "Özel hayvancılık",
+        "region": "Güneydoğu Anadolu / Marmara / Akdeniz",
+        "location": "Bursa",
+        "kpssNote": "İpekböcekçiliği dut yetiştiriciliğiyle ilişkilidir; Diyarbakır, Bursa ve Antalya KPSS örnekleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Bursa%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Bursa, Türkiye",
+        "sourceDisplayName": "Bursa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.067,
+          40.183
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_ipekbocekciligi_antalya",
+        "name": "İpekböcekçiliği",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_specialized",
+        "categoryLabel": "Özel hayvancılık",
+        "region": "Güneydoğu Anadolu / Marmara / Akdeniz",
+        "location": "Antalya",
+        "kpssNote": "İpekböcekçiliği dut yetiştiriciliğiyle ilişkilidir; Diyarbakır, Bursa ve Antalya KPSS örnekleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Antalya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Antalya, Türkiye",
+        "sourceDisplayName": "Antalya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.707,
+          36.887
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_kumes_hayvanciligi_bolu",
+        "name": "Kümes hayvancılığı",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_poultry_fishery",
+        "categoryLabel": "Kümes / balıkçılık",
+        "region": "Marmara / Ege / Karadeniz",
+        "location": "Bolu",
+        "kpssNote": "Kümes hayvancılığı büyük tüketim pazarlarına ve yem-sanayi bağlantısına yakın alanlarda gelişir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Bolu%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Bolu, Türkiye",
+        "sourceDisplayName": "Bolu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.607,
+          40.735
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_kumes_hayvanciligi_balikesir",
+        "name": "Kümes hayvancılığı",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_poultry_fishery",
+        "categoryLabel": "Kümes / balıkçılık",
+        "region": "Marmara / Ege / Karadeniz",
+        "location": "Balıkesir",
+        "kpssNote": "Kümes hayvancılığı büyük tüketim pazarlarına ve yem-sanayi bağlantısına yakın alanlarda gelişir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Bal%C4%B1kesir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Balıkesir, Türkiye",
+        "sourceDisplayName": "Balıkesir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.882,
+          39.649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_kumes_hayvanciligi_manisa",
+        "name": "Kümes hayvancılığı",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_poultry_fishery",
+        "categoryLabel": "Kümes / balıkçılık",
+        "region": "Marmara / Ege / Karadeniz",
+        "location": "Manisa",
+        "kpssNote": "Kümes hayvancılığı büyük tüketim pazarlarına ve yem-sanayi bağlantısına yakın alanlarda gelişir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Manisa%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Manisa, Türkiye",
+        "sourceDisplayName": "Manisa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.429,
+          38.619
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_kumes_hayvanciligi_sakarya",
+        "name": "Kümes hayvancılığı",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_poultry_fishery",
+        "categoryLabel": "Kümes / balıkçılık",
+        "region": "Marmara / Ege / Karadeniz",
+        "location": "Sakarya",
+        "kpssNote": "Kümes hayvancılığı büyük tüketim pazarlarına ve yem-sanayi bağlantısına yakın alanlarda gelişir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Sakarya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Sakarya, Türkiye",
+        "sourceDisplayName": "Sakarya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.378,
+          40.756
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_balikcilik_trabzon",
+        "name": "Balıkçılık",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_poultry_fishery",
+        "categoryLabel": "Kümes / balıkçılık",
+        "region": "Karadeniz / Ege",
+        "location": "Trabzon",
+        "kpssNote": "Balıkçılıkta Karadeniz kıyıları, kültür balıkçılığında ise Ege kıyıları KPSS harita eşleştirmelerinde kullanılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Trabzon%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Trabzon, Türkiye",
+        "sourceDisplayName": "Trabzon"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.722,
+          41.005
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_balikcilik_sinop",
+        "name": "Balıkçılık",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_poultry_fishery",
+        "categoryLabel": "Kümes / balıkçılık",
+        "region": "Karadeniz / Ege",
+        "location": "Sinop",
+        "kpssNote": "Balıkçılıkta Karadeniz kıyıları, kültür balıkçılığında ise Ege kıyıları KPSS harita eşleştirmelerinde kullanılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Sinop%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Sinop, Türkiye",
+        "sourceDisplayName": "Sinop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.151,
+          42.027
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_balikcilik_samsun",
+        "name": "Balıkçılık",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_poultry_fishery",
+        "categoryLabel": "Kümes / balıkçılık",
+        "region": "Karadeniz / Ege",
+        "location": "Samsun",
+        "kpssNote": "Balıkçılıkta Karadeniz kıyıları, kültür balıkçılığında ise Ege kıyıları KPSS harita eşleştirmelerinde kullanılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Samsun%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Samsun, Türkiye",
+        "sourceDisplayName": "Samsun"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.33,
+          41.286
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_kultur_balikciligi_mugla",
+        "name": "Kültür balıkçılığı",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_poultry_fishery",
+        "categoryLabel": "Kümes / balıkçılık",
+        "region": "Karadeniz / Ege",
+        "location": "Muğla",
+        "kpssNote": "Balıkçılıkta Karadeniz kıyıları, kültür balıkçılığında ise Ege kıyıları KPSS harita eşleştirmelerinde kullanılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Mu%C4%9Fla%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Muğla, Türkiye",
+        "sourceDisplayName": "Muğla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.363,
+          37.215
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_kultur_balikciligi_izmir",
+        "name": "Kültür balıkçılığı",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_poultry_fishery",
+        "categoryLabel": "Kümes / balıkçılık",
+        "region": "Karadeniz / Ege",
+        "location": "İzmir",
+        "kpssNote": "Balıkçılıkta Karadeniz kıyıları, kültür balıkçılığında ise Ege kıyıları KPSS harita eşleştirmelerinde kullanılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=%C4%B0zmir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "İzmir, Türkiye",
+        "sourceDisplayName": "İzmir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.142,
+          38.423
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_demir_divrigi_sivas",
+        "name": "Demir",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_metal",
+        "categoryLabel": "Metal madenleri",
+        "region": "İç Anadolu / Doğu Anadolu",
+        "location": "Divriği / Sivas",
+        "kpssNote": "Demir çıkarımında Divriği, Kangal, Hekimhan ve Hasançelebi KPSS'de sık eşleştirilen alanlardır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Divri%C4%9Fi%20%2F%20Sivas%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Divriği / Sivas, Türkiye",
+        "sourceDisplayName": "Divriği / Sivas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.114,
+          39.371
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_demir_kangal_sivas",
+        "name": "Demir",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_metal",
+        "categoryLabel": "Metal madenleri",
+        "region": "İç Anadolu / Doğu Anadolu",
+        "location": "Kangal / Sivas",
+        "kpssNote": "Demir çıkarımında Divriği, Kangal, Hekimhan ve Hasançelebi KPSS'de sık eşleştirilen alanlardır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Kangal%20%2F%20Sivas%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Kangal / Sivas, Türkiye",
+        "sourceDisplayName": "Kangal / Sivas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.391,
+          39.233
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_demir_hekimhan_malatya",
+        "name": "Demir",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_metal",
+        "categoryLabel": "Metal madenleri",
+        "region": "İç Anadolu / Doğu Anadolu",
+        "location": "Hekimhan / Malatya",
+        "kpssNote": "Demir çıkarımında Divriği, Kangal, Hekimhan ve Hasançelebi KPSS'de sık eşleştirilen alanlardır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Hekimhan%20%2F%20Malatya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Hekimhan / Malatya, Türkiye",
+        "sourceDisplayName": "Hekimhan / Malatya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.928,
+          38.817
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_demir_hasancelebi_malatya",
+        "name": "Demir",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_metal",
+        "categoryLabel": "Metal madenleri",
+        "region": "İç Anadolu / Doğu Anadolu",
+        "location": "Hasançelebi / Malatya",
+        "kpssNote": "Demir çıkarımında Divriği, Kangal, Hekimhan ve Hasançelebi KPSS'de sık eşleştirilen alanlardır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Hasan%C3%A7elebi%20%2F%20Malatya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Hasançelebi / Malatya, Türkiye",
+        "sourceDisplayName": "Hasançelebi / Malatya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.893,
+          38.951
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_bakir_kure_kastamonu",
+        "name": "Bakır",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_metal",
+        "categoryLabel": "Metal madenleri",
+        "region": "Karadeniz / Doğu Anadolu",
+        "location": "Küre / Kastamonu",
+        "kpssNote": "Bakır çıkarımında Küre, Murgul, Ergani, Maden ve Çayeli temel KPSS noktalarıdır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=K%C3%BCre%20%2F%20Kastamonu%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Küre / Kastamonu, Türkiye",
+        "sourceDisplayName": "Küre / Kastamonu"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.711,
+          41.805
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_bakir_murgul_artvin",
+        "name": "Bakır",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_metal",
+        "categoryLabel": "Metal madenleri",
+        "region": "Karadeniz / Doğu Anadolu",
+        "location": "Murgul / Artvin",
+        "kpssNote": "Bakır çıkarımında Küre, Murgul, Ergani, Maden ve Çayeli temel KPSS noktalarıdır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Murgul%20%2F%20Artvin%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Murgul / Artvin, Türkiye",
+        "sourceDisplayName": "Murgul / Artvin"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.557,
+          41.279
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_bakir_ergani_diyarbakir",
+        "name": "Bakır",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_metal",
+        "categoryLabel": "Metal madenleri",
+        "region": "Karadeniz / Doğu Anadolu",
+        "location": "Ergani / Diyarbakır",
+        "kpssNote": "Bakır çıkarımında Küre, Murgul, Ergani, Maden ve Çayeli temel KPSS noktalarıdır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Ergani%20%2F%20Diyarbak%C4%B1r%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Ergani / Diyarbakır, Türkiye",
+        "sourceDisplayName": "Ergani / Diyarbakır"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.754,
+          38.269
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_bakir_maden_elazig",
+        "name": "Bakır",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_metal",
+        "categoryLabel": "Metal madenleri",
+        "region": "Karadeniz / Doğu Anadolu",
+        "location": "Maden / Elazığ",
+        "kpssNote": "Bakır çıkarımında Küre, Murgul, Ergani, Maden ve Çayeli temel KPSS noktalarıdır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Maden%20%2F%20Elaz%C4%B1%C4%9F%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Maden / Elazığ, Türkiye",
+        "sourceDisplayName": "Maden / Elazığ"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.673,
+          38.391
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_bakir_cayeli_rize",
+        "name": "Bakır",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_metal",
+        "categoryLabel": "Metal madenleri",
+        "region": "Karadeniz / Doğu Anadolu",
+        "location": "Çayeli / Rize",
+        "kpssNote": "Bakır çıkarımında Küre, Murgul, Ergani, Maden ve Çayeli temel KPSS noktalarıdır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=%C3%87ayeli%20%2F%20Rize%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Çayeli / Rize, Türkiye",
+        "sourceDisplayName": "Çayeli / Rize"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.731,
+          41.091
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_bor_susurluk_balikesir",
+        "name": "Bor",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_industrial",
+        "categoryLabel": "Endüstriyel maden",
+        "region": "Marmara / Ege / İç Anadolu",
+        "location": "Susurluk / Balıkesir",
+        "kpssNote": "Bor yatakları Susurluk, Bigadiç, Mustafakemalpaşa, Emet ve Kırka çevresinde yoğunlaşır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Susurluk%20%2F%20Bal%C4%B1kesir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Susurluk / Balıkesir, Türkiye",
+        "sourceDisplayName": "Susurluk / Balıkesir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.158,
+          39.913
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_bor_bigadic_balikesir",
+        "name": "Bor",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_industrial",
+        "categoryLabel": "Endüstriyel maden",
+        "region": "Marmara / Ege / İç Anadolu",
+        "location": "Bigadiç / Balıkesir",
+        "kpssNote": "Bor yatakları Susurluk, Bigadiç, Mustafakemalpaşa, Emet ve Kırka çevresinde yoğunlaşır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Bigadi%C3%A7%20%2F%20Bal%C4%B1kesir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Bigadiç / Balıkesir, Türkiye",
+        "sourceDisplayName": "Bigadiç / Balıkesir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.132,
+          39.392
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_bor_kestelek_mustafakemalpasa_bursa",
+        "name": "Bor",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_industrial",
+        "categoryLabel": "Endüstriyel maden",
+        "region": "Marmara / Ege / İç Anadolu",
+        "location": "Kestelek / Mustafakemalpaşa / Bursa",
+        "kpssNote": "Bor yatakları Susurluk, Bigadiç, Mustafakemalpaşa, Emet ve Kırka çevresinde yoğunlaşır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Kestelek%20%2F%20Mustafakemalpa%C5%9Fa%20%2F%20Bursa%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Kestelek / Mustafakemalpaşa / Bursa, Türkiye",
+        "sourceDisplayName": "Kestelek / Mustafakemalpaşa / Bursa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.411,
+          40.039
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_bor_emet_kutahya",
+        "name": "Bor",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_industrial",
+        "categoryLabel": "Endüstriyel maden",
+        "region": "Marmara / Ege / İç Anadolu",
+        "location": "Emet / Kütahya",
+        "kpssNote": "Bor yatakları Susurluk, Bigadiç, Mustafakemalpaşa, Emet ve Kırka çevresinde yoğunlaşır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Emet%20%2F%20K%C3%BCtahya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Emet / Kütahya, Türkiye",
+        "sourceDisplayName": "Emet / Kütahya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.258,
+          39.343
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_bor_kirka_eskisehir",
+        "name": "Bor",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_industrial",
+        "categoryLabel": "Endüstriyel maden",
+        "region": "Marmara / Ege / İç Anadolu",
+        "location": "Kırka / Eskişehir",
+        "kpssNote": "Bor yatakları Susurluk, Bigadiç, Mustafakemalpaşa, Emet ve Kırka çevresinde yoğunlaşır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=K%C4%B1rka%20%2F%20Eski%C5%9Fehir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Kırka / Eskişehir, Türkiye",
+        "sourceDisplayName": "Kırka / Eskişehir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.527,
+          39.279
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_krom_guleman_elazig",
+        "name": "Krom",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_metal",
+        "categoryLabel": "Metal madenleri",
+        "region": "Doğu Anadolu / Ege / Akdeniz",
+        "location": "Guleman / Elazığ",
+        "kpssNote": "Krom çıkarımında Guleman, Fethiye, Köyceğiz, Buldan ve Aladağ örnekleri öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Guleman%20%2F%20Elaz%C4%B1%C4%9F%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Guleman / Elazığ, Türkiye",
+        "sourceDisplayName": "Guleman / Elazığ"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.932,
+          38.533
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_krom_fethiye_mugla",
+        "name": "Krom",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_metal",
+        "categoryLabel": "Metal madenleri",
+        "region": "Doğu Anadolu / Ege / Akdeniz",
+        "location": "Fethiye / Muğla",
+        "kpssNote": "Krom çıkarımında Guleman, Fethiye, Köyceğiz, Buldan ve Aladağ örnekleri öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Fethiye%20%2F%20Mu%C4%9Fla%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Fethiye / Muğla, Türkiye",
+        "sourceDisplayName": "Fethiye / Muğla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.116,
+          36.621
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_krom_koycegiz_mugla",
+        "name": "Krom",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_metal",
+        "categoryLabel": "Metal madenleri",
+        "region": "Doğu Anadolu / Ege / Akdeniz",
+        "location": "Köyceğiz / Muğla",
+        "kpssNote": "Krom çıkarımında Guleman, Fethiye, Köyceğiz, Buldan ve Aladağ örnekleri öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=K%C3%B6yce%C4%9Fiz%20%2F%20Mu%C4%9Fla%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Köyceğiz / Muğla, Türkiye",
+        "sourceDisplayName": "Köyceğiz / Muğla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.686,
+          36.967
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_krom_buldan_denizli",
+        "name": "Krom",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_metal",
+        "categoryLabel": "Metal madenleri",
+        "region": "Doğu Anadolu / Ege / Akdeniz",
+        "location": "Buldan / Denizli",
+        "kpssNote": "Krom çıkarımında Guleman, Fethiye, Köyceğiz, Buldan ve Aladağ örnekleri öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Buldan%20%2F%20Denizli%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Buldan / Denizli, Türkiye",
+        "sourceDisplayName": "Buldan / Denizli"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.831,
+          38.045
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_krom_aladag_adana",
+        "name": "Krom",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_metal",
+        "categoryLabel": "Metal madenleri",
+        "region": "Doğu Anadolu / Ege / Akdeniz",
+        "location": "Aladağ / Adana",
+        "kpssNote": "Krom çıkarımında Guleman, Fethiye, Köyceğiz, Buldan ve Aladağ örnekleri öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Alada%C4%9F%20%2F%20Adana%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Aladağ / Adana, Türkiye",
+        "sourceDisplayName": "Aladağ / Adana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.397,
+          37.545
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_boksit_seydisehir_konya",
+        "name": "Boksit",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_metal",
+        "categoryLabel": "Metal madenleri",
+        "region": "Akdeniz / İç Anadolu",
+        "location": "Seydişehir / Konya",
+        "kpssNote": "Boksit, alüminyum sanayisiyle ilişkili olarak Seydişehir ve Akseki çevresinde bilinir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Seydi%C5%9Fehir%20%2F%20Konya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Seydişehir / Konya, Türkiye",
+        "sourceDisplayName": "Seydişehir / Konya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.845,
+          37.419
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_boksit_akseki_antalya",
+        "name": "Boksit",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_metal",
+        "categoryLabel": "Metal madenleri",
+        "region": "Akdeniz / İç Anadolu",
+        "location": "Akseki / Antalya",
+        "kpssNote": "Boksit, alüminyum sanayisiyle ilişkili olarak Seydişehir ve Akseki çevresinde bilinir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Akseki%20%2F%20Antalya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Akseki / Antalya, Türkiye",
+        "sourceDisplayName": "Akseki / Antalya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.79,
+          37.049
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_fosfat_mazidagi_mardin",
+        "name": "Fosfat",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_industrial",
+        "categoryLabel": "Endüstriyel maden",
+        "region": "İç Anadolu / Ege / Akdeniz / Güneydoğu Anadolu",
+        "location": "Mazıdağı / Mardin",
+        "kpssNote": "Endüstriyel madenler KPSS'de belirli merkezlerle eşleştirilir; tuz, fosfat, kükürt, mermer ve lületaşı temel örneklerdir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Maz%C4%B1da%C4%9F%C4%B1%20%2F%20Mardin%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Mazıdağı / Mardin, Türkiye",
+        "sourceDisplayName": "Mazıdağı / Mardin"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.484,
+          37.478
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_kukurt_keciborlu_isparta",
+        "name": "Kükürt",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_industrial",
+        "categoryLabel": "Endüstriyel maden",
+        "region": "İç Anadolu / Ege / Akdeniz / Güneydoğu Anadolu",
+        "location": "Keçiborlu / Isparta",
+        "kpssNote": "Endüstriyel madenler KPSS'de belirli merkezlerle eşleştirilir; tuz, fosfat, kükürt, mermer ve lületaşı temel örneklerdir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Ke%C3%A7iborlu%20%2F%20Isparta%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Keçiborlu / Isparta, Türkiye",
+        "sourceDisplayName": "Keçiborlu / Isparta"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.303,
+          37.942
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_tuz_tuz_golu_aksaray",
+        "name": "Tuz",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_industrial",
+        "categoryLabel": "Endüstriyel maden",
+        "region": "İç Anadolu / Ege / Akdeniz / Güneydoğu Anadolu",
+        "location": "Tuz Gölü / Aksaray",
+        "kpssNote": "Endüstriyel madenler KPSS'de belirli merkezlerle eşleştirilir; tuz, fosfat, kükürt, mermer ve lületaşı temel örneklerdir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Tuz%20G%C3%B6l%C3%BC%20%2F%20Aksaray%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Tuz Gölü / Aksaray, Türkiye",
+        "sourceDisplayName": "Tuz Gölü / Aksaray"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.374,
+          38.787
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_tuz_camalti_izmir",
+        "name": "Tuz",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_industrial",
+        "categoryLabel": "Endüstriyel maden",
+        "region": "İç Anadolu / Ege / Akdeniz / Güneydoğu Anadolu",
+        "location": "Çamaltı / İzmir",
+        "kpssNote": "Endüstriyel madenler KPSS'de belirli merkezlerle eşleştirilir; tuz, fosfat, kükürt, mermer ve lületaşı temel örneklerdir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=%C3%87amalt%C4%B1%20%2F%20%C4%B0zmir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Çamaltı / İzmir, Türkiye",
+        "sourceDisplayName": "Çamaltı / İzmir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.89,
+          38.517
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_kaya_tuzu_cankiri",
+        "name": "Kaya tuzu",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_industrial",
+        "categoryLabel": "Endüstriyel maden",
+        "region": "İç Anadolu / Ege / Akdeniz / Güneydoğu Anadolu",
+        "location": "Çankırı",
+        "kpssNote": "Endüstriyel madenler KPSS'de belirli merkezlerle eşleştirilir; tuz, fosfat, kükürt, mermer ve lületaşı temel örneklerdir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=%C3%87ank%C4%B1r%C4%B1%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Çankırı, Türkiye",
+        "sourceDisplayName": "Çankırı"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.613,
+          40.601
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_mermer_afyonkarahisar",
+        "name": "Mermer",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_industrial",
+        "categoryLabel": "Endüstriyel maden",
+        "region": "İç Anadolu / Ege / Akdeniz / Güneydoğu Anadolu",
+        "location": "Afyonkarahisar",
+        "kpssNote": "Endüstriyel madenler KPSS'de belirli merkezlerle eşleştirilir; tuz, fosfat, kükürt, mermer ve lületaşı temel örneklerdir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Afyonkarahisar%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Afyonkarahisar, Türkiye",
+        "sourceDisplayName": "Afyonkarahisar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.538,
+          38.756
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_mermer_bilecik",
+        "name": "Mermer",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_industrial",
+        "categoryLabel": "Endüstriyel maden",
+        "region": "İç Anadolu / Ege / Akdeniz / Güneydoğu Anadolu",
+        "location": "Bilecik",
+        "kpssNote": "Endüstriyel madenler KPSS'de belirli merkezlerle eşleştirilir; tuz, fosfat, kükürt, mermer ve lületaşı temel örneklerdir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Bilecik%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Bilecik, Türkiye",
+        "sourceDisplayName": "Bilecik"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.979,
+          40.143
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_mermer_marmara_adasi_balikesir",
+        "name": "Mermer",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_industrial",
+        "categoryLabel": "Endüstriyel maden",
+        "region": "İç Anadolu / Ege / Akdeniz / Güneydoğu Anadolu",
+        "location": "Marmara Adası / Balıkesir",
+        "kpssNote": "Endüstriyel madenler KPSS'de belirli merkezlerle eşleştirilir; tuz, fosfat, kükürt, mermer ve lületaşı temel örneklerdir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Marmara%20Adas%C4%B1%20%2F%20Bal%C4%B1kesir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Marmara Adası / Balıkesir, Türkiye",
+        "sourceDisplayName": "Marmara Adası / Balıkesir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.555,
+          40.587
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_luletasi_eskisehir",
+        "name": "Lületaşı",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_industrial",
+        "categoryLabel": "Endüstriyel maden",
+        "region": "İç Anadolu / Ege / Akdeniz / Güneydoğu Anadolu",
+        "location": "Eskişehir",
+        "kpssNote": "Endüstriyel madenler KPSS'de belirli merkezlerle eşleştirilir; tuz, fosfat, kükürt, mermer ve lületaşı temel örneklerdir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Eski%C5%9Fehir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Eskişehir, Türkiye",
+        "sourceDisplayName": "Eskişehir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.526,
+          39.766
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_taskomuru_zonguldak",
+        "name": "Taşkömürü",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_fossil",
+        "categoryLabel": "Fosil enerji kaynağı",
+        "region": "Karadeniz / Ege / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Zonguldak",
+        "kpssNote": "Fosil enerji kaynaklarında taşkömürü, linyit, petrol ve doğal gazın klasik üretim alanları KPSS'de sık sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Zonguldak%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Zonguldak, Türkiye",
+        "sourceDisplayName": "Zonguldak"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.798,
+          41.456
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_taskomuru_amasra_bartin",
+        "name": "Taşkömürü",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_fossil",
+        "categoryLabel": "Fosil enerji kaynağı",
+        "region": "Karadeniz / Ege / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Amasra / Bartın",
+        "kpssNote": "Fosil enerji kaynaklarında taşkömürü, linyit, petrol ve doğal gazın klasik üretim alanları KPSS'de sık sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Amasra%20%2F%20Bart%C4%B1n%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Amasra / Bartın, Türkiye",
+        "sourceDisplayName": "Amasra / Bartın"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.386,
+          41.746
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_linyit_soma_manisa",
+        "name": "Linyit",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_fossil",
+        "categoryLabel": "Fosil enerji kaynağı",
+        "region": "Karadeniz / Ege / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Soma / Manisa",
+        "kpssNote": "Fosil enerji kaynaklarında taşkömürü, linyit, petrol ve doğal gazın klasik üretim alanları KPSS'de sık sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Soma%20%2F%20Manisa%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Soma / Manisa, Türkiye",
+        "sourceDisplayName": "Soma / Manisa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.609,
+          39.185
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_linyit_tuncbilek_kutahya",
+        "name": "Linyit",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_fossil",
+        "categoryLabel": "Fosil enerji kaynağı",
+        "region": "Karadeniz / Ege / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Tunçbilek / Kütahya",
+        "kpssNote": "Fosil enerji kaynaklarında taşkömürü, linyit, petrol ve doğal gazın klasik üretim alanları KPSS'de sık sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Tun%C3%A7bilek%20%2F%20K%C3%BCtahya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Tunçbilek / Kütahya, Türkiye",
+        "sourceDisplayName": "Tunçbilek / Kütahya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.437,
+          39.676
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_linyit_seyitomer_kutahya",
+        "name": "Linyit",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_fossil",
+        "categoryLabel": "Fosil enerji kaynağı",
+        "region": "Karadeniz / Ege / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Seyitömer / Kütahya",
+        "kpssNote": "Fosil enerji kaynaklarında taşkömürü, linyit, petrol ve doğal gazın klasik üretim alanları KPSS'de sık sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Seyit%C3%B6mer%20%2F%20K%C3%BCtahya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Seyitömer / Kütahya, Türkiye",
+        "sourceDisplayName": "Seyitömer / Kütahya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.892,
+          39.572
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_linyit_afsin_elbistan_kahramanmaras",
+        "name": "Linyit",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_fossil",
+        "categoryLabel": "Fosil enerji kaynağı",
+        "region": "Karadeniz / Ege / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Afşin-Elbistan / Kahramanmaraş",
+        "kpssNote": "Fosil enerji kaynaklarında taşkömürü, linyit, petrol ve doğal gazın klasik üretim alanları KPSS'de sık sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Af%C5%9Fin-Elbistan%20%2F%20Kahramanmara%C5%9F%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Afşin-Elbistan / Kahramanmaraş, Türkiye",
+        "sourceDisplayName": "Afşin-Elbistan / Kahramanmaraş"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.937,
+          38.355
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_linyit_yatagan_mugla",
+        "name": "Linyit",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_fossil",
+        "categoryLabel": "Fosil enerji kaynağı",
+        "region": "Karadeniz / Ege / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Yatağan / Muğla",
+        "kpssNote": "Fosil enerji kaynaklarında taşkömürü, linyit, petrol ve doğal gazın klasik üretim alanları KPSS'de sık sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Yata%C4%9Fan%20%2F%20Mu%C4%9Fla%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Yatağan / Muğla, Türkiye",
+        "sourceDisplayName": "Yatağan / Muğla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.141,
+          37.341
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_petrol_batman",
+        "name": "Petrol",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_fossil",
+        "categoryLabel": "Fosil enerji kaynağı",
+        "region": "Karadeniz / Ege / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Batman",
+        "kpssNote": "Fosil enerji kaynaklarında taşkömürü, linyit, petrol ve doğal gazın klasik üretim alanları KPSS'de sık sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Batman%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Batman, Türkiye",
+        "sourceDisplayName": "Batman"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.129,
+          37.889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_petrol_adiyaman",
+        "name": "Petrol",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_fossil",
+        "categoryLabel": "Fosil enerji kaynağı",
+        "region": "Karadeniz / Ege / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Adıyaman",
+        "kpssNote": "Fosil enerji kaynaklarında taşkömürü, linyit, petrol ve doğal gazın klasik üretim alanları KPSS'de sık sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Ad%C4%B1yaman%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Adıyaman, Türkiye",
+        "sourceDisplayName": "Adıyaman"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.278,
+          37.764
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_petrol_diyarbakir",
+        "name": "Petrol",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_fossil",
+        "categoryLabel": "Fosil enerji kaynağı",
+        "region": "Karadeniz / Ege / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Diyarbakır",
+        "kpssNote": "Fosil enerji kaynaklarında taşkömürü, linyit, petrol ve doğal gazın klasik üretim alanları KPSS'de sık sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Diyarbak%C4%B1r%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Diyarbakır, Türkiye",
+        "sourceDisplayName": "Diyarbakır"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.23,
+          37.914
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_petrol_siirt",
+        "name": "Petrol",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_fossil",
+        "categoryLabel": "Fosil enerji kaynağı",
+        "region": "Karadeniz / Ege / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Siirt",
+        "kpssNote": "Fosil enerji kaynaklarında taşkömürü, linyit, petrol ve doğal gazın klasik üretim alanları KPSS'de sık sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Siirt%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Siirt, Türkiye",
+        "sourceDisplayName": "Siirt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.95,
+          37.933
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_dogal_gaz_hamitabat_kirklareli",
+        "name": "Doğal gaz",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_fossil",
+        "categoryLabel": "Fosil enerji kaynağı",
+        "region": "Karadeniz / Ege / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Hamitabat / Kırklareli",
+        "kpssNote": "Fosil enerji kaynaklarında taşkömürü, linyit, petrol ve doğal gazın klasik üretim alanları KPSS'de sık sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Hamitabat%20%2F%20K%C4%B1rklareli%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Hamitabat / Kırklareli, Türkiye",
+        "sourceDisplayName": "Hamitabat / Kırklareli"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.516,
+          41.621
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_dogal_gaz_camurlu_mardin",
+        "name": "Doğal gaz",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_fossil",
+        "categoryLabel": "Fosil enerji kaynağı",
+        "region": "Karadeniz / Ege / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Çamurlu / Mardin",
+        "kpssNote": "Fosil enerji kaynaklarında taşkömürü, linyit, petrol ve doğal gazın klasik üretim alanları KPSS'de sık sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=%C3%87amurlu%20%2F%20Mardin%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Çamurlu / Mardin, Türkiye",
+        "sourceDisplayName": "Çamurlu / Mardin"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.73,
+          37.251
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_dogal_gaz_filyos_zonguldak",
+        "name": "Doğal gaz",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_fossil",
+        "categoryLabel": "Fosil enerji kaynağı",
+        "region": "Karadeniz / Ege / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Filyos / Zonguldak",
+        "kpssNote": "Fosil enerji kaynaklarında taşkömürü, linyit, petrol ve doğal gazın klasik üretim alanları KPSS'de sık sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Filyos%20%2F%20Zonguldak%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Filyos / Zonguldak, Türkiye",
+        "sourceDisplayName": "Filyos / Zonguldak"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.04,
+          41.559
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_demir_celik_karabuk",
+        "name": "Demir-çelik",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_processing",
+        "categoryLabel": "İşleme / sanayi tesisi",
+        "region": "Karadeniz / Akdeniz / İç Anadolu",
+        "location": "Karabük",
+        "kpssNote": "Demir-çelik tesisleri taş kömürü, liman, ulaşım ve hammadde bağlantılarıyla KPSS'de sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Karab%C3%BCk%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Karabük, Türkiye",
+        "sourceDisplayName": "Karabük"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.622,
+          41.195
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_demir_celik_eregli_zonguldak",
+        "name": "Demir-çelik",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_processing",
+        "categoryLabel": "İşleme / sanayi tesisi",
+        "region": "Karadeniz / Akdeniz / İç Anadolu",
+        "location": "Ereğli / Zonguldak",
+        "kpssNote": "Demir-çelik tesisleri taş kömürü, liman, ulaşım ve hammadde bağlantılarıyla KPSS'de sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Ere%C4%9Fli%20%2F%20Zonguldak%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Ereğli / Zonguldak, Türkiye",
+        "sourceDisplayName": "Ereğli / Zonguldak"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.421,
+          41.279
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_demir_celik_iskenderun_hatay",
+        "name": "Demir-çelik",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_processing",
+        "categoryLabel": "İşleme / sanayi tesisi",
+        "region": "Karadeniz / Akdeniz / İç Anadolu",
+        "location": "İskenderun / Hatay",
+        "kpssNote": "Demir-çelik tesisleri taş kömürü, liman, ulaşım ve hammadde bağlantılarıyla KPSS'de sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=%C4%B0skenderun%20%2F%20Hatay%2C%20T%C3%BCrkiye",
+        "sourceQuery": "İskenderun / Hatay, Türkiye",
+        "sourceDisplayName": "İskenderun / Hatay"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.173,
+          36.587
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_demir_celik_sivas",
+        "name": "Demir-çelik",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_processing",
+        "categoryLabel": "İşleme / sanayi tesisi",
+        "region": "Karadeniz / Akdeniz / İç Anadolu",
+        "location": "Sivas",
+        "kpssNote": "Demir-çelik tesisleri taş kömürü, liman, ulaşım ve hammadde bağlantılarıyla KPSS'de sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Sivas%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Sivas, Türkiye",
+        "sourceDisplayName": "Sivas"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.015,
+          39.75
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_bakir_isleme_samsun",
+        "name": "Bakır işleme",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_processing",
+        "categoryLabel": "İşleme / sanayi tesisi",
+        "region": "Karadeniz / Doğu Anadolu / Güneydoğu Anadolu",
+        "location": "Samsun",
+        "kpssNote": "Bakır işleme tesisleri çıkarım alanları ve liman bağlantısıyla Samsun, Artvin ve Diyarbakır çevresinde gösterilir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Samsun%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Samsun, Türkiye",
+        "sourceDisplayName": "Samsun"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.33,
+          41.286
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_bakir_isleme_murgul_artvin",
+        "name": "Bakır işleme",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_processing",
+        "categoryLabel": "İşleme / sanayi tesisi",
+        "region": "Karadeniz / Doğu Anadolu / Güneydoğu Anadolu",
+        "location": "Murgul / Artvin",
+        "kpssNote": "Bakır işleme tesisleri çıkarım alanları ve liman bağlantısıyla Samsun, Artvin ve Diyarbakır çevresinde gösterilir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Murgul%20%2F%20Artvin%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Murgul / Artvin, Türkiye",
+        "sourceDisplayName": "Murgul / Artvin"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.557,
+          41.279
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_bakir_isleme_ergani_diyarbakir",
+        "name": "Bakır işleme",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_processing",
+        "categoryLabel": "İşleme / sanayi tesisi",
+        "region": "Karadeniz / Doğu Anadolu / Güneydoğu Anadolu",
+        "location": "Ergani / Diyarbakır",
+        "kpssNote": "Bakır işleme tesisleri çıkarım alanları ve liman bağlantısıyla Samsun, Artvin ve Diyarbakır çevresinde gösterilir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Ergani%20%2F%20Diyarbak%C4%B1r%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Ergani / Diyarbakır, Türkiye",
+        "sourceDisplayName": "Ergani / Diyarbakır"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.754,
+          38.269
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_bor_isleme_bandirma_balikesir",
+        "name": "Bor işleme",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_processing",
+        "categoryLabel": "İşleme / sanayi tesisi",
+        "region": "Marmara / İç Anadolu",
+        "location": "Bandırma / Balıkesir",
+        "kpssNote": "Bor işleme tesislerinde Bandırma ve Kırka, bor yataklarıyla birlikte KPSS eşleştirmelerinde kullanılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Band%C4%B1rma%20%2F%20Bal%C4%B1kesir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Bandırma / Balıkesir, Türkiye",
+        "sourceDisplayName": "Bandırma / Balıkesir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.976,
+          40.352
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_bor_isleme_kirka_eskisehir",
+        "name": "Bor işleme",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_processing",
+        "categoryLabel": "İşleme / sanayi tesisi",
+        "region": "Marmara / İç Anadolu",
+        "location": "Kırka / Eskişehir",
+        "kpssNote": "Bor işleme tesislerinde Bandırma ve Kırka, bor yataklarıyla birlikte KPSS eşleştirmelerinde kullanılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=K%C4%B1rka%20%2F%20Eski%C5%9Fehir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Kırka / Eskişehir, Türkiye",
+        "sourceDisplayName": "Kırka / Eskişehir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.527,
+          39.279
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_krom_isleme_antalya",
+        "name": "Krom işleme",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_processing",
+        "categoryLabel": "İşleme / sanayi tesisi",
+        "region": "Akdeniz / Doğu Anadolu",
+        "location": "Antalya",
+        "kpssNote": "Krom işleme ve ferrokrom tesislerinde Antalya ve Elazığ bağlantısı KPSS'de öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Antalya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Antalya, Türkiye",
+        "sourceDisplayName": "Antalya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.707,
+          36.887
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_krom_isleme_elazig",
+        "name": "Krom işleme",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_processing",
+        "categoryLabel": "İşleme / sanayi tesisi",
+        "region": "Akdeniz / Doğu Anadolu",
+        "location": "Elazığ",
+        "kpssNote": "Krom işleme ve ferrokrom tesislerinde Antalya ve Elazığ bağlantısı KPSS'de öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Elaz%C4%B1%C4%9F%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Elazığ, Türkiye",
+        "sourceDisplayName": "Elazığ"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.222,
+          38.674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_aluminyum_seydisehir_konya",
+        "name": "Alüminyum",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_processing",
+        "categoryLabel": "İşleme / sanayi tesisi",
+        "region": "İç Anadolu",
+        "location": "Seydişehir / Konya",
+        "kpssNote": "Alüminyum tesisi, boksit çıkarımıyla ilişkili olarak Seydişehir çevresinde gösterilir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Seydi%C5%9Fehir%20%2F%20Konya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Seydişehir / Konya, Türkiye",
+        "sourceDisplayName": "Seydişehir / Konya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.845,
+          37.419
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_petrol_rafinerisi_izmit_kocaeli",
+        "name": "Petrol rafinerisi",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_refinery_petrochemical",
+        "categoryLabel": "Rafineri / petrokimya",
+        "region": "Marmara / Ege / İç Anadolu / Güneydoğu Anadolu",
+        "location": "İzmit / Kocaeli",
+        "kpssNote": "Rafineriler ve petrokimya tesisleri ham petrol, liman ve pazar bağlantıları nedeniyle KPSS sanayi haritalarında klasik merkezlerdir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=%C4%B0zmit%20%2F%20Kocaeli%2C%20T%C3%BCrkiye",
+        "sourceQuery": "İzmit / Kocaeli, Türkiye",
+        "sourceDisplayName": "İzmit / Kocaeli"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.917,
+          40.766
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_petrol_rafinerisi_aliaga_izmir",
+        "name": "Petrol rafinerisi",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_refinery_petrochemical",
+        "categoryLabel": "Rafineri / petrokimya",
+        "region": "Marmara / Ege / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Aliağa / İzmir",
+        "kpssNote": "Rafineriler ve petrokimya tesisleri ham petrol, liman ve pazar bağlantıları nedeniyle KPSS sanayi haritalarında klasik merkezlerdir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Alia%C4%9Fa%20%2F%20%C4%B0zmir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Aliağa / İzmir, Türkiye",
+        "sourceDisplayName": "Aliağa / İzmir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.972,
+          38.8
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_petrol_rafinerisi_kirikkale",
+        "name": "Petrol rafinerisi",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_refinery_petrochemical",
+        "categoryLabel": "Rafineri / petrokimya",
+        "region": "Marmara / Ege / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Kırıkkale",
+        "kpssNote": "Rafineriler ve petrokimya tesisleri ham petrol, liman ve pazar bağlantıları nedeniyle KPSS sanayi haritalarında klasik merkezlerdir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=K%C4%B1r%C4%B1kkale%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Kırıkkale, Türkiye",
+        "sourceDisplayName": "Kırıkkale"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.515,
+          39.846
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_petrol_rafinerisi_batman",
+        "name": "Petrol rafinerisi",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_refinery_petrochemical",
+        "categoryLabel": "Rafineri / petrokimya",
+        "region": "Marmara / Ege / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Batman",
+        "kpssNote": "Rafineriler ve petrokimya tesisleri ham petrol, liman ve pazar bağlantıları nedeniyle KPSS sanayi haritalarında klasik merkezlerdir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Batman%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Batman, Türkiye",
+        "sourceDisplayName": "Batman"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.129,
+          37.889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_petrokimya_aliaga_izmir",
+        "name": "Petrokimya",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_refinery_petrochemical",
+        "categoryLabel": "Rafineri / petrokimya",
+        "region": "Marmara / Ege / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Aliağa / İzmir",
+        "kpssNote": "Rafineriler ve petrokimya tesisleri ham petrol, liman ve pazar bağlantıları nedeniyle KPSS sanayi haritalarında klasik merkezlerdir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Alia%C4%9Fa%20%2F%20%C4%B0zmir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Aliağa / İzmir, Türkiye",
+        "sourceDisplayName": "Aliağa / İzmir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.972,
+          38.8
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_otomotiv_bursa",
+        "name": "Otomotiv",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_automotive_machinery",
+        "categoryLabel": "Otomotiv / makine",
+        "region": "Marmara / İç Anadolu",
+        "location": "Bursa",
+        "kpssNote": "Otomotiv ve makine sanayisinde Bursa, Kocaeli ve Sakarya çekirdek; Eskişehir ve Aksaray tamamlayıcı KPSS merkezleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Bursa%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Bursa, Türkiye",
+        "sourceDisplayName": "Bursa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.067,
+          40.183
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_otomotiv_golcuk_kocaeli",
+        "name": "Otomotiv",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_automotive_machinery",
+        "categoryLabel": "Otomotiv / makine",
+        "region": "Marmara / İç Anadolu",
+        "location": "Gölcük / Kocaeli",
+        "kpssNote": "Otomotiv ve makine sanayisinde Bursa, Kocaeli ve Sakarya çekirdek; Eskişehir ve Aksaray tamamlayıcı KPSS merkezleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=G%C3%B6lc%C3%BCk%20%2F%20Kocaeli%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Gölcük / Kocaeli, Türkiye",
+        "sourceDisplayName": "Gölcük / Kocaeli"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.82,
+          40.717
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_otomotiv_adapazari_sakarya",
+        "name": "Otomotiv",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_automotive_machinery",
+        "categoryLabel": "Otomotiv / makine",
+        "region": "Marmara / İç Anadolu",
+        "location": "Adapazarı / Sakarya",
+        "kpssNote": "Otomotiv ve makine sanayisinde Bursa, Kocaeli ve Sakarya çekirdek; Eskişehir ve Aksaray tamamlayıcı KPSS merkezleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Adapazar%C4%B1%20%2F%20Sakarya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Adapazarı / Sakarya, Türkiye",
+        "sourceDisplayName": "Adapazarı / Sakarya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.402,
+          40.773
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_otomotiv_inonu_eskisehir",
+        "name": "Otomotiv",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_automotive_machinery",
+        "categoryLabel": "Otomotiv / makine",
+        "region": "Marmara / İç Anadolu",
+        "location": "İnönü / Eskişehir",
+        "kpssNote": "Otomotiv ve makine sanayisinde Bursa, Kocaeli ve Sakarya çekirdek; Eskişehir ve Aksaray tamamlayıcı KPSS merkezleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=%C4%B0n%C3%B6n%C3%BC%20%2F%20Eski%C5%9Fehir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "İnönü / Eskişehir, Türkiye",
+        "sourceDisplayName": "İnönü / Eskişehir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.145,
+          39.815
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_otomotiv_aksaray",
+        "name": "Otomotiv",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_automotive_machinery",
+        "categoryLabel": "Otomotiv / makine",
+        "region": "Marmara / İç Anadolu",
+        "location": "Aksaray",
+        "kpssNote": "Otomotiv ve makine sanayisinde Bursa, Kocaeli ve Sakarya çekirdek; Eskişehir ve Aksaray tamamlayıcı KPSS merkezleridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Aksaray%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Aksaray, Türkiye",
+        "sourceDisplayName": "Aksaray"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.037,
+          38.368
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_tekstil_istanbul",
+        "name": "Tekstil",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_textile",
+        "categoryLabel": "Tekstil / dokuma",
+        "region": "Marmara / Ege / Güneydoğu Anadolu / İç Anadolu / Akdeniz",
+        "location": "İstanbul",
+        "kpssNote": "Tekstil ve dokuma sanayisi pazar, liman, pamuk ve işgücü bağlantısıyla İstanbul, Bursa, Denizli, Gaziantep, Kayseri ve Adana'da öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=%C4%B0stanbul%2C%20T%C3%BCrkiye",
+        "sourceQuery": "İstanbul, Türkiye",
+        "sourceDisplayName": "İstanbul"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.978,
+          41.008
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_tekstil_bursa",
+        "name": "Tekstil",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_textile",
+        "categoryLabel": "Tekstil / dokuma",
+        "region": "Marmara / Ege / Güneydoğu Anadolu / İç Anadolu / Akdeniz",
+        "location": "Bursa",
+        "kpssNote": "Tekstil ve dokuma sanayisi pazar, liman, pamuk ve işgücü bağlantısıyla İstanbul, Bursa, Denizli, Gaziantep, Kayseri ve Adana'da öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Bursa%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Bursa, Türkiye",
+        "sourceDisplayName": "Bursa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.067,
+          40.183
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_tekstil_denizli",
+        "name": "Tekstil",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_textile",
+        "categoryLabel": "Tekstil / dokuma",
+        "region": "Marmara / Ege / Güneydoğu Anadolu / İç Anadolu / Akdeniz",
+        "location": "Denizli",
+        "kpssNote": "Tekstil ve dokuma sanayisi pazar, liman, pamuk ve işgücü bağlantısıyla İstanbul, Bursa, Denizli, Gaziantep, Kayseri ve Adana'da öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Denizli%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Denizli, Türkiye",
+        "sourceDisplayName": "Denizli"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.086,
+          37.776
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_tekstil_gaziantep",
+        "name": "Tekstil",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_textile",
+        "categoryLabel": "Tekstil / dokuma",
+        "region": "Marmara / Ege / Güneydoğu Anadolu / İç Anadolu / Akdeniz",
+        "location": "Gaziantep",
+        "kpssNote": "Tekstil ve dokuma sanayisi pazar, liman, pamuk ve işgücü bağlantısıyla İstanbul, Bursa, Denizli, Gaziantep, Kayseri ve Adana'da öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Gaziantep%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Gaziantep, Türkiye",
+        "sourceDisplayName": "Gaziantep"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.383,
+          37.066
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_tekstil_kayseri",
+        "name": "Tekstil",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_textile",
+        "categoryLabel": "Tekstil / dokuma",
+        "region": "Marmara / Ege / Güneydoğu Anadolu / İç Anadolu / Akdeniz",
+        "location": "Kayseri",
+        "kpssNote": "Tekstil ve dokuma sanayisi pazar, liman, pamuk ve işgücü bağlantısıyla İstanbul, Bursa, Denizli, Gaziantep, Kayseri ve Adana'da öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Kayseri%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Kayseri, Türkiye",
+        "sourceDisplayName": "Kayseri"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.487,
+          38.722
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_tekstil_adana",
+        "name": "Tekstil",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_textile",
+        "categoryLabel": "Tekstil / dokuma",
+        "region": "Marmara / Ege / Güneydoğu Anadolu / İç Anadolu / Akdeniz",
+        "location": "Adana",
+        "kpssNote": "Tekstil ve dokuma sanayisi pazar, liman, pamuk ve işgücü bağlantısıyla İstanbul, Bursa, Denizli, Gaziantep, Kayseri ve Adana'da öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Adana%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Adana, Türkiye",
+        "sourceDisplayName": "Adana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.331,
+          36.991
+        ]
+      }
+    }
+  ]
+}

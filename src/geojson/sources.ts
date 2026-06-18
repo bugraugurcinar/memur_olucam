@@ -14,7 +14,12 @@ export const geoJsonSources = {
     url: "/geojson/turkey-physical-features.geojson",
     sourceName: "OpenStreetMap / Photon",
   },
+  economicFeatures: {
+    label: "Ekonomik coğrafya",
+    url: "/geojson/turkey-economic-features.geojson",
+    sourceName: "KPSS temsil noktaları",
+  },
 } as const;
 
 export const geoJsonAttribution =
-  "Veri: geoBoundaries ve OpenStreetMap";
+  "Veri: geoBoundaries, OpenStreetMap ve KPSS temsil noktaları";
