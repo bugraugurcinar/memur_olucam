@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { LayerStatus } from "./components/LayerStatus";
 import {
+  getPhysicalFeatureCategory,
   getPhysicalFeatures,
   physicalFeatureCategories,
   physicalFeatureTopics,
@@ -42,6 +43,7 @@ function App() {
   );
   const isLoading = country.isLoading || provinces.isLoading || physicalFeaturesData.isLoading;
   const error = country.error ?? provinces.error ?? physicalFeaturesData.error;
+  const shouldUseCategoryColors = activeTopics.length === 1;
 
   const selectedText = useMemo(
     () => selectedProvinceName ?? "Henüz seçilmedi",
@@ -119,6 +121,7 @@ function App() {
             physicalFeaturesData={physicalFeaturesData.data}
             activePhysicalTopics={activeTopics}
             activePhysicalCategories={activeCategories}
+            shouldUseCategoryColors={shouldUseCategoryColors}
             selectedProvinceName={selectedProvinceName}
             selectedPhysicalFeatureId={selectedFeature?.id ?? null}
             onProvinceSelect={handleProvinceSelect}
@@ -189,6 +192,10 @@ function App() {
                       <div className="topic-category-list" aria-label={`${topic.label} kategorileri`}>
                         {topicCategories.map((category) => {
                           const isCategoryActive = activeCategories.includes(category.id);
+                          const categoryColor =
+                            shouldUseCategoryColors && activeTopics[0] === category.topic
+                              ? getPhysicalFeatureCategory(category.id).color
+                              : topic.color;
                           const categoryCount = physicalFeatures.filter(
                             (feature) => feature.properties.category === category.id,
                           ).length;
@@ -200,7 +207,7 @@ function App() {
                                 onChange={() => handleCategoryToggle(category.id)}
                                 type="checkbox"
                               />
-                              <span className="category-toggle__swatch" style={{ backgroundColor: topic.color }} />
+                              <span className="category-toggle__swatch" style={{ backgroundColor: categoryColor }} />
                               <span>
                                 {category.label}
                                 <small>{topic.label}</small>

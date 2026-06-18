@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import L, { type LatLngBoundsExpression, type Layer, type LeafletMouseEvent } from "leaflet";
 import type { Feature, FeatureCollection, GeoJsonProperties } from "geojson";
 import {
+  getPhysicalFeatureColor,
   getPhysicalFeatureTopic,
   isPhysicalFeature,
   type PhysicalFeatureCategory,
@@ -15,6 +16,7 @@ type TurkeyMapProps = {
   physicalFeaturesData: FeatureCollection | null;
   activePhysicalTopics: PhysicalFeatureTopic[];
   activePhysicalCategories: PhysicalFeatureCategory[];
+  shouldUseCategoryColors: boolean;
   selectedProvinceName: string | null;
   selectedPhysicalFeatureId: string | null;
   onProvinceSelect: (provinceName: string) => void;
@@ -78,15 +80,15 @@ function countryStyle(): L.PathOptions {
 function physicalFeatureStyle(
   feature: PhysicalFeatureProperties,
   selectedFeatureId: string | null,
+  shouldUseCategoryColors: boolean,
 ): L.CircleMarkerOptions {
-  const topic = getPhysicalFeatureTopic(feature.topic);
   const isSelected = feature.id === selectedFeatureId;
 
   return {
     pane: PHYSICAL_FEATURE_PANE,
     radius: isSelected ? 8 : 5.5,
     color: isSelected ? "#fbbf24" : "#ffffff",
-    fillColor: topic.color,
+    fillColor: getPhysicalFeatureColor(feature, shouldUseCategoryColors),
     fillOpacity: isSelected ? 0.96 : 0.82,
     opacity: 1,
     weight: isSelected ? 2.5 : 1.4,
@@ -99,6 +101,7 @@ export function TurkeyMap({
   physicalFeaturesData,
   activePhysicalTopics,
   activePhysicalCategories,
+  shouldUseCategoryColors,
   selectedProvinceName,
   selectedPhysicalFeatureId,
   onProvinceSelect,
@@ -163,11 +166,11 @@ export function TurkeyMap({
       const feature = layer.feature;
 
       if (feature && isPhysicalFeature(feature) && layer instanceof L.CircleMarker) {
-        layer.setStyle(physicalFeatureStyle(feature.properties, selectedPhysicalFeatureId));
+        layer.setStyle(physicalFeatureStyle(feature.properties, selectedPhysicalFeatureId, shouldUseCategoryColors));
         layer.setRadius(feature.properties.id === selectedPhysicalFeatureId ? 8 : 5.5);
       }
     });
-  }, [selectedPhysicalFeatureId]);
+  }, [selectedPhysicalFeatureId, shouldUseCategoryColors]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -268,7 +271,7 @@ export function TurkeyMap({
           mouseout: () => {
             if (layer instanceof L.CircleMarker) {
               layer.closeTooltip();
-              layer.setStyle(physicalFeatureStyle(physicalFeature, selectedFeatureRef.current));
+              layer.setStyle(physicalFeatureStyle(physicalFeature, selectedFeatureRef.current, shouldUseCategoryColors));
               layer.setRadius(physicalFeature.id === selectedFeatureRef.current ? 8 : 5.5);
             }
           },
@@ -288,7 +291,10 @@ export function TurkeyMap({
       },
       pointToLayer: (feature, latlng) => {
         if (isPhysicalFeature(feature)) {
-          return L.circleMarker(latlng, physicalFeatureStyle(feature.properties, selectedFeatureRef.current));
+          return L.circleMarker(
+            latlng,
+            physicalFeatureStyle(feature.properties, selectedFeatureRef.current, shouldUseCategoryColors),
+          );
         }
 
         return L.circleMarker(latlng);
@@ -300,7 +306,13 @@ export function TurkeyMap({
     return () => {
       physicalFeatureLayer.remove();
     };
-  }, [physicalFeaturesData, activePhysicalCategories, activePhysicalTopics, onPhysicalFeatureSelect]);
+  }, [
+    physicalFeaturesData,
+    activePhysicalCategories,
+    activePhysicalTopics,
+    onPhysicalFeatureSelect,
+    shouldUseCategoryColors,
+  ]);
 
   return <div ref={containerRef} className="turkey-map" aria-label="Türkiye fiziki coğrafya haritası" />;
 }
