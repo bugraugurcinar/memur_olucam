@@ -1,0 +1,4907 @@
+{
+  "type": "FeatureCollection",
+  "name": "kpss_turkey_physical_features",
+  "generatedFrom": "scripts/buildPhysicalFeatures.mjs",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_kaz_daglari",
+        "name": "Kaz Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fault_block",
+        "categoryLabel": "Kırık dağ",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Kırık dağ olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 1326637741",
+        "sourceUrl": "https://www.openstreetmap.org/node/1326637741",
+        "sourceQuery": "Kaz Dağı, Türkiye",
+        "sourceDisplayName": "Kazdağı, Edremit, Balıkesir, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.8291926,
+          39.7044139
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_madra_dagi",
+        "name": "Madra Dağı",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fault_block",
+        "categoryLabel": "Kırık dağ",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Kırık dağ olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 2298614220",
+        "sourceUrl": "https://www.openstreetmap.org/node/2298614220",
+        "sourceQuery": "Madra Dağı, Türkiye",
+        "sourceDisplayName": "Madra Dağı, İzmir, İzmir, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.2202554,
+          39.3635169
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_yunt_dagi",
+        "name": "Yunt Dağı",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fault_block",
+        "categoryLabel": "Kırık dağ",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Kırık dağ olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 8950875300",
+        "sourceUrl": "https://www.openstreetmap.org/node/8950875300",
+        "sourceQuery": "Yunt Dağı, Türkiye",
+        "sourceDisplayName": "Yunt Dağı, Kınık, İzmir, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.4223685,
+          38.9275494
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_bozdaglar",
+        "name": "Bozdağlar",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fault_block",
+        "categoryLabel": "Kırık dağ",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Kırık dağ olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 16681261",
+        "sourceUrl": "https://www.openstreetmap.org/relation/16681261",
+        "sourceQuery": "Bozdağlar, Türkiye",
+        "sourceDisplayName": "Bozdağlar, İzmir, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.9824263,
+          38.3335174
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_aydin_daglari",
+        "name": "Aydın Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fault_block",
+        "categoryLabel": "Kırık dağ",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Kırık dağ olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 16681260",
+        "sourceUrl": "https://www.openstreetmap.org/relation/16681260",
+        "sourceQuery": "Aydın Dağları, Türkiye",
+        "sourceDisplayName": "Aydın Dağları, Aydın, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.213215,
+          38.0370415
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_mentese_daglari",
+        "name": "Menteşe Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fault_block",
+        "categoryLabel": "Kırık dağ",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Kırık dağ olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 16685959",
+        "sourceUrl": "https://www.openstreetmap.org/relation/16685959",
+        "sourceQuery": "Menteşe Dağları, Türkiye",
+        "sourceDisplayName": "Batı Menteşe Dağları, Muğla, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.0308556,
+          37.4057612
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_amanos_nur_daglari",
+        "name": "Amanos (Nur) Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fault_block",
+        "categoryLabel": "Kırık dağ",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Kırık dağ olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 16677772",
+        "sourceUrl": "https://www.openstreetmap.org/relation/16677772",
+        "sourceQuery": "Amanos Dağları, Hatay, Türkiye",
+        "sourceDisplayName": "Nur Dağları, Hatay, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.3036815,
+          36.6397737
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_yildiz_istranca_daglari",
+        "name": "Yıldız (Istranca) Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Marmara",
+        "location": "Marmara",
+        "kpssNote": "Kıvrım dağı olarak Marmara içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 5609686121",
+        "sourceUrl": "https://www.openstreetmap.org/node/5609686121",
+        "sourceQuery": "Istranca Dağları, Türkiye",
+        "sourceDisplayName": "Yıldız Dağları, Pınarhisar, Kırklareli, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.625,
+          41.8
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_koru_daglari",
+        "name": "Koru Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Marmara",
+        "location": "Marmara",
+        "kpssNote": "Kıvrım dağı olarak Marmara içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 11048381278",
+        "sourceUrl": "https://www.openstreetmap.org/node/11048381278",
+        "sourceQuery": "Koru Damları, Gelibolu, Türkiye",
+        "sourceDisplayName": "Koru Damları, Gelibolu, Çanakkale, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.8104708,
+          40.5401479
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_biga_daglari",
+        "name": "Biga Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Marmara",
+        "location": "Marmara",
+        "kpssNote": "Kıvrım dağı olarak Marmara içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1593709",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1593709",
+        "sourceQuery": "Biga, Çanakkale, Türkiye",
+        "sourceDisplayName": "Biga, Çanakkale, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.2428365,
+          40.2269793
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_samanli_daglari",
+        "name": "Samanlı Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Marmara",
+        "location": "Marmara",
+        "kpssNote": "Kıvrım dağı olarak Marmara içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 2312338274",
+        "sourceUrl": "https://www.openstreetmap.org/node/2312338274",
+        "sourceQuery": "Samanlı Dağları, Türkiye",
+        "sourceDisplayName": "Samanlı Dağları, Kartepe, Kocaeli, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.1031268,
+          40.6427355
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_kure_daglari",
+        "name": "Küre Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Kıvrım dağı olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 16681842",
+        "sourceUrl": "https://www.openstreetmap.org/relation/16681842",
+        "sourceQuery": "Küre Dağları, Türkiye",
+        "sourceDisplayName": "Küre Dağları, Karadeniz Bölgesi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.8461555,
+          41.6713029
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_ilgaz_daglari",
+        "name": "Ilgaz Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Kıvrım dağı olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 16682149",
+        "sourceUrl": "https://www.openstreetmap.org/relation/16682149",
+        "sourceQuery": "Ilgaz Dağları, Türkiye",
+        "sourceDisplayName": "Ilgaz Dağları, Çorum, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.3778985,
+          41.2429059
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_koroglu_daglari",
+        "name": "Köroğlu Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Kıvrım dağı olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 16682148",
+        "sourceUrl": "https://www.openstreetmap.org/relation/16682148",
+        "sourceQuery": "Köroğlu Dağları, Türkiye",
+        "sourceDisplayName": "Köroğlu Dağları, İç Anadolu Bölgesi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.7203238,
+          40.5484929
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_canik_daglari",
+        "name": "Canik Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Kıvrım dağı olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 16681912",
+        "sourceUrl": "https://www.openstreetmap.org/relation/16681912",
+        "sourceQuery": "Canik Dağları, Türkiye",
+        "sourceDisplayName": "Canik Dağları, Karadeniz Bölgesi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.92091,
+          40.9955628
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_giresun_daglari",
+        "name": "Giresun Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Kıvrım dağı olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 16685482",
+        "sourceUrl": "https://www.openstreetmap.org/relation/16685482",
+        "sourceQuery": "Giresun Dağları, Türkiye",
+        "sourceDisplayName": "Giresun Dağları, Ordu, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.8599543,
+          40.4402968
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_kackar_daglari",
+        "name": "Kaçkar Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Kıvrım dağı olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 16685655",
+        "sourceUrl": "https://www.openstreetmap.org/relation/16685655",
+        "sourceQuery": "Kaçkar Dağları, Türkiye",
+        "sourceDisplayName": "Kaçkar Dağları, Karadeniz Bölgesi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.3121497,
+          40.9442084
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_mescit_daglari",
+        "name": "Mescit Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Kıvrım dağı olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 16685656",
+        "sourceUrl": "https://www.openstreetmap.org/relation/16685656",
+        "sourceQuery": "Mescit Dağları, Türkiye",
+        "sourceDisplayName": "Mescit Dağları, Erzurum, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.194107,
+          40.4177691
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_kop_dagi",
+        "name": "Kop Dağı",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Kıvrım dağı olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 2297426745",
+        "sourceUrl": "https://www.openstreetmap.org/node/2297426745",
+        "sourceQuery": "Kop Dağı, Türkiye",
+        "sourceDisplayName": "Kop Dağı, Aşkale, Erzurum, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.5069743,
+          40.0538597
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_yalnizcam_daglari",
+        "name": "Yalnızçam Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Kıvrım dağı olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 16685297",
+        "sourceUrl": "https://www.openstreetmap.org/relation/16685297",
+        "sourceQuery": "Yalnızçam Dağları, Türkiye",
+        "sourceDisplayName": "Yalnızçam Dağları, Artvin, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          42.1809721,
+          41.099549
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_bey_daglari",
+        "name": "Bey Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Kıvrım dağı olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 16681263",
+        "sourceUrl": "https://www.openstreetmap.org/relation/16681263",
+        "sourceQuery": "Bey Dağları, Türkiye",
+        "sourceDisplayName": "Bey Dağları, Antalya, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.2640694,
+          36.6979663
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_geyik_daglari",
+        "name": "Geyik Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Kıvrım dağı olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 16685518",
+        "sourceUrl": "https://www.openstreetmap.org/relation/16685518",
+        "sourceQuery": "Geyik Dağları, Türkiye",
+        "sourceDisplayName": "Geyik Dağları, Antalya, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.7999024,
+          36.9971797
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_sultan_daglari",
+        "name": "Sultan Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Kıvrım dağı olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 16685200",
+        "sourceUrl": "https://www.openstreetmap.org/relation/16685200",
+        "sourceQuery": "Sultan Dağları, Türkiye",
+        "sourceDisplayName": "Sultan Dağları, Isparta, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.3221627,
+          38.2853077
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_bolkar_daglari",
+        "name": "Bolkar Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Kıvrım dağı olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 16681264",
+        "sourceUrl": "https://www.openstreetmap.org/relation/16681264",
+        "sourceQuery": "Bolkar Dağları, Türkiye",
+        "sourceDisplayName": "Bolkar Dağları, Mersin, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.6497881,
+          37.3706265
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_aladaglar",
+        "name": "Aladağlar",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Kıvrım dağı olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 5834474385",
+        "sourceUrl": "https://www.openstreetmap.org/node/5834474385",
+        "sourceQuery": "Aladağlar, Türkiye",
+        "sourceDisplayName": "Aladağlar, Yahyalı, Kayseri, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2,
+          37.8
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_tahtali_daglari",
+        "name": "Tahtalı Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Kıvrım dağı olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 16681217",
+        "sourceUrl": "https://www.openstreetmap.org/relation/16681217",
+        "sourceQuery": "Tahtalı Dağları, Türkiye",
+        "sourceDisplayName": "Tahtalı Dağları, Adana, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.748967,
+          37.9711105
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_binboga_daglari",
+        "name": "Binboğa Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Kıvrım dağı olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 16677832",
+        "sourceUrl": "https://www.openstreetmap.org/relation/16677832",
+        "sourceQuery": "Binboğa Dağları, Türkiye",
+        "sourceDisplayName": "Binboğa Dağları, Kahramanmaraş, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.6849752,
+          38.2578765
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_munzur_mercan_daglari",
+        "name": "Munzur (Mercan) Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Doğu Anadolu",
+        "location": "Doğu Anadolu",
+        "kpssNote": "Kıvrım dağı olarak Doğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 5702780048",
+        "sourceUrl": "https://www.openstreetmap.org/node/5702780048",
+        "sourceQuery": "Munzur Dağları, Türkiye",
+        "sourceDisplayName": "Munzur Dağları, Ovacık, Tunceli, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.075,
+          39.44
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_palandoken_daglari",
+        "name": "Palandöken Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Doğu Anadolu",
+        "location": "Doğu Anadolu",
+        "kpssNote": "Kıvrım dağı olarak Doğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 1971616346",
+        "sourceUrl": "https://www.openstreetmap.org/node/1971616346",
+        "sourceQuery": "Palandöken Dağları, Türkiye",
+        "sourceDisplayName": "Palandöken Dağları, Palandöken, Erzurum, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.3204595,
+          39.8228205
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_bingol_daglari",
+        "name": "Bingöl Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Doğu Anadolu",
+        "location": "Doğu Anadolu",
+        "kpssNote": "Kıvrım dağı olarak Doğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 1852501652",
+        "sourceUrl": "https://www.openstreetmap.org/node/1852501652",
+        "sourceQuery": "Bingöl Dağları, Türkiye",
+        "sourceDisplayName": "Bingöl Dağları, Varto, Muş, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.399051,
+          39.3524898
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_allahuekber_daglari",
+        "name": "Allahuekber Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Doğu Anadolu",
+        "location": "Doğu Anadolu",
+        "kpssNote": "Kıvrım dağı olarak Doğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 16685405",
+        "sourceUrl": "https://www.openstreetmap.org/relation/16685405",
+        "sourceQuery": "Allahuekber Dağları, Türkiye",
+        "sourceDisplayName": "Allahuekber Dağları, Kars, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          42.9384488,
+          40.819759
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_cilo_buzul_daglari",
+        "name": "Cilo (Buzul) Dağları",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_fold",
+        "categoryLabel": "Kıvrım dağı",
+        "region": "Doğu Anadolu",
+        "location": "Doğu Anadolu",
+        "kpssNote": "Kıvrım dağı olarak Doğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap way 1256329161",
+        "sourceUrl": "https://www.openstreetmap.org/way/1256329161",
+        "sourceQuery": "Cilo Dağı, Türkiye",
+        "sourceDisplayName": "Cilo Dağı Yolu, Yüksekova, Hakkari, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.1357135,
+          37.3991028
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_karadag_karaman",
+        "name": "Karadağ",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_volcanic",
+        "categoryLabel": "Volkanik dağ",
+        "region": "İç Anadolu",
+        "location": "İç Anadolu",
+        "kpssNote": "Volkanik dağ olarak İç Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 2492139037",
+        "sourceUrl": "https://www.openstreetmap.org/node/2492139037",
+        "sourceQuery": "Karadağ, Karaman, Türkiye",
+        "sourceDisplayName": "Kara Dağ, Karaman, Karaman, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.1471169,
+          37.3994076
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_karacadag_ic_anadolu",
+        "name": "Karacadağ",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_volcanic",
+        "categoryLabel": "Volkanik dağ",
+        "region": "İç Anadolu",
+        "location": "İç Anadolu",
+        "kpssNote": "Volkanik dağ olarak İç Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 1204407298",
+        "sourceUrl": "https://www.openstreetmap.org/node/1204407298",
+        "sourceQuery": "Karacadağ Karapınar Konya Türkiye",
+        "sourceDisplayName": "Karacadağ, Karapınar, Konya, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.7780749,
+          37.7474922
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_hasandagi",
+        "name": "Hasandağı",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_volcanic",
+        "categoryLabel": "Volkanik dağ",
+        "region": "İç Anadolu",
+        "location": "İç Anadolu",
+        "kpssNote": "Volkanik dağ olarak İç Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 244313497",
+        "sourceUrl": "https://www.openstreetmap.org/node/244313497",
+        "sourceQuery": "Hasan Dağı, Türkiye",
+        "sourceDisplayName": "Hasan Dağı, Aksaray, Aksaray, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.1651126,
+          38.1265274
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_melendiz_dagi",
+        "name": "Melendiz Dağı",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_volcanic",
+        "categoryLabel": "Volkanik dağ",
+        "region": "İç Anadolu",
+        "location": "İç Anadolu",
+        "kpssNote": "Volkanik dağ olarak İç Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 321490160",
+        "sourceUrl": "https://www.openstreetmap.org/node/321490160",
+        "sourceQuery": "Melendiz Dağı, Türkiye",
+        "sourceDisplayName": "Melendiz Dağı, Çiftlik, Niğde, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.5265715,
+          38.0712926
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_erciyes_dagi",
+        "name": "Erciyes Dağı",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_volcanic",
+        "categoryLabel": "Volkanik dağ",
+        "region": "İç Anadolu",
+        "location": "İç Anadolu",
+        "kpssNote": "Volkanik dağ olarak İç Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 100778739",
+        "sourceUrl": "https://www.openstreetmap.org/node/100778739",
+        "sourceQuery": "Erciyes Dağı, Türkiye",
+        "sourceDisplayName": "Erciyes Dağı, Melikgazi, Kayseri, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.4489507,
+          38.5319536
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_nemrut",
+        "name": "Nemrut",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_volcanic",
+        "categoryLabel": "Volkanik dağ",
+        "region": "Doğu Anadolu",
+        "location": "Doğu Anadolu",
+        "kpssNote": "Volkanik dağ olarak Doğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 1481514945",
+        "sourceUrl": "https://www.openstreetmap.org/node/1481514945",
+        "sourceQuery": "Nemrut Dağı, Bitlis, Türkiye",
+        "sourceDisplayName": "Nemrut Dağı, Ahlat, Bitlis, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          42.2554405,
+          38.6546955
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_suphan_dagi",
+        "name": "Süphan Dağı",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_volcanic",
+        "categoryLabel": "Volkanik dağ",
+        "region": "Doğu Anadolu",
+        "location": "Doğu Anadolu",
+        "kpssNote": "Volkanik dağ olarak Doğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 161859493",
+        "sourceUrl": "https://www.openstreetmap.org/node/161859493",
+        "sourceQuery": "Süphan Dağı, Türkiye",
+        "sourceDisplayName": "Süphan Dağı, Adilcevaz, Bitlis, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          42.8295948,
+          38.9298398
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_tendurek_dagi",
+        "name": "Tendürek Dağı",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_volcanic",
+        "categoryLabel": "Volkanik dağ",
+        "region": "Doğu Anadolu",
+        "location": "Doğu Anadolu",
+        "kpssNote": "Volkanik dağ olarak Doğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 883963518",
+        "sourceUrl": "https://www.openstreetmap.org/node/883963518",
+        "sourceQuery": "Tendürek Dağı, Türkiye",
+        "sourceDisplayName": "Tendürek Dağı, Diyadin, Ağrı, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.8669939,
+          39.354844
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_buyuk_agri",
+        "name": "Büyük Ağrı",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_volcanic",
+        "categoryLabel": "Volkanik dağ",
+        "region": "Doğu Anadolu",
+        "location": "Doğu Anadolu",
+        "kpssNote": "Volkanik dağ olarak Doğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 130065410",
+        "sourceUrl": "https://www.openstreetmap.org/node/130065410",
+        "sourceQuery": "Ağrı Dağı, Türkiye",
+        "sourceDisplayName": "Ağrı Dağı, Iğdır, Iğdır, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.2983964,
+          39.7019346
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_kucuk_agri",
+        "name": "Küçük Ağrı",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_volcanic",
+        "categoryLabel": "Volkanik dağ",
+        "region": "Doğu Anadolu",
+        "location": "Doğu Anadolu",
+        "kpssNote": "Volkanik dağ olarak Doğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 973785588",
+        "sourceUrl": "https://www.openstreetmap.org/node/973785588",
+        "sourceQuery": "Küçük Ağrı Dağı, Türkiye",
+        "sourceDisplayName": "Küçük Ağrı Dağı, Doğubayazıt, Ağrı, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.4138156,
+          39.6482053
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_karacadag_guneydogu",
+        "name": "Karacadağ",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_volcanic",
+        "categoryLabel": "Volkanik dağ",
+        "region": "Güneydoğu Anadolu",
+        "location": "Güneydoğu Anadolu",
+        "kpssNote": "Volkanik dağ olarak Güneydoğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 1382078415",
+        "sourceUrl": "https://www.openstreetmap.org/node/1382078415",
+        "sourceQuery": "Karacadağ, Diyarbakır, Türkiye",
+        "sourceDisplayName": "Karacadağ, Çınar, Diyarbakır, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.8290462,
+          37.7114291
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_kula_tepeleri",
+        "name": "Kula Tepeleri",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_volcanic",
+        "categoryLabel": "Volkanik dağ",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Volkanik dağ olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap way 769563991",
+        "sourceUrl": "https://www.openstreetmap.org/way/769563991",
+        "sourceQuery": "Kula Volkanik Jeoparkı, Manisa, Türkiye",
+        "sourceDisplayName": "Kula Volkanik Jeoparkı, Kula, Manisa, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.5487115,
+          38.5762799
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mountain_uludag",
+        "name": "Uludağ",
+        "topic": "mountain",
+        "topicLabel": "Dağlar",
+        "category": "mountain_volcanic",
+        "categoryLabel": "Volkanik dağ",
+        "region": "Marmara",
+        "location": "Marmara",
+        "kpssNote": "İç püskürük/batolit örneği olarak Marmara fiziki coğrafyasında ayrı tutulur.",
+        "sourceName": "OpenStreetMap node 440642722",
+        "sourceUrl": "https://www.openstreetmap.org/node/440642722",
+        "sourceQuery": "Uludağ, Türkiye",
+        "sourceDisplayName": "Uludağ, Osmangazi, Bursa, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.2220098,
+          40.0705295
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_bafra_ovasi",
+        "name": "Bafra Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_delta",
+        "categoryLabel": "Delta ovası",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Delta ovası olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 11349271906",
+        "sourceUrl": "https://www.openstreetmap.org/node/11349271906",
+        "sourceQuery": "Bafra Ovası, Türkiye",
+        "sourceDisplayName": "Bafra Ovası, Bafra, Samsun, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.9555482,
+          41.6518478
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_carsamba_ovasi",
+        "name": "Çarşamba Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_delta",
+        "categoryLabel": "Delta ovası",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Delta ovası olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 10904628357",
+        "sourceUrl": "https://www.openstreetmap.org/node/10904628357",
+        "sourceQuery": "Çarşamba Ovası, Türkiye",
+        "sourceDisplayName": "Çarşamba ovası, Çarşamba, Samsun, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.7554472,
+          41.3212674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_dikili_ovasi",
+        "name": "Dikili Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_delta",
+        "categoryLabel": "Delta ovası",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Bakırçay deltası çevresindeki ova olarak çalışılır.",
+        "sourceName": "OpenStreetMap relation 10337721",
+        "sourceUrl": "https://www.openstreetmap.org/relation/10337721",
+        "sourceQuery": "Dikili Ovası, Türkiye",
+        "sourceDisplayName": "Çandarlı Ovası, Dikili, İzmir, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.9890401,
+          38.9491568
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_menemen_ovasi",
+        "name": "Menemen Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_delta",
+        "categoryLabel": "Delta ovası",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Gediz deltası çevresindeki ova olarak çalışılır.",
+        "sourceName": "OpenStreetMap relation 1268484",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1268484",
+        "sourceQuery": "Menemen Ovası, Türkiye",
+        "sourceDisplayName": "Menemen, İzmir, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.0860884,
+          38.6081926
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_selcuk_ovasi",
+        "name": "Selçuk Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_delta",
+        "categoryLabel": "Delta ovası",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Küçük Menderes deltası çevresindeki ova olarak çalışılır.",
+        "sourceName": "OpenStreetMap relation 1841225",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1841225",
+        "sourceQuery": "Selçuk Ovası, Türkiye",
+        "sourceDisplayName": "Selçuk, İzmir, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.3685018,
+          37.9479646
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_balat_ovasi",
+        "name": "Balat Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_delta",
+        "categoryLabel": "Delta ovası",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Büyük Menderes deltası çevresindeki ova olarak çalışılır.",
+        "sourceName": "OpenStreetMap node 11348303682",
+        "sourceUrl": "https://www.openstreetmap.org/node/11348303682",
+        "sourceQuery": "Balat Ovası, Türkiye",
+        "sourceDisplayName": "Balat Ovası, Söke, Aydın, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.2476386,
+          37.6142995
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_cukurova",
+        "name": "Çukurova",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_delta",
+        "categoryLabel": "Delta ovası",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Seyhan ve Ceyhan nehirlerinin oluşturduğu büyük delta ovasıdır.",
+        "sourceName": "OpenStreetMap relation 1249253",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1249253",
+        "sourceQuery": "Çukurova, Türkiye",
+        "sourceDisplayName": "Çukurova, Adana, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2823275,
+          37.0468862
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_silifke_ovasi",
+        "name": "Silifke Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_delta",
+        "categoryLabel": "Delta ovası",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Göksu deltası çevresindeki ova olarak çalışılır.",
+        "sourceName": "OpenStreetMap relation 1442334",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1442334",
+        "sourceQuery": "Silifke Ovası, Türkiye",
+        "sourceDisplayName": "Silifke, Mersin, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.9260372,
+          36.3778166
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_tefenni_ovasi",
+        "name": "Tefenni Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_karstic",
+        "categoryLabel": "Karstik ova",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Karstik ova olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1280049",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1280049",
+        "sourceQuery": "Tefenni Ovası, Türkiye",
+        "sourceDisplayName": "Tefenni, Burdur, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.7759765,
+          37.3132492
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_acipayam_ovasi",
+        "name": "Acıpayam Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_karstic",
+        "categoryLabel": "Karstik ova",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Karstik ova olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 2626744326",
+        "sourceUrl": "https://www.openstreetmap.org/node/2626744326",
+        "sourceQuery": "Acıpayam Ovası, Türkiye",
+        "sourceDisplayName": "Acıpayam Ovası, Acıpayam, Denizli, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.4191714,
+          37.3780549
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_korkuteli_ovasi",
+        "name": "Korkuteli Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_karstic",
+        "categoryLabel": "Karstik ova",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Karstik ova olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1727032",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1727032",
+        "sourceQuery": "Korkuteli Ovası, Türkiye",
+        "sourceDisplayName": "Korkuteli, Antalya, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.1970497,
+          37.0666523
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_kestel_ovasi",
+        "name": "Kestel Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_karstic",
+        "categoryLabel": "Karstik ova",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Karstik ova olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 4853049642",
+        "sourceUrl": "https://www.openstreetmap.org/node/4853049642",
+        "sourceQuery": "Kestel Ovası, Türkiye",
+        "sourceDisplayName": "Kestel Ovası, Bucak, Burdur, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.511566,
+          37.383617
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_elmali_ovasi",
+        "name": "Elmalı Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_karstic",
+        "categoryLabel": "Karstik ova",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Karstik ova olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 8424613175",
+        "sourceUrl": "https://www.openstreetmap.org/node/8424613175",
+        "sourceQuery": "Elmalı Ovası, Türkiye",
+        "sourceDisplayName": "Yamula Elmalı Ovası, Kocasinan, Kayseri, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2459377,
+          38.8405412
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_mugla_ovasi",
+        "name": "Muğla Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_karstic",
+        "categoryLabel": "Karstik ova",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Karstik ova olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 223136",
+        "sourceUrl": "https://www.openstreetmap.org/relation/223136",
+        "sourceQuery": "Muğla, Muğla, Türkiye",
+        "sourceDisplayName": "Muğla, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.2624288,
+          37.1642053
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_civril_ovasi",
+        "name": "Çivril Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_karstic",
+        "categoryLabel": "Karstik ova",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Karstik ova olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 1888639617",
+        "sourceUrl": "https://www.openstreetmap.org/node/1888639617",
+        "sourceQuery": "Çivril Ovası, Türkiye",
+        "sourceDisplayName": "Çivril Ovası, Çivril, Denizli, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.6591546,
+          38.1554648
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_tavas_ovasi",
+        "name": "Tavas Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_karstic",
+        "categoryLabel": "Karstik ova",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Karstik ova olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 4315580798",
+        "sourceUrl": "https://www.openstreetmap.org/node/4315580798",
+        "sourceQuery": "Tavas Ovası, Türkiye",
+        "sourceDisplayName": "Tavas Ovası, Tavas, Denizli, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.9659531,
+          37.5368064
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_ergene_ovasi",
+        "name": "Ergene Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Marmara",
+        "location": "Marmara",
+        "kpssNote": "Tektonik ova olarak Marmara içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 10068538249",
+        "sourceUrl": "https://www.openstreetmap.org/node/10068538249",
+        "sourceQuery": "Ergene Ovası, Türkiye",
+        "sourceDisplayName": "Ergene Ovası, Uzunköprü, Edirne, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.8251799,
+          41.3274554
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_bursa_ovasi",
+        "name": "Bursa Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Marmara",
+        "location": "Marmara",
+        "kpssNote": "Tektonik ova olarak Marmara içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 289534897",
+        "sourceUrl": "https://www.openstreetmap.org/node/289534897",
+        "sourceQuery": "Bursa, Bursa, Türkiye",
+        "sourceDisplayName": "Bursa, Osmangazi, Bursa, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.0675039,
+          40.1825734
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_karacabey_ovasi",
+        "name": "Karacabey Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Marmara",
+        "location": "Marmara",
+        "kpssNote": "Tektonik ova olarak Marmara içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 18310141",
+        "sourceUrl": "https://www.openstreetmap.org/relation/18310141",
+        "sourceQuery": "Karacabey Ovası, Türkiye",
+        "sourceDisplayName": "Karacabey Ovası, Bursa, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.4776524,
+          40.1254383
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_adapazari_ovasi",
+        "name": "Adapazarı Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Marmara",
+        "location": "Marmara",
+        "kpssNote": "Tektonik ova olarak Marmara içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1252526",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1252526",
+        "sourceQuery": "Adapazarı Ovası, Türkiye",
+        "sourceDisplayName": "Adapazarı, Sakarya, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.4020295,
+          40.7755214
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_inegol_ovasi",
+        "name": "İnegöl Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Marmara",
+        "location": "Marmara",
+        "kpssNote": "Tektonik ova olarak Marmara içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1273938",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1273938",
+        "sourceQuery": "İnegöl Ovası, Türkiye",
+        "sourceDisplayName": "İnegöl, Bursa, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.5096528,
+          40.0800359
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_soma_ovasi",
+        "name": "Soma Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Tektonik ova olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1758899",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1758899",
+        "sourceQuery": "Soma, Manisa, Türkiye",
+        "sourceDisplayName": "Soma, Manisa, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.6088792,
+          39.185172
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_kirkagac_ovasi",
+        "name": "Kırkağaç Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Tektonik ova olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1758898",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1758898",
+        "sourceQuery": "Kırkağaç Ovası, Türkiye",
+        "sourceDisplayName": "Kırkağaç, Manisa, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.6730299,
+          39.109941
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_akhisar_ovasi",
+        "name": "Akhisar Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Tektonik ova olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1822655",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1822655",
+        "sourceQuery": "Akhisar Ovası, Türkiye",
+        "sourceDisplayName": "Akhisar, Manisa, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.8401895,
+          38.9240528
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_turgutlu_ovasi",
+        "name": "Turgutlu Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Tektonik ova olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 10226188232",
+        "sourceUrl": "https://www.openstreetmap.org/node/10226188232",
+        "sourceQuery": "Turgutlu Ovası, Türkiye",
+        "sourceDisplayName": "Geren Ovası, Turgutlu, Manisa, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.7164458,
+          38.5331276
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_salihli_ovasi",
+        "name": "Salihli Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Tektonik ova olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1821255",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1821255",
+        "sourceQuery": "Salihli Ovası, Türkiye",
+        "sourceDisplayName": "Salihli, Manisa, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.1390032,
+          38.4860588
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_alasehir_ovasi",
+        "name": "Alaşehir Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Tektonik ova olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 11349271908",
+        "sourceUrl": "https://www.openstreetmap.org/node/11349271908",
+        "sourceQuery": "Alaşehir Ovası, Türkiye",
+        "sourceDisplayName": "Alaşehir Ovası, Alaşehir, Manisa, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.43128,
+          38.4437
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_torbali_ovasi",
+        "name": "Torbalı Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Tektonik ova olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1269519",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1269519",
+        "sourceQuery": "Torbalı Ovası, Türkiye",
+        "sourceDisplayName": "Torbalı, İzmir, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.3616416,
+          38.1499783
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_odemis_ovasi",
+        "name": "Ödemiş Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Tektonik ova olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1823318",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1823318",
+        "sourceQuery": "Ödemiş Ovası, Türkiye",
+        "sourceDisplayName": "Ödemiş, İzmir, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.9772483,
+          38.2281549
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_tire_ovasi",
+        "name": "Tire Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Tektonik ova olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1841226",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1841226",
+        "sourceQuery": "Tire, İzmir, Türkiye",
+        "sourceDisplayName": "Tire, İzmir, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.7318214,
+          38.089497
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_soke_ovasi",
+        "name": "Söke Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Tektonik ova olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 11348303682",
+        "sourceUrl": "https://www.openstreetmap.org/node/11348303682",
+        "sourceQuery": "Söke Ovası, Türkiye",
+        "sourceDisplayName": "Balat Ovası, Söke, Aydın, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.2476386,
+          37.6142995
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_nazilli_ovasi",
+        "name": "Nazilli Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Tektonik ova olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 11348388545",
+        "sourceUrl": "https://www.openstreetmap.org/node/11348388545",
+        "sourceQuery": "Nazilli Ovası, Türkiye",
+        "sourceDisplayName": "Bozyer Ovası, Nazilli, Aydın, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.36056,
+          37.87577
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_bolu_ovasi",
+        "name": "Bolu Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Tektonik ova olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 11348453093",
+        "sourceUrl": "https://www.openstreetmap.org/node/11348453093",
+        "sourceQuery": "Bolu Ovası, Türkiye",
+        "sourceDisplayName": "Bolu Ovası, Bolu, Bolu, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.69487,
+          40.714151
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_duzce_ovasi",
+        "name": "Düzce Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Tektonik ova olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 223460",
+        "sourceUrl": "https://www.openstreetmap.org/relation/223460",
+        "sourceQuery": "Düzce Ovası, Türkiye",
+        "sourceDisplayName": "Düzce, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.2009618,
+          40.8774545
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_merzifon_ovasi",
+        "name": "Merzifon Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Tektonik ova olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 2876352491",
+        "sourceUrl": "https://www.openstreetmap.org/node/2876352491",
+        "sourceQuery": "Merzifon Ovası, Türkiye",
+        "sourceDisplayName": "Merzifon Ovası, Merzifon, Amasya, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.4979074,
+          40.7834505
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_suluova_ovasi",
+        "name": "Suluova Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Tektonik ova olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1837144",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1837144",
+        "sourceQuery": "Suluova Ovası, Türkiye",
+        "sourceDisplayName": "Suluova, Amasya, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.6455569,
+          40.8364128
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_tasova_ovasi",
+        "name": "Taşova Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Tektonik ova olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1837145",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1837145",
+        "sourceQuery": "Taşova Ovası, Türkiye",
+        "sourceDisplayName": "Taşova, Amasya, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.321973,
+          40.7603491
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_erbaa_ovasi",
+        "name": "Erbaa Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Tektonik ova olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1802575",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1802575",
+        "sourceQuery": "Erbaa Ovası, Türkiye",
+        "sourceDisplayName": "Erbaa, Tokat, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.5715055,
+          40.6727976
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_niksar_ovasi",
+        "name": "Niksar Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Tektonik ova olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 9139472520",
+        "sourceUrl": "https://www.openstreetmap.org/node/9139472520",
+        "sourceQuery": "Niksar Ovası, Türkiye",
+        "sourceDisplayName": "Niksar Ovası, Niksar, Tokat, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.8980978,
+          40.5762823
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_susehri_ovasi",
+        "name": "Suşehri Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Tektonik ova olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1502459",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1502459",
+        "sourceQuery": "Suşehri Ovası, Türkiye",
+        "sourceDisplayName": "Suşehri, Sivas, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.0855664,
+          40.1627343
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_boyabat_ovasi",
+        "name": "Boyabat Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Tektonik ova olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1428709",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1428709",
+        "sourceQuery": "Boyabat Ovası, Türkiye",
+        "sourceDisplayName": "Boyabat, Sinop, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7672274,
+          41.4689736
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_pasinler_ovasi",
+        "name": "Pasinler Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Doğu Anadolu",
+        "location": "Doğu Anadolu",
+        "kpssNote": "Tektonik ova olarak Doğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 1834040158",
+        "sourceUrl": "https://www.openstreetmap.org/node/1834040158",
+        "sourceQuery": "Pasinler Ovası, Türkiye",
+        "sourceDisplayName": "Pasinler Ovası, Pasinler, Erzurum, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.6721267,
+          39.9528905
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_erzurum_ovasi",
+        "name": "Erzurum Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Doğu Anadolu",
+        "location": "Doğu Anadolu",
+        "kpssNote": "Tektonik ova olarak Doğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 26486754",
+        "sourceUrl": "https://www.openstreetmap.org/node/26486754",
+        "sourceQuery": "Erzurum, Erzurum, Türkiye",
+        "sourceDisplayName": "Erzurum, Yakutiye, Erzurum, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.2727715,
+          39.90632
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_erzincan_ovasi",
+        "name": "Erzincan Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Doğu Anadolu",
+        "location": "Doğu Anadolu",
+        "kpssNote": "Tektonik ova olarak Doğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 11348260466",
+        "sourceUrl": "https://www.openstreetmap.org/node/11348260466",
+        "sourceQuery": "Erzincan Ovası, Türkiye",
+        "sourceDisplayName": "Erzincan Ovası, Erzincan, Erzincan, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.5401382,
+          39.6742293
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_tercan_ovasi",
+        "name": "Tercan Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Doğu Anadolu",
+        "location": "Doğu Anadolu",
+        "kpssNote": "Tektonik ova olarak Doğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 11348260467",
+        "sourceUrl": "https://www.openstreetmap.org/node/11348260467",
+        "sourceQuery": "Tercan Ovası, Türkiye",
+        "sourceDisplayName": "Tercan Ovası, Tercan, Erzincan, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.2976798,
+          39.74785
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_malatya_ovasi",
+        "name": "Malatya Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Doğu Anadolu",
+        "location": "Doğu Anadolu",
+        "kpssNote": "Tektonik ova olarak Doğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 26486997",
+        "sourceUrl": "https://www.openstreetmap.org/node/26486997",
+        "sourceQuery": "Malatya Ovası, Türkiye",
+        "sourceDisplayName": "Malatya, Battalgazi, Malatya, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.3190674,
+          38.3487153
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_elazig_uluova",
+        "name": "Elazığ (Uluova)",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Doğu Anadolu",
+        "location": "Doğu Anadolu",
+        "kpssNote": "Tektonik ova olarak Doğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 9278555428",
+        "sourceUrl": "https://www.openstreetmap.org/node/9278555428",
+        "sourceQuery": "Uluova, Türkiye",
+        "sourceDisplayName": "Ulu Ova, Elâzığ, Elazığ, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.270458,
+          38.6021153
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_mus_ovasi",
+        "name": "Muş Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Doğu Anadolu",
+        "location": "Doğu Anadolu",
+        "kpssNote": "Tektonik ova olarak Doğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 9661358076",
+        "sourceUrl": "https://www.openstreetmap.org/node/9661358076",
+        "sourceQuery": "Muş Ovası, Türkiye",
+        "sourceDisplayName": "Muş ovası, Muş, Muş, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.5722655,
+          38.7824579
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_igdir_ovasi",
+        "name": "Iğdır Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Doğu Anadolu",
+        "location": "Doğu Anadolu",
+        "kpssNote": "Tektonik ova olarak Doğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 9738190992",
+        "sourceUrl": "https://www.openstreetmap.org/node/9738190992",
+        "sourceQuery": "Iğdır Ovası, Türkiye",
+        "sourceDisplayName": "Iğdır Ovası, Aralık, Iğdır, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.3475149,
+          39.9394882
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_yuksekova",
+        "name": "Yüksekova",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Doğu Anadolu",
+        "location": "Doğu Anadolu",
+        "kpssNote": "Tektonik ova olarak Doğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1381573",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1381573",
+        "sourceQuery": "Yüksekova, Türkiye",
+        "sourceDisplayName": "Yüksekova, Hakkari, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.2821698,
+          37.5717687
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_bingol_ovasi",
+        "name": "Bingöl Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Doğu Anadolu",
+        "location": "Doğu Anadolu",
+        "kpssNote": "Tektonik ova olarak Doğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 223444",
+        "sourceUrl": "https://www.openstreetmap.org/relation/223444",
+        "sourceQuery": "Bingöl Ovası, Türkiye",
+        "sourceDisplayName": "Bingöl, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.7296181,
+          39.073803
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_konya_ovasi",
+        "name": "Konya Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "İç Anadolu",
+        "location": "İç Anadolu",
+        "kpssNote": "Tektonik ova olarak İç Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 16737707",
+        "sourceUrl": "https://www.openstreetmap.org/relation/16737707",
+        "sourceQuery": "Konya Ovası, Türkiye",
+        "sourceDisplayName": "Konya Ovası, İç Anadolu Bölgesi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.0493413,
+          38.4298394
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_eskisehir_ovasi",
+        "name": "Eskişehir Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "İç Anadolu",
+        "location": "İç Anadolu",
+        "kpssNote": "Tektonik ova olarak İç Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 11348303679",
+        "sourceUrl": "https://www.openstreetmap.org/node/11348303679",
+        "sourceQuery": "Eskişehir Ovası, Türkiye",
+        "sourceDisplayName": "İnönü Ovası, İnönü, Eskişehir, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.0505255,
+          39.7474541
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_kayseri_develi_ovasi",
+        "name": "Kayseri (Develi) Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "İç Anadolu",
+        "location": "İç Anadolu",
+        "kpssNote": "Tektonik ova olarak İç Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 1800390772",
+        "sourceUrl": "https://www.openstreetmap.org/node/1800390772",
+        "sourceQuery": "Develi Ovası, Türkiye",
+        "sourceDisplayName": "Develi Ovası, Develi, Kayseri, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.4048048,
+          38.3234562
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_ankara_cubuk_ovasi",
+        "name": "Ankara (Çubuk) Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "İç Anadolu",
+        "location": "İç Anadolu",
+        "kpssNote": "Tektonik ova olarak İç Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 9462007295",
+        "sourceUrl": "https://www.openstreetmap.org/node/9462007295",
+        "sourceQuery": "Çubuk Ovası, Türkiye",
+        "sourceDisplayName": "Çubuk Ovası, Çubuk, Ankara, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.0465315,
+          40.1675932
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_murted_akinci_ovasi",
+        "name": "Mürted (Akıncı) Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "İç Anadolu",
+        "location": "İç Anadolu",
+        "kpssNote": "Tektonik ova olarak İç Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 254442520",
+        "sourceUrl": "https://www.openstreetmap.org/node/254442520",
+        "sourceQuery": "Akıncı Hava Üssü, Ankara, Türkiye",
+        "sourceDisplayName": "Akıncı Hava Üssü, Kahramankazan, Ankara, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.5641577,
+          40.0791887
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_harran_altinbasak_ovasi",
+        "name": "Harran (Altınbaşak) Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Güneydoğu Anadolu",
+        "location": "Güneydoğu Anadolu",
+        "kpssNote": "Tektonik ova olarak Güneydoğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 2311371304",
+        "sourceUrl": "https://www.openstreetmap.org/node/2311371304",
+        "sourceQuery": "Harran Ovası, Türkiye",
+        "sourceDisplayName": "Harran Ovası, Harran, Şanlıurfa, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.015427,
+          36.902477
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_ceylanpinar_ovasi",
+        "name": "Ceylanpınar Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Güneydoğu Anadolu",
+        "location": "Güneydoğu Anadolu",
+        "kpssNote": "Tektonik ova olarak Güneydoğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 7909001",
+        "sourceUrl": "https://www.openstreetmap.org/relation/7909001",
+        "sourceQuery": "Ceylanpınar Ovası, Türkiye",
+        "sourceDisplayName": "Ceylanpınar Ovası, Şanlıurfa, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.6838935,
+          36.9292147
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_suruc_ovasi",
+        "name": "Suruç Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Güneydoğu Anadolu",
+        "location": "Güneydoğu Anadolu",
+        "kpssNote": "Tektonik ova olarak Güneydoğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1747583",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1747583",
+        "sourceQuery": "Suruç Ovası, Türkiye",
+        "sourceDisplayName": "Suruç, Şanlıurfa, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.424295,
+          36.9751849
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plain_birecik_ovasi",
+        "name": "Birecik Ovası",
+        "topic": "plain",
+        "topicLabel": "Ovalar",
+        "category": "plain_tectonic",
+        "categoryLabel": "Tektonik ova",
+        "region": "Güneydoğu Anadolu",
+        "location": "Güneydoğu Anadolu",
+        "kpssNote": "Tektonik ova olarak Güneydoğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1747577",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1747577",
+        "sourceQuery": "Birecik Ovası, Türkiye",
+        "sourceDisplayName": "Birecik, Şanlıurfa, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.9800265,
+          37.0315322
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plateau_catalca_kocaeli_platosu",
+        "name": "Çatalca - Kocaeli Platosu",
+        "topic": "plateau",
+        "topicLabel": "Platolar",
+        "category": "plateau_erosion",
+        "categoryLabel": "Aşınım platosu",
+        "region": "Marmara",
+        "location": "Marmara",
+        "kpssNote": "Aşınım platosu olarak Marmara içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1275389",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1275389",
+        "sourceQuery": "Çatalca, İstanbul, Türkiye",
+        "sourceDisplayName": "Çatalca, İstanbul, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.4605154,
+          41.1436804
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plateau_persembe_platosu",
+        "name": "Perşembe Platosu",
+        "topic": "plateau",
+        "topicLabel": "Platolar",
+        "category": "plateau_erosion",
+        "categoryLabel": "Aşınım platosu",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Aşınım platosu olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1839067",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1839067",
+        "sourceQuery": "Perşembe Platosu, Türkiye",
+        "sourceDisplayName": "Perşembe, Ordu, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7736318,
+          41.0669482
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plateau_teke_platosu",
+        "name": "Teke Platosu",
+        "topic": "plateau",
+        "topicLabel": "Platolar",
+        "category": "plateau_karstic",
+        "categoryLabel": "Karstik plato",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Karstik plato olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 9064974",
+        "sourceUrl": "https://www.openstreetmap.org/relation/9064974",
+        "sourceQuery": "Teke Platosu, Türkiye",
+        "sourceDisplayName": "Teke, Şile, İstanbul, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.6626435,
+          41.0676404
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plateau_taseli_platosu",
+        "name": "Taşeli Platosu",
+        "topic": "plateau",
+        "topicLabel": "Platolar",
+        "category": "plateau_karstic",
+        "categoryLabel": "Karstik plato",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Karstik plato olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 2514018975",
+        "sourceUrl": "https://www.openstreetmap.org/node/2514018975",
+        "sourceQuery": "Taşeli Platosu, Türkiye",
+        "sourceDisplayName": "Taşeli Platosu, Anamur, Mersin, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.6433545,
+          36.3625022
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plateau_erzurum_kars_platosu",
+        "name": "Erzurum - Kars Platosu",
+        "topic": "plateau",
+        "topicLabel": "Platolar",
+        "category": "plateau_volcanic_lava",
+        "categoryLabel": "Volkanik lav platosu",
+        "region": "Doğu Anadolu",
+        "location": "Doğu Anadolu",
+        "kpssNote": "Volkanik lav platosu olarak Doğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap way 1443445052",
+        "sourceUrl": "https://www.openstreetmap.org/way/1443445052",
+        "sourceQuery": "Erzurum - Kars Platosu, Türkiye",
+        "sourceDisplayName": "Erzurum-Kars yüksek hızlı demiryolu, Pasinler, Erzurum, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.690809,
+          39.9664779
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plateau_ardahan_platosu",
+        "name": "Ardahan Platosu",
+        "topic": "plateau",
+        "topicLabel": "Platolar",
+        "category": "plateau_volcanic_lava",
+        "categoryLabel": "Volkanik lav platosu",
+        "region": "Doğu Anadolu",
+        "location": "Doğu Anadolu",
+        "kpssNote": "Volkanik lav platosu olarak Doğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1251450",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1251450",
+        "sourceQuery": "Ardahan Platosu, Türkiye",
+        "sourceDisplayName": "Ardahan, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          42.7462189,
+          41.0372501
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plateau_haymana_platosu",
+        "name": "Haymana Platosu",
+        "topic": "plateau",
+        "topicLabel": "Platolar",
+        "category": "plateau_horizontal",
+        "categoryLabel": "Tabaka düzlüğü platosu",
+        "region": "İç Anadolu",
+        "location": "Ankara",
+        "kpssNote": "Tabaka düzlüğü platosu olarak İç Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 11348303684",
+        "sourceUrl": "https://www.openstreetmap.org/node/11348303684",
+        "sourceQuery": "Haymana Platosu, Türkiye",
+        "sourceDisplayName": "Haymana Platosu, Haymana, Ankara, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.7361676,
+          39.4786058
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plateau_cihanbeyli_platosu",
+        "name": "Cihanbeyli Platosu",
+        "topic": "plateau",
+        "topicLabel": "Platolar",
+        "category": "plateau_horizontal",
+        "categoryLabel": "Tabaka düzlüğü platosu",
+        "region": "İç Anadolu",
+        "location": "Konya",
+        "kpssNote": "Tabaka düzlüğü platosu olarak İç Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 11348303685",
+        "sourceUrl": "https://www.openstreetmap.org/node/11348303685",
+        "sourceQuery": "Cihanbeyli Platosu, Türkiye",
+        "sourceDisplayName": "Cihanbeyli Platosu, Sarayönü, Konya, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.5583264,
+          38.6125786
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plateau_obruk_platosu",
+        "name": "Obruk Platosu",
+        "topic": "plateau",
+        "topicLabel": "Platolar",
+        "category": "plateau_horizontal",
+        "categoryLabel": "Tabaka düzlüğü platosu",
+        "region": "İç Anadolu",
+        "location": "Konya",
+        "kpssNote": "Tabaka düzlüğü platosu olarak İç Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 1837693984",
+        "sourceUrl": "https://www.openstreetmap.org/node/1837693984",
+        "sourceQuery": "Obruk Platosu, Türkiye",
+        "sourceDisplayName": "Obruk Platosu, Karapınar, Konya, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.4169358,
+          37.9587301
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plateau_bozok_platosu",
+        "name": "Bozok Platosu",
+        "topic": "plateau",
+        "topicLabel": "Platolar",
+        "category": "plateau_horizontal",
+        "categoryLabel": "Tabaka düzlüğü platosu",
+        "region": "İç Anadolu",
+        "location": "Yozgat",
+        "kpssNote": "Tabaka düzlüğü platosu olarak İç Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 11348303669",
+        "sourceUrl": "https://www.openstreetmap.org/node/11348303669",
+        "sourceQuery": "Bozok Platosu, Türkiye",
+        "sourceDisplayName": "Bozok Platosu, Sorgun, Yozgat, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2901455,
+          39.9694904
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plateau_uzunyayla_platosu",
+        "name": "Uzunyayla Platosu",
+        "topic": "plateau",
+        "topicLabel": "Platolar",
+        "category": "plateau_horizontal",
+        "categoryLabel": "Tabaka düzlüğü platosu",
+        "region": "İç Anadolu",
+        "location": "Sivas / Kayseri",
+        "kpssNote": "Tabaka düzlüğü platosu olarak İç Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 7646498305",
+        "sourceUrl": "https://www.openstreetmap.org/node/7646498305",
+        "sourceQuery": "Uzunyayla Platosu, Türkiye",
+        "sourceDisplayName": "Uzunyayla Platosu, Pınarbaşı, Kayseri, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.7074788,
+          39.0813483
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plateau_gaziantep_platosu",
+        "name": "Gaziantep Platosu",
+        "topic": "plateau",
+        "topicLabel": "Platolar",
+        "category": "plateau_horizontal",
+        "categoryLabel": "Tabaka düzlüğü platosu",
+        "region": "Güneydoğu Anadolu",
+        "location": "Güneydoğu Anadolu",
+        "kpssNote": "Tabaka düzlüğü platosu olarak Güneydoğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 11348303678",
+        "sourceUrl": "https://www.openstreetmap.org/node/11348303678",
+        "sourceQuery": "Gaziantep Platosu, Türkiye",
+        "sourceDisplayName": "Gaziantep Platosu, Şahinbey, Gaziantep, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.1899222,
+          36.9074899
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plateau_sanliurfa_platosu",
+        "name": "Şanlıurfa Platosu",
+        "topic": "plateau",
+        "topicLabel": "Platolar",
+        "category": "plateau_horizontal",
+        "categoryLabel": "Tabaka düzlüğü platosu",
+        "region": "Güneydoğu Anadolu",
+        "location": "Güneydoğu Anadolu",
+        "kpssNote": "Tabaka düzlüğü platosu olarak Güneydoğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 2414828768",
+        "sourceUrl": "https://www.openstreetmap.org/node/2414828768",
+        "sourceQuery": "Şanlıurfa Platosu, Türkiye",
+        "sourceDisplayName": "Şanlıurfa Platosu, Haliliye, Şanlıurfa, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.0648423,
+          37.0871934
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plateau_adiyaman_platosu",
+        "name": "Adıyaman Platosu",
+        "topic": "plateau",
+        "topicLabel": "Platolar",
+        "category": "plateau_horizontal",
+        "categoryLabel": "Tabaka düzlüğü platosu",
+        "region": "Güneydoğu Anadolu",
+        "location": "Güneydoğu Anadolu",
+        "kpssNote": "Tabaka düzlüğü platosu olarak Güneydoğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 223141",
+        "sourceUrl": "https://www.openstreetmap.org/relation/223141",
+        "sourceQuery": "Adıyaman Platosu, Türkiye",
+        "sourceDisplayName": "Adıyaman, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.3141101,
+          37.78936
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plateau_yazilikaya_platosu",
+        "name": "Yazılıkaya Platosu",
+        "topic": "plateau",
+        "topicLabel": "Platolar",
+        "category": "plateau_horizontal",
+        "categoryLabel": "Tabaka düzlüğü platosu",
+        "region": "Ege",
+        "location": "Afyon / Eskişehir",
+        "kpssNote": "Tabaka düzlüğü platosu olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 29487433",
+        "sourceUrl": "https://www.openstreetmap.org/node/29487433",
+        "sourceQuery": "Yazılıkaya Platosu, Türkiye",
+        "sourceDisplayName": "Yazılı, Han, Eskişehir, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.7151529,
+          39.2014234
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_coruh_nehri",
+        "name": "Çoruh Nehri",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_black_sea",
+        "categoryLabel": "Karadeniz'e dökülen akarsu",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Karadeniz'e dökülen akarsu olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap way 1353138705",
+        "sourceUrl": "https://www.openstreetmap.org/way/1353138705",
+        "sourceQuery": "Çoruh, Artvin, Türkiye",
+        "sourceDisplayName": "Artvin Yusufeli Çoruh Vadisi Yaban Hayatı Geliştirme Sahası, Artvin, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.6528812,
+          40.823071
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_yesilirmak",
+        "name": "Yeşilırmak",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_black_sea",
+        "categoryLabel": "Karadeniz'e dökülen akarsu",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Karadeniz'e dökülen akarsu olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 13532744",
+        "sourceUrl": "https://www.openstreetmap.org/relation/13532744",
+        "sourceQuery": "Yeşilırmak, Türkiye",
+        "sourceDisplayName": "Yeşilırmak, Karadeniz Bölgesi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.5064031,
+          40.7642005
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_kizilirmak",
+        "name": "Kızılırmak",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_black_sea",
+        "categoryLabel": "Karadeniz'e dökülen akarsu",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Karadeniz'e dökülen akarsu olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 158017",
+        "sourceUrl": "https://www.openstreetmap.org/relation/158017",
+        "sourceQuery": "Kızılırmak, Türkiye",
+        "sourceDisplayName": "Kızılırmak, Karadeniz Bölgesi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7207926,
+          40.6908116
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_filyos_yenice",
+        "name": "Filyos (Yenice)",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_black_sea",
+        "categoryLabel": "Karadeniz'e dökülen akarsu",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Karadeniz'e dökülen akarsu olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1224897",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1224897",
+        "sourceQuery": "Filyos Çayı, Türkiye",
+        "sourceDisplayName": "Filyos Çayı, Karabük, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.2197157,
+          41.230596
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_bartin_cayi",
+        "name": "Bartın Çayı",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_black_sea",
+        "categoryLabel": "Karadeniz'e dökülen akarsu",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Karadeniz'e dökülen akarsu olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 17039552",
+        "sourceUrl": "https://www.openstreetmap.org/relation/17039552",
+        "sourceQuery": "Bartın Çayı, Türkiye",
+        "sourceDisplayName": "Bartın Çayı, Bartın, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.3290341,
+          41.5962881
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_sakarya_nehri",
+        "name": "Sakarya Nehri",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_black_sea",
+        "categoryLabel": "Karadeniz'e dökülen akarsu",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Karadeniz'e dökülen akarsu olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 11670815",
+        "sourceUrl": "https://www.openstreetmap.org/relation/11670815",
+        "sourceQuery": "Sakarya Nehri, Türkiye",
+        "sourceDisplayName": "Sakarya Nehri, İç Anadolu Bölgesi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.1846864,
+          40.0473252
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_susurluk_cayi",
+        "name": "Susurluk Çayı",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_marmara",
+        "categoryLabel": "Marmara'ya dökülen akarsu",
+        "region": "Marmara",
+        "location": "Marmara",
+        "kpssNote": "Marmara'ya dökülen akarsu olarak Marmara içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 14006248",
+        "sourceUrl": "https://www.openstreetmap.org/relation/14006248",
+        "sourceQuery": "Susurluk Çayı, Türkiye",
+        "sourceDisplayName": "Simav Çayı, Balıkesir, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.2471196,
+          39.7469734
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_meric_nehri",
+        "name": "Meriç Nehri",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_aegean",
+        "categoryLabel": "Ege'ye dökülen akarsu",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Ege'ye dökülen akarsu olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap way 439470082",
+        "sourceUrl": "https://www.openstreetmap.org/way/439470082",
+        "sourceQuery": "Meriç Nehri, Türkiye",
+        "sourceDisplayName": "Meriç Nehri Sokak, Odunpazarı, Eskişehir, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.5284893,
+          39.7686333
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_bakircay",
+        "name": "Bakırçay",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_aegean",
+        "categoryLabel": "Ege'ye dökülen akarsu",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Ege'ye dökülen akarsu olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1273141",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1273141",
+        "sourceQuery": "Bakırçay, Türkiye",
+        "sourceDisplayName": "Bakırçay, İzmir, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.3100502,
+          39.1151394
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_gediz_nehri",
+        "name": "Gediz Nehri",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_aegean",
+        "categoryLabel": "Ege'ye dökülen akarsu",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Ege'ye dökülen akarsu olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 14006299",
+        "sourceUrl": "https://www.openstreetmap.org/relation/14006299",
+        "sourceQuery": "Gediz Nehri, Türkiye",
+        "sourceDisplayName": "Gediz Nehri, Ege Bölgesi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.2741228,
+          38.5990254
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_kucuk_menderes_nehri",
+        "name": "Küçük Menderes Nehri",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_aegean",
+        "categoryLabel": "Ege'ye dökülen akarsu",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Ege'ye dökülen akarsu olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 13051420273",
+        "sourceUrl": "https://www.openstreetmap.org/node/13051420273",
+        "sourceQuery": "Küçük Menderes Nehri, Türkiye",
+        "sourceDisplayName": "Küçük Menderes Nehri, Selçuk, İzmir, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.4357,
+          38.012827
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_buyuk_menderes_nehri",
+        "name": "Büyük Menderes Nehri",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_aegean",
+        "categoryLabel": "Ege'ye dökülen akarsu",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Ege'ye dökülen akarsu olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 14006313",
+        "sourceUrl": "https://www.openstreetmap.org/relation/14006313",
+        "sourceQuery": "Büyük Menderes Nehri, Türkiye",
+        "sourceDisplayName": "Büyük Menderes Nehri, Ege Bölgesi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.4941826,
+          37.8974469
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_dalaman_cayi",
+        "name": "Dalaman Çayı",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_mediterranean",
+        "categoryLabel": "Akdeniz'e dökülen akarsu",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Akdeniz'e dökülen akarsu olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 16949040",
+        "sourceUrl": "https://www.openstreetmap.org/relation/16949040",
+        "sourceQuery": "Dalaman Çayı, Türkiye",
+        "sourceDisplayName": "Dalaman Çayı, Denizli, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.1681817,
+          37.1364746
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_esen_cayi",
+        "name": "Eşen Çayı",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_mediterranean",
+        "categoryLabel": "Akdeniz'e dökülen akarsu",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Akdeniz'e dökülen akarsu olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1232828",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1232828",
+        "sourceQuery": "Eşen Çayı, Türkiye",
+        "sourceDisplayName": "Eşen Çayı, Muğla, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.3670477,
+          36.6351103
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_aksu_cayi",
+        "name": "Aksu Çayı",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_mediterranean",
+        "categoryLabel": "Akdeniz'e dökülen akarsu",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Akdeniz'e dökülen akarsu olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 14006340",
+        "sourceUrl": "https://www.openstreetmap.org/relation/14006340",
+        "sourceQuery": "Aksu Çayı, Türkiye",
+        "sourceDisplayName": "Aksu Çayı, Burdur, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.8316198,
+          37.3499732
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_koprucay",
+        "name": "Köprüçay",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_mediterranean",
+        "categoryLabel": "Akdeniz'e dökülen akarsu",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Akdeniz'e dökülen akarsu olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 8928598",
+        "sourceUrl": "https://www.openstreetmap.org/relation/8928598",
+        "sourceQuery": "Köprüçay, Türkiye",
+        "sourceDisplayName": "Köprüçay, Antalya, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.1794172,
+          37.222175
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_manavgat_cayi",
+        "name": "Manavgat Çayı",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_mediterranean",
+        "categoryLabel": "Akdeniz'e dökülen akarsu",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Akdeniz'e dökülen akarsu olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap way 96041916",
+        "sourceUrl": "https://www.openstreetmap.org/way/96041916",
+        "sourceQuery": "Manavgat Çayı, Türkiye",
+        "sourceDisplayName": "Manavgat Çayı, Manavgat, Antalya, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.4558783,
+          36.8108492
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_goksu_nehri",
+        "name": "Göksu Nehri",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_mediterranean",
+        "categoryLabel": "Akdeniz'e dökülen akarsu",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Akdeniz'e dökülen akarsu olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 14006359",
+        "sourceUrl": "https://www.openstreetmap.org/relation/14006359",
+        "sourceQuery": "Göksu Nehri, Türkiye",
+        "sourceDisplayName": "Göksu Nehri, Mersin, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.1959307,
+          36.7688645
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_seyhan_nehri",
+        "name": "Seyhan Nehri",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_mediterranean",
+        "categoryLabel": "Akdeniz'e dökülen akarsu",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Akdeniz'e dökülen akarsu olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 158234",
+        "sourceUrl": "https://www.openstreetmap.org/relation/158234",
+        "sourceQuery": "Seyhan Nehri, Türkiye",
+        "sourceDisplayName": "Seyhan, Adana, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.3061086,
+          37.1024202
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_ceyhan_nehri",
+        "name": "Ceyhan Nehri",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_mediterranean",
+        "categoryLabel": "Akdeniz'e dökülen akarsu",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Akdeniz'e dökülen akarsu olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 158125",
+        "sourceUrl": "https://www.openstreetmap.org/relation/158125",
+        "sourceQuery": "Ceyhan Nehri, Türkiye",
+        "sourceDisplayName": "Ceyhan, Akdeniz Bölgesi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.2990709,
+          37.3551679
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_asi_nehri",
+        "name": "Asi Nehri",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_mediterranean",
+        "categoryLabel": "Akdeniz'e dökülen akarsu",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Akdeniz'e dökülen akarsu olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap way 217100955",
+        "sourceUrl": "https://www.openstreetmap.org/way/217100955",
+        "sourceQuery": "Asi Nehri, Türkiye",
+        "sourceDisplayName": "Asi Nehri Sokağı, Sarıyer, İstanbul, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.0223752,
+          41.1562416
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_firat_nehri",
+        "name": "Fırat Nehri",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_persian_gulf",
+        "categoryLabel": "Basra Körfezi'ne dökülen akarsu",
+        "region": "Basra Körfezi",
+        "location": "Basra Körfezi",
+        "kpssNote": "Basra Körfezi'ne dökülen akarsu olarak Basra Körfezi içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap way 213386190",
+        "sourceUrl": "https://www.openstreetmap.org/way/213386190",
+        "sourceQuery": "Fırat Nehri, Türkiye",
+        "sourceDisplayName": "Fırat Nehri Sk., Pendik, İstanbul, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.2857145,
+          40.8827029
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_dicle_nehri",
+        "name": "Dicle Nehri",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_persian_gulf",
+        "categoryLabel": "Basra Körfezi'ne dökülen akarsu",
+        "region": "Basra Körfezi",
+        "location": "Basra Körfezi",
+        "kpssNote": "Basra Körfezi'ne dökülen akarsu olarak Basra Körfezi içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap way 210852612",
+        "sourceUrl": "https://www.openstreetmap.org/way/210852612",
+        "sourceQuery": "Dicle Nehri, Türkiye",
+        "sourceDisplayName": "Dicle Nehri, Hani, Diyarbakır, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.4247242,
+          38.4948983
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_aras_nehri",
+        "name": "Aras Nehri",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_caspian",
+        "categoryLabel": "Hazar Denizi'ne dökülen akarsu",
+        "region": "Hazar Denizi",
+        "location": "Hazar Denizi",
+        "kpssNote": "Hazar Denizi'ne dökülen akarsu olarak Hazar Denizi içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap way 933303501",
+        "sourceUrl": "https://www.openstreetmap.org/way/933303501",
+        "sourceQuery": "Aras Nehri, Türkiye",
+        "sourceDisplayName": "Aras Nehri, Tekman, Erzurum, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.2879946,
+          39.5098697
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_kura_nehri",
+        "name": "Kura Nehri",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_caspian",
+        "categoryLabel": "Hazar Denizi'ne dökülen akarsu",
+        "region": "Hazar Denizi",
+        "location": "Hazar Denizi",
+        "kpssNote": "Hazar Denizi'ne dökülen akarsu olarak Hazar Denizi içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 14006313",
+        "sourceUrl": "https://www.openstreetmap.org/relation/14006313",
+        "sourceQuery": "Kura Nehri, Türkiye",
+        "sourceDisplayName": "Büyük Menderes Nehri, Ege Bölgesi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.4941826,
+          37.8974469
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_tuz_golu",
+        "name": "Tuz Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_tectonic",
+        "categoryLabel": "Tektonik göl",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Tektonik göl olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap way 10354856",
+        "sourceUrl": "https://www.openstreetmap.org/way/10354856",
+        "sourceQuery": "Tuz Gölü, Türkiye",
+        "sourceDisplayName": "Tuz Gölü, Aksaray, Aksaray, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.6232284,
+          38.4962999
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_sapanca_golu",
+        "name": "Sapanca Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_tectonic",
+        "categoryLabel": "Tektonik göl",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Tektonik göl olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 12914685",
+        "sourceUrl": "https://www.openstreetmap.org/relation/12914685",
+        "sourceQuery": "Sapanca Gölü, Türkiye",
+        "sourceDisplayName": "Sapanca Gölü, Sapanca, Sakarya, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.2420272,
+          40.7172304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_iznik_golu",
+        "name": "İznik Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_tectonic",
+        "categoryLabel": "Tektonik göl",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Tektonik göl olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1319095",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1319095",
+        "sourceQuery": "İznik Gölü, Türkiye",
+        "sourceDisplayName": "İznik Gölü, Bursa, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.5270323,
+          40.4429575
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_manyas_kus_golu",
+        "name": "Manyas (Kuş) Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_tectonic",
+        "categoryLabel": "Tektonik göl",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Tektonik göl olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1272910",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1272910",
+        "sourceQuery": "Manyas Gölü, Türkiye",
+        "sourceDisplayName": "Manyas Kuşgölü, Balıkesir, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.9652536,
+          40.1919968
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_uluabat_golu",
+        "name": "Uluabat Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_tectonic",
+        "categoryLabel": "Tektonik göl",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Tektonik göl olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1273044",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1273044",
+        "sourceQuery": "Uluabat Gölü, Türkiye",
+        "sourceDisplayName": "Uluabat Gölü, Bursa, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.6250128,
+          40.1694465
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_hazar_golu",
+        "name": "Hazar Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_tectonic",
+        "categoryLabel": "Tektonik göl",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Tektonik göl olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 398079",
+        "sourceUrl": "https://www.openstreetmap.org/relation/398079",
+        "sourceQuery": "Hazar Gölü, Türkiye",
+        "sourceDisplayName": "Hazar Gölü, Elâzığ, Elazığ, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.4034884,
+          38.4850868
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_aksehir_golu",
+        "name": "Akşehir Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_tectonic",
+        "categoryLabel": "Tektonik göl",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Tektonik göl olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 16862988",
+        "sourceUrl": "https://www.openstreetmap.org/relation/16862988",
+        "sourceQuery": "Akşehir Gölü, Türkiye",
+        "sourceDisplayName": "Akşehir Gölü, Akşehir, Konya, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.4093619,
+          38.5169193
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_eber_golu",
+        "name": "Eber Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_tectonic",
+        "categoryLabel": "Tektonik göl",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Tektonik göl olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 2385434",
+        "sourceUrl": "https://www.openstreetmap.org/relation/2385434",
+        "sourceQuery": "Eber Gölü, Türkiye",
+        "sourceDisplayName": "Eber Gölü, Bolvadin, Afyonkarahisar, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.1709059,
+          38.6503225
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_burdur_golu",
+        "name": "Burdur Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_tectonic",
+        "categoryLabel": "Tektonik göl",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Tektonik göl olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 395698",
+        "sourceUrl": "https://www.openstreetmap.org/relation/395698",
+        "sourceQuery": "Burdur Gölü, Türkiye",
+        "sourceDisplayName": "Burdur Gölü, Burdur, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.1611078,
+          37.7218139
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_salda_golu",
+        "name": "Salda Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_karstic",
+        "categoryLabel": "Karstik göl",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Karstik göl olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap way 852912181",
+        "sourceUrl": "https://www.openstreetmap.org/way/852912181",
+        "sourceQuery": "Salda Gölü, Türkiye",
+        "sourceDisplayName": "Salda Gölü, Yeşilova, Burdur, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.6816127,
+          37.5475982
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_kestel_golu",
+        "name": "Kestel Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_karstic",
+        "categoryLabel": "Karstik göl",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Karstik göl olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 4853049641",
+        "sourceUrl": "https://www.openstreetmap.org/node/4853049641",
+        "sourceQuery": "Kestel Gölü, Türkiye",
+        "sourceDisplayName": "Kestel Gölü, Bucak, Burdur, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.4744509,
+          37.4056326
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_avlan_golu",
+        "name": "Avlan Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_karstic",
+        "categoryLabel": "Karstik göl",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Karstik göl olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap way 136595582",
+        "sourceUrl": "https://www.openstreetmap.org/way/136595582",
+        "sourceQuery": "Avlan Gölü, Türkiye",
+        "sourceDisplayName": "Avlan Gölü, Elmalı, Antalya, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.9354502,
+          36.5813094
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_elmali_golu",
+        "name": "Elmalı Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_karstic",
+        "categoryLabel": "Karstik göl",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Karstik göl olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 2935606",
+        "sourceUrl": "https://www.openstreetmap.org/relation/2935606",
+        "sourceQuery": "Elmalı Gölü, Türkiye",
+        "sourceDisplayName": "Elmalı-2 Baraj Gölü, Beykoz, İstanbul, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.1225558,
+          41.0711561
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_sugla_golu",
+        "name": "Suğla Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_karstic",
+        "categoryLabel": "Karstik göl",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Karstik göl olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap way 173041876",
+        "sourceUrl": "https://www.openstreetmap.org/way/173041876",
+        "sourceQuery": "Suğla Gölü, Türkiye",
+        "sourceDisplayName": "Suğla Gölü, Seydişehir, Konya, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.0021734,
+          37.329095
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_kizoren",
+        "name": "Kızören",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_karstic",
+        "categoryLabel": "Karstik göl",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Karstik göl olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap way 208237262",
+        "sourceUrl": "https://www.openstreetmap.org/way/208237262",
+        "sourceQuery": "Kızören Obruğu, Türkiye",
+        "sourceDisplayName": "Kızören Obruğu, Karatay, Konya, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.1856829,
+          38.1749464
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_nemrut_kaldera",
+        "name": "Nemrut (Kaldera)",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_volcanic",
+        "categoryLabel": "Volkanik göl",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Volkanik göl olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1811482",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1811482",
+        "sourceQuery": "Nemrut Gölü, Türkiye",
+        "sourceDisplayName": "Nemrut Gölü, Güroymak, Bitlis, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          42.218876,
+          38.6214323
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_meke_tuzlasi_maar",
+        "name": "Meke Tuzlası (Maar)",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_volcanic",
+        "categoryLabel": "Volkanik göl",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Volkanik göl olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 506677428",
+        "sourceUrl": "https://www.openstreetmap.org/node/506677428",
+        "sourceQuery": "Meke Gölü, Türkiye",
+        "sourceDisplayName": "Meke Gölü, Karapınar, Konya, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.6403064,
+          37.6854983
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_acigol_maar",
+        "name": "Acıgöl (Maar)",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_volcanic",
+        "categoryLabel": "Volkanik göl",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Volkanik göl olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 10212198518",
+        "sourceUrl": "https://www.openstreetmap.org/node/10212198518",
+        "sourceQuery": "Acıgöl Nevşehir, Türkiye",
+        "sourceDisplayName": "Acıgöl-Nevşehir, Acıgöl, Nevşehir, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.6172761,
+          38.5406469
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_golcuk_maar",
+        "name": "Gölcük (Maar)",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_volcanic",
+        "categoryLabel": "Volkanik göl",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Volkanik göl olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap way 16568799",
+        "sourceUrl": "https://www.openstreetmap.org/way/16568799",
+        "sourceQuery": "Gölcük Gölü Isparta, Türkiye",
+        "sourceDisplayName": "Gölcük Gölü, Isparta, Isparta, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.4939557,
+          37.7308175
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_abant_golu",
+        "name": "Abant Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_landslide_dam",
+        "categoryLabel": "Heyelan set gölü",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Heyelan set gölü olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap way 19786571",
+        "sourceUrl": "https://www.openstreetmap.org/way/19786571",
+        "sourceQuery": "Abant Gölü, Türkiye",
+        "sourceDisplayName": "Abant Gölü, Mudurnu, Bolu, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.2799396,
+          40.6052225
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_yedigoller",
+        "name": "Yedigöller",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_landslide_dam",
+        "categoryLabel": "Heyelan set gölü",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Heyelan set gölü olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap node 523104307",
+        "sourceUrl": "https://www.openstreetmap.org/node/523104307",
+        "sourceQuery": "Yedigöller, Türkiye",
+        "sourceDisplayName": "Yedigöller, Bolu, Bolu, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.7477355,
+          40.9433239
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_sera_golu",
+        "name": "Sera Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_landslide_dam",
+        "categoryLabel": "Heyelan set gölü",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Heyelan set gölü olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap way 133017929",
+        "sourceUrl": "https://www.openstreetmap.org/way/133017929",
+        "sourceQuery": "Sera Gölü, Türkiye",
+        "sourceDisplayName": "Sera Gölü, Akçabaat / Trabzon, Trabzon, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.614605,
+          40.9853107
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_tortum_golu",
+        "name": "Tortum Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_landslide_dam",
+        "categoryLabel": "Heyelan set gölü",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Heyelan set gölü olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 10166504",
+        "sourceUrl": "https://www.openstreetmap.org/relation/10166504",
+        "sourceQuery": "Tortum Gölü, Türkiye",
+        "sourceDisplayName": "Tortum Gölü, Uzundere, Erzurum, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.6355516,
+          40.6257651
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_zinav_golu",
+        "name": "Zinav Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_landslide_dam",
+        "categoryLabel": "Heyelan set gölü",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Heyelan set gölü olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap way 81825401",
+        "sourceUrl": "https://www.openstreetmap.org/way/81825401",
+        "sourceQuery": "Zinav Gölü, Türkiye",
+        "sourceDisplayName": "Zinav Gölü, Reşadiye, Tokat, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.2725777,
+          40.4482485
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_borabay_golu",
+        "name": "Borabay Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_landslide_dam",
+        "categoryLabel": "Heyelan set gölü",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Heyelan set gölü olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap way 184999588",
+        "sourceUrl": "https://www.openstreetmap.org/way/184999588",
+        "sourceQuery": "Borabay Gölü, Türkiye",
+        "sourceDisplayName": "Borabay Gölü, Taşova, Amasya, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.1543085,
+          40.8037442
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_buyuk_cekmece",
+        "name": "Büyük Çekmece",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_coastal_barrier",
+        "categoryLabel": "Kıyı set gölü",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Kıyı set gölü olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 2296756",
+        "sourceUrl": "https://www.openstreetmap.org/relation/2296756",
+        "sourceQuery": "Büyükçekmece Gölü, Türkiye",
+        "sourceDisplayName": "Büyükçekmece Gölü, Büyükçekmece, İstanbul, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.5580524,
+          41.0647707
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_kucuk_cekmece",
+        "name": "Küçük Çekmece",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_coastal_barrier",
+        "categoryLabel": "Kıyı set gölü",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Kıyı set gölü olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 17045554",
+        "sourceUrl": "https://www.openstreetmap.org/relation/17045554",
+        "sourceQuery": "Küçükçekmece Gölü, Türkiye",
+        "sourceDisplayName": "Küçükçekmece Gölü, Küçükçekmece, İstanbul, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.7473881,
+          41.0183907
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_terkos_durusu",
+        "name": "Terkos (Durusu)",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_coastal_barrier",
+        "categoryLabel": "Kıyı set gölü",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Kıyı set gölü olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 9680169",
+        "sourceUrl": "https://www.openstreetmap.org/relation/9680169",
+        "sourceQuery": "Terkos İstanbul Türkiye",
+        "sourceDisplayName": "Terkos, Arnavutköy, İstanbul, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.6760707,
+          41.303644
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_akyatan_golu",
+        "name": "Akyatan Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_coastal_barrier",
+        "categoryLabel": "Kıyı set gölü",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Kıyı set gölü olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 272008",
+        "sourceUrl": "https://www.openstreetmap.org/relation/272008",
+        "sourceQuery": "Akyatan Gölü, Türkiye",
+        "sourceDisplayName": "Akyatan Gölü, Karataş, Adana, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2743392,
+          36.6269359
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_eymir_golu",
+        "name": "Eymir Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_alluvial_dam",
+        "categoryLabel": "Alüvyal set gölü",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Alüvyal set gölü olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap way 210345758",
+        "sourceUrl": "https://www.openstreetmap.org/way/210345758",
+        "sourceQuery": "Eymir Gölü, Türkiye",
+        "sourceDisplayName": "Eymir Gölü, Nallıhan, Ankara, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.48035,
+          40.1837293
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_mogan_golu",
+        "name": "Mogan Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_alluvial_dam",
+        "categoryLabel": "Alüvyal set gölü",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Alüvyal set gölü olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 2280277",
+        "sourceUrl": "https://www.openstreetmap.org/relation/2280277",
+        "sourceQuery": "Mogan Gölü, Türkiye",
+        "sourceDisplayName": "Mogan Gölü, Gölbaşı, Ankara, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.7927515,
+          39.7697183
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_bafa_camici_golu",
+        "name": "Bafa (Çamiçi) Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_alluvial_dam",
+        "categoryLabel": "Alüvyal set gölü",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Alüvyal set gölü olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1869452",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1869452",
+        "sourceQuery": "Bafa Gölü, Türkiye",
+        "sourceDisplayName": "Bafa Gölü, Söke, Aydın, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.4245431,
+          37.5152564
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_koycegiz_golu",
+        "name": "Köyceğiz Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_alluvial_dam",
+        "categoryLabel": "Alüvyal set gölü",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Alüvyal set gölü olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1186573",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1186573",
+        "sourceQuery": "Köyceğiz Gölü, Türkiye",
+        "sourceDisplayName": "Köyceğiz Gölü, Ortaca, Muğla, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.6542344,
+          36.9061963
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_marmara_golu",
+        "name": "Marmara Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_alluvial_dam",
+        "categoryLabel": "Alüvyal set gölü",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Alüvyal set gölü olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1761470",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1761470",
+        "sourceQuery": "Marmara Gölü, Türkiye",
+        "sourceDisplayName": "Marmara Gölü, Gölmarmara, Manisa, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.0081352,
+          38.620721
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_van_golu",
+        "name": "Van Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_volcanic_dam",
+        "categoryLabel": "Volkanik set gölü",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Volkanik set gölü olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 36995",
+        "sourceUrl": "https://www.openstreetmap.org/relation/36995",
+        "sourceQuery": "Van Gölü, Türkiye",
+        "sourceDisplayName": "Van Gölü, Bitlis, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          42.8073689,
+          38.6562775
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_ercek_golu",
+        "name": "Erçek Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_volcanic_dam",
+        "categoryLabel": "Volkanik set gölü",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Volkanik set gölü olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1808092",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1808092",
+        "sourceQuery": "Erçek Gölü, Türkiye",
+        "sourceDisplayName": "Erçek Gölü, Van, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.58173,
+          38.6670122
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_nazik_golu",
+        "name": "Nazik Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_volcanic_dam",
+        "categoryLabel": "Volkanik set gölü",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Volkanik set gölü olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 3546627",
+        "sourceUrl": "https://www.openstreetmap.org/relation/3546627",
+        "sourceQuery": "Nazik Gölü, Türkiye",
+        "sourceDisplayName": "Nazik Gölü, Ahlat, Bitlis, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          42.2951194,
+          38.8701169
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_hacli_golu",
+        "name": "Haçlı Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_volcanic_dam",
+        "categoryLabel": "Volkanik set gölü",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Volkanik set gölü olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 2436693",
+        "sourceUrl": "https://www.openstreetmap.org/relation/2436693",
+        "sourceQuery": "Haçlı Gölü, Türkiye",
+        "sourceDisplayName": "Haçlı Gölü, Bulanık, Muş, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          42.2989483,
+          39.0220498
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_cildir_golu",
+        "name": "Çıldır Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_volcanic_dam",
+        "categoryLabel": "Volkanik set gölü",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Volkanik set gölü olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 371040",
+        "sourceUrl": "https://www.openstreetmap.org/relation/371040",
+        "sourceQuery": "Çıldır Gölü, Türkiye",
+        "sourceDisplayName": "Çıldır Gölü, Kars, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.2636391,
+          41.0193871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "lake_balik_golu",
+        "name": "Balık Gölü",
+        "topic": "lake",
+        "topicLabel": "Göller",
+        "category": "lake_volcanic_dam",
+        "categoryLabel": "Volkanik set gölü",
+        "region": "Türkiye",
+        "location": "Türkiye",
+        "kpssNote": "Volkanik set gölü olarak Türkiye içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 2861302",
+        "sourceUrl": "https://www.openstreetmap.org/relation/2861302",
+        "sourceQuery": "Balık Gölü, Ağrı, Türkiye",
+        "sourceDisplayName": "Balık Gölü, Doğubayazıt, Ağrı, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.5661286,
+          39.7810091
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "coast_karadeniz_boyuna_kiyilari",
+        "name": "Karadeniz boyuna kıyıları",
+        "topic": "coast",
+        "topicLabel": "Kıyı Tipleri",
+        "category": "coast_boyuna",
+        "categoryLabel": "Boyuna kıyı tipi",
+        "region": "Karadeniz",
+        "location": "Karadeniz",
+        "kpssNote": "Dağların kıyıya paralel uzandığı boyuna kıyı tipi olarak çalışılır.",
+        "sourceName": "OpenStreetMap relation 223457",
+        "sourceUrl": "https://www.openstreetmap.org/relation/223457",
+        "sourceQuery": "Sinop, Türkiye",
+        "sourceDisplayName": "Sinop, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.9560137,
+          41.6476377
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "coast_akdeniz_boyuna_kiyilari",
+        "name": "Akdeniz boyuna kıyıları",
+        "topic": "coast",
+        "topicLabel": "Kıyı Tipleri",
+        "category": "coast_boyuna",
+        "categoryLabel": "Boyuna kıyı tipi",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Dağların kıyıya paralel uzandığı boyuna kıyı tipi olarak çalışılır.",
+        "sourceName": "OpenStreetMap node 26481523",
+        "sourceUrl": "https://www.openstreetmap.org/node/26481523",
+        "sourceQuery": "Mersin, Türkiye",
+        "sourceDisplayName": "Mersin, Akdeniz, Mersin, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.6298391,
+          36.7978381
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "coast_ege_enine_kiyilari",
+        "name": "Ege enine kıyıları",
+        "topic": "coast",
+        "topicLabel": "Kıyı Tipleri",
+        "category": "coast_enine",
+        "categoryLabel": "Enine kıyı tipi",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Dağların kıyıya dik uzandığı enine kıyı tipi olarak çalışılır.",
+        "sourceName": "OpenStreetMap relation 12734373",
+        "sourceUrl": "https://www.openstreetmap.org/relation/12734373",
+        "sourceQuery": "İzmir Körfezi, Türkiye",
+        "sourceDisplayName": "İzmir Körfezi, İzmir, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.7805555,
+          38.5258249
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "coast_istanbul_bogazi",
+        "name": "İstanbul Boğazı",
+        "topic": "coast",
+        "topicLabel": "Kıyı Tipleri",
+        "category": "coast_ria",
+        "categoryLabel": "Ria kıyı tipi",
+        "region": "Marmara / Ege",
+        "location": "Marmara / Ege",
+        "kpssNote": "Ria kıyı tipi olarak Marmara / Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 8926171",
+        "sourceUrl": "https://www.openstreetmap.org/relation/8926171",
+        "sourceQuery": "İstanbul Boğazı, Türkiye",
+        "sourceDisplayName": "İstanbul Boğazı, İstanbul, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.0718072,
+          41.1125268
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "coast_canakkale_bogazi",
+        "name": "Çanakkale Boğazı",
+        "topic": "coast",
+        "topicLabel": "Kıyı Tipleri",
+        "category": "coast_ria",
+        "categoryLabel": "Ria kıyı tipi",
+        "region": "Marmara / Ege",
+        "location": "Marmara / Ege",
+        "kpssNote": "Ria kıyı tipi olarak Marmara / Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 8926172",
+        "sourceUrl": "https://www.openstreetmap.org/relation/8926172",
+        "sourceQuery": "Çanakkale Boğazı, Türkiye",
+        "sourceDisplayName": "Çanakkale Boğazı, Çanakkale, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.4413908,
+          40.2091726
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "coast_halic",
+        "name": "Haliç",
+        "topic": "coast",
+        "topicLabel": "Kıyı Tipleri",
+        "category": "coast_ria",
+        "categoryLabel": "Ria kıyı tipi",
+        "region": "Marmara / Ege",
+        "location": "Marmara / Ege",
+        "kpssNote": "Ria kıyı tipi olarak Marmara / Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 2791545",
+        "sourceUrl": "https://www.openstreetmap.org/relation/2791545",
+        "sourceQuery": "Haliç, Türkiye",
+        "sourceDisplayName": "Haliç, İstanbul, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.9457854,
+          41.0411549
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "coast_gokova_korfezi",
+        "name": "Gökova Körfezi",
+        "topic": "coast",
+        "topicLabel": "Kıyı Tipleri",
+        "category": "coast_ria",
+        "categoryLabel": "Ria kıyı tipi",
+        "region": "Marmara / Ege",
+        "location": "Marmara / Ege",
+        "kpssNote": "Muğla Menteşe çevresindeki ria kıyı örneğidir.",
+        "sourceName": "OpenStreetMap relation 13795362",
+        "sourceUrl": "https://www.openstreetmap.org/relation/13795362",
+        "sourceQuery": "Gökova Körfezi, Türkiye",
+        "sourceDisplayName": "Gökova Körfezi, Muğla, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.71306,
+          36.8764523
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "coast_kas_finike_arasi",
+        "name": "Kaş - Finike arası",
+        "topic": "coast",
+        "topicLabel": "Kıyı Tipleri",
+        "category": "coast_dalmatian",
+        "categoryLabel": "Dalmaçya kıyı tipi",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Antalya Kaş-Finike arasında görülen Dalmaçya kıyı tipi olarak çalışılır.",
+        "sourceName": "OpenStreetMap relation 1727265",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1727265",
+        "sourceQuery": "Kaş Antalya, Türkiye",
+        "sourceDisplayName": "Kaş, Antalya, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.6413365,
+          36.1993752
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "coast_buyuk_cekmece_kiyilari",
+        "name": "Büyük Çekmece kıyıları",
+        "topic": "coast",
+        "topicLabel": "Kıyı Tipleri",
+        "category": "coast_limanli",
+        "categoryLabel": "Limanlı kıyı tipi",
+        "region": "Marmara",
+        "location": "Marmara",
+        "kpssNote": "Limanlı kıyı tipi olarak Marmara içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 1275387",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1275387",
+        "sourceQuery": "Büyükçekmece, Türkiye",
+        "sourceDisplayName": "Büyükçekmece, İstanbul, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.579757,
+          41.021654
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "coast_kucuk_cekmece_kiyilari",
+        "name": "Küçük Çekmece kıyıları",
+        "topic": "coast",
+        "topicLabel": "Kıyı Tipleri",
+        "category": "coast_limanli",
+        "categoryLabel": "Limanlı kıyı tipi",
+        "region": "Marmara",
+        "location": "Marmara",
+        "kpssNote": "Limanlı kıyı tipi olarak Marmara içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "sourceName": "OpenStreetMap relation 7786498",
+        "sourceUrl": "https://www.openstreetmap.org/relation/7786498",
+        "sourceQuery": "Küçükçekmece, Türkiye",
+        "sourceDisplayName": "Küçükçekmece, İstanbul, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.7711956,
+          40.9918737
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "coast_mersin_silifke_arasi",
+        "name": "Mersin - Silifke arası",
+        "topic": "coast",
+        "topicLabel": "Kıyı Tipleri",
+        "category": "coast_calankli",
+        "categoryLabel": "Kalanklı kıyı tipi",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Mersin-Silifke arasında kalanklı kıyı tipi örneği olarak işaretlenir.",
+        "sourceName": "OpenStreetMap relation 1442334",
+        "sourceUrl": "https://www.openstreetmap.org/relation/1442334",
+        "sourceQuery": "Silifke, Türkiye",
+        "sourceDisplayName": "Silifke, Mersin, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.9260372,
+          36.3778166
+        ]
+      }
+    }
+  ]
+}

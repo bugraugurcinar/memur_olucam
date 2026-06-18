@@ -9,7 +9,12 @@ export const geoJsonSources = {
     url: "/geojson/turkey-provinces.geojson",
     sourceName: "geoBoundaries TUR ADM1",
   },
+  physicalFeatures: {
+    label: "Fiziki yer şekilleri",
+    url: "/geojson/turkey-physical-features.geojson",
+    sourceName: "OpenStreetMap / Photon",
+  },
 } as const;
 
 export const geoJsonAttribution =
-  "Veri: geoBoundaries / OpenStreetMap, CC BY-SA 2.0";
+  "Veri: geoBoundaries ve OpenStreetMap";

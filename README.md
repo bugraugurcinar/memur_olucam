@@ -411,6 +411,12 @@ Phase 2
 * Göller
 * Dağlar
 
+Dağlar için ilk uygulama:
+
+* KPSS sınıflaması: Kıvrım, Kırık, Volkanik
+* GeoJSON marker verisi: `public/geojson/turkey-mountains.geojson`
+* Harita üzerinde kategori filtreli dağ katmanı
+
 Phase 3
 
 * Soru motoru
@@ -500,3 +506,12 @@ Tamamlandı.
 * Türkiye sınırı GeoJSON katmanı
 * 81 il sınırı GeoJSON katmanı
 * Responsive ve dark mode uyumlu ilk ekran
+
+Phase 2
+
+Devam ediyor.
+
+* 196 maddelik KPSS fiziki coğrafya marker veri seti
+* Dağlar, ovalar, platolar, akarsular, göller ve kıyı tipleri
+* Konu ve kategori filtreleri
+* Harita üzerinde seçilebilir fiziki yer şekli markerları
