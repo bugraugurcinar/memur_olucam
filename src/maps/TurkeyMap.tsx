@@ -81,6 +81,16 @@ function provinceStyle(provinceName: string, selectedProvinceName: string | null
   };
 }
 
+function quizProvinceStyle(): L.PathOptions {
+  return {
+    color: "#2563eb",
+    fillColor: "#38bdf8",
+    fillOpacity: 0.2,
+    opacity: 0.68,
+    weight: 0.8,
+  };
+}
+
 function countryStyle(): L.PathOptions {
   return {
     color: "#0f172a",
@@ -226,10 +236,10 @@ export function TurkeyMap({
       const provinceName = getShapeName(layer.feature?.properties);
 
       if (layer instanceof L.Path) {
-        layer.setStyle(provinceStyle(provinceName, selectedProvinceName));
+        layer.setStyle(isQuizActive ? quizProvinceStyle() : provinceStyle(provinceName, selectedProvinceName));
       }
     });
-  }, [selectedProvinceName]);
+  }, [isQuizActive, selectedProvinceName]);
 
   useEffect(() => {
     selectedFeatureRef.current = selectedPhysicalFeatureId;
@@ -262,7 +272,14 @@ export function TurkeyMap({
 
     countryLayerRef.current = countryLayer;
 
-    if (!isQuizActive && provincesData) {
+    if (isQuizActive && provincesData) {
+      const provinceLayer = L.geoJSON(provincesData, {
+        interactive: false,
+        style: quizProvinceStyle,
+      }).addTo(map);
+
+      provinceLayerRef.current = provinceLayer;
+    } else if (provincesData) {
       const provinceLayer = L.geoJSON(provincesData, {
         onEachFeature: (feature, layer: ProvinceLayer) => {
           const provinceName = getShapeName(feature.properties);
