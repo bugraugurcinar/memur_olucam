@@ -1290,16 +1290,16 @@
         "region": "Akdeniz",
         "location": "Akdeniz",
         "kpssNote": "Seyhan ve Ceyhan nehirlerinin oluşturduğu büyük delta ovasıdır.",
-        "sourceName": "OpenStreetMap relation 1249253",
-        "sourceUrl": "https://www.openstreetmap.org/relation/1249253",
-        "sourceQuery": "Çukurova, Türkiye",
-        "sourceDisplayName": "Çukurova, Adana, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=36.91&mlon=35.33#map=9/36.91/35.33",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Çukurova, Seyhan-Ceyhan delta ovası, Adana/Mersin, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          35.2823275,
-          37.0468862
+          35.33,
+          36.91
         ]
       }
     },
@@ -1440,16 +1440,16 @@
         "region": "Akdeniz",
         "location": "Akdeniz",
         "kpssNote": "Karstik ova olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap node 8424613175",
-        "sourceUrl": "https://www.openstreetmap.org/node/8424613175",
-        "sourceQuery": "Elmalı Ovası, Türkiye",
-        "sourceDisplayName": "Yamula Elmalı Ovası, Kocasinan, Kayseri, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=36.735&mlon=29.917#map=9/36.735/29.917",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Elmalı Ovası, Elmalı, Antalya, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          35.2459377,
-          38.8405412
+          29.917,
+          36.735
         ]
       }
     },
@@ -2440,16 +2440,16 @@
         "region": "İç Anadolu",
         "location": "İç Anadolu",
         "kpssNote": "Tektonik ova olarak İç Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap node 11348303679",
-        "sourceUrl": "https://www.openstreetmap.org/node/11348303679",
-        "sourceQuery": "Eskişehir Ovası, Türkiye",
-        "sourceDisplayName": "İnönü Ovası, İnönü, Eskişehir, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=39.78&mlon=30.53#map=9/39.78/30.53",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Eskişehir Ovası, Eskişehir, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          30.0505255,
-          39.7474541
+          30.53,
+          39.78
         ]
       }
     },
@@ -2515,16 +2515,16 @@
         "region": "İç Anadolu",
         "location": "İç Anadolu",
         "kpssNote": "Tektonik ova olarak İç Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap node 254442520",
-        "sourceUrl": "https://www.openstreetmap.org/node/254442520",
-        "sourceQuery": "Akıncı Hava Üssü, Ankara, Türkiye",
-        "sourceDisplayName": "Akıncı Hava Üssü, Kahramankazan, Ankara, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=40.08&mlon=32.58#map=9/40.08/32.58",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Mürted Ovası, Kahramankazan, Ankara, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          32.5641577,
-          40.0791887
+          32.58,
+          40.08
         ]
       }
     },
@@ -2640,16 +2640,16 @@
         "region": "Marmara",
         "location": "Marmara",
         "kpssNote": "Aşınım platosu olarak Marmara içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap relation 1275389",
-        "sourceUrl": "https://www.openstreetmap.org/relation/1275389",
-        "sourceQuery": "Çatalca, İstanbul, Türkiye",
-        "sourceDisplayName": "Çatalca, İstanbul, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=41.03&mlon=29.23#map=9/41.03/29.23",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Çatalca-Kocaeli Platosu, İstanbul/Kocaeli, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          28.4605154,
-          41.1436804
+          29.23,
+          41.03
         ]
       }
     },
@@ -2665,16 +2665,16 @@
         "region": "Karadeniz",
         "location": "Karadeniz",
         "kpssNote": "Aşınım platosu olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap relation 1839067",
-        "sourceUrl": "https://www.openstreetmap.org/relation/1839067",
-        "sourceQuery": "Perşembe Platosu, Türkiye",
-        "sourceDisplayName": "Perşembe, Ordu, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=40.69&mlon=37.43#map=9/40.69/37.43",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Perşembe Platosu, Aybastı, Ordu, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          37.7736318,
-          41.0669482
+          37.43,
+          40.69
         ]
       }
     },
@@ -2690,16 +2690,16 @@
         "region": "Akdeniz",
         "location": "Akdeniz",
         "kpssNote": "Karstik plato olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap relation 9064974",
-        "sourceUrl": "https://www.openstreetmap.org/relation/9064974",
-        "sourceQuery": "Teke Platosu, Türkiye",
-        "sourceDisplayName": "Teke, Şile, İstanbul, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=36.92&mlon=29.92#map=9/36.92/29.92",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Teke Platosu, Teke Yarımadası, Antalya/Burdur/Muğla, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          29.6626435,
-          41.0676404
+          29.92,
+          36.92
         ]
       }
     },
@@ -2715,16 +2715,16 @@
         "region": "Akdeniz",
         "location": "Akdeniz",
         "kpssNote": "Karstik plato olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap node 2514018975",
-        "sourceUrl": "https://www.openstreetmap.org/node/2514018975",
-        "sourceQuery": "Taşeli Platosu, Türkiye",
-        "sourceDisplayName": "Taşeli Platosu, Anamur, Mersin, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=36.76&mlon=32.72#map=9/36.76/32.72",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Taşeli Platosu, Ermenek-Mut-Gülnar-Anamur çevresi, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          32.6433545,
-          36.3625022
+          32.72,
+          36.76
         ]
       }
     },
@@ -2740,16 +2740,16 @@
         "region": "Doğu Anadolu",
         "location": "Doğu Anadolu",
         "kpssNote": "Volkanik lav platosu olarak Doğu Anadolu içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap way 1443445052",
-        "sourceUrl": "https://www.openstreetmap.org/way/1443445052",
-        "sourceQuery": "Erzurum - Kars Platosu, Türkiye",
-        "sourceDisplayName": "Erzurum-Kars yüksek hızlı demiryolu, Pasinler, Erzurum, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=40.15&mlon=42.65#map=9/40.15/42.65",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Erzurum-Kars Platosu, Sarıkamış/Kars çevresi, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          41.690809,
-          39.9664779
+          42.65,
+          40.15
         ]
       }
     },
@@ -3015,16 +3015,16 @@
         "region": "Karadeniz",
         "location": "Karadeniz",
         "kpssNote": "Karadeniz'e dökülen akarsu olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap way 1353138705",
-        "sourceUrl": "https://www.openstreetmap.org/way/1353138705",
-        "sourceQuery": "Çoruh, Artvin, Türkiye",
-        "sourceDisplayName": "Artvin Yusufeli Çoruh Vadisi Yaban Hayatı Geliştirme Sahası, Artvin, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=41.22&mlon=41.72#map=9/41.22/41.72",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Çoruh Nehri, Artvin/Borçka çevresi, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          41.6528812,
-          40.823071
+          41.72,
+          41.22
         ]
       }
     },
@@ -3040,16 +3040,16 @@
         "region": "Karadeniz",
         "location": "Karadeniz",
         "kpssNote": "Karadeniz'e dökülen akarsu olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap relation 13532744",
-        "sourceUrl": "https://www.openstreetmap.org/relation/13532744",
-        "sourceQuery": "Yeşilırmak, Türkiye",
-        "sourceDisplayName": "Yeşilırmak, Karadeniz Bölgesi, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=41.33&mlon=36.78#map=9/41.33/36.78",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Yeşilırmak, Çarşamba deltası, Samsun, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          36.5064031,
-          40.7642005
+          36.78,
+          41.33
         ]
       }
     },
@@ -3065,16 +3065,16 @@
         "region": "Karadeniz",
         "location": "Karadeniz",
         "kpssNote": "Karadeniz'e dökülen akarsu olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap relation 158017",
-        "sourceUrl": "https://www.openstreetmap.org/relation/158017",
-        "sourceQuery": "Kızılırmak, Türkiye",
-        "sourceDisplayName": "Kızılırmak, Karadeniz Bölgesi, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=41.65&mlon=35.95#map=9/41.65/35.95",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Kızılırmak, Bafra deltası, Samsun, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          34.7207926,
-          40.6908116
+          35.95,
+          41.65
         ]
       }
     },
@@ -3090,16 +3090,16 @@
         "region": "Karadeniz",
         "location": "Karadeniz",
         "kpssNote": "Karadeniz'e dökülen akarsu olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap relation 1224897",
-        "sourceUrl": "https://www.openstreetmap.org/relation/1224897",
-        "sourceQuery": "Filyos Çayı, Türkiye",
-        "sourceDisplayName": "Filyos Çayı, Karabük, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=41.56&mlon=32.08#map=9/41.56/32.08",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Filyos Çayı, Filyos/Zonguldak çevresi, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          32.2197157,
-          41.230596
+          32.08,
+          41.56
         ]
       }
     },
@@ -3115,16 +3115,16 @@
         "region": "Karadeniz",
         "location": "Karadeniz",
         "kpssNote": "Karadeniz'e dökülen akarsu olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap relation 17039552",
-        "sourceUrl": "https://www.openstreetmap.org/relation/17039552",
-        "sourceQuery": "Bartın Çayı, Türkiye",
-        "sourceDisplayName": "Bartın Çayı, Bartın, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=41.64&mlon=32.33#map=9/41.64/32.33",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Bartın Çayı, Bartın kıyı kesimi, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          32.3290341,
-          41.5962881
+          32.33,
+          41.64
         ]
       }
     },
@@ -3140,16 +3140,16 @@
         "region": "Karadeniz",
         "location": "Karadeniz",
         "kpssNote": "Karadeniz'e dökülen akarsu olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap relation 11670815",
-        "sourceUrl": "https://www.openstreetmap.org/relation/11670815",
-        "sourceQuery": "Sakarya Nehri, Türkiye",
-        "sourceDisplayName": "Sakarya Nehri, İç Anadolu Bölgesi, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=41.12&mlon=30.68#map=9/41.12/30.68",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Sakarya Nehri, Karasu/Sakarya kıyı kesimi, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          31.1846864,
-          40.0473252
+          30.68,
+          41.12
         ]
       }
     },
@@ -3165,16 +3165,16 @@
         "region": "Marmara",
         "location": "Marmara",
         "kpssNote": "Marmara'ya dökülen akarsu olarak Marmara içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap relation 14006248",
-        "sourceUrl": "https://www.openstreetmap.org/relation/14006248",
-        "sourceQuery": "Susurluk Çayı, Türkiye",
-        "sourceDisplayName": "Simav Çayı, Balıkesir, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=40.23&mlon=28.35#map=9/40.23/28.35",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Susurluk/Simav Çayı, Marmara'ya dökülen kesim, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          28.2471196,
-          39.7469734
+          28.35,
+          40.23
         ]
       }
     },
@@ -3190,16 +3190,16 @@
         "region": "Ege",
         "location": "Ege",
         "kpssNote": "Ege'ye dökülen akarsu olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap way 439470082",
-        "sourceUrl": "https://www.openstreetmap.org/way/439470082",
-        "sourceQuery": "Meriç Nehri, Türkiye",
-        "sourceDisplayName": "Meriç Nehri Sokak, Odunpazarı, Eskişehir, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=40.72&mlon=26.17#map=9/40.72/26.17",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Meriç Nehri, Enez/Edirne çevresi, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          30.5284893,
-          39.7686333
+          26.17,
+          40.72
         ]
       }
     },
@@ -3215,16 +3215,16 @@
         "region": "Ege",
         "location": "Ege",
         "kpssNote": "Ege'ye dökülen akarsu olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap relation 1273141",
-        "sourceUrl": "https://www.openstreetmap.org/relation/1273141",
-        "sourceQuery": "Bakırçay, Türkiye",
-        "sourceDisplayName": "Bakırçay, İzmir, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=38.94&mlon=26.94#map=9/38.94/26.94",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Bakırçay, Çandarlı/Dikili deltası, İzmir, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          27.3100502,
-          39.1151394
+          26.94,
+          38.94
         ]
       }
     },
@@ -3240,16 +3240,16 @@
         "region": "Ege",
         "location": "Ege",
         "kpssNote": "Ege'ye dökülen akarsu olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap relation 14006299",
-        "sourceUrl": "https://www.openstreetmap.org/relation/14006299",
-        "sourceQuery": "Gediz Nehri, Türkiye",
-        "sourceDisplayName": "Gediz Nehri, Ege Bölgesi, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=38.57&mlon=26.82#map=9/38.57/26.82",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Gediz Nehri, Gediz deltası, İzmir, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          28.2741228,
-          38.5990254
+          26.82,
+          38.57
         ]
       }
     },
@@ -3265,16 +3265,16 @@
         "region": "Ege",
         "location": "Ege",
         "kpssNote": "Ege'ye dökülen akarsu olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap node 13051420273",
-        "sourceUrl": "https://www.openstreetmap.org/node/13051420273",
-        "sourceQuery": "Küçük Menderes Nehri, Türkiye",
-        "sourceDisplayName": "Küçük Menderes Nehri, Selçuk, İzmir, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=37.95&mlon=27.27#map=9/37.95/27.27",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Küçük Menderes Nehri, Selçuk/Pamucak çevresi, İzmir, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          27.4357,
-          38.012827
+          27.27,
+          37.95
         ]
       }
     },
@@ -3290,16 +3290,16 @@
         "region": "Ege",
         "location": "Ege",
         "kpssNote": "Ege'ye dökülen akarsu olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap relation 14006313",
-        "sourceUrl": "https://www.openstreetmap.org/relation/14006313",
-        "sourceQuery": "Büyük Menderes Nehri, Türkiye",
-        "sourceDisplayName": "Büyük Menderes Nehri, Ege Bölgesi, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=37.58&mlon=27.26#map=9/37.58/27.26",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Büyük Menderes Nehri, Balat/Söke deltası, Aydın, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          28.4941826,
-          37.8974469
+          27.26,
+          37.58
         ]
       }
     },
@@ -3315,16 +3315,16 @@
         "region": "Akdeniz",
         "location": "Akdeniz",
         "kpssNote": "Akdeniz'e dökülen akarsu olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap relation 16949040",
-        "sourceUrl": "https://www.openstreetmap.org/relation/16949040",
-        "sourceQuery": "Dalaman Çayı, Türkiye",
-        "sourceDisplayName": "Dalaman Çayı, Denizli, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=36.73&mlon=28.78#map=9/36.73/28.78",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Dalaman Çayı, Ortaca/Dalaman kıyı kesimi, Muğla, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          29.1681817,
-          37.1364746
+          28.78,
+          36.73
         ]
       }
     },
@@ -3340,16 +3340,16 @@
         "region": "Akdeniz",
         "location": "Akdeniz",
         "kpssNote": "Akdeniz'e dökülen akarsu olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap relation 1232828",
-        "sourceUrl": "https://www.openstreetmap.org/relation/1232828",
-        "sourceQuery": "Eşen Çayı, Türkiye",
-        "sourceDisplayName": "Eşen Çayı, Muğla, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=36.27&mlon=29.3#map=9/36.27/29.3",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Eşen Çayı, Patara/Eşen deltası, Muğla/Antalya, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          29.3670477,
-          36.6351103
+          29.3,
+          36.27
         ]
       }
     },
@@ -3365,16 +3365,16 @@
         "region": "Akdeniz",
         "location": "Akdeniz",
         "kpssNote": "Akdeniz'e dökülen akarsu olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap relation 14006340",
-        "sourceUrl": "https://www.openstreetmap.org/relation/14006340",
-        "sourceQuery": "Aksu Çayı, Türkiye",
-        "sourceDisplayName": "Aksu Çayı, Burdur, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=36.86&mlon=30.86#map=9/36.86/30.86",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Aksu Çayı, Antalya kıyı kesimi, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          30.8316198,
-          37.3499732
+          30.86,
+          36.86
         ]
       }
     },
@@ -3390,16 +3390,16 @@
         "region": "Akdeniz",
         "location": "Akdeniz",
         "kpssNote": "Akdeniz'e dökülen akarsu olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap relation 8928598",
-        "sourceUrl": "https://www.openstreetmap.org/relation/8928598",
-        "sourceQuery": "Köprüçay, Türkiye",
-        "sourceDisplayName": "Köprüçay, Antalya, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=36.84&mlon=31.17#map=9/36.84/31.17",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Köprüçay, Serik/Boğazkent kıyı kesimi, Antalya, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          31.1794172,
-          37.222175
+          31.17,
+          36.84
         ]
       }
     },
@@ -3415,16 +3415,16 @@
         "region": "Akdeniz",
         "location": "Akdeniz",
         "kpssNote": "Akdeniz'e dökülen akarsu olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap way 96041916",
-        "sourceUrl": "https://www.openstreetmap.org/way/96041916",
-        "sourceQuery": "Manavgat Çayı, Türkiye",
-        "sourceDisplayName": "Manavgat Çayı, Manavgat, Antalya, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=36.74&mlon=31.45#map=9/36.74/31.45",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Manavgat Çayı, Manavgat kıyı kesimi, Antalya, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          31.4558783,
-          36.8108492
+          31.45,
+          36.74
         ]
       }
     },
@@ -3440,16 +3440,16 @@
         "region": "Akdeniz",
         "location": "Akdeniz",
         "kpssNote": "Akdeniz'e dökülen akarsu olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap relation 14006359",
-        "sourceUrl": "https://www.openstreetmap.org/relation/14006359",
-        "sourceQuery": "Göksu Nehri, Türkiye",
-        "sourceDisplayName": "Göksu Nehri, Mersin, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=36.31&mlon=33.93#map=9/36.31/33.93",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Göksu Nehri, Silifke deltası, Mersin, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          33.1959307,
-          36.7688645
+          33.93,
+          36.31
         ]
       }
     },
@@ -3465,16 +3465,16 @@
         "region": "Akdeniz",
         "location": "Akdeniz",
         "kpssNote": "Akdeniz'e dökülen akarsu olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap relation 158234",
-        "sourceUrl": "https://www.openstreetmap.org/relation/158234",
-        "sourceQuery": "Seyhan Nehri, Türkiye",
-        "sourceDisplayName": "Seyhan, Adana, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=36.72&mlon=35.27#map=9/36.72/35.27",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Seyhan Nehri, Çukurova kıyı kesimi, Adana, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          35.3061086,
-          37.1024202
+          35.27,
+          36.72
         ]
       }
     },
@@ -3490,16 +3490,16 @@
         "region": "Akdeniz",
         "location": "Akdeniz",
         "kpssNote": "Akdeniz'e dökülen akarsu olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap relation 158125",
-        "sourceUrl": "https://www.openstreetmap.org/relation/158125",
-        "sourceQuery": "Ceyhan Nehri, Türkiye",
-        "sourceDisplayName": "Ceyhan, Akdeniz Bölgesi, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=36.58&mlon=35.74#map=9/36.58/35.74",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Ceyhan Nehri, Yumurtalık/Adana kıyı kesimi, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          36.2990709,
-          37.3551679
+          35.74,
+          36.58
         ]
       }
     },
@@ -3515,16 +3515,16 @@
         "region": "Akdeniz",
         "location": "Akdeniz",
         "kpssNote": "Akdeniz'e dökülen akarsu olarak Akdeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap way 217100955",
-        "sourceUrl": "https://www.openstreetmap.org/way/217100955",
-        "sourceQuery": "Asi Nehri, Türkiye",
-        "sourceDisplayName": "Asi Nehri Sokağı, Sarıyer, İstanbul, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=36.1&mlon=35.94#map=9/36.1/35.94",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Asi Nehri, Samandağ/Hatay kıyı kesimi, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          29.0223752,
-          41.1562416
+          35.94,
+          36.1
         ]
       }
     },
@@ -3540,16 +3540,16 @@
         "region": "Basra Körfezi",
         "location": "Basra Körfezi",
         "kpssNote": "Basra Körfezi'ne dökülen akarsu olarak Basra Körfezi içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap way 213386190",
-        "sourceUrl": "https://www.openstreetmap.org/way/213386190",
-        "sourceQuery": "Fırat Nehri, Türkiye",
-        "sourceDisplayName": "Fırat Nehri Sk., Pendik, İstanbul, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=37.03&mlon=37.98#map=9/37.03/37.98",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Fırat Nehri, Birecik/Şanlıurfa çevresi, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          29.2857145,
-          40.8827029
+          37.98,
+          37.03
         ]
       }
     },
@@ -3565,16 +3565,16 @@
         "region": "Basra Körfezi",
         "location": "Basra Körfezi",
         "kpssNote": "Basra Körfezi'ne dökülen akarsu olarak Basra Körfezi içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap way 210852612",
-        "sourceUrl": "https://www.openstreetmap.org/way/210852612",
-        "sourceQuery": "Dicle Nehri, Türkiye",
-        "sourceDisplayName": "Dicle Nehri, Hani, Diyarbakır, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=37.32&mlon=42.19#map=9/37.32/42.19",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Dicle Nehri, Cizre/Şırnak çevresi, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          40.4247242,
-          38.4948983
+          42.19,
+          37.32
         ]
       }
     },
@@ -3590,16 +3590,16 @@
         "region": "Hazar Denizi",
         "location": "Hazar Denizi",
         "kpssNote": "Hazar Denizi'ne dökülen akarsu olarak Hazar Denizi içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap way 933303501",
-        "sourceUrl": "https://www.openstreetmap.org/way/933303501",
-        "sourceQuery": "Aras Nehri, Türkiye",
-        "sourceDisplayName": "Aras Nehri, Tekman, Erzurum, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=39.87&mlon=44.33#map=9/39.87/44.33",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Aras Nehri, Iğdır sınır kesimi, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          41.2879946,
-          39.5098697
+          44.33,
+          39.87
         ]
       }
     },
@@ -3615,16 +3615,16 @@
         "region": "Hazar Denizi",
         "location": "Hazar Denizi",
         "kpssNote": "Hazar Denizi'ne dökülen akarsu olarak Hazar Denizi içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap relation 14006313",
-        "sourceUrl": "https://www.openstreetmap.org/relation/14006313",
-        "sourceQuery": "Kura Nehri, Türkiye",
-        "sourceDisplayName": "Büyük Menderes Nehri, Ege Bölgesi, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=41.11&mlon=42.7#map=9/41.11/42.7",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Kura Nehri, Ardahan çevresi, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          28.4941826,
-          37.8974469
+          42.7,
+          41.11
         ]
       }
     },

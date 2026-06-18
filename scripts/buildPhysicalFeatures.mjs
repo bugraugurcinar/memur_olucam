@@ -1,4 +1,5 @@
 import fs from "node:fs/promises";
+import { physicalFeatureCoordinateCorrections } from "./physicalFeatureCorrections.mjs";
 
 const outputPath = new URL("../public/geojson/turkey-physical-features.geojson", import.meta.url);
 const cachePath = new URL("file:///tmp/kpss-physical-feature-geocoding-cache-v2.json");
@@ -560,6 +561,10 @@ function osmUrl(result) {
   return `https://www.openstreetmap.org/${result.osm_type}/${result.osm_id}`;
 }
 
+function manualSourceUrl(correction) {
+  return `https://www.openstreetmap.org/?mlat=${correction.lat}&mlon=${correction.lon}#map=9/${correction.lat}/${correction.lon}`;
+}
+
 async function sleep(ms) {
   await new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -703,6 +708,33 @@ async function geocode(query) {
 }
 
 async function resolveFeature(feature) {
+  const correction = physicalFeatureCoordinateCorrections[feature.id];
+
+  if (correction) {
+    return {
+      type: "Feature",
+      properties: {
+        id: feature.id,
+        name: feature.name,
+        topic: feature.topic,
+        topicLabel: feature.topicLabel,
+        category: feature.category,
+        categoryLabel: feature.categoryLabel,
+        region: feature.region,
+        location: feature.location,
+        kpssNote: feature.kpssNote,
+        sourceName: "Elle düzeltilmiş KPSS temsil noktası",
+        sourceUrl: manualSourceUrl(correction),
+        sourceQuery: "manual:kpss-physical-feature-correction",
+        sourceDisplayName: correction.sourceDisplayName,
+      },
+      geometry: {
+        type: "Point",
+        coordinates: [correction.lon, correction.lat],
+      },
+    };
+  }
+
   for (const query of feature.queries) {
     const result = await geocode(query);
     await sleep(250);
