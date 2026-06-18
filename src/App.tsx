@@ -85,12 +85,6 @@ function App() {
     physicalFeatureCategories.map((category) => category.id),
   );
   const [expandedTopics, setExpandedTopics] = useState<PhysicalFeatureTopic[]>(["mountain"]);
-  const [activeQuizTopics, setActiveQuizTopics] = useState<PhysicalFeatureTopic[]>(() =>
-    physicalFeatureTopics.map((topic) => topic.id),
-  );
-  const [activeQuizCategories, setActiveQuizCategories] = useState<PhysicalFeatureCategory[]>(() =>
-    physicalFeatureCategories.map((category) => category.id),
-  );
   const [expandedQuizTopics, setExpandedQuizTopics] = useState<PhysicalFeatureTopic[]>(["mountain"]);
   const country = useGeoJson(geoJsonSources.country.url);
   const provinces = useGeoJson(geoJsonSources.provinces.url);
@@ -114,10 +108,10 @@ function App() {
     () =>
       physicalFeatures.filter(
         (feature) =>
-          activeQuizTopics.includes(feature.properties.topic) &&
-          activeQuizCategories.includes(feature.properties.category),
+          activeTopics.includes(feature.properties.topic) &&
+          activeCategories.includes(feature.properties.category),
       ),
-    [activeQuizCategories, activeQuizTopics, physicalFeatures],
+    [activeCategories, activeTopics, physicalFeatures],
   );
   const quizTargetFeature = useMemo(
     () => quizQuestionPool.find((feature) => feature.properties.id === quizFeatureId) ?? null,
@@ -132,7 +126,7 @@ function App() {
   const shouldUseCategoryColors = activeTopics.length === 1;
   const canStartQuiz = quizQuestionPool.length > 0 && !physicalFeaturesData.isLoading;
   const activeQuizCategoryCount = physicalFeatureCategories.filter(
-    (category) => activeQuizTopics.includes(category.topic) && activeQuizCategories.includes(category.id),
+    (category) => activeTopics.includes(category.topic) && activeCategories.includes(category.id),
   ).length;
 
   const selectedText = useMemo(
@@ -196,7 +190,7 @@ function App() {
   }, []);
 
   const handleQuizTopicToggle = useCallback((topicId: PhysicalFeatureTopic) => {
-    setActiveQuizTopics((currentTopics) =>
+    setActiveTopics((currentTopics) =>
       currentTopics.includes(topicId)
         ? currentTopics.filter((currentTopic) => currentTopic !== topicId)
         : [...currentTopics, topicId],
@@ -214,12 +208,12 @@ function App() {
   const handleQuizCategoryToggle = useCallback((categoryId: PhysicalFeatureCategory) => {
     const category = getPhysicalFeatureCategory(categoryId);
 
-    setActiveQuizCategories((currentCategories) =>
+    setActiveCategories((currentCategories) =>
       currentCategories.includes(categoryId)
         ? currentCategories.filter((currentCategory) => currentCategory !== categoryId)
         : [...currentCategories, categoryId],
     );
-    setActiveQuizTopics((currentTopics) =>
+    setActiveTopics((currentTopics) =>
       currentTopics.includes(category.topic) ? currentTopics : [...currentTopics, category.topic],
     );
   }, []);
@@ -384,7 +378,7 @@ function App() {
               </div>
               <div className="topic-filter-list" aria-label="Soru kategorileri">
                 {physicalFeatureTopics.map((topic) => {
-                  const isActive = activeQuizTopics.includes(topic.id);
+                  const isActive = activeTopics.includes(topic.id);
                   const isExpanded = expandedQuizTopics.includes(topic.id);
                   const topicCount = physicalFeatures.filter((feature) => feature.properties.topic === topic.id).length;
                   const topicCategories = physicalFeatureCategories.filter((category) => category.topic === topic.id);
@@ -415,7 +409,7 @@ function App() {
                       {isExpanded ? (
                         <div className="topic-category-list" aria-label={`${topic.label} soru kategorileri`}>
                           {topicCategories.map((category) => {
-                            const isCategoryActive = activeQuizCategories.includes(category.id);
+                            const isCategoryActive = activeCategories.includes(category.id);
                             const categoryCount = physicalFeatures.filter(
                               (feature) => feature.properties.category === category.id,
                             ).length;
