@@ -25,16 +25,6 @@ type QuizPoint = {
   lng: number;
 };
 
-type QuizMapOption = {
-  id: string;
-  label: string;
-  point: QuizPoint;
-  name: string;
-  categoryLabel: string;
-  markerIconName: string;
-  isCorrect: boolean;
-};
-
 type QuizResultStatus = "correct" | "wrong" | null;
 
 type TurkeyMapProps = {
@@ -51,19 +41,12 @@ type TurkeyMapProps = {
   selectedProvinceName: string | null;
   selectedPhysicalFeatureId: string | null;
   selectedEconomicFeatureId: string | null;
-  isQuizActive: boolean;
   isPlusActive: boolean;
-  quizGuessPoints: QuizPoint[];
-  quizResultStatus: QuizResultStatus;
-  quizTargetName: string;
-  quizTargetPoint: QuizPoint | null;
-  quizShowTargetPoint: boolean;
-  quizPromptTarget: boolean;
-  quizMapOptions: QuizMapOption[];
-  quizSelectedOptionId: string | null;
-  quizCorrectOptionIds: string[];
-  quizSelectedLineOptionIds: string[];
-  quizCorrectLineOptionIds: string[];
+  isPlusMapLocateActive: boolean;
+  plusGuessPoints: QuizPoint[];
+  plusMapLocateTargetName: string;
+  plusMapLocateTargetPoint: QuizPoint | null;
+  plusMapLocateShowTargetPoint: boolean;
   plusTargets: PlusMapTarget[];
   plusSelectedTargetIds: string[];
   plusCorrectTargetIds: string[];
@@ -73,8 +56,7 @@ type TurkeyMapProps = {
   onProvinceSelect: (provinceName: string) => void;
   onPhysicalFeatureSelect: (feature: PhysicalFeatureProperties) => void;
   onEconomicFeatureSelect: (feature: EconomicFeatureProperties) => void;
-  onQuizGuess: (point: QuizPoint) => void;
-  onQuizOptionSelect: (optionId: string) => void;
+  onPlusMapGuess: (point: QuizPoint) => void;
   onPlusTargetSelect: (targetId: string) => void;
   onPlusTargetDrop: (targetId: string, tokenId: string) => void;
 };
@@ -238,22 +220,15 @@ function getSharedMarkerIconName(markers: Array<{ markerIconName: string }>) {
 }
 
 function createQuizIcon(
-  markerType: "guess" | "answer" | "prompt" | "option",
+  markerType: "guess" | "answer",
   resultStatus: QuizResultStatus = null,
   label?: string,
   iconName?: string | null,
 ) {
-  const markerClass =
-    markerType === "guess"
-      ? "quiz-guess-marker"
-      : markerType === "prompt"
-        ? "quiz-prompt-marker"
-        : markerType === "option"
-          ? "quiz-option-marker"
-          : "quiz-answer-marker";
+  const markerClass = markerType === "guess" ? "quiz-guess-marker" : "quiz-answer-marker";
   const statusClass = resultStatus ? ` quiz-map-marker--${resultStatus}` : "";
   const iconClass = iconName ? " quiz-map-marker--with-icon" : "";
-  const markerLabel = label ?? (markerType === "guess" ? "T" : markerType === "prompt" ? "?" : "D");
+  const markerLabel = label ?? (markerType === "guess" ? "T" : "D");
 
   return L.divIcon({
     className: `quiz-map-marker ${markerClass}${statusClass}${iconClass}`,
@@ -303,19 +278,12 @@ export function TurkeyMap({
   selectedProvinceName,
   selectedPhysicalFeatureId,
   selectedEconomicFeatureId,
-  isQuizActive,
   isPlusActive,
-  quizGuessPoints,
-  quizResultStatus,
-  quizTargetName,
-  quizTargetPoint,
-  quizShowTargetPoint,
-  quizPromptTarget,
-  quizMapOptions,
-  quizSelectedOptionId,
-  quizCorrectOptionIds,
-  quizSelectedLineOptionIds,
-  quizCorrectLineOptionIds,
+  isPlusMapLocateActive,
+  plusGuessPoints,
+  plusMapLocateTargetName,
+  plusMapLocateTargetPoint,
+  plusMapLocateShowTargetPoint,
   plusTargets,
   plusSelectedTargetIds,
   plusCorrectTargetIds,
@@ -325,8 +293,7 @@ export function TurkeyMap({
   onProvinceSelect,
   onPhysicalFeatureSelect,
   onEconomicFeatureSelect,
-  onQuizGuess,
-  onQuizOptionSelect,
+  onPlusMapGuess,
   onPlusTargetSelect,
   onPlusTargetDrop,
 }: TurkeyMapProps) {
@@ -337,9 +304,8 @@ export function TurkeyMap({
   const physicalFeatureLayerRef = useRef<L.GeoJSON | null>(null);
   const economicFeatureLayerRef = useRef<L.GeoJSON | null>(null);
   const quizLayerRef = useRef<L.LayerGroup | null>(null);
-  const isQuizActiveRef = useRef(isQuizActive);
-  const onQuizGuessRef = useRef(onQuizGuess);
-  const onQuizOptionSelectRef = useRef(onQuizOptionSelect);
+  const isPlusMapLocateActiveRef = useRef(isPlusMapLocateActive);
+  const onPlusMapGuessRef = useRef(onPlusMapGuess);
   const onPlusTargetSelectRef = useRef(onPlusTargetSelect);
   const onPlusTargetDropRef = useRef(onPlusTargetDrop);
   const selectedProvinceRef = useRef<string | null>(selectedProvinceName);
@@ -393,12 +359,11 @@ export function TurkeyMap({
   }, []);
 
   useEffect(() => {
-    isQuizActiveRef.current = isQuizActive;
-    onQuizGuessRef.current = onQuizGuess;
-    onQuizOptionSelectRef.current = onQuizOptionSelect;
+    isPlusMapLocateActiveRef.current = isPlusMapLocateActive;
+    onPlusMapGuessRef.current = onPlusMapGuess;
     onPlusTargetSelectRef.current = onPlusTargetSelect;
     onPlusTargetDropRef.current = onPlusTargetDrop;
-  }, [isQuizActive, onPlusTargetDrop, onPlusTargetSelect, onQuizGuess, onQuizOptionSelect]);
+  }, [isPlusMapLocateActive, onPlusMapGuess, onPlusTargetDrop, onPlusTargetSelect]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -408,11 +373,11 @@ export function TurkeyMap({
     }
 
     const handleMapClick = (event: LeafletMouseEvent) => {
-      if (!isQuizActiveRef.current) {
+      if (!isPlusMapLocateActiveRef.current) {
         return;
       }
 
-      onQuizGuessRef.current({
+      onPlusMapGuessRef.current({
         lat: event.latlng.lat,
         lng: event.latlng.lng,
       });
@@ -427,16 +392,15 @@ export function TurkeyMap({
 
   useEffect(() => {
     selectedProvinceRef.current = selectedProvinceName;
-    const isQuestionActive = isQuizActive || isPlusActive;
 
     provinceLayerRef.current?.eachLayer((layer: ProvinceLayer) => {
       const provinceName = getShapeName(layer.feature?.properties);
 
       if (layer instanceof L.Path) {
-        layer.setStyle(isQuestionActive ? quizProvinceStyle() : provinceStyle(provinceName, selectedProvinceName));
+        layer.setStyle(isPlusActive ? quizProvinceStyle() : provinceStyle(provinceName, selectedProvinceName));
       }
     });
-  }, [isPlusActive, isQuizActive, selectedProvinceName]);
+  }, [isPlusActive, selectedProvinceName]);
 
   useEffect(() => {
     selectedFeatureRef.current = selectedPhysicalFeatureId;
@@ -492,7 +456,7 @@ export function TurkeyMap({
 
     countryLayerRef.current = countryLayer;
 
-    if ((isQuizActive || isPlusActive) && provincesData) {
+    if (isPlusActive && provincesData) {
       const provinceLayer = L.geoJSON(provincesData, {
         interactive: false,
         style: quizProvinceStyle,
@@ -542,7 +506,7 @@ export function TurkeyMap({
       countryLayer.remove();
       provinceLayerRef.current?.remove();
     };
-  }, [countryData, provincesData, isPlusActive, isQuizActive, onProvinceSelect]);
+  }, [countryData, provincesData, isPlusActive, onProvinceSelect]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -554,7 +518,7 @@ export function TurkeyMap({
     physicalFeatureLayerRef.current?.remove();
     physicalFeatureLayerRef.current = null;
 
-    if (isQuizActive || isPlusActive) {
+    if (isPlusActive) {
       return;
     }
 
@@ -641,7 +605,6 @@ export function TurkeyMap({
     activePhysicalCategories,
     activePhysicalTopics,
     isPlusActive,
-    isQuizActive,
     onPhysicalFeatureSelect,
     shouldUsePhysicalCategoryColors,
   ]);
@@ -656,7 +619,7 @@ export function TurkeyMap({
     economicFeatureLayerRef.current?.remove();
     economicFeatureLayerRef.current = null;
 
-    if (isQuizActive || isPlusActive) {
+    if (isPlusActive) {
       return;
     }
 
@@ -747,7 +710,6 @@ export function TurkeyMap({
     activeEconomicCategories,
     activeEconomicTopics,
     isPlusActive,
-    isQuizActive,
     onEconomicFeatureSelect,
     shouldUseEconomicCategoryColors,
   ]);
@@ -762,66 +724,13 @@ export function TurkeyMap({
     quizLayerRef.current?.remove();
 
     const quizLayer = L.layerGroup().addTo(map);
-    const mapOptionLatLngs = quizMapOptions.map((option) => L.latLng(option.point.lat, option.point.lng));
     const plusTargetLatLngs = plusTargets.map((target) => L.latLng(target.point.lat, target.point.lng));
-    const optionLatLngById = new Map<string, L.LatLng>();
-    const safeQuizOptionIconName = getSharedMarkerIconName(quizMapOptions);
     const safePlusTargetIconName = getSharedMarkerIconName(plusTargets);
-
-    quizMapOptions.forEach((option) => {
-      const optionLatLng = L.latLng(option.point.lat, option.point.lng);
-
-      optionLatLngById.set(option.id, optionLatLng);
-      optionLatLngById.set(option.label, optionLatLng);
-    });
-    const guessLatLngs = quizGuessPoints.map((point) => L.latLng(point.lat, point.lng));
+    const guessLatLngs = plusGuessPoints.map((point) => L.latLng(point.lat, point.lng));
     const lastGuessLatLng = guessLatLngs[guessLatLngs.length - 1] ?? null;
-    const targetLatLng = quizTargetPoint ? L.latLng(quizTargetPoint.lat, quizTargetPoint.lng) : null;
-    const fallbackSelectedLineIds =
-      quizSelectedLineOptionIds.length === 0 && quizSelectedOptionId?.includes("|")
-        ? quizSelectedOptionId.split("|")
-        : quizSelectedLineOptionIds;
-    const fallbackCorrectLineIds =
-      quizCorrectLineOptionIds.length === 0 && quizCorrectOptionIds[0]?.includes("|")
-        ? quizCorrectOptionIds[0].split("|")
-        : quizCorrectLineOptionIds;
-
-    quizMapOptions.forEach((option) => {
-      const optionLatLng = L.latLng(option.point.lat, option.point.lng);
-      const isCorrectOption = quizCorrectOptionIds.includes(option.id);
-      const isSelectedOption = option.id === quizSelectedOptionId;
-      const optionStatus: QuizResultStatus = quizResultStatus
-        ? isCorrectOption
-          ? "correct"
-          : isSelectedOption
-            ? "wrong"
-            : null
-        : null;
-      const marker = L.marker(optionLatLng, {
-        bubblingMouseEvents: false,
-        icon: createQuizIcon("option", optionStatus, option.label, safeQuizOptionIconName),
-        keyboard: true,
-        pane: QUIZ_PANE,
-      })
-        .bindTooltip(
-          quizResultStatus
-            ? `${option.label}: ${option.name} · ${option.categoryLabel}`
-            : `${option.label} noktası`,
-          {
-            direction: "top",
-            opacity: 0.96,
-          },
-        )
-        .addTo(quizLayer);
-
-      if (!quizResultStatus) {
-        marker.on("click", () => onQuizOptionSelectRef.current(option.id));
-      }
-
-      if (quizResultStatus && (isCorrectOption || isSelectedOption)) {
-        marker.openTooltip();
-      }
-    });
+    const targetLatLng = plusMapLocateTargetPoint
+      ? L.latLng(plusMapLocateTargetPoint.lat, plusMapLocateTargetPoint.lng)
+      : null;
 
     plusTargets.forEach((target) => {
       const targetLatLng = L.latLng(target.point.lat, target.point.lng);
@@ -893,9 +802,9 @@ export function TurkeyMap({
         .addTo(quizLayer);
     });
 
-    if (lastGuessLatLng && targetLatLng && quizResultStatus) {
+    if (lastGuessLatLng && targetLatLng && plusResultStatus) {
       L.polyline([lastGuessLatLng, targetLatLng], {
-        color: quizResultStatus === "correct" ? "#16a34a" : "#f97316",
+        color: plusResultStatus === "correct" ? "#16a34a" : "#f97316",
         dashArray: "7 8",
         opacity: 0.86,
         pane: QUIZ_PANE,
@@ -903,76 +812,32 @@ export function TurkeyMap({
       }).addTo(quizLayer);
     }
 
-    const selectedLineLatLngs = fallbackSelectedLineIds
-      .map((optionId) => optionLatLngById.get(optionId))
-      .filter((latLng): latLng is L.LatLng => Boolean(latLng));
-    const correctLineLatLngs = fallbackCorrectLineIds
-      .map((optionId) => optionLatLngById.get(optionId))
-      .filter((latLng): latLng is L.LatLng => Boolean(latLng));
-
-    if (selectedLineLatLngs.length > 1) {
-      L.polyline(selectedLineLatLngs, {
-        color: quizResultStatus === "correct" ? "#16a34a" : "#f97316",
-        dashArray: quizResultStatus === "correct" ? undefined : "7 8",
-        opacity: 0.9,
-        pane: QUIZ_PANE,
-        weight: 3,
-      }).addTo(quizLayer);
-    }
-
-    if (
-      correctLineLatLngs.length > 1 &&
-      fallbackCorrectLineIds.join("|") !== fallbackSelectedLineIds.join("|")
-    ) {
-      L.polyline(correctLineLatLngs, {
-        color: "#16a34a",
-        opacity: 0.92,
-        pane: QUIZ_PANE,
-        weight: 3,
-      }).addTo(quizLayer);
-    }
-
-    if (targetLatLng && quizShowTargetPoint) {
-      const markerType = quizPromptTarget && !quizResultStatus ? "prompt" : "answer";
-
+    if (targetLatLng && plusMapLocateShowTargetPoint) {
       L.marker(targetLatLng, {
-        icon: createQuizIcon(markerType, quizResultStatus),
+        icon: createQuizIcon("answer", plusResultStatus),
         keyboard: false,
         pane: QUIZ_PANE,
       })
-        .bindTooltip(
-          markerType === "prompt" ? "Soru noktası" : `${quizTargetName} · Doğru konum`,
-          {
-            direction: "top",
-            offset: [0, -2],
-            opacity: 0.96,
-          },
-        )
+        .bindTooltip(`${plusMapLocateTargetName} · Doğru konum`, {
+          direction: "top",
+          offset: [0, -2],
+          opacity: 0.96,
+        })
         .addTo(quizLayer)
         .openTooltip();
     }
 
-    if (mapOptionLatLngs.length > 0) {
-      map.flyToBounds(L.latLngBounds(mapOptionLatLngs), {
-        duration: 0.55,
-        maxZoom: 7,
-        padding: [80, 80],
-      });
-    } else if (plusTargetLatLngs.length > 0) {
+    if (plusTargetLatLngs.length > 0) {
       map.flyToBounds(L.latLngBounds(plusTargetLatLngs), {
         duration: 0.55,
         maxZoom: 7,
         padding: [80, 80],
       });
-    } else if (lastGuessLatLng && targetLatLng && quizResultStatus) {
+    } else if (lastGuessLatLng && targetLatLng && plusResultStatus) {
       map.flyToBounds(L.latLngBounds([lastGuessLatLng, targetLatLng]), {
         duration: 0.8,
-        maxZoom: quizResultStatus === "correct" ? 8 : 7,
+        maxZoom: plusResultStatus === "correct" ? 8 : 7,
         padding: [80, 80],
-      });
-    } else if (targetLatLng && quizPromptTarget) {
-      map.flyTo(targetLatLng, Math.max(map.getZoom(), 6), {
-        duration: 0.45,
       });
     } else if (lastGuessLatLng) {
       map.flyTo(lastGuessLatLng, Math.max(map.getZoom(), 6), {
@@ -988,21 +853,14 @@ export function TurkeyMap({
   }, [
     plusAssignedTokenLabels,
     plusCorrectTargetIds,
+    plusGuessPoints,
+    plusMapLocateShowTargetPoint,
+    plusMapLocateTargetName,
+    plusMapLocateTargetPoint,
     plusResultStatus,
     plusSelectedTargetIds,
     plusTargets,
     plusWrongTargetIds,
-    quizCorrectOptionIds,
-    quizCorrectLineOptionIds,
-    quizGuessPoints,
-    quizMapOptions,
-    quizPromptTarget,
-    quizResultStatus,
-    quizSelectedLineOptionIds,
-    quizSelectedOptionId,
-    quizShowTargetPoint,
-    quizTargetName,
-    quizTargetPoint,
   ]);
 
   return <div ref={containerRef} className="turkey-map" aria-label="Türkiye fiziki coğrafya haritası" />;

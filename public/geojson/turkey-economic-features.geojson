@@ -1830,6 +1830,81 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "livestock_buyukbas_mera_agri",
+        "name": "Büyükbaş mera",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_pasture",
+        "categoryLabel": "Mera hayvancılığı",
+        "region": "Doğu Anadolu",
+        "location": "Ağrı",
+        "kpssNote": "Erzurum-Kars-Ardahan çevresi yaz yağışlı çayırlarıyla büyükbaş mera hayvancılığının klasik KPSS alanıdır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=A%C4%9Fr%C4%B1%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Ağrı, Türkiye",
+        "sourceDisplayName": "Ağrı"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.051,
+          39.719
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_buyukbas_mera_mus",
+        "name": "Büyükbaş mera",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_pasture",
+        "categoryLabel": "Mera hayvancılığı",
+        "region": "Doğu Anadolu",
+        "location": "Muş",
+        "kpssNote": "Erzurum-Kars-Ardahan çevresi yaz yağışlı çayırlarıyla büyükbaş mera hayvancılığının klasik KPSS alanıdır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Mu%C5%9F%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Muş, Türkiye",
+        "sourceDisplayName": "Muş"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.491,
+          38.745
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_buyukbas_mera_bingol",
+        "name": "Büyükbaş mera",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_pasture",
+        "categoryLabel": "Mera hayvancılığı",
+        "region": "Doğu Anadolu",
+        "location": "Bingöl",
+        "kpssNote": "Erzurum-Kars-Ardahan çevresi yaz yağışlı çayırlarıyla büyükbaş mera hayvancılığının klasik KPSS alanıdır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Bing%C3%B6l%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Bingöl, Türkiye",
+        "sourceDisplayName": "Bingöl"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.498,
+          38.885
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "livestock_buyukbas_besi_marmara_istanbul_cevresi",
         "name": "Büyükbaş besi",
         "topic": "livestock",
@@ -1899,6 +1974,56 @@
         "coordinates": [
           32.484,
           37.871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_buyukbas_besi_bursa",
+        "name": "Büyükbaş besi",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_stall",
+        "categoryLabel": "Besi / ahır",
+        "region": "Marmara / Ege / İç Anadolu",
+        "location": "Bursa",
+        "kpssNote": "Bursa, pazara yakınlık ve yem sanayisi bağlantısıyla Marmara'nın besi/süt sığırcılığı merkezlerinden biridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Bursa%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Bursa, Türkiye",
+        "sourceDisplayName": "Bursa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.067,
+          40.183
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_buyukbas_besi_cukurova_adana",
+        "name": "Büyükbaş besi",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_stall",
+        "categoryLabel": "Besi / ahır",
+        "region": "Marmara / Ege / İç Anadolu",
+        "location": "Çukurova / Adana",
+        "kpssNote": "Çukurova, pamuk çiğidi ve yem bitkisi üretimine bağlı besi hayvancılığıyla bilinir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=%C3%87ukurova%20%2F%20Adana%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Çukurova / Adana, Türkiye",
+        "sourceDisplayName": "Çukurova / Adana"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.32,
+          37
         ]
       }
     },
@@ -3455,6 +3580,56 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "mine_volfram_uludag_bursa",
+        "name": "Volfram",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_metal",
+        "categoryLabel": "Metal madenleri",
+        "region": "Marmara / Doğu Anadolu / Ege / İç Anadolu",
+        "location": "Uludağ / Bursa",
+        "kpssNote": "Uludağ, Türkiye'nin volfram (tungsten) yatağı bakımından KPSS'de en bilinen örneğidir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Uluda%C4%9F%20%2F%20Bursa%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Uludağ / Bursa, Türkiye",
+        "sourceDisplayName": "Uludağ / Bursa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.232,
+          40.111
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "mine_antimon_turhal_tokat",
+        "name": "Antimon",
+        "topic": "mine",
+        "topicLabel": "Madenler",
+        "category": "mine_metal",
+        "categoryLabel": "Metal madenleri",
+        "region": "Marmara / Doğu Anadolu / Ege / İç Anadolu",
+        "location": "Turhal / Tokat",
+        "kpssNote": "Turhal, antimon çıkarımıyla Karadeniz iç kesiminin KPSS maden örneklerindendir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Turhal%20%2F%20Tokat%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Turhal / Tokat, Türkiye",
+        "sourceDisplayName": "Turhal / Tokat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.083,
+          40.383
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "mine_oltu_tasi_oltu_erzurum",
         "name": "Oltu taşı",
         "topic": "mine",
@@ -4130,6 +4305,56 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "energy_jeotermal_enerji_simav_kutahya",
+        "name": "Jeotermal enerji",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_geothermal",
+        "categoryLabel": "Jeotermal",
+        "region": "Ege / Marmara",
+        "location": "Simav / Kütahya",
+        "kpssNote": "Jeotermal enerji Batı Anadolu grabenleriyle ilişkilidir; Denizli, Aydın ve Manisa çevresi KPSS'de temel örneklerdir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Simav%20%2F%20K%C3%BCtahya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Simav / Kütahya, Türkiye",
+        "sourceDisplayName": "Simav / Kütahya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.984,
+          39.092
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_jeotermal_enerji_afyonkarahisar",
+        "name": "Jeotermal enerji",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_geothermal",
+        "categoryLabel": "Jeotermal",
+        "region": "Ege / Marmara",
+        "location": "Afyonkarahisar",
+        "kpssNote": "Jeotermal enerji Batı Anadolu grabenleriyle ilişkilidir; Denizli, Aydın ve Manisa çevresi KPSS'de temel örneklerdir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Afyonkarahisar%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Afyonkarahisar, Türkiye",
+        "sourceDisplayName": "Afyonkarahisar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.538,
+          38.756
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "energy_ruzgar_enerjisi_alacati_cesme_izmir",
         "name": "Rüzgar enerjisi",
         "topic": "energy",
@@ -4230,6 +4455,81 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "energy_ruzgar_enerjisi_karaburun_izmir",
+        "name": "Rüzgar enerjisi",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_wind",
+        "categoryLabel": "Rüzgar",
+        "region": "Ege / Marmara / Akdeniz",
+        "location": "Karaburun / İzmir",
+        "kpssNote": "Rüzgar enerjisi Ege ve Marmara kıyıları ile geçit rüzgarlarının güçlü olduğu alanlarda yoğunlaşır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Karaburun%20%2F%20%C4%B0zmir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Karaburun / İzmir, Türkiye",
+        "sourceDisplayName": "Karaburun / İzmir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.512,
+          38.642
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_ruzgar_enerjisi_gonen_balikesir",
+        "name": "Rüzgar enerjisi",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_wind",
+        "categoryLabel": "Rüzgar",
+        "region": "Ege / Marmara / Akdeniz",
+        "location": "Gönen / Balıkesir",
+        "kpssNote": "Rüzgar enerjisi Ege ve Marmara kıyıları ile geçit rüzgarlarının güçlü olduğu alanlarda yoğunlaşır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=G%C3%B6nen%20%2F%20Bal%C4%B1kesir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Gönen / Balıkesir, Türkiye",
+        "sourceDisplayName": "Gönen / Balıkesir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.654,
+          40.106
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_ruzgar_enerjisi_bahce_osmaniye",
+        "name": "Rüzgar enerjisi",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_wind",
+        "categoryLabel": "Rüzgar",
+        "region": "Ege / Marmara / Akdeniz",
+        "location": "Bahçe / Osmaniye",
+        "kpssNote": "Nurdağı Geçidi çevresindeki geçit rüzgarları, dağlar arası boğazlarda hızlanan rüzgardan yararlanan enerji yatırımlarına örnektir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Bah%C3%A7e%20%2F%20Osmaniye%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Bahçe / Osmaniye, Türkiye",
+        "sourceDisplayName": "Bahçe / Osmaniye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.31,
+          37.199
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "energy_gunes_enerjisi_karapinar_konya",
         "name": "Güneş enerjisi",
         "topic": "energy",
@@ -4299,6 +4599,81 @@
         "coordinates": [
           40.05,
           36.847
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_gunes_enerjisi_aksaray",
+        "name": "Güneş enerjisi",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_solar",
+        "categoryLabel": "Güneş",
+        "region": "İç Anadolu / Güneydoğu Anadolu / Akdeniz",
+        "location": "Aksaray",
+        "kpssNote": "Güneş enerjisi yıllık güneşlenme süresi yüksek olan İç Anadolu, Güneydoğu Anadolu ve Akdeniz iç kesimleriyle ilişkilidir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Aksaray%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Aksaray, Türkiye",
+        "sourceDisplayName": "Aksaray"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.038,
+          38.372
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_gunes_enerjisi_mardin",
+        "name": "Güneş enerjisi",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_solar",
+        "categoryLabel": "Güneş",
+        "region": "İç Anadolu / Güneydoğu Anadolu / Akdeniz",
+        "location": "Mardin",
+        "kpssNote": "Güneş enerjisi yıllık güneşlenme süresi yüksek olan İç Anadolu, Güneydoğu Anadolu ve Akdeniz iç kesimleriyle ilişkilidir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Mardin%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Mardin, Türkiye",
+        "sourceDisplayName": "Mardin"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.739,
+          37.312
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_gunes_enerjisi_sirnak",
+        "name": "Güneş enerjisi",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_solar",
+        "categoryLabel": "Güneş",
+        "region": "İç Anadolu / Güneydoğu Anadolu / Akdeniz",
+        "location": "Şırnak",
+        "kpssNote": "Güneş enerjisi yıllık güneşlenme süresi yüksek olan İç Anadolu, Güneydoğu Anadolu ve Akdeniz iç kesimleriyle ilişkilidir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=%C5%9E%C4%B1rnak%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Şırnak, Türkiye",
+        "sourceDisplayName": "Şırnak"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          42.454,
+          37.518
         ]
       }
     },
@@ -5230,6 +5605,56 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "industry_kayisi_isleme_malatya",
+        "name": "Kayısı işleme",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_food_agro",
+        "categoryLabel": "Gıda / tarımsal sanayi",
+        "region": "İç Anadolu / Doğu Anadolu / Karadeniz / Ege",
+        "location": "Malatya",
+        "kpssNote": "Malatya, kuru kayısı üretimi ve işlemesinde Türkiye'nin KPSS'de en bilinen merkezidir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Malatya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Malatya, Türkiye",
+        "sourceDisplayName": "Malatya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.309,
+          38.355
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_fistik_isleme_gaziantep",
+        "name": "Fıstık işleme",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_food_agro",
+        "categoryLabel": "Gıda / tarımsal sanayi",
+        "region": "İç Anadolu / Doğu Anadolu / Karadeniz / Ege",
+        "location": "Gaziantep",
+        "kpssNote": "Gaziantep, Antep fıstığı üretimi ve işleme sanayisiyle Güneydoğu Anadolu'nun KPSS örneklerindendir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Gaziantep%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Gaziantep, Türkiye",
+        "sourceDisplayName": "Gaziantep"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.383,
+          37.066
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "industry_kagit_sanayi_izmit_kocaeli",
         "name": "Kağıt sanayi",
         "topic": "industry",
@@ -5380,6 +5805,31 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "industry_cam_sanayi_mersin",
+        "name": "Cam sanayi",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_material",
+        "categoryLabel": "Kağıt / seramik / cam",
+        "region": "Marmara / Ege / Karadeniz / Akdeniz",
+        "location": "Mersin",
+        "kpssNote": "Kağıt, seramik ve cam sanayisi hammadde, enerji, su, ulaşım ve pazar koşullarıyla birlikte sorulur.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Mersin%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Mersin, Türkiye",
+        "sourceDisplayName": "Mersin"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.641,
+          36.812
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "tourism_kiyi_turizmi_antalya",
         "name": "Kıyı turizmi",
         "topic": "tourism",
@@ -5474,6 +5924,106 @@
         "coordinates": [
           27.259,
           37.858
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tourism_kiyi_turizmi_alanya_antalya",
+        "name": "Kıyı turizmi",
+        "topic": "tourism",
+        "topicLabel": "Turizm",
+        "category": "tourism_coastal",
+        "categoryLabel": "Kıyı turizmi",
+        "region": "Akdeniz / Ege",
+        "location": "Alanya / Antalya",
+        "kpssNote": "Kıyı turizmi yaz kuraklığı, uzun güneşlenme süresi, koy-körfez yapısı ve ulaşım bağlantılarıyla ilişkilidir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Alanya%20%2F%20Antalya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Alanya / Antalya, Türkiye",
+        "sourceDisplayName": "Alanya / Antalya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.998,
+          36.544
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tourism_kiyi_turizmi_cesme_izmir",
+        "name": "Kıyı turizmi",
+        "topic": "tourism",
+        "topicLabel": "Turizm",
+        "category": "tourism_coastal",
+        "categoryLabel": "Kıyı turizmi",
+        "region": "Akdeniz / Ege",
+        "location": "Çeşme / İzmir",
+        "kpssNote": "Kıyı turizmi yaz kuraklığı, uzun güneşlenme süresi, koy-körfez yapısı ve ulaşım bağlantılarıyla ilişkilidir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=%C3%87e%C5%9Fme%20%2F%20%C4%B0zmir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Çeşme / İzmir, Türkiye",
+        "sourceDisplayName": "Çeşme / İzmir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.306,
+          38.323
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tourism_kiyi_turizmi_datca_mugla",
+        "name": "Kıyı turizmi",
+        "topic": "tourism",
+        "topicLabel": "Turizm",
+        "category": "tourism_coastal",
+        "categoryLabel": "Kıyı turizmi",
+        "region": "Akdeniz / Ege",
+        "location": "Datça / Muğla",
+        "kpssNote": "Kıyı turizmi yaz kuraklığı, uzun güneşlenme süresi, koy-körfez yapısı ve ulaşım bağlantılarıyla ilişkilidir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Dat%C3%A7a%20%2F%20Mu%C4%9Fla%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Datça / Muğla, Türkiye",
+        "sourceDisplayName": "Datça / Muğla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.684,
+          36.726
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tourism_kiyi_turizmi_oludeniz_fethiye_mugla",
+        "name": "Kıyı turizmi",
+        "topic": "tourism",
+        "topicLabel": "Turizm",
+        "category": "tourism_coastal",
+        "categoryLabel": "Kıyı turizmi",
+        "region": "Akdeniz / Ege",
+        "location": "Ölüdeniz / Fethiye / Muğla",
+        "kpssNote": "Ölüdeniz, Akdeniz kıyı turizminin koy-lagün tipi yer şekliyle ilişkilendirilen klasik örneklerinden biridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=%C3%96l%C3%BCdeniz%20%2F%20Fethiye%20%2F%20Mu%C4%9Fla%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Ölüdeniz / Fethiye / Muğla, Türkiye",
+        "sourceDisplayName": "Ölüdeniz / Fethiye / Muğla"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.119,
+          36.548
         ]
       }
     },
@@ -5655,6 +6205,106 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "tourism_kultur_turizmi_truva_antik_kenti_canakkale",
+        "name": "Kültür turizmi",
+        "topic": "tourism",
+        "topicLabel": "Turizm",
+        "category": "tourism_cultural",
+        "categoryLabel": "Kültür / tarih turizmi",
+        "region": "Marmara / İç Anadolu / Ege / Güneydoğu Anadolu / Doğu Anadolu / Karadeniz",
+        "location": "Truva Antik Kenti / Çanakkale",
+        "kpssNote": "Truva Antik Kenti, Çanakkale'nin tarih turizmindeki en bilinen UNESCO Dünya Mirası örneğidir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Truva%20Antik%20Kenti%20%2F%20%C3%87anakkale%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Truva Antik Kenti / Çanakkale, Türkiye",
+        "sourceDisplayName": "Truva Antik Kenti / Çanakkale"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.239,
+          39.957
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tourism_kultur_turizmi_sumela_manastiri_macka_trabzon",
+        "name": "Kültür turizmi",
+        "topic": "tourism",
+        "topicLabel": "Turizm",
+        "category": "tourism_cultural",
+        "categoryLabel": "Kültür / tarih turizmi",
+        "region": "Marmara / İç Anadolu / Ege / Güneydoğu Anadolu / Doğu Anadolu / Karadeniz",
+        "location": "Sümela Manastırı / Maçka / Trabzon",
+        "kpssNote": "Sümela Manastırı, Doğu Karadeniz'in dağlık-kayalık yamaçlarına kurulu kültür turizmi örneğidir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=S%C3%BCmela%20Manast%C4%B1r%C4%B1%20%2F%20Ma%C3%A7ka%20%2F%20Trabzon%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Sümela Manastırı / Maçka / Trabzon, Türkiye",
+        "sourceDisplayName": "Sümela Manastırı / Maçka / Trabzon"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.661,
+          40.696
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tourism_kultur_turizmi_hattusas_bogazkale_corum",
+        "name": "Kültür turizmi",
+        "topic": "tourism",
+        "topicLabel": "Turizm",
+        "category": "tourism_cultural",
+        "categoryLabel": "Kültür / tarih turizmi",
+        "region": "Marmara / İç Anadolu / Ege / Güneydoğu Anadolu / Doğu Anadolu / Karadeniz",
+        "location": "Hattuşaş / Boğazkale / Çorum",
+        "kpssNote": "Hattuşaş, İç Anadolu'da Hitit medeniyetine ait UNESCO Dünya Mirası kültür turizmi merkezidir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Hattu%C5%9Fa%C5%9F%20%2F%20Bo%C4%9Fazkale%20%2F%20%C3%87orum%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Hattuşaş / Boğazkale / Çorum, Türkiye",
+        "sourceDisplayName": "Hattuşaş / Boğazkale / Çorum"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.615,
+          40.014
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tourism_kultur_turizmi_mardin",
+        "name": "Kültür turizmi",
+        "topic": "tourism",
+        "topicLabel": "Turizm",
+        "category": "tourism_cultural",
+        "categoryLabel": "Kültür / tarih turizmi",
+        "region": "Marmara / İç Anadolu / Ege / Güneydoğu Anadolu / Doğu Anadolu / Karadeniz",
+        "location": "Mardin",
+        "kpssNote": "Mardin'in taş mimarisiyle tarihi şehir dokusu, Güneydoğu Anadolu'nun kültür turizmi örneklerinden biridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Mardin%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Mardin, Türkiye",
+        "sourceDisplayName": "Mardin"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.739,
+          37.312
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "tourism_kis_turizmi_uludag_bursa",
         "name": "Kış turizmi",
         "topic": "tourism",
@@ -5805,6 +6455,81 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "tourism_kis_turizmi_davraz_isparta",
+        "name": "Kış turizmi",
+        "topic": "tourism",
+        "topicLabel": "Turizm",
+        "category": "tourism_winter_thermal",
+        "categoryLabel": "Kış / termal turizm",
+        "region": "Marmara / Doğu Anadolu / İç Anadolu / Karadeniz / Ege",
+        "location": "Davraz / Isparta",
+        "kpssNote": "Davraz Kayak Merkezi, Akdeniz Bölgesi'nin iç kesimindeki yükselti farkına bağlı kış turizmi örneğidir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Davraz%20%2F%20Isparta%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Davraz / Isparta, Türkiye",
+        "sourceDisplayName": "Davraz / Isparta"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.819,
+          37.751
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tourism_kis_turizmi_ilgaz_dagi_kastamonu_cankiri",
+        "name": "Kış turizmi",
+        "topic": "tourism",
+        "topicLabel": "Turizm",
+        "category": "tourism_winter_thermal",
+        "categoryLabel": "Kış / termal turizm",
+        "region": "Marmara / Doğu Anadolu / İç Anadolu / Karadeniz / Ege",
+        "location": "Ilgaz Dağı / Kastamonu-Çankırı",
+        "kpssNote": "Ilgaz Dağı, Karadeniz'in iç kesimindeki kış turizmi merkezlerinden biridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Ilgaz%20Da%C4%9F%C4%B1%20%2F%20Kastamonu-%C3%87ank%C4%B1r%C4%B1%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Ilgaz Dağı / Kastamonu-Çankırı, Türkiye",
+        "sourceDisplayName": "Ilgaz Dağı / Kastamonu-Çankırı"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.7,
+          40.97
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "tourism_termal_turizm_kizilcahamam_ankara",
+        "name": "Termal turizm",
+        "topic": "tourism",
+        "topicLabel": "Turizm",
+        "category": "tourism_winter_thermal",
+        "categoryLabel": "Kış / termal turizm",
+        "region": "Marmara / Doğu Anadolu / İç Anadolu / Karadeniz / Ege",
+        "location": "Kızılcahamam / Ankara",
+        "kpssNote": "Kızılcahamam, İç Anadolu'nun orman ve termal kaynak bakımından zengin termal turizm örneğidir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=K%C4%B1z%C4%B1lcahamam%20%2F%20Ankara%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Kızılcahamam / Ankara, Türkiye",
+        "sourceDisplayName": "Kızılcahamam / Ankara"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.65,
+          40.467
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "port_mersin_limani_mersin",
         "name": "Mersin Limanı",
         "topic": "port",
@@ -5930,6 +6655,56 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "port_haydarpasa_limani_kadikoy_istanbul",
+        "name": "Haydarpaşa Limanı",
+        "topic": "port",
+        "topicLabel": "Limanlar",
+        "category": "port_trade",
+        "categoryLabel": "Büyük dış ticaret limanı",
+        "region": "Marmara / Ege / Akdeniz",
+        "location": "Kadıköy / İstanbul",
+        "kpssNote": "Haydarpaşa Limanı, Mersin ve İzmir'den sonra konteyner trafiğinde öne çıkan, demiryolu (TCDD) bağlantısıyla bilinen tarihi bir limandır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Kad%C4%B1k%C3%B6y%20%2F%20%C4%B0stanbul%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Kadıköy / İstanbul, Türkiye",
+        "sourceDisplayName": "Kadıköy / İstanbul"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.018,
+          41.001
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "port_aliaga_limani_aliaga_izmir",
+        "name": "Aliağa Limanı",
+        "topic": "port",
+        "topicLabel": "Limanlar",
+        "category": "port_trade",
+        "categoryLabel": "Büyük dış ticaret limanı",
+        "region": "Marmara / Ege / Akdeniz",
+        "location": "Aliağa / İzmir",
+        "kpssNote": "Aliağa, rafineri-petrokimya tesisleri ve gemi söküm endüstrisiyle özdeşleşmiş bir liman bölgesidir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Alia%C4%9Fa%20%2F%20%C4%B0zmir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Aliağa / İzmir, Türkiye",
+        "sourceDisplayName": "Aliağa / İzmir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.97,
+          38.8
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "port_samsun_limani_samsun",
         "name": "Samsun Limanı",
         "topic": "port",
@@ -6024,6 +6799,81 @@
         "coordinates": [
           30.707,
           36.887
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "port_sinop_limani_sinop",
+        "name": "Sinop Limanı",
+        "topic": "port",
+        "topicLabel": "Limanlar",
+        "category": "port_regional",
+        "categoryLabel": "Bölgesel / hinterland limanı",
+        "region": "Karadeniz / Marmara / Akdeniz",
+        "location": "Sinop",
+        "kpssNote": "Sinop, Karadeniz kıyısındaki tek doğal liman olmasıyla KPSS'de sıklıkla vurgulanır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Sinop%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Sinop, Türkiye",
+        "sourceDisplayName": "Sinop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.156,
+          42.027
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "port_zonguldak_limani_zonguldak",
+        "name": "Zonguldak Limanı",
+        "topic": "port",
+        "topicLabel": "Limanlar",
+        "category": "port_regional",
+        "categoryLabel": "Bölgesel / hinterland limanı",
+        "region": "Karadeniz / Marmara / Akdeniz",
+        "location": "Zonguldak",
+        "kpssNote": "Zonguldak Limanı, Türkiye'nin taşkömürü havzasının ihracat/ithalat çıkış noktası olarak bilinir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Zonguldak%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Zonguldak, Türkiye",
+        "sourceDisplayName": "Zonguldak"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.789,
+          41.456
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "port_tekirdag_limani_tekirdag",
+        "name": "Tekirdağ Limanı",
+        "topic": "port",
+        "topicLabel": "Limanlar",
+        "category": "port_regional",
+        "categoryLabel": "Bölgesel / hinterland limanı",
+        "region": "Karadeniz / Marmara / Akdeniz",
+        "location": "Tekirdağ",
+        "kpssNote": "Tekirdağ Limanı, Trakya'nın tahıl üretimi ve sanayi bölgesiyle bağlantılı bir ihracat limanıdır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Tekirda%C4%9F%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Tekirdağ, Türkiye",
+        "sourceDisplayName": "Tekirdağ"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.51,
+          40.978
         ]
       }
     }

@@ -292,6 +292,9 @@ addGroup({
     { name: "Büyükbaş mera", location: "Erzurum", lat: 39.906, lng: 41.273 },
     { name: "Büyükbaş mera", location: "Kars", lat: 40.602, lng: 43.095 },
     { name: "Büyükbaş mera", location: "Ardahan", lat: 41.11, lng: 42.702 },
+    { name: "Büyükbaş mera", location: "Ağrı", lat: 39.719, lng: 43.051 },
+    { name: "Büyükbaş mera", location: "Muş", lat: 38.745, lng: 41.491 },
+    { name: "Büyükbaş mera", location: "Bingöl", lat: 38.885, lng: 40.498 },
   ],
 });
 
@@ -304,6 +307,20 @@ addGroup({
     { name: "Büyükbaş besi", location: "Marmara / İstanbul çevresi", lat: 41.01, lng: 28.96 },
     { name: "Büyükbaş besi", location: "Ege / İzmir çevresi", lat: 38.42, lng: 27.14 },
     { name: "Büyükbaş besi", location: "Konya", lat: 37.871, lng: 32.484 },
+    {
+      name: "Büyükbaş besi",
+      location: "Bursa",
+      lat: 40.183,
+      lng: 29.067,
+      note: "Bursa, pazara yakınlık ve yem sanayisi bağlantısıyla Marmara'nın besi/süt sığırcılığı merkezlerinden biridir.",
+    },
+    {
+      name: "Büyükbaş besi",
+      location: "Çukurova / Adana",
+      lat: 37.0,
+      lng: 35.32,
+      note: "Çukurova, pamuk çiğidi ve yem bitkisi üretimine bağlı besi hayvancılığıyla bilinir.",
+    },
   ],
 });
 
@@ -490,6 +507,20 @@ addGroup({
     { name: "Cıva", location: "Sarayönü / Konya", lat: 38.264, lng: 32.404 },
     { name: "Altın", location: "Ovacık / Bergama / İzmir", lat: 39.179, lng: 27.335 },
     { name: "Altın", location: "İliç / Erzincan", lat: 39.456, lng: 38.564 },
+    {
+      name: "Volfram",
+      location: "Uludağ / Bursa",
+      lat: 40.111,
+      lng: 29.232,
+      note: "Uludağ, Türkiye'nin volfram (tungsten) yatağı bakımından KPSS'de en bilinen örneğidir.",
+    },
+    {
+      name: "Antimon",
+      location: "Turhal / Tokat",
+      lat: 40.383,
+      lng: 36.083,
+      note: "Turhal, antimon çıkarımıyla Karadeniz iç kesiminin KPSS maden örneklerindendir.",
+    },
   ],
 });
 
@@ -553,6 +584,8 @@ addGroup({
     { name: "Jeotermal enerji", location: "Germencik / Aydın", lat: 37.87, lng: 27.603 },
     { name: "Jeotermal enerji", location: "Alaşehir / Manisa", lat: 38.35, lng: 28.517 },
     { name: "Jeotermal enerji", location: "Tuzla / Çanakkale", lat: 39.555, lng: 26.2 },
+    { name: "Jeotermal enerji", location: "Simav / Kütahya", lat: 39.092, lng: 28.984 },
+    { name: "Jeotermal enerji", location: "Afyonkarahisar", lat: 38.756, lng: 30.538 },
   ],
 });
 
@@ -566,6 +599,15 @@ addGroup({
     { name: "Rüzgar enerjisi", location: "Bandırma / Balıkesir", lat: 40.352, lng: 27.976 },
     { name: "Rüzgar enerjisi", location: "Bozcaada / Çanakkale", lat: 39.835, lng: 26.07 },
     { name: "Rüzgar enerjisi", location: "Belen / Hatay", lat: 36.489, lng: 36.194 },
+    { name: "Rüzgar enerjisi", location: "Karaburun / İzmir", lat: 38.642, lng: 26.512 },
+    { name: "Rüzgar enerjisi", location: "Gönen / Balıkesir", lat: 40.106, lng: 27.654 },
+    {
+      name: "Rüzgar enerjisi",
+      location: "Bahçe / Osmaniye",
+      lat: 37.199,
+      lng: 36.31,
+      note: "Nurdağı Geçidi çevresindeki geçit rüzgarları, dağlar arası boğazlarda hızlanan rüzgardan yararlanan enerji yatırımlarına örnektir.",
+    },
   ],
 });
 
@@ -578,6 +620,9 @@ addGroup({
     { name: "Güneş enerjisi", location: "Karapınar / Konya", lat: 37.715, lng: 33.552 },
     { name: "Güneş enerjisi", location: "Bor / Niğde", lat: 37.89, lng: 34.558 },
     { name: "Güneş enerjisi", location: "Ceylanpınar / Şanlıurfa", lat: 36.847, lng: 40.05 },
+    { name: "Güneş enerjisi", location: "Aksaray", lat: 38.372, lng: 34.038 },
+    { name: "Güneş enerjisi", location: "Mardin", lat: 37.312, lng: 40.739 },
+    { name: "Güneş enerjisi", location: "Şırnak", lat: 37.518, lng: 42.454 },
   ],
 });
 
@@ -694,6 +739,20 @@ addGroup({
     { name: "Fındık işleme", location: "Giresun", lat: 40.917, lng: 38.392 },
     { name: "Zeytinyağı", location: "Edremit / Balıkesir", lat: 39.596, lng: 27.024 },
     { name: "Zeytinyağı", location: "Aydın", lat: 37.845, lng: 27.839 },
+    {
+      name: "Kayısı işleme",
+      location: "Malatya",
+      lat: 38.355,
+      lng: 38.309,
+      note: "Malatya, kuru kayısı üretimi ve işlemesinde Türkiye'nin KPSS'de en bilinen merkezidir.",
+    },
+    {
+      name: "Fıstık işleme",
+      location: "Gaziantep",
+      lat: 37.066,
+      lng: 37.383,
+      note: "Gaziantep, Antep fıstığı üretimi ve işleme sanayisiyle Güneydoğu Anadolu'nun KPSS örneklerindendir.",
+    },
   ],
 });
 
@@ -709,6 +768,7 @@ addGroup({
     { name: "Seramik sanayi", location: "Kütahya", lat: 39.419, lng: 29.985 },
     { name: "Seramik sanayi", location: "Bilecik", lat: 40.143, lng: 29.979 },
     { name: "Cam sanayi", location: "Paşabahçe / İstanbul", lat: 41.117, lng: 29.093 },
+    { name: "Cam sanayi", location: "Mersin", lat: 36.812, lng: 34.641 },
   ],
 });
 
@@ -722,6 +782,16 @@ addGroup({
     { name: "Kıyı turizmi", location: "Bodrum / Muğla", lat: 37.034, lng: 27.43 },
     { name: "Kıyı turizmi", location: "Marmaris / Muğla", lat: 36.855, lng: 28.274 },
     { name: "Kıyı turizmi", location: "Kuşadası / Aydın", lat: 37.858, lng: 27.259 },
+    { name: "Kıyı turizmi", location: "Alanya / Antalya", lat: 36.544, lng: 31.998 },
+    { name: "Kıyı turizmi", location: "Çeşme / İzmir", lat: 38.323, lng: 26.306 },
+    { name: "Kıyı turizmi", location: "Datça / Muğla", lat: 36.726, lng: 27.684 },
+    {
+      name: "Kıyı turizmi",
+      location: "Ölüdeniz / Fethiye / Muğla",
+      lat: 36.548,
+      lng: 29.119,
+      note: "Ölüdeniz, Akdeniz kıyı turizminin koy-lagün tipi yer şekliyle ilişkilendirilen klasik örneklerinden biridir.",
+    },
   ],
 });
 
@@ -738,6 +808,34 @@ addGroup({
     { name: "Kültür turizmi", location: "Safranbolu / Karabük", lat: 41.25, lng: 32.694 },
     { name: "Kültür turizmi", location: "Nemrut Dağı / Adıyaman", lat: 37.98, lng: 38.741 },
     { name: "Kültür turizmi", location: "Ani / Kars", lat: 40.507, lng: 43.573 },
+    {
+      name: "Kültür turizmi",
+      location: "Truva Antik Kenti / Çanakkale",
+      lat: 39.957,
+      lng: 26.239,
+      note: "Truva Antik Kenti, Çanakkale'nin tarih turizmindeki en bilinen UNESCO Dünya Mirası örneğidir.",
+    },
+    {
+      name: "Kültür turizmi",
+      location: "Sümela Manastırı / Maçka / Trabzon",
+      lat: 40.696,
+      lng: 39.661,
+      note: "Sümela Manastırı, Doğu Karadeniz'in dağlık-kayalık yamaçlarına kurulu kültür turizmi örneğidir.",
+    },
+    {
+      name: "Kültür turizmi",
+      location: "Hattuşaş / Boğazkale / Çorum",
+      lat: 40.014,
+      lng: 34.615,
+      note: "Hattuşaş, İç Anadolu'da Hitit medeniyetine ait UNESCO Dünya Mirası kültür turizmi merkezidir.",
+    },
+    {
+      name: "Kültür turizmi",
+      location: "Mardin",
+      lat: 37.312,
+      lng: 40.739,
+      note: "Mardin'in taş mimarisiyle tarihi şehir dokusu, Güneydoğu Anadolu'nun kültür turizmi örneklerinden biridir.",
+    },
   ],
 });
 
@@ -753,6 +851,27 @@ addGroup({
     { name: "Kış turizmi", location: "Kartalkaya / Bolu", lat: 40.59, lng: 31.803 },
     { name: "Termal turizm", location: "Afyonkarahisar", lat: 38.756, lng: 30.538 },
     { name: "Termal turizm", location: "Yalova", lat: 40.65, lng: 29.266 },
+    {
+      name: "Kış turizmi",
+      location: "Davraz / Isparta",
+      lat: 37.751,
+      lng: 30.819,
+      note: "Davraz Kayak Merkezi, Akdeniz Bölgesi'nin iç kesimindeki yükselti farkına bağlı kış turizmi örneğidir.",
+    },
+    {
+      name: "Kış turizmi",
+      location: "Ilgaz Dağı / Kastamonu-Çankırı",
+      lat: 40.97,
+      lng: 33.7,
+      note: "Ilgaz Dağı, Karadeniz'in iç kesimindeki kış turizmi merkezlerinden biridir.",
+    },
+    {
+      name: "Termal turizm",
+      location: "Kızılcahamam / Ankara",
+      lat: 40.467,
+      lng: 32.65,
+      note: "Kızılcahamam, İç Anadolu'nun orman ve termal kaynak bakımından zengin termal turizm örneğidir.",
+    },
   ],
 });
 
@@ -767,6 +886,20 @@ addGroup({
     { name: "Ambarlı Limanı", location: "Avcılar / İstanbul", lat: 40.973, lng: 28.692 },
     { name: "İskenderun Limanı", location: "İskenderun / Hatay", lat: 36.587, lng: 36.173 },
     { name: "Derince Limanı", location: "İzmit / Kocaeli", lat: 40.766, lng: 29.917 },
+    {
+      name: "Haydarpaşa Limanı",
+      location: "Kadıköy / İstanbul",
+      lat: 41.001,
+      lng: 29.018,
+      note: "Haydarpaşa Limanı, Mersin ve İzmir'den sonra konteyner trafiğinde öne çıkan, demiryolu (TCDD) bağlantısıyla bilinen tarihi bir limandır.",
+    },
+    {
+      name: "Aliağa Limanı",
+      location: "Aliağa / İzmir",
+      lat: 38.8,
+      lng: 26.97,
+      note: "Aliağa, rafineri-petrokimya tesisleri ve gemi söküm endüstrisiyle özdeşleşmiş bir liman bölgesidir.",
+    },
   ],
 });
 
@@ -780,6 +913,27 @@ addGroup({
     { name: "Trabzon Limanı", location: "Trabzon", lat: 41.005, lng: 39.722 },
     { name: "Bandırma Limanı", location: "Bandırma / Balıkesir", lat: 40.352, lng: 27.976 },
     { name: "Antalya Limanı", location: "Antalya", lat: 36.887, lng: 30.707 },
+    {
+      name: "Sinop Limanı",
+      location: "Sinop",
+      lat: 42.027,
+      lng: 35.156,
+      note: "Sinop, Karadeniz kıyısındaki tek doğal liman olmasıyla KPSS'de sıklıkla vurgulanır.",
+    },
+    {
+      name: "Zonguldak Limanı",
+      location: "Zonguldak",
+      lat: 41.456,
+      lng: 31.789,
+      note: "Zonguldak Limanı, Türkiye'nin taşkömürü havzasının ihracat/ithalat çıkış noktası olarak bilinir.",
+    },
+    {
+      name: "Tekirdağ Limanı",
+      location: "Tekirdağ",
+      lat: 40.978,
+      lng: 27.51,
+      note: "Tekirdağ Limanı, Trakya'nın tahıl üretimi ve sanayi bölgesiyle bağlantılı bir ihracat limanıdır.",
+    },
   ],
 });
 

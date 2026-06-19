@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState, type CSSProperties } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { LayerStatus } from "./components/LayerStatus";
 import {
   economicFeatureCategories,
@@ -23,28 +23,7 @@ import {
 import { geoJsonAttribution, geoJsonSources } from "./geojson/sources";
 import { useGeoJson } from "./hooks/useGeoJson";
 import { TurkeyMap } from "./maps/TurkeyMap";
-import {
-  QUIZ_CORRECT_RADIUS_KM,
-  TIMED_ROUND_SECONDS,
-  TIMED_ROUND_TARGET,
-  filterFeaturesByRegion,
-  formatDistanceKm,
-  generateQuizQuestion,
-  getChoiceCorrectness,
-  getDistanceKm,
-  getHeatLabel,
-  getQuizAvailability,
-  getRegionOptions,
-  quizDifficultyOptions,
-  quizModeOptions,
-  quizRoundModeOptions,
-  type QuizDifficulty,
-  type QuizMode,
-  type QuizPoint,
-  type QuizQuestion,
-  type QuizRoundMode,
-  type QuizSessionStats,
-} from "./quiz/questionEngine";
+import { QUIZ_CORRECT_RADIUS_KM, filterFeaturesByRegion, formatDistanceKm, getDistanceKm, getRegionOptions } from "./quiz/geoUtils";
 import {
   generatePlusQuestion,
   getPlusAvailability,
@@ -53,20 +32,13 @@ import {
   plusQuestionKindLabels,
   plusQuestionModeOptions,
   plusQuestionTopicOptions,
+  type PlusPoint,
   type PlusQuestion,
   type PlusQuestionMode,
   type PlusQuestionTopic,
 } from "./quiz/plusQuestionEngine";
 
-type QuizAnswerState = {
-  isCorrect: boolean;
-  isFinal: boolean;
-  message: string;
-  detail: string;
-  selectedChoiceId: string | null;
-  distanceKm: number | null;
-  heatLabel: string | null;
-};
+const PLUS_RECENT_QUESTION_HISTORY_LIMIT = 8;
 
 type PlusAnswerState = {
   isCorrect: boolean;
@@ -76,51 +48,12 @@ type PlusAnswerState = {
   selectedTokenId: string | null;
 };
 
-const questionKindLabels: Record<QuizQuestion["kind"], string> = {
-  mapLocate: "Haritada bul",
-  mapMatch: "Haritada eşleştir",
-  oddOneOut: "Hangisi değil",
-  nearby: "Yakın olanı bul",
-  regionPick: "Bölgeyi bul",
-  orderLine: "Sıralama / hat",
-};
-
-const difficultyLabels: Record<QuizDifficulty, string> = {
-  easy: "Kolay",
-  medium: "Orta",
-  hard: "Zor",
-};
-
-const emptyStats: QuizSessionStats = {
-  answered: 0,
-  correct: 0,
-  wrong: 0,
-  targetCount: TIMED_ROUND_TARGET,
-  timeLeft: TIMED_ROUND_SECONDS,
-  isComplete: false,
-};
-
-function loadMistakeLedger() {
-  if (typeof window === "undefined") {
-    return {};
-  }
-
-  try {
-    const value = window.localStorage.getItem("kpss-atlas-mistakes");
-    return value ? (JSON.parse(value) as Record<string, number>) : {};
-  } catch {
-    return {};
-  }
-}
-
 function App() {
   const [selectedProvinceName, setSelectedProvinceName] = useState<string | null>(null);
   const [selectedFeature, setSelectedFeature] = useState<PhysicalFeatureProperties | null>(null);
   const [selectedEconomicFeature, setSelectedEconomicFeature] =
     useState<EconomicFeatureProperties | null>(null);
-  const [currentQuestion, setCurrentQuestion] = useState<QuizQuestion | null>(null);
-  const [quizAnswer, setQuizAnswer] = useState<QuizAnswerState | null>(null);
-  const [mapGuesses, setMapGuesses] = useState<QuizPoint[]>([]);
+  const [mapGuesses, setMapGuesses] = useState<PlusPoint[]>([]);
   const [currentPlusQuestion, setCurrentPlusQuestion] = useState<PlusQuestion | null>(null);
   const [plusAnswer, setPlusAnswer] = useState<PlusAnswerState | null>(null);
   const [plusTopic, setPlusTopic] = useState<PlusQuestionTopic>("mixed");
@@ -128,12 +61,7 @@ function App() {
   const [plusAssignments, setPlusAssignments] = useState<Record<string, string>>({});
   const [plusSelectedTokenId, setPlusSelectedTokenId] = useState<string | null>(null);
   const [plusSelectedTargetIds, setPlusSelectedTargetIds] = useState<string[]>([]);
-  const [quizMode, setQuizMode] = useState<QuizMode>("mixed");
-  const [quizDifficulty, setQuizDifficulty] = useState<QuizDifficulty>("medium");
-  const [quizRoundMode, setQuizRoundMode] = useState<QuizRoundMode>("free");
   const [quizRegion, setQuizRegion] = useState("all");
-  const [sessionStats, setSessionStats] = useState<QuizSessionStats>(emptyStats);
-  const [mistakeLedger, setMistakeLedger] = useState<Record<string, number>>(loadMistakeLedger);
   const [activeTopics, setActiveTopics] = useState<PhysicalFeatureTopic[]>(() =>
     physicalFeatureTopics.map((topic) => topic.id),
   );
@@ -146,12 +74,9 @@ function App() {
   const [activeEconomicCategories, setActiveEconomicCategories] = useState<EconomicFeatureCategory[]>(() =>
     economicFeatureCategories.map((category) => category.id),
   );
+  const recentPlusQuestionIdsRef = useRef<string[]>([]);
   const [expandedTopics, setExpandedTopics] = useState<PhysicalFeatureTopic[]>(["mountain"]);
   const [expandedEconomicTopics, setExpandedEconomicTopics] = useState<EconomicFeatureTopic[]>([
-    "agriculture",
-  ]);
-  const [expandedQuizTopics, setExpandedQuizTopics] = useState<PhysicalFeatureTopic[]>(["mountain"]);
-  const [expandedQuizEconomicTopics, setExpandedQuizEconomicTopics] = useState<EconomicFeatureTopic[]>([
     "agriculture",
   ]);
   const country = useGeoJson(geoJsonSources.country.url);
@@ -195,10 +120,6 @@ function App() {
     () => filterFeaturesByRegion(quizQuestionPool, quizRegion),
     [quizQuestionPool, quizRegion],
   );
-  const quizAvailability = useMemo(
-    () => getQuizAvailability(regionalQuestionPool, quizMode),
-    [quizMode, regionalQuestionPool],
-  );
   const plusAvailability = useMemo(
     () => getPlusAvailability(regionalQuestionPool, plusTopic, plusMode),
     [plusMode, plusTopic, regionalQuestionPool],
@@ -208,49 +129,13 @@ function App() {
   const error = country.error ?? provinces.error ?? physicalFeaturesData.error ?? economicFeaturesData.error;
   const shouldUsePhysicalCategoryColors = activeTopics.length === 1;
   const shouldUseEconomicCategoryColors = activeEconomicTopics.length === 1;
-  const canStartQuiz =
-    quizAvailability.total > 0 && !physicalFeaturesData.isLoading && !economicFeaturesData.isLoading;
   const canStartPlus =
     plusAvailability.total > 0 && !physicalFeaturesData.isLoading && !economicFeaturesData.isLoading;
-  const isQuizActive = Boolean(currentQuestion) && !sessionStats.isComplete;
   const isPlusActive = Boolean(currentPlusQuestion);
-  const activePhysicalQuizCategoryCount = physicalFeatureCategories.filter(
-    (category) => activeTopics.includes(category.topic) && activeCategories.includes(category.id),
-  ).length;
-  const activeEconomicQuizCategoryCount = economicFeatureCategories.filter(
-    (category) =>
-      activeEconomicTopics.includes(category.topic) && activeEconomicCategories.includes(category.id),
-  ).length;
   const selectedText = useMemo(
     () => selectedProvinceName ?? "Henüz seçilmedi",
     [selectedProvinceName],
   );
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.localStorage.setItem("kpss-atlas-mistakes", JSON.stringify(mistakeLedger));
-    }
-  }, [mistakeLedger]);
-
-  useEffect(() => {
-    if (quizRoundMode !== "timed" || !isQuizActive) {
-      return;
-    }
-
-    const timer = window.setInterval(() => {
-      setSessionStats((currentStats) => {
-        if (currentStats.timeLeft <= 1) {
-          return { ...currentStats, timeLeft: 0, isComplete: true };
-        }
-
-        return { ...currentStats, timeLeft: currentStats.timeLeft - 1 };
-      });
-    }, 1000);
-
-    return () => {
-      window.clearInterval(timer);
-    };
-  }, [isQuizActive, quizRoundMode]);
 
   useEffect(() => {
     if (
@@ -270,14 +155,6 @@ function App() {
       setSelectedEconomicFeature(null);
     }
   }, [activeEconomicCategories, activeEconomicTopics, selectedEconomicFeature]);
-
-  useEffect(() => {
-    if (currentQuestion && !regionalQuestionPool.some((feature) => feature.properties.id === currentQuestion.targetFeature.properties.id)) {
-      setCurrentQuestion(null);
-      setQuizAnswer(null);
-      setMapGuesses([]);
-    }
-  }, [currentQuestion, regionalQuestionPool]);
 
   useEffect(() => {
     if (
@@ -300,154 +177,33 @@ function App() {
     }
   }, [quizRegion, regionOptions]);
 
-  const rememberMistake = useCallback((featureId: string) => {
-    setMistakeLedger((currentLedger) => ({
-      ...currentLedger,
-      [featureId]: Math.min((currentLedger[featureId] ?? 0) + 1, 5),
-    }));
-  }, []);
-
-  const forgiveMistake = useCallback((featureId: string) => {
-    setMistakeLedger((currentLedger) => {
-      const nextWeight = (currentLedger[featureId] ?? 0) - 1;
-
-      if (nextWeight > 0) {
-        return { ...currentLedger, [featureId]: nextWeight };
-      }
-
-      const { [featureId]: _removed, ...rest } = currentLedger;
-      return rest;
-    });
-  }, []);
-
-  const updateStats = useCallback(
-    (isCorrect: boolean) => {
-      setSessionStats((currentStats) => {
-        const answered = currentStats.answered + 1;
-        const nextStats = {
-          ...currentStats,
-          answered,
-          correct: currentStats.correct + (isCorrect ? 1 : 0),
-          wrong: currentStats.wrong + (isCorrect ? 0 : 1),
-        };
-
-        if (quizRoundMode === "timed" && answered >= currentStats.targetCount) {
-          return { ...nextStats, isComplete: true };
-        }
-
-        return nextStats;
-      });
-    },
-    [quizRoundMode],
-  );
-
-  const finalizeAnswer = useCallback(
-    ({
-      isCorrect,
-      message,
-      detail,
-      selectedChoiceId,
-      distanceKm,
-      heatLabel,
-    }: {
-      isCorrect: boolean;
-      message: string;
-      detail: string;
-      selectedChoiceId: string | null;
-      distanceKm: number | null;
-      heatLabel: string | null;
-    }) => {
-      if (!currentQuestion || quizAnswer?.isFinal) {
-        return;
-      }
-
-      setQuizAnswer({
-        isCorrect,
-        isFinal: true,
-        message,
-        detail,
-        selectedChoiceId,
-        distanceKm,
-        heatLabel,
-      });
-      updateStats(isCorrect);
-
-      if (isCorrect) {
-        forgiveMistake(currentQuestion.targetFeature.properties.id);
-      } else {
-        rememberMistake(currentQuestion.targetFeature.properties.id);
-      }
-    },
-    [currentQuestion, forgiveMistake, quizAnswer?.isFinal, rememberMistake, updateStats],
-  );
-
-  const startNextQuestion = useCallback(
-    (shouldResetSession = false) => {
-      const nextQuestion = generateQuizQuestion({
-        features: regionalQuestionPool,
-        mode: quizMode,
-        difficulty: quizDifficulty,
-        previousQuestionId: currentQuestion?.id ?? null,
-      });
-
-      if (!nextQuestion) {
-        return;
-      }
-
-      if (shouldResetSession || sessionStats.isComplete) {
-        setSessionStats({
-          ...emptyStats,
-          timeLeft: quizRoundMode === "timed" ? TIMED_ROUND_SECONDS : emptyStats.timeLeft,
-        });
-      }
-
-      setCurrentQuestion(nextQuestion);
-      setQuizAnswer(null);
-      setMapGuesses([]);
-      setSelectedProvinceName(null);
-      setSelectedFeature(null);
-      setSelectedEconomicFeature(null);
-      setCurrentPlusQuestion(null);
-      setPlusAnswer(null);
-      setPlusAssignments({});
-      setPlusSelectedTokenId(null);
-      setPlusSelectedTargetIds([]);
-    },
-    [
-      currentQuestion?.id,
-      quizDifficulty,
-      quizMode,
-      quizRoundMode,
-      regionalQuestionPool,
-      sessionStats.isComplete,
-    ],
-  );
-
   const startNextPlusQuestion = useCallback(() => {
     const nextQuestion = generatePlusQuestion({
       features: regionalQuestionPool,
       topic: plusTopic,
       mode: plusMode,
-      previousQuestionId: currentPlusQuestion?.id ?? null,
+      recentQuestionIds: recentPlusQuestionIdsRef.current,
     });
 
     if (!nextQuestion) {
       return;
     }
 
+    recentPlusQuestionIdsRef.current = [nextQuestion.id, ...recentPlusQuestionIdsRef.current].slice(
+      0,
+      PLUS_RECENT_QUESTION_HISTORY_LIMIT,
+    );
+
     setCurrentPlusQuestion(nextQuestion);
     setPlusAnswer(null);
     setPlusAssignments({});
     setPlusSelectedTokenId(null);
     setPlusSelectedTargetIds([]);
-    setCurrentQuestion(null);
-    setQuizAnswer(null);
     setMapGuesses([]);
-    setSessionStats((currentStats) => ({ ...currentStats, isComplete: false }));
     setSelectedProvinceName(null);
     setSelectedFeature(null);
     setSelectedEconomicFeature(null);
-  }, [currentPlusQuestion?.id, plusMode, plusTopic, regionalQuestionPool]);
+  }, [plusMode, plusTopic, regionalQuestionPool]);
 
   const handleProvinceSelect = useCallback((provinceName: string) => {
     setSelectedProvinceName(provinceName);
@@ -521,71 +277,6 @@ function App() {
     );
   }, []);
 
-  const handleQuizTopicToggle = useCallback((topicId: PhysicalFeatureTopic) => {
-    setActiveTopics((currentTopics) =>
-      currentTopics.includes(topicId)
-        ? currentTopics.filter((currentTopic) => currentTopic !== topicId)
-        : [...currentTopics, topicId],
-    );
-  }, []);
-
-  const handleQuizTopicExpansionToggle = useCallback((topicId: PhysicalFeatureTopic) => {
-    setExpandedQuizTopics((currentTopics) =>
-      currentTopics.includes(topicId)
-        ? currentTopics.filter((currentTopic) => currentTopic !== topicId)
-        : [...currentTopics, topicId],
-    );
-  }, []);
-
-  const handleQuizCategoryToggle = useCallback((categoryId: PhysicalFeatureCategory) => {
-    const category = getPhysicalFeatureCategory(categoryId);
-
-    setActiveCategories((currentCategories) =>
-      currentCategories.includes(categoryId)
-        ? currentCategories.filter((currentCategory) => currentCategory !== categoryId)
-        : [...currentCategories, categoryId],
-    );
-    setActiveTopics((currentTopics) =>
-      currentTopics.includes(category.topic) ? currentTopics : [...currentTopics, category.topic],
-    );
-  }, []);
-
-  const handleQuizEconomicTopicToggle = useCallback((topicId: EconomicFeatureTopic) => {
-    setActiveEconomicTopics((currentTopics) =>
-      currentTopics.includes(topicId)
-        ? currentTopics.filter((currentTopic) => currentTopic !== topicId)
-        : [...currentTopics, topicId],
-    );
-  }, []);
-
-  const handleQuizEconomicTopicExpansionToggle = useCallback((topicId: EconomicFeatureTopic) => {
-    setExpandedQuizEconomicTopics((currentTopics) =>
-      currentTopics.includes(topicId)
-        ? currentTopics.filter((currentTopic) => currentTopic !== topicId)
-        : [...currentTopics, topicId],
-    );
-  }, []);
-
-  const handleQuizEconomicCategoryToggle = useCallback((categoryId: EconomicFeatureCategory) => {
-    const category = getEconomicFeatureCategory(categoryId);
-
-    setActiveEconomicCategories((currentCategories) =>
-      currentCategories.includes(categoryId)
-        ? currentCategories.filter((currentCategory) => currentCategory !== categoryId)
-        : [...currentCategories, categoryId],
-    );
-    setActiveEconomicTopics((currentTopics) =>
-      currentTopics.includes(category.topic) ? currentTopics : [...currentTopics, category.topic],
-    );
-  }, []);
-
-  const handleQuizClose = useCallback(() => {
-    setCurrentQuestion(null);
-    setQuizAnswer(null);
-    setMapGuesses([]);
-    setSessionStats((currentStats) => ({ ...currentStats, isComplete: false }));
-  }, []);
-
   const handlePlusClose = useCallback(() => {
     setCurrentPlusQuestion(null);
     setPlusAnswer(null);
@@ -594,91 +285,6 @@ function App() {
     setPlusSelectedTargetIds([]);
   }, []);
 
-  const handleChoiceAnswer = useCallback(
-    (choiceId: string) => {
-      if (!currentQuestion || currentQuestion.requiresMapAnswer || quizAnswer?.isFinal) {
-        return;
-      }
-
-      const isCorrect = getChoiceCorrectness(currentQuestion, choiceId);
-      const choice = currentQuestion.choices.find((item) => item.id === choiceId);
-
-      finalizeAnswer({
-        isCorrect,
-        message: isCorrect ? "Doğru." : "Yanlış.",
-        detail: isCorrect
-          ? currentQuestion.answerSummary
-          : `Doğru cevap: ${currentQuestion.expectedLabel}. ${currentQuestion.answerSummary}`,
-        selectedChoiceId: choice?.id ?? choiceId,
-        distanceKm: null,
-        heatLabel: null,
-      });
-    },
-    [currentQuestion, finalizeAnswer, quizAnswer?.isFinal],
-  );
-
-  const handleQuizGuess = useCallback(
-    (guess: QuizPoint) => {
-      if (!currentQuestion || !currentQuestion.requiresMapAnswer || quizAnswer?.isFinal) {
-        return;
-      }
-
-      const distanceKm = getDistanceKm(guess, currentQuestion.targetPoint);
-      const heatLabel = getHeatLabel(distanceKm);
-      const nextGuesses = [...mapGuesses, guess];
-      const isCorrect = distanceKm <= QUIZ_CORRECT_RADIUS_KM;
-      const maxAttempts = currentQuestion.allowsSecondAttempt ? 2 : 1;
-
-      setMapGuesses(nextGuesses);
-      setSelectedProvinceName(null);
-      setSelectedFeature(null);
-      setSelectedEconomicFeature(null);
-
-      if (isCorrect) {
-        finalizeAnswer({
-          isCorrect: true,
-          message: "Doğru.",
-          detail: `${formatDistanceKm(distanceKm)} km uzaklıkta işaretledin.`,
-          selectedChoiceId: null,
-          distanceKm,
-          heatLabel,
-        });
-        return;
-      }
-
-      if (nextGuesses.length < maxAttempts) {
-        setQuizAnswer({
-          isCorrect: false,
-          isFinal: false,
-          message: `${heatLabel}. Bir hakkın daha var.`,
-          detail: `${formatDistanceKm(distanceKm)} km uzaktasın; tahminini daralt.`,
-          selectedChoiceId: null,
-          distanceKm,
-          heatLabel,
-        });
-        return;
-      }
-
-      finalizeAnswer({
-        isCorrect: false,
-        message: "Yanlış.",
-        detail: `${formatDistanceKm(distanceKm)} km uzaktasın. Doğru nokta haritada gösterildi.`,
-        selectedChoiceId: null,
-        distanceKm,
-        heatLabel,
-      });
-    },
-    [currentQuestion, finalizeAnswer, mapGuesses, quizAnswer?.isFinal],
-  );
-
-  const handlePrimaryQuizAction = useCallback(() => {
-    if (!canStartQuiz) {
-      return;
-    }
-
-    startNextQuestion(!currentQuestion || sessionStats.isComplete);
-  }, [canStartQuiz, currentQuestion, sessionStats.isComplete, startNextQuestion]);
-
   const handlePrimaryPlusAction = useCallback(() => {
     if (!canStartPlus) {
       return;
@@ -686,13 +292,6 @@ function App() {
 
     startNextPlusQuestion();
   }, [canStartPlus, startNextPlusQuestion]);
-
-  const handleModeChange = useCallback((mode: QuizMode) => {
-    setQuizMode(mode);
-    setCurrentQuestion(null);
-    setQuizAnswer(null);
-    setMapGuesses([]);
-  }, []);
 
   const handlePlusTopicChange = useCallback((topic: PlusQuestionTopic) => {
     setPlusTopic(topic);
@@ -865,96 +464,38 @@ function App() {
     }
   }, [currentPlusQuestion, finalizePlusAnswer, plusAnswer, plusAssignments, plusSelectedTargetIds]);
 
-  const handleMapGuess = useCallback(
-    (guess: QuizPoint) => {
-      if (currentPlusQuestion?.kind === "mapLocate" && !plusAnswer) {
-        const target = currentPlusQuestion.targets[0];
+  const handlePlusMapGuess = useCallback(
+    (guess: PlusPoint) => {
+      const target = currentPlusQuestion?.kind === "mapLocate" && !plusAnswer ? currentPlusQuestion.targets[0] : null;
 
-        if (!target) {
-          return;
-        }
-
-        const distanceKm = getDistanceKm(guess, target.point);
-        const isCorrect = distanceKm <= QUIZ_CORRECT_RADIUS_KM;
-
-        setMapGuesses([guess]);
-        setSelectedProvinceName(null);
-        setSelectedFeature(null);
-        setSelectedEconomicFeature(null);
-        finalizePlusAnswer({
-          isCorrect,
-          message: isCorrect ? "Doğru." : "Yanlış.",
-          detail: isCorrect
-            ? `${formatDistanceKm(distanceKm)} km uzaklıkta işaretledin.`
-            : `${formatDistanceKm(distanceKm)} km uzaktasın. Doğru nokta haritada gösterildi.`,
-          wrongTargetIds: [],
-          selectedTokenId: null,
-        });
+      if (!target) {
         return;
       }
 
-      handleQuizGuess(guess);
+      const distanceKm = getDistanceKm(guess, target.point);
+      const isCorrect = distanceKm <= QUIZ_CORRECT_RADIUS_KM;
+
+      setMapGuesses([guess]);
+      setSelectedProvinceName(null);
+      setSelectedFeature(null);
+      setSelectedEconomicFeature(null);
+      finalizePlusAnswer({
+        isCorrect,
+        message: isCorrect ? "Doğru." : "Yanlış.",
+        detail: isCorrect
+          ? `${formatDistanceKm(distanceKm)} km uzaklıkta işaretledin.`
+          : `${formatDistanceKm(distanceKm)} km uzaktasın. Doğru nokta haritada gösterildi.`,
+        wrongTargetIds: [],
+        selectedTokenId: null,
+      });
     },
-    [currentPlusQuestion, finalizePlusAnswer, handleQuizGuess, plusAnswer],
+    [currentPlusQuestion, finalizePlusAnswer, plusAnswer],
   );
 
-  const handleRoundModeChange = useCallback((mode: QuizRoundMode) => {
-    setQuizRoundMode(mode);
-    setSessionStats({ ...emptyStats, timeLeft: mode === "timed" ? TIMED_ROUND_SECONDS : emptyStats.timeLeft });
-    setCurrentQuestion(null);
-    setQuizAnswer(null);
-    setMapGuesses([]);
-  }, []);
-
-  const quizStatusText = useMemo(() => {
-    if (sessionStats.isComplete) {
-      return `Tur bitti: ${sessionStats.correct} doğru, ${sessionStats.wrong} yanlış.`;
-    }
-
-    if (!canStartQuiz) {
-      return "Seçili soru havuzunda nokta yok.";
-    }
-
-    if (!currentQuestion) {
-      return "Seçili havuzdan yeni soru başlat.";
-    }
-
-    if (quizAnswer) {
-      return quizAnswer.message;
-    }
-
-    return currentQuestion.helper;
-  }, [canStartQuiz, currentQuestion, quizAnswer, sessionStats]);
-
-  const primaryQuizActionLabel = sessionStats.isComplete
-    ? "Yeni tur"
-    : currentQuestion && quizAnswer?.isFinal
-      ? quizRoundMode === "timed"
-        ? "Sonraki soru"
-        : "Yeni soru"
-      : currentQuestion
-        ? "Soruyu yenile"
-        : "Soruyu başlat";
-
-  const selectedChoiceId = quizAnswer?.selectedChoiceId ?? null;
-  const quizResultStatus = quizAnswer?.isFinal ? (quizAnswer.isCorrect ? "correct" : "wrong") : null;
   const plusResultStatus = plusAnswer ? (plusAnswer.isCorrect ? "correct" : "wrong") : null;
   const isPlusMapLocateQuestion = currentPlusQuestion?.kind === "mapLocate";
   const isPlusMapLocateActive = Boolean(isPlusMapLocateQuestion && !plusAnswer);
   const plusMapLocateTarget = isPlusMapLocateQuestion ? currentPlusQuestion?.targets[0] ?? null : null;
-  const activeQuizResultStatus = plusMapLocateTarget && plusAnswer ? plusResultStatus : quizResultStatus;
-  const selectedLineOptionIds =
-    currentQuestion?.kind === "orderLine" && quizAnswer?.isFinal && quizAnswer.selectedChoiceId
-      ? quizAnswer.selectedChoiceId.split("|")
-      : [];
-  const correctLineOptionIds =
-    currentQuestion?.kind === "orderLine" && quizAnswer?.isFinal
-      ? currentQuestion.correctChoiceIds[0]?.split("|") ?? []
-      : [];
-  const shouldShowQuizTarget = Boolean(
-    currentQuestion &&
-      (currentQuestion.showTargetOnMap || (currentQuestion.mapOptions.length === 0 && quizAnswer?.isFinal)),
-  );
   const plusTokenById = useMemo(
     () => new Map(currentPlusQuestion?.tokens.map((token) => [token.id, token]) ?? []),
     [currentPlusQuestion],
@@ -1021,19 +562,12 @@ function App() {
             selectedProvinceName={selectedProvinceName}
             selectedPhysicalFeatureId={selectedFeature?.id ?? null}
             selectedEconomicFeatureId={selectedEconomicFeature?.id ?? null}
-            isQuizActive={isQuizActive || isPlusMapLocateActive}
             isPlusActive={isPlusActive}
-            quizGuessPoints={mapGuesses}
-            quizResultStatus={activeQuizResultStatus}
-            quizTargetName={plusMapLocateTarget?.name ?? currentQuestion?.expectedLabel ?? "Soru"}
-            quizTargetPoint={plusMapLocateTarget?.point ?? currentQuestion?.targetPoint ?? null}
-            quizShowTargetPoint={plusMapLocateTarget ? Boolean(plusAnswer) : shouldShowQuizTarget}
-            quizPromptTarget={plusMapLocateTarget ? false : Boolean(currentQuestion?.showTargetOnMap && !quizAnswer?.isFinal)}
-            quizMapOptions={currentQuestion?.mapOptions ?? []}
-            quizSelectedOptionId={selectedChoiceId}
-            quizCorrectOptionIds={currentQuestion?.correctChoiceIds ?? []}
-            quizSelectedLineOptionIds={selectedLineOptionIds}
-            quizCorrectLineOptionIds={correctLineOptionIds}
+            isPlusMapLocateActive={isPlusMapLocateActive}
+            plusGuessPoints={mapGuesses}
+            plusMapLocateTargetName={plusMapLocateTarget?.name ?? "Soru"}
+            plusMapLocateTargetPoint={plusMapLocateTarget?.point ?? null}
+            plusMapLocateShowTargetPoint={plusMapLocateTarget ? Boolean(plusAnswer) : false}
             plusTargets={isPlusMapLocateQuestion ? [] : currentPlusQuestion?.targets ?? []}
             plusSelectedTargetIds={plusVisibleSelectedTargetIds}
             plusCorrectTargetIds={plusCorrectTargetIds}
@@ -1043,8 +577,7 @@ function App() {
             onProvinceSelect={handleProvinceSelect}
             onPhysicalFeatureSelect={handlePhysicalFeatureSelect}
             onEconomicFeatureSelect={handleEconomicFeatureSelect}
-            onQuizGuess={handleMapGuess}
-            onQuizOptionSelect={handleChoiceAnswer}
+            onPlusMapGuess={handlePlusMapGuess}
             onPlusTargetSelect={handlePlusTargetSelect}
             onPlusTargetDrop={handlePlusTargetDrop}
           />
@@ -1247,7 +780,7 @@ function App() {
             <LayerStatus
               label={geoJsonSources.physicalFeatures.label}
               detail={
-                isQuizActive
+                isPlusActive
                   ? "Soru modunda gizli"
                   : `${visiblePhysicalFeatures.length || 0} / ${physicalFeatures.length || 196} görünür`
               }
@@ -1256,7 +789,7 @@ function App() {
             <LayerStatus
               label={geoJsonSources.economicFeatures.label}
               detail={
-                isQuizActive
+                isPlusActive
                   ? "Soru modunda gizli"
                   : `${visibleEconomicFeatures.length || 0} / ${economicFeatures.length || 172} görünür`
               }

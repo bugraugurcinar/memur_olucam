@@ -18,10 +18,14 @@ export type PlusQuestionTopic =
   | "industry"
   | "energy"
   | "agriculture"
+  | "livestock"
   | "mountain"
   | "river"
   | "lake"
-  | "plainPlateau";
+  | "plainPlateau"
+  | "coast"
+  | "tourism"
+  | "port";
 
 export type PlusPoint = {
   lat: number;
@@ -73,10 +77,14 @@ export const plusQuestionTopicOptions: Array<{ id: PlusQuestionTopic; label: str
   { id: "industry", label: "Sanayi" },
   { id: "energy", label: "Enerji" },
   { id: "agriculture", label: "Tarım" },
+  { id: "livestock", label: "Hayvancılık" },
   { id: "mountain", label: "Dağlar" },
   { id: "river", label: "Akarsular" },
   { id: "lake", label: "Göller" },
   { id: "plainPlateau", label: "Ova / Plato" },
+  { id: "coast", label: "Kıyı Tipleri" },
+  { id: "tourism", label: "Turizm" },
+  { id: "port", label: "Limanlar" },
 ];
 
 export const plusQuestionModeOptions: Array<{ id: PlusQuestionMode; label: string }> = [
@@ -313,9 +321,13 @@ function plusTopicFromFeature(feature: PlusFeature): Exclude<PlusQuestionTopic, 
     topic === "industry" ||
     topic === "energy" ||
     topic === "agriculture" ||
+    topic === "livestock" ||
     topic === "mountain" ||
     topic === "river" ||
-    topic === "lake"
+    topic === "lake" ||
+    topic === "coast" ||
+    topic === "tourism" ||
+    topic === "port"
   ) {
     return topic;
   }
@@ -465,7 +477,11 @@ function distributionPromptVerb(topic: Exclude<PlusQuestionTopic, "mixed">) {
     return "yetiştirilir";
   }
 
-  if (topic === "industry" || topic === "energy") {
+  if (topic === "livestock") {
+    return "yapılır";
+  }
+
+  if (topic === "industry" || topic === "energy" || topic === "port" || topic === "tourism") {
     return "yer alır";
   }
 
@@ -1444,6 +1460,71 @@ function buildEnergyResourcePlacement(features: PlusFeature[]) {
   return { ...question, answerSummary: placementSummary(question) };
 }
 
+const genericPlacementPalette = ["#0f766e", "#b45309", "#7c3aed", "#db2777", "#2563eb", "#16a34a", "#ea580c", "#64748b"];
+
+function buildGenericCategoryPlacement(features: PlusFeature[]) {
+  const candidates = uniqueDisplayNameCandidates(features).filter((feature) => plusTopicFromFeature(feature));
+  const byCategory = new Map<string, PlusFeature[]>();
+
+  for (const feature of candidates) {
+    const category = feature.properties.category;
+    const group = byCategory.get(category) ?? [];
+
+    group.push(feature);
+    byCategory.set(category, group);
+  }
+
+  const questions: PlusQuestion[] = [];
+  const chunkSize = 4;
+
+  for (const [category, group] of byCategory) {
+    if (group.length < chunkSize) {
+      continue;
+    }
+
+    const topic = plusTopicFromFeature(group[0]);
+
+    if (!topic) {
+      continue;
+    }
+
+    const shuffledGroup = shuffle(group);
+    const chunkCount = Math.floor(shuffledGroup.length / chunkSize);
+
+    for (let chunkIndex = 0; chunkIndex < chunkCount; chunkIndex += 1) {
+      const selected = shuffledGroup.slice(chunkIndex * chunkSize, chunkIndex * chunkSize + chunkSize);
+      const targets = mapTargets(selected, targetLetters, genericPlacementPalette);
+      const tokens = shuffle(
+        selected.map((feature, index) =>
+          token(`generic_${feature.properties.id}`, featureName(feature), feature.properties.location, genericPlacementPalette[index]),
+        ),
+      );
+      const correctAssignments: Record<string, string> = {};
+
+      for (const feature of selected) {
+        correctAssignments[feature.properties.id] = `generic_${feature.properties.id}`;
+      }
+
+      const question = makePlacementQuestion({
+        id: `plus_generic_placement_${category}_${chunkIndex}`,
+        topic,
+        title: "Kategori nokta atışı",
+        prompt: `${selected[0].properties.categoryLabel} kategorisindeki noktaları doğru isimle eşleştir.`,
+        helper: "Etiketi seç ve haritadaki doğru noktaya yerleştir.",
+        targets,
+        tokens,
+        correctAssignments,
+        answerSummary: "",
+        kpssNote: selected[0].properties.kpssNote,
+      });
+
+      questions.push({ ...question, answerSummary: placementSummary(question) });
+    }
+  }
+
+  return questions;
+}
+
 type PlusQuestionBuilderResult = PlusQuestion | PlusQuestion[] | null;
 
 const builders: Array<(features: PlusFeature[]) => PlusQuestionBuilderResult> = [
@@ -1476,6 +1557,7 @@ const builders: Array<(features: PlusFeature[]) => PlusQuestionBuilderResult> = 
   buildInnerPlateauPick,
   buildRenewableEnergyPlacement,
   buildEnergyResourcePlacement,
+  buildGenericCategoryPlacement,
 ];
 
 function buildCandidates(features: PlusFeature[], topic: PlusQuestionTopic, mode: PlusQuestionMode) {
@@ -1504,16 +1586,11 @@ function selectPlusQuestion(candidates: PlusQuestion[], mode: PlusQuestionMode) 
     return shuffle(candidates)[0];
   }
 
-  const candidatesByKind = candidates.reduce<Partial<Record<PlusQuestionKind, PlusQuestion[]>>>((groups, question) => {
-    groups[question.kind] = [...(groups[question.kind] ?? []), question];
-    return groups;
-  }, {});
-  const weightedKinds = Object.entries(mixedQuestionKindWeights).flatMap(([kind, weight]) =>
-    candidatesByKind[kind as PlusQuestionKind] ? Array.from({ length: weight }, () => kind as PlusQuestionKind) : [],
+  const weightedCandidates = candidates.flatMap((question) =>
+    Array.from({ length: mixedQuestionKindWeights[question.kind] }, () => question),
   );
-  const selectedKind = shuffle(weightedKinds)[0];
 
-  return selectedKind ? shuffle(candidatesByKind[selectedKind] ?? [])[0] : shuffle(candidates)[0];
+  return shuffle(weightedCandidates)[0] ?? shuffle(candidates)[0];
 }
 
 export function getPlusAvailability(
@@ -1527,10 +1604,14 @@ export function getPlusAvailability(
     industry: 0,
     energy: 0,
     agriculture: 0,
+    livestock: 0,
     mountain: 0,
     river: 0,
     lake: 0,
     plainPlateau: 0,
+    coast: 0,
+    tourism: 0,
+    port: 0,
   };
 
   for (const question of candidates) {
@@ -1543,21 +1624,37 @@ export function getPlusAvailability(
   };
 }
 
+function pickAvoidingRecent(candidates: PlusQuestion[], recentSeedIds: string[]) {
+  if (candidates.length <= 1 || recentSeedIds.length === 0) {
+    return candidates;
+  }
+
+  const fullyAvoided = candidates.filter((question) => !recentSeedIds.includes(question.id));
+
+  if (fullyAvoided.length > 0) {
+    return fullyAvoided;
+  }
+
+  const mostRecentSeedId = recentSeedIds[0];
+  const avoidedLastOnly = candidates.filter((question) => question.id !== mostRecentSeedId);
+
+  return avoidedLastOnly.length > 0 ? avoidedLastOnly : candidates;
+}
+
 export function generatePlusQuestion({
   features,
   topic,
   mode,
-  previousQuestionId,
+  recentQuestionIds,
 }: {
   features: PlusFeature[];
   topic: PlusQuestionTopic;
   mode: PlusQuestionMode;
-  previousQuestionId: string | null;
+  recentQuestionIds: string[];
 }) {
   const candidates = buildCandidates(features, topic, mode);
-  const previousSeedId = previousQuestionId?.split("__")[0] ?? null;
-  const nextCandidates =
-    candidates.length > 1 ? candidates.filter((question) => question.id !== previousSeedId) : candidates;
+  const recentSeedIds = recentQuestionIds.map((id) => id.split("__")[0]);
+  const nextCandidates = pickAvoidingRecent(candidates, recentSeedIds);
   const selected = selectPlusQuestion(nextCandidates, mode);
 
   if (!selected) {
