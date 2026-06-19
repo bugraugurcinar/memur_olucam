@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState, type CSSProperties } from "react";
 import { LayerStatus } from "./components/LayerStatus";
 import {
   economicFeatureCategories,
@@ -45,6 +45,18 @@ import {
   type QuizRoundMode,
   type QuizSessionStats,
 } from "./quiz/questionEngine";
+import {
+  generatePlusQuestion,
+  getPlusAvailability,
+  getPlusPlacementCorrectness,
+  getPlusTargetCorrectness,
+  plusQuestionKindLabels,
+  plusQuestionModeOptions,
+  plusQuestionTopicOptions,
+  type PlusQuestion,
+  type PlusQuestionMode,
+  type PlusQuestionTopic,
+} from "./quiz/plusQuestionEngine";
 
 type QuizAnswerState = {
   isCorrect: boolean;
@@ -54,6 +66,14 @@ type QuizAnswerState = {
   selectedChoiceId: string | null;
   distanceKm: number | null;
   heatLabel: string | null;
+};
+
+type PlusAnswerState = {
+  isCorrect: boolean;
+  message: string;
+  detail: string;
+  wrongTargetIds: string[];
+  selectedTokenId: string | null;
 };
 
 const questionKindLabels: Record<QuizQuestion["kind"], string> = {
@@ -101,6 +121,13 @@ function App() {
   const [currentQuestion, setCurrentQuestion] = useState<QuizQuestion | null>(null);
   const [quizAnswer, setQuizAnswer] = useState<QuizAnswerState | null>(null);
   const [mapGuesses, setMapGuesses] = useState<QuizPoint[]>([]);
+  const [currentPlusQuestion, setCurrentPlusQuestion] = useState<PlusQuestion | null>(null);
+  const [plusAnswer, setPlusAnswer] = useState<PlusAnswerState | null>(null);
+  const [plusTopic, setPlusTopic] = useState<PlusQuestionTopic>("mixed");
+  const [plusMode, setPlusMode] = useState<PlusQuestionMode>("mixed");
+  const [plusAssignments, setPlusAssignments] = useState<Record<string, string>>({});
+  const [plusSelectedTokenId, setPlusSelectedTokenId] = useState<string | null>(null);
+  const [plusSelectedTargetIds, setPlusSelectedTargetIds] = useState<string[]>([]);
   const [quizMode, setQuizMode] = useState<QuizMode>("mixed");
   const [quizDifficulty, setQuizDifficulty] = useState<QuizDifficulty>("medium");
   const [quizRoundMode, setQuizRoundMode] = useState<QuizRoundMode>("free");
@@ -172,6 +199,10 @@ function App() {
     () => getQuizAvailability(regionalQuestionPool, quizMode),
     [quizMode, regionalQuestionPool],
   );
+  const plusAvailability = useMemo(
+    () => getPlusAvailability(regionalQuestionPool, plusTopic, plusMode),
+    [plusMode, plusTopic, regionalQuestionPool],
+  );
   const isLoading =
     country.isLoading || provinces.isLoading || physicalFeaturesData.isLoading || economicFeaturesData.isLoading;
   const error = country.error ?? provinces.error ?? physicalFeaturesData.error ?? economicFeaturesData.error;
@@ -179,7 +210,10 @@ function App() {
   const shouldUseEconomicCategoryColors = activeEconomicTopics.length === 1;
   const canStartQuiz =
     quizAvailability.total > 0 && !physicalFeaturesData.isLoading && !economicFeaturesData.isLoading;
+  const canStartPlus =
+    plusAvailability.total > 0 && !physicalFeaturesData.isLoading && !economicFeaturesData.isLoading;
   const isQuizActive = Boolean(currentQuestion) && !sessionStats.isComplete;
+  const isPlusActive = Boolean(currentPlusQuestion);
   const activePhysicalQuizCategoryCount = physicalFeatureCategories.filter(
     (category) => activeTopics.includes(category.topic) && activeCategories.includes(category.id),
   ).length;
@@ -244,6 +278,21 @@ function App() {
       setMapGuesses([]);
     }
   }, [currentQuestion, regionalQuestionPool]);
+
+  useEffect(() => {
+    if (
+      currentPlusQuestion &&
+      !currentPlusQuestion.targets.every((target) =>
+        regionalQuestionPool.some((feature) => feature.properties.id === target.id),
+      )
+    ) {
+      setCurrentPlusQuestion(null);
+      setPlusAnswer(null);
+      setPlusAssignments({});
+      setPlusSelectedTokenId(null);
+      setPlusSelectedTargetIds([]);
+    }
+  }, [currentPlusQuestion, regionalQuestionPool]);
 
   useEffect(() => {
     if (quizRegion !== "all" && !regionOptions.includes(quizRegion)) {
@@ -358,6 +407,11 @@ function App() {
       setSelectedProvinceName(null);
       setSelectedFeature(null);
       setSelectedEconomicFeature(null);
+      setCurrentPlusQuestion(null);
+      setPlusAnswer(null);
+      setPlusAssignments({});
+      setPlusSelectedTokenId(null);
+      setPlusSelectedTargetIds([]);
     },
     [
       currentQuestion?.id,
@@ -368,6 +422,32 @@ function App() {
       sessionStats.isComplete,
     ],
   );
+
+  const startNextPlusQuestion = useCallback(() => {
+    const nextQuestion = generatePlusQuestion({
+      features: regionalQuestionPool,
+      topic: plusTopic,
+      mode: plusMode,
+      previousQuestionId: currentPlusQuestion?.id ?? null,
+    });
+
+    if (!nextQuestion) {
+      return;
+    }
+
+    setCurrentPlusQuestion(nextQuestion);
+    setPlusAnswer(null);
+    setPlusAssignments({});
+    setPlusSelectedTokenId(null);
+    setPlusSelectedTargetIds([]);
+    setCurrentQuestion(null);
+    setQuizAnswer(null);
+    setMapGuesses([]);
+    setSessionStats((currentStats) => ({ ...currentStats, isComplete: false }));
+    setSelectedProvinceName(null);
+    setSelectedFeature(null);
+    setSelectedEconomicFeature(null);
+  }, [currentPlusQuestion?.id, plusMode, plusTopic, regionalQuestionPool]);
 
   const handleProvinceSelect = useCallback((provinceName: string) => {
     setSelectedProvinceName(provinceName);
@@ -506,6 +586,14 @@ function App() {
     setSessionStats((currentStats) => ({ ...currentStats, isComplete: false }));
   }, []);
 
+  const handlePlusClose = useCallback(() => {
+    setCurrentPlusQuestion(null);
+    setPlusAnswer(null);
+    setPlusAssignments({});
+    setPlusSelectedTokenId(null);
+    setPlusSelectedTargetIds([]);
+  }, []);
+
   const handleChoiceAnswer = useCallback(
     (choiceId: string) => {
       if (!currentQuestion || currentQuestion.requiresMapAnswer || quizAnswer?.isFinal) {
@@ -591,12 +679,224 @@ function App() {
     startNextQuestion(!currentQuestion || sessionStats.isComplete);
   }, [canStartQuiz, currentQuestion, sessionStats.isComplete, startNextQuestion]);
 
+  const handlePrimaryPlusAction = useCallback(() => {
+    if (!canStartPlus) {
+      return;
+    }
+
+    startNextPlusQuestion();
+  }, [canStartPlus, startNextPlusQuestion]);
+
   const handleModeChange = useCallback((mode: QuizMode) => {
     setQuizMode(mode);
     setCurrentQuestion(null);
     setQuizAnswer(null);
     setMapGuesses([]);
   }, []);
+
+  const handlePlusTopicChange = useCallback((topic: PlusQuestionTopic) => {
+    setPlusTopic(topic);
+    setCurrentPlusQuestion(null);
+    setPlusAnswer(null);
+    setPlusAssignments({});
+    setPlusSelectedTokenId(null);
+    setPlusSelectedTargetIds([]);
+  }, []);
+
+  const handlePlusModeChange = useCallback((mode: PlusQuestionMode) => {
+    setPlusMode(mode);
+    setCurrentPlusQuestion(null);
+    setPlusAnswer(null);
+    setPlusAssignments({});
+    setPlusSelectedTokenId(null);
+    setPlusSelectedTargetIds([]);
+    setMapGuesses([]);
+  }, []);
+
+  const finalizePlusAnswer = useCallback(
+    ({
+      isCorrect,
+      message,
+      detail,
+      wrongTargetIds,
+      selectedTokenId,
+    }: {
+      isCorrect: boolean;
+      message: string;
+      detail: string;
+      wrongTargetIds: string[];
+      selectedTokenId: string | null;
+    }) => {
+      if (!currentPlusQuestion || plusAnswer) {
+        return;
+      }
+
+      setPlusAnswer({ isCorrect, message, detail, wrongTargetIds, selectedTokenId });
+      setPlusSelectedTokenId(null);
+    },
+    [currentPlusQuestion, plusAnswer],
+  );
+
+  const handlePlusTokenSelect = useCallback(
+    (tokenId: string) => {
+      if (!currentPlusQuestion || plusAnswer) {
+        return;
+      }
+
+      if (currentPlusQuestion.kind === "choice" || currentPlusQuestion.kind === "mapMatch") {
+        const isCorrect = tokenId === currentPlusQuestion.correctTokenId;
+        const selectedToken = currentPlusQuestion.tokens.find((token) => token.id === tokenId);
+
+        finalizePlusAnswer({
+          isCorrect,
+          message: isCorrect ? "Doğru." : "Yanlış.",
+          detail: isCorrect
+            ? currentPlusQuestion.answerSummary
+            : `Doğru cevap: ${currentPlusQuestion.answerSummary}. Seçimin: ${selectedToken?.label ?? "?"}.`,
+          wrongTargetIds: isCorrect ? [] : currentPlusQuestion.correctTargetIds,
+          selectedTokenId: tokenId,
+        });
+        return;
+      }
+
+      setPlusSelectedTokenId((currentTokenId) => (currentTokenId === tokenId ? null : tokenId));
+    },
+    [currentPlusQuestion, finalizePlusAnswer, plusAnswer],
+  );
+
+  const assignPlusTokenToTarget = useCallback(
+    (targetId: string, tokenId: string) => {
+      if (!currentPlusQuestion || currentPlusQuestion.kind !== "placement" || plusAnswer) {
+        return;
+      }
+
+      setPlusAssignments((currentAssignments) => ({
+        ...currentAssignments,
+        [targetId]: tokenId,
+      }));
+      setPlusSelectedTokenId(null);
+    },
+    [currentPlusQuestion, plusAnswer],
+  );
+
+  const handlePlusTargetSelect = useCallback(
+    (targetId: string) => {
+      if (!currentPlusQuestion || plusAnswer) {
+        return;
+      }
+
+      if (currentPlusQuestion.kind === "placement") {
+        if (plusSelectedTokenId) {
+          assignPlusTokenToTarget(targetId, plusSelectedTokenId);
+        }
+
+        return;
+      }
+
+      if (currentPlusQuestion.kind === "pickOne") {
+        const isCorrect = currentPlusQuestion.correctTargetIds.includes(targetId);
+        const selectedTarget = currentPlusQuestion.targets.find((target) => target.id === targetId);
+
+        finalizePlusAnswer({
+          isCorrect,
+          message: isCorrect ? "Doğru." : "Yanlış.",
+          detail: isCorrect
+            ? currentPlusQuestion.answerSummary
+            : `Doğru cevap: ${currentPlusQuestion.answerSummary}. Seçimin: ${selectedTarget?.name ?? "?"}.`,
+          wrongTargetIds: isCorrect ? [] : [targetId],
+          selectedTokenId: null,
+        });
+        setPlusSelectedTargetIds([targetId]);
+        return;
+      }
+
+      if (currentPlusQuestion.kind === "pickMany") {
+        setPlusSelectedTargetIds((currentIds) =>
+          currentIds.includes(targetId)
+            ? currentIds.filter((currentId) => currentId !== targetId)
+            : [...currentIds, targetId],
+        );
+      }
+    },
+    [assignPlusTokenToTarget, currentPlusQuestion, finalizePlusAnswer, plusAnswer, plusSelectedTokenId],
+  );
+
+  const handlePlusTargetDrop = useCallback(
+    (targetId: string, tokenId: string) => {
+      assignPlusTokenToTarget(targetId, tokenId);
+    },
+    [assignPlusTokenToTarget],
+  );
+
+  const handlePlusSubmit = useCallback(() => {
+    if (!currentPlusQuestion || plusAnswer) {
+      return;
+    }
+
+    if (currentPlusQuestion.kind === "placement") {
+      const results = getPlusPlacementCorrectness(currentPlusQuestion, plusAssignments);
+      const wrongTargetIds = results.filter((result) => !result.isCorrect).map((result) => result.targetId);
+      const isCorrect = wrongTargetIds.length === 0;
+
+      finalizePlusAnswer({
+        isCorrect,
+        message: isCorrect ? "Doğru." : "Yanlış.",
+        detail: isCorrect
+          ? currentPlusQuestion.answerSummary
+          : `Doğru yerleştirme: ${currentPlusQuestion.answerSummary}.`,
+        wrongTargetIds,
+        selectedTokenId: null,
+      });
+      return;
+    }
+
+    if (currentPlusQuestion.kind === "pickMany") {
+      const result = getPlusTargetCorrectness(currentPlusQuestion, plusSelectedTargetIds);
+
+      finalizePlusAnswer({
+        isCorrect: result.isCorrect,
+        message: result.isCorrect ? "Doğru." : "Yanlış.",
+        detail: result.isCorrect
+          ? currentPlusQuestion.answerSummary
+          : `Doğru cevap: ${currentPlusQuestion.answerSummary}.`,
+        wrongTargetIds: [...result.wrongTargetIds, ...result.missedTargetIds],
+        selectedTokenId: null,
+      });
+    }
+  }, [currentPlusQuestion, finalizePlusAnswer, plusAnswer, plusAssignments, plusSelectedTargetIds]);
+
+  const handleMapGuess = useCallback(
+    (guess: QuizPoint) => {
+      if (currentPlusQuestion?.kind === "mapLocate" && !plusAnswer) {
+        const target = currentPlusQuestion.targets[0];
+
+        if (!target) {
+          return;
+        }
+
+        const distanceKm = getDistanceKm(guess, target.point);
+        const isCorrect = distanceKm <= QUIZ_CORRECT_RADIUS_KM;
+
+        setMapGuesses([guess]);
+        setSelectedProvinceName(null);
+        setSelectedFeature(null);
+        setSelectedEconomicFeature(null);
+        finalizePlusAnswer({
+          isCorrect,
+          message: isCorrect ? "Doğru." : "Yanlış.",
+          detail: isCorrect
+            ? `${formatDistanceKm(distanceKm)} km uzaklıkta işaretledin.`
+            : `${formatDistanceKm(distanceKm)} km uzaktasın. Doğru nokta haritada gösterildi.`,
+          wrongTargetIds: [],
+          selectedTokenId: null,
+        });
+        return;
+      }
+
+      handleQuizGuess(guess);
+    },
+    [currentPlusQuestion, finalizePlusAnswer, handleQuizGuess, plusAnswer],
+  );
 
   const handleRoundModeChange = useCallback((mode: QuizRoundMode) => {
     setQuizRoundMode(mode);
@@ -638,6 +938,11 @@ function App() {
 
   const selectedChoiceId = quizAnswer?.selectedChoiceId ?? null;
   const quizResultStatus = quizAnswer?.isFinal ? (quizAnswer.isCorrect ? "correct" : "wrong") : null;
+  const plusResultStatus = plusAnswer ? (plusAnswer.isCorrect ? "correct" : "wrong") : null;
+  const isPlusMapLocateQuestion = currentPlusQuestion?.kind === "mapLocate";
+  const isPlusMapLocateActive = Boolean(isPlusMapLocateQuestion && !plusAnswer);
+  const plusMapLocateTarget = isPlusMapLocateQuestion ? currentPlusQuestion?.targets[0] ?? null : null;
+  const activeQuizResultStatus = plusMapLocateTarget && plusAnswer ? plusResultStatus : quizResultStatus;
   const selectedLineOptionIds =
     currentQuestion?.kind === "orderLine" && quizAnswer?.isFinal && quizAnswer.selectedChoiceId
       ? quizAnswer.selectedChoiceId.split("|")
@@ -650,6 +955,36 @@ function App() {
     currentQuestion &&
       (currentQuestion.showTargetOnMap || (currentQuestion.mapOptions.length === 0 && quizAnswer?.isFinal)),
   );
+  const plusTokenById = useMemo(
+    () => new Map(currentPlusQuestion?.tokens.map((token) => [token.id, token]) ?? []),
+    [currentPlusQuestion],
+  );
+  const plusAssignedTokenLabels = useMemo(
+    () =>
+      Object.fromEntries(
+        Object.entries(plusAssignments).map(([targetId, tokenId]) => [
+          targetId,
+          plusTokenById.get(tokenId)?.label ?? "",
+        ]),
+      ),
+    [plusAssignments, plusTokenById],
+  );
+  const plusVisibleSelectedTargetIds =
+    currentPlusQuestion?.kind === "placement" ? Object.keys(plusAssignments) : plusSelectedTargetIds;
+  const plusCorrectTargetIds = plusAnswer ? currentPlusQuestion?.correctTargetIds ?? [] : [];
+  const plusWrongTargetIds = plusAnswer?.wrongTargetIds ?? [];
+  const isPlusSubmitVisible =
+    currentPlusQuestion?.kind === "placement" || currentPlusQuestion?.kind === "pickMany";
+  const isPlusSubmitDisabled =
+    !currentPlusQuestion ||
+    Boolean(plusAnswer) ||
+    (currentPlusQuestion.kind === "placement"
+      ? Object.keys(plusAssignments).length < currentPlusQuestion.targets.length
+      : currentPlusQuestion.kind === "pickMany"
+        ? plusSelectedTargetIds.length === 0
+        : true);
+  const plusTopicLabel =
+    plusQuestionTopicOptions.find((option) => option.id === plusTopic)?.label ?? "Karma Soru+";
 
   return (
     <div className="app-shell">
@@ -686,23 +1021,32 @@ function App() {
             selectedProvinceName={selectedProvinceName}
             selectedPhysicalFeatureId={selectedFeature?.id ?? null}
             selectedEconomicFeatureId={selectedEconomicFeature?.id ?? null}
-            isQuizActive={isQuizActive}
+            isQuizActive={isQuizActive || isPlusMapLocateActive}
+            isPlusActive={isPlusActive}
             quizGuessPoints={mapGuesses}
-            quizResultStatus={quizResultStatus}
-            quizTargetName={currentQuestion?.expectedLabel ?? "Soru"}
-            quizTargetPoint={currentQuestion?.targetPoint ?? null}
-            quizShowTargetPoint={shouldShowQuizTarget}
-            quizPromptTarget={Boolean(currentQuestion?.showTargetOnMap && !quizAnswer?.isFinal)}
+            quizResultStatus={activeQuizResultStatus}
+            quizTargetName={plusMapLocateTarget?.name ?? currentQuestion?.expectedLabel ?? "Soru"}
+            quizTargetPoint={plusMapLocateTarget?.point ?? currentQuestion?.targetPoint ?? null}
+            quizShowTargetPoint={plusMapLocateTarget ? Boolean(plusAnswer) : shouldShowQuizTarget}
+            quizPromptTarget={plusMapLocateTarget ? false : Boolean(currentQuestion?.showTargetOnMap && !quizAnswer?.isFinal)}
             quizMapOptions={currentQuestion?.mapOptions ?? []}
             quizSelectedOptionId={selectedChoiceId}
             quizCorrectOptionIds={currentQuestion?.correctChoiceIds ?? []}
             quizSelectedLineOptionIds={selectedLineOptionIds}
             quizCorrectLineOptionIds={correctLineOptionIds}
+            plusTargets={isPlusMapLocateQuestion ? [] : currentPlusQuestion?.targets ?? []}
+            plusSelectedTargetIds={plusVisibleSelectedTargetIds}
+            plusCorrectTargetIds={plusCorrectTargetIds}
+            plusWrongTargetIds={plusWrongTargetIds}
+            plusAssignedTokenLabels={plusAssignedTokenLabels}
+            plusResultStatus={plusResultStatus}
             onProvinceSelect={handleProvinceSelect}
             onPhysicalFeatureSelect={handlePhysicalFeatureSelect}
             onEconomicFeatureSelect={handleEconomicFeatureSelect}
-            onQuizGuess={handleQuizGuess}
+            onQuizGuess={handleMapGuess}
             onQuizOptionSelect={handleChoiceAnswer}
+            onPlusTargetSelect={handlePlusTargetSelect}
+            onPlusTargetDrop={handlePlusTargetDrop}
           />
 
           {(isLoading || error) && (
@@ -714,17 +1058,17 @@ function App() {
         </section>
 
         <aside className="side-panel" aria-label="Harita katmanları">
-          <div className="panel-section quiz-panel">
+          <div className="panel-section plus-panel">
             <div className="quiz-section-heading">
-              <h2>Soru</h2>
-              <span>{quizAvailability.total} soru</span>
+              <h2>Soru+</h2>
+              <span>{plusAvailability.total} soru</span>
             </div>
 
-            <div className="quiz-control-grid" aria-label="Soru seçenekleri">
+            <div className="quiz-control-grid" aria-label="Soru+ seçenekleri">
               <label>
                 <span>Soru Tipi</span>
-                <select value={quizMode} onChange={(event) => handleModeChange(event.target.value as QuizMode)}>
-                  {quizModeOptions.map((option) => (
+                <select value={plusMode} onChange={(event) => handlePlusModeChange(event.target.value as PlusQuestionMode)}>
+                  {plusQuestionModeOptions.map((option) => (
                     <option key={option.id} value={option.id}>
                       {option.label}
                     </option>
@@ -732,25 +1076,12 @@ function App() {
                 </select>
               </label>
               <label>
-                <span>Zorluk</span>
+                <span>Konu</span>
                 <select
-                  value={quizDifficulty}
-                  onChange={(event) => setQuizDifficulty(event.target.value as QuizDifficulty)}
+                  value={plusTopic}
+                  onChange={(event) => handlePlusTopicChange(event.target.value as PlusQuestionTopic)}
                 >
-                  {quizDifficultyOptions.map((option) => (
-                    <option key={option.id} value={option.id}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <label>
-                <span>Tur</span>
-                <select
-                  value={quizRoundMode}
-                  onChange={(event) => handleRoundModeChange(event.target.value as QuizRoundMode)}
-                >
-                  {quizRoundModeOptions.map((option) => (
+                  {plusQuestionTopicOptions.map((option) => (
                     <option key={option.id} value={option.id}>
                       {option.label}
                     </option>
@@ -770,70 +1101,51 @@ function App() {
               </label>
             </div>
 
-            <div className="quiz-stats" aria-label="Soru performansı">
-              <span>
-                Doğru <strong>{sessionStats.correct}</strong>
-              </span>
-              <span>
-                Yanlış <strong>{sessionStats.wrong}</strong>
-              </span>
-              <span>
-                Çözülen <strong>{sessionStats.answered}</strong>
-              </span>
-              {quizRoundMode === "timed" ? (
-                <span>
-                  Süre <strong>{sessionStats.timeLeft}s</strong>
-                </span>
-              ) : null}
-            </div>
-
             <button
-              className={`quiz-launch-button${isQuizActive ? " quiz-launch-button--active" : ""}`}
-              disabled={!canStartQuiz}
-              onClick={handlePrimaryQuizAction}
+              className={`quiz-launch-button plus-launch-button${isPlusActive ? " quiz-launch-button--active" : ""}`}
+              disabled={!canStartPlus}
+              onClick={handlePrimaryPlusAction}
               type="button"
             >
-              {primaryQuizActionLabel}
+              {currentPlusQuestion && plusAnswer ? "Yeni Soru+"
+                : currentPlusQuestion
+                  ? "Soru+ yenile"
+                  : "Soru+ başlat"}
             </button>
 
             <div
-              className={`quiz-card${quizAnswer?.isFinal ? (quizAnswer.isCorrect ? " quiz-card--correct" : " quiz-card--wrong") : ""}`}
+              className={`quiz-card plus-card${plusAnswer ? (plusAnswer.isCorrect ? " quiz-card--correct" : " quiz-card--wrong") : ""}`}
             >
               <span className="quiz-card__eyebrow">
-                {currentQuestion
-                  ? `${questionKindLabels[currentQuestion.kind]} · ${difficultyLabels[quizDifficulty]}`
-                  : `${QUIZ_CORRECT_RADIUS_KM} km eşik`}
+                {currentPlusQuestion
+                  ? `${currentPlusQuestion.title} · ${plusQuestionKindLabels[currentPlusQuestion.kind]}`
+                  : `${plusTopicLabel} · harita etkileşimi`}
               </span>
-              <strong>{currentQuestion ? currentQuestion.prompt : "Soru havuzu hazır"}</strong>
-              <p>{quizStatusText}</p>
+              <strong>{currentPlusQuestion ? currentPlusQuestion.prompt : "Harita odaklı soru havuzu hazır"}</strong>
+              <p>
+                {plusAnswer
+                  ? plusAnswer.message
+                  : currentPlusQuestion
+                    ? currentPlusQuestion.helper
+                    : canStartPlus
+                      ? "Soru+ başlatınca mevcut katmanlar kapanır ve sadece soru hedefleri kalır."
+                      : "Seçili filtrelerde Soru+ üretilecek yeterli veri yok."}
+              </p>
 
-              {currentQuestion?.requiresMapAnswer ? (
-                <div className="quiz-map-hint">
-                  <span>{currentQuestion.allowsSecondAttempt ? "2 hak" : "1 hak"}</span>
-                  <strong>{mapGuesses.length} tahmin</strong>
-                </div>
-              ) : null}
-
-              {currentQuestion && currentQuestion.mapOptions.length > 0 ? (
-                <div className="quiz-map-hint">
-                  <span>A-E</span>
-                  <strong>
-                    {currentQuestion.kind === "orderLine" ? "Doğru sıralamayı seç" : "Haritadaki noktayı seç"}
-                  </strong>
-                </div>
-              ) : null}
-
-              {currentQuestion && currentQuestion.choices.length > 0 ? (
-                <div className="quiz-choice-list" aria-label="Soru cevapları">
-                  {currentQuestion.choices.map((choice) => {
-                    const isCorrectChoice = currentQuestion.correctChoiceIds.includes(choice.id);
-                    const isSelected = selectedChoiceId === choice.id;
-                    const shouldRevealChoice = Boolean(quizAnswer?.isFinal);
+              {currentPlusQuestion?.kind === "placement" ||
+              currentPlusQuestion?.kind === "choice" ||
+              currentPlusQuestion?.kind === "mapMatch" ? (
+                <div className="plus-token-list" aria-label="Soru+ etiketleri">
+                  {currentPlusQuestion.tokens.map((token) => {
+                    const isSelected = plusSelectedTokenId === token.id || plusAnswer?.selectedTokenId === token.id;
+                    const isCorrectToken = plusAnswer && token.id === currentPlusQuestion.correctTokenId;
+                    const isWrongToken =
+                      plusAnswer?.selectedTokenId === token.id && token.id !== currentPlusQuestion.correctTokenId;
                     const className = [
-                      "quiz-choice",
-                      isSelected ? "quiz-choice--selected" : "",
-                      shouldRevealChoice && isCorrectChoice ? "quiz-choice--correct" : "",
-                      shouldRevealChoice && isSelected && !isCorrectChoice ? "quiz-choice--wrong" : "",
+                      "plus-token",
+                      isSelected ? "plus-token--selected" : "",
+                      isCorrectToken ? "plus-token--correct" : "",
+                      isWrongToken ? "plus-token--wrong" : "",
                     ]
                       .filter(Boolean)
                       .join(" ");
@@ -841,172 +1153,82 @@ function App() {
                     return (
                       <button
                         className={className}
-                        disabled={Boolean(quizAnswer?.isFinal)}
-                        key={choice.id}
-                        onClick={() => handleChoiceAnswer(choice.id)}
+                        disabled={Boolean(plusAnswer)}
+                        draggable={currentPlusQuestion.kind === "placement" && !plusAnswer}
+                        key={token.id}
+                        onClick={() => handlePlusTokenSelect(token.id)}
+                        onDragStart={(event) => {
+                          event.dataTransfer.setData("text/plain", token.id);
+                          event.dataTransfer.effectAllowed = "move";
+                        }}
+                        style={{ "--plus-token-color": token.color } as CSSProperties}
                         type="button"
                       >
-                        <span>{choice.label}</span>
-                        {choice.detail ? <small>{choice.detail}</small> : null}
+                        <span>{token.label}</span>
                       </button>
                     );
                   })}
                 </div>
               ) : null}
 
-              {quizAnswer ? (
-                <div className="quiz-result">
-                  <strong>{quizAnswer.isFinal ? (quizAnswer.isCorrect ? "Doğru" : "Yanlış") : quizAnswer.heatLabel}</strong>
-                  <span>{quizAnswer.detail}</span>
+              {currentPlusQuestion?.kind === "mapLocate" && !plusAnswer ? (
+                <div className="quiz-map-hint">
+                  <span>{QUIZ_CORRECT_RADIUS_KM} km</span>
+                  <strong>Haritada tahmin noktanı bırak</strong>
                 </div>
               ) : null}
 
-              {quizAnswer?.isFinal && currentQuestion ? (
-                <p className="quiz-note">{currentQuestion.kpssNote}</p>
+              {currentPlusQuestion?.kind === "placement" ? (
+                <div className="plus-target-list" aria-label="Soru+ yerleştirme durumu">
+                  {currentPlusQuestion.targets.map((target) => {
+                    const assignedToken = plusTokenById.get(plusAssignments[target.id]);
+                    const isWrong = plusWrongTargetIds.includes(target.id);
+                    const isCorrect = plusAnswer && !isWrong;
+
+                    return (
+                      <div
+                        className={`plus-target-row${isCorrect ? " plus-target-row--correct" : ""}${isWrong ? " plus-target-row--wrong" : ""}`}
+                        key={target.id}
+                      >
+                        <strong>{target.label}</strong>
+                        <span>{assignedToken?.label ?? "Boş"}</span>
+                        {plusAnswer ? <small>{target.name}</small> : null}
+                      </div>
+                    );
+                  })}
+                </div>
               ) : null}
 
-              {currentQuestion ? (
-                <div className="quiz-actions">
-                  <button className="quiz-actions__secondary" onClick={handleQuizClose} type="button">
-                    Soru modunu kapat
+              {currentPlusQuestion?.kind === "pickMany" ? (
+                <div className="quiz-map-hint">
+                  <span>{plusSelectedTargetIds.length} seçili</span>
+                  <strong>Doğru noktaların tamamını işaretle</strong>
+                </div>
+              ) : null}
+
+              {plusAnswer ? (
+                <div className="quiz-result">
+                  <strong>{plusAnswer.isCorrect ? "Doğru" : "Yanlış"}</strong>
+                  <span>{plusAnswer.detail}</span>
+                </div>
+              ) : null}
+
+              {plusAnswer && currentPlusQuestion ? (
+                <p className="quiz-note">{currentPlusQuestion.kpssNote}</p>
+              ) : null}
+
+              {currentPlusQuestion ? (
+                <div className="quiz-actions plus-actions">
+                  {isPlusSubmitVisible ? (
+                    <button disabled={isPlusSubmitDisabled} onClick={handlePlusSubmit} type="button">
+                      {currentPlusQuestion.submitLabel}
+                    </button>
+                  ) : null}
+                  <button className="quiz-actions__secondary" onClick={handlePlusClose} type="button">
+                    Soru+ kapat
                   </button>
                 </div>
               ) : null}
-            </div>
-
-            <div className="quiz-filter-panel">
-              <div className="quiz-filter-heading">
-                <strong>Fiziki soru kategorileri</strong>
-                <span>{activePhysicalQuizCategoryCount} aktif</span>
-              </div>
-              <div className="topic-filter-list" aria-label="Fiziki soru kategorileri">
-                {physicalFeatureTopics.map((topic) => {
-                  const isActive = activeTopics.includes(topic.id);
-                  const isExpanded = expandedQuizTopics.includes(topic.id);
-                  const topicCount = physicalFeatures.filter((feature) => feature.properties.topic === topic.id).length;
-                  const topicCategories = physicalFeatureCategories.filter((category) => category.topic === topic.id);
-
-                  return (
-                    <div className="topic-filter-group" key={`quiz-${topic.id}`}>
-                      <div className="topic-filter-header">
-                        <label className="category-toggle topic-toggle quiz-toggle">
-                          <input checked={isActive} onChange={() => handleQuizTopicToggle(topic.id)} type="checkbox" />
-                          <span className="category-toggle__swatch" style={{ backgroundColor: topic.color }} />
-                          <span>
-                            {topic.label}
-                            <small>{topicCount} soru</small>
-                          </span>
-                          <strong>{isActive ? "Açık" : "Kapalı"}</strong>
-                        </label>
-                        <button
-                          aria-expanded={isExpanded}
-                          aria-label={`${topic.label} soru kategorilerini ${isExpanded ? "kapat" : "aç"}`}
-                          className="topic-expand-button"
-                          onClick={() => handleQuizTopicExpansionToggle(topic.id)}
-                          type="button"
-                        >
-                          {isExpanded ? "−" : "+"}
-                        </button>
-                      </div>
-
-                      {isExpanded ? (
-                        <div className="topic-category-list" aria-label={`${topic.label} soru kategorileri`}>
-                          {topicCategories.map((category) => {
-                            const isCategoryActive = activeCategories.includes(category.id);
-                            const categoryCount = physicalFeatures.filter(
-                              (feature) => feature.properties.category === category.id,
-                            ).length;
-
-                            return (
-                              <label className="category-toggle category-toggle--nested quiz-toggle" key={`quiz-${category.id}`}>
-                                <input
-                                  checked={isCategoryActive}
-                                  onChange={() => handleQuizCategoryToggle(category.id)}
-                                  type="checkbox"
-                                />
-                                <span className="category-toggle__swatch" style={{ backgroundColor: category.color }} />
-                                <span>
-                                  {category.label}
-                                  <small>{topic.label}</small>
-                                </span>
-                                <strong>{categoryCount}</strong>
-                              </label>
-                            );
-                          })}
-                        </div>
-                      ) : null}
-                    </div>
-                  );
-                })}
-              </div>
-              <div className="quiz-filter-heading">
-                <strong>Ekonomik soru kategorileri</strong>
-                <span>{activeEconomicQuizCategoryCount} aktif</span>
-              </div>
-              <div className="topic-filter-list" aria-label="Ekonomik soru kategorileri">
-                {economicFeatureTopics.map((topic) => {
-                  const isActive = activeEconomicTopics.includes(topic.id);
-                  const isExpanded = expandedQuizEconomicTopics.includes(topic.id);
-                  const topicCount = economicFeatures.filter((feature) => feature.properties.topic === topic.id).length;
-                  const topicCategories = economicFeatureCategories.filter((category) => category.topic === topic.id);
-
-                  return (
-                    <div className="topic-filter-group" key={`quiz-${topic.id}`}>
-                      <div className="topic-filter-header">
-                        <label className="category-toggle topic-toggle quiz-toggle">
-                          <input
-                            checked={isActive}
-                            onChange={() => handleQuizEconomicTopicToggle(topic.id)}
-                            type="checkbox"
-                          />
-                          <span className="category-toggle__swatch" style={{ backgroundColor: topic.color }} />
-                          <span>
-                            {topic.label}
-                            <small>{topicCount} soru</small>
-                          </span>
-                          <strong>{isActive ? "Açık" : "Kapalı"}</strong>
-                        </label>
-                        <button
-                          aria-expanded={isExpanded}
-                          aria-label={`${topic.label} soru kategorilerini ${isExpanded ? "kapat" : "aç"}`}
-                          className="topic-expand-button"
-                          onClick={() => handleQuizEconomicTopicExpansionToggle(topic.id)}
-                          type="button"
-                        >
-                          {isExpanded ? "−" : "+"}
-                        </button>
-                      </div>
-
-                      {isExpanded ? (
-                        <div className="topic-category-list" aria-label={`${topic.label} soru kategorileri`}>
-                          {topicCategories.map((category) => {
-                            const isCategoryActive = activeEconomicCategories.includes(category.id);
-                            const categoryCount = economicFeatures.filter(
-                              (feature) => feature.properties.category === category.id,
-                            ).length;
-
-                            return (
-                              <label className="category-toggle category-toggle--nested quiz-toggle" key={`quiz-${category.id}`}>
-                                <input
-                                  checked={isCategoryActive}
-                                  onChange={() => handleQuizEconomicCategoryToggle(category.id)}
-                                  type="checkbox"
-                                />
-                                <span className="category-toggle__swatch" style={{ backgroundColor: category.color }} />
-                                <span>
-                                  {category.label}
-                                  <small>{topic.label}</small>
-                                </span>
-                                <strong>{categoryCount}</strong>
-                              </label>
-                            );
-                          })}
-                        </div>
-                      ) : null}
-                    </div>
-                  );
-                })}
-              </div>
             </div>
           </div>
 

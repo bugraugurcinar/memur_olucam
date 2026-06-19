@@ -17,6 +17,7 @@ import {
   type PhysicalFeatureProperties,
   type PhysicalFeatureTopic,
 } from "../geojson/physicalFeatures";
+import type { PlusMapTarget } from "../quiz/plusQuestionEngine";
 
 type QuizPoint = {
   lat: number;
@@ -49,6 +50,7 @@ type TurkeyMapProps = {
   selectedPhysicalFeatureId: string | null;
   selectedEconomicFeatureId: string | null;
   isQuizActive: boolean;
+  isPlusActive: boolean;
   quizGuessPoints: QuizPoint[];
   quizResultStatus: QuizResultStatus;
   quizTargetName: string;
@@ -60,11 +62,19 @@ type TurkeyMapProps = {
   quizCorrectOptionIds: string[];
   quizSelectedLineOptionIds: string[];
   quizCorrectLineOptionIds: string[];
+  plusTargets: PlusMapTarget[];
+  plusSelectedTargetIds: string[];
+  plusCorrectTargetIds: string[];
+  plusWrongTargetIds: string[];
+  plusAssignedTokenLabels: Record<string, string>;
+  plusResultStatus: QuizResultStatus;
   onProvinceSelect: (provinceName: string) => void;
   onPhysicalFeatureSelect: (feature: PhysicalFeatureProperties) => void;
   onEconomicFeatureSelect: (feature: EconomicFeatureProperties) => void;
   onQuizGuess: (point: QuizPoint) => void;
   onQuizOptionSelect: (optionId: string) => void;
+  onPlusTargetSelect: (targetId: string) => void;
+  onPlusTargetDrop: (targetId: string, tokenId: string) => void;
 };
 
 type ProvinceLayer = Layer & {
@@ -76,6 +86,10 @@ type PhysicalFeatureLayer = Layer & {
 };
 
 type EconomicFeatureLayer = Layer & {
+  feature?: Feature;
+};
+
+type FeatureMarker = L.Marker & {
   feature?: Feature;
 };
 
@@ -173,6 +187,127 @@ function economicFeatureStyle(
   };
 }
 
+function getPhysicalIconName(feature: PhysicalFeatureProperties) {
+  if (feature.topic === "mountain" && feature.category === "mountain_volcanic") {
+    return "volcano";
+  }
+
+  const icons: Record<PhysicalFeatureTopic, string> = {
+    mountain: "mountain",
+    plain: "field",
+    plateau: "layers",
+    river: "river",
+    lake: "lake",
+    coast: "coast",
+  };
+
+  return icons[feature.topic];
+}
+
+function getEconomicIconName(feature: EconomicFeatureProperties) {
+  if (feature.category === "energy_hydroelectric") {
+    return "hydro";
+  }
+
+  if (feature.category === "energy_geothermal" || feature.category === "energy_fossil") {
+    return "flame";
+  }
+
+  if (feature.category === "energy_wind") {
+    return "wind";
+  }
+
+  if (feature.category === "energy_solar") {
+    return "sun";
+  }
+
+  const icons: Record<EconomicFeatureTopic, string> = {
+    agriculture: "leaf",
+    livestock: "barn",
+    mine: "pickaxe",
+    energy: "bolt",
+    industry: "factory",
+    tourism: "camera",
+    port: "anchor",
+  };
+
+  return icons[feature.topic];
+}
+
+function featureIconSvg(iconName: string) {
+  const common = `fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"`;
+  const icons: Record<string, string> = {
+    anchor: `<path ${common} d="M12 4v16" /><path ${common} d="M7 8h10" /><path ${common} d="M5 14c1 4 4 6 7 6s6-2 7-6" /><path ${common} d="M5 14h3" /><path ${common} d="M16 14h3" /><circle ${common} cx="12" cy="4" r="2" />`,
+    barn: `<path ${common} d="M4 20V9l8-5 8 5v11" /><path ${common} d="M8 20v-7h8v7" /><path ${common} d="M9 9h6" /><path ${common} d="M12 13v7" />`,
+    bolt: `<path ${common} d="M13 2 5 14h6l-1 8 9-13h-6l1-7Z" />`,
+    camera: `<path ${common} d="M5 8h3l2-2h4l2 2h3v11H5Z" /><circle ${common} cx="12" cy="13.5" r="3" />`,
+    coast: `<path ${common} d="M4 9c4-3 8 3 12 0 2-1 3-1 4 0" /><path ${common} d="M4 15c4-3 8 3 12 0 2-1 3-1 4 0" />`,
+    factory: `<path ${common} d="M4 20V9l5 3V9l5 3V7h6v13Z" /><path ${common} d="M8 17h1" /><path ${common} d="M12 17h1" /><path ${common} d="M16 17h1" />`,
+    field: `<path ${common} d="M4 18h16" /><path ${common} d="M5 14c4-3 10-3 14 0" /><path ${common} d="M6 10c3-2 9-2 12 0" /><path ${common} d="M8 6c2-1 6-1 8 0" />`,
+    flame: `<path ${common} d="M12 22c4 0 7-3 7-7 0-3-2-5-5-8 0 3-2 4-4 5 0-2-1-4-3-5 0 4-2 6-2 8 0 4 3 7 7 7Z" />`,
+    hydro: `<path ${common} d="M12 3s6 6 6 11a6 6 0 0 1-12 0c0-5 6-11 6-11Z" /><path ${common} d="M8 18c2-1 6-1 8 0" />`,
+    lake: `<path ${common} d="M4 15c2-2 4-2 6 0s4 2 6 0 3-2 4-1" /><path ${common} d="M5 19c2-2 4-2 6 0s4 2 6 0" /><path ${common} d="M12 4s4 4 4 7a4 4 0 0 1-8 0c0-3 4-7 4-7Z" />`,
+    layers: `<path ${common} d="m12 3 9 5-9 5-9-5 9-5Z" /><path ${common} d="m3 12 9 5 9-5" /><path ${common} d="m3 16 9 5 9-5" />`,
+    leaf: `<path ${common} d="M5 19c8 0 14-6 14-14C11 5 5 11 5 19Z" /><path ${common} d="M5 19 15 9" />`,
+    mountain: `<path ${common} d="m3 19 7-12 4 7 2-3 5 8H3Z" /><path ${common} d="m10 7 1.8 3h-3.6L10 7Z" />`,
+    pickaxe: `<path ${common} d="M14 5c3 1 5 3 6 6" /><path ${common} d="M4 20 14 10" /><path ${common} d="M9 5c4-2 8-1 11 2" />`,
+    river: `<path ${common} d="M6 3c5 3 1 6 6 9s1 6 6 9" /><path ${common} d="M3 15c2-1 4-1 6 0s4 1 6 0 4-1 6 0" />`,
+    sun: `<circle ${common} cx="12" cy="12" r="4" /><path ${common} d="M12 2v2" /><path ${common} d="M12 20v2" /><path ${common} d="M4 12H2" /><path ${common} d="M22 12h-2" /><path ${common} d="m5 5 1.5 1.5" /><path ${common} d="m17.5 17.5 1.5 1.5" /><path ${common} d="m19 5-1.5 1.5" /><path ${common} d="m6.5 17.5L5 19" />`,
+    volcano: `<path ${common} d="m3 20 7-14 3 7 2-3 6 10H3Z" /><path ${common} d="M10 6c-1-2 2-2 1-4" /><path ${common} d="M13 7c2-1-1-3 1-5" /><path ${common} d="M9 13h6" />`,
+    wind: `<path ${common} d="M3 8h11a3 3 0 1 0-3-3" /><path ${common} d="M3 13h15a3 3 0 1 1-3 3" /><path ${common} d="M3 18h7" />`,
+  };
+
+  return icons[iconName] ?? icons.bolt;
+}
+
+function createFeatureIcon({
+  color,
+  iconName,
+  isEconomic,
+  isSelected,
+}: {
+  color: string;
+  iconName: string;
+  isEconomic: boolean;
+  isSelected: boolean;
+}) {
+  const selectedClass = isSelected ? " feature-map-marker--selected" : "";
+  const economicClass = isEconomic ? " feature-map-marker--economic" : " feature-map-marker--physical";
+
+  return L.divIcon({
+    className: `feature-map-marker${economicClass}${selectedClass}`,
+    html: `<span style="--feature-color: ${color}"><svg viewBox="0 0 24 24" aria-hidden="true">${featureIconSvg(iconName)}</svg></span>`,
+    iconAnchor: [15, 15],
+    iconSize: [30, 30],
+  });
+}
+
+function createPhysicalFeatureIcon(
+  feature: PhysicalFeatureProperties,
+  selectedFeatureId: string | null,
+  shouldUseCategoryColors: boolean,
+) {
+  return createFeatureIcon({
+    color: getPhysicalFeatureColor(feature, shouldUseCategoryColors),
+    iconName: getPhysicalIconName(feature),
+    isEconomic: false,
+    isSelected: feature.id === selectedFeatureId,
+  });
+}
+
+function createEconomicFeatureIcon(
+  feature: EconomicFeatureProperties,
+  selectedFeatureId: string | null,
+  shouldUseCategoryColors: boolean,
+) {
+  return createFeatureIcon({
+    color: getEconomicFeatureColor(feature, shouldUseCategoryColors),
+    iconName: getEconomicIconName(feature),
+    isEconomic: true,
+    isSelected: feature.id === selectedFeatureId,
+  });
+}
+
 function createQuizIcon(
   markerType: "guess" | "answer" | "prompt" | "option",
   resultStatus: QuizResultStatus = null,
@@ -197,6 +332,26 @@ function createQuizIcon(
   });
 }
 
+function createPlusIcon(
+  target: PlusMapTarget,
+  resultStatus: QuizResultStatus,
+  isSelected: boolean,
+  assignedLabel?: string,
+) {
+  const statusClass = resultStatus ? ` quiz-map-marker--${resultStatus}` : "";
+  const selectedClass = isSelected ? " plus-map-marker--selected" : "";
+  const assignedClass = assignedLabel ? " plus-map-marker--assigned" : "";
+
+  return L.divIcon({
+    className: `quiz-map-marker plus-map-marker${statusClass}${selectedClass}${assignedClass}`,
+    html: `<span style="--plus-color: ${target.color}"><b>${escapeHtml(target.label)}</b>${
+      assignedLabel ? `<em>${escapeHtml(assignedLabel)}</em>` : ""
+    }</span>`,
+    iconAnchor: [18, 18],
+    iconSize: [36, 36],
+  });
+}
+
 export function TurkeyMap({
   countryData,
   provincesData,
@@ -212,6 +367,7 @@ export function TurkeyMap({
   selectedPhysicalFeatureId,
   selectedEconomicFeatureId,
   isQuizActive,
+  isPlusActive,
   quizGuessPoints,
   quizResultStatus,
   quizTargetName,
@@ -223,11 +379,19 @@ export function TurkeyMap({
   quizCorrectOptionIds,
   quizSelectedLineOptionIds,
   quizCorrectLineOptionIds,
+  plusTargets,
+  plusSelectedTargetIds,
+  plusCorrectTargetIds,
+  plusWrongTargetIds,
+  plusAssignedTokenLabels,
+  plusResultStatus,
   onProvinceSelect,
   onPhysicalFeatureSelect,
   onEconomicFeatureSelect,
   onQuizGuess,
   onQuizOptionSelect,
+  onPlusTargetSelect,
+  onPlusTargetDrop,
 }: TurkeyMapProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<L.Map | null>(null);
@@ -239,6 +403,8 @@ export function TurkeyMap({
   const isQuizActiveRef = useRef(isQuizActive);
   const onQuizGuessRef = useRef(onQuizGuess);
   const onQuizOptionSelectRef = useRef(onQuizOptionSelect);
+  const onPlusTargetSelectRef = useRef(onPlusTargetSelect);
+  const onPlusTargetDropRef = useRef(onPlusTargetDrop);
   const selectedProvinceRef = useRef<string | null>(selectedProvinceName);
   const selectedFeatureRef = useRef<string | null>(selectedPhysicalFeatureId);
   const selectedEconomicFeatureRef = useRef<string | null>(selectedEconomicFeatureId);
@@ -293,7 +459,9 @@ export function TurkeyMap({
     isQuizActiveRef.current = isQuizActive;
     onQuizGuessRef.current = onQuizGuess;
     onQuizOptionSelectRef.current = onQuizOptionSelect;
-  }, [isQuizActive, onQuizGuess, onQuizOptionSelect]);
+    onPlusTargetSelectRef.current = onPlusTargetSelect;
+    onPlusTargetDropRef.current = onPlusTargetDrop;
+  }, [isQuizActive, onPlusTargetDrop, onPlusTargetSelect, onQuizGuess, onQuizOptionSelect]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -322,15 +490,16 @@ export function TurkeyMap({
 
   useEffect(() => {
     selectedProvinceRef.current = selectedProvinceName;
+    const isQuestionActive = isQuizActive || isPlusActive;
 
     provinceLayerRef.current?.eachLayer((layer: ProvinceLayer) => {
       const provinceName = getShapeName(layer.feature?.properties);
 
       if (layer instanceof L.Path) {
-        layer.setStyle(isQuizActive ? quizProvinceStyle() : provinceStyle(provinceName, selectedProvinceName));
+        layer.setStyle(isQuestionActive ? quizProvinceStyle() : provinceStyle(provinceName, selectedProvinceName));
       }
     });
-  }, [isQuizActive, selectedProvinceName]);
+  }, [isPlusActive, isQuizActive, selectedProvinceName]);
 
   useEffect(() => {
     selectedFeatureRef.current = selectedPhysicalFeatureId;
@@ -378,7 +547,7 @@ export function TurkeyMap({
 
     countryLayerRef.current = countryLayer;
 
-    if (isQuizActive && provincesData) {
+    if ((isQuizActive || isPlusActive) && provincesData) {
       const provinceLayer = L.geoJSON(provincesData, {
         interactive: false,
         style: quizProvinceStyle,
@@ -428,7 +597,7 @@ export function TurkeyMap({
       countryLayer.remove();
       provinceLayerRef.current?.remove();
     };
-  }, [countryData, provincesData, isQuizActive, onProvinceSelect]);
+  }, [countryData, provincesData, isPlusActive, isQuizActive, onProvinceSelect]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -440,7 +609,7 @@ export function TurkeyMap({
     physicalFeatureLayerRef.current?.remove();
     physicalFeatureLayerRef.current = null;
 
-    if (isQuizActive) {
+    if (isQuizActive || isPlusActive) {
       return;
     }
 
@@ -516,6 +685,7 @@ export function TurkeyMap({
     physicalFeaturesData,
     activePhysicalCategories,
     activePhysicalTopics,
+    isPlusActive,
     isQuizActive,
     onPhysicalFeatureSelect,
     shouldUsePhysicalCategoryColors,
@@ -531,7 +701,7 @@ export function TurkeyMap({
     economicFeatureLayerRef.current?.remove();
     economicFeatureLayerRef.current = null;
 
-    if (isQuizActive) {
+    if (isQuizActive || isPlusActive) {
       return;
     }
 
@@ -619,6 +789,7 @@ export function TurkeyMap({
     economicFeaturesData,
     activeEconomicCategories,
     activeEconomicTopics,
+    isPlusActive,
     isQuizActive,
     onEconomicFeatureSelect,
     shouldUseEconomicCategoryColors,
@@ -635,6 +806,7 @@ export function TurkeyMap({
 
     const quizLayer = L.layerGroup().addTo(map);
     const mapOptionLatLngs = quizMapOptions.map((option) => L.latLng(option.point.lat, option.point.lng));
+    const plusTargetLatLngs = plusTargets.map((target) => L.latLng(target.point.lat, target.point.lng));
     const optionLatLngById = new Map<string, L.LatLng>();
 
     quizMapOptions.forEach((option) => {
@@ -688,6 +860,63 @@ export function TurkeyMap({
       }
 
       if (quizResultStatus && (isCorrectOption || isSelectedOption)) {
+        marker.openTooltip();
+      }
+    });
+
+    plusTargets.forEach((target) => {
+      const targetLatLng = L.latLng(target.point.lat, target.point.lng);
+      const isCorrectTarget = plusCorrectTargetIds.includes(target.id);
+      const isWrongTarget = plusWrongTargetIds.includes(target.id);
+      const isSelectedTarget = plusSelectedTargetIds.includes(target.id);
+      const assignedLabel = plusAssignedTokenLabels[target.id];
+      const targetStatus: QuizResultStatus = plusResultStatus
+        ? isWrongTarget
+          ? "wrong"
+          : isCorrectTarget
+            ? "correct"
+            : null
+        : null;
+      const marker = L.marker(targetLatLng, {
+        bubblingMouseEvents: false,
+        icon: createPlusIcon(target, targetStatus, isSelectedTarget, assignedLabel),
+        keyboard: true,
+        pane: QUIZ_PANE,
+      })
+        .bindTooltip(
+          plusResultStatus
+            ? `${target.label}: ${target.name} · ${target.detail}`
+            : assignedLabel
+              ? `${target.label}: ${assignedLabel}`
+              : `${target.label} hedefi`,
+          {
+            direction: "top",
+            opacity: 0.96,
+          },
+        )
+        .addTo(quizLayer);
+
+      if (!plusResultStatus) {
+        marker.on("click", () => onPlusTargetSelectRef.current(target.id));
+
+        const element = marker.getElement();
+
+        if (element) {
+          element.addEventListener("dragover", (event) => {
+            event.preventDefault();
+          });
+          element.addEventListener("drop", (event) => {
+            event.preventDefault();
+            const tokenId = event.dataTransfer?.getData("text/plain");
+
+            if (tokenId) {
+              onPlusTargetDropRef.current(target.id, tokenId);
+            }
+          });
+        }
+      }
+
+      if (plusResultStatus && (isCorrectTarget || isWrongTarget)) {
         marker.openTooltip();
       }
     });
@@ -770,6 +999,12 @@ export function TurkeyMap({
         maxZoom: 7,
         padding: [80, 80],
       });
+    } else if (plusTargetLatLngs.length > 0) {
+      map.flyToBounds(L.latLngBounds(plusTargetLatLngs), {
+        duration: 0.55,
+        maxZoom: 7,
+        padding: [80, 80],
+      });
     } else if (lastGuessLatLng && targetLatLng && quizResultStatus) {
       map.flyToBounds(L.latLngBounds([lastGuessLatLng, targetLatLng]), {
         duration: 0.8,
@@ -792,6 +1027,12 @@ export function TurkeyMap({
       quizLayer.remove();
     };
   }, [
+    plusAssignedTokenLabels,
+    plusCorrectTargetIds,
+    plusResultStatus,
+    plusSelectedTargetIds,
+    plusTargets,
+    plusWrongTargetIds,
     quizCorrectOptionIds,
     quizCorrectLineOptionIds,
     quizGuessPoints,
