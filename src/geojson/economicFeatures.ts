@@ -48,10 +48,130 @@ export type EconomicFeatureProperties = {
 
 export type EconomicFeature = Feature<Point, EconomicFeatureProperties>;
 
+const provinceNames = new Set(
+  [
+    "Adana",
+    "Adıyaman",
+    "Afyonkarahisar",
+    "Ağrı",
+    "Aksaray",
+    "Amasya",
+    "Ankara",
+    "Antalya",
+    "Ardahan",
+    "Artvin",
+    "Aydın",
+    "Balıkesir",
+    "Bartın",
+    "Batman",
+    "Bayburt",
+    "Bilecik",
+    "Bingöl",
+    "Bitlis",
+    "Bolu",
+    "Burdur",
+    "Bursa",
+    "Çanakkale",
+    "Çankırı",
+    "Çorum",
+    "Denizli",
+    "Diyarbakır",
+    "Düzce",
+    "Edirne",
+    "Elazığ",
+    "Erzincan",
+    "Erzurum",
+    "Eskişehir",
+    "Gaziantep",
+    "Giresun",
+    "Gümüşhane",
+    "Hakkari",
+    "Hatay",
+    "Iğdır",
+    "Isparta",
+    "İstanbul",
+    "İzmir",
+    "Kahramanmaraş",
+    "Karabük",
+    "Karaman",
+    "Kars",
+    "Kastamonu",
+    "Kayseri",
+    "Kırıkkale",
+    "Kırklareli",
+    "Kırşehir",
+    "Kilis",
+    "Kocaeli",
+    "Konya",
+    "Kütahya",
+    "Malatya",
+    "Manisa",
+    "Mardin",
+    "Mersin",
+    "Muğla",
+    "Muş",
+    "Nevşehir",
+    "Niğde",
+    "Ordu",
+    "Osmaniye",
+    "Rize",
+    "Sakarya",
+    "Samsun",
+    "Siirt",
+    "Sinop",
+    "Sivas",
+    "Şanlıurfa",
+    "Şırnak",
+    "Tekirdağ",
+    "Tokat",
+    "Trabzon",
+    "Tunceli",
+    "Uşak",
+    "Van",
+    "Yalova",
+    "Yozgat",
+    "Zonguldak",
+  ].map((province) => province.toLocaleLowerCase("tr-TR")),
+);
+
+const broadLocationNames = new Set(
+  ["Akdeniz", "Doğu Anadolu", "Doğu Karadeniz", "Ege", "Güneydoğu Anadolu", "İç Anadolu", "Karadeniz", "Marmara"].map(
+    (location) => location.toLocaleLowerCase("tr-TR"),
+  ),
+);
+
 const topicIds = new Set<EconomicFeatureTopic>(economicFeatureTopics.map((topic) => topic.id));
 const categoryIds = new Set<EconomicFeatureCategory>(
   economicFeatureCategories.map((category) => category.id),
 );
+
+function isProvinceName(value: string) {
+  return provinceNames.has(value.trim().toLocaleLowerCase("tr-TR"));
+}
+
+function isBroadLocationName(value: string) {
+  return broadLocationNames.has(value.trim().toLocaleLowerCase("tr-TR"));
+}
+
+export function getEconomicLocationShortLabel(location: string, shouldAllowProvinceOnly = false) {
+  const parts = location
+    .split("/")
+    .map((part) => part.trim())
+    .filter(Boolean);
+  const specificPart = parts.find((part) => !isProvinceName(part) && !isBroadLocationName(part));
+
+  if (specificPart) {
+    return specificPart;
+  }
+
+  return shouldAllowProvinceOnly ? parts[0] ?? location : "";
+}
+
+export function getEconomicFeatureDisplayName(feature: EconomicFeatureProperties) {
+  const locationLabel = getEconomicLocationShortLabel(feature.location);
+
+  return locationLabel ? `${feature.name} ${locationLabel}` : feature.name;
+}
 
 export function isEconomicFeature(feature: Feature): feature is EconomicFeature {
   const properties = feature.properties as Partial<EconomicFeatureProperties> | null;
