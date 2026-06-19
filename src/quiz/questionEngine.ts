@@ -196,6 +196,38 @@ const bestExplanationTemplates: Record<string, { correct: string; wrong: string[
       "Bir tarım ürünü iklim seçiciliği örneğidir.",
     ],
   },
+  energy_hydroelectric: {
+    correct: "Hidroelektrik potansiyel akarsu debisi, eğim ve baraj kurulabilecek vadilerle ilişkilidir.",
+    wrong: [
+      "Sadece pamuk üretim alanlarına bağlı gelişir.",
+      "Kıyı turizmi için yaz kuraklığını açıklayan bir örnektir.",
+      "Tersiyer linyit havzalarının dağılışıyla sınıflanır.",
+    ],
+  },
+  energy_geothermal: {
+    correct: "Jeotermal enerji fay hatları ve sıcak su kaynaklarının yoğun olduğu alanlarla ilişkilidir.",
+    wrong: [
+      "Dağların kıyıya dik uzanmasıyla oluşan kıyı tipidir.",
+      "Sadece liman hinterlandı geniş olan kentlerde görülür.",
+      "Alüvyal set gölü oluşumunun doğrudan sonucudur.",
+    ],
+  },
+  energy_wind: {
+    correct: "Rüzgar enerjisi sürekli ve güçlü rüzgar alan kıyı, boğaz ve geçit çevrelerinde öne çıkar.",
+    wrong: [
+      "Karstik çözünme sonucu oluşan ova örneğidir.",
+      "Yalnızca taşkömürü çıkarımına bağlıdır.",
+      "İpekböcekçiliğiyle aynı üretim koşullarını ister.",
+    ],
+  },
+  energy_solar: {
+    correct: "Güneş enerjisi güneşlenme süresi ve açık gün sayısı yüksek iç ve güney kesimlerle ilişkilidir.",
+    wrong: [
+      "Yağışın yıl boyu çok olduğu kıyılarda zorunlu olarak yoğunlaşır.",
+      "Kıvrım dağlarının oluşum nedenini açıklar.",
+      "Sadece doğal limanların bulunduğu noktalarda gelişir.",
+    ],
+  },
   industry_processing: {
     correct: "Hammadde, ulaşım, liman ve pazar bağlantıları sanayi merkezlerini belirler.",
     wrong: [
@@ -226,6 +258,62 @@ const bestExplanationTemplates: Record<string, { correct: string; wrong: string[
       "Volkanik dağ oluşumu bu sanayi kolunu belirler.",
       "Sadece lületaşı çıkarılan yerde yapılır.",
       "Akarsuyun Hazar'a dökülmesi gerekir.",
+    ],
+  },
+  industry_food_agro: {
+    correct: "Tarımsal sanayi ürüne yakınlık, bozulabilirlik ve hammadde sürekliliğiyle ilişkilidir.",
+    wrong: [
+      "Sadece volkanik set gölleri çevresinde kurulur.",
+      "Akarsuyun döküldüğü denize göre sınıflanır.",
+      "Ria kıyı tipinin doğrudan sonucudur.",
+    ],
+  },
+  industry_material: {
+    correct: "Kağıt, seramik ve cam sanayisinde hammadde, su, enerji, pazar ve ulaşım bağlantıları önemlidir.",
+    wrong: [
+      "Sadece çay tarımının görüldüğü yıkanmış topraklara bağlıdır.",
+      "Küçükbaş hayvancılığın alt türüdür.",
+      "Delta ovası oluşumunu açıklayan fiziki süreçtir.",
+    ],
+  },
+  tourism_coastal: {
+    correct: "Kıyı turizmi deniz, güneşlenme süresi, yaz kuraklığı ve ulaşım olanaklarıyla ilişkilidir.",
+    wrong: [
+      "Sadece metal madenlerinin çıkarım alanlarıyla açıklanır.",
+      "Faylanmayla oluşan tektonik ova grubudur.",
+      "Akarsu rejimini belirleyen bir havza türüdür.",
+    ],
+  },
+  tourism_cultural: {
+    correct: "Kültür turizmi tarihsel miras, doğal-kültürel peyzaj ve ulaşılabilir merkezlerle ilişkilidir.",
+    wrong: [
+      "Yalnızca yaz kuraklığı isteyen sanayi bitkisidir.",
+      "Volkanik lav platosu sınıfına girer.",
+      "Demir-çelik sanayisinin hammadde basamağıdır.",
+    ],
+  },
+  tourism_winter_thermal: {
+    correct: "Kış ve termal turizm yükselti, kar örtüsü, fay hatları ve sıcak su kaynaklarıyla ilişkilidir.",
+    wrong: [
+      "Kıyı set gölü oluşumuyla aynı sınıftadır.",
+      "Sadece pamuklu dokuma merkezlerinde gelişir.",
+      "Akarsuların Basra Körfezi'ne dökülmesini açıklar.",
+    ],
+  },
+  port_trade: {
+    correct: "Büyük dış ticaret limanlarında hinterland, sanayi, ulaşım ve dış ticaret bağlantısı belirleyicidir.",
+    wrong: [
+      "Sadece karstik plato yüzeylerinde görülür.",
+      "Çay ve fındık gibi iklim seçici ürünlerin alt türüdür.",
+      "Dağların volkanik oluşumunu açıklar.",
+    ],
+  },
+  port_regional: {
+    correct: "Bölgesel limanlar bulundukları kıyı kuşağının ulaşım, ticaret ve hinterland bağlantısını temsil eder.",
+    wrong: [
+      "Mera hayvancılığının doğrudan sınıflandırmasıdır.",
+      "Krom ve boksit çıkarımı için kullanılan maden terimidir.",
+      "Tektonik göllerin oluşum sürecidir.",
     ],
   },
   mountain_fault_block: {

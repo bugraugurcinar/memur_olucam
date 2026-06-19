@@ -8,6 +8,8 @@ const topicLabels = {
   mine: "Madenler",
   energy: "Enerji Kaynakları",
   industry: "Sanayi Tesisleri",
+  tourism: "Turizm",
+  port: "Limanlar",
 };
 
 const categoryLabels = {
@@ -23,10 +25,21 @@ const categoryLabels = {
   mine_metal: "Metal madenleri",
   mine_industrial: "Endüstriyel maden",
   energy_fossil: "Fosil enerji kaynağı",
+  energy_hydroelectric: "Hidroelektrik",
+  energy_geothermal: "Jeotermal",
+  energy_wind: "Rüzgar",
+  energy_solar: "Güneş",
   industry_processing: "İşleme / sanayi tesisi",
   industry_refinery_petrochemical: "Rafineri / petrokimya",
   industry_automotive_machinery: "Otomotiv / makine",
   industry_textile: "Tekstil / dokuma",
+  industry_food_agro: "Gıda / tarımsal sanayi",
+  industry_material: "Kağıt / seramik / cam",
+  tourism_coastal: "Kıyı turizmi",
+  tourism_cultural: "Kültür / tarih turizmi",
+  tourism_winter_thermal: "Kış / termal turizm",
+  port_trade: "Büyük dış ticaret limanı",
+  port_regional: "Bölgesel / hinterland limanı",
 };
 
 const features = [];
@@ -464,6 +477,34 @@ addGroup({
 });
 
 addGroup({
+  topic: "mine",
+  category: "mine_metal",
+  region: "Marmara / Doğu Anadolu / Ege / İç Anadolu",
+  note: "Kurşun-çinko, manganez, cıva ve altın; KPSS maden haritalarında belirli çıkarım merkezleriyle eşleştirilir.",
+  items: [
+    { name: "Kurşun-çinko", location: "Balya / Balıkesir", lat: 39.748, lng: 27.578 },
+    { name: "Kurşun-çinko", location: "Keban / Elazığ", lat: 38.793, lng: 38.735 },
+    { name: "Manganez", location: "Tavas / Denizli", lat: 37.574, lng: 29.071 },
+    { name: "Manganez", location: "Borçka / Artvin", lat: 41.357, lng: 41.676 },
+    { name: "Cıva", location: "Ödemiş / İzmir", lat: 38.228, lng: 27.971 },
+    { name: "Cıva", location: "Sarayönü / Konya", lat: 38.264, lng: 32.404 },
+    { name: "Altın", location: "Ovacık / Bergama / İzmir", lat: 39.179, lng: 27.335 },
+    { name: "Altın", location: "İliç / Erzincan", lat: 39.456, lng: 38.564 },
+  ],
+});
+
+addGroup({
+  topic: "mine",
+  category: "mine_industrial",
+  region: "Doğu Anadolu / Ege",
+  note: "Oltu taşı ve zımpara taşı, KPSS'de yerel endüstriyel maden örneği olarak eşleştirilebilir.",
+  items: [
+    { name: "Oltu taşı", location: "Oltu / Erzurum", lat: 40.55, lng: 41.995 },
+    { name: "Zımpara taşı", location: "Milas / Muğla", lat: 37.312, lng: 27.78 },
+  ],
+});
+
+addGroup({
   topic: "energy",
   category: "energy_fossil",
   region: "Karadeniz / Ege / İç Anadolu / Güneydoğu Anadolu",
@@ -483,6 +524,60 @@ addGroup({
     { name: "Doğal gaz", location: "Hamitabat / Kırklareli", lat: 41.621, lng: 27.516 },
     { name: "Doğal gaz", location: "Çamurlu / Mardin", lat: 37.251, lng: 40.73 },
     { name: "Doğal gaz", location: "Filyos / Zonguldak", lat: 41.559, lng: 32.04 },
+  ],
+});
+
+addGroup({
+  topic: "energy",
+  category: "energy_hydroelectric",
+  region: "Doğu Anadolu / Güneydoğu Anadolu / Karadeniz / İç Anadolu / Akdeniz",
+  note: "Hidroelektrik enerji, akarsu eğimi ve debisiyle ilişkilidir; Fırat, Dicle, Çoruh, Kızılırmak ve Manavgat üzerindeki büyük HES'ler KPSS'de öne çıkar.",
+  items: [
+    { name: "Atatürk HES", location: "Bozova / Şanlıurfa", lat: 37.481, lng: 38.318 },
+    { name: "Keban HES", location: "Keban / Elazığ", lat: 38.806, lng: 38.755 },
+    { name: "Karakaya HES", location: "Çüngüş / Diyarbakır", lat: 38.228, lng: 39.143 },
+    { name: "Deriner HES", location: "Artvin / Çoruh", lat: 41.181, lng: 41.815 },
+    { name: "Altınkaya HES", location: "Bafra / Samsun", lat: 41.361, lng: 35.731 },
+    { name: "Hirfanlı HES", location: "Kaman / Kırşehir", lat: 39.273, lng: 33.518 },
+    { name: "Oymapınar HES", location: "Manavgat / Antalya", lat: 36.906, lng: 31.536 },
+  ],
+});
+
+addGroup({
+  topic: "energy",
+  category: "energy_geothermal",
+  region: "Ege / Marmara",
+  note: "Jeotermal enerji Batı Anadolu grabenleriyle ilişkilidir; Denizli, Aydın ve Manisa çevresi KPSS'de temel örneklerdir.",
+  items: [
+    { name: "Jeotermal enerji", location: "Kızıldere / Sarayköy / Denizli", lat: 37.951, lng: 28.872 },
+    { name: "Jeotermal enerji", location: "Germencik / Aydın", lat: 37.87, lng: 27.603 },
+    { name: "Jeotermal enerji", location: "Alaşehir / Manisa", lat: 38.35, lng: 28.517 },
+    { name: "Jeotermal enerji", location: "Tuzla / Çanakkale", lat: 39.555, lng: 26.2 },
+  ],
+});
+
+addGroup({
+  topic: "energy",
+  category: "energy_wind",
+  region: "Ege / Marmara / Akdeniz",
+  note: "Rüzgar enerjisi Ege ve Marmara kıyıları ile geçit rüzgarlarının güçlü olduğu alanlarda yoğunlaşır.",
+  items: [
+    { name: "Rüzgar enerjisi", location: "Alaçatı / Çeşme / İzmir", lat: 38.282, lng: 26.376 },
+    { name: "Rüzgar enerjisi", location: "Bandırma / Balıkesir", lat: 40.352, lng: 27.976 },
+    { name: "Rüzgar enerjisi", location: "Bozcaada / Çanakkale", lat: 39.835, lng: 26.07 },
+    { name: "Rüzgar enerjisi", location: "Belen / Hatay", lat: 36.489, lng: 36.194 },
+  ],
+});
+
+addGroup({
+  topic: "energy",
+  category: "energy_solar",
+  region: "İç Anadolu / Güneydoğu Anadolu / Akdeniz",
+  note: "Güneş enerjisi yıllık güneşlenme süresi yüksek olan İç Anadolu, Güneydoğu Anadolu ve Akdeniz iç kesimleriyle ilişkilidir.",
+  items: [
+    { name: "Güneş enerjisi", location: "Karapınar / Konya", lat: 37.715, lng: 33.552 },
+    { name: "Güneş enerjisi", location: "Bor / Niğde", lat: 37.89, lng: 34.558 },
+    { name: "Güneş enerjisi", location: "Ceylanpınar / Şanlıurfa", lat: 36.847, lng: 40.05 },
   ],
 });
 
@@ -581,6 +676,110 @@ addGroup({
     { name: "Tekstil", location: "Gaziantep", lat: 37.066, lng: 37.383 },
     { name: "Tekstil", location: "Kayseri", lat: 38.722, lng: 35.487 },
     { name: "Tekstil", location: "Adana", lat: 36.991, lng: 35.331 },
+  ],
+});
+
+addGroup({
+  topic: "industry",
+  category: "industry_food_agro",
+  region: "İç Anadolu / Doğu Anadolu / Karadeniz / Ege",
+  note: "Tarımsal sanayi tesisleri, ürüne yakınlık ve bozulabilirlik nedeniyle üretim alanlarıyla birlikte öğrenilir.",
+  items: [
+    { name: "Şeker fabrikası", location: "Konya", lat: 37.871, lng: 32.484 },
+    { name: "Şeker fabrikası", location: "Eskişehir", lat: 39.78, lng: 30.53 },
+    { name: "Şeker fabrikası", location: "Kayseri", lat: 38.722, lng: 35.487 },
+    { name: "Şeker fabrikası", location: "Erzurum", lat: 39.906, lng: 41.273 },
+    { name: "Çay işleme", location: "Rize", lat: 41.025, lng: 40.517 },
+    { name: "Fındık işleme", location: "Ordu", lat: 40.986, lng: 37.879 },
+    { name: "Fındık işleme", location: "Giresun", lat: 40.917, lng: 38.392 },
+    { name: "Zeytinyağı", location: "Edremit / Balıkesir", lat: 39.596, lng: 27.024 },
+    { name: "Zeytinyağı", location: "Aydın", lat: 37.845, lng: 27.839 },
+  ],
+});
+
+addGroup({
+  topic: "industry",
+  category: "industry_material",
+  region: "Marmara / Ege / Karadeniz / Akdeniz",
+  note: "Kağıt, seramik ve cam sanayisi hammadde, enerji, su, ulaşım ve pazar koşullarıyla birlikte sorulur.",
+  items: [
+    { name: "Kağıt sanayi", location: "İzmit / Kocaeli", lat: 40.766, lng: 29.917 },
+    { name: "Kağıt sanayi", location: "Dalaman / Muğla", lat: 36.766, lng: 28.802 },
+    { name: "Kağıt sanayi", location: "Çaycuma / Zonguldak", lat: 41.426, lng: 32.075 },
+    { name: "Seramik sanayi", location: "Kütahya", lat: 39.419, lng: 29.985 },
+    { name: "Seramik sanayi", location: "Bilecik", lat: 40.143, lng: 29.979 },
+    { name: "Cam sanayi", location: "Paşabahçe / İstanbul", lat: 41.117, lng: 29.093 },
+  ],
+});
+
+addGroup({
+  topic: "tourism",
+  category: "tourism_coastal",
+  region: "Akdeniz / Ege",
+  note: "Kıyı turizmi yaz kuraklığı, uzun güneşlenme süresi, koy-körfez yapısı ve ulaşım bağlantılarıyla ilişkilidir.",
+  items: [
+    { name: "Kıyı turizmi", location: "Antalya", lat: 36.887, lng: 30.707 },
+    { name: "Kıyı turizmi", location: "Bodrum / Muğla", lat: 37.034, lng: 27.43 },
+    { name: "Kıyı turizmi", location: "Marmaris / Muğla", lat: 36.855, lng: 28.274 },
+    { name: "Kıyı turizmi", location: "Kuşadası / Aydın", lat: 37.858, lng: 27.259 },
+  ],
+});
+
+addGroup({
+  topic: "tourism",
+  category: "tourism_cultural",
+  region: "Marmara / İç Anadolu / Ege / Güneydoğu Anadolu / Doğu Anadolu / Karadeniz",
+  note: "Kültür ve tarih turizmi KPSS'de belirli merkezlerin bölge ve konum eşleştirmesiyle sorulur.",
+  items: [
+    { name: "Kültür turizmi", location: "Tarihi Yarımada / İstanbul", lat: 41.008, lng: 28.978 },
+    { name: "Kültür turizmi", location: "Göreme / Kapadokya / Nevşehir", lat: 38.643, lng: 34.829 },
+    { name: "Kültür turizmi", location: "Efes / Selçuk / İzmir", lat: 37.939, lng: 27.341 },
+    { name: "Kültür turizmi", location: "Pamukkale / Denizli", lat: 37.913, lng: 29.118 },
+    { name: "Kültür turizmi", location: "Safranbolu / Karabük", lat: 41.25, lng: 32.694 },
+    { name: "Kültür turizmi", location: "Nemrut Dağı / Adıyaman", lat: 37.98, lng: 38.741 },
+    { name: "Kültür turizmi", location: "Ani / Kars", lat: 40.507, lng: 43.573 },
+  ],
+});
+
+addGroup({
+  topic: "tourism",
+  category: "tourism_winter_thermal",
+  region: "Marmara / Doğu Anadolu / İç Anadolu / Karadeniz / Ege",
+  note: "Kış ve termal turizm; yükselti, kar örtüsü, fay hatları ve sıcak su kaynaklarıyla ilişkilidir.",
+  items: [
+    { name: "Kış turizmi", location: "Uludağ / Bursa", lat: 40.071, lng: 29.222 },
+    { name: "Kış turizmi", location: "Palandöken / Erzurum", lat: 39.861, lng: 41.278 },
+    { name: "Kış turizmi", location: "Erciyes / Kayseri", lat: 38.531, lng: 35.45 },
+    { name: "Kış turizmi", location: "Kartalkaya / Bolu", lat: 40.59, lng: 31.803 },
+    { name: "Termal turizm", location: "Afyonkarahisar", lat: 38.756, lng: 30.538 },
+    { name: "Termal turizm", location: "Yalova", lat: 40.65, lng: 29.266 },
+  ],
+});
+
+addGroup({
+  topic: "port",
+  category: "port_trade",
+  region: "Marmara / Ege / Akdeniz",
+  note: "Büyük dış ticaret limanları hinterland, sanayi, demiryolu-karayolu bağlantısı ve dış ticaret hacmiyle KPSS'de öne çıkar.",
+  items: [
+    { name: "Mersin Limanı", location: "Mersin", lat: 36.812, lng: 34.641 },
+    { name: "İzmir Limanı", location: "İzmir", lat: 38.423, lng: 27.142 },
+    { name: "Ambarlı Limanı", location: "Avcılar / İstanbul", lat: 40.973, lng: 28.692 },
+    { name: "İskenderun Limanı", location: "İskenderun / Hatay", lat: 36.587, lng: 36.173 },
+    { name: "Derince Limanı", location: "İzmit / Kocaeli", lat: 40.766, lng: 29.917 },
+  ],
+});
+
+addGroup({
+  topic: "port",
+  category: "port_regional",
+  region: "Karadeniz / Marmara / Akdeniz",
+  note: "Bölgesel limanlar, bulundukları kıyı kuşağının ticaret ve ulaşım bağlantılarını temsil eder.",
+  items: [
+    { name: "Samsun Limanı", location: "Samsun", lat: 41.286, lng: 36.33 },
+    { name: "Trabzon Limanı", location: "Trabzon", lat: 41.005, lng: 39.722 },
+    { name: "Bandırma Limanı", location: "Bandırma / Balıkesir", lat: 40.352, lng: 27.976 },
+    { name: "Antalya Limanı", location: "Antalya", lat: 36.887, lng: 30.707 },
   ],
 });
 

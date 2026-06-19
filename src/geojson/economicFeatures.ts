@@ -6,6 +6,8 @@ export const economicFeatureTopics = [
   { id: "mine", label: "Madenler", color: "#64748b" },
   { id: "energy", label: "Enerji Kaynakları", color: "#ea580c" },
   { id: "industry", label: "Sanayi Tesisleri", color: "#0f766e" },
+  { id: "tourism", label: "Turizm", color: "#9333ea" },
+  { id: "port", label: "Limanlar", color: "#0284c7" },
 ] as const;
 
 export const economicFeatureCategories = [
@@ -21,10 +23,21 @@ export const economicFeatureCategories = [
   { id: "mine_metal", topic: "mine", label: "Metal madenleri", color: "#64748b" },
   { id: "mine_industrial", topic: "mine", label: "Endüstriyel maden", color: "#7c3aed" },
   { id: "energy_fossil", topic: "energy", label: "Fosil enerji kaynağı", color: "#ea580c" },
+  { id: "energy_hydroelectric", topic: "energy", label: "Hidroelektrik", color: "#2563eb" },
+  { id: "energy_geothermal", topic: "energy", label: "Jeotermal", color: "#dc2626" },
+  { id: "energy_wind", topic: "energy", label: "Rüzgar", color: "#0ea5e9" },
+  { id: "energy_solar", topic: "energy", label: "Güneş", color: "#facc15" },
   { id: "industry_processing", topic: "industry", label: "İşleme / sanayi tesisi", color: "#0f766e" },
   { id: "industry_refinery_petrochemical", topic: "industry", label: "Rafineri / petrokimya", color: "#0891b2" },
   { id: "industry_automotive_machinery", topic: "industry", label: "Otomotiv / makine", color: "#2563eb" },
   { id: "industry_textile", topic: "industry", label: "Tekstil / dokuma", color: "#db2777" },
+  { id: "industry_food_agro", topic: "industry", label: "Gıda / tarımsal sanayi", color: "#65a30d" },
+  { id: "industry_material", topic: "industry", label: "Kağıt / seramik / cam", color: "#78716c" },
+  { id: "tourism_coastal", topic: "tourism", label: "Kıyı turizmi", color: "#06b6d4" },
+  { id: "tourism_cultural", topic: "tourism", label: "Kültür / tarih turizmi", color: "#9333ea" },
+  { id: "tourism_winter_thermal", topic: "tourism", label: "Kış / termal turizm", color: "#ef4444" },
+  { id: "port_trade", topic: "port", label: "Büyük dış ticaret limanı", color: "#0284c7" },
+  { id: "port_regional", topic: "port", label: "Bölgesel / hinterland limanı", color: "#0f766e" },
 ] as const;
 
 export type EconomicFeatureTopic = (typeof economicFeatureTopics)[number]["id"];
