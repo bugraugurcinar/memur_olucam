@@ -4,6 +4,7 @@ import {
   isEconomicFeature,
   type EconomicFeature,
 } from "../geojson/economicFeatures";
+import { getFeatureIconName } from "../geojson/featureIcons";
 import { isPhysicalFeature, type PhysicalFeature } from "../geojson/physicalFeatures";
 
 export type PlusFeature = PhysicalFeature | EconomicFeature;
@@ -34,6 +35,7 @@ export type PlusMapTarget = {
   name: string;
   detail: string;
   color: string;
+  markerIconName: string;
 };
 
 export type PlusToken = {
@@ -183,6 +185,7 @@ function mapTargets(features: PlusFeature[], labels = targetLetters, colors?: st
     name: featureName(feature),
     detail: featureDetail(feature),
     color: colors?.[index] ?? "#0f766e",
+    markerIconName: getFeatureIconName(feature.properties),
   }));
 }
 
@@ -767,6 +770,51 @@ function buildWetCropPick(features: PlusFeature[]) {
   });
 }
 
+function buildOilPlantPlacement(features: PlusFeature[]) {
+  const ids = [
+    "agriculture_aycicegi_tekirdag",
+    "agriculture_zeytin_aydin",
+    "agriculture_soya_adana",
+    "agriculture_hashas_afyonkarahisar",
+    "agriculture_yer_fistigi_osmaniye",
+  ];
+  const required = getFeatures(features, ids);
+
+  if (!required) {
+    return null;
+  }
+
+  const targets = mapTargets(shuffle(required), targetLetters, ["#f59e0b", "#65a30d", "#22c55e", "#7c3aed", "#a16207"]);
+  const tokens = shuffle([
+    token("oil_crop_sunflower", "Ayçiçeği", "Trakya", "#f59e0b"),
+    token("oil_crop_olive", "Zeytin", "Ege kıyıları", "#65a30d"),
+    token("oil_crop_soybean", "Soya", "Çukurova", "#22c55e"),
+    token("oil_crop_poppy", "Haşhaş", "İç Batı Anadolu", "#7c3aed"),
+    token("oil_crop_peanut", "Yer fıstığı", "Çukurova çevresi", "#a16207"),
+  ]);
+  const correctAssignments: Record<string, string> = {
+    agriculture_aycicegi_tekirdag: "oil_crop_sunflower",
+    agriculture_zeytin_aydin: "oil_crop_olive",
+    agriculture_soya_adana: "oil_crop_soybean",
+    agriculture_hashas_afyonkarahisar: "oil_crop_poppy",
+    agriculture_yer_fistigi_osmaniye: "oil_crop_peanut",
+  };
+  const question = makePlacementQuestion({
+    id: "plus_oil_plant_placement",
+    topic: "agriculture",
+    title: "Yağ bitkileri haritası",
+    prompt: "Yağ bitkilerini doğru üretim alanlarıyla eşleştir.",
+    helper: "Ürün adını seçip KPSS'de öne çıkan temsil noktasına yerleştir.",
+    targets,
+    tokens,
+    correctAssignments,
+    answerSummary: "",
+    kpssNote: "Yağ bitkilerinde ayçiçeği-Trakya, zeytin-Ege, soya-Çukurova, haşhaş-İç Batı Anadolu ve yer fıstığı-Çukurova eşleştirmeleri öne çıkar.",
+  });
+
+  return { ...question, answerSummary: placementSummary(question) };
+}
+
 function buildVolcanicMountainPick(features: PlusFeature[]) {
   const correctIds = [
     "mountain_erciyes_dagi",
@@ -796,6 +844,34 @@ function buildVolcanicMountainPick(features: PlusFeature[]) {
     correctTargetIds: finalCorrectIds,
     answerSummary: "Volkanik dağlar seçilmelidir: Erciyes, Hasan, Nemrut ve Ağrı hattı.",
     kpssNote: "KPSS'de volkanik dağlar İç Anadolu ve Doğu Anadolu'daki hatlarla birlikte sorulur.",
+  });
+}
+
+function buildNorthAnatolianMountainPick(features: PlusFeature[]) {
+  const correctIds = [
+    "mountain_kure_daglari",
+    "mountain_canik_daglari",
+    "mountain_giresun_daglari",
+    "mountain_kackar_daglari",
+  ];
+  const distractorIds = ["mountain_amanos_nur_daglari", "mountain_bey_daglari", "mountain_mentese_daglari"];
+  const required = getFeatures(features, [...correctIds, ...distractorIds]);
+
+  if (!required) {
+    return null;
+  }
+
+  return makePickManyQuestion({
+    id: "plus_north_anatolian_mountain_pick",
+    topic: "mountain",
+    title: "Kuzey kıyı dağları",
+    prompt: "İşaretli dağlardan Kuzey Anadolu kıyı dağları içinde yer alanları seç.",
+    helper: "Karadeniz kıyısına paralel uzanan dağları ayıkla.",
+    targets: mapTargets(shuffle(required), targetLetters),
+    tokens: [],
+    correctTargetIds: correctIds,
+    answerSummary: "Küre, Canik, Giresun ve Kaçkar dağları seçilmelidir.",
+    kpssNote: "Kuzey Anadolu Dağları Karadeniz kıyısına paralel uzanır; Akdeniz ve Ege dağlarıyla karıştırılmamalıdır.",
   });
 }
 
@@ -838,6 +914,45 @@ function buildFaultMountainPlacement(features: PlusFeature[]) {
     correctAssignments,
     answerSummary: "",
     kpssNote: "Ege horst-graben sisteminde dağlar kuzeyden güneye Kaz, Madra, Yunt, Bozdağlar, Aydın ve Menteşe şeklinde öğrenilir.",
+  });
+
+  return { ...question, answerSummary: placementSummary(question) };
+}
+
+function buildRiverBasinPlacement(features: PlusFeature[]) {
+  const ids = ["river_kizilirmak", "river_gediz_nehri", "river_seyhan_nehri", "river_firat_nehri", "river_aras_nehri"];
+  const required = getFeatures(features, ids);
+
+  if (!required) {
+    return null;
+  }
+
+  const targets = mapTargets(shuffle(required), targetLetters, ["#0284c7", "#0ea5e9", "#06b6d4", "#2563eb", "#0891b2"]);
+  const tokens = shuffle([
+    token("basin_black_sea", "Karadeniz", "Kızılırmak", "#0284c7"),
+    token("basin_aegean", "Ege Denizi", "Gediz", "#0ea5e9"),
+    token("basin_mediterranean", "Akdeniz", "Seyhan", "#06b6d4"),
+    token("basin_persian_gulf", "Basra Körfezi", "Fırat", "#2563eb"),
+    token("basin_caspian", "Hazar Denizi", "Aras", "#0891b2"),
+  ]);
+  const correctAssignments: Record<string, string> = {
+    river_kizilirmak: "basin_black_sea",
+    river_gediz_nehri: "basin_aegean",
+    river_seyhan_nehri: "basin_mediterranean",
+    river_firat_nehri: "basin_persian_gulf",
+    river_aras_nehri: "basin_caspian",
+  };
+  const question = makePlacementQuestion({
+    id: "plus_river_basin_placement",
+    topic: "river",
+    title: "Akarsu dökülme alanı",
+    prompt: "Akarsuları döküldükleri deniz ya da havzayla eşleştir.",
+    helper: "Havza adını seçip ilgili akarsu noktasına yerleştir.",
+    targets,
+    tokens,
+    correctAssignments,
+    answerSummary: "",
+    kpssNote: "Akarsular KPSS'de yalnızca konumla değil, döküldükleri deniz ya da kapalı dış havza bağlantısıyla da sorulur.",
   });
 
   return { ...question, answerSummary: placementSummary(question) };
@@ -908,6 +1023,29 @@ function buildKarsticLakePick(features: PlusFeature[]) {
   });
 }
 
+function buildCoastalSetLakePick(features: PlusFeature[]) {
+  const correctIds = ["lake_buyuk_cekmece", "lake_kucuk_cekmece", "lake_terkos_durusu", "lake_akyatan_golu"];
+  const distractorIds = ["lake_van_golu", "lake_tuz_golu", "lake_salda_golu"];
+  const required = getFeatures(features, [...correctIds, ...distractorIds]);
+
+  if (!required) {
+    return null;
+  }
+
+  return makePickManyQuestion({
+    id: "plus_coastal_set_lake_pick",
+    topic: "lake",
+    title: "Kıyı set gölleri",
+    prompt: "İşaretli göllerden kıyı set gölü olanları seç.",
+    helper: "Deniz kıyısında setlenmeyle oluşan gölleri, iç kesim göllerinden ayır.",
+    targets: mapTargets(shuffle(required), targetLetters),
+    tokens: [],
+    correctTargetIds: correctIds,
+    answerSummary: "Büyükçekmece, Küçükçekmece, Terkos/Durusu ve Akyatan kıyı set gölüdür.",
+    kpssNote: "Kıyı set gölleri, kıyı oku veya setlerin eski koy/lagün alanlarını kapatmasıyla oluşur.",
+  });
+}
+
 function buildLakeNamePlacement(features: PlusFeature[]) {
   const ids = ["lake_tuz_golu", "lake_van_golu", "lake_iznik_golu", "lake_manyas_kus_golu", "lake_burdur_golu"];
   const required = getFeatures(features, ids);
@@ -957,6 +1095,29 @@ function buildDeltaPlainPick(features: PlusFeature[]) {
     correctTargetIds: correctIds,
     answerSummary: "Çukurova, Bafra, Çarşamba ve Balat delta ovasıdır.",
     kpssNote: "Delta ovaları kıyıda gelişir; iç kesimdeki tektonik veya karstik ovalarla karıştırılmamalıdır.",
+  });
+}
+
+function buildAegeanGrabenPlainPick(features: PlusFeature[]) {
+  const correctIds = ["plain_akhisar_ovasi", "plain_salihli_ovasi", "plain_alasehir_ovasi", "plain_nazilli_ovasi"];
+  const distractorIds = ["plain_bafra_ovasi", "plain_cukurova", "plain_konya_ovasi"];
+  const required = getFeatures(features, [...correctIds, ...distractorIds]);
+
+  if (!required) {
+    return null;
+  }
+
+  return makePickManyQuestion({
+    id: "plus_aegean_graben_plain_pick",
+    topic: "plainPlateau",
+    title: "Ege graben ovaları",
+    prompt: "İşaretli ovalardan Ege'nin doğu-batı uzanışlı graben sistemiyle ilişkili olanları seç.",
+    helper: "Gediz ve Büyük Menderes olukları çevresindeki iç Ege ovalarını ayıkla.",
+    targets: mapTargets(shuffle(required), targetLetters),
+    tokens: [],
+    correctTargetIds: correctIds,
+    answerSummary: "Akhisar, Salihli, Alaşehir ve Nazilli ovaları Ege graben sistemiyle ilişkilidir.",
+    kpssNote: "Ege'de horst-graben yapısı dağ ve ova dizilişini belirler; ovalar doğu-batı yönlü uzanışla sorulabilir.",
   });
 }
 
@@ -1196,6 +1357,48 @@ function buildRawMaterialIndustryPlacement(features: PlusFeature[]) {
   return { ...question, answerSummary: placementSummary(question) };
 }
 
+function buildRenewableEnergyPlacement(features: PlusFeature[]) {
+  const ids = [
+    "energy_jeotermal_enerji_kizildere_saraykoy_denizli",
+    "energy_ruzgar_enerjisi_alacati_cesme_izmir",
+    "energy_gunes_enerjisi_karapinar_konya",
+    "energy_deriner_hes_artvin_coruh",
+  ];
+  const required = getFeatures(features, ids);
+
+  if (!required) {
+    return null;
+  }
+
+  const targets = mapTargets(shuffle(required), targetLetters, ["#ef4444", "#0ea5e9", "#facc15", "#2563eb"]);
+  const tokens = shuffle([
+    token("renewable_geothermal", "Jeotermal", "Kızıldere / Denizli", "#ef4444"),
+    token("renewable_wind", "Rüzgar", "Alaçatı / Çeşme", "#0ea5e9"),
+    token("renewable_solar", "Güneş", "Karapınar / Konya", "#facc15"),
+    token("renewable_hydro", "Hidroelektrik", "Deriner / Çoruh", "#2563eb"),
+  ]);
+  const correctAssignments: Record<string, string> = {
+    energy_jeotermal_enerji_kizildere_saraykoy_denizli: "renewable_geothermal",
+    energy_ruzgar_enerjisi_alacati_cesme_izmir: "renewable_wind",
+    energy_gunes_enerjisi_karapinar_konya: "renewable_solar",
+    energy_deriner_hes_artvin_coruh: "renewable_hydro",
+  };
+  const question = makePlacementQuestion({
+    id: "plus_renewable_energy_placement",
+    topic: "energy",
+    title: "Yenilenebilir enerji noktaları",
+    prompt: "Yenilenebilir enerji türlerini doğru temsil noktalarıyla eşleştir.",
+    helper: "Enerji türünü seçip uygun harita noktasına yerleştir.",
+    targets,
+    tokens,
+    correctAssignments,
+    answerSummary: "",
+    kpssNote: "Yenilenebilir enerji sorularında jeotermal Batı Anadolu grabenleriyle, rüzgar Ege-Marmara kıyılarıyla, güneş iç ve güney kesimlerle ilişkilendirilir.",
+  });
+
+  return { ...question, answerSummary: placementSummary(question) };
+}
+
 function buildEnergyResourcePlacement(features: PlusFeature[]) {
   const ids = [
     "energy_taskomuru_zonguldak",
@@ -1257,15 +1460,21 @@ const builders: Array<(features: PlusFeature[]) => PlusQuestionBuilderResult> = 
   buildMicroclimatePlacement,
   buildCoreCropPlacement,
   buildWetCropPick,
+  buildOilPlantPlacement,
   buildVolcanicMountainPick,
+  buildNorthAnatolianMountainPick,
   buildFaultMountainPlacement,
+  buildRiverBasinPlacement,
   buildDamRiverPlacement,
   buildKarsticLakePick,
+  buildCoastalSetLakePick,
   buildLakeNamePlacement,
   buildLakeFormationPlacement,
   buildDeltaPlainPick,
+  buildAegeanGrabenPlainPick,
   buildPlateauEconomyPlacement,
   buildInnerPlateauPick,
+  buildRenewableEnergyPlacement,
   buildEnergyResourcePlacement,
 ];
 

@@ -671,6 +671,49 @@ h2 {
   line-height: 1.45;
 }
 
+.feature-map-marker {
+  border: 0;
+  background: transparent;
+}
+
+.feature-map-marker span {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #ffffff;
+  border-radius: 999px;
+  background: var(--feature-color, #2563eb);
+  box-shadow: 0 10px 22px rgb(15 23 42 / 0.32);
+  color: #ffffff;
+  transition:
+    border-color 120ms ease,
+    box-shadow 120ms ease,
+    height 120ms ease,
+    width 120ms ease;
+}
+
+.feature-map-marker svg {
+  width: 18px;
+  height: 18px;
+}
+
+.feature-map-marker--economic span {
+  border-color: #111827;
+}
+
+.feature-map-marker--selected span {
+  width: 34px;
+  height: 34px;
+  border-color: #fbbf24;
+  box-shadow: 0 12px 28px rgb(15 23 42 / 0.4);
+}
+
+.feature-map-marker--selected svg {
+  width: 20px;
+  height: 20px;
+}
+
 .quiz-map-marker {
   border: 0;
   background: transparent;
@@ -696,6 +739,29 @@ h2 {
   line-height: 1;
 }
 
+.quiz-map-marker--with-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.quiz-map-marker--with-icon b,
+.plus-map-marker--with-icon:not(.plus-map-marker--assigned) b {
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  display: grid;
+  place-items: center;
+  min-width: 15px;
+  height: 15px;
+  padding: 0 3px;
+  border: 1px solid #ffffff;
+  border-radius: 999px;
+  background: #111827;
+  color: #ffffff;
+  font-size: 0.58rem;
+  box-shadow: 0 4px 10px rgb(15 23 42 / 0.26);
+}
+
 .quiz-answer-marker span {
   background: #f97316;
 }
@@ -712,6 +778,11 @@ h2 {
   width: 36px;
   height: 36px;
   background: var(--plus-color, #0f766e);
+}
+
+.plus-map-marker--with-icon svg {
+  width: 17px;
+  height: 17px;
 }
 
 .plus-map-marker--selected span {

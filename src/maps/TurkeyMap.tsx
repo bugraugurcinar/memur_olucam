@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import L, { type LatLngBoundsExpression, type Layer, type LeafletMouseEvent } from "leaflet";
 import type { Feature, FeatureCollection, GeoJsonProperties } from "geojson";
+import { getEconomicFeatureIconName, getPhysicalFeatureIconName } from "../geojson/featureIcons";
 import {
   getEconomicFeatureColor,
   getEconomicFeatureDisplayName,
@@ -30,6 +31,7 @@ type QuizMapOption = {
   point: QuizPoint;
   name: string;
   categoryLabel: string;
+  markerIconName: string;
   isCorrect: boolean;
 };
 
@@ -100,6 +102,7 @@ const TURKEY_BOUNDS: LatLngBoundsExpression = [
 const PHYSICAL_FEATURE_PANE = "physical-feature-pane";
 const ECONOMIC_FEATURE_PANE = "economic-feature-pane";
 const QUIZ_PANE = "quiz-pane";
+const QUESTION_MARKER_COLOR = "#0f766e";
 
 function getShapeName(properties: GeoJsonProperties | null | undefined) {
   const shapeName = properties?.shapeName;
@@ -151,89 +154,6 @@ function countryStyle(): L.PathOptions {
   };
 }
 
-function physicalFeatureStyle(
-  feature: PhysicalFeatureProperties,
-  selectedFeatureId: string | null,
-  shouldUseCategoryColors: boolean,
-): L.CircleMarkerOptions {
-  const isSelected = feature.id === selectedFeatureId;
-
-  return {
-    pane: PHYSICAL_FEATURE_PANE,
-    radius: isSelected ? 8 : 5.5,
-    color: isSelected ? "#fbbf24" : "#ffffff",
-    fillColor: getPhysicalFeatureColor(feature, shouldUseCategoryColors),
-    fillOpacity: isSelected ? 0.96 : 0.82,
-    opacity: 1,
-    weight: isSelected ? 2.5 : 1.4,
-  };
-}
-
-function economicFeatureStyle(
-  feature: EconomicFeatureProperties,
-  selectedFeatureId: string | null,
-  shouldUseCategoryColors: boolean,
-): L.CircleMarkerOptions {
-  const isSelected = feature.id === selectedFeatureId;
-
-  return {
-    pane: ECONOMIC_FEATURE_PANE,
-    radius: isSelected ? 8 : 5.5,
-    color: isSelected ? "#fbbf24" : "#111827",
-    fillColor: getEconomicFeatureColor(feature, shouldUseCategoryColors),
-    fillOpacity: isSelected ? 0.96 : 0.82,
-    opacity: 1,
-    weight: isSelected ? 2.5 : 1.25,
-  };
-}
-
-function getPhysicalIconName(feature: PhysicalFeatureProperties) {
-  if (feature.topic === "mountain" && feature.category === "mountain_volcanic") {
-    return "volcano";
-  }
-
-  const icons: Record<PhysicalFeatureTopic, string> = {
-    mountain: "mountain",
-    plain: "field",
-    plateau: "layers",
-    river: "river",
-    lake: "lake",
-    coast: "coast",
-  };
-
-  return icons[feature.topic];
-}
-
-function getEconomicIconName(feature: EconomicFeatureProperties) {
-  if (feature.category === "energy_hydroelectric") {
-    return "hydro";
-  }
-
-  if (feature.category === "energy_geothermal" || feature.category === "energy_fossil") {
-    return "flame";
-  }
-
-  if (feature.category === "energy_wind") {
-    return "wind";
-  }
-
-  if (feature.category === "energy_solar") {
-    return "sun";
-  }
-
-  const icons: Record<EconomicFeatureTopic, string> = {
-    agriculture: "leaf",
-    livestock: "barn",
-    mine: "pickaxe",
-    energy: "bolt",
-    industry: "factory",
-    tourism: "camera",
-    port: "anchor",
-  };
-
-  return icons[feature.topic];
-}
-
 function featureIconSvg(iconName: string) {
   const common = `fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"`;
   const icons: Record<string, string> = {
@@ -273,12 +193,13 @@ function createFeatureIcon({
 }) {
   const selectedClass = isSelected ? " feature-map-marker--selected" : "";
   const economicClass = isEconomic ? " feature-map-marker--economic" : " feature-map-marker--physical";
+  const iconSize = isSelected ? 34 : 30;
 
   return L.divIcon({
     className: `feature-map-marker${economicClass}${selectedClass}`,
     html: `<span style="--feature-color: ${color}"><svg viewBox="0 0 24 24" aria-hidden="true">${featureIconSvg(iconName)}</svg></span>`,
-    iconAnchor: [15, 15],
-    iconSize: [30, 30],
+    iconAnchor: [iconSize / 2, iconSize / 2],
+    iconSize: [iconSize, iconSize],
   });
 }
 
@@ -289,7 +210,7 @@ function createPhysicalFeatureIcon(
 ) {
   return createFeatureIcon({
     color: getPhysicalFeatureColor(feature, shouldUseCategoryColors),
-    iconName: getPhysicalIconName(feature),
+    iconName: getPhysicalFeatureIconName(feature),
     isEconomic: false,
     isSelected: feature.id === selectedFeatureId,
   });
@@ -302,16 +223,25 @@ function createEconomicFeatureIcon(
 ) {
   return createFeatureIcon({
     color: getEconomicFeatureColor(feature, shouldUseCategoryColors),
-    iconName: getEconomicIconName(feature),
+    iconName: getEconomicFeatureIconName(feature),
     isEconomic: true,
     isSelected: feature.id === selectedFeatureId,
   });
+}
+
+function getSharedMarkerIconName(markers: Array<{ markerIconName: string }>) {
+  const firstIconName = markers[0]?.markerIconName;
+
+  return firstIconName && markers.every((marker) => marker.markerIconName === firstIconName)
+    ? firstIconName
+    : null;
 }
 
 function createQuizIcon(
   markerType: "guess" | "answer" | "prompt" | "option",
   resultStatus: QuizResultStatus = null,
   label?: string,
+  iconName?: string | null,
 ) {
   const markerClass =
     markerType === "guess"
@@ -322,11 +252,14 @@ function createQuizIcon(
           ? "quiz-option-marker"
           : "quiz-answer-marker";
   const statusClass = resultStatus ? ` quiz-map-marker--${resultStatus}` : "";
+  const iconClass = iconName ? " quiz-map-marker--with-icon" : "";
   const markerLabel = label ?? (markerType === "guess" ? "T" : markerType === "prompt" ? "?" : "D");
 
   return L.divIcon({
-    className: `quiz-map-marker ${markerClass}${statusClass}`,
-    html: `<span><b>${markerLabel}</b></span>`,
+    className: `quiz-map-marker ${markerClass}${statusClass}${iconClass}`,
+    html: `<span>${
+      iconName ? `<svg viewBox="0 0 24 24" aria-hidden="true">${featureIconSvg(iconName)}</svg>` : ""
+    }<b>${markerLabel}</b></span>`,
     iconAnchor: [15, 15],
     iconSize: [30, 30],
   });
@@ -337,14 +270,18 @@ function createPlusIcon(
   resultStatus: QuizResultStatus,
   isSelected: boolean,
   assignedLabel?: string,
+  iconName?: string | null,
 ) {
   const statusClass = resultStatus ? ` quiz-map-marker--${resultStatus}` : "";
   const selectedClass = isSelected ? " plus-map-marker--selected" : "";
   const assignedClass = assignedLabel ? " plus-map-marker--assigned" : "";
+  const iconClass = iconName ? " plus-map-marker--with-icon" : "";
 
   return L.divIcon({
-    className: `quiz-map-marker plus-map-marker${statusClass}${selectedClass}${assignedClass}`,
-    html: `<span style="--plus-color: ${target.color}"><b>${escapeHtml(target.label)}</b>${
+    className: `quiz-map-marker plus-map-marker${statusClass}${selectedClass}${assignedClass}${iconClass}`,
+    html: `<span style="--plus-color: ${QUESTION_MARKER_COLOR}">${
+      iconName ? `<svg viewBox="0 0 24 24" aria-hidden="true">${featureIconSvg(iconName)}</svg>` : ""
+    }<b>${escapeHtml(target.label)}</b>${
       assignedLabel ? `<em>${escapeHtml(assignedLabel)}</em>` : ""
     }</span>`,
     iconAnchor: [18, 18],
@@ -507,9 +444,14 @@ export function TurkeyMap({
     physicalFeatureLayerRef.current?.eachLayer((layer: PhysicalFeatureLayer) => {
       const feature = layer.feature;
 
-      if (feature && isPhysicalFeature(feature) && layer instanceof L.CircleMarker) {
-        layer.setStyle(physicalFeatureStyle(feature.properties, selectedPhysicalFeatureId, shouldUsePhysicalCategoryColors));
-        layer.setRadius(feature.properties.id === selectedPhysicalFeatureId ? 8 : 5.5);
+      if (feature && isPhysicalFeature(feature) && layer instanceof L.Marker) {
+        layer.setIcon(
+          createPhysicalFeatureIcon(
+            feature.properties,
+            selectedPhysicalFeatureId,
+            shouldUsePhysicalCategoryColors,
+          ),
+        );
       }
     });
   }, [selectedPhysicalFeatureId, shouldUsePhysicalCategoryColors]);
@@ -520,11 +462,14 @@ export function TurkeyMap({
     economicFeatureLayerRef.current?.eachLayer((layer: EconomicFeatureLayer) => {
       const feature = layer.feature;
 
-      if (feature && isEconomicFeature(feature) && layer instanceof L.CircleMarker) {
-        layer.setStyle(
-          economicFeatureStyle(feature.properties, selectedEconomicFeatureId, shouldUseEconomicCategoryColors),
+      if (feature && isEconomicFeature(feature) && layer instanceof L.Marker) {
+        layer.setIcon(
+          createEconomicFeatureIcon(
+            feature.properties,
+            selectedEconomicFeatureId,
+            shouldUseEconomicCategoryColors,
+          ),
         );
-        layer.setRadius(feature.properties.id === selectedEconomicFeatureId ? 8 : 5.5);
       }
     });
   }, [selectedEconomicFeatureId, shouldUseEconomicCategoryColors]);
@@ -642,37 +587,47 @@ export function TurkeyMap({
         layer.on({
           click: () => onPhysicalFeatureSelect(physicalFeature),
           mouseout: () => {
-            if (layer instanceof L.CircleMarker) {
+            if (layer instanceof L.Marker) {
               layer.closeTooltip();
-              layer.setStyle(
-                physicalFeatureStyle(physicalFeature, selectedFeatureRef.current, shouldUsePhysicalCategoryColors),
+              layer.setIcon(
+                createPhysicalFeatureIcon(
+                  physicalFeature,
+                  selectedFeatureRef.current,
+                  shouldUsePhysicalCategoryColors,
+                ),
               );
-              layer.setRadius(physicalFeature.id === selectedFeatureRef.current ? 8 : 5.5);
+              layer.setZIndexOffset(0);
             }
           },
           mouseover: () => {
-            if (layer instanceof L.CircleMarker) {
+            if (layer instanceof L.Marker) {
               layer.openTooltip();
-              layer.setStyle({
-                color: "#fbbf24",
-                fillOpacity: 1,
-                weight: 2.5,
-              });
-              layer.setRadius(8);
-              layer.bringToFront();
+              layer.setIcon(
+                createPhysicalFeatureIcon(
+                  physicalFeature,
+                  physicalFeature.id,
+                  shouldUsePhysicalCategoryColors,
+                ),
+              );
+              layer.setZIndexOffset(1000);
             }
           },
         });
       },
       pointToLayer: (feature, latlng) => {
         if (isPhysicalFeature(feature)) {
-          return L.circleMarker(
-            latlng,
-            physicalFeatureStyle(feature.properties, selectedFeatureRef.current, shouldUsePhysicalCategoryColors),
-          );
+          return L.marker(latlng, {
+            icon: createPhysicalFeatureIcon(
+              feature.properties,
+              selectedFeatureRef.current,
+              shouldUsePhysicalCategoryColors,
+            ),
+            keyboard: true,
+            pane: PHYSICAL_FEATURE_PANE,
+          });
         }
 
-        return L.circleMarker(latlng);
+        return L.marker(latlng, { pane: PHYSICAL_FEATURE_PANE });
       },
     }).addTo(map);
 
@@ -738,45 +693,47 @@ export function TurkeyMap({
         layer.on({
           click: () => onEconomicFeatureSelect(economicFeature),
           mouseout: () => {
-            if (layer instanceof L.CircleMarker) {
+            if (layer instanceof L.Marker) {
               layer.closeTooltip();
-              layer.setStyle(
-                economicFeatureStyle(
+              layer.setIcon(
+                createEconomicFeatureIcon(
                   economicFeature,
                   selectedEconomicFeatureRef.current,
                   shouldUseEconomicCategoryColors,
                 ),
               );
-              layer.setRadius(economicFeature.id === selectedEconomicFeatureRef.current ? 8 : 5.5);
+              layer.setZIndexOffset(0);
             }
           },
           mouseover: () => {
-            if (layer instanceof L.CircleMarker) {
+            if (layer instanceof L.Marker) {
               layer.openTooltip();
-              layer.setStyle({
-                color: "#fbbf24",
-                fillOpacity: 1,
-                weight: 2.5,
-              });
-              layer.setRadius(8);
-              layer.bringToFront();
+              layer.setIcon(
+                createEconomicFeatureIcon(
+                  economicFeature,
+                  economicFeature.id,
+                  shouldUseEconomicCategoryColors,
+                ),
+              );
+              layer.setZIndexOffset(1000);
             }
           },
         });
       },
       pointToLayer: (feature, latlng) => {
         if (isEconomicFeature(feature)) {
-          return L.circleMarker(
-            latlng,
-            economicFeatureStyle(
+          return L.marker(latlng, {
+            icon: createEconomicFeatureIcon(
               feature.properties,
               selectedEconomicFeatureRef.current,
               shouldUseEconomicCategoryColors,
             ),
-          );
+            keyboard: true,
+            pane: ECONOMIC_FEATURE_PANE,
+          });
         }
 
-        return L.circleMarker(latlng);
+        return L.marker(latlng, { pane: ECONOMIC_FEATURE_PANE });
       },
     }).addTo(map);
 
@@ -808,6 +765,8 @@ export function TurkeyMap({
     const mapOptionLatLngs = quizMapOptions.map((option) => L.latLng(option.point.lat, option.point.lng));
     const plusTargetLatLngs = plusTargets.map((target) => L.latLng(target.point.lat, target.point.lng));
     const optionLatLngById = new Map<string, L.LatLng>();
+    const safeQuizOptionIconName = getSharedMarkerIconName(quizMapOptions);
+    const safePlusTargetIconName = getSharedMarkerIconName(plusTargets);
 
     quizMapOptions.forEach((option) => {
       const optionLatLng = L.latLng(option.point.lat, option.point.lng);
@@ -840,7 +799,7 @@ export function TurkeyMap({
         : null;
       const marker = L.marker(optionLatLng, {
         bubblingMouseEvents: false,
-        icon: createQuizIcon("option", optionStatus, option.label),
+        icon: createQuizIcon("option", optionStatus, option.label, safeQuizOptionIconName),
         keyboard: true,
         pane: QUIZ_PANE,
       })
@@ -879,7 +838,7 @@ export function TurkeyMap({
         : null;
       const marker = L.marker(targetLatLng, {
         bubblingMouseEvents: false,
-        icon: createPlusIcon(target, targetStatus, isSelectedTarget, assignedLabel),
+        icon: createPlusIcon(target, targetStatus, isSelectedTarget, assignedLabel, safePlusTargetIconName),
         keyboard: true,
         pane: QUIZ_PANE,
       })

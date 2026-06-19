@@ -1,5 +1,6 @@
 import type { EconomicFeature } from "../geojson/economicFeatures";
 import { getEconomicFeatureDisplayName, isEconomicFeature } from "../geojson/economicFeatures";
+import { getFeatureIconName } from "../geojson/featureIcons";
 import type { PhysicalFeature } from "../geojson/physicalFeatures";
 
 export type QuizFeature = PhysicalFeature | EconomicFeature;
@@ -32,6 +33,7 @@ export type QuizMapOption = {
   point: QuizPoint;
   name: string;
   categoryLabel: string;
+  markerIconName: string;
   isCorrect: boolean;
 };
 
@@ -213,6 +215,7 @@ function mapOptionsFromFeatures(optionFeatures: QuizFeature[], correctFeature: Q
       point: point ?? { lat: 39, lng: 35 },
       name: featureDisplayName(feature),
       categoryLabel: feature.properties.categoryLabel,
+      markerIconName: getFeatureIconName(feature.properties),
       isCorrect: correctFeature.some((correct) => correct.properties.id === feature.properties.id),
     };
   });
