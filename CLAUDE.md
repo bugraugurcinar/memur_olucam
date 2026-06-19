@@ -20,6 +20,10 @@ node scripts/buildEconomicFeatures.mjs
 
 There is no test suite, linter, or formatter configured. `npm run build` is the only verification step — it runs `tsc --noEmit` under `strict: true`, so type errors fail the build.
 
+### Environment / Supabase
+
+Cloud accounts + gamification use Supabase. Set `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in `.env.local` (gitignored; see `.env.example`). If they are missing, `src/lib/supabase.ts` exports a `null` client and the app runs fully **anonymously** — the map/quiz work, only cloud progress/leaderboard are disabled. The DB schema (two tables + RLS + a `handle_new_user` trigger) lives in `supabase/schema.sql`; run it once in the Supabase SQL editor and turn off "Confirm email" in Auth settings.
+
 ## Architecture
 
 The app is a single-page React app whose state lives almost entirely in `src/App.tsx`. Three orthogonal concerns are composed there:
@@ -29,6 +33,8 @@ The app is a single-page React app whose state lives almost entirely in `src/App
 3. **Plus engine** (`src/quiz/plusQuestionEngine.ts`) — the newer "Soru+" mode. Topic-scoped (mine, industry, energy, agriculture, mountain, river, lake, plainPlateau) with token/target drag-and-drop placement (`placement`, `mapMatch`, etc.). Same pure-function shape: `generatePlusQuestion(...)` → `PlusQuestion`.
 
 `App.tsx` orchestrates quiz/plus state machines (current question, answer state, session stats, timer) and decides what to pass to `TurkeyMap`. Both engines are pure given their input features, so feature data is the source of truth.
+
+4. **Gamification** (`src/quiz/gamification.ts`) — pure XP/level/badge/daily-quest logic (no side effects). Every Soru+ answer is recorded at the single funnel `finalizePlusAnswer` in `App.tsx`, which calls `recordAnswer` from `useQuizProgress` (`src/hooks/useQuizProgress.ts`). That hook keeps an in-memory session plus cloud-persisted lifetime totals/XP/badges/daily quests (optimistic upserts to Supabase via `useAuth`'s user). `recordAnswer` returns `GamificationEvents` that drive `GamificationFX` (`src/components/GamificationFX.tsx` — framer-motion + canvas-confetti). `useLeaderboard` reads the public `profiles` table. Keep the engines pure — persistence/effects stay in the hooks and `App.tsx`.
 
 ### Data flow
 

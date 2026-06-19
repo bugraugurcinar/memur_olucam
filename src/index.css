@@ -1003,6 +1003,462 @@ h2 {
   line-height: 1.45;
 }
 
+/* --- Hesap / Auth --------------------------------------------------------- */
+
+.account-form {
+  display: grid;
+  gap: 10px;
+}
+
+.account-form label {
+  display: grid;
+  gap: 4px;
+}
+
+.account-form label span {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.account-form input {
+  min-height: 38px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.84rem;
+}
+
+.account-form input:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.account-form__error {
+  color: #dc2626;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.account-form__toggle {
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-align: left;
+}
+
+.account-form__toggle:hover {
+  text-decoration: underline;
+}
+
+.account-user {
+  display: grid;
+  gap: 8px;
+}
+
+.account-user__row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.account-user__id {
+  min-width: 0;
+}
+
+.account-user__id strong {
+  display: block;
+  overflow: hidden;
+  font-size: 0.92rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.account-user__id small {
+  display: block;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 0.72rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.level-badge {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.xp-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--surface-strong);
+  overflow: hidden;
+}
+
+.xp-bar__fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+  transition: width 360ms ease;
+}
+
+.xp-bar__label {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+/* --- Canlı oturum şeridi -------------------------------------------------- */
+
+.plus-session-strip {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+  color: var(--text);
+  font-size: 0.8rem;
+  font-weight: 850;
+}
+
+/* --- Performans paneli ---------------------------------------------------- */
+
+.progress-empty {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.progress-error {
+  color: #dc2626;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.progress-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.progress-stat {
+  display: grid;
+  gap: 2px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-strong);
+  text-align: center;
+}
+
+.progress-stat strong {
+  color: var(--text);
+  font-size: 1.05rem;
+}
+
+.progress-stat small {
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.progress-topic-list {
+  display: grid;
+  gap: 8px;
+}
+
+.progress-topic-row {
+  display: grid;
+  grid-template-columns: minmax(72px, 96px) minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.progress-topic-row__label {
+  overflow: hidden;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.progress-topic-row small {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.progress-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--surface-strong);
+  overflow: hidden;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+  transition: width 360ms ease;
+}
+
+/* --- Günlük görevler ------------------------------------------------------ */
+
+.daily-streak {
+  color: var(--accent-strong) !important;
+  font-size: 0.8rem !important;
+  font-weight: 850 !important;
+}
+
+.daily-quest-list {
+  display: grid;
+  gap: 10px;
+}
+
+.daily-quest {
+  display: grid;
+  gap: 6px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-strong);
+}
+
+.daily-quest--done {
+  border-color: #16a34a;
+  background: color-mix(in srgb, #dcfce7 40%, var(--surface));
+}
+
+.daily-quest__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.daily-quest__head span {
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.daily-quest__head small {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* --- Rozetler ------------------------------------------------------------- */
+
+.badge-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.badge {
+  display: grid;
+  gap: 4px;
+  place-items: center;
+  padding: 10px 6px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-strong);
+  text-align: center;
+}
+
+.badge__icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.badge small {
+  color: var(--text);
+  font-size: 0.66rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.badge--locked {
+  opacity: 0.4;
+  filter: grayscale(1);
+}
+
+/* --- Liderlik ------------------------------------------------------------- */
+
+.leaderboard {
+  display: grid;
+  gap: 6px;
+}
+
+.leaderboard-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.leaderboard-row--me {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, var(--surface));
+}
+
+.leaderboard-row__rank {
+  display: grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--surface-strong);
+  font-size: 0.74rem;
+  font-weight: 900;
+}
+
+.leaderboard-row__name {
+  overflow: hidden;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.leaderboard-row__lvl {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.leaderboard-row small {
+  color: var(--accent);
+  font-size: 0.74rem;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.leaderboard__me {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+/* --- Oyunlaştırma efektleri (FX) ----------------------------------------- */
+
+.fx-center {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  z-index: 1200;
+}
+
+.fx-toasts {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  gap: 10px;
+  pointer-events: none;
+  z-index: 1200;
+}
+
+.fx-xp {
+  position: absolute;
+  color: var(--accent-strong);
+  font-size: 1.6rem;
+  font-weight: 900;
+  text-shadow: 0 2px 12px rgb(0 0 0 / 0.25);
+}
+
+.fx-levelup {
+  display: grid;
+  gap: 6px;
+  place-items: center;
+  padding: 28px 36px;
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.fx-levelup__badge {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+
+.fx-levelup strong {
+  font-size: 1.3rem;
+}
+
+.fx-levelup small {
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.fx-toast {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-width: 220px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.fx-toast--badge {
+  border-left: 4px solid var(--accent-strong);
+}
+
+.fx-toast--quest {
+  border-left: 4px solid #16a34a;
+}
+
+.fx-toast__icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.fx-toast strong {
+  display: block;
+  font-size: 0.82rem;
+}
+
+.fx-toast small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
 @media (max-width: 860px) {
   .app-shell {
     height: auto;

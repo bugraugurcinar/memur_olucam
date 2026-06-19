@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type FormEvent } from "react";
 import {
   economicFeatureCategories,
   economicFeatureTopics,
@@ -34,8 +34,96 @@ import {
   type PlusQuestionMode,
   type PlusQuestionTopic,
 } from "./quiz/plusQuestionEngine";
+import { isSupabaseConfigured } from "./lib/supabase";
+import { useAuth, type UseAuthResult } from "./hooks/useAuth";
+import { useQuizProgress } from "./hooks/useQuizProgress";
+import { useLeaderboard } from "./hooks/useLeaderboard";
+import { GamificationFX, buildFxItems, type FxItem } from "./components/GamificationFX";
+import { accuracyPercent, BADGES, PLUS_TOPIC_IDS, plusTopicLabel as getPlusTopicLabel } from "./quiz/gamification";
 
 const PLUS_RECENT_QUESTION_HISTORY_LIMIT = 8;
+
+function AccountForm({ auth }: { auth: UseAuthResult }) {
+  const [mode, setMode] = useState<"login" | "register">("login");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [formError, setFormError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+    if (submitting) {
+      return;
+    }
+    setSubmitting(true);
+    setFormError(null);
+    const result =
+      mode === "login"
+        ? await auth.signIn(email.trim(), password)
+        : await auth.signUp(email.trim(), password, username);
+    if (result.error) {
+      setFormError(result.error);
+    }
+    setSubmitting(false);
+  };
+
+  return (
+    <form className="account-form" onSubmit={handleSubmit}>
+      {!isSupabaseConfigured ? (
+        <p className="account-form__error">Hesap servisi yapılandırılmamış.</p>
+      ) : null}
+      {mode === "register" ? (
+        <label>
+          <span>Kullanıcı adı</span>
+          <input
+            autoComplete="username"
+            maxLength={20}
+            minLength={3}
+            onChange={(event) => setUsername(event.target.value)}
+            required
+            value={username}
+          />
+        </label>
+      ) : null}
+      <label>
+        <span>E-posta</span>
+        <input
+          autoComplete="email"
+          onChange={(event) => setEmail(event.target.value)}
+          required
+          type="email"
+          value={email}
+        />
+      </label>
+      <label>
+        <span>Parola</span>
+        <input
+          autoComplete={mode === "login" ? "current-password" : "new-password"}
+          minLength={6}
+          onChange={(event) => setPassword(event.target.value)}
+          required
+          type="password"
+          value={password}
+        />
+      </label>
+      {formError ? <p className="account-form__error">{formError}</p> : null}
+      <button className="quiz-launch-button" disabled={submitting || !isSupabaseConfigured} type="submit">
+        {submitting ? "Lütfen bekle…" : mode === "login" ? "Giriş yap" : "Kayıt ol"}
+      </button>
+      <button
+        className="account-form__toggle"
+        onClick={() => {
+          setMode(mode === "login" ? "register" : "login");
+          setFormError(null);
+        }}
+        type="button"
+      >
+        {mode === "login" ? "Hesabın yok mu? Kayıt ol" : "Zaten hesabın var mı? Giriş yap"}
+      </button>
+    </form>
+  );
+}
 
 type PlusAnswerState = {
   isCorrect: boolean;
@@ -76,6 +164,41 @@ function App() {
   const provinces = useGeoJson(geoJsonSources.provinces.url);
   const physicalFeaturesData = useGeoJson(geoJsonSources.physicalFeatures.url);
   const economicFeaturesData = useGeoJson(geoJsonSources.economicFeatures.url);
+
+  const auth = useAuth();
+  const progress = useQuizProgress(auth.user);
+  const leaderboard = useLeaderboard(auth.user);
+  const { recordAnswer, reset: resetProgress } = progress;
+  const { refresh: refreshLeaderboard } = leaderboard;
+  const [fxItems, setFxItems] = useState<FxItem[]>([]);
+  const dismissFx = useCallback(
+    (id: number) => setFxItems((items) => items.filter((item) => item.id !== id)),
+    [],
+  );
+
+  const accountDisplayName =
+    (auth.user?.user_metadata?.username as string | undefined) ?? auth.user?.email ?? "Oyuncu";
+  const weakTopicRows = useMemo(
+    () =>
+      PLUS_TOPIC_IDS.map((id) => ({ id, label: getPlusTopicLabel(id), stat: progress.totals.byTopic[id] }))
+        .filter((row) => row.stat.answered > 0)
+        .sort((a, b) => {
+          const accuracyA = a.stat.correct / a.stat.answered;
+          const accuracyB = b.stat.correct / b.stat.answered;
+          if (accuracyA !== accuracyB) {
+            return accuracyA - accuracyB;
+          }
+          return b.stat.answered - a.stat.answered;
+        }),
+    [progress.totals],
+  );
+
+  const handleResetProgress = useCallback(() => {
+    if (window.confirm("İlerlemen, XP'n ve rozetlerin sıfırlansın mı?")) {
+      void resetProgress();
+      refreshLeaderboard();
+    }
+  }, [refreshLeaderboard, resetProgress]);
 
   const provinceCount = provinces.data?.features.length ?? 0;
   const physicalFeatures = useMemo(
@@ -385,8 +508,14 @@ function App() {
 
       setPlusAnswer({ isCorrect, message, detail, wrongTargetIds, selectedTokenId });
       setPlusSelectedTokenId(null);
+
+      const events = recordAnswer({ topic: currentPlusQuestion.topic, isCorrect });
+      const builtFx = buildFxItems(events);
+      if (builtFx.length > 0) {
+        setFxItems((items) => [...items, ...builtFx]);
+      }
     },
-    [currentPlusQuestion, plusAnswer],
+    [currentPlusQuestion, plusAnswer, recordAnswer],
   );
 
   const handlePlusTokenSelect = useCallback(
@@ -627,6 +756,40 @@ function App() {
         </section>
 
         <aside className="side-panel" aria-label="Harita katmanları">
+          <div className="panel-section account-panel">
+            <div className="quiz-section-heading">
+              <h2>Hesap</h2>
+              {auth.user ? <span>Seviye {progress.level.level}</span> : null}
+            </div>
+            {auth.loading ? (
+              <p className="progress-empty">Yükleniyor…</p>
+            ) : auth.user ? (
+              <div className="account-user">
+                <div className="account-user__row">
+                  <span className="level-badge">{progress.level.level}</span>
+                  <div className="account-user__id">
+                    <strong>{accountDisplayName}</strong>
+                    <small>{auth.user.email}</small>
+                  </div>
+                  <button className="account-form__toggle" onClick={() => void auth.signOut()} type="button">
+                    Çıkış
+                  </button>
+                </div>
+                <div className="xp-bar" aria-label="XP ilerlemesi">
+                  <div
+                    className="xp-bar__fill"
+                    style={{ width: `${Math.round(progress.level.progress * 100)}%` }}
+                  />
+                </div>
+                <small className="xp-bar__label">
+                  {progress.level.intoLevel} / {progress.level.span} XP · Toplam {progress.xp} XP
+                </small>
+              </div>
+            ) : (
+              <AccountForm auth={auth} />
+            )}
+          </div>
+
           <div className="panel-section plus-panel">
             <div className="quiz-section-heading">
               <h2>Soru+</h2>
@@ -681,6 +844,15 @@ function App() {
                   ? "Soru+ yenile"
                   : "Soru+ başlat"}
             </button>
+
+            {progress.session.answered > 0 ? (
+              <div className="plus-session-strip" role="status">
+                <span>
+                  {progress.session.correct}/{progress.session.answered} doğru
+                </span>
+                <span>Seri: {progress.session.currentStreak}</span>
+              </div>
+            ) : null}
 
             <div
               className={`quiz-card plus-card${plusAnswer ? (plusAnswer.isCorrect ? " quiz-card--correct" : " quiz-card--wrong") : ""}`}
@@ -800,6 +972,158 @@ function App() {
               ) : null}
             </div>
           </div>
+
+          <div className="panel-section progress-panel">
+            <div className="quiz-section-heading">
+              <h2>Performans</h2>
+              {auth.user && progress.totals.answered > 0 ? (
+                <button className="account-form__toggle" onClick={handleResetProgress} type="button">
+                  Sıfırla
+                </button>
+              ) : null}
+            </div>
+            {progress.error ? <p className="progress-error">{progress.error}</p> : null}
+            {progress.isLoading ? (
+              <p className="progress-empty">Yükleniyor…</p>
+            ) : progress.totals.answered === 0 ? (
+              <p className="progress-empty">Henüz veri yok</p>
+            ) : (
+              <>
+                <div className="progress-summary">
+                  <div className="progress-stat">
+                    <strong>{progress.totals.answered}</strong>
+                    <small>Soru</small>
+                  </div>
+                  <div className="progress-stat">
+                    <strong>%{accuracyPercent(progress.totals.correct, progress.totals.answered)}</strong>
+                    <small>Doğruluk</small>
+                  </div>
+                  <div className="progress-stat">
+                    <strong>{progress.totals.bestStreak}</strong>
+                    <small>En iyi seri</small>
+                  </div>
+                </div>
+                <div className="progress-topic-list">
+                  {weakTopicRows.map((row) => {
+                    const accuracy = accuracyPercent(row.stat.correct, row.stat.answered);
+                    return (
+                      <div className="progress-topic-row" key={row.id}>
+                        <span className="progress-topic-row__label">{row.label}</span>
+                        <div className="progress-bar">
+                          <div className="progress-bar__fill" style={{ width: `${accuracy}%` }} />
+                        </div>
+                        <small>
+                          {row.stat.correct}/{row.stat.answered}
+                        </small>
+                      </div>
+                    );
+                  })}
+                </div>
+              </>
+            )}
+          </div>
+
+          {!auth.user && !auth.loading ? (
+            <div className="panel-section">
+              <p className="progress-empty">
+                Giriş yap; XP kazan, rozet topla ve liderlik tablosuna gir. 🚀
+              </p>
+            </div>
+          ) : null}
+
+          {auth.user ? (
+            <>
+              <div className="panel-section daily-panel">
+                <div className="quiz-section-heading">
+                  <h2>Günlük görevler</h2>
+                  <span className="daily-streak">🔥 {progress.daily.dailyStreak} gün</span>
+                </div>
+                <div className="daily-quest-list">
+                  {progress.daily.quests.map((quest) => {
+                    const percent = Math.round((quest.progress / quest.target) * 100);
+                    return (
+                      <div
+                        className={`daily-quest${quest.done ? " daily-quest--done" : ""}`}
+                        key={quest.id}
+                      >
+                        <div className="daily-quest__head">
+                          <span>
+                            {quest.done ? "✅ " : ""}
+                            {quest.label}
+                          </span>
+                          <small>
+                            {quest.progress}/{quest.target} · +{quest.xpReward}
+                          </small>
+                        </div>
+                        <div className="progress-bar">
+                          <div className="progress-bar__fill" style={{ width: `${percent}%` }} />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="panel-section badge-panel">
+                <div className="quiz-section-heading">
+                  <h2>Rozetler</h2>
+                  <span>
+                    {progress.badges.length}/{BADGES.length}
+                  </span>
+                </div>
+                <div className="badge-grid">
+                  {BADGES.map((badge) => {
+                    const earned = progress.badges.includes(badge.id);
+                    return (
+                      <div
+                        className={`badge${earned ? "" : " badge--locked"}`}
+                        key={badge.id}
+                        title={badge.description}
+                      >
+                        <span className="badge__icon">{badge.icon}</span>
+                        <small>{badge.label}</small>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="panel-section leaderboard-panel">
+                <div className="quiz-section-heading">
+                  <h2>Liderlik</h2>
+                  <button className="account-form__toggle" onClick={refreshLeaderboard} type="button">
+                    Yenile
+                  </button>
+                </div>
+                {leaderboard.error ? (
+                  <p className="progress-error">{leaderboard.error}</p>
+                ) : leaderboard.isLoading ? (
+                  <p className="progress-empty">Yükleniyor…</p>
+                ) : leaderboard.entries.length === 0 ? (
+                  <p className="progress-empty">Henüz veri yok</p>
+                ) : (
+                  <>
+                    <div className="leaderboard">
+                      {leaderboard.entries.map((entry) => (
+                        <div
+                          className={`leaderboard-row${entry.isMe ? " leaderboard-row--me" : ""}`}
+                          key={entry.id}
+                        >
+                          <span className="leaderboard-row__rank">{entry.rank}</span>
+                          <span className="leaderboard-row__name">{entry.username}</span>
+                          <span className="leaderboard-row__lvl">Sv {entry.level}</span>
+                          <small>{entry.xp} XP</small>
+                        </div>
+                      ))}
+                    </div>
+                    {leaderboard.myRank && !leaderboard.entries.some((entry) => entry.isMe) ? (
+                      <small className="leaderboard__me">Sen: #{leaderboard.myRank}</small>
+                    ) : null}
+                  </>
+                )}
+              </div>
+            </>
+          ) : null}
 
           <div className="panel-section">
             <h2>Fiziki konular</h2>
@@ -926,6 +1250,7 @@ function App() {
           <p className="attribution">{geoJsonAttribution}</p>
         </aside>
       </main>
+      <GamificationFX items={fxItems} onDismiss={dismissFx} />
     </div>
   );
 }
