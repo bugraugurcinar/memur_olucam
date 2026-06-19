@@ -219,6 +219,14 @@ function uniquePromptNameCandidates(features: PlusFeature[]) {
   );
 }
 
+function isBroadRepresentativeFeature(feature: PlusFeature) {
+  return isEconomicFeature(feature) && feature.properties.region.split("/").length > 1;
+}
+
+function mapLocateCandidates(features: PlusFeature[]) {
+  return uniquePromptNameCandidates(features).filter((feature) => !isBroadRepresentativeFeature(feature));
+}
+
 function token(id: string, label: string, detail: string, color: string): PlusToken {
   return { id, label, detail, color };
 }
@@ -317,7 +325,7 @@ function plusTopicFromFeature(feature: PlusFeature): Exclude<PlusQuestionTopic, 
 }
 
 function buildMapLocateQuestions(features: PlusFeature[]) {
-  return uniquePromptNameCandidates(features)
+  return mapLocateCandidates(features)
     .map((feature): PlusQuestion | null => {
       const topic = plusTopicFromFeature(feature);
 
@@ -331,7 +339,7 @@ function buildMapLocateQuestions(features: PlusFeature[]) {
       return makeMapLocateQuestion({
         id: `plus_map_locate_${feature.properties.id}`,
         topic,
-        title: "Haritada bul",
+        title: "Konum tahmini",
         prompt: `${promptName} haritada nerededir?`,
         helper: "Haritaya tahmin noktanı bırak.",
         targets: mapTargets([feature], ["?"]),
@@ -380,7 +388,7 @@ function buildMapMatchQuestions(features: PlusFeature[]) {
       return makeMapMatchQuestion({
         id: `plus_map_match_${feature.properties.id}`,
         topic,
-        title: "Haritada eşleştir",
+        title: "İşaretli nokta",
         prompt: `${promptName} hangi işaretli noktadadır?`,
         helper: "A-E işaretlerinden doğru konumu seç.",
         targets,
@@ -389,6 +397,130 @@ function buildMapMatchQuestions(features: PlusFeature[]) {
         correctTokenId: feature.properties.id,
         answerSummary: `${correctTarget.label} noktası ${displayName} konumudur.`,
         kpssNote: feature.properties.kpssNote,
+      });
+    })
+    .filter((question): question is PlusQuestion => Boolean(question));
+}
+
+function buildCategoryOddOneOutQuestions(features: PlusFeature[]) {
+  const pointFeatures = features.filter((feature) => Boolean(featurePoint(feature)) && plusTopicFromFeature(feature));
+  const featuresByCategory = pointFeatures.reduce<Record<string, PlusFeature[]>>((groups, feature) => {
+    const key = `${feature.properties.topic}__${feature.properties.category}`;
+
+    groups[key] = [...(groups[key] ?? []), feature];
+    return groups;
+  }, {});
+
+  return Object.entries(featuresByCategory)
+    .map(([, categoryFeatures]): PlusQuestion | null => {
+      const baseFeature = categoryFeatures[0];
+      const topic = baseFeature ? plusTopicFromFeature(baseFeature) : null;
+
+      if (!baseFeature || !topic) {
+        return null;
+      }
+
+      const correctFeatures = uniquePointFeatures(categoryFeatures);
+      const oddCandidates = uniquePointFeatures(
+        pointFeatures.filter(
+          (feature) =>
+            feature.properties.topic === baseFeature.properties.topic &&
+            feature.properties.category !== baseFeature.properties.category,
+        ),
+      );
+
+      if (correctFeatures.length < 4 || oddCandidates.length < 1) {
+        return null;
+      }
+
+      const oddFeature = shuffle(oddCandidates)[0];
+      const targets = mapTargets(shuffle([...shuffle(correctFeatures).slice(0, 4), oddFeature]), targetLetters);
+      const oddTarget = targets.find((target) => target.id === oddFeature.properties.id);
+
+      if (!oddTarget) {
+        return null;
+      }
+
+      return makePickOneQuestion({
+        id: `plus_${baseFeature.properties.topic}_${baseFeature.properties.category}_odd_one_out`,
+        topic,
+        title: "Yanlış noktayı bul",
+        prompt: `Haritada işaretli 5 ${baseFeature.properties.topicLabel.toLocaleLowerCase("tr-TR")} noktasından hangisi ${baseFeature.properties.categoryLabel} değildir?`,
+        helper: "Dört işaret aynı gruptadır; farklı kategoride olan noktayı seç.",
+        targets,
+        tokens: [],
+        correctTargetIds: [oddFeature.properties.id],
+        answerSummary: `${oddTarget.label} noktası farklıdır: ${featureDisplayName(oddFeature)} ${oddFeature.properties.categoryLabel}.`,
+        kpssNote: baseFeature.properties.kpssNote,
+      });
+    })
+    .filter((question): question is PlusQuestion => Boolean(question));
+}
+
+function distributionPromptVerb(topic: Exclude<PlusQuestionTopic, "mixed">) {
+  if (topic === "agriculture") {
+    return "yetiştirilir";
+  }
+
+  if (topic === "industry" || topic === "energy") {
+    return "yer alır";
+  }
+
+  return "bulunur";
+}
+
+function buildRepeatedNameDistributionQuestions(features: PlusFeature[]) {
+  const pointFeatures = features.filter((feature) => Boolean(featurePoint(feature)) && plusTopicFromFeature(feature));
+  const featuresByName = pointFeatures.reduce<Record<string, PlusFeature[]>>((groups, feature) => {
+    const key = `${feature.properties.topic}__${featurePromptName(feature)}`;
+
+    groups[key] = [...(groups[key] ?? []), feature];
+    return groups;
+  }, {});
+
+  return Object.entries(featuresByName)
+    .map(([, nameFeatures]): PlusQuestion | null => {
+      const baseFeature = nameFeatures[0];
+      const topic = baseFeature ? plusTopicFromFeature(baseFeature) : null;
+
+      if (!baseFeature || !topic) {
+        return null;
+      }
+
+      const correctFeatures = uniquePointFeatures(nameFeatures);
+      const distractors = uniquePointFeatures(
+        pointFeatures.filter(
+          (feature) =>
+            feature.properties.topic === baseFeature.properties.topic &&
+            featurePromptName(feature) !== featurePromptName(baseFeature),
+        ),
+      );
+
+      if (correctFeatures.length < 2 || distractors.length < 3) {
+        return null;
+      }
+
+      const selectedCorrectFeatures = shuffle(correctFeatures).slice(0, Math.min(correctFeatures.length, 4));
+      const selectedDistractors = shuffle(distractors).slice(0, Math.max(3, 6 - selectedCorrectFeatures.length));
+      const targets = mapTargets(shuffle([...selectedCorrectFeatures, ...selectedDistractors]), targetLetters);
+      const correctTargetIds = selectedCorrectFeatures.map((feature) => feature.properties.id);
+      const correctLabels = targets
+        .filter((target) => correctTargetIds.includes(target.id))
+        .map((target) => target.label)
+        .join(", ");
+      const promptName = featurePromptName(baseFeature);
+
+      return makePickManyQuestion({
+        id: `plus_${baseFeature.properties.id}_distribution_pick`,
+        topic,
+        title: "Dağılış noktaları",
+        prompt: `İşaretli noktalardan hangilerinde ${promptName} ${distributionPromptVerb(topic)}?`,
+        helper: "Birden fazla doğru nokta olabilir; aynı dağılışa ait işaretleri birlikte seç.",
+        targets,
+        tokens: [],
+        correctTargetIds,
+        answerSummary: `${promptName} için doğru işaretler: ${correctLabels}.`,
+        kpssNote: baseFeature.properties.kpssNote,
       });
     })
     .filter((question): question is PlusQuestion => Boolean(question));
@@ -1114,6 +1246,8 @@ type PlusQuestionBuilderResult = PlusQuestion | PlusQuestion[] | null;
 const builders: Array<(features: PlusFeature[]) => PlusQuestionBuilderResult> = [
   buildMapLocateQuestions,
   buildMapMatchQuestions,
+  buildCategoryOddOneOutQuestions,
+  buildRepeatedNameDistributionQuestions,
   buildMinePlacement,
   buildMineReverse,
   buildSpecialMinePlacement,
@@ -1145,6 +1279,32 @@ function buildCandidates(features: PlusFeature[], topic: PlusQuestionTopic, mode
     .filter((question): question is PlusQuestion => Boolean(question))
     .filter((question) => topic === "mixed" || question.topic === topic)
     .filter((question) => mode === "mixed" || question.kind === mode);
+}
+
+const mixedQuestionKindWeights: Record<PlusQuestionKind, number> = {
+  mapLocate: 1,
+  mapMatch: 2,
+  placement: 6,
+  pickOne: 5,
+  pickMany: 5,
+  choice: 4,
+};
+
+function selectPlusQuestion(candidates: PlusQuestion[], mode: PlusQuestionMode) {
+  if (mode !== "mixed") {
+    return shuffle(candidates)[0];
+  }
+
+  const candidatesByKind = candidates.reduce<Partial<Record<PlusQuestionKind, PlusQuestion[]>>>((groups, question) => {
+    groups[question.kind] = [...(groups[question.kind] ?? []), question];
+    return groups;
+  }, {});
+  const weightedKinds = Object.entries(mixedQuestionKindWeights).flatMap(([kind, weight]) =>
+    candidatesByKind[kind as PlusQuestionKind] ? Array.from({ length: weight }, () => kind as PlusQuestionKind) : [],
+  );
+  const selectedKind = shuffle(weightedKinds)[0];
+
+  return selectedKind ? shuffle(candidatesByKind[selectedKind] ?? [])[0] : shuffle(candidates)[0];
 }
 
 export function getPlusAvailability(
@@ -1189,7 +1349,7 @@ export function generatePlusQuestion({
   const previousSeedId = previousQuestionId?.split("__")[0] ?? null;
   const nextCandidates =
     candidates.length > 1 ? candidates.filter((question) => question.id !== previousSeedId) : candidates;
-  const selected = shuffle(nextCandidates)[0];
+  const selected = selectPlusQuestion(nextCandidates, mode);
 
   if (!selected) {
     return null;
