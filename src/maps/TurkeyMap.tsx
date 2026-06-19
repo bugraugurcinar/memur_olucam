@@ -58,6 +58,8 @@ type TurkeyMapProps = {
   quizMapOptions: QuizMapOption[];
   quizSelectedOptionId: string | null;
   quizCorrectOptionIds: string[];
+  quizSelectedLineOptionIds: string[];
+  quizCorrectLineOptionIds: string[];
   onProvinceSelect: (provinceName: string) => void;
   onPhysicalFeatureSelect: (feature: PhysicalFeatureProperties) => void;
   onEconomicFeatureSelect: (feature: EconomicFeatureProperties) => void;
@@ -219,6 +221,8 @@ export function TurkeyMap({
   quizMapOptions,
   quizSelectedOptionId,
   quizCorrectOptionIds,
+  quizSelectedLineOptionIds,
+  quizCorrectLineOptionIds,
   onProvinceSelect,
   onPhysicalFeatureSelect,
   onEconomicFeatureSelect,
@@ -631,9 +635,25 @@ export function TurkeyMap({
 
     const quizLayer = L.layerGroup().addTo(map);
     const mapOptionLatLngs = quizMapOptions.map((option) => L.latLng(option.point.lat, option.point.lng));
+    const optionLatLngById = new Map<string, L.LatLng>();
+
+    quizMapOptions.forEach((option) => {
+      const optionLatLng = L.latLng(option.point.lat, option.point.lng);
+
+      optionLatLngById.set(option.id, optionLatLng);
+      optionLatLngById.set(option.label, optionLatLng);
+    });
     const guessLatLngs = quizGuessPoints.map((point) => L.latLng(point.lat, point.lng));
     const lastGuessLatLng = guessLatLngs[guessLatLngs.length - 1] ?? null;
     const targetLatLng = quizTargetPoint ? L.latLng(quizTargetPoint.lat, quizTargetPoint.lng) : null;
+    const fallbackSelectedLineIds =
+      quizSelectedLineOptionIds.length === 0 && quizSelectedOptionId?.includes("|")
+        ? quizSelectedOptionId.split("|")
+        : quizSelectedLineOptionIds;
+    const fallbackCorrectLineIds =
+      quizCorrectLineOptionIds.length === 0 && quizCorrectOptionIds[0]?.includes("|")
+        ? quizCorrectOptionIds[0].split("|")
+        : quizCorrectLineOptionIds;
 
     quizMapOptions.forEach((option) => {
       const optionLatLng = L.latLng(option.point.lat, option.point.lng);
@@ -695,6 +715,35 @@ export function TurkeyMap({
       }).addTo(quizLayer);
     }
 
+    const selectedLineLatLngs = fallbackSelectedLineIds
+      .map((optionId) => optionLatLngById.get(optionId))
+      .filter((latLng): latLng is L.LatLng => Boolean(latLng));
+    const correctLineLatLngs = fallbackCorrectLineIds
+      .map((optionId) => optionLatLngById.get(optionId))
+      .filter((latLng): latLng is L.LatLng => Boolean(latLng));
+
+    if (selectedLineLatLngs.length > 1) {
+      L.polyline(selectedLineLatLngs, {
+        color: quizResultStatus === "correct" ? "#16a34a" : "#f97316",
+        dashArray: quizResultStatus === "correct" ? undefined : "7 8",
+        opacity: 0.9,
+        pane: QUIZ_PANE,
+        weight: 3,
+      }).addTo(quizLayer);
+    }
+
+    if (
+      correctLineLatLngs.length > 1 &&
+      fallbackCorrectLineIds.join("|") !== fallbackSelectedLineIds.join("|")
+    ) {
+      L.polyline(correctLineLatLngs, {
+        color: "#16a34a",
+        opacity: 0.92,
+        pane: QUIZ_PANE,
+        weight: 3,
+      }).addTo(quizLayer);
+    }
+
     if (targetLatLng && quizShowTargetPoint) {
       const markerType = quizPromptTarget && !quizResultStatus ? "prompt" : "answer";
 
@@ -744,10 +793,12 @@ export function TurkeyMap({
     };
   }, [
     quizCorrectOptionIds,
+    quizCorrectLineOptionIds,
     quizGuessPoints,
     quizMapOptions,
     quizPromptTarget,
     quizResultStatus,
+    quizSelectedLineOptionIds,
     quizSelectedOptionId,
     quizShowTargetPoint,
     quizTargetName,

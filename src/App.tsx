@@ -57,9 +57,12 @@ type QuizAnswerState = {
 };
 
 const questionKindLabels: Record<QuizQuestion["kind"], string> = {
-  mixed: "Karmaşık",
   mapLocate: "Haritada bul",
-  oddOneOut: "Farklı tür",
+  mapMatch: "Haritada eşleştir",
+  oddOneOut: "Hangisi değil",
+  nearby: "Yakın olanı bul",
+  regionPick: "Bölgeyi bul",
+  orderLine: "Sıralama / hat",
 };
 
 const difficultyLabels: Record<QuizDifficulty, string> = {
@@ -635,10 +638,17 @@ function App() {
 
   const selectedChoiceId = quizAnswer?.selectedChoiceId ?? null;
   const quizResultStatus = quizAnswer?.isFinal ? (quizAnswer.isCorrect ? "correct" : "wrong") : null;
+  const selectedLineOptionIds =
+    currentQuestion?.kind === "orderLine" && quizAnswer?.isFinal && quizAnswer.selectedChoiceId
+      ? quizAnswer.selectedChoiceId.split("|")
+      : [];
+  const correctLineOptionIds =
+    currentQuestion?.kind === "orderLine" && quizAnswer?.isFinal
+      ? currentQuestion.correctChoiceIds[0]?.split("|") ?? []
+      : [];
   const shouldShowQuizTarget = Boolean(
     currentQuestion &&
-      currentQuestion.mapOptions.length === 0 &&
-      (currentQuestion.showTargetOnMap || quizAnswer?.isFinal),
+      (currentQuestion.showTargetOnMap || (currentQuestion.mapOptions.length === 0 && quizAnswer?.isFinal)),
   );
 
   return (
@@ -686,6 +696,8 @@ function App() {
             quizMapOptions={currentQuestion?.mapOptions ?? []}
             quizSelectedOptionId={selectedChoiceId}
             quizCorrectOptionIds={currentQuestion?.correctChoiceIds ?? []}
+            quizSelectedLineOptionIds={selectedLineOptionIds}
+            quizCorrectLineOptionIds={correctLineOptionIds}
             onProvinceSelect={handleProvinceSelect}
             onPhysicalFeatureSelect={handlePhysicalFeatureSelect}
             onEconomicFeatureSelect={handleEconomicFeatureSelect}
@@ -805,7 +817,9 @@ function App() {
               {currentQuestion && currentQuestion.mapOptions.length > 0 ? (
                 <div className="quiz-map-hint">
                   <span>A-E</span>
-                  <strong>Haritadaki farklı türü seç</strong>
+                  <strong>
+                    {currentQuestion.kind === "orderLine" ? "Doğru sıralamayı seç" : "Haritadaki noktayı seç"}
+                  </strong>
                 </div>
               ) : null}
 
