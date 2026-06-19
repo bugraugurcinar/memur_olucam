@@ -704,6 +704,10 @@ h2 {
   background: #7c3aed;
 }
 
+.quiz-option-marker span {
+  background: #0f766e;
+}
+
 .quiz-map-marker--correct span {
   background: #16a34a;
 }

@@ -33,6 +33,7 @@ import {
   getChoiceCorrectness,
   getDistanceKm,
   getHeatLabel,
+  getQuizAvailability,
   getRegionOptions,
   quizDifficultyOptions,
   quizModeOptions,
@@ -56,17 +57,9 @@ type QuizAnswerState = {
 };
 
 const questionKindLabels: Record<QuizQuestion["kind"], string> = {
+  mixed: "Karmaşık",
   mapLocate: "Haritada bul",
-  reverseMapIdentify: "Ters harita",
-  categoryChoice: "Kategori",
-  locationMatch: "Merkez eşleştir",
-  featureFromLocation: "Unsuru bul",
-  notInCategory: "Değildir",
-  trueFalse: "Doğru / yanlış",
-  iIiI: "I-II-III",
-  bestExplanation: "Açıklama",
-  nearbyConcept: "Yakın kavram",
-  similarDisambiguation: "Benzerleri ayırt et",
+  oddOneOut: "Farklı tür",
 };
 
 const difficultyLabels: Record<QuizDifficulty, string> = {
@@ -172,9 +165,9 @@ function App() {
     () => filterFeaturesByRegion(quizQuestionPool, quizRegion),
     [quizQuestionPool, quizRegion],
   );
-  const reviewFeatureIds = useMemo(
-    () => Object.entries(mistakeLedger).filter(([, weight]) => weight > 0).map(([id]) => id),
-    [mistakeLedger],
+  const quizAvailability = useMemo(
+    () => getQuizAvailability(regionalQuestionPool, quizMode),
+    [quizMode, regionalQuestionPool],
   );
   const isLoading =
     country.isLoading || provinces.isLoading || physicalFeaturesData.isLoading || economicFeaturesData.isLoading;
@@ -182,7 +175,7 @@ function App() {
   const shouldUsePhysicalCategoryColors = activeTopics.length === 1;
   const shouldUseEconomicCategoryColors = activeEconomicTopics.length === 1;
   const canStartQuiz =
-    regionalQuestionPool.length > 0 && !physicalFeaturesData.isLoading && !economicFeaturesData.isLoading;
+    quizAvailability.total > 0 && !physicalFeaturesData.isLoading && !economicFeaturesData.isLoading;
   const isQuizActive = Boolean(currentQuestion) && !sessionStats.isComplete;
   const activePhysicalQuizCategoryCount = physicalFeatureCategories.filter(
     (category) => activeTopics.includes(category.topic) && activeCategories.includes(category.id),
@@ -343,7 +336,6 @@ function App() {
         mode: quizMode,
         difficulty: quizDifficulty,
         previousQuestionId: currentQuestion?.id ?? null,
-        reviewFeatureIds,
       });
 
       if (!nextQuestion) {
@@ -370,7 +362,6 @@ function App() {
       quizMode,
       quizRoundMode,
       regionalQuestionPool,
-      reviewFeatureIds,
       sessionStats.isComplete,
     ],
   );
@@ -622,9 +613,7 @@ function App() {
     }
 
     if (!currentQuestion) {
-      return quizMode === "review" && reviewFeatureIds.length === 0
-        ? "Tekrar listesi boş; yeni yanlış yaptıkça burası dolacak."
-        : "Seçili havuzdan yeni soru başlat.";
+      return "Seçili havuzdan yeni soru başlat.";
     }
 
     if (quizAnswer) {
@@ -632,7 +621,7 @@ function App() {
     }
 
     return currentQuestion.helper;
-  }, [canStartQuiz, currentQuestion, quizAnswer, quizMode, reviewFeatureIds.length, sessionStats]);
+  }, [canStartQuiz, currentQuestion, quizAnswer, sessionStats]);
 
   const primaryQuizActionLabel = sessionStats.isComplete
     ? "Yeni tur"
@@ -647,7 +636,9 @@ function App() {
   const selectedChoiceId = quizAnswer?.selectedChoiceId ?? null;
   const quizResultStatus = quizAnswer?.isFinal ? (quizAnswer.isCorrect ? "correct" : "wrong") : null;
   const shouldShowQuizTarget = Boolean(
-    currentQuestion && (currentQuestion.showTargetOnMap || quizAnswer?.isFinal),
+    currentQuestion &&
+      currentQuestion.mapOptions.length === 0 &&
+      (currentQuestion.showTargetOnMap || quizAnswer?.isFinal),
   );
 
   return (
@@ -692,10 +683,14 @@ function App() {
             quizTargetPoint={currentQuestion?.targetPoint ?? null}
             quizShowTargetPoint={shouldShowQuizTarget}
             quizPromptTarget={Boolean(currentQuestion?.showTargetOnMap && !quizAnswer?.isFinal)}
+            quizMapOptions={currentQuestion?.mapOptions ?? []}
+            quizSelectedOptionId={selectedChoiceId}
+            quizCorrectOptionIds={currentQuestion?.correctChoiceIds ?? []}
             onProvinceSelect={handleProvinceSelect}
             onPhysicalFeatureSelect={handlePhysicalFeatureSelect}
             onEconomicFeatureSelect={handleEconomicFeatureSelect}
             onQuizGuess={handleQuizGuess}
+            onQuizOptionSelect={handleChoiceAnswer}
           />
 
           {(isLoading || error) && (
@@ -710,7 +705,7 @@ function App() {
           <div className="panel-section quiz-panel">
             <div className="quiz-section-heading">
               <h2>Soru</h2>
-              <span>{regionalQuestionPool.length} soru</span>
+              <span>{quizAvailability.total} soru</span>
             </div>
 
             <div className="quiz-control-grid" aria-label="Soru seçenekleri">
@@ -778,9 +773,6 @@ function App() {
                   Süre <strong>{sessionStats.timeLeft}s</strong>
                 </span>
               ) : null}
-              <span>
-                Tekrar <strong>{reviewFeatureIds.length}</strong>
-              </span>
             </div>
 
             <button
@@ -807,6 +799,13 @@ function App() {
                 <div className="quiz-map-hint">
                   <span>{currentQuestion.allowsSecondAttempt ? "2 hak" : "1 hak"}</span>
                   <strong>{mapGuesses.length} tahmin</strong>
+                </div>
+              ) : null}
+
+              {currentQuestion && currentQuestion.mapOptions.length > 0 ? (
+                <div className="quiz-map-hint">
+                  <span>A-E</span>
+                  <strong>Haritadaki farklı türü seç</strong>
                 </div>
               ) : null}
 
