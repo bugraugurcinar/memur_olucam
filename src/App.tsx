@@ -1,9 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
-import { LayerStatus } from "./components/LayerStatus";
 import {
   economicFeatureCategories,
   economicFeatureTopics,
-  getEconomicFeatureCategory,
   getEconomicFeatureDisplayName,
   getEconomicLocationShortLabel,
   getEconomicFeatures,
@@ -12,7 +10,6 @@ import {
   type EconomicFeatureTopic,
 } from "./geojson/economicFeatures";
 import {
-  getPhysicalFeatureCategory,
   getPhysicalFeatures,
   physicalFeatureCategories,
   physicalFeatureTopics,
@@ -75,10 +72,6 @@ function App() {
     economicFeatureCategories.map((category) => category.id),
   );
   const recentPlusQuestionIdsRef = useRef<string[]>([]);
-  const [expandedTopics, setExpandedTopics] = useState<PhysicalFeatureTopic[]>(["mountain"]);
-  const [expandedEconomicTopics, setExpandedEconomicTopics] = useState<EconomicFeatureTopic[]>([
-    "agriculture",
-  ]);
   const country = useGeoJson(geoJsonSources.country.url);
   const provinces = useGeoJson(geoJsonSources.provinces.url);
   const physicalFeaturesData = useGeoJson(geoJsonSources.physicalFeatures.url);
@@ -223,58 +216,118 @@ function App() {
     setSelectedFeature(null);
   }, []);
 
-  const handleTopicToggle = useCallback((topicId: PhysicalFeatureTopic) => {
-    setExpandedTopics((currentTopics) =>
-      currentTopics.includes(topicId) ? currentTopics : [...currentTopics, topicId],
-    );
-    setActiveTopics((currentTopics) =>
-      currentTopics.includes(topicId)
-        ? currentTopics.filter((currentTopic) => currentTopic !== topicId)
-        : [...currentTopics, topicId],
-    );
+  const handleTopicToggle = useCallback(
+    (topicId: PhysicalFeatureTopic) => {
+      const topicCategoryIds = physicalFeatureCategories
+        .filter((category) => category.topic === topicId)
+        .map((category) => category.id);
+      const isActive = activeTopics.includes(topicId);
+
+      setActiveTopics((current) =>
+        isActive ? current.filter((currentTopic) => currentTopic !== topicId) : [...current, topicId],
+      );
+      setActiveCategories((current) =>
+        isActive
+          ? current.filter((categoryId) => !topicCategoryIds.includes(categoryId))
+          : Array.from(new Set([...current, ...topicCategoryIds])),
+      );
+    },
+    [activeTopics],
+  );
+
+  const handleCategoryToggle = useCallback(
+    (categoryId: PhysicalFeatureCategory) => {
+      const topicId = physicalFeatureCategories.find((category) => category.id === categoryId)?.topic;
+      const isCategoryActive = activeCategories.includes(categoryId);
+      const nextCategories = isCategoryActive
+        ? activeCategories.filter((currentCategory) => currentCategory !== categoryId)
+        : [...activeCategories, categoryId];
+
+      setActiveCategories(nextCategories);
+
+      if (!topicId) {
+        return;
+      }
+      const topicHasActiveCategory = nextCategories.some(
+        (currentCategory) =>
+          physicalFeatureCategories.find((category) => category.id === currentCategory)?.topic === topicId,
+      );
+      setActiveTopics((current) =>
+        topicHasActiveCategory
+          ? current.includes(topicId)
+            ? current
+            : [...current, topicId]
+          : current.filter((currentTopic) => currentTopic !== topicId),
+      );
+    },
+    [activeCategories],
+  );
+
+  const handleSelectAllTopics = useCallback(() => {
+    setActiveTopics(physicalFeatureTopics.map((topic) => topic.id));
+    setActiveCategories(physicalFeatureCategories.map((category) => category.id));
   }, []);
 
-  const handleTopicExpansionToggle = useCallback((topicId: PhysicalFeatureTopic) => {
-    setExpandedTopics((currentTopics) =>
-      currentTopics.includes(topicId)
-        ? currentTopics.filter((currentTopic) => currentTopic !== topicId)
-        : [...currentTopics, topicId],
-    );
+  const handleClearAllTopics = useCallback(() => {
+    setActiveTopics([]);
+    setActiveCategories([]);
   }, []);
 
-  const handleCategoryToggle = useCallback((categoryId: PhysicalFeatureCategory) => {
-    setActiveCategories((currentCategories) =>
-      currentCategories.includes(categoryId)
-        ? currentCategories.filter((currentCategory) => currentCategory !== categoryId)
-        : [...currentCategories, categoryId],
-    );
+  const handleEconomicTopicToggle = useCallback(
+    (topicId: EconomicFeatureTopic) => {
+      const topicCategoryIds = economicFeatureCategories
+        .filter((category) => category.topic === topicId)
+        .map((category) => category.id);
+      const isActive = activeEconomicTopics.includes(topicId);
+
+      setActiveEconomicTopics((current) =>
+        isActive ? current.filter((currentTopic) => currentTopic !== topicId) : [...current, topicId],
+      );
+      setActiveEconomicCategories((current) =>
+        isActive
+          ? current.filter((categoryId) => !topicCategoryIds.includes(categoryId))
+          : Array.from(new Set([...current, ...topicCategoryIds])),
+      );
+    },
+    [activeEconomicTopics],
+  );
+
+  const handleEconomicCategoryToggle = useCallback(
+    (categoryId: EconomicFeatureCategory) => {
+      const topicId = economicFeatureCategories.find((category) => category.id === categoryId)?.topic;
+      const isCategoryActive = activeEconomicCategories.includes(categoryId);
+      const nextCategories = isCategoryActive
+        ? activeEconomicCategories.filter((currentCategory) => currentCategory !== categoryId)
+        : [...activeEconomicCategories, categoryId];
+
+      setActiveEconomicCategories(nextCategories);
+
+      if (!topicId) {
+        return;
+      }
+      const topicHasActiveCategory = nextCategories.some(
+        (currentCategory) =>
+          economicFeatureCategories.find((category) => category.id === currentCategory)?.topic === topicId,
+      );
+      setActiveEconomicTopics((current) =>
+        topicHasActiveCategory
+          ? current.includes(topicId)
+            ? current
+            : [...current, topicId]
+          : current.filter((currentTopic) => currentTopic !== topicId),
+      );
+    },
+    [activeEconomicCategories],
+  );
+
+  const handleSelectAllEconomicTopics = useCallback(() => {
+    setActiveEconomicTopics(economicFeatureTopics.map((topic) => topic.id));
+    setActiveEconomicCategories(economicFeatureCategories.map((category) => category.id));
   }, []);
 
-  const handleEconomicTopicToggle = useCallback((topicId: EconomicFeatureTopic) => {
-    setExpandedEconomicTopics((currentTopics) =>
-      currentTopics.includes(topicId) ? currentTopics : [...currentTopics, topicId],
-    );
-    setActiveEconomicTopics((currentTopics) =>
-      currentTopics.includes(topicId)
-        ? currentTopics.filter((currentTopic) => currentTopic !== topicId)
-        : [...currentTopics, topicId],
-    );
-  }, []);
-
-  const handleEconomicTopicExpansionToggle = useCallback((topicId: EconomicFeatureTopic) => {
-    setExpandedEconomicTopics((currentTopics) =>
-      currentTopics.includes(topicId)
-        ? currentTopics.filter((currentTopic) => currentTopic !== topicId)
-        : [...currentTopics, topicId],
-    );
-  }, []);
-
-  const handleEconomicCategoryToggle = useCallback((categoryId: EconomicFeatureCategory) => {
-    setActiveEconomicCategories((currentCategories) =>
-      currentCategories.includes(categoryId)
-        ? currentCategories.filter((currentCategory) => currentCategory !== categoryId)
-        : [...currentCategories, categoryId],
-    );
+  const handleClearAllEconomicTopics = useCallback(() => {
+    setActiveEconomicTopics([]);
+    setActiveEconomicCategories([]);
   }, []);
 
   const handlePlusClose = useCallback(() => {
@@ -529,23 +582,6 @@ function App() {
 
   return (
     <div className="app-shell">
-      <header className="app-header">
-        <div>
-          <span className="phase-label">Phase 2 · KPSS Katmanları</span>
-          <h1>KPSS Coğrafya Atlas</h1>
-        </div>
-        <div className="header-metrics" aria-label="Harita veri durumu">
-          <span>ADM0</span>
-          <strong>{country.data ? "Hazır" : "Yükleniyor"}</strong>
-          <span>ADM1</span>
-          <strong>{provinceCount || "..."}</strong>
-          <span>Fiziki</span>
-          <strong>{physicalFeatures.length || "..."}</strong>
-          <span>Ekonomik</span>
-          <strong>{economicFeatures.length || "..."}</strong>
-        </div>
-      </header>
-
       <main className="atlas-layout">
         <section className="map-stage">
           <TurkeyMap
@@ -766,99 +802,60 @@ function App() {
           </div>
 
           <div className="panel-section">
-            <h2>Katmanlar</h2>
-            <LayerStatus
-              label={geoJsonSources.country.label}
-              detail={geoJsonSources.country.sourceName}
-              isReady={Boolean(country.data)}
-            />
-            <LayerStatus
-              label={geoJsonSources.provinces.label}
-              detail={`${provinceCount || 81} il`}
-              isReady={Boolean(provinces.data)}
-            />
-            <LayerStatus
-              label={geoJsonSources.physicalFeatures.label}
-              detail={
-                isPlusActive
-                  ? "Soru modunda gizli"
-                  : `${visiblePhysicalFeatures.length || 0} / ${physicalFeatures.length || 196} görünür`
-              }
-              isReady={Boolean(physicalFeaturesData.data)}
-            />
-            <LayerStatus
-              label={geoJsonSources.economicFeatures.label}
-              detail={
-                isPlusActive
-                  ? "Soru modunda gizli"
-                  : `${visibleEconomicFeatures.length || 0} / ${economicFeatures.length || 172} görünür`
-              }
-              isReady={Boolean(economicFeaturesData.data)}
-            />
-          </div>
-
-          <div className="panel-section">
             <h2>Fiziki konular</h2>
+            <div className="topic-filter-toolbar">
+              <button onClick={handleSelectAllTopics} type="button">
+                Tümünü göster
+              </button>
+              <button onClick={handleClearAllTopics} type="button">
+                Tümünü gizle
+              </button>
+            </div>
             <div className="topic-filter-list" aria-label="Fiziki konular">
               {physicalFeatureTopics.map((topic) => {
                 const isActive = activeTopics.includes(topic.id);
-                const isExpanded = expandedTopics.includes(topic.id);
                 const topicCount = physicalFeatures.filter((feature) => feature.properties.topic === topic.id).length;
                 const topicCategories = physicalFeatureCategories.filter((category) => category.topic === topic.id);
 
                 return (
                   <div className="topic-filter-group" key={topic.id}>
-                    <div className="topic-filter-header">
-                      <label className="category-toggle topic-toggle">
-                        <input checked={isActive} onChange={() => handleTopicToggle(topic.id)} type="checkbox" />
-                        <span className="category-toggle__swatch" style={{ backgroundColor: topic.color }} />
-                        <span>
-                          {topic.label}
-                          <small>{topicCount} nokta</small>
-                        </span>
-                        <strong>{isActive ? "Açık" : "Kapalı"}</strong>
-                      </label>
-                      <button
-                        aria-expanded={isExpanded}
-                        aria-label={`${topic.label} kategorilerini ${isExpanded ? "kapat" : "aç"}`}
-                        className="topic-expand-button"
-                        onClick={() => handleTopicExpansionToggle(topic.id)}
-                        type="button"
-                      >
-                        {isExpanded ? "−" : "+"}
-                      </button>
+                    <button
+                      aria-pressed={isActive}
+                      className="topic-chip"
+                      onClick={() => handleTopicToggle(topic.id)}
+                      type="button"
+                    >
+                      <span className="topic-chip__swatch" style={{ backgroundColor: topic.color }} />
+                      <span className="topic-chip__label">{topic.label}</span>
+                      <small>{topicCount}</small>
+                    </button>
+
+                    <div className="category-chip-list" aria-label={`${topic.label} kategorileri`}>
+                      {topicCategories.map((category) => {
+                        const isCategoryActive = activeCategories.includes(category.id);
+                        const categoryCount = physicalFeatures.filter(
+                          (feature) => feature.properties.category === category.id,
+                        ).length;
+
+                        return (
+                          <button
+                            aria-pressed={isCategoryActive}
+                            className="category-chip"
+                            key={category.id}
+                            onClick={() => handleCategoryToggle(category.id)}
+                            style={
+                              isCategoryActive
+                                ? { backgroundColor: category.color, borderColor: category.color }
+                                : undefined
+                            }
+                            type="button"
+                          >
+                            {category.label}
+                            <small>{categoryCount}</small>
+                          </button>
+                        );
+                      })}
                     </div>
-
-                    {isExpanded ? (
-                      <div className="topic-category-list" aria-label={`${topic.label} kategorileri`}>
-                        {topicCategories.map((category) => {
-                          const isCategoryActive = activeCategories.includes(category.id);
-                          const categoryColor =
-                            shouldUsePhysicalCategoryColors && activeTopics[0] === category.topic
-                              ? getPhysicalFeatureCategory(category.id).color
-                              : topic.color;
-                          const categoryCount = physicalFeatures.filter(
-                            (feature) => feature.properties.category === category.id,
-                          ).length;
-
-                          return (
-                            <label className="category-toggle category-toggle--nested" key={category.id}>
-                              <input
-                                checked={isCategoryActive}
-                                onChange={() => handleCategoryToggle(category.id)}
-                                type="checkbox"
-                              />
-                              <span className="category-toggle__swatch" style={{ backgroundColor: categoryColor }} />
-                              <span>
-                                {category.label}
-                                <small>{topic.label}</small>
-                              </span>
-                              <strong>{categoryCount}</strong>
-                            </label>
-                          );
-                        })}
-                      </div>
-                    ) : null}
                   </div>
                 );
               })}
@@ -867,117 +864,63 @@ function App() {
 
           <div className="panel-section">
             <h2>Ekonomik konular</h2>
+            <div className="topic-filter-toolbar">
+              <button onClick={handleSelectAllEconomicTopics} type="button">
+                Tümünü göster
+              </button>
+              <button onClick={handleClearAllEconomicTopics} type="button">
+                Tümünü gizle
+              </button>
+            </div>
             <div className="topic-filter-list" aria-label="Ekonomik konular">
               {economicFeatureTopics.map((topic) => {
                 const isActive = activeEconomicTopics.includes(topic.id);
-                const isExpanded = expandedEconomicTopics.includes(topic.id);
                 const topicCount = economicFeatures.filter((feature) => feature.properties.topic === topic.id).length;
                 const topicCategories = economicFeatureCategories.filter((category) => category.topic === topic.id);
 
                 return (
                   <div className="topic-filter-group" key={topic.id}>
-                    <div className="topic-filter-header">
-                      <label className="category-toggle topic-toggle">
-                        <input
-                          checked={isActive}
-                          onChange={() => handleEconomicTopicToggle(topic.id)}
-                          type="checkbox"
-                        />
-                        <span className="category-toggle__swatch" style={{ backgroundColor: topic.color }} />
-                        <span>
-                          {topic.label}
-                          <small>{topicCount} nokta</small>
-                        </span>
-                        <strong>{isActive ? "Açık" : "Kapalı"}</strong>
-                      </label>
-                      <button
-                        aria-expanded={isExpanded}
-                        aria-label={`${topic.label} kategorilerini ${isExpanded ? "kapat" : "aç"}`}
-                        className="topic-expand-button"
-                        onClick={() => handleEconomicTopicExpansionToggle(topic.id)}
-                        type="button"
-                      >
-                        {isExpanded ? "−" : "+"}
-                      </button>
+                    <button
+                      aria-pressed={isActive}
+                      className="topic-chip"
+                      onClick={() => handleEconomicTopicToggle(topic.id)}
+                      type="button"
+                    >
+                      <span className="topic-chip__swatch" style={{ backgroundColor: topic.color }} />
+                      <span className="topic-chip__label">{topic.label}</span>
+                      <small>{topicCount}</small>
+                    </button>
+
+                    <div className="category-chip-list" aria-label={`${topic.label} kategorileri`}>
+                      {topicCategories.map((category) => {
+                        const isCategoryActive = activeEconomicCategories.includes(category.id);
+                        const categoryCount = economicFeatures.filter(
+                          (feature) => feature.properties.category === category.id,
+                        ).length;
+
+                        return (
+                          <button
+                            aria-pressed={isCategoryActive}
+                            className="category-chip"
+                            key={category.id}
+                            onClick={() => handleEconomicCategoryToggle(category.id)}
+                            style={
+                              isCategoryActive
+                                ? { backgroundColor: category.color, borderColor: category.color }
+                                : undefined
+                            }
+                            type="button"
+                          >
+                            {category.label}
+                            <small>{categoryCount}</small>
+                          </button>
+                        );
+                      })}
                     </div>
-
-                    {isExpanded ? (
-                      <div className="topic-category-list" aria-label={`${topic.label} kategorileri`}>
-                        {topicCategories.map((category) => {
-                          const isCategoryActive = activeEconomicCategories.includes(category.id);
-                          const categoryColor =
-                            shouldUseEconomicCategoryColors && activeEconomicTopics[0] === category.topic
-                              ? getEconomicFeatureCategory(category.id).color
-                              : topic.color;
-                          const categoryCount = economicFeatures.filter(
-                            (feature) => feature.properties.category === category.id,
-                          ).length;
-
-                          return (
-                            <label className="category-toggle category-toggle--nested" key={category.id}>
-                              <input
-                                checked={isCategoryActive}
-                                onChange={() => handleEconomicCategoryToggle(category.id)}
-                                type="checkbox"
-                              />
-                              <span className="category-toggle__swatch" style={{ backgroundColor: categoryColor }} />
-                              <span>
-                                {category.label}
-                                <small>{topic.label}</small>
-                              </span>
-                              <strong>{categoryCount}</strong>
-                            </label>
-                          );
-                        })}
-                      </div>
-                    ) : null}
                   </div>
                 );
               })}
             </div>
-          </div>
-
-          <div className="panel-section">
-            <h2>Seçili il</h2>
-            <p className="selected-province">{selectedText}</p>
-          </div>
-
-          <div className="panel-section">
-            <h2>Seçili yer şekli</h2>
-            {selectedFeature ? (
-              <div className="selected-feature">
-                <strong>{selectedFeature.name}</strong>
-                <span>{selectedFeature.topicLabel}</span>
-                <span>{selectedFeature.categoryLabel}</span>
-                <span>{selectedFeature.region}</span>
-                <p>{selectedFeature.kpssNote}</p>
-                <a href={selectedFeature.sourceUrl} rel="noreferrer" target="_blank">
-                  {selectedFeature.sourceName}
-                </a>
-              </div>
-            ) : (
-              <p className="selected-province">Henüz seçilmedi</p>
-            )}
-          </div>
-
-          <div className="panel-section">
-            <h2>Seçili ekonomik unsur</h2>
-            {selectedEconomicFeature ? (
-              <div className="selected-feature">
-                <strong>{getEconomicFeatureDisplayName(selectedEconomicFeature)}</strong>
-                <span>{selectedEconomicFeature.topicLabel}</span>
-                <span>{selectedEconomicFeature.categoryLabel}</span>
-                {getEconomicLocationShortLabel(selectedEconomicFeature.location) ? (
-                  <span>{getEconomicLocationShortLabel(selectedEconomicFeature.location)}</span>
-                ) : null}
-                <p>{selectedEconomicFeature.kpssNote}</p>
-                <a href={selectedEconomicFeature.sourceUrl} rel="noreferrer" target="_blank">
-                  {selectedEconomicFeature.sourceName}
-                </a>
-              </div>
-            ) : (
-              <p className="selected-province">Henüz seçilmedi</p>
-            )}
           </div>
 
           <p className="attribution">{geoJsonAttribution}</p>
