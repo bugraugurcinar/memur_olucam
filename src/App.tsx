@@ -44,7 +44,7 @@ import { LevelRing } from "./components/LevelRing";
 import { SidePanel, type SidePanelTab } from "./components/SidePanel";
 import { accuracyPercent, BADGES, PLUS_TOPIC_IDS, plusTopicLabel as getPlusTopicLabel } from "./quiz/gamification";
 
-const PLUS_RECENT_QUESTION_HISTORY_LIMIT = 8;
+const PLUS_RECENT_QUESTION_HISTORY_LIMIT = 16;
 
 function AccountForm({ auth }: { auth: UseAuthResult }) {
   const [mode, setMode] = useState<"login" | "register">("login");
@@ -846,25 +846,28 @@ function App() {
               </div>
             ) : null}
 
+            {!currentPlusQuestion ? (
+              <div className="plus-empty-state">
+                <span className="plus-empty-state__icon" aria-hidden="true">
+                  🧭
+                </span>
+                <strong>{canStartPlus ? "Soru+ hazır" : "Yeterli veri yok"}</strong>
+                <p>
+                  {canStartPlus
+                    ? `${plusTopicLabel} · havuzda ${plusAvailability.total} farklı soru seni bekliyor.`
+                    : "Seçili filtrelerde soru üretilemiyor; farklı bir konu ya da bölge dene."}
+                </p>
+              </div>
+            ) : (
             <div
-              key={currentPlusQuestion?.id ?? "plus-empty"}
+              key={currentPlusQuestion.id}
               className={`quiz-card plus-card${plusAnswer ? (plusAnswer.isCorrect ? " quiz-card--correct" : " quiz-card--wrong") : ""}`}
             >
               <span className="quiz-card__eyebrow">
-                {currentPlusQuestion
-                  ? `${currentPlusQuestion.title} · ${plusQuestionKindLabels[currentPlusQuestion.kind]}`
-                  : `${plusTopicLabel} · harita etkileşimi`}
+                {currentPlusQuestion.title} · {plusQuestionKindLabels[currentPlusQuestion.kind]}
               </span>
-              <strong>{currentPlusQuestion ? currentPlusQuestion.prompt : "Harita odaklı soru havuzu hazır"}</strong>
-              <p>
-                {plusAnswer
-                  ? plusAnswer.message
-                  : currentPlusQuestion
-                    ? currentPlusQuestion.helper
-                    : canStartPlus
-                      ? "Soru+ başlatınca mevcut katmanlar kapanır ve sadece soru hedefleri kalır."
-                      : "Seçili filtrelerde Soru+ üretilecek yeterli veri yok."}
-              </p>
+              <strong>{currentPlusQuestion.prompt}</strong>
+              <p>{plusAnswer ? plusAnswer.message : currentPlusQuestion.helper}</p>
 
               {currentPlusQuestion?.kind === "placement" ||
               currentPlusQuestion?.kind === "choice" ||
@@ -964,6 +967,7 @@ function App() {
                 </div>
               ) : null}
             </div>
+            )}
           </div>
         </div>
 

@@ -710,6 +710,42 @@ h2 {
   font-weight: 850;
 }
 
+.plus-empty-state {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 26px 20px;
+  border: 1px dashed var(--hairline);
+  border-radius: var(--radius);
+  background: var(--fill-2);
+  text-align: center;
+}
+
+.plus-empty-state__icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-bottom: 4px;
+  border-radius: 50%;
+  background: var(--brand-soft);
+  font-size: 1.4rem;
+}
+
+.plus-empty-state strong {
+  color: var(--text);
+  font-size: 1.02rem;
+  font-weight: 850;
+  letter-spacing: -0.01em;
+}
+
+.plus-empty-state p {
+  max-width: 30ch;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
 /* --- Soru+ kart ----------------------------------------------------------- */
 
 .quiz-card {

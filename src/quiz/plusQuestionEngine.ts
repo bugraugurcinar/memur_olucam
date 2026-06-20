@@ -417,6 +417,52 @@ function buildMapMatchQuestions(features: PlusFeature[]) {
     .filter((question): question is PlusQuestion => Boolean(question));
 }
 
+function buildPointIdentifyQuestions(features: PlusFeature[]) {
+  const candidates = uniquePromptNameCandidates(features).filter((feature) => !isBroadRepresentativeFeature(feature));
+
+  return candidates
+    .map((feature): PlusQuestion | null => {
+      const topic = plusTopicFromFeature(feature);
+
+      if (!topic) {
+        return null;
+      }
+
+      const displayName = featureDisplayName(feature);
+      const distractors = uniquePointFeatures(
+        features.filter(
+          (candidate) =>
+            candidate.properties.id !== feature.properties.id &&
+            candidate.properties.topic === feature.properties.topic &&
+            featureDisplayName(candidate) !== displayName,
+        ),
+      );
+
+      if (distractors.length < 4) {
+        return null;
+      }
+
+      const options = shuffle([feature, ...shuffle(distractors).slice(0, 4)]);
+      const topicLabel = feature.properties.topicLabel.toLocaleLowerCase("tr-TR");
+
+      return makeChoiceQuestion({
+        id: `plus_point_identify_${feature.properties.id}`,
+        topic,
+        title: "Bu nokta nedir?",
+        prompt: `Haritada yanıp sönen ${topicLabel} noktası hangisidir?`,
+        helper: "Noktanın konumuna bakıp doğru ismi listeden seç.",
+        targets: mapTargets([feature], ["?"]),
+        tokens: options.map((option) =>
+          token(option.properties.id, featureDisplayName(option), featureDetail(option), "#0f766e"),
+        ),
+        correctTokenId: feature.properties.id,
+        answerSummary: `${displayName} (${featureDetail(feature)})`,
+        kpssNote: feature.properties.kpssNote,
+      });
+    })
+    .filter((question): question is PlusQuestion => Boolean(question));
+}
+
 function buildCategoryOddOneOutQuestions(features: PlusFeature[]) {
   const pointFeatures = features.filter((feature) => Boolean(featurePoint(feature)) && plusTopicFromFeature(feature));
   const featuresByCategory = pointFeatures.reduce<Record<string, PlusFeature[]>>((groups, feature) => {
@@ -1530,6 +1576,7 @@ type PlusQuestionBuilderResult = PlusQuestion | PlusQuestion[] | null;
 const builders: Array<(features: PlusFeature[]) => PlusQuestionBuilderResult> = [
   buildMapLocateQuestions,
   buildMapMatchQuestions,
+  buildPointIdentifyQuestions,
   buildCategoryOddOneOutQuestions,
   buildRepeatedNameDistributionQuestions,
   buildMinePlacement,
@@ -1573,24 +1620,36 @@ function buildCandidates(features: PlusFeature[], topic: PlusQuestionTopic, mode
 }
 
 const mixedQuestionKindWeights: Record<PlusQuestionKind, number> = {
-  mapLocate: 1,
-  mapMatch: 2,
-  placement: 6,
-  pickOne: 5,
-  pickMany: 5,
+  mapLocate: 2,
+  mapMatch: 3,
+  placement: 4,
+  pickOne: 4,
+  pickMany: 4,
   choice: 4,
 };
 
-function selectPlusQuestion(candidates: PlusQuestion[], mode: PlusQuestionMode) {
-  if (mode !== "mixed") {
-    return shuffle(candidates)[0];
+function selectPlusQuestion(
+  candidates: PlusQuestion[],
+  mode: PlusQuestionMode,
+  recentTopics: Set<string>,
+) {
+  if (candidates.length === 0) {
+    return undefined;
   }
 
-  const weightedCandidates = candidates.flatMap((question) =>
+  // Spread by topic so the same topic does not dominate consecutive mixed rounds.
+  const freshTopicCandidates = candidates.filter((question) => !recentTopics.has(question.topic));
+  const pool = freshTopicCandidates.length > 0 ? freshTopicCandidates : candidates;
+
+  if (mode !== "mixed") {
+    return shuffle(pool)[0];
+  }
+
+  const weightedCandidates = pool.flatMap((question) =>
     Array.from({ length: mixedQuestionKindWeights[question.kind] }, () => question),
   );
 
-  return shuffle(weightedCandidates)[0] ?? shuffle(candidates)[0];
+  return shuffle(weightedCandidates)[0] ?? shuffle(pool)[0];
 }
 
 export function getPlusAvailability(
@@ -1654,8 +1713,15 @@ export function generatePlusQuestion({
 }) {
   const candidates = buildCandidates(features, topic, mode);
   const recentSeedIds = recentQuestionIds.map((id) => id.split("__")[0]);
+  const seedTopicById = new Map(candidates.map((question) => [question.id, question.topic]));
+  const recentTopics = new Set(
+    recentSeedIds
+      .slice(0, 2)
+      .map((seedId) => seedTopicById.get(seedId))
+      .filter((value): value is Exclude<PlusQuestionTopic, "mixed"> => Boolean(value)),
+  );
   const nextCandidates = pickAvoidingRecent(candidates, recentSeedIds);
-  const selected = selectPlusQuestion(nextCandidates, mode);
+  const selected = selectPlusQuestion(nextCandidates, mode, recentTopics);
 
   if (!selected) {
     return null;
