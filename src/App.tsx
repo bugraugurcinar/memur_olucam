@@ -40,6 +40,7 @@ import { useQuizProgress } from "./hooks/useQuizProgress";
 import { useLeaderboard } from "./hooks/useLeaderboard";
 import { GamificationFX, buildFxItems, type FxItem } from "./components/GamificationFX";
 import { Hud } from "./components/Hud";
+import { LevelRing } from "./components/LevelRing";
 import { SidePanel, type SidePanelTab } from "./components/SidePanel";
 import { accuracyPercent, BADGES, PLUS_TOPIC_IDS, plusTopicLabel as getPlusTopicLabel } from "./quiz/gamification";
 
@@ -196,6 +197,9 @@ function App() {
         }),
     [progress.totals],
   );
+
+  const nextBadge = useMemo(() => BADGES.find((badge) => !progress.badges.includes(badge.id)) ?? null, [progress.badges]);
+  const remainingToNextLevel = Math.max(0, progress.level.span - progress.level.intoLevel);
 
   const handleResetProgress = useCallback(() => {
     if (window.confirm("İlerlemen, XP'n ve rozetlerin sıfırlansın mı?")) {
@@ -973,6 +977,27 @@ function App() {
               icon: "📈",
               content: (
                 <>
+                  {auth.user ? (
+                    <div className="panel-section level-hero">
+                      <LevelRing level={progress.level.level} progress={progress.level.progress} size={62} stroke={5} />
+                      <div className="level-hero__body">
+                        <div className="level-hero__head">
+                          <strong>Seviye {progress.level.level}</strong>
+                          <span>{progress.xp} XP</span>
+                        </div>
+                        <div className="progress-bar">
+                          <div
+                            className="progress-bar__fill"
+                            style={{ width: `${Math.round(progress.level.progress * 100)}%` }}
+                          />
+                        </div>
+                        <small>
+                          {progress.level.intoLevel}/{progress.level.span} XP · sonraki seviyeye {remainingToNextLevel} XP
+                        </small>
+                      </div>
+                    </div>
+                  ) : null}
+
                   <div className="panel-section progress-panel">
             <div className="quiz-section-heading">
               <h2>Performans</h2>
@@ -1071,6 +1096,23 @@ function App() {
                     {progress.badges.length}/{BADGES.length}
                   </span>
                 </div>
+                {nextBadge ? (
+                  <div className="next-badge">
+                    <span className="next-badge__icon">{nextBadge.icon}</span>
+                    <div className="next-badge__body">
+                      <strong>Sıradaki rozet · {nextBadge.label}</strong>
+                      <small>{nextBadge.description}</small>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="next-badge next-badge--done">
+                    <span className="next-badge__icon">🏆</span>
+                    <div className="next-badge__body">
+                      <strong>Tüm rozetler açıldı!</strong>
+                      <small>Hepsini topladın, tebrikler.</small>
+                    </div>
+                  </div>
+                )}
                 <div className="badge-grid">
                   {BADGES.map((badge) => {
                     const earned = progress.badges.includes(badge.id);
@@ -1128,7 +1170,15 @@ function App() {
                       ))}
                     </div>
                     {leaderboard.myRank && !leaderboard.entries.some((entry) => entry.isMe) ? (
-                      <small className="leaderboard__me">Sen: #{leaderboard.myRank}</small>
+                      <>
+                        <div className="leaderboard__divider" aria-hidden="true" />
+                        <div className="leaderboard-row leaderboard-row--me">
+                          <span className="leaderboard-row__rank">{leaderboard.myRank}</span>
+                          <span className="leaderboard-row__name">{accountDisplayName}</span>
+                          <span className="leaderboard-row__lvl">Sv {progress.level.level}</span>
+                          <small>{progress.xp} XP</small>
+                        </div>
+                      </>
                     ) : null}
                   </>
                 )}

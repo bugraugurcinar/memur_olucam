@@ -122,7 +122,11 @@ export function useQuizProgress(user: User | null): UseQuizProgressResult {
       }
       const timestamp = new Date().toISOString();
       const [profileResult, progressResult] = await Promise.all([
-        supabase.from("profiles").upsert({ id: uid, xp: nextXp, updated_at: timestamp }),
+        // NOT: `upsert` kullanma. profiles.username NOT NULL olduğundan,
+        // username içermeyen bir upsert INSERT tuple'ını kurarken NOT NULL'a
+        // takılır (conflict sayılmaz, UPDATE'e düşmeden hata verir) → XP hiç
+        // yazılmaz. Satır trigger/backfill ile zaten var; düz UPDATE yeterli.
+        supabase.from("profiles").update({ xp: nextXp, updated_at: timestamp }).eq("id", uid),
         supabase.from("quiz_progress").upsert({
           user_id: uid,
           answered: nextTotals.answered,
@@ -135,7 +139,13 @@ export function useQuizProgress(user: User | null): UseQuizProgressResult {
         }),
       ]);
       if (profileResult.error || progressResult.error) {
-        setError("İlerleme kaydedilemedi (çevrimdışı olabilirsin).");
+        // eslint-disable-next-line no-console
+        console.error("[progress] kaydetme hatası", {
+          profile: profileResult.error,
+          progress: progressResult.error,
+        });
+        const detail = profileResult.error?.message ?? progressResult.error?.message ?? "bilinmiyor";
+        setError(`Kaydedilemedi: ${detail}`);
       }
     },
     [],
@@ -178,11 +188,29 @@ export function useQuizProgress(user: User | null): UseQuizProgressResult {
       }
 
       if (profileResult.error || progressResult.error) {
-        setError("İlerleme yüklenemedi.");
+        // eslint-disable-next-line no-console
+        console.error("[progress] yükleme hatası", {
+          profile: profileResult.error,
+          progress: progressResult.error,
+        });
+        const detail = profileResult.error?.message ?? progressResult.error?.message ?? "bilinmiyor";
+        setError(`Yüklenemedi: ${detail}`);
       }
 
       const profileData = profileResult.data as { xp?: number | null } | null;
       const progressData = progressResult.data as ProgressRow | null;
+
+      // Kendini onarma: profil satırı yoksa (trigger kaçtıysa) burada oluştur.
+      // Aksi halde `profiles.upsert` INSERT yolunda username NOT NULL'a takılır
+      // ve XP yazımları sessizce başarısız olur → yenilemede XP sıfırlanır.
+      if (!profileData) {
+        const username =
+          ((user?.user_metadata?.username as string | undefined) ?? "").trim() ||
+          `oyuncu_${userId.slice(0, 8)}`;
+        await client
+          .from("profiles")
+          .upsert({ id: userId, username, xp: 0 }, { onConflict: "id", ignoreDuplicates: true });
+      }
 
       const loadedXp = typeof profileData?.xp === "number" ? profileData.xp : 0;
       const loadedTotals = mapTotals(progressData);

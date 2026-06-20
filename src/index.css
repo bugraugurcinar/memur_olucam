@@ -1149,6 +1149,93 @@ h2 {
   transition: width 420ms ease;
 }
 
+/* --- Seviye / XP kartı ---------------------------------------------------- */
+
+.level-hero {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.level-hero__body {
+  display: grid;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.level-hero__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.level-hero__head strong {
+  font-size: 0.98rem;
+  font-weight: 850;
+}
+
+.level-hero__head span {
+  color: var(--reward-strong);
+  font-size: 0.84rem;
+  font-weight: 850;
+  font-variant-numeric: tabular-nums;
+}
+
+.level-hero__body small {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Sıradaki rozet ------------------------------------------------------- */
+
+.next-badge {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+  padding: 11px;
+  border: 1px solid color-mix(in srgb, var(--reward) 35%, var(--hairline));
+  border-radius: var(--radius-sm);
+  background: var(--reward-soft);
+}
+
+.next-badge--done {
+  border-color: color-mix(in srgb, var(--brand) 40%, var(--hairline));
+  background: var(--brand-soft);
+}
+
+.next-badge__icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.next-badge__body {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.next-badge__body strong {
+  font-size: 0.8rem;
+  font-weight: 850;
+}
+
+.next-badge__body small {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.leaderboard__divider {
+  height: 1px;
+  margin: 4px 0;
+  background: var(--hairline);
+}
+
 /* --- Günlük görevler ------------------------------------------------------ */
 
 .daily-streak {
