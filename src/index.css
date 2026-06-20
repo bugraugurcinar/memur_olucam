@@ -631,7 +631,7 @@ h2 {
 
 .quiz-control-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 8px;
 }
 
@@ -695,6 +695,49 @@ h2 {
   color: var(--muted);
   cursor: not-allowed;
   box-shadow: none;
+}
+
+.plus-topic-select {
+  display: grid;
+  gap: 8px;
+}
+
+.plus-topic-select__heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.plus-topic-select__heading span:first-child {
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.plus-topic-select__hint {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.plus-topic-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.plus-topic-chip-list .category-chip[aria-pressed="true"] {
+  border-color: var(--brand);
+  background: var(--brand);
+  color: var(--brand-ink);
+}
+
+.plus-topic-chip-list .category-chip:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 .plus-session-strip {
@@ -1453,6 +1496,38 @@ h2 {
   color: var(--muted);
   font-size: 0.76rem;
   font-weight: 800;
+}
+
+/* --- Dock'taki mini sıralama --------------------------------------------- */
+
+.dock-leaderboard,
+.dock-progress {
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--hairline);
+}
+
+.leaderboard--mini {
+  gap: 4px;
+}
+
+.leaderboard--mini .leaderboard-row {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 7px;
+  padding: 6px 9px;
+}
+
+.leaderboard--mini .leaderboard-row__rank {
+  min-width: 20px;
+  height: 20px;
+  font-size: 0.68rem;
+}
+
+.leaderboard--mini .leaderboard-row__name {
+  font-size: 0.78rem;
+}
+
+.leaderboard--mini .leaderboard-row small {
+  font-size: 0.7rem;
 }
 
 /* --- Katman filtreleri ---------------------------------------------------- */

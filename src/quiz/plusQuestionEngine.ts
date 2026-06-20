@@ -1607,7 +1607,11 @@ const builders: Array<(features: PlusFeature[]) => PlusQuestionBuilderResult> = 
   buildGenericCategoryPlacement,
 ];
 
-function buildCandidates(features: PlusFeature[], topic: PlusQuestionTopic, mode: PlusQuestionMode) {
+function buildCandidates(
+  features: PlusFeature[],
+  topics: Array<Exclude<PlusQuestionTopic, "mixed">>,
+  mode: PlusQuestionMode,
+) {
   return builders
     .flatMap((builder) => {
       const result = builder(features);
@@ -1615,7 +1619,7 @@ function buildCandidates(features: PlusFeature[], topic: PlusQuestionTopic, mode
       return Array.isArray(result) ? result : [result];
     })
     .filter((question): question is PlusQuestion => Boolean(question))
-    .filter((question) => topic === "mixed" || question.topic === topic)
+    .filter((question) => topics.length === 0 || topics.includes(question.topic))
     .filter((question) => mode === "mixed" || question.kind === mode);
 }
 
@@ -1654,10 +1658,10 @@ function selectPlusQuestion(
 
 export function getPlusAvailability(
   features: PlusFeature[],
-  topic: PlusQuestionTopic,
+  topics: Array<Exclude<PlusQuestionTopic, "mixed">>,
   mode: PlusQuestionMode,
 ): PlusAvailability {
-  const candidates = buildCandidates(features, "mixed", mode);
+  const candidates = buildCandidates(features, [], mode);
   const byTopic = {
     mine: 0,
     industry: 0,
@@ -1678,7 +1682,7 @@ export function getPlusAvailability(
   }
 
   return {
-    total: topic === "mixed" ? candidates.length : byTopic[topic],
+    total: topics.length === 0 ? candidates.length : topics.reduce((sum, topic) => sum + byTopic[topic], 0),
     byTopic,
   };
 }
@@ -1702,16 +1706,16 @@ function pickAvoidingRecent(candidates: PlusQuestion[], recentSeedIds: string[])
 
 export function generatePlusQuestion({
   features,
-  topic,
+  topics,
   mode,
   recentQuestionIds,
 }: {
   features: PlusFeature[];
-  topic: PlusQuestionTopic;
+  topics: Array<Exclude<PlusQuestionTopic, "mixed">>;
   mode: PlusQuestionMode;
   recentQuestionIds: string[];
 }) {
-  const candidates = buildCandidates(features, topic, mode);
+  const candidates = buildCandidates(features, topics, mode);
   const recentSeedIds = recentQuestionIds.map((id) => id.split("__")[0]);
   const seedTopicById = new Map(candidates.map((question) => [question.id, question.topic]));
   const recentTopics = new Set(

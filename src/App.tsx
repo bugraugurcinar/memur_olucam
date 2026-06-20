@@ -20,7 +20,7 @@ import {
 import { geoJsonAttribution, geoJsonSources } from "./geojson/sources";
 import { useGeoJson } from "./hooks/useGeoJson";
 import { TurkeyMap } from "./maps/TurkeyMap";
-import { QUIZ_CORRECT_RADIUS_KM, filterFeaturesByRegion, formatDistanceKm, getDistanceKm, getRegionOptions } from "./quiz/geoUtils";
+import { QUIZ_CORRECT_RADIUS_KM, formatDistanceKm, getDistanceKm } from "./quiz/geoUtils";
 import {
   generatePlusQuestion,
   getPlusAvailability,
@@ -40,11 +40,13 @@ import { useQuizProgress } from "./hooks/useQuizProgress";
 import { useLeaderboard } from "./hooks/useLeaderboard";
 import { GamificationFX, buildFxItems, type FxItem } from "./components/GamificationFX";
 import { Hud } from "./components/Hud";
-import { LevelRing } from "./components/LevelRing";
-import { SidePanel, type SidePanelTab } from "./components/SidePanel";
 import { accuracyPercent, BADGES, PLUS_TOPIC_IDS, plusTopicLabel as getPlusTopicLabel } from "./quiz/gamification";
 
 const PLUS_RECENT_QUESTION_HISTORY_LIMIT = 16;
+
+const plusTopicChoices = plusQuestionTopicOptions.filter(
+  (option): option is { id: Exclude<PlusQuestionTopic, "mixed">; label: string } => option.id !== "mixed",
+);
 
 function AccountForm({ auth }: { auth: UseAuthResult }) {
   const [mode, setMode] = useState<"login" | "register">("login");
@@ -144,12 +146,11 @@ function App() {
   const [mapGuesses, setMapGuesses] = useState<PlusPoint[]>([]);
   const [currentPlusQuestion, setCurrentPlusQuestion] = useState<PlusQuestion | null>(null);
   const [plusAnswer, setPlusAnswer] = useState<PlusAnswerState | null>(null);
-  const [plusTopic, setPlusTopic] = useState<PlusQuestionTopic>("mixed");
+  const [plusTopics, setPlusTopics] = useState<Array<Exclude<PlusQuestionTopic, "mixed">>>([]);
   const [plusMode, setPlusMode] = useState<PlusQuestionMode>("mixed");
   const [plusAssignments, setPlusAssignments] = useState<Record<string, string>>({});
   const [plusSelectedTokenId, setPlusSelectedTokenId] = useState<string | null>(null);
   const [plusSelectedTargetIds, setPlusSelectedTargetIds] = useState<string[]>([]);
-  const [quizRegion, setQuizRegion] = useState("all");
   const [activeTopics, setActiveTopics] = useState<PhysicalFeatureTopic[]>(() =>
     physicalFeatureTopics.map((topic) => topic.id),
   );
@@ -174,7 +175,6 @@ function App() {
   const { recordAnswer, reset: resetProgress } = progress;
   const { refresh: refreshLeaderboard } = leaderboard;
   const [fxItems, setFxItems] = useState<FxItem[]>([]);
-  const [drawerTab, setDrawerTab] = useState<string | null>(null);
   const [layersOpen, setLayersOpen] = useState(false);
   const dismissFx = useCallback(
     (id: number) => setFxItems((items) => items.filter((item) => item.id !== id)),
@@ -199,7 +199,6 @@ function App() {
   );
 
   const nextBadge = useMemo(() => BADGES.find((badge) => !progress.badges.includes(badge.id)) ?? null, [progress.badges]);
-  const remainingToNextLevel = Math.max(0, progress.level.span - progress.level.intoLevel);
 
   const handleResetProgress = useCallback(() => {
     if (window.confirm("İlerlemen, XP'n ve rozetlerin sıfırlansın mı?")) {
@@ -239,14 +238,9 @@ function App() {
     () => [...visiblePhysicalFeatures, ...visibleEconomicFeatures],
     [visibleEconomicFeatures, visiblePhysicalFeatures],
   );
-  const regionOptions = useMemo(() => getRegionOptions(quizQuestionPool), [quizQuestionPool]);
-  const regionalQuestionPool = useMemo(
-    () => filterFeaturesByRegion(quizQuestionPool, quizRegion),
-    [quizQuestionPool, quizRegion],
-  );
   const plusAvailability = useMemo(
-    () => getPlusAvailability(regionalQuestionPool, plusTopic, plusMode),
-    [plusMode, plusTopic, regionalQuestionPool],
+    () => getPlusAvailability(quizQuestionPool, plusTopics, plusMode),
+    [plusMode, plusTopics, quizQuestionPool],
   );
   const isLoading =
     country.isLoading || provinces.isLoading || physicalFeaturesData.isLoading || economicFeaturesData.isLoading;
@@ -284,7 +278,7 @@ function App() {
     if (
       currentPlusQuestion &&
       !currentPlusQuestion.targets.every((target) =>
-        regionalQuestionPool.some((feature) => feature.properties.id === target.id),
+        quizQuestionPool.some((feature) => feature.properties.id === target.id),
       )
     ) {
       setCurrentPlusQuestion(null);
@@ -293,18 +287,12 @@ function App() {
       setPlusSelectedTokenId(null);
       setPlusSelectedTargetIds([]);
     }
-  }, [currentPlusQuestion, regionalQuestionPool]);
-
-  useEffect(() => {
-    if (quizRegion !== "all" && !regionOptions.includes(quizRegion)) {
-      setQuizRegion("all");
-    }
-  }, [quizRegion, regionOptions]);
+  }, [currentPlusQuestion, quizQuestionPool]);
 
   const startNextPlusQuestion = useCallback(() => {
     const nextQuestion = generatePlusQuestion({
-      features: regionalQuestionPool,
-      topic: plusTopic,
+      features: quizQuestionPool,
+      topics: plusTopics,
       mode: plusMode,
       recentQuestionIds: recentPlusQuestionIdsRef.current,
     });
@@ -327,7 +315,7 @@ function App() {
     setSelectedProvinceName(null);
     setSelectedFeature(null);
     setSelectedEconomicFeature(null);
-  }, [plusMode, plusTopic, regionalQuestionPool]);
+  }, [plusMode, plusTopics, quizQuestionPool]);
 
   const handleProvinceSelect = useCallback((provinceName: string) => {
     setSelectedProvinceName(provinceName);
@@ -477,14 +465,28 @@ function App() {
     startNextPlusQuestion();
   }, [canStartPlus, startNextPlusQuestion]);
 
-  const handlePlusTopicChange = useCallback((topic: PlusQuestionTopic) => {
-    setPlusTopic(topic);
+  const resetPlusQuestionState = useCallback(() => {
     setCurrentPlusQuestion(null);
     setPlusAnswer(null);
     setPlusAssignments({});
     setPlusSelectedTokenId(null);
     setPlusSelectedTargetIds([]);
   }, []);
+
+  const handlePlusTopicToggle = useCallback(
+    (topic: Exclude<PlusQuestionTopic, "mixed">) => {
+      setPlusTopics((current) =>
+        current.includes(topic) ? current.filter((item) => item !== topic) : [...current, topic],
+      );
+      resetPlusQuestionState();
+    },
+    [resetPlusQuestionState],
+  );
+
+  const handlePlusTopicsClear = useCallback(() => {
+    setPlusTopics([]);
+    resetPlusQuestionState();
+  }, [resetPlusQuestionState]);
 
   const handlePlusModeChange = useCallback((mode: PlusQuestionMode) => {
     setPlusMode(mode);
@@ -714,9 +716,6 @@ function App() {
       : currentPlusQuestion.kind === "pickMany"
         ? plusSelectedTargetIds.length === 0
         : true);
-  const plusTopicLabel =
-    plusQuestionTopicOptions.find((option) => option.id === plusTopic)?.label ?? "Karma Soru+";
-
   return (
     <div className="app-shell">
         <section className="map-stage">
@@ -799,30 +798,43 @@ function App() {
                   ))}
                 </select>
               </label>
-              <label>
-                <span>Konu</span>
-                <select
-                  value={plusTopic}
-                  onChange={(event) => handlePlusTopicChange(event.target.value as PlusQuestionTopic)}
+            </div>
+
+            <div className="plus-topic-select" aria-label="Soru+ konuları">
+              <div className="plus-topic-select__heading">
+                <span>Konular</span>
+                <span className="plus-topic-select__hint">
+                  {plusTopics.length === 0 ? "Tümü seçili" : `${plusTopics.length} konu`}
+                </span>
+              </div>
+              <div className="plus-topic-chip-list">
+                <button
+                  aria-pressed={plusTopics.length === 0}
+                  className="category-chip"
+                  onClick={handlePlusTopicsClear}
+                  type="button"
                 >
-                  {plusQuestionTopicOptions.map((option) => (
-                    <option key={option.id} value={option.id}>
+                  Tümü
+                </button>
+                {plusTopicChoices.map((option) => {
+                  const isActive = plusTopics.includes(option.id);
+                  const count = plusAvailability.byTopic[option.id];
+
+                  return (
+                    <button
+                      aria-pressed={isActive}
+                      className="category-chip"
+                      disabled={count === 0}
+                      key={option.id}
+                      onClick={() => handlePlusTopicToggle(option.id)}
+                      type="button"
+                    >
                       {option.label}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <label>
-                <span>Bölge</span>
-                <select value={quizRegion} onChange={(event) => setQuizRegion(event.target.value)}>
-                  <option value="all">Tüm bölgeler</option>
-                  {regionOptions.map((region) => (
-                    <option key={region} value={region}>
-                      {region}
-                    </option>
-                  ))}
-                </select>
-              </label>
+                      <small>{count}</small>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
 
             <button
@@ -846,19 +858,7 @@ function App() {
               </div>
             ) : null}
 
-            {!currentPlusQuestion ? (
-              <div className="plus-empty-state">
-                <span className="plus-empty-state__icon" aria-hidden="true">
-                  🧭
-                </span>
-                <strong>{canStartPlus ? "Soru+ hazır" : "Yeterli veri yok"}</strong>
-                <p>
-                  {canStartPlus
-                    ? `${plusTopicLabel} · havuzda ${plusAvailability.total} farklı soru seni bekliyor.`
-                    : "Seçili filtrelerde soru üretilemiyor; farklı bir konu ya da bölge dene."}
-                </p>
-              </div>
-            ) : (
+            {currentPlusQuestion ? (
             <div
               key={currentPlusQuestion.id}
               className={`quiz-card plus-card${plusAnswer ? (plusAnswer.isCorrect ? " quiz-card--correct" : " quiz-card--wrong") : ""}`}
@@ -967,232 +967,184 @@ function App() {
                 </div>
               ) : null}
             </div>
-            )}
-          </div>
-        </div>
-
-        <SidePanel
-          activeId={drawerTab}
-          onChange={setDrawerTab}
-          tabs={[
-            {
-              id: "progress",
-              label: "İlerleme",
-              icon: "📈",
-              content: (
-                <>
-                  {auth.user ? (
-                    <div className="panel-section level-hero">
-                      <LevelRing level={progress.level.level} progress={progress.level.progress} size={62} stroke={5} />
-                      <div className="level-hero__body">
-                        <div className="level-hero__head">
-                          <strong>Seviye {progress.level.level}</strong>
-                          <span>{progress.xp} XP</span>
-                        </div>
-                        <div className="progress-bar">
-                          <div
-                            className="progress-bar__fill"
-                            style={{ width: `${Math.round(progress.level.progress * 100)}%` }}
-                          />
-                        </div>
-                        <small>
-                          {progress.level.intoLevel}/{progress.level.span} XP · sonraki seviyeye {remainingToNextLevel} XP
-                        </small>
-                      </div>
-                    </div>
-                  ) : null}
-
-                  <div className="panel-section progress-panel">
-            <div className="quiz-section-heading">
-              <h2>Performans</h2>
-              {auth.user && progress.totals.answered > 0 ? (
-                <button className="account-form__toggle" onClick={handleResetProgress} type="button">
-                  Sıfırla
-                </button>
-              ) : null}
-            </div>
-            {progress.error ? <p className="progress-error">{progress.error}</p> : null}
-            {progress.isLoading ? (
-              <p className="progress-empty">Yükleniyor…</p>
-            ) : progress.totals.answered === 0 ? (
-              <p className="progress-empty">Henüz veri yok</p>
-            ) : (
-              <>
-                <div className="progress-summary">
-                  <div className="progress-stat">
-                    <strong>{progress.totals.answered}</strong>
-                    <small>Soru</small>
-                  </div>
-                  <div className="progress-stat">
-                    <strong>%{accuracyPercent(progress.totals.correct, progress.totals.answered)}</strong>
-                    <small>Doğruluk</small>
-                  </div>
-                  <div className="progress-stat">
-                    <strong>{progress.totals.bestStreak}</strong>
-                    <small>En iyi seri</small>
-                  </div>
-                </div>
-                <div className="progress-topic-list">
-                  {weakTopicRows.map((row) => {
-                    const accuracy = accuracyPercent(row.stat.correct, row.stat.answered);
-                    return (
-                      <div className="progress-topic-row" key={row.id}>
-                        <span className="progress-topic-row__label">{row.label}</span>
-                        <div className="progress-bar">
-                          <div className="progress-bar__fill" style={{ width: `${accuracy}%` }} />
-                        </div>
-                        <small>
-                          {row.stat.correct}/{row.stat.answered}
-                        </small>
-                      </div>
-                    );
-                  })}
-                </div>
-              </>
-            )}
+            ) : null}
           </div>
 
-          {!auth.user && !auth.loading ? (
-            <div className="panel-section">
-              <p className="progress-empty">
-                Giriş yap; XP kazan, rozet topla ve liderlik tablosuna gir. 🚀
-              </p>
-            </div>
-          ) : null}
-
-          {auth.user ? (
+          {!isPlusActive ? (
             <>
-              <div className="panel-section daily-panel">
-                <div className="quiz-section-heading">
-                  <h2>Günlük görevler</h2>
-                  <span className="daily-streak">🔥 {progress.daily.dailyStreak} gün</span>
-                </div>
-                <div className="daily-quest-list">
-                  {progress.daily.quests.map((quest) => {
-                    const percent = Math.round((quest.progress / quest.target) * 100);
-                    return (
-                      <div
-                        className={`daily-quest${quest.done ? " daily-quest--done" : ""}`}
-                        key={quest.id}
-                      >
-                        <div className="daily-quest__head">
-                          <span>
-                            {quest.done ? "✅ " : ""}
-                            {quest.label}
-                          </span>
-                          <small>
-                            {quest.progress}/{quest.target} · +{quest.xpReward}
-                          </small>
-                        </div>
-                        <div className="progress-bar">
-                          <div className="progress-bar__fill" style={{ width: `${percent}%` }} />
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div className="panel-section badge-panel">
-                <div className="quiz-section-heading">
-                  <h2>Rozetler</h2>
-                  <span>
-                    {progress.badges.length}/{BADGES.length}
-                  </span>
-                </div>
-                {nextBadge ? (
-                  <div className="next-badge">
-                    <span className="next-badge__icon">{nextBadge.icon}</span>
-                    <div className="next-badge__body">
-                      <strong>Sıradaki rozet · {nextBadge.label}</strong>
-                      <small>{nextBadge.description}</small>
-                    </div>
+              {auth.user ? (
+                <div className="panel-section dock-leaderboard">
+                  <div className="quiz-section-heading">
+                    <h2>Sıralama</h2>
+                    <button className="account-form__toggle" onClick={refreshLeaderboard} type="button">
+                      Yenile
+                    </button>
                   </div>
-                ) : (
-                  <div className="next-badge next-badge--done">
-                    <span className="next-badge__icon">🏆</span>
-                    <div className="next-badge__body">
-                      <strong>Tüm rozetler açıldı!</strong>
-                      <small>Hepsini topladın, tebrikler.</small>
-                    </div>
-                  </div>
-                )}
-                <div className="badge-grid">
-                  {BADGES.map((badge) => {
-                    const earned = progress.badges.includes(badge.id);
-                    return (
-                      <div
-                        className={`badge${earned ? "" : " badge--locked"}`}
-                        key={badge.id}
-                        title={badge.description}
-                      >
-                        <span className="badge__icon">{badge.icon}</span>
-                        <small>{badge.label}</small>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </>
-          ) : null}
-                </>
-              ),
-            },
-            ...(auth.user
-              ? [
-                  {
-                    id: "ranking",
-                    label: "Sıralama",
-                    icon: "🏆",
-                    content: (
-                      <div className="panel-section leaderboard-panel">
-                <div className="quiz-section-heading">
-                  <h2>Liderlik</h2>
-                  <button className="account-form__toggle" onClick={refreshLeaderboard} type="button">
-                    Yenile
-                  </button>
-                </div>
-                {leaderboard.error ? (
-                  <p className="progress-error">{leaderboard.error}</p>
-                ) : leaderboard.isLoading ? (
-                  <p className="progress-empty">Yükleniyor…</p>
-                ) : leaderboard.entries.length === 0 ? (
-                  <p className="progress-empty">Henüz veri yok</p>
-                ) : (
-                  <>
-                    <div className="leaderboard">
-                      {leaderboard.entries.map((entry) => (
+                  {leaderboard.error ? (
+                    <p className="progress-error">{leaderboard.error}</p>
+                  ) : leaderboard.isLoading ? (
+                    <p className="progress-empty">Yükleniyor…</p>
+                  ) : leaderboard.entries.length === 0 ? (
+                    <p className="progress-empty">Henüz veri yok</p>
+                  ) : (
+                    <div className="leaderboard leaderboard--mini">
+                      {leaderboard.entries.slice(0, 5).map((entry) => (
                         <div
                           className={`leaderboard-row${entry.isMe ? " leaderboard-row--me" : ""}`}
                           key={entry.id}
                         >
                           <span className="leaderboard-row__rank">{entry.rank}</span>
                           <span className="leaderboard-row__name">{entry.username}</span>
-                          <span className="leaderboard-row__lvl">Sv {entry.level}</span>
                           <small>{entry.xp} XP</small>
                         </div>
                       ))}
+                      {leaderboard.myRank &&
+                      !leaderboard.entries.slice(0, 5).some((entry) => entry.isMe) ? (
+                        <>
+                          <div className="leaderboard__divider" aria-hidden="true" />
+                          <div className="leaderboard-row leaderboard-row--me">
+                            <span className="leaderboard-row__rank">{leaderboard.myRank}</span>
+                            <span className="leaderboard-row__name">{accountDisplayName}</span>
+                            <small>{progress.xp} XP</small>
+                          </div>
+                        </>
+                      ) : null}
                     </div>
-                    {leaderboard.myRank && !leaderboard.entries.some((entry) => entry.isMe) ? (
-                      <>
-                        <div className="leaderboard__divider" aria-hidden="true" />
-                        <div className="leaderboard-row leaderboard-row--me">
-                          <span className="leaderboard-row__rank">{leaderboard.myRank}</span>
-                          <span className="leaderboard-row__name">{accountDisplayName}</span>
-                          <span className="leaderboard-row__lvl">Sv {progress.level.level}</span>
-                          <small>{progress.xp} XP</small>
-                        </div>
-                      </>
-                    ) : null}
+                  )}
+                </div>
+              ) : null}
+
+              <div className="panel-section progress-panel dock-progress">
+                <div className="quiz-section-heading">
+                  <h2>Performans</h2>
+                  {auth.user && progress.totals.answered > 0 ? (
+                    <button className="account-form__toggle" onClick={handleResetProgress} type="button">
+                      Sıfırla
+                    </button>
+                  ) : null}
+                </div>
+                {progress.error ? <p className="progress-error">{progress.error}</p> : null}
+                {progress.isLoading ? (
+                  <p className="progress-empty">Yükleniyor…</p>
+                ) : progress.totals.answered === 0 ? (
+                  <p className="progress-empty">Henüz veri yok</p>
+                ) : (
+                  <>
+                    <div className="progress-summary">
+                      <div className="progress-stat">
+                        <strong>{progress.totals.answered}</strong>
+                        <small>Soru</small>
+                      </div>
+                      <div className="progress-stat">
+                        <strong>%{accuracyPercent(progress.totals.correct, progress.totals.answered)}</strong>
+                        <small>Doğruluk</small>
+                      </div>
+                      <div className="progress-stat">
+                        <strong>{progress.totals.bestStreak}</strong>
+                        <small>En iyi seri</small>
+                      </div>
+                    </div>
+                    <div className="progress-topic-list">
+                      {weakTopicRows.slice(0, 3).map((row) => {
+                        const accuracy = accuracyPercent(row.stat.correct, row.stat.answered);
+                        return (
+                          <div className="progress-topic-row" key={row.id}>
+                            <span className="progress-topic-row__label">{row.label}</span>
+                            <div className="progress-bar">
+                              <div className="progress-bar__fill" style={{ width: `${accuracy}%` }} />
+                            </div>
+                            <small>
+                              {row.stat.correct}/{row.stat.answered}
+                            </small>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </>
                 )}
+              </div>
+
+              {!auth.user && !auth.loading ? (
+                <div className="panel-section">
+                  <p className="progress-empty">
+                    Giriş yap; XP kazan, rozet topla ve liderlik tablosuna gir. 🚀
+                  </p>
+                </div>
+              ) : null}
+
+              {auth.user ? (
+                <>
+                  <div className="panel-section daily-panel">
+                    <div className="quiz-section-heading">
+                      <h2>Günlük görevler</h2>
+                      <span className="daily-streak">🔥 {progress.daily.dailyStreak} gün</span>
+                    </div>
+                    <div className="daily-quest-list">
+                      {progress.daily.quests.map((quest) => {
+                        const percent = Math.round((quest.progress / quest.target) * 100);
+                        return (
+                          <div
+                            className={`daily-quest${quest.done ? " daily-quest--done" : ""}`}
+                            key={quest.id}
+                          >
+                            <div className="daily-quest__head">
+                              <span>
+                                {quest.done ? "✅ " : ""}
+                                {quest.label}
+                              </span>
+                              <small>
+                                {quest.progress}/{quest.target} · +{quest.xpReward}
+                              </small>
+                            </div>
+                            <div className="progress-bar">
+                              <div className="progress-bar__fill" style={{ width: `${percent}%` }} />
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  <div className="panel-section badge-panel">
+                    <div className="quiz-section-heading">
+                      <h2>Rozetler</h2>
+                      <span>
+                        {progress.badges.length}/{BADGES.length}
+                      </span>
+                    </div>
+                    {nextBadge ? (
+                      <div className="next-badge">
+                        <span className="next-badge__icon">{nextBadge.icon}</span>
+                        <div className="next-badge__body">
+                          <strong>Sıradaki rozet · {nextBadge.label}</strong>
+                          <small>{nextBadge.description}</small>
+                        </div>
                       </div>
-                    ),
-                  },
-                ]
-              : []),
-          ] as SidePanelTab[]}
-        />
+                    ) : (
+                      <div className="next-badge next-badge--done">
+                        <span className="next-badge__icon">🏆</span>
+                        <div className="next-badge__body">
+                          <strong>Tüm rozetler açıldı!</strong>
+                          <small>Hepsini topladın, tebrikler.</small>
+                        </div>
+                      </div>
+                    )}
+                    {progress.badges.length > 0 ? (
+                      <div className="badge-grid">
+                        {BADGES.filter((badge) => progress.badges.includes(badge.id)).map((badge) => (
+                          <div className="badge" key={badge.id} title={badge.description}>
+                            <span className="badge__icon">{badge.icon}</span>
+                            <small>{badge.label}</small>
+                          </div>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+                </>
+              ) : null}
+            </>
+          ) : null}
+        </div>
 
         <div className={`layers-control${layersOpen ? " layers-control--open" : ""}`}>
           <button
