@@ -43,10 +43,11 @@ export function buildFxItems(events: GamificationEvents): FxItem[] {
 function FxEntry({ item, onDismiss }: { item: FxItem; onDismiss: (id: number) => void }) {
   useEffect(() => {
     const timer = window.setTimeout(() => onDismiss(item.id), DURATIONS[item.kind]);
+    const palette = ["#2dd4bf", "#14b8a6", "#f59e0b", "#fbbf24", "#e6edf6"];
     if (item.kind === "levelup") {
-      confetti({ particleCount: 150, spread: 85, startVelocity: 45, origin: { y: 0.6 } });
+      confetti({ particleCount: 150, spread: 85, startVelocity: 45, origin: { y: 0.6 }, colors: palette });
     } else if (item.kind === "badge") {
-      confetti({ particleCount: 70, spread: 60, origin: { y: 0.35 } });
+      confetti({ particleCount: 70, spread: 60, origin: { y: 0.35 }, colors: palette });
     }
     return () => window.clearTimeout(timer);
   }, [item, onDismiss]);

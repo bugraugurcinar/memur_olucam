@@ -84,7 +84,7 @@ const TURKEY_BOUNDS: LatLngBoundsExpression = [
 const PHYSICAL_FEATURE_PANE = "physical-feature-pane";
 const ECONOMIC_FEATURE_PANE = "economic-feature-pane";
 const QUIZ_PANE = "quiz-pane";
-const QUESTION_MARKER_COLOR = "#0f766e";
+const QUESTION_MARKER_COLOR = "#14b8a6";
 
 function getShapeName(properties: GeoJsonProperties | null | undefined) {
   const shapeName = properties?.shapeName;
@@ -109,30 +109,30 @@ function provinceStyle(provinceName: string, selectedProvinceName: string | null
   const isSelected = provinceName === selectedProvinceName;
 
   return {
-    color: isSelected ? "#f59e0b" : "#2563eb",
-    fillColor: isSelected ? "#fbbf24" : "#38bdf8",
-    fillOpacity: isSelected ? 0.56 : 0.2,
-    opacity: 0.92,
+    color: isSelected ? "#f59e0b" : "#2dd4bf",
+    fillColor: isSelected ? "#fbbf24" : "#2dd4bf",
+    fillOpacity: isSelected ? 0.42 : 0.1,
+    opacity: isSelected ? 0.95 : 0.5,
     weight: isSelected ? 2.5 : 1,
   };
 }
 
 function quizProvinceStyle(): L.PathOptions {
   return {
-    color: "#2563eb",
-    fillColor: "#38bdf8",
-    fillOpacity: 0.2,
-    opacity: 0.68,
+    color: "#2dd4bf",
+    fillColor: "#2dd4bf",
+    fillOpacity: 0.06,
+    opacity: 0.4,
     weight: 0.8,
   };
 }
 
 function countryStyle(): L.PathOptions {
   return {
-    color: "#0f172a",
+    color: "#2dd4bf",
     fillOpacity: 0,
-    opacity: 0.9,
-    weight: 2.6,
+    opacity: 0.5,
+    weight: 2.4,
   };
 }
 
@@ -484,9 +484,9 @@ export function TurkeyMap({
             mouseover: (event: LeafletMouseEvent) => {
               if (event.target instanceof L.Path) {
                 event.target.setStyle({
-                  color: "#f97316",
-                  fillColor: "#fb923c",
-                  fillOpacity: 0.46,
+                  color: "#2dd4bf",
+                  fillColor: "#5eead4",
+                  fillOpacity: 0.32,
                   weight: 2,
                 });
                 event.target.bringToFront();
@@ -804,7 +804,7 @@ export function TurkeyMap({
 
     if (lastGuessLatLng && targetLatLng && plusResultStatus) {
       L.polyline([lastGuessLatLng, targetLatLng], {
-        color: plusResultStatus === "correct" ? "#16a34a" : "#f97316",
+        color: plusResultStatus === "correct" ? "#34d399" : "#f87171",
         dashArray: "7 8",
         opacity: 0.86,
         pane: QUIZ_PANE,

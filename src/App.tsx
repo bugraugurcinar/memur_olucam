@@ -39,6 +39,8 @@ import { useAuth, type UseAuthResult } from "./hooks/useAuth";
 import { useQuizProgress } from "./hooks/useQuizProgress";
 import { useLeaderboard } from "./hooks/useLeaderboard";
 import { GamificationFX, buildFxItems, type FxItem } from "./components/GamificationFX";
+import { Hud } from "./components/Hud";
+import { SidePanel, type SidePanelTab } from "./components/SidePanel";
 import { accuracyPercent, BADGES, PLUS_TOPIC_IDS, plusTopicLabel as getPlusTopicLabel } from "./quiz/gamification";
 
 const PLUS_RECENT_QUESTION_HISTORY_LIMIT = 8;
@@ -171,6 +173,8 @@ function App() {
   const { recordAnswer, reset: resetProgress } = progress;
   const { refresh: refreshLeaderboard } = leaderboard;
   const [fxItems, setFxItems] = useState<FxItem[]>([]);
+  const [drawerTab, setDrawerTab] = useState<string | null>(null);
+  const [layersOpen, setLayersOpen] = useState(false);
   const dismissFx = useCallback(
     (id: number) => setFxItems((items) => items.filter((item) => item.id !== id)),
     [],
@@ -711,7 +715,6 @@ function App() {
 
   return (
     <div className="app-shell">
-      <main className="atlas-layout">
         <section className="map-stage">
           <TurkeyMap
             countryData={country.data}
@@ -748,48 +751,33 @@ function App() {
           />
 
           {(isLoading || error) && (
-            <div className="map-state" role="status">
+            <div className="map-state glass" role="status">
               <strong>{error ? "Harita verisi yüklenemedi" : "Harita hazırlanıyor"}</strong>
               <span>{error ?? "Türkiye, il sınırları, fiziki ve ekonomik GeoJSON katmanları yükleniyor."}</span>
             </div>
           )}
         </section>
 
-        <aside className="side-panel" aria-label="Harita katmanları">
-          <div className="panel-section account-panel">
-            <div className="quiz-section-heading">
-              <h2>Hesap</h2>
-              {auth.user ? <span>Seviye {progress.level.level}</span> : null}
-            </div>
-            {auth.loading ? (
-              <p className="progress-empty">Yükleniyor…</p>
-            ) : auth.user ? (
-              <div className="account-user">
-                <div className="account-user__row">
-                  <span className="level-badge">{progress.level.level}</span>
-                  <div className="account-user__id">
-                    <strong>{accountDisplayName}</strong>
-                    <small>{auth.user.email}</small>
-                  </div>
-                  <button className="account-form__toggle" onClick={() => void auth.signOut()} type="button">
-                    Çıkış
-                  </button>
-                </div>
-                <div className="xp-bar" aria-label="XP ilerlemesi">
-                  <div
-                    className="xp-bar__fill"
-                    style={{ width: `${Math.round(progress.level.progress * 100)}%` }}
-                  />
-                </div>
-                <small className="xp-bar__label">
-                  {progress.level.intoLevel} / {progress.level.span} XP · Toplam {progress.xp} XP
-                </small>
-              </div>
-            ) : (
-              <AccountForm auth={auth} />
-            )}
-          </div>
+        <Hud
+          loading={auth.loading}
+          isLoggedIn={Boolean(auth.user)}
+          displayName={accountDisplayName}
+          email={auth.user?.email}
+          level={progress.level.level}
+          levelProgress={progress.level.progress}
+          intoLevel={progress.level.intoLevel}
+          span={progress.level.span}
+          totalXp={progress.xp}
+          streak={progress.daily.dailyStreak}
+          sessionCorrect={progress.session.correct}
+          sessionAnswered={progress.session.answered}
+          onSignOut={() => void auth.signOut()}
+          canReset={Boolean(auth.user) && progress.totals.answered > 0}
+          onReset={handleResetProgress}
+          accountForm={<AccountForm auth={auth} />}
+        />
 
+        <div className={`quiz-dock glass${layersOpen ? " quiz-dock--shifted" : ""}`}>
           <div className="panel-section plus-panel">
             <div className="quiz-section-heading">
               <h2>Soru+</h2>
@@ -972,8 +960,19 @@ function App() {
               ) : null}
             </div>
           </div>
+        </div>
 
-          <div className="panel-section progress-panel">
+        <SidePanel
+          activeId={drawerTab}
+          onChange={setDrawerTab}
+          tabs={[
+            {
+              id: "progress",
+              label: "İlerleme",
+              icon: "📈",
+              content: (
+                <>
+                  <div className="panel-section progress-panel">
             <div className="quiz-section-heading">
               <h2>Performans</h2>
               {auth.user && progress.totals.answered > 0 ? (
@@ -1087,8 +1086,19 @@ function App() {
                   })}
                 </div>
               </div>
-
-              <div className="panel-section leaderboard-panel">
+            </>
+          ) : null}
+                </>
+              ),
+            },
+            ...(auth.user
+              ? [
+                  {
+                    id: "ranking",
+                    label: "Sıralama",
+                    icon: "🏆",
+                    content: (
+                      <div className="panel-section leaderboard-panel">
                 <div className="quiz-section-heading">
                   <h2>Liderlik</h2>
                   <button className="account-form__toggle" onClick={refreshLeaderboard} type="button">
@@ -1121,10 +1131,25 @@ function App() {
                     ) : null}
                   </>
                 )}
-              </div>
-            </>
-          ) : null}
+                      </div>
+                    ),
+                  },
+                ]
+              : []),
+          ] as SidePanelTab[]}
+        />
 
+        <div className={`layers-control${layersOpen ? " layers-control--open" : ""}`}>
+          <button
+            className="layers-toggle glass"
+            onClick={() => setLayersOpen((value) => !value)}
+            aria-expanded={layersOpen}
+            type="button"
+          >
+            🗺️ Katmanlar
+          </button>
+          {layersOpen ? (
+            <div className="layers-panel glass">
           <div className="panel-section">
             <h2>Fiziki konular</h2>
             <div className="topic-filter-toolbar">
@@ -1248,9 +1273,11 @@ function App() {
           </div>
 
           <p className="attribution">{geoJsonAttribution}</p>
-        </aside>
-      </main>
-      <GamificationFX items={fxItems} onDismiss={dismissFx} />
+            </div>
+          ) : null}
+        </div>
+
+        <GamificationFX items={fxItems} onDismiss={dismissFx} />
     </div>
   );
 }
