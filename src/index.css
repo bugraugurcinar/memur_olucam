@@ -10,37 +10,56 @@
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 
-  --bg-base: #0c1424;
-  --bg-elev-1: #141d30;
-  --bg-elev-2: #1b2740;
-  --bg-elev-3: #223152;
+  /* Atlas Yeşili — Orman + Altın */
+  --bg-base: #0a1410;
+  --bg-elev-1: #12211a;
+  --bg-elev-2: #182c22;
+  --bg-elev-3: #20382b;
+  --fill: rgb(255 255 255 / 0.05);
+  --fill-2: rgb(255 255 255 / 0.09);
   --hairline: rgb(255 255 255 / 0.08);
-  --border: #243352;
-  --text: #e6edf6;
-  --muted: #93a4bd;
+  --border: #234234;
+  --text: #e7f1ea;
+  --muted: #8fa89b;
 
-  --brand: #2dd4bf;
-  --brand-strong: #14b8a6;
-  --brand-ink: #052b27;
-  --brand-soft: rgb(45 212 191 / 0.14);
-  --brand-glow: rgb(45 212 191 / 0.38);
+  --brand: #34d399;
+  --brand-strong: #10b981;
+  --brand-ink: #04231a;
+  --brand-soft: rgb(52 211 153 / 0.14);
+  --brand-glow: rgb(52 211 153 / 0.36);
 
-  --reward: #f59e0b;
-  --reward-strong: #fbbf24;
-  --reward-soft: rgb(245 158 11 / 0.16);
-  --reward-glow: rgb(245 158 11 / 0.42);
+  --reward: #fde047;
+  --reward-strong: #facc15;
+  --reward-ink: #2a2103;
+  --reward-soft: rgb(253 224 71 / 0.15);
+  --reward-glow: rgb(250 204 21 / 0.42);
 
-  --positive: #34d399;
-  --danger: #f87171;
-  --danger-soft: rgb(248 113 113 / 0.16);
+  --positive: #4ade80;
+  --danger: #fb7185;
+  --danger-soft: rgb(251 113 133 / 0.16);
 
-  --map-water: #0e1a2b;
+  --map-water: #0b1c16;
+  --dock-w: 384px;
+  --hud-h: 64px;
+
+  /* Ritim (4px tabanı) */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
 
   --radius-sm: 10px;
   --radius: 14px;
   --radius-lg: 20px;
-  --shadow-float: 0 12px 40px rgb(0 0 0 / 0.45);
-  --glass-blur: saturate(140%) blur(14px);
+
+  /* Katmanlı derinlik */
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 0.3), 0 2px 8px rgb(0 0 0 / 0.22);
+  --shadow-2: 0 6px 16px rgb(0 0 0 / 0.34), 0 2px 6px rgb(0 0 0 / 0.26);
+  --shadow-float: 0 18px 48px rgb(0 0 0 / 0.5), 0 4px 14px rgb(0 0 0 / 0.32);
+  --glass-edge: inset 0 1px 0 rgb(255 255 255 / 0.06);
+  --glass-blur: saturate(150%) blur(26px);
 
   /* Eski isim alias'ları (Leaflet varsayılanları vb. için) */
   --accent: var(--brand);
@@ -59,8 +78,8 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background:
-    radial-gradient(1200px 700px at 78% -8%, rgb(45 212 191 / 0.08), transparent 60%),
-    radial-gradient(1000px 600px at 0% 110%, rgb(245 158 11 / 0.06), transparent 55%),
+    radial-gradient(1200px 700px at 80% -10%, rgb(52 211 153 / 0.1), transparent 60%),
+    radial-gradient(1000px 620px at -5% 112%, rgb(250 204 21 / 0.06), transparent 55%),
     var(--bg-base);
   color: var(--text);
 }
@@ -95,25 +114,34 @@ h2 {
 
 /* --- Ortak yardımcılar ---------------------------------------------------- */
 
+/* Tüm paneller tek tutarlı opak yüzey kullanır (bütüncül görünüm) */
 .glass {
-  background: color-mix(in srgb, var(--bg-elev-1) 94%, transparent);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  background: var(--bg-elev-1);
   border: 1px solid var(--hairline);
-  box-shadow: var(--shadow-float);
+  box-shadow: var(--shadow-float), var(--glass-edge);
 }
 
-/* İçerik panelleri haritanın üstünde net dursun: opak yüzey + belirgin kenar */
-.quiz-dock,
-.layers-panel,
-.side-rail__drawer {
-  background: var(--bg-elev-1);
-  border: 1px solid var(--border);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  box-shadow:
-    0 0 0 1px rgb(0 0 0 / 0.25),
-    var(--shadow-float);
+/* Akışkan his: tüm etkileşimli yüzeyler yumuşak geçişle değişsin */
+.topic-chip,
+.category-chip,
+.topic-filter-toolbar button,
+.plus-token,
+.side-rail__tab,
+.hud__chip,
+.hud__account-button,
+.quiz-control-grid select,
+.icon-button,
+.ghost-button,
+.leaderboard-row,
+.badge,
+.quiz-launch-button,
+.layers-toggle {
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
 .icon-button {
@@ -123,7 +151,7 @@ h2 {
   height: 30px;
   border: 1px solid var(--hairline);
   border-radius: 999px;
-  background: var(--bg-elev-2);
+  background: var(--fill);
   color: var(--muted);
   cursor: pointer;
   font-size: 0.82rem;
@@ -140,7 +168,7 @@ h2 {
   padding: 8px 12px;
   border: 1px solid var(--hairline);
   border-radius: var(--radius-sm);
-  background: var(--bg-elev-2);
+  background: var(--fill);
   color: var(--text);
   cursor: pointer;
   font-size: 0.82rem;
@@ -185,7 +213,7 @@ h2 {
 
 .map-stage {
   position: absolute;
-  inset: 0;
+  inset: var(--hud-h) 0 0 var(--dock-w);
   background: var(--map-water);
 }
 
@@ -199,8 +227,8 @@ h2 {
 
 .map-state {
   position: absolute;
-  left: 50%;
-  top: 84px;
+  left: calc(50% + var(--dock-w) / 2);
+  top: calc(var(--hud-h) + 14px);
   transform: translateX(-50%);
   display: grid;
   gap: 4px;
@@ -224,15 +252,19 @@ h2 {
 
 .hud {
   position: absolute;
-  top: 14px;
-  left: 14px;
-  right: 14px;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--hud-h);
   z-index: 40;
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 10px 16px;
-  border-radius: var(--radius-lg);
+  padding: 0 18px;
+  border: 0;
+  border-bottom: 1px solid var(--hairline);
+  border-radius: 0;
+  box-shadow: var(--shadow-1);
 }
 
 .hud__brand {
@@ -317,7 +349,7 @@ h2 {
   padding: 7px 11px;
   border: 1px solid var(--hairline);
   border-radius: 999px;
-  background: var(--bg-elev-2);
+  background: var(--fill);
   font-size: 0.78rem;
   font-weight: 600;
 }
@@ -369,7 +401,7 @@ h2 {
   padding: 6px 12px 6px 6px;
   border: 1px solid var(--hairline);
   border-radius: 999px;
-  background: var(--bg-elev-2);
+  background: var(--fill);
   color: var(--text);
   cursor: pointer;
 }
@@ -518,8 +550,8 @@ h2 {
 
 .layers-control {
   position: absolute;
-  top: 84px;
-  left: 14px;
+  top: calc(var(--hud-h) + 14px);
+  left: calc(var(--dock-w) + 14px);
   z-index: 30;
   display: grid;
   gap: 10px;
@@ -545,38 +577,37 @@ h2 {
 
 .layers-panel {
   display: grid;
-  gap: 18px;
+  gap: var(--sp-5);
   width: min(330px, calc(100vw - 28px));
   max-height: calc(100dvh - 220px);
-  padding: 16px;
+  padding: var(--sp-5);
   border-radius: var(--radius);
   overflow-y: auto;
 }
 
-/* --- Soru+ yüzen dock (sol) ----------------------------------------------- */
+/* --- Soru+ dock: tam yükseklikte opak sol kenar çubuğu -------------------- */
 
 .quiz-dock {
   position: absolute;
-  top: 84px;
-  left: 14px;
+  top: var(--hud-h);
+  left: 0;
+  bottom: 0;
   z-index: 28;
   display: grid;
-  gap: 14px;
-  width: min(380px, calc(100vw - 28px));
-  max-height: calc(100dvh - 168px);
-  padding: 16px;
-  border-radius: var(--radius-lg);
+  gap: var(--sp-4);
+  align-content: start;
+  width: var(--dock-w);
+  padding: var(--sp-5);
+  border: 0;
+  border-right: 1px solid var(--hairline);
+  border-radius: 0;
+  box-shadow: none;
   overflow-y: auto;
-}
-
-/* Katman paneli açıkken Soru+ dock'u sağa kaydır (üst üste binmesin) */
-.quiz-dock--shifted {
-  left: calc(14px + min(330px, calc(100vw - 28px)) + 12px);
 }
 
 .panel-section {
   display: grid;
-  gap: 12px;
+  gap: var(--sp-3);
 }
 
 .quiz-section-heading {
@@ -587,7 +618,9 @@ h2 {
 }
 
 .quiz-section-heading h2 {
-  font-size: 1.02rem;
+  font-size: 1.06rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
 .quiz-section-heading span {
@@ -622,7 +655,7 @@ h2 {
   padding: 0 8px;
   border: 1px solid var(--hairline);
   border-radius: var(--radius-sm);
-  background: var(--bg-elev-2);
+  background: var(--fill);
   color: var(--text);
   font-size: 0.82rem;
   font-weight: 750;
@@ -651,14 +684,14 @@ h2 {
 }
 
 .quiz-launch-button--active {
-  background: var(--bg-elev-2);
+  background: var(--fill);
   border-color: var(--brand);
   color: var(--brand);
   box-shadow: none;
 }
 
 .quiz-launch-button:disabled {
-  background: var(--bg-elev-2);
+  background: var(--fill);
   color: var(--muted);
   cursor: not-allowed;
   box-shadow: none;
@@ -681,12 +714,13 @@ h2 {
 
 .quiz-card {
   display: grid;
-  gap: 10px;
-  padding: 16px;
+  gap: var(--sp-3);
+  padding: 18px;
   border: 1px solid var(--hairline);
-  border-left: 4px solid var(--brand);
+  border-left: 3px solid var(--brand);
   border-radius: var(--radius);
-  background: var(--bg-elev-2);
+  background: var(--fill-2);
+  box-shadow: var(--shadow-2), var(--glass-edge);
 }
 
 .quiz-card--correct {
@@ -711,14 +745,16 @@ h2 {
 
 .quiz-card > strong {
   color: var(--text);
-  font-size: 1.04rem;
-  line-height: 1.3;
+  font-size: 1.12rem;
+  font-weight: 750;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
 }
 
 .quiz-card p {
   color: var(--muted);
-  font-size: 0.84rem;
-  line-height: 1.45;
+  font-size: 0.85rem;
+  line-height: 1.5;
 }
 
 .plus-token-list {
@@ -735,7 +771,7 @@ h2 {
   border: 1px solid var(--hairline);
   border-left: 4px solid var(--plus-token-color, var(--brand));
   border-radius: var(--radius-sm);
-  background: var(--bg-elev-1);
+  background: var(--fill);
   color: var(--text);
   cursor: grab;
   text-align: left;
@@ -792,7 +828,7 @@ h2 {
   padding: 7px 10px;
   border: 1px solid var(--hairline);
   border-radius: var(--radius-sm);
-  background: var(--bg-elev-1);
+  background: var(--fill);
   font-size: 0.76rem;
 }
 
@@ -822,7 +858,7 @@ h2 {
   padding: 8px 10px;
   border: 1px solid var(--hairline);
   border-radius: var(--radius-sm);
-  background: var(--bg-elev-1);
+  background: var(--fill);
 }
 
 .plus-target-row strong {
@@ -870,7 +906,7 @@ h2 {
   padding: 11px 13px;
   border: 1px solid var(--hairline);
   border-radius: var(--radius-sm);
-  background: var(--bg-elev-1);
+  background: var(--fill);
 }
 
 .quiz-result strong {
@@ -916,14 +952,14 @@ h2 {
 }
 
 .quiz-actions button:disabled {
-  background: var(--bg-elev-2);
+  background: var(--fill);
   color: var(--muted);
   cursor: not-allowed;
 }
 
 .quiz-actions .quiz-actions__secondary {
   border-color: var(--hairline);
-  background: var(--bg-elev-2);
+  background: var(--fill);
   color: var(--text);
 }
 
@@ -936,7 +972,7 @@ h2 {
 
 .side-rail {
   position: absolute;
-  top: 84px;
+  top: calc(var(--hud-h) + 14px);
   right: 14px;
   bottom: 14px;
   z-index: 35;
@@ -982,7 +1018,7 @@ h2 {
 
 .side-rail__tab:hover {
   color: var(--text);
-  background: var(--bg-elev-2);
+  background: var(--fill);
 }
 
 .side-rail__tab--active {
@@ -1013,18 +1049,20 @@ h2 {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  padding: 14px 16px;
+  padding: 15px 18px;
   border-bottom: 1px solid var(--hairline);
 }
 
 .side-rail__head h2 {
-  font-size: 1.02rem;
+  font-size: 1.06rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
 .side-rail__body {
   display: grid;
-  gap: 22px;
-  padding: 16px;
+  gap: var(--sp-6);
+  padding: var(--sp-5);
   overflow-y: auto;
 }
 
@@ -1054,7 +1092,7 @@ h2 {
   padding: 12px 8px;
   border: 1px solid var(--hairline);
   border-radius: var(--radius-sm);
-  background: var(--bg-elev-2);
+  background: var(--fill);
   text-align: center;
 }
 
@@ -1130,7 +1168,7 @@ h2 {
   padding: 11px;
   border: 1px solid var(--hairline);
   border-radius: var(--radius-sm);
-  background: var(--bg-elev-2);
+  background: var(--fill);
 }
 
 .daily-quest--done {
@@ -1178,7 +1216,7 @@ h2 {
   padding: 12px 6px;
   border: 1px solid var(--hairline);
   border-radius: var(--radius-sm);
-  background: var(--bg-elev-2);
+  background: var(--fill);
   text-align: center;
 }
 
@@ -1231,7 +1269,7 @@ h2 {
   padding: 9px 11px;
   border: 1px solid var(--hairline);
   border-radius: var(--radius-sm);
-  background: var(--bg-elev-2);
+  background: var(--fill);
 }
 
 .leaderboard-row--me {
@@ -1306,7 +1344,7 @@ h2 {
   min-height: 34px;
   border: 1px solid var(--hairline);
   border-radius: var(--radius-sm);
-  background: var(--bg-elev-2);
+  background: var(--fill);
   color: var(--text);
   cursor: pointer;
   font-size: 0.76rem;
@@ -1337,7 +1375,7 @@ h2 {
   padding: 6px 12px;
   border: 1px solid var(--hairline);
   border-radius: 999px;
-  background: var(--bg-elev-2);
+  background: var(--fill);
   color: var(--text);
   cursor: pointer;
   font-size: 0.83rem;
@@ -1379,7 +1417,7 @@ h2 {
   padding: 5px 10px;
   border: 1px solid var(--hairline);
   border-radius: 999px;
-  background: var(--bg-elev-2);
+  background: var(--fill);
   color: var(--text);
   cursor: pointer;
   font-size: 0.75rem;
@@ -1430,7 +1468,7 @@ h2 {
   padding: 8px 11px;
   border: 1px solid var(--hairline);
   border-radius: var(--radius-sm);
-  background: var(--bg-elev-2);
+  background: var(--fill);
   color: var(--text);
   font-size: 0.86rem;
 }
@@ -1717,7 +1755,7 @@ h2 {
 
 .fx-toasts {
   position: fixed;
-  top: 84px;
+  top: calc(var(--hud-h) + 14px);
   right: 18px;
   display: grid;
   gap: 10px;
@@ -1804,9 +1842,64 @@ h2 {
   font-weight: 700;
 }
 
+/* --- Mikro animasyonlar --------------------------------------------------- */
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.99);
+  }
+}
+
+.quiz-card {
+  animation: card-in 280ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@keyframes panel-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.99);
+  }
+}
+
+.layers-panel,
+.hud__popover {
+  transform-origin: top;
+  animation: panel-pop 180ms ease;
+}
+
+.quiz-launch-button:active:not(:disabled),
+.quiz-actions button:active:not(:disabled),
+.ghost-button:active,
+.icon-button:active,
+.topic-chip:active,
+.category-chip:active,
+.topic-filter-toolbar button:active,
+.plus-token:active:not(:disabled),
+.side-rail__tab:active,
+.layers-toggle:active,
+.hud__account-button:active {
+  transform: scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* --- Tablet ortası -------------------------------------------------------- */
 
 @media (max-width: 900px) {
+  :root {
+    --dock-w: 320px;
+  }
+
   .hud__title small {
     display: none;
   }
@@ -1814,22 +1907,18 @@ h2 {
   .hud__xp {
     width: clamp(96px, 16vw, 150px);
   }
-
-  .quiz-dock--shifted {
-    left: 14px;
-  }
 }
 
 /* --- Mobil: yüzen kartlar bottom-sheet'e döner ---------------------------- */
 
 @media (max-width: 640px) {
+  :root {
+    --hud-h: 54px;
+  }
+
   .hud {
-    top: 8px;
-    left: 8px;
-    right: 8px;
     gap: 10px;
-    padding: 8px 10px;
-    border-radius: var(--radius);
+    padding: 0 12px;
   }
 
   .hud__title strong {
@@ -1853,12 +1942,17 @@ h2 {
     display: none;
   }
 
+  .map-stage {
+    inset: var(--hud-h) 0 0 0;
+  }
+
   .map-state {
-    top: 64px;
+    top: calc(var(--hud-h) + 12px);
+    left: 50%;
   }
 
   .layers-control {
-    top: 62px;
+    top: calc(var(--hud-h) + 12px);
     left: 8px;
   }
 
@@ -1873,28 +1967,27 @@ h2 {
     bottom: 8px;
     width: auto;
     max-height: 62dvh;
+    padding: 16px;
+    border-right: 0;
     border-radius: var(--radius-lg);
-  }
-
-  .quiz-dock--shifted {
-    left: 8px;
+    box-shadow: var(--shadow-float), var(--glass-edge);
   }
 
   .side-rail {
-    top: 62px;
+    top: calc(var(--hud-h) + 12px);
     right: 8px;
     bottom: auto;
   }
 
   .side-rail__drawer {
     position: fixed;
-    inset: 56px 8px 8px;
+    inset: calc(var(--hud-h) + 8px) 8px 8px;
     width: auto;
     max-width: none;
   }
 
   .fx-toasts {
-    top: 62px;
+    top: calc(var(--hud-h) + 12px);
     right: 8px;
     left: 8px;
     justify-items: stretch;

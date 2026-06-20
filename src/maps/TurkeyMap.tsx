@@ -84,7 +84,7 @@ const TURKEY_BOUNDS: LatLngBoundsExpression = [
 const PHYSICAL_FEATURE_PANE = "physical-feature-pane";
 const ECONOMIC_FEATURE_PANE = "economic-feature-pane";
 const QUIZ_PANE = "quiz-pane";
-const QUESTION_MARKER_COLOR = "#14b8a6";
+const QUESTION_MARKER_COLOR = "#10b981";
 
 function getShapeName(properties: GeoJsonProperties | null | undefined) {
   const shapeName = properties?.shapeName;
@@ -109,8 +109,8 @@ function provinceStyle(provinceName: string, selectedProvinceName: string | null
   const isSelected = provinceName === selectedProvinceName;
 
   return {
-    color: isSelected ? "#f59e0b" : "#2dd4bf",
-    fillColor: isSelected ? "#fbbf24" : "#2dd4bf",
+    color: isSelected ? "#facc15" : "#34d399",
+    fillColor: isSelected ? "#fde047" : "#34d399",
     fillOpacity: isSelected ? 0.42 : 0.1,
     opacity: isSelected ? 0.95 : 0.5,
     weight: isSelected ? 2.5 : 1,
@@ -119,8 +119,8 @@ function provinceStyle(provinceName: string, selectedProvinceName: string | null
 
 function quizProvinceStyle(): L.PathOptions {
   return {
-    color: "#2dd4bf",
-    fillColor: "#2dd4bf",
+    color: "#34d399",
+    fillColor: "#34d399",
     fillOpacity: 0.06,
     opacity: 0.4,
     weight: 0.8,
@@ -129,7 +129,7 @@ function quizProvinceStyle(): L.PathOptions {
 
 function countryStyle(): L.PathOptions {
   return {
-    color: "#2dd4bf",
+    color: "#34d399",
     fillOpacity: 0,
     opacity: 0.5,
     weight: 2.4,
@@ -311,6 +311,7 @@ export function TurkeyMap({
   const selectedProvinceRef = useRef<string | null>(selectedProvinceName);
   const selectedFeatureRef = useRef<string | null>(selectedPhysicalFeatureId);
   const selectedEconomicFeatureRef = useRef<string | null>(selectedEconomicFeatureId);
+  const hasFittedRef = useRef(false);
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) {
@@ -484,8 +485,8 @@ export function TurkeyMap({
             mouseover: (event: LeafletMouseEvent) => {
               if (event.target instanceof L.Path) {
                 event.target.setStyle({
-                  color: "#2dd4bf",
-                  fillColor: "#5eead4",
+                  color: "#34d399",
+                  fillColor: "#6ee7b7",
                   fillOpacity: 0.32,
                   weight: 2,
                 });
@@ -500,7 +501,12 @@ export function TurkeyMap({
       provinceLayerRef.current = provinceLayer;
     }
 
-    map.fitBounds(countryLayer.getBounds(), { padding: [24, 24], maxZoom: 7 });
+    // Açılışta bir kez ülke geometrisine otur; sonradan (soru başlat/kapat vb.)
+    // haritayı yeniden konumlandırma — yalnızca kullanıcı hareket ettirir.
+    if (!hasFittedRef.current) {
+      map.fitBounds(countryLayer.getBounds(), { padding: [24, 24], maxZoom: 7 });
+      hasFittedRef.current = true;
+    }
 
     return () => {
       countryLayer.remove();
@@ -804,7 +810,7 @@ export function TurkeyMap({
 
     if (lastGuessLatLng && targetLatLng && plusResultStatus) {
       L.polyline([lastGuessLatLng, targetLatLng], {
-        color: plusResultStatus === "correct" ? "#34d399" : "#f87171",
+        color: plusResultStatus === "correct" ? "#4ade80" : "#fb7185",
         dashArray: "7 8",
         opacity: 0.86,
         pane: QUIZ_PANE,
@@ -827,23 +833,8 @@ export function TurkeyMap({
         .openTooltip();
     }
 
-    if (plusTargetLatLngs.length > 0) {
-      map.flyToBounds(L.latLngBounds(plusTargetLatLngs), {
-        duration: 0.55,
-        maxZoom: 7,
-        padding: [80, 80],
-      });
-    } else if (lastGuessLatLng && targetLatLng && plusResultStatus) {
-      map.flyToBounds(L.latLngBounds([lastGuessLatLng, targetLatLng]), {
-        duration: 0.8,
-        maxZoom: plusResultStatus === "correct" ? 8 : 7,
-        padding: [80, 80],
-      });
-    } else if (lastGuessLatLng) {
-      map.flyTo(lastGuessLatLng, Math.max(map.getZoom(), 6), {
-        duration: 0.35,
-      });
-    }
+    // Harita yalnızca kullanıcı etkileşimiyle hareket eder; yeni soru/cevap
+    // geldiğinde otomatik pan/zoom (flyTo) yapılmaz.
 
     quizLayerRef.current = quizLayer;
 

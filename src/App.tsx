@@ -777,7 +777,7 @@ function App() {
           accountForm={<AccountForm auth={auth} />}
         />
 
-        <div className={`quiz-dock glass${layersOpen ? " quiz-dock--shifted" : ""}`}>
+        <div className="quiz-dock glass">
           <div className="panel-section plus-panel">
             <div className="quiz-section-heading">
               <h2>Soru+</h2>
@@ -843,6 +843,7 @@ function App() {
             ) : null}
 
             <div
+              key={currentPlusQuestion?.id ?? "plus-empty"}
               className={`quiz-card plus-card${plusAnswer ? (plusAnswer.isCorrect ? " quiz-card--correct" : " quiz-card--wrong") : ""}`}
             >
               <span className="quiz-card__eyebrow">
