@@ -2030,6 +2030,81 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "livestock_buyukbas_besi_balikesir",
+        "name": "Büyükbaş besi",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_stall",
+        "categoryLabel": "Besi / ahır",
+        "region": "Marmara / Ege / İç Anadolu",
+        "location": "Balıkesir",
+        "kpssNote": "Balıkesir, yem sanayisi ve Marmara pazarına yakınlığıyla besi ve süt hayvancılığı örneğidir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Bal%C4%B1kesir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Balıkesir, Türkiye",
+        "sourceDisplayName": "Balıkesir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.882,
+          39.649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_buyukbas_besi_afyonkarahisar",
+        "name": "Büyükbaş besi",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_stall",
+        "categoryLabel": "Besi / ahır",
+        "region": "Marmara / Ege / İç Anadolu",
+        "location": "Afyonkarahisar",
+        "kpssNote": "Afyonkarahisar, İç Batı Anadolu'da yem bitkileri ve hayvansal ürün sanayisiyle ilişkilendirilen besi merkezidir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Afyonkarahisar%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Afyonkarahisar, Türkiye",
+        "sourceDisplayName": "Afyonkarahisar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.538,
+          38.756
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_buyukbas_besi_aksaray",
+        "name": "Büyükbaş besi",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_stall",
+        "categoryLabel": "Besi / ahır",
+        "region": "Marmara / Ege / İç Anadolu",
+        "location": "Aksaray",
+        "kpssNote": "Aksaray, İç Anadolu'da organize hayvancılık ve yem bağlantısıyla besi hayvancılığı örneği olarak çalışılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Aksaray%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Aksaray, Türkiye",
+        "sourceDisplayName": "Aksaray"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.037,
+          38.368
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "livestock_koyun_konya",
         "name": "Koyun",
         "topic": "livestock",
@@ -2124,6 +2199,81 @@
         "coordinates": [
           40.23,
           37.914
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_koyun_yozgat",
+        "name": "Koyun",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_small_ruminant",
+        "categoryLabel": "Küçükbaş",
+        "region": "İç Anadolu / Güneydoğu Anadolu",
+        "location": "Yozgat",
+        "kpssNote": "Koyun yetiştiriciliği bozkır bitki örtüsünün yaygın olduğu İç Anadolu ve Güneydoğu Anadolu'da öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Yozgat%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Yozgat, Türkiye",
+        "sourceDisplayName": "Yozgat"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.81,
+          39.82
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_koyun_van",
+        "name": "Koyun",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_small_ruminant",
+        "categoryLabel": "Küçükbaş",
+        "region": "İç Anadolu / Güneydoğu Anadolu",
+        "location": "Van",
+        "kpssNote": "Koyun yetiştiriciliği bozkır bitki örtüsünün yaygın olduğu İç Anadolu ve Güneydoğu Anadolu'da öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Van%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Van, Türkiye",
+        "sourceDisplayName": "Van"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.373,
+          38.501
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "livestock_koyun_mardin",
+        "name": "Koyun",
+        "topic": "livestock",
+        "topicLabel": "Hayvancılık",
+        "category": "livestock_small_ruminant",
+        "categoryLabel": "Küçükbaş",
+        "region": "İç Anadolu / Güneydoğu Anadolu",
+        "location": "Mardin",
+        "kpssNote": "Koyun yetiştiriciliği bozkır bitki örtüsünün yaygın olduğu İç Anadolu ve Güneydoğu Anadolu'da öne çıkar.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Mardin%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Mardin, Türkiye",
+        "sourceDisplayName": "Mardin"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.739,
+          37.312
         ]
       }
     },
@@ -4205,6 +4355,81 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "energy_yusufeli_hes_yusufeli_artvin",
+        "name": "Yusufeli HES",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_hydroelectric",
+        "categoryLabel": "Hidroelektrik",
+        "region": "Doğu Anadolu / Güneydoğu Anadolu / Karadeniz / İç Anadolu / Akdeniz",
+        "location": "Yusufeli / Artvin",
+        "kpssNote": "Yusufeli HES, Çoruh Havzası'nın yüksek eğim ve dar vadi koşullarıyla ilişkilendirilen büyük hidroelektrik örneğidir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Yusufeli%20%2F%20Artvin%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Yusufeli / Artvin, Türkiye",
+        "sourceDisplayName": "Yusufeli / Artvin"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.55,
+          40.82
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_ilisu_hes_dargecit_mardin",
+        "name": "Ilısu HES",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_hydroelectric",
+        "categoryLabel": "Hidroelektrik",
+        "region": "Doğu Anadolu / Güneydoğu Anadolu / Karadeniz / İç Anadolu / Akdeniz",
+        "location": "Dargeçit / Mardin",
+        "kpssNote": "Ilısu HES, Dicle üzerinde Güneydoğu Anadolu'nun büyük hidroelektrik yatırımlarından biridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Darge%C3%A7it%20%2F%20Mardin%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Dargeçit / Mardin, Türkiye",
+        "sourceDisplayName": "Dargeçit / Mardin"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.86,
+          37.53
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_berke_hes_duzici_osmaniye",
+        "name": "Berke HES",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_hydroelectric",
+        "categoryLabel": "Hidroelektrik",
+        "region": "Doğu Anadolu / Güneydoğu Anadolu / Karadeniz / İç Anadolu / Akdeniz",
+        "location": "Düziçi / Osmaniye",
+        "kpssNote": "Berke HES, Ceyhan Havzası üzerinde Akdeniz Bölgesi'nin hidroelektrik örnekleri arasında çalışılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=D%C3%BCzi%C3%A7i%20%2F%20Osmaniye%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Düziçi / Osmaniye, Türkiye",
+        "sourceDisplayName": "Düziçi / Osmaniye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.33,
+          37.02
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "energy_jeotermal_enerji_kizildere_saraykoy_denizli",
         "name": "Jeotermal enerji",
         "topic": "energy",
@@ -4349,6 +4574,56 @@
         "coordinates": [
           30.538,
           38.756
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_jeotermal_enerji_balcova_izmir",
+        "name": "Jeotermal enerji",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_geothermal",
+        "categoryLabel": "Jeotermal",
+        "region": "Ege / Marmara",
+        "location": "Balçova / İzmir",
+        "kpssNote": "Balçova, Batı Anadolu fay hatlarıyla ilişkili jeotermal potansiyelin şehirsel kullanım örneklerindendir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Bal%C3%A7ova%20%2F%20%C4%B0zmir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Balçova / İzmir, Türkiye",
+        "sourceDisplayName": "Balçova / İzmir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.05,
+          38.39
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "energy_jeotermal_enerji_dikili_izmir",
+        "name": "Jeotermal enerji",
+        "topic": "energy",
+        "topicLabel": "Enerji Kaynakları",
+        "category": "energy_geothermal",
+        "categoryLabel": "Jeotermal",
+        "region": "Ege / Marmara",
+        "location": "Dikili / İzmir",
+        "kpssNote": "Dikili, Ege graben sistemi çevresindeki jeotermal alanlardan biri olarak temsil edilir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Dikili%20%2F%20%C4%B0zmir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Dikili / İzmir, Türkiye",
+        "sourceDisplayName": "Dikili / İzmir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.889,
+          39.071
         ]
       }
     },
@@ -5105,6 +5380,31 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "industry_petrokimya_yarimca_kocaeli",
+        "name": "Petrokimya",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_refinery_petrochemical",
+        "categoryLabel": "Rafineri / petrokimya",
+        "region": "Marmara / Ege / İç Anadolu / Güneydoğu Anadolu",
+        "location": "Yarımca / Kocaeli",
+        "kpssNote": "Yarımca, Marmara sanayi kuşağında rafineri-petrokimya ve pazar bağlantısıyla verilen klasik sanayi örneğidir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Yar%C4%B1mca%20%2F%20Kocaeli%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Yarımca / Kocaeli, Türkiye",
+        "sourceDisplayName": "Yarımca / Kocaeli"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.74,
+          40.75
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "industry_otomotiv_bursa",
         "name": "Otomotiv",
         "topic": "industry",
@@ -5224,6 +5524,81 @@
         "coordinates": [
           34.037,
           38.368
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_makine_sanayi_ankara",
+        "name": "Makine sanayi",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_automotive_machinery",
+        "categoryLabel": "Otomotiv / makine",
+        "region": "Marmara / İç Anadolu",
+        "location": "Ankara",
+        "kpssNote": "Ankara, savunma ve makine sanayisiyle İç Anadolu'nun ileri imalat merkezlerinden biridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Ankara%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Ankara, Türkiye",
+        "sourceDisplayName": "Ankara"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.859,
+          39.933
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_makine_sanayi_konya",
+        "name": "Makine sanayi",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_automotive_machinery",
+        "categoryLabel": "Otomotiv / makine",
+        "region": "Marmara / İç Anadolu",
+        "location": "Konya",
+        "kpssNote": "Konya, tarım makineleri ve makine imalatıyla İç Anadolu sanayi merkezleri arasında çalışılır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Konya%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Konya, Türkiye",
+        "sourceDisplayName": "Konya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.484,
+          37.871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_rayli_sistem_sanayi_eskisehir",
+        "name": "Raylı sistem sanayi",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_automotive_machinery",
+        "categoryLabel": "Otomotiv / makine",
+        "region": "Marmara / İç Anadolu",
+        "location": "Eskişehir",
+        "kpssNote": "Eskişehir, lokomotif/raylı sistem ve makine sanayisiyle KPSS sanayi merkezleri içinde yer alır.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Eski%C5%9Fehir%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Eskişehir, Türkiye",
+        "sourceDisplayName": "Eskişehir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.526,
+          39.766
         ]
       }
     },
@@ -5780,6 +6155,31 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "industry_seramik_sanayi_usak",
+        "name": "Seramik sanayi",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_material",
+        "categoryLabel": "Kağıt / seramik / cam",
+        "region": "Marmara / Ege / Karadeniz / Akdeniz",
+        "location": "Uşak",
+        "kpssNote": "Uşak, Ege iç kesiminde seramik ve yerel hammadde bağlantısıyla verilen sanayi örneklerindendir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=U%C5%9Fak%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Uşak, Türkiye",
+        "sourceDisplayName": "Uşak"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.405,
+          38.674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "industry_cam_sanayi_pasabahce_istanbul",
         "name": "Cam sanayi",
         "topic": "industry",
@@ -5824,6 +6224,31 @@
         "coordinates": [
           34.641,
           36.812
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "industry_cam_sanayi_luleburgaz_kirklareli",
+        "name": "Cam sanayi",
+        "topic": "industry",
+        "topicLabel": "Sanayi Tesisleri",
+        "category": "industry_material",
+        "categoryLabel": "Kağıt / seramik / cam",
+        "region": "Marmara / Ege / Karadeniz / Akdeniz",
+        "location": "Lüleburgaz / Kırklareli",
+        "kpssNote": "Lüleburgaz çevresi, Trakya sanayi kuşağında cam sanayisiyle ilişkilendirilen merkezlerdendir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=L%C3%BCleburgaz%20%2F%20K%C4%B1rklareli%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Lüleburgaz / Kırklareli, Türkiye",
+        "sourceDisplayName": "Lüleburgaz / Kırklareli"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.359,
+          41.404
         ]
       }
     },
@@ -6705,6 +7130,31 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "port_gemlik_limani_gemlik_bursa",
+        "name": "Gemlik Limanı",
+        "topic": "port",
+        "topicLabel": "Limanlar",
+        "category": "port_trade",
+        "categoryLabel": "Büyük dış ticaret limanı",
+        "region": "Marmara / Ege / Akdeniz",
+        "location": "Gemlik / Bursa",
+        "kpssNote": "Gemlik Limanı, Güney Marmara otomotiv ve sanayi hinterlandının dış ticaret çıkışlarından biridir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Gemlik%20%2F%20Bursa%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Gemlik / Bursa, Türkiye",
+        "sourceDisplayName": "Gemlik / Bursa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.159,
+          40.43
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "port_samsun_limani_samsun",
         "name": "Samsun Limanı",
         "topic": "port",
@@ -6874,6 +7324,56 @@
         "coordinates": [
           27.51,
           40.978
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "port_rize_limani_rize",
+        "name": "Rize Limanı",
+        "topic": "port",
+        "topicLabel": "Limanlar",
+        "category": "port_regional",
+        "categoryLabel": "Bölgesel / hinterland limanı",
+        "region": "Karadeniz / Marmara / Akdeniz",
+        "location": "Rize",
+        "kpssNote": "Rize Limanı, Doğu Karadeniz kıyı yerleşmeleri ve çay üretim alanlarıyla bağlantılı bölgesel liman örneğidir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Rize%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Rize, Türkiye",
+        "sourceDisplayName": "Rize"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.517,
+          41.025
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "port_giresun_limani_giresun",
+        "name": "Giresun Limanı",
+        "topic": "port",
+        "topicLabel": "Limanlar",
+        "category": "port_regional",
+        "categoryLabel": "Bölgesel / hinterland limanı",
+        "region": "Karadeniz / Marmara / Akdeniz",
+        "location": "Giresun",
+        "kpssNote": "Giresun Limanı, fındık üretim alanları ve Orta/Doğu Karadeniz kıyı bağlantısıyla ilişkilendirilir.",
+        "sourceName": "KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/search?query=Giresun%2C%20T%C3%BCrkiye",
+        "sourceQuery": "Giresun, Türkiye",
+        "sourceDisplayName": "Giresun"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.392,
+          40.917
         ]
       }
     }

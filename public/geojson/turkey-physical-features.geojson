@@ -2656,6 +2656,31 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "plateau_yildiz_platosu",
+        "name": "Yıldız Platosu",
+        "topic": "plateau",
+        "topicLabel": "Platolar",
+        "category": "plateau_erosion",
+        "categoryLabel": "Aşınım platosu",
+        "region": "Marmara",
+        "location": "Trakya",
+        "kpssNote": "Trakya'nın kuzeyindeki aşınım yüzeyleri, Marmara'nın plato örnekleri içinde çalışılır.",
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=41.55&mlon=27.6#map=9/41.55/27.6",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Yıldız Platosu, Trakya, Kırklareli çevresi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.6,
+          41.55
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "plateau_persembe_platosu",
         "name": "Perşembe Platosu",
         "topic": "plateau",
@@ -2675,6 +2700,31 @@
         "coordinates": [
           37.43,
           40.69
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plateau_canik_platosu",
+        "name": "Canik Platosu",
+        "topic": "plateau",
+        "topicLabel": "Platolar",
+        "category": "plateau_erosion",
+        "categoryLabel": "Aşınım platosu",
+        "region": "Karadeniz",
+        "location": "Orta Karadeniz",
+        "kpssNote": "Canik çevresindeki plato yüzeyleri, Karadeniz kıyı dağlarının gerisindeki aşınım alanlarıyla ilişkilendirilir.",
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=40.92&mlon=36.6#map=9/40.92/36.6",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Canik Platosu, Orta Karadeniz, Samsun/Tokat çevresi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.6,
+          40.92
         ]
       }
     },
@@ -2731,6 +2781,56 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "plateau_goller_yoresi_platosu",
+        "name": "Göller Yöresi Platosu",
+        "topic": "plateau",
+        "topicLabel": "Platolar",
+        "category": "plateau_karstic",
+        "categoryLabel": "Karstik plato",
+        "region": "Akdeniz",
+        "location": "Isparta / Burdur",
+        "kpssNote": "Göller Yöresi, karstik arazi ve kapalı havza gölleriyle birlikte KPSS fiziki coğrafyasında çalışılır.",
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=37.55&mlon=30.45#map=9/37.55/30.45",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Göller Yöresi Platosu, Isparta/Burdur çevresi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.45,
+          37.55
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plateau_anamur_platosu",
+        "name": "Anamur Platosu",
+        "topic": "plateau",
+        "topicLabel": "Platolar",
+        "category": "plateau_karstic",
+        "categoryLabel": "Karstik plato",
+        "region": "Akdeniz",
+        "location": "Mersin",
+        "kpssNote": "Anamur çevresi, Taşeli karstik platosunun kıyıya yakın devamı olarak temsil edilir.",
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=36.17&mlon=32.84#map=9/36.17/32.84",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Anamur Platosu, Mersin, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.84,
+          36.17
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "plateau_erzurum_kars_platosu",
         "name": "Erzurum - Kars Platosu",
         "topic": "plateau",
@@ -2775,6 +2875,56 @@
         "coordinates": [
           42.7462189,
           41.0372501
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plateau_agri_platosu",
+        "name": "Ağrı Platosu",
+        "topic": "plateau",
+        "topicLabel": "Platolar",
+        "category": "plateau_volcanic_lava",
+        "categoryLabel": "Volkanik lav platosu",
+        "region": "Doğu Anadolu",
+        "location": "Ağrı",
+        "kpssNote": "Doğu Anadolu'daki yüksek volkanik alanlar, lav platosu ve volkanik dağ ilişkisiyle birlikte öğrenilir.",
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=39.72&mlon=43.05#map=9/39.72/43.05",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Ağrı Platosu, Ağrı çevresi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.05,
+          39.72
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "plateau_tendurek_cevresi_lav_platosu",
+        "name": "Tendürek çevresi lav platosu",
+        "topic": "plateau",
+        "topicLabel": "Platolar",
+        "category": "plateau_volcanic_lava",
+        "categoryLabel": "Volkanik lav platosu",
+        "region": "Doğu Anadolu",
+        "location": "Ağrı / Van",
+        "kpssNote": "Tendürek çevresi, Doğu Anadolu'nun volkanik arazi örnekleri içinde lav örtüleriyle temsil edilir.",
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=39.35&mlon=43.87#map=9/39.35/43.87",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Tendürek çevresi lav platosu, Ağrı/Van, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.87,
+          39.35
         ]
       }
     },
@@ -3181,6 +3331,81 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "river_gonen_cayi",
+        "name": "Gönen Çayı",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_marmara",
+        "categoryLabel": "Marmara'ya dökülen akarsu",
+        "region": "Marmara",
+        "location": "Marmara",
+        "kpssNote": "Gönen Çayı, Güney Marmara akarsuları içinde Marmara Denizi'ne ulaşan örneklerden biridir.",
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=40.11&mlon=27.64#map=9/40.11/27.64",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Gönen Çayı, Gönen/Balıkesir çevresi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.64,
+          40.11
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_biga_cayi",
+        "name": "Biga Çayı",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_marmara",
+        "categoryLabel": "Marmara'ya dökülen akarsu",
+        "region": "Marmara",
+        "location": "Marmara",
+        "kpssNote": "Biga Çayı, Marmara'ya dökülen akarsular içinde Çanakkale çevresiyle ilişkilendirilir.",
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=40.33&mlon=27.31#map=9/40.33/27.31",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Biga Çayı, Karabiga/Çanakkale çevresi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.31,
+          40.33
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_nilufer_cayi",
+        "name": "Nilüfer Çayı",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_marmara",
+        "categoryLabel": "Marmara'ya dökülen akarsu",
+        "region": "Marmara",
+        "location": "Marmara",
+        "kpssNote": "Nilüfer Çayı, Bursa Ovası ve Susurluk sistemi bağlantısıyla Marmara havzası içinde çalışılır.",
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=40.18&mlon=29.05#map=9/40.18/29.05",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Nilüfer Çayı, Bursa Ovası çevresi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.05,
+          40.18
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "river_meric_nehri",
         "name": "Meriç Nehri",
         "topic": "river",
@@ -3581,6 +3806,81 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "river_murat_nehri",
+        "name": "Murat Nehri",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_persian_gulf",
+        "categoryLabel": "Basra Körfezi'ne dökülen akarsu",
+        "region": "Basra Körfezi",
+        "location": "Basra Körfezi",
+        "kpssNote": "Murat Nehri, Fırat'ın ana kollarından biri olarak Basra Körfezi dış havzasına bağlanır.",
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=38.76&mlon=41.5#map=9/38.76/41.5",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Murat Nehri, Muş çevresi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.5,
+          38.76
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_karasu_nehri",
+        "name": "Karasu Nehri",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_persian_gulf",
+        "categoryLabel": "Basra Körfezi'ne dökülen akarsu",
+        "region": "Basra Körfezi",
+        "location": "Basra Körfezi",
+        "kpssNote": "Karasu, Fırat sisteminin kaynak kollarından biri olarak Türkiye'nin dışa akışlı havzaları içinde öğrenilir.",
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=39.95&mlon=41.17#map=9/39.95/41.17",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Karasu Nehri, Erzurum çevresi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.17,
+          39.95
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_buyuk_zap_suyu",
+        "name": "Büyük Zap Suyu",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_persian_gulf",
+        "categoryLabel": "Basra Körfezi'ne dökülen akarsu",
+        "region": "Basra Körfezi",
+        "location": "Basra Körfezi",
+        "kpssNote": "Büyük Zap Suyu, Dicle sistemi üzerinden Basra Körfezi havzasına bağlanan akarsu örneğidir.",
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=37.57&mlon=44.28#map=9/37.57/44.28",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Büyük Zap Suyu, Hakkari çevresi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.28,
+          37.57
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "river_aras_nehri",
         "name": "Aras Nehri",
         "topic": "river",
@@ -3625,6 +3925,31 @@
         "coordinates": [
           42.7,
           41.11
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "river_arpacay",
+        "name": "Arpaçay",
+        "topic": "river",
+        "topicLabel": "Akarsular",
+        "category": "river_caspian",
+        "categoryLabel": "Hazar Denizi'ne dökülen akarsu",
+        "region": "Hazar Denizi",
+        "location": "Hazar Denizi",
+        "kpssNote": "Arpaçay, Aras sistemi üzerinden Hazar Denizi havzasına bağlanan sınır akarsuyu örneğidir.",
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=40.52&mlon=43.37#map=9/40.52/43.37",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Arpaçay, Kars sınır kesimi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.37,
+          40.52
         ]
       }
     },
@@ -4706,15 +5031,90 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "coast_kuzey_ege_enine_kiyilari",
+        "name": "Kuzey Ege enine kıyıları",
+        "topic": "coast",
+        "topicLabel": "Kıyı Tipleri",
+        "category": "coast_enine",
+        "categoryLabel": "Enine kıyı tipi",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Ege'de dağların kıyıya dik uzanması girintili çıkıntılı enine kıyı tipini oluşturur.",
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=39.58&mlon=26.93#map=9/39.58/26.93",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Kuzey Ege enine kıyıları, Edremit Körfezi çevresi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.93,
+          39.58
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "coast_orta_ege_enine_kiyilari",
+        "name": "Orta Ege enine kıyıları",
+        "topic": "coast",
+        "topicLabel": "Kıyı Tipleri",
+        "category": "coast_enine",
+        "categoryLabel": "Enine kıyı tipi",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Kuşadası çevresi, Ege'nin enine kıyı karakterini haritada göstermek için temsil noktasıdır.",
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=37.86&mlon=27.26#map=9/37.86/27.26",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Orta Ege enine kıyıları, Kuşadası/Aydın çevresi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.26,
+          37.86
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "coast_guney_ege_enine_kiyilari",
+        "name": "Güney Ege enine kıyıları",
+        "topic": "coast",
+        "topicLabel": "Kıyı Tipleri",
+        "category": "coast_enine",
+        "categoryLabel": "Enine kıyı tipi",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Güney Ege kıyıları, dağların kıyıya dik uzanışı ve koy-körfez yapısıyla enine kıyı örneği olarak çalışılır.",
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=37.04&mlon=27.43#map=9/37.04/27.43",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Güney Ege enine kıyıları, Bodrum/Muğla çevresi, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.43,
+          37.04
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "coast_istanbul_bogazi",
         "name": "İstanbul Boğazı",
         "topic": "coast",
         "topicLabel": "Kıyı Tipleri",
         "category": "coast_ria",
         "categoryLabel": "Ria kıyı tipi",
-        "region": "Marmara / Ege",
-        "location": "Marmara / Ege",
-        "kpssNote": "Ria kıyı tipi olarak Marmara / Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "region": "Marmara",
+        "location": "Marmara",
+        "kpssNote": "Ria kıyı tipi olarak Marmara içinde KPSS fiziki coğrafya çalışmasına eklenir.",
         "sourceName": "OpenStreetMap relation 8926171",
         "sourceUrl": "https://www.openstreetmap.org/relation/8926171",
         "sourceQuery": "İstanbul Boğazı, Türkiye",
@@ -4737,9 +5137,9 @@
         "topicLabel": "Kıyı Tipleri",
         "category": "coast_ria",
         "categoryLabel": "Ria kıyı tipi",
-        "region": "Marmara / Ege",
-        "location": "Marmara / Ege",
-        "kpssNote": "Ria kıyı tipi olarak Marmara / Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "region": "Marmara",
+        "location": "Marmara",
+        "kpssNote": "Ria kıyı tipi olarak Marmara içinde KPSS fiziki coğrafya çalışmasına eklenir.",
         "sourceName": "OpenStreetMap relation 8926172",
         "sourceUrl": "https://www.openstreetmap.org/relation/8926172",
         "sourceQuery": "Çanakkale Boğazı, Türkiye",
@@ -4762,9 +5162,9 @@
         "topicLabel": "Kıyı Tipleri",
         "category": "coast_ria",
         "categoryLabel": "Ria kıyı tipi",
-        "region": "Marmara / Ege",
-        "location": "Marmara / Ege",
-        "kpssNote": "Ria kıyı tipi olarak Marmara / Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
+        "region": "Marmara",
+        "location": "Marmara",
+        "kpssNote": "Ria kıyı tipi olarak Marmara içinde KPSS fiziki coğrafya çalışmasına eklenir.",
         "sourceName": "OpenStreetMap relation 2791545",
         "sourceUrl": "https://www.openstreetmap.org/relation/2791545",
         "sourceQuery": "Haliç, Türkiye",
@@ -4787,8 +5187,8 @@
         "topicLabel": "Kıyı Tipleri",
         "category": "coast_ria",
         "categoryLabel": "Ria kıyı tipi",
-        "region": "Marmara / Ege",
-        "location": "Marmara / Ege",
+        "region": "Ege",
+        "location": "Ege",
         "kpssNote": "Muğla Menteşe çevresindeki ria kıyı örneğidir.",
         "sourceName": "OpenStreetMap relation 13795362",
         "sourceUrl": "https://www.openstreetmap.org/relation/13795362",
@@ -4800,6 +5200,31 @@
         "coordinates": [
           27.71306,
           36.8764523
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "coast_datca_kiyilari",
+        "name": "Datça kıyıları",
+        "topic": "coast",
+        "topicLabel": "Kıyı Tipleri",
+        "category": "coast_ria",
+        "categoryLabel": "Ria kıyı tipi",
+        "region": "Ege",
+        "location": "Ege",
+        "kpssNote": "Datça çevresi, Ege'de eski akarsu vadilerinin deniz basmasıyla oluşan girintili kıyı örnekleriyle ilişkilendirilir.",
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=36.73&mlon=27.68#map=9/36.73/27.68",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Datça kıyıları, Muğla, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.68,
+          36.73
         ]
       }
     },
@@ -4825,6 +5250,56 @@
         "coordinates": [
           29.6413365,
           36.1993752
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "coast_kekova_cevresi",
+        "name": "Kekova çevresi",
+        "topic": "coast",
+        "topicLabel": "Kıyı Tipleri",
+        "category": "coast_dalmatian",
+        "categoryLabel": "Dalmaçya kıyı tipi",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Kekova çevresi, Kaş-Finike arasındaki Dalmaçya kıyı tipinin harita üzerinde ayırt edilen temsil alanıdır.",
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=36.2&mlon=29.86#map=9/36.2/29.86",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Kekova çevresi, Demre/Antalya, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.86,
+          36.2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "coast_kalkan_kas_kiyilari",
+        "name": "Kalkan - Kaş kıyıları",
+        "topic": "coast",
+        "topicLabel": "Kıyı Tipleri",
+        "category": "coast_dalmatian",
+        "categoryLabel": "Dalmaçya kıyı tipi",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Kalkan-Kaş kıyıları, Akdeniz'deki Dalmaçya tipi kıyı örneğinin batı kesimini temsil eder.",
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=36.27&mlon=29.41#map=9/36.27/29.41",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Kalkan-Kaş kıyıları, Antalya, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.41,
+          36.27
         ]
       }
     },
@@ -4881,6 +5356,31 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "coast_terkos_kiyilari",
+        "name": "Terkos kıyıları",
+        "topic": "coast",
+        "topicLabel": "Kıyı Tipleri",
+        "category": "coast_limanli",
+        "categoryLabel": "Limanlı kıyı tipi",
+        "region": "Marmara",
+        "location": "Marmara",
+        "kpssNote": "Terkos çevresi, kıyı setlenmesi ve limanlı kıyı görünümüyle Marmara kıyı tipleri içinde temsil edilir.",
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=41.32&mlon=28.62#map=9/41.32/28.62",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Terkos kıyıları, İstanbul, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.62,
+          41.32
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": "coast_mersin_silifke_arasi",
         "name": "Mersin - Silifke arası",
         "topic": "coast",
@@ -4900,6 +5400,56 @@
         "coordinates": [
           33.9260372,
           36.3778166
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "coast_tasucu_cevresi",
+        "name": "Taşucu çevresi",
+        "topic": "coast",
+        "topicLabel": "Kıyı Tipleri",
+        "category": "coast_calankli",
+        "categoryLabel": "Kalanklı kıyı tipi",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Taşucu çevresi, Mersin-Silifke kıyılarındaki kalanklı kıyı karakterini temsil eder.",
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=36.32&mlon=33.89#map=9/36.32/33.89",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Taşucu çevresi, Silifke/Mersin, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.89,
+          36.32
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "coast_narlikuyu_koylari",
+        "name": "Narlıkuyu koyları",
+        "topic": "coast",
+        "topicLabel": "Kıyı Tipleri",
+        "category": "coast_calankli",
+        "categoryLabel": "Kalanklı kıyı tipi",
+        "region": "Akdeniz",
+        "location": "Akdeniz",
+        "kpssNote": "Narlıkuyu çevresindeki küçük koylar, kalanklı kıyı tipinin Akdeniz'deki yerel örnekleri olarak çalışılır.",
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=36.45&mlon=34.11#map=9/36.45/34.11",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Narlıkuyu koyları, Mersin, Türkiye"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.11,
+          36.45
         ]
       }
     }

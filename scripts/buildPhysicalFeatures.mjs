@@ -341,28 +341,68 @@ addGroup({
   topic: "plateau",
   category: "plateau_erosion",
   region: "Marmara",
-  items: [{ name: "Çatalca - Kocaeli Platosu", searchName: "Çatalca Kocaeli Platosu", queries: ["Çatalca, İstanbul, Türkiye", "Kocaeli, Türkiye"] }],
+  items: [
+    { name: "Çatalca - Kocaeli Platosu", searchName: "Çatalca Kocaeli Platosu", queries: ["Çatalca, İstanbul, Türkiye", "Kocaeli, Türkiye"] },
+    {
+      name: "Yıldız Platosu",
+      location: "Trakya",
+      note: "Trakya'nın kuzeyindeki aşınım yüzeyleri, Marmara'nın plato örnekleri içinde çalışılır.",
+    },
+  ],
 });
 
 addGroup({
   topic: "plateau",
   category: "plateau_erosion",
   region: "Karadeniz",
-  items: ["Perşembe Platosu"],
+  items: [
+    "Perşembe Platosu",
+    {
+      name: "Canik Platosu",
+      location: "Orta Karadeniz",
+      note: "Canik çevresindeki plato yüzeyleri, Karadeniz kıyı dağlarının gerisindeki aşınım alanlarıyla ilişkilendirilir.",
+    },
+  ],
 });
 
 addGroup({
   topic: "plateau",
   category: "plateau_karstic",
   region: "Akdeniz",
-  items: ["Teke Platosu", "Taşeli Platosu"],
+  items: [
+    "Teke Platosu",
+    "Taşeli Platosu",
+    {
+      name: "Göller Yöresi Platosu",
+      location: "Isparta / Burdur",
+      note: "Göller Yöresi, karstik arazi ve kapalı havza gölleriyle birlikte KPSS fiziki coğrafyasında çalışılır.",
+    },
+    {
+      name: "Anamur Platosu",
+      location: "Mersin",
+      note: "Anamur çevresi, Taşeli karstik platosunun kıyıya yakın devamı olarak temsil edilir.",
+    },
+  ],
 });
 
 addGroup({
   topic: "plateau",
   category: "plateau_volcanic_lava",
   region: "Doğu Anadolu",
-  items: ["Erzurum - Kars Platosu", "Ardahan Platosu"],
+  items: [
+    "Erzurum - Kars Platosu",
+    "Ardahan Platosu",
+    {
+      name: "Ağrı Platosu",
+      location: "Ağrı",
+      note: "Doğu Anadolu'daki yüksek volkanik alanlar, lav platosu ve volkanik dağ ilişkisiyle birlikte öğrenilir.",
+    },
+    {
+      name: "Tendürek çevresi lav platosu",
+      location: "Ağrı / Van",
+      note: "Tendürek çevresi, Doğu Anadolu'nun volkanik arazi örnekleri içinde lav örtüleriyle temsil edilir.",
+    },
+  ],
 });
 
 addGroup({
@@ -404,7 +444,21 @@ addGroup({
   topic: "river",
   category: "river_marmara",
   region: "Marmara",
-  items: ["Susurluk Çayı"],
+  items: [
+    "Susurluk Çayı",
+    {
+      name: "Gönen Çayı",
+      note: "Gönen Çayı, Güney Marmara akarsuları içinde Marmara Denizi'ne ulaşan örneklerden biridir.",
+    },
+    {
+      name: "Biga Çayı",
+      note: "Biga Çayı, Marmara'ya dökülen akarsular içinde Çanakkale çevresiyle ilişkilendirilir.",
+    },
+    {
+      name: "Nilüfer Çayı",
+      note: "Nilüfer Çayı, Bursa Ovası ve Susurluk sistemi bağlantısıyla Marmara havzası içinde çalışılır.",
+    },
+  ],
 });
 
 addGroup({
@@ -425,14 +479,36 @@ addGroup({
   topic: "river",
   category: "river_persian_gulf",
   region: "Basra Körfezi",
-  items: ["Fırat Nehri", "Dicle Nehri"],
+  items: [
+    "Fırat Nehri",
+    "Dicle Nehri",
+    {
+      name: "Murat Nehri",
+      note: "Murat Nehri, Fırat'ın ana kollarından biri olarak Basra Körfezi dış havzasına bağlanır.",
+    },
+    {
+      name: "Karasu Nehri",
+      note: "Karasu, Fırat sisteminin kaynak kollarından biri olarak Türkiye'nin dışa akışlı havzaları içinde öğrenilir.",
+    },
+    {
+      name: "Büyük Zap Suyu",
+      note: "Büyük Zap Suyu, Dicle sistemi üzerinden Basra Körfezi havzasına bağlanan akarsu örneğidir.",
+    },
+  ],
 });
 
 addGroup({
   topic: "river",
   category: "river_caspian",
   region: "Hazar Denizi",
-  items: ["Aras Nehri", "Kura Nehri"],
+  items: [
+    "Aras Nehri",
+    "Kura Nehri",
+    {
+      name: "Arpaçay",
+      note: "Arpaçay, Aras sistemi üzerinden Hazar Denizi havzasına bağlanan sınır akarsuyu örneğidir.",
+    },
+  ],
 });
 
 addGroup({
@@ -509,22 +585,65 @@ addGroup({
   topic: "coast",
   category: "coast_enine",
   region: "Ege",
-  items: [{ name: "Ege enine kıyıları", searchName: "İzmir Körfezi" }],
+  items: [
+    { name: "Ege enine kıyıları", searchName: "İzmir Körfezi" },
+    {
+      name: "Kuzey Ege enine kıyıları",
+      searchName: "Edremit Körfezi",
+      note: "Ege'de dağların kıyıya dik uzanması girintili çıkıntılı enine kıyı tipini oluşturur.",
+    },
+    {
+      name: "Orta Ege enine kıyıları",
+      searchName: "Kuşadası",
+      note: "Kuşadası çevresi, Ege'nin enine kıyı karakterini haritada göstermek için temsil noktasıdır.",
+    },
+    {
+      name: "Güney Ege enine kıyıları",
+      searchName: "Bodrum",
+      note: "Güney Ege kıyıları, dağların kıyıya dik uzanışı ve koy-körfez yapısıyla enine kıyı örneği olarak çalışılır.",
+    },
+  ],
   note: "Dağların kıyıya dik uzandığı enine kıyı tipi olarak çalışılır.",
 });
 
 addGroup({
   topic: "coast",
   category: "coast_ria",
-  region: "Marmara / Ege",
-  items: ["İstanbul Boğazı", "Çanakkale Boğazı", "Haliç", { name: "Gökova Körfezi", note: "Muğla Menteşe çevresindeki ria kıyı örneğidir." }],
+  region: "Marmara",
+  items: ["İstanbul Boğazı", "Çanakkale Boğazı", "Haliç"],
+});
+
+addGroup({
+  topic: "coast",
+  category: "coast_ria",
+  region: "Ege",
+  items: [
+    { name: "Gökova Körfezi", note: "Muğla Menteşe çevresindeki ria kıyı örneğidir." },
+    {
+      name: "Datça kıyıları",
+      searchName: "Datça",
+      note: "Datça çevresi, Ege'de eski akarsu vadilerinin deniz basmasıyla oluşan girintili kıyı örnekleriyle ilişkilendirilir.",
+    },
+  ],
 });
 
 addGroup({
   topic: "coast",
   category: "coast_dalmatian",
   region: "Akdeniz",
-  items: [{ name: "Kaş - Finike arası", searchName: "Kaş Antalya" }],
+  items: [
+    { name: "Kaş - Finike arası", searchName: "Kaş Antalya" },
+    {
+      name: "Kekova çevresi",
+      searchName: "Kekova",
+      note: "Kekova çevresi, Kaş-Finike arasındaki Dalmaçya kıyı tipinin harita üzerinde ayırt edilen temsil alanıdır.",
+    },
+    {
+      name: "Kalkan - Kaş kıyıları",
+      searchName: "Kalkan Antalya",
+      note: "Kalkan-Kaş kıyıları, Akdeniz'deki Dalmaçya tipi kıyı örneğinin batı kesimini temsil eder.",
+    },
+  ],
   note: "Antalya Kaş-Finike arasında görülen Dalmaçya kıyı tipi olarak çalışılır.",
 });
 
@@ -532,14 +651,34 @@ addGroup({
   topic: "coast",
   category: "coast_limanli",
   region: "Marmara",
-  items: [{ name: "Büyük Çekmece kıyıları", searchName: "Büyükçekmece" }, { name: "Küçük Çekmece kıyıları", searchName: "Küçükçekmece" }],
+  items: [
+    { name: "Büyük Çekmece kıyıları", searchName: "Büyükçekmece" },
+    { name: "Küçük Çekmece kıyıları", searchName: "Küçükçekmece" },
+    {
+      name: "Terkos kıyıları",
+      searchName: "Terkos Gölü",
+      note: "Terkos çevresi, kıyı setlenmesi ve limanlı kıyı görünümüyle Marmara kıyı tipleri içinde temsil edilir.",
+    },
+  ],
 });
 
 addGroup({
   topic: "coast",
   category: "coast_calankli",
   region: "Akdeniz",
-  items: [{ name: "Mersin - Silifke arası", searchName: "Silifke" }],
+  items: [
+    { name: "Mersin - Silifke arası", searchName: "Silifke" },
+    {
+      name: "Taşucu çevresi",
+      searchName: "Taşucu",
+      note: "Taşucu çevresi, Mersin-Silifke kıyılarındaki kalanklı kıyı karakterini temsil eder.",
+    },
+    {
+      name: "Narlıkuyu koyları",
+      searchName: "Narlıkuyu Mersin",
+      note: "Narlıkuyu çevresindeki küçük koylar, kalanklı kıyı tipinin Akdeniz'deki yerel örnekleri olarak çalışılır.",
+    },
+  ],
   note: "Mersin-Silifke arasında kalanklı kıyı tipi örneği olarak işaretlenir.",
 });
 

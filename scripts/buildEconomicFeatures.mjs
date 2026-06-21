@@ -321,6 +321,27 @@ addGroup({
       lng: 35.32,
       note: "Çukurova, pamuk çiğidi ve yem bitkisi üretimine bağlı besi hayvancılığıyla bilinir.",
     },
+    {
+      name: "Büyükbaş besi",
+      location: "Balıkesir",
+      lat: 39.649,
+      lng: 27.882,
+      note: "Balıkesir, yem sanayisi ve Marmara pazarına yakınlığıyla besi ve süt hayvancılığı örneğidir.",
+    },
+    {
+      name: "Büyükbaş besi",
+      location: "Afyonkarahisar",
+      lat: 38.756,
+      lng: 30.538,
+      note: "Afyonkarahisar, İç Batı Anadolu'da yem bitkileri ve hayvansal ürün sanayisiyle ilişkilendirilen besi merkezidir.",
+    },
+    {
+      name: "Büyükbaş besi",
+      location: "Aksaray",
+      lat: 38.368,
+      lng: 34.037,
+      note: "Aksaray, İç Anadolu'da organize hayvancılık ve yem bağlantısıyla besi hayvancılığı örneği olarak çalışılır.",
+    },
   ],
 });
 
@@ -334,6 +355,9 @@ addGroup({
     { name: "Koyun", location: "Polatlı / Ankara", lat: 39.584, lng: 32.147 },
     { name: "Koyun", location: "Şanlıurfa", lat: 37.159, lng: 38.796 },
     { name: "Koyun", location: "Diyarbakır", lat: 37.914, lng: 40.23 },
+    { name: "Koyun", location: "Yozgat", lat: 39.82, lng: 34.81 },
+    { name: "Koyun", location: "Van", lat: 38.501, lng: 43.373 },
+    { name: "Koyun", location: "Mardin", lat: 37.312, lng: 40.739 },
   ],
 });
 
@@ -571,6 +595,27 @@ addGroup({
     { name: "Altınkaya HES", location: "Bafra / Samsun", lat: 41.361, lng: 35.731 },
     { name: "Hirfanlı HES", location: "Kaman / Kırşehir", lat: 39.273, lng: 33.518 },
     { name: "Oymapınar HES", location: "Manavgat / Antalya", lat: 36.906, lng: 31.536 },
+    {
+      name: "Yusufeli HES",
+      location: "Yusufeli / Artvin",
+      lat: 40.82,
+      lng: 41.55,
+      note: "Yusufeli HES, Çoruh Havzası'nın yüksek eğim ve dar vadi koşullarıyla ilişkilendirilen büyük hidroelektrik örneğidir.",
+    },
+    {
+      name: "Ilısu HES",
+      location: "Dargeçit / Mardin",
+      lat: 37.53,
+      lng: 41.86,
+      note: "Ilısu HES, Dicle üzerinde Güneydoğu Anadolu'nun büyük hidroelektrik yatırımlarından biridir.",
+    },
+    {
+      name: "Berke HES",
+      location: "Düziçi / Osmaniye",
+      lat: 37.02,
+      lng: 36.33,
+      note: "Berke HES, Ceyhan Havzası üzerinde Akdeniz Bölgesi'nin hidroelektrik örnekleri arasında çalışılır.",
+    },
   ],
 });
 
@@ -586,6 +631,20 @@ addGroup({
     { name: "Jeotermal enerji", location: "Tuzla / Çanakkale", lat: 39.555, lng: 26.2 },
     { name: "Jeotermal enerji", location: "Simav / Kütahya", lat: 39.092, lng: 28.984 },
     { name: "Jeotermal enerji", location: "Afyonkarahisar", lat: 38.756, lng: 30.538 },
+    {
+      name: "Jeotermal enerji",
+      location: "Balçova / İzmir",
+      lat: 38.39,
+      lng: 27.05,
+      note: "Balçova, Batı Anadolu fay hatlarıyla ilişkili jeotermal potansiyelin şehirsel kullanım örneklerindendir.",
+    },
+    {
+      name: "Jeotermal enerji",
+      location: "Dikili / İzmir",
+      lat: 39.071,
+      lng: 26.889,
+      note: "Dikili, Ege graben sistemi çevresindeki jeotermal alanlardan biri olarak temsil edilir.",
+    },
   ],
 });
 
@@ -692,6 +751,13 @@ addGroup({
     { name: "Petrol rafinerisi", location: "Kırıkkale", lat: 39.846, lng: 33.515 },
     { name: "Petrol rafinerisi", location: "Batman", lat: 37.889, lng: 41.129 },
     { name: "Petrokimya", location: "Aliağa / İzmir", lat: 38.8, lng: 26.972 },
+    {
+      name: "Petrokimya",
+      location: "Yarımca / Kocaeli",
+      lat: 40.75,
+      lng: 29.74,
+      note: "Yarımca, Marmara sanayi kuşağında rafineri-petrokimya ve pazar bağlantısıyla verilen klasik sanayi örneğidir.",
+    },
   ],
 });
 
@@ -706,6 +772,27 @@ addGroup({
     { name: "Otomotiv", location: "Adapazarı / Sakarya", lat: 40.773, lng: 30.402 },
     { name: "Otomotiv", location: "İnönü / Eskişehir", lat: 39.815, lng: 30.145 },
     { name: "Otomotiv", location: "Aksaray", lat: 38.368, lng: 34.037 },
+    {
+      name: "Makine sanayi",
+      location: "Ankara",
+      lat: 39.933,
+      lng: 32.859,
+      note: "Ankara, savunma ve makine sanayisiyle İç Anadolu'nun ileri imalat merkezlerinden biridir.",
+    },
+    {
+      name: "Makine sanayi",
+      location: "Konya",
+      lat: 37.871,
+      lng: 32.484,
+      note: "Konya, tarım makineleri ve makine imalatıyla İç Anadolu sanayi merkezleri arasında çalışılır.",
+    },
+    {
+      name: "Raylı sistem sanayi",
+      location: "Eskişehir",
+      lat: 39.766,
+      lng: 30.526,
+      note: "Eskişehir, lokomotif/raylı sistem ve makine sanayisiyle KPSS sanayi merkezleri içinde yer alır.",
+    },
   ],
 });
 
@@ -767,8 +854,22 @@ addGroup({
     { name: "Kağıt sanayi", location: "Çaycuma / Zonguldak", lat: 41.426, lng: 32.075 },
     { name: "Seramik sanayi", location: "Kütahya", lat: 39.419, lng: 29.985 },
     { name: "Seramik sanayi", location: "Bilecik", lat: 40.143, lng: 29.979 },
+    {
+      name: "Seramik sanayi",
+      location: "Uşak",
+      lat: 38.674,
+      lng: 29.405,
+      note: "Uşak, Ege iç kesiminde seramik ve yerel hammadde bağlantısıyla verilen sanayi örneklerindendir.",
+    },
     { name: "Cam sanayi", location: "Paşabahçe / İstanbul", lat: 41.117, lng: 29.093 },
     { name: "Cam sanayi", location: "Mersin", lat: 36.812, lng: 34.641 },
+    {
+      name: "Cam sanayi",
+      location: "Lüleburgaz / Kırklareli",
+      lat: 41.404,
+      lng: 27.359,
+      note: "Lüleburgaz çevresi, Trakya sanayi kuşağında cam sanayisiyle ilişkilendirilen merkezlerdendir.",
+    },
   ],
 });
 
@@ -900,6 +1001,13 @@ addGroup({
       lng: 26.97,
       note: "Aliağa, rafineri-petrokimya tesisleri ve gemi söküm endüstrisiyle özdeşleşmiş bir liman bölgesidir.",
     },
+    {
+      name: "Gemlik Limanı",
+      location: "Gemlik / Bursa",
+      lat: 40.43,
+      lng: 29.159,
+      note: "Gemlik Limanı, Güney Marmara otomotiv ve sanayi hinterlandının dış ticaret çıkışlarından biridir.",
+    },
   ],
 });
 
@@ -933,6 +1041,20 @@ addGroup({
       lat: 40.978,
       lng: 27.51,
       note: "Tekirdağ Limanı, Trakya'nın tahıl üretimi ve sanayi bölgesiyle bağlantılı bir ihracat limanıdır.",
+    },
+    {
+      name: "Rize Limanı",
+      location: "Rize",
+      lat: 41.025,
+      lng: 40.517,
+      note: "Rize Limanı, Doğu Karadeniz kıyı yerleşmeleri ve çay üretim alanlarıyla bağlantılı bölgesel liman örneğidir.",
+    },
+    {
+      name: "Giresun Limanı",
+      location: "Giresun",
+      lat: 40.917,
+      lng: 38.392,
+      note: "Giresun Limanı, fındık üretim alanları ve Orta/Doğu Karadeniz kıyı bağlantısıyla ilişkilendirilir.",
     },
   ],
 });

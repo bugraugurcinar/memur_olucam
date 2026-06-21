@@ -29,6 +29,16 @@ export const physicalFeatureCoordinateCorrections = {
     lon: 37.43,
     sourceDisplayName: "Perşembe Platosu, Aybastı, Ordu, Türkiye",
   },
+  plateau_yildiz_platosu: {
+    lat: 41.55,
+    lon: 27.6,
+    sourceDisplayName: "Yıldız Platosu, Trakya, Kırklareli çevresi, Türkiye",
+  },
+  plateau_canik_platosu: {
+    lat: 40.92,
+    lon: 36.6,
+    sourceDisplayName: "Canik Platosu, Orta Karadeniz, Samsun/Tokat çevresi, Türkiye",
+  },
   plateau_teke_platosu: {
     lat: 36.92,
     lon: 29.92,
@@ -39,10 +49,30 @@ export const physicalFeatureCoordinateCorrections = {
     lon: 32.72,
     sourceDisplayName: "Taşeli Platosu, Ermenek-Mut-Gülnar-Anamur çevresi, Türkiye",
   },
+  plateau_goller_yoresi_platosu: {
+    lat: 37.55,
+    lon: 30.45,
+    sourceDisplayName: "Göller Yöresi Platosu, Isparta/Burdur çevresi, Türkiye",
+  },
+  plateau_anamur_platosu: {
+    lat: 36.17,
+    lon: 32.84,
+    sourceDisplayName: "Anamur Platosu, Mersin, Türkiye",
+  },
   plateau_erzurum_kars_platosu: {
     lat: 40.15,
     lon: 42.65,
     sourceDisplayName: "Erzurum-Kars Platosu, Sarıkamış/Kars çevresi, Türkiye",
+  },
+  plateau_agri_platosu: {
+    lat: 39.72,
+    lon: 43.05,
+    sourceDisplayName: "Ağrı Platosu, Ağrı çevresi, Türkiye",
+  },
+  plateau_tendurek_cevresi_lav_platosu: {
+    lat: 39.35,
+    lon: 43.87,
+    sourceDisplayName: "Tendürek çevresi lav platosu, Ağrı/Van, Türkiye",
   },
   river_coruh_nehri: {
     lat: 41.22,
@@ -78,6 +108,21 @@ export const physicalFeatureCoordinateCorrections = {
     lat: 40.23,
     lon: 28.35,
     sourceDisplayName: "Susurluk/Simav Çayı, Marmara'ya dökülen kesim, Türkiye",
+  },
+  river_gonen_cayi: {
+    lat: 40.11,
+    lon: 27.64,
+    sourceDisplayName: "Gönen Çayı, Gönen/Balıkesir çevresi, Türkiye",
+  },
+  river_biga_cayi: {
+    lat: 40.33,
+    lon: 27.31,
+    sourceDisplayName: "Biga Çayı, Karabiga/Çanakkale çevresi, Türkiye",
+  },
+  river_nilufer_cayi: {
+    lat: 40.18,
+    lon: 29.05,
+    sourceDisplayName: "Nilüfer Çayı, Bursa Ovası çevresi, Türkiye",
   },
   river_meric_nehri: {
     lat: 40.72,
@@ -159,6 +204,21 @@ export const physicalFeatureCoordinateCorrections = {
     lon: 42.19,
     sourceDisplayName: "Dicle Nehri, Cizre/Şırnak çevresi, Türkiye",
   },
+  river_murat_nehri: {
+    lat: 38.76,
+    lon: 41.5,
+    sourceDisplayName: "Murat Nehri, Muş çevresi, Türkiye",
+  },
+  river_karasu_nehri: {
+    lat: 39.95,
+    lon: 41.17,
+    sourceDisplayName: "Karasu Nehri, Erzurum çevresi, Türkiye",
+  },
+  river_buyuk_zap_suyu: {
+    lat: 37.57,
+    lon: 44.28,
+    sourceDisplayName: "Büyük Zap Suyu, Hakkari çevresi, Türkiye",
+  },
   river_aras_nehri: {
     lat: 39.87,
     lon: 44.33,
@@ -168,5 +228,55 @@ export const physicalFeatureCoordinateCorrections = {
     lat: 41.11,
     lon: 42.7,
     sourceDisplayName: "Kura Nehri, Ardahan çevresi, Türkiye",
+  },
+  river_arpacay: {
+    lat: 40.52,
+    lon: 43.37,
+    sourceDisplayName: "Arpaçay, Kars sınır kesimi, Türkiye",
+  },
+  coast_kuzey_ege_enine_kiyilari: {
+    lat: 39.58,
+    lon: 26.93,
+    sourceDisplayName: "Kuzey Ege enine kıyıları, Edremit Körfezi çevresi, Türkiye",
+  },
+  coast_orta_ege_enine_kiyilari: {
+    lat: 37.86,
+    lon: 27.26,
+    sourceDisplayName: "Orta Ege enine kıyıları, Kuşadası/Aydın çevresi, Türkiye",
+  },
+  coast_guney_ege_enine_kiyilari: {
+    lat: 37.04,
+    lon: 27.43,
+    sourceDisplayName: "Güney Ege enine kıyıları, Bodrum/Muğla çevresi, Türkiye",
+  },
+  coast_datca_kiyilari: {
+    lat: 36.73,
+    lon: 27.68,
+    sourceDisplayName: "Datça kıyıları, Muğla, Türkiye",
+  },
+  coast_kekova_cevresi: {
+    lat: 36.2,
+    lon: 29.86,
+    sourceDisplayName: "Kekova çevresi, Demre/Antalya, Türkiye",
+  },
+  coast_kalkan_kas_kiyilari: {
+    lat: 36.27,
+    lon: 29.41,
+    sourceDisplayName: "Kalkan-Kaş kıyıları, Antalya, Türkiye",
+  },
+  coast_terkos_kiyilari: {
+    lat: 41.32,
+    lon: 28.62,
+    sourceDisplayName: "Terkos kıyıları, İstanbul, Türkiye",
+  },
+  coast_tasucu_cevresi: {
+    lat: 36.32,
+    lon: 33.89,
+    sourceDisplayName: "Taşucu çevresi, Silifke/Mersin, Türkiye",
+  },
+  coast_narlikuyu_koylari: {
+    lat: 36.45,
+    lon: 34.11,
+    sourceDisplayName: "Narlıkuyu koyları, Mersin, Türkiye",
   },
 };

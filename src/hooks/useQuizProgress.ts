@@ -91,6 +91,8 @@ function mapDaily(row: ProgressRow | null): DailyState | null {
 
 export function useQuizProgress(user: User | null): UseQuizProgressResult {
   const userId = user?.id ?? null;
+  const metadataUsername = user?.user_metadata?.username;
+  const profileUsername = typeof metadataUsername === "string" ? metadataUsername.trim() : "";
 
   const [totals, setTotals] = useState<ProgressTotals>(() => emptyTotals());
   const [session, setSession] = useState<SessionStats>(EMPTY_SESSION);
@@ -203,13 +205,17 @@ export function useQuizProgress(user: User | null): UseQuizProgressResult {
       // Kendini onarma: profil satırı yoksa (trigger kaçtıysa) burada oluştur.
       // Aksi halde `profiles.upsert` INSERT yolunda username NOT NULL'a takılır
       // ve XP yazımları sessizce başarısız olur → yenilemede XP sıfırlanır.
-      if (!profileData) {
-        const username =
-          ((user?.user_metadata?.username as string | undefined) ?? "").trim() ||
-          `oyuncu_${userId.slice(0, 8)}`;
-        await client
+      if (!profileResult.error && !profileData) {
+        const username = profileUsername || `oyuncu_${userId.slice(0, 8)}`;
+        const repairResult = await client
           .from("profiles")
           .upsert({ id: userId, username, xp: 0 }, { onConflict: "id", ignoreDuplicates: true });
+        if (ignore) {
+          return;
+        }
+        if (repairResult.error) {
+          setError(`Profil oluşturulamadı: ${repairResult.error.message}`);
+        }
       }
 
       const loadedXp = typeof profileData?.xp === "number" ? profileData.xp : 0;
@@ -231,7 +237,7 @@ export function useQuizProgress(user: User | null): UseQuizProgressResult {
     return () => {
       ignore = true;
     };
-  }, [userId]);
+  }, [profileUsername, userId]);
 
   const recordAnswer = useCallback(
     (input: { topic: PlusTopicId; isCorrect: boolean }): GamificationEvents => {

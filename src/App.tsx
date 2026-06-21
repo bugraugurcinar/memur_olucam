@@ -48,6 +48,68 @@ const plusTopicChoices = plusQuestionTopicOptions.filter(
   (option): option is { id: Exclude<PlusQuestionTopic, "mixed">; label: string } => option.id !== "mixed",
 );
 
+const WRONG_PLUS_QUESTION_STORAGE_PREFIX = "kpss-cografya-atlas:wrong-plus-questions:";
+const PLUS_QUESTION_SEED_SEPARATOR = "__";
+
+type PlusStudyMode = "all" | "wrong";
+
+function plusQuestionSeedId(questionId: string) {
+  return questionId.split(PLUS_QUESTION_SEED_SEPARATOR)[0];
+}
+
+function wrongPlusQuestionStorageKey(userId: string | null) {
+  return `${WRONG_PLUS_QUESTION_STORAGE_PREFIX}${userId ?? "guest"}`;
+}
+
+function normalizeWrongPlusQuestionIds(value: unknown) {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  const seen = new Set<string>();
+  const result: string[] = [];
+
+  for (const item of value) {
+    if (typeof item === "string" && item.length > 0 && !seen.has(item)) {
+      seen.add(item);
+      result.push(item);
+    }
+  }
+
+  return result;
+}
+
+function readWrongPlusQuestionIds(storageKey: string) {
+  if (typeof window === "undefined") {
+    return [];
+  }
+
+  try {
+    const rawValue = window.localStorage.getItem(storageKey);
+
+    return normalizeWrongPlusQuestionIds(rawValue ? JSON.parse(rawValue) : []);
+  } catch {
+    return [];
+  }
+}
+
+function writeWrongPlusQuestionIds(storageKey: string, questionIds: string[]) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  try {
+    if (questionIds.length === 0) {
+      window.localStorage.removeItem(storageKey);
+      return;
+    }
+
+    window.localStorage.setItem(storageKey, JSON.stringify(questionIds));
+  } catch {
+    // localStorage kota/erişim hatası quiz akışını durdurmasın.
+  }
+}
+
 function AccountForm({ auth }: { auth: UseAuthResult }) {
   const [mode, setMode] = useState<"login" | "register">("login");
   const [email, setEmail] = useState("");
@@ -148,6 +210,10 @@ function App() {
   const [plusAnswer, setPlusAnswer] = useState<PlusAnswerState | null>(null);
   const [plusTopics, setPlusTopics] = useState<Array<Exclude<PlusQuestionTopic, "mixed">>>([]);
   const [plusMode, setPlusMode] = useState<PlusQuestionMode>("mixed");
+  const [plusStudyMode, setPlusStudyMode] = useState<PlusStudyMode>("all");
+  const [wrongPlusQuestionIds, setWrongPlusQuestionIds] = useState<string[]>(() =>
+    readWrongPlusQuestionIds(wrongPlusQuestionStorageKey(null)),
+  );
   const [plusAssignments, setPlusAssignments] = useState<Record<string, string>>({});
   const [plusSelectedTokenId, setPlusSelectedTokenId] = useState<string | null>(null);
   const [plusSelectedTargetIds, setPlusSelectedTargetIds] = useState<string[]>([]);
@@ -174,11 +240,31 @@ function App() {
   const leaderboard = useLeaderboard(auth.user);
   const { recordAnswer, reset: resetProgress } = progress;
   const { refresh: refreshLeaderboard } = leaderboard;
+  const wrongPlusQuestionStorageKeyValue = useMemo(
+    () => wrongPlusQuestionStorageKey(auth.user?.id ?? null),
+    [auth.user?.id],
+  );
   const [fxItems, setFxItems] = useState<FxItem[]>([]);
   const [layersOpen, setLayersOpen] = useState(false);
   const dismissFx = useCallback(
     (id: number) => setFxItems((items) => items.filter((item) => item.id !== id)),
     [],
+  );
+
+  useEffect(() => {
+    setWrongPlusQuestionIds(readWrongPlusQuestionIds(wrongPlusQuestionStorageKeyValue));
+  }, [wrongPlusQuestionStorageKeyValue]);
+
+  const persistWrongPlusQuestionIds = useCallback(
+    (getNextQuestionIds: (currentQuestionIds: string[]) => string[]) => {
+      setWrongPlusQuestionIds((currentQuestionIds) => {
+        const nextQuestionIds = normalizeWrongPlusQuestionIds(getNextQuestionIds(currentQuestionIds));
+
+        writeWrongPlusQuestionIds(wrongPlusQuestionStorageKeyValue, nextQuestionIds);
+        return nextQuestionIds;
+      });
+    },
+    [wrongPlusQuestionStorageKeyValue],
   );
 
   const accountDisplayName =
@@ -238,9 +324,15 @@ function App() {
     () => [...visiblePhysicalFeatures, ...visibleEconomicFeatures],
     [visibleEconomicFeatures, visiblePhysicalFeatures],
   );
+  const allQuizQuestionPool = useMemo(
+    () => [...physicalFeatures, ...economicFeatures],
+    [economicFeatures, physicalFeatures],
+  );
+  const activePlusQuestionPool = plusStudyMode === "wrong" ? allQuizQuestionPool : quizQuestionPool;
+  const activeWrongPlusQuestionIds = plusStudyMode === "wrong" ? wrongPlusQuestionIds : undefined;
   const plusAvailability = useMemo(
-    () => getPlusAvailability(quizQuestionPool, plusTopics, plusMode),
-    [plusMode, plusTopics, quizQuestionPool],
+    () => getPlusAvailability(activePlusQuestionPool, plusTopics, plusMode, activeWrongPlusQuestionIds),
+    [activePlusQuestionPool, activeWrongPlusQuestionIds, plusMode, plusTopics],
   );
   const isLoading =
     country.isLoading || provinces.isLoading || physicalFeaturesData.isLoading || economicFeaturesData.isLoading;
@@ -249,6 +341,15 @@ function App() {
   const shouldUseEconomicCategoryColors = activeEconomicTopics.length === 1;
   const canStartPlus =
     plusAvailability.total > 0 && !physicalFeaturesData.isLoading && !economicFeaturesData.isLoading;
+  const wrongPlusQuestionCount = wrongPlusQuestionIds.length;
+  const plusAvailabilityLabel =
+    plusStudyMode === "wrong" ? `${plusAvailability.total}/${wrongPlusQuestionCount} yanlış` : `${plusAvailability.total} soru`;
+  const wrongPlusQuestionStatus =
+    wrongPlusQuestionCount === 0
+      ? "Yanlış cevapladığın sorular burada birikir."
+      : plusAvailability.total === 0
+        ? "Seçili konu veya soru tipine uyan yanlış soru yok."
+        : `${plusAvailability.total} yanlış soru bu ayarlarla çalışılabilir.`;
   const isPlusActive = Boolean(currentPlusQuestion);
   const selectedText = useMemo(
     () => selectedProvinceName ?? "Henüz seçilmedi",
@@ -275,26 +376,34 @@ function App() {
   }, [activeEconomicCategories, activeEconomicTopics, selectedEconomicFeature]);
 
   useEffect(() => {
-    if (
-      currentPlusQuestion &&
-      !currentPlusQuestion.targets.every((target) =>
-        quizQuestionPool.some((feature) => feature.properties.id === target.id),
-      )
-    ) {
+    if (!currentPlusQuestion) {
+      return;
+    }
+
+    const isUnavailableInPool = !currentPlusQuestion.targets.every((target) =>
+      activePlusQuestionPool.some((feature) => feature.properties.id === target.id),
+    );
+    const isOutsideWrongPool =
+      plusStudyMode === "wrong" &&
+      !plusAnswer &&
+      !wrongPlusQuestionIds.includes(plusQuestionSeedId(currentPlusQuestion.id));
+
+    if (isUnavailableInPool || isOutsideWrongPool) {
       setCurrentPlusQuestion(null);
       setPlusAnswer(null);
       setPlusAssignments({});
       setPlusSelectedTokenId(null);
       setPlusSelectedTargetIds([]);
     }
-  }, [currentPlusQuestion, quizQuestionPool]);
+  }, [activePlusQuestionPool, currentPlusQuestion, plusAnswer, plusStudyMode, wrongPlusQuestionIds]);
 
   const startNextPlusQuestion = useCallback(() => {
     const nextQuestion = generatePlusQuestion({
-      features: quizQuestionPool,
+      features: activePlusQuestionPool,
       topics: plusTopics,
       mode: plusMode,
       recentQuestionIds: recentPlusQuestionIdsRef.current,
+      questionIds: activeWrongPlusQuestionIds,
     });
 
     if (!nextQuestion) {
@@ -315,7 +424,7 @@ function App() {
     setSelectedProvinceName(null);
     setSelectedFeature(null);
     setSelectedEconomicFeature(null);
-  }, [plusMode, plusTopics, quizQuestionPool]);
+  }, [activePlusQuestionPool, activeWrongPlusQuestionIds, plusMode, plusTopics]);
 
   const handleProvinceSelect = useCallback((provinceName: string) => {
     setSelectedProvinceName(provinceName);
@@ -473,6 +582,28 @@ function App() {
     setPlusSelectedTargetIds([]);
   }, []);
 
+  const handlePlusStudyModeChange = useCallback(
+    (mode: PlusStudyMode) => {
+      setPlusStudyMode(mode);
+      recentPlusQuestionIdsRef.current = [];
+      resetPlusQuestionState();
+      setMapGuesses([]);
+    },
+    [resetPlusQuestionState],
+  );
+
+  const handleWrongPlusQuestionPoolClear = useCallback(() => {
+    if (!window.confirm("Yanlış soru havuzu temizlensin mi?")) {
+      return;
+    }
+
+    persistWrongPlusQuestionIds(() => []);
+    if (plusStudyMode === "wrong") {
+      resetPlusQuestionState();
+      setMapGuesses([]);
+    }
+  }, [persistWrongPlusQuestionIds, plusStudyMode, resetPlusQuestionState]);
+
   const handlePlusTopicToggle = useCallback(
     (topic: Exclude<PlusQuestionTopic, "mixed">) => {
       setPlusTopics((current) =>
@@ -516,6 +647,12 @@ function App() {
         return;
       }
 
+      const currentQuestionSeedId = plusQuestionSeedId(currentPlusQuestion.id);
+      persistWrongPlusQuestionIds((currentQuestionIds) =>
+        isCorrect
+          ? currentQuestionIds.filter((questionId) => questionId !== currentQuestionSeedId)
+          : [currentQuestionSeedId, ...currentQuestionIds.filter((questionId) => questionId !== currentQuestionSeedId)],
+      );
       setPlusAnswer({ isCorrect, message, detail, wrongTargetIds, selectedTokenId });
       setPlusSelectedTokenId(null);
 
@@ -525,7 +662,7 @@ function App() {
         setFxItems((items) => [...items, ...builtFx]);
       }
     },
-    [currentPlusQuestion, plusAnswer, recordAnswer],
+    [currentPlusQuestion, persistWrongPlusQuestionIds, plusAnswer, recordAnswer],
   );
 
   const handlePlusTokenSelect = useCallback(
@@ -784,8 +921,41 @@ function App() {
           <div className="panel-section plus-panel">
             <div className="quiz-section-heading">
               <h2>Soru+</h2>
-              <span>{plusAvailability.total} soru</span>
+              <span>{plusAvailabilityLabel}</span>
             </div>
+
+            <div className="plus-study-mode" aria-label="Soru+ çalışma modu">
+              <button
+                aria-pressed={plusStudyMode === "all"}
+                onClick={() => handlePlusStudyModeChange("all")}
+                type="button"
+              >
+                Tüm sorular
+              </button>
+              <button
+                aria-pressed={plusStudyMode === "wrong"}
+                disabled={wrongPlusQuestionCount === 0}
+                onClick={() => handlePlusStudyModeChange("wrong")}
+                type="button"
+              >
+                Yanlışları çalış
+                <small>{wrongPlusQuestionCount}</small>
+              </button>
+            </div>
+
+            {plusStudyMode === "wrong" ? (
+              <div className="wrong-question-pool" role="status">
+                <div>
+                  <strong>Yanlış havuzu</strong>
+                  <span>{wrongPlusQuestionStatus}</span>
+                </div>
+                {wrongPlusQuestionCount > 0 ? (
+                  <button onClick={handleWrongPlusQuestionPoolClear} type="button">
+                    Temizle
+                  </button>
+                ) : null}
+              </div>
+            ) : null}
 
             <div className="quiz-control-grid" aria-label="Soru+ seçenekleri">
               <label>

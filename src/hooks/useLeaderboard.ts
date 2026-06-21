@@ -85,6 +85,12 @@ export function useLeaderboard(user: User | null, topN = 10): UseLeaderboardResu
       if (ignore) {
         return;
       }
+      if (myProfile.error) {
+        setError("Liderlik sırası hesaplanamadı.");
+        setMyRank(null);
+        setIsLoading(false);
+        return;
+      }
       const myXpData = myProfile.data as { xp?: number | null } | null;
       const myXp = typeof myXpData?.xp === "number" ? myXpData.xp : 0;
 
@@ -95,6 +101,13 @@ export function useLeaderboard(user: User | null, topN = 10): UseLeaderboardResu
       if (ignore) {
         return;
       }
+      if (aheadResult.error) {
+        setError("Liderlik sırası hesaplanamadı.");
+        setMyRank(null);
+        setIsLoading(false);
+        return;
+      }
+      setError(null);
       setMyRank((aheadResult.count ?? 0) + 1);
       setIsLoading(false);
     })();
