@@ -154,16 +154,6 @@ function featurePromptName(feature: PlusFeature) {
   return feature.properties.name;
 }
 
-function featureSpecificPromptName(feature: PlusFeature) {
-  if (isEconomicFeature(feature)) {
-    const location = getEconomicLocationShortLabel(feature.properties.location, true);
-
-    return location ? `${feature.properties.name} ${location}` : feature.properties.name;
-  }
-
-  return featurePromptName(feature);
-}
-
 function featureDetail(feature: PlusFeature) {
   if (isEconomicFeature(feature)) {
     const location = getEconomicLocationShortLabel(feature.properties.location, true);
@@ -583,118 +573,6 @@ function buildRepeatedNameDistributionQuestions(features: PlusFeature[]) {
         correctTargetIds,
         answerSummary: `${promptName} için doğru işaretler: ${correctLabels}.`,
         kpssNote: baseFeature.properties.kpssNote,
-      });
-    })
-    .filter((question): question is PlusQuestion => Boolean(question));
-}
-
-function repeatedEconomicNameCandidates(features: PlusFeature[]) {
-  const economicFeatures = features.filter(
-    (feature): feature is EconomicFeature => isEconomicFeature(feature) && Boolean(featurePoint(feature)),
-  );
-  const nameCounts = economicFeatures.reduce<Record<string, number>>((counts, feature) => {
-    counts[feature.properties.name] = (counts[feature.properties.name] ?? 0) + 1;
-
-    return counts;
-  }, {});
-
-  return economicFeatures.filter((feature) => nameCounts[feature.properties.name] > 1);
-}
-
-function buildRepeatedEconomicMapMatchQuestions(features: PlusFeature[]) {
-  const candidates = repeatedEconomicNameCandidates(features);
-
-  return candidates
-    .map((feature): PlusQuestion | null => {
-      const topic = plusTopicFromFeature(feature);
-
-      if (!topic) {
-        return null;
-      }
-
-      const promptName = featureSpecificPromptName(feature);
-      const distractors = uniqueBy(
-        features.filter(
-          (candidate) =>
-            candidate.properties.id !== feature.properties.id &&
-            candidate.properties.topic === feature.properties.topic &&
-            featureSpecificPromptName(candidate) !== promptName &&
-            Boolean(featurePoint(candidate)),
-        ),
-        (candidate) => featureSpecificPromptName(candidate),
-      );
-
-      if (distractors.length < 4) {
-        return null;
-      }
-
-      const targets = mapTargets(shuffle([feature, ...shuffle(distractors).slice(0, 4)]), targetLetters);
-      const correctTarget = targets.find((target) => target.id === feature.properties.id);
-
-      if (!correctTarget) {
-        return null;
-      }
-
-      return makeMapMatchQuestion({
-        id: `plus_economic_map_match_${feature.properties.id}`,
-        topic,
-        title: "Ekonomik nokta",
-        prompt: `${promptName} hangi işaretli noktadadır?`,
-        helper: "A-E işaretlerinden doğru ekonomik konumu seç.",
-        targets,
-        tokens: targets.map((target) => token(target.id, `${target.label} noktası`, "", target.color)),
-        correctTargetIds: [feature.properties.id],
-        correctTokenId: feature.properties.id,
-        answerSummary: `${correctTarget.label} noktası ${promptName} konumudur.`,
-        kpssNote: feature.properties.kpssNote,
-      });
-    })
-    .filter((question): question is PlusQuestion => Boolean(question));
-}
-
-function buildRepeatedEconomicPointIdentifyQuestions(features: PlusFeature[]) {
-  const candidates = repeatedEconomicNameCandidates(features);
-
-  return candidates
-    .map((feature): PlusQuestion | null => {
-      const topic = plusTopicFromFeature(feature);
-
-      if (!topic) {
-        return null;
-      }
-
-      const promptName = featureSpecificPromptName(feature);
-      const distractors = uniqueBy(
-        features.filter(
-          (candidate) =>
-            candidate.properties.id !== feature.properties.id &&
-            candidate.properties.topic === feature.properties.topic &&
-            featureSpecificPromptName(candidate) !== promptName &&
-            Boolean(featurePoint(candidate)),
-        ),
-        (candidate) => featureSpecificPromptName(candidate),
-      );
-
-      if (distractors.length < 4) {
-        return null;
-      }
-
-      const options = shuffle([feature, ...shuffle(distractors).slice(0, 4)]);
-      const topicLabel = feature.properties.topicLabel.toLocaleLowerCase("tr-TR");
-
-      return makeChoiceQuestion({
-        id: `plus_economic_point_identify_${feature.properties.id}`,
-        topic,
-        title: "Ekonomik nokta okuma",
-        prompt: `Haritada yanıp sönen ${topicLabel} noktası hangisidir?`,
-        helper: "Konuma bakıp doğru ekonomik merkez veya üretim alanını listeden seç.",
-        targets: mapTargets([feature], ["?"]),
-        tokens: options.map((option) =>
-          token(option.properties.id, featureSpecificPromptName(option), featureDetail(option), "#0f766e"),
-        ),
-        correctTokenId: feature.properties.id,
-        answerSummary: `${promptName} (${featureDetail(feature)})`,
-        kpssNote: feature.properties.kpssNote,
       });
     })
     .filter((question): question is PlusQuestion => Boolean(question));
@@ -2200,8 +2078,6 @@ const builders: Array<(features: PlusFeature[]) => PlusQuestionBuilderResult> = 
   buildPointIdentifyQuestions,
   buildCategoryOddOneOutQuestions,
   buildRepeatedNameDistributionQuestions,
-  buildRepeatedEconomicMapMatchQuestions,
-  buildRepeatedEconomicPointIdentifyQuestions,
   buildMinePlacement,
   buildMineReverse,
   buildSpecialMinePlacement,
