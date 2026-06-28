@@ -17,6 +17,9 @@ npm run validate:data  # validate generated GeoJSON marker datasets
 # Rebuild marker datasets (writes into public/geojson/)
 node scripts/buildPhysicalFeatures.mjs
 node scripts/buildEconomicFeatures.mjs
+
+# Rebuild province adjacency map (writes src/geojson/provinceNeighbors.ts)
+node scripts/buildProvinceNeighbors.mjs
 ```
 
 There is no test suite, linter, or formatter configured. `npm run build` is the primary app verification step — it runs `tsc --noEmit` under `strict: true`, so type errors fail the build. Run `npm run validate:data` after marker dataset changes.
@@ -30,7 +33,7 @@ Cloud accounts + gamification use Supabase. Set `VITE_SUPABASE_URL` and `VITE_SU
 The app is a single-page React app whose state lives almost entirely in `src/App.tsx`. Three main concerns are composed there:
 
 1. **Map canvas** (`src/maps/TurkeyMap.tsx`) — imperative Leaflet renderer. It takes GeoJSON layers + topic/category filters + Soru+ state as props and reconciles a Leaflet map via refs. Soru+ overlays (guess points, target markers, drag-and-drop tokens) are drawn here. New map behavior almost always means new props through this component.
-2. **Plus engine** (`src/quiz/plusQuestionEngine.ts`) — the Soru+ mode. Topic-scoped (mine, industry, energy, agriculture, livestock, mountain, river, lake, plainPlateau, coast, tourism, port) with token/target drag-and-drop placement, map matching, point selection, and list-choice question types. `generatePlusQuestion(...)` is pure — given features + mode + topics + recent ids, it returns a `PlusQuestion | null`.
+2. **Plus engine** (`src/quiz/plusQuestionEngine.ts`) — the Soru+ mode. Topic-scoped (mine, industry, energy, agriculture, livestock, mountain, river, lake, plainPlateau, coast, tourism, port, province) with token/target drag-and-drop placement, map matching, point selection, and list-choice question types. `generatePlusQuestion(...)` is pure — given features + mode + topics + recent ids (+ optional `provinces`), it returns a `PlusQuestion | null`. The **province** topic is the "İller" mode: a `choice` question that drops a pin at a province centroid (province borders hidden) and offers the correct province plus its neighbours as options; the correct province is highlighted after answering. Province inputs (`ProvinceQuizInfo[]`) are built at runtime by `buildProvinceQuizInfos` (`src/quiz/provinceUtils.ts`) from the provinces GeoJSON + the generated `src/geojson/provinceNeighbors.ts` adjacency map.
 3. **Gamification** (`src/quiz/gamification.ts`) — pure XP/level/badge/daily-quest logic (no side effects). Every Soru+ answer is recorded at the single funnel `finalizePlusAnswer` in `App.tsx`, which calls `recordAnswer` from `useQuizProgress` (`src/hooks/useQuizProgress.ts`). That hook keeps an in-memory session plus cloud-persisted lifetime totals/XP/badges/daily quests (optimistic upserts to Supabase via `useAuth`'s user). `recordAnswer` returns `GamificationEvents` that drive `GamificationFX` (`src/components/GamificationFX.tsx` — framer-motion + canvas-confetti). `useLeaderboard` reads the public `profiles` table. Keep the engine pure — persistence/effects stay in the hooks and `App.tsx`.
 
 `App.tsx` orchestrates layer filters, selected map items, Soru+ state (current question, assignments, selected targets, answer state), and decides what to pass to `TurkeyMap`. Feature data is the source of truth for question generation.

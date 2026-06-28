@@ -43,6 +43,8 @@ type TurkeyMapProps = {
   selectedEconomicFeatureId: string | null;
   isPlusActive: boolean;
   isPlusMapLocateActive: boolean;
+  plusHideProvinces: boolean;
+  plusHighlightProvinceName: string | null;
   plusGuessPoints: QuizPoint[];
   plusMapLocateTargetName: string;
   plusMapLocateTargetPoint: QuizPoint | null;
@@ -124,6 +126,16 @@ function quizProvinceStyle(): L.PathOptions {
     fillOpacity: 0.06,
     opacity: 0.4,
     weight: 0.8,
+  };
+}
+
+function highlightProvinceStyle(): L.PathOptions {
+  return {
+    color: "#facc15",
+    fillColor: "#fde047",
+    fillOpacity: 0.42,
+    opacity: 0.95,
+    weight: 2.5,
   };
 }
 
@@ -280,6 +292,8 @@ export function TurkeyMap({
   selectedEconomicFeatureId,
   isPlusActive,
   isPlusMapLocateActive,
+  plusHideProvinces,
+  plusHighlightProvinceName,
   plusGuessPoints,
   plusMapLocateTargetName,
   plusMapLocateTargetPoint,
@@ -394,6 +408,12 @@ export function TurkeyMap({
   useEffect(() => {
     selectedProvinceRef.current = selectedProvinceName;
 
+    // İl tahmin modunda il katmanının stilini çizim effekti yönetir (gizleme /
+    // doğru ili vurgulama); burada dokunma.
+    if (isPlusActive && plusHideProvinces) {
+      return;
+    }
+
     provinceLayerRef.current?.eachLayer((layer: ProvinceLayer) => {
       const provinceName = getShapeName(layer.feature?.properties);
 
@@ -401,7 +421,7 @@ export function TurkeyMap({
         layer.setStyle(isPlusActive ? quizProvinceStyle() : provinceStyle(provinceName, selectedProvinceName));
       }
     });
-  }, [isPlusActive, selectedProvinceName]);
+  }, [isPlusActive, plusHideProvinces, selectedProvinceName]);
 
   useEffect(() => {
     selectedFeatureRef.current = selectedPhysicalFeatureId;
@@ -457,7 +477,19 @@ export function TurkeyMap({
 
     countryLayerRef.current = countryLayer;
 
-    if (isPlusActive && provincesData) {
+    if (isPlusActive && plusHideProvinces) {
+      // İl tahmin modu: soru sırasında il sınırlarını gizle; cevaptan sonra
+      // yalnızca doğru ilin sınırını vurgula.
+      if (plusHighlightProvinceName && provincesData) {
+        const highlightLayer = L.geoJSON(provincesData, {
+          filter: (feature) => getShapeName(feature?.properties) === plusHighlightProvinceName,
+          interactive: false,
+          style: highlightProvinceStyle,
+        }).addTo(map);
+
+        provinceLayerRef.current = highlightLayer;
+      }
+    } else if (isPlusActive && provincesData) {
       const provinceLayer = L.geoJSON(provincesData, {
         interactive: false,
         style: quizProvinceStyle,
@@ -512,7 +544,14 @@ export function TurkeyMap({
       countryLayer.remove();
       provinceLayerRef.current?.remove();
     };
-  }, [countryData, provincesData, isPlusActive, onProvinceSelect]);
+  }, [
+    countryData,
+    provincesData,
+    isPlusActive,
+    plusHideProvinces,
+    plusHighlightProvinceName,
+    onProvinceSelect,
+  ]);
 
   useEffect(() => {
     const map = mapRef.current;

@@ -34,6 +34,7 @@ import {
   type PlusQuestionMode,
   type PlusQuestionTopic,
 } from "./quiz/plusQuestionEngine";
+import { buildProvinceQuizInfos } from "./quiz/provinceUtils";
 import { isSupabaseConfigured } from "./lib/supabase";
 import { useAuth, type UseAuthResult } from "./hooks/useAuth";
 import { useQuizProgress } from "./hooks/useQuizProgress";
@@ -330,9 +331,17 @@ function App() {
   );
   const activePlusQuestionPool = plusStudyMode === "wrong" ? allQuizQuestionPool : quizQuestionPool;
   const activeWrongPlusQuestionIds = plusStudyMode === "wrong" ? wrongPlusQuestionIds : undefined;
+  const provinceQuizInfos = useMemo(() => buildProvinceQuizInfos(provinces.data), [provinces.data]);
   const plusAvailability = useMemo(
-    () => getPlusAvailability(activePlusQuestionPool, plusTopics, plusMode, activeWrongPlusQuestionIds),
-    [activePlusQuestionPool, activeWrongPlusQuestionIds, plusMode, plusTopics],
+    () =>
+      getPlusAvailability(
+        activePlusQuestionPool,
+        plusTopics,
+        plusMode,
+        activeWrongPlusQuestionIds,
+        provinceQuizInfos,
+      ),
+    [activePlusQuestionPool, activeWrongPlusQuestionIds, plusMode, plusTopics, provinceQuizInfos],
   );
   const isLoading =
     country.isLoading || provinces.isLoading || physicalFeaturesData.isLoading || economicFeaturesData.isLoading;
@@ -380,9 +389,11 @@ function App() {
       return;
     }
 
-    const isUnavailableInPool = !currentPlusQuestion.targets.every((target) =>
-      activePlusQuestionPool.some((feature) => feature.properties.id === target.id),
-    );
+    const isUnavailableInPool =
+      currentPlusQuestion.topic !== "province" &&
+      !currentPlusQuestion.targets.every((target) =>
+        activePlusQuestionPool.some((feature) => feature.properties.id === target.id),
+      );
     const isOutsideWrongPool =
       plusStudyMode === "wrong" &&
       !plusAnswer &&
@@ -404,6 +415,7 @@ function App() {
       mode: plusMode,
       recentQuestionIds: recentPlusQuestionIdsRef.current,
       questionIds: activeWrongPlusQuestionIds,
+      provinces: provinceQuizInfos,
     });
 
     if (!nextQuestion) {
@@ -424,7 +436,7 @@ function App() {
     setSelectedProvinceName(null);
     setSelectedFeature(null);
     setSelectedEconomicFeature(null);
-  }, [activePlusQuestionPool, activeWrongPlusQuestionIds, plusMode, plusTopics]);
+  }, [activePlusQuestionPool, activeWrongPlusQuestionIds, plusMode, plusTopics, provinceQuizInfos]);
 
   const handleProvinceSelect = useCallback((provinceName: string) => {
     setSelectedProvinceName(provinceName);
@@ -822,6 +834,9 @@ function App() {
   );
 
   const plusResultStatus = plusAnswer ? (plusAnswer.isCorrect ? "correct" : "wrong") : null;
+  const isProvinceQuestion = currentPlusQuestion?.topic === "province";
+  const plusHighlightProvinceName =
+    isProvinceQuestion && plusAnswer ? currentPlusQuestion?.revealProvinceName ?? null : null;
   const isPlusMapLocateQuestion = currentPlusQuestion?.kind === "mapLocate";
   const isPlusMapLocateActive = Boolean(isPlusMapLocateQuestion && !plusAnswer);
   const plusMapLocateTarget = isPlusMapLocateQuestion ? currentPlusQuestion?.targets[0] ?? null : null;
@@ -872,6 +887,8 @@ function App() {
             selectedEconomicFeatureId={selectedEconomicFeature?.id ?? null}
             isPlusActive={isPlusActive}
             isPlusMapLocateActive={isPlusMapLocateActive}
+            plusHideProvinces={Boolean(isProvinceQuestion)}
+            plusHighlightProvinceName={plusHighlightProvinceName}
             plusGuessPoints={mapGuesses}
             plusMapLocateTargetName={plusMapLocateTarget?.name ?? "Soru"}
             plusMapLocateTargetPoint={plusMapLocateTarget?.point ?? null}
