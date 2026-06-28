@@ -887,7 +887,7 @@ function App() {
             selectedEconomicFeatureId={selectedEconomicFeature?.id ?? null}
             isPlusActive={isPlusActive}
             isPlusMapLocateActive={isPlusMapLocateActive}
-            plusHideProvinces={Boolean(isProvinceQuestion)}
+            plusHideProvinces={isPlusActive}
             plusHighlightProvinceName={plusHighlightProvinceName}
             plusGuessPoints={mapGuesses}
             plusMapLocateTargetName={plusMapLocateTarget?.name ?? "Soru"}

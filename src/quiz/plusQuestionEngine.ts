@@ -37,7 +37,10 @@ export type PlusPoint = {
 export type ProvinceQuizInfo = {
   id: string;
   name: string;
+  /** İlin ağırlık merkezi — yalnızca "en yakın il" hesabı için kullanılır. */
   point: PlusPoint;
+  /** İl sınırı içinde, kenar/köşelere doğru dağılmış pin aday noktaları. */
+  pinPoints: PlusPoint[];
   neighbors: string[];
 };
 
@@ -2122,6 +2125,8 @@ function buildProvinceQuestions(provinces: ProvinceQuizInfo[]): PlusQuestion[] {
     }
 
     const options = shuffle([province, ...distractors]);
+    const pinCandidates = province.pinPoints.length > 0 ? province.pinPoints : [province.point];
+    const pinPoint = pinCandidates[Math.floor(Math.random() * pinCandidates.length)];
 
     return makeChoiceQuestion({
       id: `plus_province_locate_${province.id}`,
@@ -2133,7 +2138,7 @@ function buildProvinceQuestions(provinces: ProvinceQuizInfo[]): PlusQuestion[] {
         {
           id: province.id,
           label: "?",
-          point: province.point,
+          point: pinPoint,
           name: province.name,
           detail: "Doğru il",
           color: PROVINCE_TARGET_COLOR,
