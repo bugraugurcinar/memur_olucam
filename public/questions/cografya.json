@@ -1692,6 +1692,1271 @@
         }
       ],
       "correct": "E"
+    },
+    {
+      "id": "cog-0063",
+      "topic": "Türkiye'nin İklimi ve Bitki Örtüsü",
+      "year": 2014,
+      "image": "/images/cografya/cog-0063.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0064",
+      "topic": "Türkiye'nin İklimi ve Bitki Örtüsü",
+      "year": 2015,
+      "prompt": "Türkiye'yi etkileyen aşağıdaki basınç merkezlerinden hangisi muson sisteminin bir parçasıdır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "İzlanda Alçak Basınç Merkezi"
+        },
+        {
+          "key": "B",
+          "text": "Basra Alçak Basınç Merkezi"
+        },
+        {
+          "key": "C",
+          "text": "Azor Yüksek Basınç Merkezi"
+        },
+        {
+          "key": "D",
+          "text": "Akdeniz Alçak Basınç Merkezi"
+        },
+        {
+          "key": "E",
+          "text": "Sibirya Yüksek Basınç Merkezi"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0065",
+      "topic": "Türkiye'nin İklimi ve Bitki Örtüsü",
+      "year": 2015,
+      "prompt": "Türkiye kışın genellikle kuzey sektörlü soğuk ve nemli hava kütlelerinin, yazın ise güney sektörlü sıcak ve kuru hava kütlelerinin etkisinde kalır.\nBu durum Türkiye'nin başlıca hangi özelliğinden kaynaklanmaktadır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Orta kesimlerinde geniş düzlüklerin bulunmasından"
+        },
+        {
+          "key": "B",
+          "text": "Üç tarafının denizlerle çevrili olmasından"
+        },
+        {
+          "key": "C",
+          "text": "Kuzeyinde ve güneyinde yüksek dağ sıralarının bulunmasından"
+        },
+        {
+          "key": "D",
+          "text": "Ortalama yükseltisinin fazla olmasından"
+        },
+        {
+          "key": "E",
+          "text": "Mutlak konumundan"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0066",
+      "topic": "Türkiye'nin İklimi ve Bitki Örtüsü",
+      "year": 2016,
+      "image": "/images/cografya/cog-0066.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0067",
+      "topic": "Türkiye'nin İklimi ve Bitki Örtüsü",
+      "year": 2017,
+      "prompt": "I. Kızılçam - Akdeniz İklimi\nII. Sedir - Karasal İklim\nIII. Kayın - Karadeniz İklimi\nTürkiye'nin coğrafi özellikleri dikkate alındığında, yukarıdaki ağaç türleri ile yaygın olarak görüldüğü iklim tipi eşleştirmelerinden hangileri yanlıştır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yalnız I"
+        },
+        {
+          "key": "B",
+          "text": "Yalnız II"
+        },
+        {
+          "key": "C",
+          "text": "Yalnız III"
+        },
+        {
+          "key": "D",
+          "text": "I ve II"
+        },
+        {
+          "key": "E",
+          "text": "II ve III"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0068",
+      "topic": "Türkiye'nin İklimi ve Bitki Örtüsü",
+      "year": 2018,
+      "prompt": "Türkiye'nin endemik bitki türleri bakımından zengin olmasında,\nI. geçmiş küresel iklim değişimleri,\nII. Kuzey Yarım Küre'de yer alması,\nIII. yeryüzü şekilleri,\nIV. doğu boylamlarında yer alması\nözelliklerinden hangileri etkili olmuştur?",
+      "options": [
+        {
+          "key": "A",
+          "text": "I ve II"
+        },
+        {
+          "key": "B",
+          "text": "I ve III"
+        },
+        {
+          "key": "C",
+          "text": "II ve III"
+        },
+        {
+          "key": "D",
+          "text": "II ve IV"
+        },
+        {
+          "key": "E",
+          "text": "III ve IV"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0069",
+      "topic": "Türkiye'nin İklimi ve Bitki Örtüsü",
+      "year": 2018,
+      "prompt": "Yaklaşık olarak aynı enlemlerde yer almasına karşın yaz mevsiminde Şanlıurfa'nın Mersin'e göre daha sıcak olmasında aşağıdakilerden hangisinin etkisi yoktur?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yükseltinin"
+        },
+        {
+          "key": "B",
+          "text": "Karasallığın"
+        },
+        {
+          "key": "C",
+          "text": "Nem oranının düşük olmasının"
+        },
+        {
+          "key": "D",
+          "text": "Basra Alçak Basıncı'nın"
+        },
+        {
+          "key": "E",
+          "text": "Güneyden esen rüzgârların"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0070",
+      "topic": "Türkiye'nin İklimi ve Bitki Örtüsü",
+      "year": 2019,
+      "prompt": "Aşağıdaki ağaç türlerinden hangisi Türkiye ormanları içerisinde daha sınırlı bir yayılım gösterir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kızılçam"
+        },
+        {
+          "key": "B",
+          "text": "Sığla"
+        },
+        {
+          "key": "C",
+          "text": "Karaçam"
+        },
+        {
+          "key": "D",
+          "text": "Meşe"
+        },
+        {
+          "key": "E",
+          "text": "Sarıçam"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0071",
+      "topic": "Türkiye'nin İklimi ve Bitki Örtüsü",
+      "year": 2019,
+      "prompt": "Karadeniz'de tuzluluk oranının Akdeniz'den daha az olmasında;\nI. büyük akarsularla beslenmesi,\nII. buharlaşmanın daha az olması,\nIII. derinliğin fazla olması,\nIV. kirliliğin yüksek olması\nfaktörlerinden hangileri etkili olmuştur?",
+      "options": [
+        {
+          "key": "A",
+          "text": "I ve II"
+        },
+        {
+          "key": "B",
+          "text": "I ve III"
+        },
+        {
+          "key": "C",
+          "text": "II ve III"
+        },
+        {
+          "key": "D",
+          "text": "II ve IV"
+        },
+        {
+          "key": "E",
+          "text": "III ve IV"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0072",
+      "topic": "Türkiye'nin İklimi ve Bitki Örtüsü",
+      "year": 2019,
+      "prompt": "Türkiye'nin bazı alanlarındaki eğimli yamaçlarda ormanlar toprağı tutar ve toprağa bol miktarda organik madde sağlar. Bu yamaçlardaki organik maddelerin ayrışmasıyla oluşan organik asitler, ayrışma olayının artmasına yardımcı olur. Ayrıca yağış miktarının fazla olması topraktaki yıkanmayı artırarak bitki besin maddelerinin bir bölümünün topraktan uzaklaşmasını sağlar. Bu süreç, asit reaksiyon gösteren organik madde yönünden zengin koyu renkli toprakların oluşmasını sağlar.\nAşağıdakilerin hangisinde bu tür toprakların yaygın olarak görülmesi beklenir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kuzey Anadolu Dağlarının kuzeye bakan yamaçlarında"
+        },
+        {
+          "key": "B",
+          "text": "Toros Dağlarının İç Anadolu'ya bakan yamaçlarında"
+        },
+        {
+          "key": "C",
+          "text": "Batı Anadolu'daki dağların güney yamaçlarında"
+        },
+        {
+          "key": "D",
+          "text": "Ergene Havzası'ndaki plato sahalarında"
+        },
+        {
+          "key": "E",
+          "text": "Orta Anadolu'nun Tuz Gölü ve çevresindeki alçak sahalarında"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0073",
+      "topic": "Türkiye'nin İklimi ve Bitki Örtüsü",
+      "year": 2019,
+      "prompt": "Türkiye'de, birbirine çok yakın alanlarda farklı iklim özellikleri görülebilir. Çevresinden farklı iklim özelliklerinin görüldüğü bu tip alanlara mikroklima adı verilir. Mikroklima alanlarında normal koşullarda o bölgede yetişmesi mümkün olmayan bitkiler yetişebilir.\nBuna göre;\nI. Iğdır Ovası'nda pamuk yetiştirilmesi,\nII. Çukurova'da mısır yetiştirilmesi,\nIII. Çoruh Vadisi'nde zeytin yetiştirilmesi,\nIV. Meriç Vadisi'nde çeltik yetiştirilmesi\nuygulamalarından hangileri mikroklimaya örnek gösterilebilir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "I ve II"
+        },
+        {
+          "key": "B",
+          "text": "I ve III"
+        },
+        {
+          "key": "C",
+          "text": "II ve III"
+        },
+        {
+          "key": "D",
+          "text": "II ve IV"
+        },
+        {
+          "key": "E",
+          "text": "III ve IV"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0074",
+      "topic": "Türkiye'nin İklimi ve Bitki Örtüsü",
+      "year": 2020,
+      "image": "/images/cografya/cog-0074.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0075",
+      "topic": "Türkiye'nin İklimi ve Bitki Örtüsü",
+      "year": 2020,
+      "image": "/images/cografya/cog-0075.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0076",
+      "topic": "Türkiye'nin İklimi ve Bitki Örtüsü",
+      "year": 2021,
+      "prompt": "Vejetasyon dönemi, bitkilerin uykularından uyandıkları ve yaşam faaliyetlerini gerçekleştirdikleri dönemdir. Sıcaklıklar belli bir eşiği aştığında vejetasyon dönemi başlamakta, bu eşiğin altına düştüğünde ise sona ermektedir.\nAşağıdaki platoların hangisinde bu dönem daha kısadır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Cihanbeyli"
+        },
+        {
+          "key": "B",
+          "text": "Şanlıurfa"
+        },
+        {
+          "key": "C",
+          "text": "Erzurum-Kars"
+        },
+        {
+          "key": "D",
+          "text": "Kırşehir"
+        },
+        {
+          "key": "E",
+          "text": "Çatalca-Kocaeli"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0077",
+      "topic": "Türkiye'nin İklimi ve Bitki Örtüsü",
+      "year": 2022,
+      "prompt": "Bitki coğrafyası üzerine araştırma yapan bir grup, yapacakları araştırma gezisinde farklı bitki türlerini görmeyi hedeflemektedir. Grup lideri yükseltinin kısa mesafede değiştiği sahalarda bitki türlerinin farklılaşacağını dikkate alarak bir güzergâh belirlemeye çalışmaktadır.\nAşağıdaki güzergâhlardan hangisi bu grubun çalışmalarına daha uygundur?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Eskişehir - Ankara"
+        },
+        {
+          "key": "B",
+          "text": "Diyarbakır - Siirt"
+        },
+        {
+          "key": "C",
+          "text": "Ordu - Tokat"
+        },
+        {
+          "key": "D",
+          "text": "Edirne - Tekirdağ"
+        },
+        {
+          "key": "E",
+          "text": "Bayburt - Erzurum"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0078",
+      "topic": "Türkiye'nin İklimi ve Bitki Örtüsü",
+      "year": 2024,
+      "image": "/images/cografya/cog-0078.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0079",
+      "topic": "Türkiye'nin İklimi ve Bitki Örtüsü",
+      "year": 2024,
+      "prompt": "Aşağıdaki illerin hangisinde toprakta kireç ve tuz birikiminin görülmesi beklenmez?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yozgat"
+        },
+        {
+          "key": "B",
+          "text": "Rize"
+        },
+        {
+          "key": "C",
+          "text": "Konya"
+        },
+        {
+          "key": "D",
+          "text": "Aksaray"
+        },
+        {
+          "key": "E",
+          "text": "Şanlıurfa"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0080",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2014,
+      "image": "/images/cografya/cog-0080.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0081",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2014,
+      "prompt": "Türkiye'de iç göçlerin yönüne bakıldığında genel olarak aşağıdakilerden hangisi söylenemez?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Türkiye'nin doğusundan batısına doğrudur."
+        },
+        {
+          "key": "B",
+          "text": "İç bölgelerden kıyılara doğrudur."
+        },
+        {
+          "key": "C",
+          "text": "Yüksek alanlardan alçak alanlara doğrudur."
+        },
+        {
+          "key": "D",
+          "text": "Doğal nüfus artışının en fazla olduğu illere yapılmaktadır."
+        },
+        {
+          "key": "E",
+          "text": "En çok İstanbul, Ankara, İzmir gibi büyük kentlere yapılmaktadır."
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0082",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2015,
+      "prompt": "Aşağıdakilerden hangisi, Türkiye'nin 1927-2014 dönemine ait nüfus gelişim özelliklerinden biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kırsal nüfus oranı geçmişten günümüze azalmaktadır."
+        },
+        {
+          "key": "B",
+          "text": "Ortalama yaşam süresi uzamaktadır."
+        },
+        {
+          "key": "C",
+          "text": "Aritmetik nüfus yoğunluğu artarak devam etmektedir."
+        },
+        {
+          "key": "D",
+          "text": "Geçmişten günümüze nüfus artış hızı yükselmektedir."
+        },
+        {
+          "key": "E",
+          "text": "Şehirli nüfus miktarı artmaya devam etmektedir."
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0083",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2015,
+      "prompt": "Türkiye, geçici kırsal yerleşmeler bakımından çeşitlilik göstermektedir. Bu yerleşmelerdeki temel ekonomik faaliyet türü; hayvancılık, bazen de tarım olmaktadır.\nAşağıdakilerden hangisi bu tür yerleşmelerden biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yayla"
+        },
+        {
+          "key": "B",
+          "text": "Oba"
+        },
+        {
+          "key": "C",
+          "text": "Kom"
+        },
+        {
+          "key": "D",
+          "text": "Ağıl"
+        },
+        {
+          "key": "E",
+          "text": "Mahalle"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0084",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2016,
+      "prompt": "Türkiye'de 1960'tan günümüze kadar olan dönemde nüfus artışıyla ilgili olarak aşağıdakilerden hangisi yanlıştır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nüfus artış hızı yıllar arasında aynı oranda gerçekleşmiştir."
+        },
+        {
+          "key": "B",
+          "text": "Toplam nüfus tüm sayım dönemlerinde artmıştır."
+        },
+        {
+          "key": "C",
+          "text": "Nüfus artış hızı bölgelere göre değişiklik göstermiştir."
+        },
+        {
+          "key": "D",
+          "text": "Kırsal kesimde nüfus artışı daha çok doğal artış şeklinde olmuştur."
+        },
+        {
+          "key": "E",
+          "text": "Büyük şehirlerde nüfus artışı genellikle göçlerle olmuştur."
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0085",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2016,
+      "prompt": "Türkiye'de 1950'li yıllardan günümüze kentsel nüfus oranında bir artış söz konusudur.\nBu durumun oluşmasında aşağıdakilerden hangisinin etkisi daha azdır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Eğitim imkânlarının kentlerde fazla olması"
+        },
+        {
+          "key": "B",
+          "text": "Kentte iş olanaklarının çeşitli olması"
+        },
+        {
+          "key": "C",
+          "text": "Sulu tarım alanlarının genişlemesi"
+        },
+        {
+          "key": "D",
+          "text": "Tarımda makineleşmenin yaygınlaşması"
+        },
+        {
+          "key": "E",
+          "text": "Sanayi faaliyetlerinin kentlerde yoğunlaşması"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0086",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2016,
+      "prompt": "Türkiye'de, özellikle büyük kentlerde, son yıllarda kentsel dönüşüm ve değişim uygulamalarına önem verilmektedir.\nTürkiye için bu uygulamaların zorunlu hâle gelmesinin temelinde, aşağıdaki sorunlardan hangisinin daha etkili olduğu söylenebilir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kentlerin hızlı ve plansız gelişmiş olmasının"
+        },
+        {
+          "key": "B",
+          "text": "Nüfus artışına paralel olarak araç sayısının artmasının"
+        },
+        {
+          "key": "C",
+          "text": "Kent içi ulaşım sorunlarının yaşanmasının"
+        },
+        {
+          "key": "D",
+          "text": "Konut ihtiyacının artmasının"
+        },
+        {
+          "key": "E",
+          "text": "Sanayi tesislerinin çevresel etkilerinin"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0087",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2017,
+      "prompt": "Türkiye'nin nüfus özellikleriyle ilgili aşağıdakilerden hangisi doğrudur?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nüfus ülke genelinde dengeli bir şekilde dağılmıştır."
+        },
+        {
+          "key": "B",
+          "text": "Çatalca-Kocaeli yöresinde nüfus yoğunluğu azdır."
+        },
+        {
+          "key": "C",
+          "text": "Taşeli Platosu, nüfus yoğunluğunun fazla olduğu alanlardan biridir."
+        },
+        {
+          "key": "D",
+          "text": "Nüfusun büyük bölümü kırsal kesimde yaşamaktadır."
+        },
+        {
+          "key": "E",
+          "text": "Karadeniz'e kıyısı olan illerde nüfusun büyük bölümü kıyı kuşağında toplanmıştır."
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0088",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2017,
+      "prompt": "Aşağıdaki alanların hangisi yaylacılık faaliyetleri bakımından daha az gelişmiştir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Orta Toros Dağları"
+        },
+        {
+          "key": "B",
+          "text": "Erzurum-Kars Platosu"
+        },
+        {
+          "key": "C",
+          "text": "Bozdağlar"
+        },
+        {
+          "key": "D",
+          "text": "Yıldız Dağları"
+        },
+        {
+          "key": "E",
+          "text": "Zigana Dağları"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0089",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2017,
+      "prompt": "Türkiye'de sanayi faaliyetlerinin yoğun olduğu yerlerde nüfus hızlı bir şekilde artmaktadır.\nBuna göre aşağıdakilerin hangisinde nüfus artışı demir-çelik sanayisine bağlı olarak gerçekleşmiştir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Soma"
+        },
+        {
+          "key": "B",
+          "text": "İskenderun"
+        },
+        {
+          "key": "C",
+          "text": "Elbistan"
+        },
+        {
+          "key": "D",
+          "text": "Tunçbilek"
+        },
+        {
+          "key": "E",
+          "text": "Seydişehir"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0090",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2018,
+      "prompt": "Türkiye, 557 sayılı Nüfus Planlaması Kanunu'yla birlikte nüfus politikalarının netleştiği bir döneme girmiştir. Bu dönemin en belirgin özelliği, o döneme kadar benimsenen nüfusun artması yönündeki görüşlerin terk edilerek \"bireyin istediği sayıda ve istediği zaman çocuk sahibi olmaları\" gerektiğiyle ilgili görüşlerin ağırlık kazanmasıdır.\nNüfus politikalarıyla ilgili önemli bir değişimin yaşandığı bu dönem, aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "1923-1965 dönemi"
+        },
+        {
+          "key": "B",
+          "text": "1965-1980 dönemi"
+        },
+        {
+          "key": "C",
+          "text": "1980-2005 dönemi"
+        },
+        {
+          "key": "D",
+          "text": "2005-2014 dönemi"
+        },
+        {
+          "key": "E",
+          "text": "2014 sonrası dönem"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0091",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2018,
+      "prompt": "Aşağıdakilerden hangisi Türkiye'de kırdan kente yapılan göçlerde doğrudan etkili olan faktörlerden biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ekonomik yetersizlikler"
+        },
+        {
+          "key": "B",
+          "text": "Kamulaştırma işlemleri"
+        },
+        {
+          "key": "C",
+          "text": "Doğal afetler"
+        },
+        {
+          "key": "D",
+          "text": "Sosyal yetersizlikler"
+        },
+        {
+          "key": "E",
+          "text": "Arazi toplulaştırması"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0092",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2018,
+      "prompt": "Türkiye'nin yazları sıcak ve bunaltıcı geçen yörelerinde sayfiye veya dinlenme amaçlı yaylacılık faaliyeti giderek önem kazanmaktadır.\nBu tür yaylalar aşağıdaki yörelerin hangisinde daha fazla bulunur?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Aydın Dağları"
+        },
+        {
+          "key": "B",
+          "text": "Orta Toroslar"
+        },
+        {
+          "key": "C",
+          "text": "Ilgaz Dağları"
+        },
+        {
+          "key": "D",
+          "text": "Güneydoğu Toroslar"
+        },
+        {
+          "key": "E",
+          "text": "Yıldız Dağları"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0093",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2019,
+      "prompt": "Türkiye'nin yıllık nüfus artış hızında önemli değişiklikler olmuştur. 1960 yılında binde 28 olan artış hızı, 2014 yılında binde 13'e gerilemiştir.\nYıllık nüfus artış hızındaki bu değişime bağlı olarak Türkiye'nin nüfus özellikleriyle ilgili,\nI. Doğum oranları azalmıştır.\nII. Nüfusun cinsiyet oranı değişmiştir.\nIII. Toplam nüfus miktarı giderek azalmıştır.\nyargılarından hangilerine ulaşılabilir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yalnız I"
+        },
+        {
+          "key": "B",
+          "text": "Yalnız II"
+        },
+        {
+          "key": "C",
+          "text": "Yalnız III"
+        },
+        {
+          "key": "D",
+          "text": "I ve II"
+        },
+        {
+          "key": "E",
+          "text": "II ve III"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0094",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2019,
+      "prompt": "Aşağıdakilerden hangisi Türkiye'de yoğun iç göç alan kentlerde yaşanan sorunlardan biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Çarpık kentleşme"
+        },
+        {
+          "key": "B",
+          "text": "Altyapı yetersizliği"
+        },
+        {
+          "key": "C",
+          "text": "Ticaret hacminin düşmesi"
+        },
+        {
+          "key": "D",
+          "text": "Ulaşım olanaklarının yetersizliği"
+        },
+        {
+          "key": "E",
+          "text": "Gürültü kirliliği"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0095",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2020,
+      "prompt": "Türkiye'nin 1927-2017 yılları arasındaki nüfusu incelendiğinde yıllık nüfus artış hızının en düşük olduğu dönemin 1940-1945 yılları arasında olduğu görülür.\nBu durum üzerinde aşağıdakilerden hangisinin etkisi daha fazla olmuştur?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Seferberlik ilan edilerek asker sayısının artırılması"
+        },
+        {
+          "key": "B",
+          "text": "Ülke genelinde ekonomik sorunların yaşanması"
+        },
+        {
+          "key": "C",
+          "text": "Ülke dışına göçlerin yaşanması"
+        },
+        {
+          "key": "D",
+          "text": "Uygulanan nüfus politikaları"
+        },
+        {
+          "key": "E",
+          "text": "Eğitim seviyesinin yükselmesi"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0096",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2020,
+      "image": "/images/cografya/cog-0096.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0097",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2020,
+      "prompt": "Türkiye'nin Karadeniz kıyı kuşağında, dağınık yerleşmeye neden olan faktörlerle ilgili aşağıdakilerden hangisi söylenemez?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Su kaynaklarının fazla ve yaygın olması"
+        },
+        {
+          "key": "B",
+          "text": "Eğim değerlerinin yüksek olması"
+        },
+        {
+          "key": "C",
+          "text": "Platoların geniş yer kaplaması"
+        },
+        {
+          "key": "D",
+          "text": "Arazinin akarsularla parçalanmış olması"
+        },
+        {
+          "key": "E",
+          "text": "Dağlık ve engebeli arazi yapısı"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0098",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2021,
+      "prompt": "Türkiye'de 1927'deki ilk nüfus sayımından günümüze kadar nüfus miktarı sürekli bir artış göstermiştir.\nBu durumun ortaya çıkmasında;\nI. eğitime büyük yatırımların yapılması,\nII. doğurganlık oranının yüksek olması,\nIII. genç nüfus miktarının fazla olması,\nIV. şehirli nüfus miktarının devamlı artması\nfaktörlerinden hangileri daha fazla etkili olmuştur?",
+      "options": [
+        {
+          "key": "A",
+          "text": "I ve II"
+        },
+        {
+          "key": "B",
+          "text": "I ve III"
+        },
+        {
+          "key": "C",
+          "text": "II ve III"
+        },
+        {
+          "key": "D",
+          "text": "II ve IV"
+        },
+        {
+          "key": "E",
+          "text": "III ve IV"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0099",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2021,
+      "prompt": "I. Nüfus artış hızının yüksek olması\nII. Nüfus dağılışının düzensiz olması\nIII. Çarpık kentleşmenin yaygın olması\nYukarıdakilerden hangileri, Türkiye'de kırsal kesimden kentlere olan göçün sonuçlarındandır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yalnız I"
+        },
+        {
+          "key": "B",
+          "text": "Yalnız II"
+        },
+        {
+          "key": "C",
+          "text": "Yalnız III"
+        },
+        {
+          "key": "D",
+          "text": "I ve II"
+        },
+        {
+          "key": "E",
+          "text": "II ve III"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0100",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2021,
+      "prompt": "Türkiye'nin bazı alanlarında kırsal yerleşmelerin dağınık dokulu olduğu görülür.\nBu yerleşmelerin oluşumunda;\nI. arazinin engebeli olması,\nII. tarım topraklarının verimsiz olması,\nIII. tarım alanlarının parçalı olması,\nIV. arazinin kıyıya yakın olması\nfaktörlerinden hangileri etkilidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "I ve II"
+        },
+        {
+          "key": "B",
+          "text": "I ve III"
+        },
+        {
+          "key": "C",
+          "text": "II ve III"
+        },
+        {
+          "key": "D",
+          "text": "II ve IV"
+        },
+        {
+          "key": "E",
+          "text": "III ve IV"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0101",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2022,
+      "prompt": "Bir yerin göç almasını etkileyen faktörler çekici faktörler olarak adlandırılır. İstanbul, Türkiye'de çekici faktörlerin çeşitliliği nedeniyle en fazla göç alan illerdendir.\nBu durumun ortaya çıkmasında aşağıdakilerden hangisinin belirleyiciliği daha fazladır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tarımsal üretim için verimli toprakların varlığı"
+        },
+        {
+          "key": "B",
+          "text": "Ulaşım biçimlerindeki çeşitliliğin fazla olması"
+        },
+        {
+          "key": "C",
+          "text": "Turizm alt yapısının nitelikli ve gelişmiş olması"
+        },
+        {
+          "key": "D",
+          "text": "İş ve istihdam fırsatlarının çeşitli ve fazla olması"
+        },
+        {
+          "key": "E",
+          "text": "Göreceli konumunun uygun olması"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0102",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2022,
+      "prompt": "Türkiye'de nüfus konusunda çeşitli dönemlerde farklı politikalar benimsenmiştir. Nüfus politikaları asıl olarak plânlı kalkınma dönemine geçişle birlikte uygulamaya konulmuş ve 1965 yılında Nüfus Plânlaması Kanunu yürürlüğe girmiştir.\nAşağıdakilerden hangisi bu Kanunla birlikte uygulanan nüfus politikalarının hedeflerinden biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kontrollü ve planlı bir nüfus artışının sağlanması amaçlanmıştır."
+        },
+        {
+          "key": "B",
+          "text": "Bebek ve çocuk ölümlerinin önlenmesi hedeflenmiştir."
+        },
+        {
+          "key": "C",
+          "text": "Anne ve çocuk sağlığına özel önem verilmiştir."
+        },
+        {
+          "key": "D",
+          "text": "Kırsal kesimde nüfus artışı desteklenmiştir."
+        },
+        {
+          "key": "E",
+          "text": "Nüfus ile ekonomik kalkınma arasında denge kurulmaya çalışılmıştır."
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0103",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2022,
+      "image": "/images/cografya/cog-0103.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0104",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2023,
+      "prompt": "I. Yurt içinde iller arasında yaşanan göçler\nII. Dönemler arasındaki nüfus artışları\nIII. Şehirsel nüfus oranının yükselmesi\nIV. Yurt dışından Türkiye'ye olan göçler\nTürkiye'de, 1927 yılında kilometrekareye 18 kişi olan nüfus yoğunluğunun 2022 yılında 111 kişiye çıkmasında yukarıdaki faktörlerden hangileri etkilidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "I ve II"
+        },
+        {
+          "key": "B",
+          "text": "I ve III"
+        },
+        {
+          "key": "C",
+          "text": "II ve III"
+        },
+        {
+          "key": "D",
+          "text": "II ve IV"
+        },
+        {
+          "key": "E",
+          "text": "III ve IV"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0105",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2023,
+      "prompt": "Türkiye'de, 1935 yılında 21 olan ortanca yaşın 2022 yılında 33,5 olması;\nI. nüfusun eğitim durumunun yükselmesi,\nII. nüfusun yaşlanması,\nIII. nüfusun evlilik yaşının yükselmesi\ndurumlarından hangileriyle doğrudan ilgilidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yalnız I"
+        },
+        {
+          "key": "B",
+          "text": "Yalnız II"
+        },
+        {
+          "key": "C",
+          "text": "Yalnız III"
+        },
+        {
+          "key": "D",
+          "text": "I ve II"
+        },
+        {
+          "key": "E",
+          "text": "II ve III"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0106",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2024,
+      "prompt": "Türkiye'de nüfusun coğrafi dağılışına ilişkin\nI. Yükseltiyle birlikte nüfus yoğunluğu da artar.\nII. Ülkenin batı yarısında nüfus yoğunluğu doğu yarısına oranla yüksektir.\nIII. Kıyı kesimleri iç kesimlere göre daha fazla nüfuslanmıştır.\nifadelerinden hangileri doğrudur?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yalnız I"
+        },
+        {
+          "key": "B",
+          "text": "Yalnız II"
+        },
+        {
+          "key": "C",
+          "text": "Yalnız III"
+        },
+        {
+          "key": "D",
+          "text": "I ve II"
+        },
+        {
+          "key": "E",
+          "text": "II ve III"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0107",
+      "topic": "Türkiye'de Nüfus ve Yerleşme",
+      "year": 2024,
+      "prompt": "Türkiye'deki geleneksel kır yerleşmelerinde kullanılan mesken yapı malzemelerinden biri de volkanik kökenli kayaçlardır.\nAşağıdaki yörelerin hangisinde yapı malzemesi olarak bu kayaçların yaygın bir şekilde kullanıldığı meskenlere daha fazla rastlanır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Taşeli Platosu"
+        },
+        {
+          "key": "B",
+          "text": "Erzurum-Kars Platosu"
+        },
+        {
+          "key": "C",
+          "text": "Tahtalı Dağları"
+        },
+        {
+          "key": "D",
+          "text": "Bozok Platosu"
+        },
+        {
+          "key": "E",
+          "text": "Ergene Havzası"
+        }
+      ],
+      "correct": "B"
     }
   ]
 }
