@@ -2301,3 +2301,144 @@ h2 {
     display: none;
   }
 }
+
+/* --- Test Soru Modu (metin tabanlı çoktan seçmeli) ------------------------ */
+
+.view-switch {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 46;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+}
+
+.view-switch button {
+  min-height: 32px;
+  padding: 6px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 800;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.view-switch button:hover {
+  color: var(--text);
+}
+
+.view-switch button.is-active {
+  background: var(--brand);
+  color: var(--brand-ink);
+}
+
+.test-stage {
+  position: absolute;
+  inset: var(--hud-h) 0 0 0;
+  z-index: 26;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px 16px 48px;
+  overflow-y: auto;
+}
+
+.test-panel {
+  display: grid;
+  gap: var(--sp-4);
+  align-content: start;
+  width: min(680px, 100%);
+  padding: var(--sp-5);
+  border-radius: var(--radius-lg);
+}
+
+.test-study-switch {
+  display: flex;
+  gap: 6px;
+}
+
+.test-study-switch button {
+  min-height: 34px;
+  padding: 6px 14px;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background: var(--fill);
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.test-study-switch button:hover:not(:disabled) {
+  border-color: var(--brand);
+  color: var(--text);
+}
+
+.test-study-switch button.is-active {
+  border-color: var(--brand);
+  background: var(--brand-soft);
+  color: var(--text);
+}
+
+.test-study-switch button:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.test-prompt {
+  white-space: pre-line;
+  line-height: 1.45;
+}
+
+.test-choice-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+}
+
+.test-choice-list .plus-token {
+  cursor: pointer;
+}
+
+.test-choice-list .plus-token span {
+  white-space: normal;
+  font-weight: 750;
+}
+
+.test-empty {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+  padding: 32px 20px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.test-empty strong {
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.test-empty button {
+  min-height: 38px;
+  padding: 8px 16px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-sm);
+  background: var(--fill);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.test-empty button:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+}

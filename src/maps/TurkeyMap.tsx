@@ -27,6 +27,13 @@ type QuizPoint = {
 
 type QuizResultStatus = "correct" | "wrong" | null;
 
+type ProvinceHighlightStatus = "correct" | "wrong" | "option";
+
+export type ProvinceHighlight = {
+  name: string;
+  status: ProvinceHighlightStatus;
+};
+
 type TurkeyMapProps = {
   countryData: FeatureCollection | null;
   provincesData: FeatureCollection | null;
@@ -44,7 +51,7 @@ type TurkeyMapProps = {
   isPlusActive: boolean;
   isPlusMapLocateActive: boolean;
   plusHideProvinces: boolean;
-  plusHighlightProvinceName: string | null;
+  plusHighlightProvinces: ProvinceHighlight[];
   plusGuessPoints: QuizPoint[];
   plusMapLocateTargetName: string;
   plusMapLocateTargetPoint: QuizPoint | null;
@@ -129,13 +136,34 @@ function quizProvinceStyle(): L.PathOptions {
   };
 }
 
-function highlightProvinceStyle(): L.PathOptions {
+function highlightProvinceStyle(status: ProvinceHighlightStatus): L.PathOptions {
+  if (status === "correct") {
+    return {
+      color: "#16a34a",
+      fillColor: "#4ade80",
+      fillOpacity: 0.5,
+      opacity: 0.95,
+      weight: 2.6,
+    };
+  }
+
+  if (status === "wrong") {
+    return {
+      color: "#e11d48",
+      fillColor: "#fb7185",
+      fillOpacity: 0.42,
+      opacity: 0.95,
+      weight: 2.4,
+    };
+  }
+
+  // Diğer şık illeri: konumu gösteren nötr vurgu.
   return {
-    color: "#facc15",
-    fillColor: "#fde047",
-    fillOpacity: 0.42,
-    opacity: 0.95,
-    weight: 2.5,
+    color: "#94a3b8",
+    fillColor: "#cbd5e1",
+    fillOpacity: 0.28,
+    opacity: 0.85,
+    weight: 1.8,
   };
 }
 
@@ -293,7 +321,7 @@ export function TurkeyMap({
   isPlusActive,
   isPlusMapLocateActive,
   plusHideProvinces,
-  plusHighlightProvinceName,
+  plusHighlightProvinces,
   plusGuessPoints,
   plusMapLocateTargetName,
   plusMapLocateTargetPoint,
@@ -479,12 +507,29 @@ export function TurkeyMap({
 
     if (isPlusActive && plusHideProvinces) {
       // İl tahmin modu: soru sırasında il sınırlarını gizle; cevaptan sonra
-      // yalnızca doğru ilin sınırını vurgula.
-      if (plusHighlightProvinceName && provincesData) {
+      // tüm şık illerini işaretle (doğru/yanlış/diğer ayrımıyla).
+      if (plusHighlightProvinces.length > 0 && provincesData) {
+        const statusByName = new Map(
+          plusHighlightProvinces.map((highlight) => [highlight.name, highlight.status]),
+        );
         const highlightLayer = L.geoJSON(provincesData, {
-          filter: (feature) => getShapeName(feature?.properties) === plusHighlightProvinceName,
-          interactive: false,
-          style: highlightProvinceStyle,
+          filter: (feature) => statusByName.has(getShapeName(feature?.properties)),
+          interactive: true,
+          onEachFeature: (feature, layer) => {
+            const name = getShapeName(feature?.properties);
+            const status = statusByName.get(name);
+
+            layer.bindTooltip(
+              status === "correct" ? `${name} · Doğru il` : name,
+              { direction: "top", opacity: 0.95, sticky: true },
+            );
+
+            if (status === "correct") {
+              layer.openTooltip();
+            }
+          },
+          style: (feature) =>
+            highlightProvinceStyle(statusByName.get(getShapeName(feature?.properties)) ?? "option"),
         }).addTo(map);
 
         provinceLayerRef.current = highlightLayer;
@@ -549,7 +594,7 @@ export function TurkeyMap({
     provincesData,
     isPlusActive,
     plusHideProvinces,
-    plusHighlightProvinceName,
+    plusHighlightProvinces,
     onProvinceSelect,
   ]);
 

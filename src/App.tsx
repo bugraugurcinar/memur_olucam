@@ -19,7 +19,7 @@ import {
 } from "./geojson/physicalFeatures";
 import { geoJsonAttribution, geoJsonSources } from "./geojson/sources";
 import { useGeoJson } from "./hooks/useGeoJson";
-import { TurkeyMap } from "./maps/TurkeyMap";
+import { TurkeyMap, type ProvinceHighlight } from "./maps/TurkeyMap";
 import { QUIZ_CORRECT_RADIUS_KM, formatDistanceKm, getDistanceKm } from "./quiz/geoUtils";
 import {
   generatePlusQuestion,
@@ -41,6 +41,8 @@ import { useQuizProgress } from "./hooks/useQuizProgress";
 import { useLeaderboard } from "./hooks/useLeaderboard";
 import { GamificationFX, buildFxItems, type FxItem } from "./components/GamificationFX";
 import { Hud } from "./components/Hud";
+import { TestPanel } from "./components/TestPanel";
+import { useTestQuestions } from "./hooks/useTestQuestions";
 import { accuracyPercent, BADGES, PLUS_TOPIC_IDS, plusTopicLabel as getPlusTopicLabel } from "./quiz/gamification";
 
 const PLUS_RECENT_QUESTION_HISTORY_LIMIT = 16;
@@ -50,6 +52,8 @@ const plusTopicChoices = plusQuestionTopicOptions.filter(
 );
 
 const WRONG_PLUS_QUESTION_STORAGE_PREFIX = "kpss-cografya-atlas:wrong-plus-questions:";
+const WRONG_TEST_QUESTION_STORAGE_PREFIX = "kpss-cografya-atlas:wrong-test-questions:";
+const TEST_QUESTIONS_URL = "/questions/tarih.json";
 const PLUS_QUESTION_SEED_SEPARATOR = "__";
 
 type PlusStudyMode = "all" | "wrong";
@@ -60,6 +64,10 @@ function plusQuestionSeedId(questionId: string) {
 
 function wrongPlusQuestionStorageKey(userId: string | null) {
   return `${WRONG_PLUS_QUESTION_STORAGE_PREFIX}${userId ?? "guest"}`;
+}
+
+function wrongTestQuestionStorageKey(userId: string | null) {
+  return `${WRONG_TEST_QUESTION_STORAGE_PREFIX}${userId ?? "guest"}`;
 }
 
 function normalizeWrongPlusQuestionIds(value: unknown) {
@@ -215,6 +223,10 @@ function App() {
   const [wrongPlusQuestionIds, setWrongPlusQuestionIds] = useState<string[]>(() =>
     readWrongPlusQuestionIds(wrongPlusQuestionStorageKey(null)),
   );
+  const [appView, setAppView] = useState<"map" | "test">("map");
+  const [wrongTestQuestionIds, setWrongTestQuestionIds] = useState<string[]>(() =>
+    readWrongPlusQuestionIds(wrongTestQuestionStorageKey(null)),
+  );
   const [plusAssignments, setPlusAssignments] = useState<Record<string, string>>({});
   const [plusSelectedTokenId, setPlusSelectedTokenId] = useState<string | null>(null);
   const [plusSelectedTargetIds, setPlusSelectedTargetIds] = useState<string[]>([]);
@@ -241,8 +253,13 @@ function App() {
   const leaderboard = useLeaderboard(auth.user);
   const { recordAnswer, reset: resetProgress } = progress;
   const { refresh: refreshLeaderboard } = leaderboard;
+  const testQuestionsState = useTestQuestions(TEST_QUESTIONS_URL);
   const wrongPlusQuestionStorageKeyValue = useMemo(
     () => wrongPlusQuestionStorageKey(auth.user?.id ?? null),
+    [auth.user?.id],
+  );
+  const wrongTestQuestionStorageKeyValue = useMemo(
+    () => wrongTestQuestionStorageKey(auth.user?.id ?? null),
     [auth.user?.id],
   );
   const [fxItems, setFxItems] = useState<FxItem[]>([]);
@@ -256,6 +273,10 @@ function App() {
     setWrongPlusQuestionIds(readWrongPlusQuestionIds(wrongPlusQuestionStorageKeyValue));
   }, [wrongPlusQuestionStorageKeyValue]);
 
+  useEffect(() => {
+    setWrongTestQuestionIds(readWrongPlusQuestionIds(wrongTestQuestionStorageKeyValue));
+  }, [wrongTestQuestionStorageKeyValue]);
+
   const persistWrongPlusQuestionIds = useCallback(
     (getNextQuestionIds: (currentQuestionIds: string[]) => string[]) => {
       setWrongPlusQuestionIds((currentQuestionIds) => {
@@ -266,6 +287,35 @@ function App() {
       });
     },
     [wrongPlusQuestionStorageKeyValue],
+  );
+
+  const persistWrongTestQuestionIds = useCallback(
+    (getNextQuestionIds: (currentQuestionIds: string[]) => string[]) => {
+      setWrongTestQuestionIds((currentQuestionIds) => {
+        const nextQuestionIds = normalizeWrongPlusQuestionIds(getNextQuestionIds(currentQuestionIds));
+
+        writeWrongPlusQuestionIds(wrongTestQuestionStorageKeyValue, nextQuestionIds);
+        return nextQuestionIds;
+      });
+    },
+    [wrongTestQuestionStorageKeyValue],
+  );
+
+  const handleTestAnswer = useCallback(
+    ({ questionId, isCorrect }: { questionId: string; isCorrect: boolean }) => {
+      persistWrongTestQuestionIds((currentQuestionIds) =>
+        isCorrect
+          ? currentQuestionIds.filter((id) => id !== questionId)
+          : [questionId, ...currentQuestionIds.filter((id) => id !== questionId)],
+      );
+
+      const events = recordAnswer({ topic: "tarih", isCorrect });
+      const builtFx = buildFxItems(events);
+      if (builtFx.length > 0) {
+        setFxItems((items) => [...items, ...builtFx]);
+      }
+    },
+    [persistWrongTestQuestionIds, recordAnswer],
   );
 
   const accountDisplayName =
@@ -835,8 +885,21 @@ function App() {
 
   const plusResultStatus = plusAnswer ? (plusAnswer.isCorrect ? "correct" : "wrong") : null;
   const isProvinceQuestion = currentPlusQuestion?.topic === "province";
-  const plusHighlightProvinceName =
-    isProvinceQuestion && plusAnswer ? currentPlusQuestion?.revealProvinceName ?? null : null;
+  const plusHighlightProvinces = useMemo<ProvinceHighlight[]>(() => {
+    if (!isProvinceQuestion || !plusAnswer || !currentPlusQuestion) {
+      return [];
+    }
+
+    return currentPlusQuestion.tokens.map((token) => ({
+      name: token.label,
+      status:
+        token.id === currentPlusQuestion.correctTokenId
+          ? "correct"
+          : token.id === plusAnswer.selectedTokenId
+            ? "wrong"
+            : "option",
+    }));
+  }, [currentPlusQuestion, isProvinceQuestion, plusAnswer]);
   const isPlusMapLocateQuestion = currentPlusQuestion?.kind === "mapLocate";
   const isPlusMapLocateActive = Boolean(isPlusMapLocateQuestion && !plusAnswer);
   const plusMapLocateTarget = isPlusMapLocateQuestion ? currentPlusQuestion?.targets[0] ?? null : null;
@@ -870,6 +933,24 @@ function App() {
         : true);
   return (
     <div className="app-shell">
+        <div className="view-switch glass" role="group" aria-label="Görünüm">
+          <button
+            className={appView === "map" ? "is-active" : ""}
+            onClick={() => setAppView("map")}
+            type="button"
+          >
+            Harita
+          </button>
+          <button
+            className={appView === "test" ? "is-active" : ""}
+            onClick={() => setAppView("test")}
+            type="button"
+          >
+            Test
+          </button>
+        </div>
+
+        {appView === "map" ? (
         <section className="map-stage">
           <TurkeyMap
             countryData={country.data}
@@ -888,7 +969,7 @@ function App() {
             isPlusActive={isPlusActive}
             isPlusMapLocateActive={isPlusMapLocateActive}
             plusHideProvinces={isPlusActive}
-            plusHighlightProvinceName={plusHighlightProvinceName}
+            plusHighlightProvinces={plusHighlightProvinces}
             plusGuessPoints={mapGuesses}
             plusMapLocateTargetName={plusMapLocateTarget?.name ?? "Soru"}
             plusMapLocateTargetPoint={plusMapLocateTarget?.point ?? null}
@@ -914,6 +995,7 @@ function App() {
             </div>
           )}
         </section>
+        ) : null}
 
         <Hud
           loading={auth.loading}
@@ -934,6 +1016,8 @@ function App() {
           accountForm={<AccountForm auth={auth} />}
         />
 
+        {appView === "map" ? (
+          <>
         <div className="quiz-dock glass">
           <div className="panel-section plus-panel">
             <div className="quiz-section-heading">
@@ -1470,6 +1554,16 @@ function App() {
             </div>
           ) : null}
         </div>
+          </>
+        ) : (
+          <TestPanel
+            questions={testQuestionsState.data}
+            isLoading={testQuestionsState.isLoading}
+            error={testQuestionsState.error}
+            wrongIds={wrongTestQuestionIds}
+            onAnswer={handleTestAnswer}
+          />
+        )}
 
         <GamificationFX items={fxItems} onDismiss={dismissFx} />
     </div>

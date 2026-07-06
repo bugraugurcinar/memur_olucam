@@ -9,14 +9,14 @@ import {
   evaluateEarnedBadges,
   formatDateKey,
   levelFromXp,
-  PLUS_TOPIC_IDS,
+  QUIZ_TOPIC_IDS,
   registerActiveDay,
   rolloverDaily,
   type DailyState,
   type GamificationEvents,
   type LevelInfo,
-  type PlusTopicId,
   type ProgressTotals,
+  type QuizTopicId,
   type SessionStats,
 } from "../quiz/gamification";
 
@@ -29,7 +29,7 @@ export type UseQuizProgressResult = {
   daily: DailyState;
   isLoading: boolean;
   error: string | null;
-  recordAnswer: (input: { topic: PlusTopicId; isCorrect: boolean }) => GamificationEvents;
+  recordAnswer: (input: { topic: QuizTopicId; isCorrect: boolean }) => GamificationEvents;
   reset: () => Promise<void>;
 };
 
@@ -61,7 +61,7 @@ function mapTotals(row: ProgressRow | null): ProgressTotals {
 
   if (row.by_topic && typeof row.by_topic === "object") {
     const source = row.by_topic as Record<string, unknown>;
-    for (const id of PLUS_TOPIC_IDS) {
+    for (const id of QUIZ_TOPIC_IDS) {
       const stat = source[id];
       if (stat && typeof stat === "object") {
         const typed = stat as { answered?: unknown; correct?: unknown };
@@ -240,7 +240,7 @@ export function useQuizProgress(user: User | null): UseQuizProgressResult {
   }, [profileUsername, userId]);
 
   const recordAnswer = useCallback(
-    (input: { topic: PlusTopicId; isCorrect: boolean }): GamificationEvents => {
+    (input: { topic: QuizTopicId; isCorrect: boolean }): GamificationEvents => {
       const todayKey = formatDateKey(new Date());
 
       // 1) Oturum — her zaman, bellekte.

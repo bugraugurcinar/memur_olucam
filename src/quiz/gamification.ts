@@ -16,6 +16,15 @@ export function plusTopicLabel(id: PlusTopicId): string {
   return plusQuestionTopicOptions.find((option) => option.id === id)?.label ?? id;
 }
 
+/**
+ * Harita dışı "Test Soru Modu" konusu. Soru+ harita konularına (mine, river,
+ * province...) dokunmadan, yalnız oyunlaştırma/istatistik katmanında yaşar; bu
+ * yüzden `plusQuestionTopicOptions`'a EKLENMEZ (harita konu seçicisinde çıkmaz).
+ */
+export type QuizTopicId = PlusTopicId | "tarih";
+
+export const QUIZ_TOPIC_IDS: QuizTopicId[] = [...PLUS_TOPIC_IDS, "tarih"];
+
 // --- Veri modeli ------------------------------------------------------------
 
 export type TopicStat = { answered: number; correct: number };
@@ -24,7 +33,7 @@ export type ProgressTotals = {
   answered: number;
   correct: number;
   bestStreak: number;
-  byTopic: Record<PlusTopicId, TopicStat>;
+  byTopic: Record<QuizTopicId, TopicStat>;
 };
 
 export type SessionStats = {
@@ -58,9 +67,9 @@ export type GamificationEvents = {
   completedQuests: DailyQuest[];
 };
 
-export function emptyByTopic(): Record<PlusTopicId, TopicStat> {
-  const result = {} as Record<PlusTopicId, TopicStat>;
-  for (const id of PLUS_TOPIC_IDS) {
+export function emptyByTopic(): Record<QuizTopicId, TopicStat> {
+  const result = {} as Record<QuizTopicId, TopicStat>;
+  for (const id of QUIZ_TOPIC_IDS) {
     result[id] = { answered: 0, correct: 0 };
   }
   return result;
@@ -333,7 +342,7 @@ export function registerActiveDay(daily: DailyState, todayKey: string): DailySta
 
 export function applyAnswerToQuests(
   quests: DailyQuest[],
-  input: { topic: PlusTopicId; isCorrect: boolean },
+  input: { topic: QuizTopicId; isCorrect: boolean },
 ): { quests: DailyQuest[]; completed: DailyQuest[] } {
   const completed: DailyQuest[] = [];
 
