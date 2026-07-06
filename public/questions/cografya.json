@@ -2957,6 +2957,2550 @@
         }
       ],
       "correct": "B"
+    },
+    {
+      "id": "cog-0108",
+      "topic": "Türkiye'de Tarım, Hayvancılık ve Ormancılık",
+      "year": 2014,
+      "prompt": "I. Tekirdağ\nII. Düzce\nIII. Eskişehir\nIV. Kırşehir\nV. Çorum\nTürkiye'de tarımı etkileyen coğrafi koşullar düşünüldüğünde, yukarıdaki illerin hangilerinde nadasa bırakılan alanların oranının daha düşük olması beklenir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "I ve II"
+        },
+        {
+          "key": "B",
+          "text": "I ve III"
+        },
+        {
+          "key": "C",
+          "text": "II ve IV"
+        },
+        {
+          "key": "D",
+          "text": "III ve V"
+        },
+        {
+          "key": "E",
+          "text": "IV ve V"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0109",
+      "topic": "Türkiye'de Tarım, Hayvancılık ve Ormancılık",
+      "year": 2014,
+      "prompt": "Türkiye'de ekonomik balıkçılık açısından Karadeniz önemli bir yer tutmaktadır. Ancak Karadeniz'de 200 metrenin altındaki derinliklerde canlı yaşamamaktadır.\nBunun nedeni aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Güneş ışınlarının 200 metreden fazla derinlikte etkili olmaması"
+        },
+        {
+          "key": "B",
+          "text": "Karadeniz'e dökülen bazı nehirlerin taşıdığı kimyasal atıklar"
+        },
+        {
+          "key": "C",
+          "text": "200 metreden fazla derinlikte bulunan kükürtlü hidrojen gazı"
+        },
+        {
+          "key": "D",
+          "text": "Karadeniz tabanındaki volkanik aktiviteler"
+        },
+        {
+          "key": "E",
+          "text": "200 metreden fazla derinlikte su sıcaklığının canlı varlığına engel olması"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0110",
+      "topic": "Türkiye'de Tarım, Hayvancılık ve Ormancılık",
+      "year": 2015,
+      "image": "/images/cografya/cog-0110.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0111",
+      "topic": "Türkiye'de Tarım, Hayvancılık ve Ormancılık",
+      "year": 2015,
+      "prompt": "I. Arıcılık faaliyetlerinin en yoğun olarak yapıldığı alan Trakya'dır.\nII. Karadeniz kıyı kuşağında küçükbaş hayvancılık yaygın bir ekonomik faaliyettir.\nIII. Erzurum-Kars Platosu'nda geleneksel olarak yapılan mera hayvancılığı yaygındır.\nTürkiye'deki hayvancılık faaliyetleriyle ilgili yukarıdaki ifadelerden hangileri doğrudur?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yalnız I"
+        },
+        {
+          "key": "B",
+          "text": "Yalnız II"
+        },
+        {
+          "key": "C",
+          "text": "Yalnız III"
+        },
+        {
+          "key": "D",
+          "text": "I ve II"
+        },
+        {
+          "key": "E",
+          "text": "II ve III"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0112",
+      "topic": "Türkiye'de Tarım, Hayvancılık ve Ormancılık",
+      "year": 2017,
+      "prompt": "• Türkiye'nin büyük bir bölümünde yetişmektedir.\n• Üretim miktarı bakımından Isparta, Antalya, Denizli ve Niğde ön plandadır.\n• İç tüketimi karşıladığı gibi önemli bir ihraç ürünüdür.\n• Sanayide ham madde olarak kullanılır.\nBazı özellikleri verilen bu tarım ürünü aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Armut"
+        },
+        {
+          "key": "B",
+          "text": "Üzüm"
+        },
+        {
+          "key": "C",
+          "text": "Elma"
+        },
+        {
+          "key": "D",
+          "text": "Gül"
+        },
+        {
+          "key": "E",
+          "text": "Kayısı"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0113",
+      "topic": "Türkiye'de Tarım, Hayvancılık ve Ormancılık",
+      "year": 2018,
+      "prompt": "Türkiye'de iklim ve bitki örtüsü çeşitliliği aşağıdaki ekonomik faaliyetlerden hangisinin gelişmesine daha fazla katkı sağlamıştır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Arıcılık"
+        },
+        {
+          "key": "B",
+          "text": "İpek böcekçiliği"
+        },
+        {
+          "key": "C",
+          "text": "Besi hayvancılığı"
+        },
+        {
+          "key": "D",
+          "text": "Kümes hayvancılığı"
+        },
+        {
+          "key": "E",
+          "text": "Balıkçılık"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0114",
+      "topic": "Türkiye'de Tarım, Hayvancılık ve Ormancılık",
+      "year": 2018,
+      "prompt": "Aşağıdakilerden hangisi Türkiye'de zeytin tarımının son yıllarda daha fazla gelişme göstermesinin nedenlerinden biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Zeytin üretim alanlarının genişlemesi"
+        },
+        {
+          "key": "B",
+          "text": "Zeytin bahçelerinin bakım koşullarının iyileştirilmesi"
+        },
+        {
+          "key": "C",
+          "text": "Zeytin ağacı sayısındaki artış"
+        },
+        {
+          "key": "D",
+          "text": "İç ve dış talepteki artış"
+        },
+        {
+          "key": "E",
+          "text": "Sulama olanaklarının gelişmesi"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0115",
+      "topic": "Türkiye'de Tarım, Hayvancılık ve Ormancılık",
+      "year": 2018,
+      "prompt": "Türkiye'de aşağıdaki göllerden hangisi su ürünleri üretimi bakımından daha önemli bir paya sahiptir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Van"
+        },
+        {
+          "key": "B",
+          "text": "Çıldır"
+        },
+        {
+          "key": "C",
+          "text": "Eğirdir"
+        },
+        {
+          "key": "D",
+          "text": "Abant"
+        },
+        {
+          "key": "E",
+          "text": "Sapanca"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0116",
+      "topic": "Türkiye'de Tarım, Hayvancılık ve Ormancılık",
+      "year": 2019,
+      "image": "/images/cografya/cog-0116.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0117",
+      "topic": "Türkiye'de Tarım, Hayvancılık ve Ormancılık",
+      "year": 2019,
+      "image": "/images/cografya/cog-0117.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0118",
+      "topic": "Türkiye'de Tarım, Hayvancılık ve Ormancılık",
+      "year": 2019,
+      "prompt": "Yetişme şartları uygun olmasına karşın zeytin üretimi Akdeniz kıyı kuşağında Batı Anadolu'ya göre daha azdır.\nBu durumun ortaya çıkmasında aşağıdakilerden hangisi etkilidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Zeytinyağı fabrikalarının yetersiz olması"
+        },
+        {
+          "key": "B",
+          "text": "Pazarlama olanaklarının yetersiz olması"
+        },
+        {
+          "key": "C",
+          "text": "Fazla gelir getiren ürünlerin tercih ediliyor olması"
+        },
+        {
+          "key": "D",
+          "text": "Kış sıcaklık koşullarının yüksek olması"
+        },
+        {
+          "key": "E",
+          "text": "Mevsimlik iş gücü ihtiyacının fazla olması"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0119",
+      "topic": "Türkiye'de Tarım, Hayvancılık ve Ormancılık",
+      "year": 2020,
+      "prompt": "Türkiye'de su ürünleri avcılığı ve yetiştiriciliğiyle ilgili aşağıdakilerden hangisi söylenemez?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Su ürünleri üretimi içerisinde balık en fazla paya sahiptir."
+        },
+        {
+          "key": "B",
+          "text": "Dalyan balıkçılığı açık ve derin denizlerde yapılmaktadır."
+        },
+        {
+          "key": "C",
+          "text": "Balık avcılığı çoğunlukla Türk karasularında yapılmaktadır."
+        },
+        {
+          "key": "D",
+          "text": "Denizlerdeki kirlilik balıkçılığı olumsuz etkilemektedir."
+        },
+        {
+          "key": "E",
+          "text": "Su ürünleri tüketiminin çoğunluğu ülke içinde gerçekleşmektedir."
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0120",
+      "topic": "Türkiye'de Tarım, Hayvancılık ve Ormancılık",
+      "year": 2020,
+      "prompt": "Türkiye'de çay tarımı ekonomik anlamda Doğu Karadeniz kıyı kuşağında yapılabilmektedir.\nBu durum;\nI. iklim koşulları,\nII. toprak özellikleri,\nIII. su kaynakları\nfaktörlerinden hangileriyle doğrudan ilişkilidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yalnız I"
+        },
+        {
+          "key": "B",
+          "text": "Yalnız II"
+        },
+        {
+          "key": "C",
+          "text": "Yalnız III"
+        },
+        {
+          "key": "D",
+          "text": "I ve II"
+        },
+        {
+          "key": "E",
+          "text": "II ve III"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0121",
+      "topic": "Türkiye'de Tarım, Hayvancılık ve Ormancılık",
+      "year": 2020,
+      "prompt": "Türkiye'de pamuk üretiminin coğrafi dağılışı üzerinde aşağıdakilerden hangisinin etkisi daha fazladır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Sıcaklık"
+        },
+        {
+          "key": "B",
+          "text": "Nüfus"
+        },
+        {
+          "key": "C",
+          "text": "Ulaştırma"
+        },
+        {
+          "key": "D",
+          "text": "Yükselti"
+        },
+        {
+          "key": "E",
+          "text": "Sanayi"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0122",
+      "topic": "Türkiye'de Tarım, Hayvancılık ve Ormancılık",
+      "year": 2020,
+      "image": "/images/cografya/cog-0122.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0123",
+      "topic": "Türkiye'de Tarım, Hayvancılık ve Ormancılık",
+      "year": 2021,
+      "prompt": "Türkiye'de tıbbi ve aromatik bitkilerin yetiştiriciliği geçmişten bu yana yapılmakla birlikte son yıllarda bu konuda çeşitli gelişmeler yaşanmıştır. Bunlardan biri de gül yağı elde etmede kullanılan yağ gülü yetiştiriciliğidir.\nAşağıdaki illerin hangisinde ekonomik anlamda bu tür gül üretimi yapılmaz?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Isparta"
+        },
+        {
+          "key": "B",
+          "text": "Denizli"
+        },
+        {
+          "key": "C",
+          "text": "Burdur"
+        },
+        {
+          "key": "D",
+          "text": "Afyonkarahisar"
+        },
+        {
+          "key": "E",
+          "text": "Bartın"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0124",
+      "topic": "Türkiye'de Tarım, Hayvancılık ve Ormancılık",
+      "year": 2022,
+      "prompt": "Günümüzde örtü altı tarım yöntemi aşağıdaki illerin hangisinde diğerlerine göre daha dar bir alanda yapılmaktadır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Antalya"
+        },
+        {
+          "key": "B",
+          "text": "Mersin"
+        },
+        {
+          "key": "C",
+          "text": "Adana"
+        },
+        {
+          "key": "D",
+          "text": "İzmir"
+        },
+        {
+          "key": "E",
+          "text": "Denizli"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0125",
+      "topic": "Türkiye'de Tarım, Hayvancılık ve Ormancılık",
+      "year": 2022,
+      "prompt": "I. Tarımda teknoloji kullanımının giderek yaygınlaşması\nII. İklim ve yeryüzü şekillerindeki farklılıkların tarımsal çeşitliliği sağlaması\nIII. Tarım alanlarının miras yoluyla küçük parçalara dönüştürülmesi\nIV. Bazı bölgelerde emek yoğun tarımın egemen olması\nYukarıdakilerden hangileri Türkiye'de tarım sektörünün güçlü yanlarını oluşturan özelliklerdendir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "I ve II"
+        },
+        {
+          "key": "B",
+          "text": "I ve III"
+        },
+        {
+          "key": "C",
+          "text": "II ve III"
+        },
+        {
+          "key": "D",
+          "text": "II ve IV"
+        },
+        {
+          "key": "E",
+          "text": "III ve IV"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0126",
+      "topic": "Türkiye'de Tarım, Hayvancılık ve Ormancılık",
+      "year": 2023,
+      "prompt": "Türkiye'de küçükbaş hayvan sayısı, büyükbaş hayvan sayısından daha fazladır.\nBu durumun ortaya çıkmasında aşağıdakilerden hangisinin daha fazla etkili olduğu söylenebilir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Orman alanlarının belirli bölgelerde toplanması"
+        },
+        {
+          "key": "B",
+          "text": "Su kaynaklarının yetersiz oluşu"
+        },
+        {
+          "key": "C",
+          "text": "Step formasyonunun ülkede geniş alan kaplaması"
+        },
+        {
+          "key": "D",
+          "text": "Tarım alanlarında verimin azalması"
+        },
+        {
+          "key": "E",
+          "text": "Ortalama yükseltinin batıdan doğuya doğru artması"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0127",
+      "topic": "Türkiye'de Tarım, Hayvancılık ve Ormancılık",
+      "year": 2023,
+      "image": "/images/cografya/cog-0127.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0128",
+      "topic": "Türkiye'de Tarım, Hayvancılık ve Ormancılık",
+      "year": 2023,
+      "prompt": "Türkiye'deki ovalarda ana ekonomik faaliyet tarımsal etkinliklerdir. Bununla birlikte büyük şehirlere yakın olan bazı ovalarda ulaşım ve sanayi gibi diğer faaliyetler de önemli oranda yapılmaktadır.\nAşağıdaki ovalardan hangisinin belirtilen tarım dışı faaliyetlerde yoğun bir kullanımı söz konusudur?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tercan"
+        },
+        {
+          "key": "B",
+          "text": "Pasinler"
+        },
+        {
+          "key": "C",
+          "text": "Tefenni"
+        },
+        {
+          "key": "D",
+          "text": "Pınarbaşı"
+        },
+        {
+          "key": "E",
+          "text": "İnegöl"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0129",
+      "topic": "Türkiye'de Tarım, Hayvancılık ve Ormancılık",
+      "year": 2024,
+      "prompt": "Orman yangınlarının oluşmasında çeşitli faktörler etkili olmakla birlikte iklim bu konuda önemli bir rol oynar. Yaz mevsiminde sıcaklık değerlerinin yüksek ve bağıl nem oranının düşük olması nedeniyle bazı alanlar orman yangınları açısından daha büyük risk altındadır.\nBuna göre aşağıdaki dağlık alanların hangisinde bulunan ormanlar, yangın açısından daha fazla risk taşır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kaçkar Dağları"
+        },
+        {
+          "key": "B",
+          "text": "Küre Dağları"
+        },
+        {
+          "key": "C",
+          "text": "Nur Dağları"
+        },
+        {
+          "key": "D",
+          "text": "Canik Dağları"
+        },
+        {
+          "key": "E",
+          "text": "Yıldız Dağları"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0130",
+      "topic": "Türkiye'de Tarım, Hayvancılık ve Ormancılık",
+      "year": 2024,
+      "image": "/images/cografya/cog-0130.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0131",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2014,
+      "prompt": "Yer kabuğunun zayıf noktalarından çıkan sıcak su ve buhar, jeotermal enerji olarak ısıtma ve elektrik üretiminde kullanılır.\nTürkiye'de bu enerji kaynağı açısından elektrik üretimi potansiyeli en yüksek olan bölge aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ege Bölgesi"
+        },
+        {
+          "key": "B",
+          "text": "İç Anadolu Bölgesi"
+        },
+        {
+          "key": "C",
+          "text": "Karadeniz Bölgesi"
+        },
+        {
+          "key": "D",
+          "text": "Akdeniz Bölgesi"
+        },
+        {
+          "key": "E",
+          "text": "Doğu Anadolu Bölgesi"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0132",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2014,
+      "prompt": "Üniversitede arkadaş olan dört öğrenci, yaşadıkları kentler ve bu kentlerin ekonomik faaliyetleri hakkında aşağıdaki bilgileri vermişlerdir.\nAyşen: Yaşadığım kent Türkiye'nin en büyük maden kömürü havzasında yer alır.\nŞahin: Akdeniz Bölgesi'nde bir kentte yaşıyorum. Kentteki en önemli sanayi kolu demir-çelik sektörüdür.\nAyhan: Benim yaşadığım kent kıyıdadır ve burada ham petrolü işleyen bir rafineri bulunmaktadır.\nBurak: Yaşadığım kentte Türkiye'nin en küçük petrol rafinerisi bulunmaktadır. Rafineride işlenen petrol yöreden elde edilmektedir.\nBuna göre, aşağıdakilerden hangisi bu öğrencilerin yaşadıkları kentlerden biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Zonguldak"
+        },
+        {
+          "key": "B",
+          "text": "İskenderun"
+        },
+        {
+          "key": "C",
+          "text": "Aliağa"
+        },
+        {
+          "key": "D",
+          "text": "Batman"
+        },
+        {
+          "key": "E",
+          "text": "Kırıkkale"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0133",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2014,
+      "prompt": "Sanayinin gelişmesinde ham maddeye yakınlık önemlidir.\nAşağıdakilerin hangisinde böyle bir ilişki bulunmamaktadır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Afyonkarahisar - Mermer sanayi"
+        },
+        {
+          "key": "B",
+          "text": "Kars - Süt mamulleri sanayi"
+        },
+        {
+          "key": "C",
+          "text": "Adana - Pamuklu dokuma sanayi"
+        },
+        {
+          "key": "D",
+          "text": "Ankara - Mobilya sanayi"
+        },
+        {
+          "key": "E",
+          "text": "Bilecik - Seramik sanayi"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0134",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2015,
+      "image": "/images/cografya/cog-0134.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0135",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2015,
+      "prompt": "Seyitömer, Çayırhan ve Çatalağzı santrallerinin kuruluş yerleri dikkate alındığında aşağıdakilerden hangisinin ortak olduğu görülür?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Büyük akarsular üzerinde kurulmuşlardır."
+        },
+        {
+          "key": "B",
+          "text": "Ham madde kaynağı olan kömür alanlarına yakındırlar."
+        },
+        {
+          "key": "C",
+          "text": "Önemli kara ve demir yolları üzerinde bulunmaktadırlar."
+        },
+        {
+          "key": "D",
+          "text": "Kullandıkları ham maddeyi ithalat yoluyla karşılarlar."
+        },
+        {
+          "key": "E",
+          "text": "Türkiye'nin büyük endüstri bölgeleri içinde kurulmuşlardır."
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0136",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2015,
+      "prompt": "Türkiye'de sanayi faaliyetleri bakımından ön planda olan kentler aynı zamanda nüfus yoğunluğunun fazla olduğu yerlerdir.\nBuna göre aşağıdaki kentlerin hangisinde nüfus yoğunluğu fazla olmasına karşın sanayi faaliyetleri diğerleri kadar gelişmemiştir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Eskişehir"
+        },
+        {
+          "key": "B",
+          "text": "Gaziantep"
+        },
+        {
+          "key": "C",
+          "text": "Yalova"
+        },
+        {
+          "key": "D",
+          "text": "Kayseri"
+        },
+        {
+          "key": "E",
+          "text": "İzmir"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0137",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2015,
+      "prompt": "Cumhuriyetin ilk yıllarında Türkiye'nin ekonomik yapısıyla ilgili olarak aşağıdakilerden hangisi yanlıştır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Çalışan nüfusun büyük kesimi tarım sektöründe istihdam edilmektedir."
+        },
+        {
+          "key": "B",
+          "text": "Tarımda makine kullanımı ve teknik düzey yeterli değildir."
+        },
+        {
+          "key": "C",
+          "text": "İhracat içinde sanayi ürünlerinin payı diğerlerinden daha fazladır."
+        },
+        {
+          "key": "D",
+          "text": "Tarım arazileri içinde en büyük pay tahıl tarımına ayrılmıştır."
+        },
+        {
+          "key": "E",
+          "text": "Sanayileşme hızı oldukça yüksektir."
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0138",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2016,
+      "image": "/images/cografya/cog-0138.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0139",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2016,
+      "image": "/images/cografya/cog-0139.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0140",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2016,
+      "prompt": "Türkiye'de şeker fabrikaları, genellikle şeker pancarı tarımının yoğun olarak yapıldığı yerlere kurulmuştur.\nBuna göre, aşağıdaki illerin hangisinde şeker fabrikası yoktur?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Uşak"
+        },
+        {
+          "key": "B",
+          "text": "Kayseri"
+        },
+        {
+          "key": "C",
+          "text": "Kars"
+        },
+        {
+          "key": "D",
+          "text": "Kırklareli"
+        },
+        {
+          "key": "E",
+          "text": "Artvin"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0141",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2016,
+      "prompt": "Türkiye'de tarım ürünlerinin çeşitliliği ve üretimin fazla olması tarıma dayalı sanayinin gelişmesini sağlamıştır.\nAşağıdakilerden hangisi bu gelişmeyi sağlayan tarım ürünlerinden biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Şeker pancarı"
+        },
+        {
+          "key": "B",
+          "text": "Pamuk"
+        },
+        {
+          "key": "C",
+          "text": "Tütün"
+        },
+        {
+          "key": "D",
+          "text": "Çay"
+        },
+        {
+          "key": "E",
+          "text": "Kivi"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0142",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2017,
+      "prompt": "Aşağıdakilerden hangisi Türkiye'de varlığı belirlenen altın madeni yataklarından biridir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kastamonu - Küre"
+        },
+        {
+          "key": "B",
+          "text": "Artvin - Cerattepe"
+        },
+        {
+          "key": "C",
+          "text": "Konya - Seydişehir"
+        },
+        {
+          "key": "D",
+          "text": "Elâzığ - Maden"
+        },
+        {
+          "key": "E",
+          "text": "Kütahya - Emet"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0143",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2017,
+      "prompt": "Aşağıdaki enerji kaynaklarından hangisinin, Türkiye'nin enerji üretimindeki payı diğerlerine göre daha fazladır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Biyokütle"
+        },
+        {
+          "key": "B",
+          "text": "Hidrolik"
+        },
+        {
+          "key": "C",
+          "text": "Kömür"
+        },
+        {
+          "key": "D",
+          "text": "Petrol"
+        },
+        {
+          "key": "E",
+          "text": "Jeotermal"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0144",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2017,
+      "prompt": "Aşağıdaki illerin coğrafi özellikleri dikkate alındığında hangisinde jeotermal enerji potansiyeli daha düşüktür?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Denizli"
+        },
+        {
+          "key": "B",
+          "text": "Çanakkale"
+        },
+        {
+          "key": "C",
+          "text": "Aydın"
+        },
+        {
+          "key": "D",
+          "text": "Antalya"
+        },
+        {
+          "key": "E",
+          "text": "Manisa"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0145",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2017,
+      "prompt": "I. Ulaşım olanaklarının elverişli olması\nII. Nitelikli iş gücünün fazla olması\nIII. Enerji üretiminin fazla olması\nTürkiye'nin batı kesiminde sanayinin daha fazla gelişmiş olması, yukarıdakilerden hangileriyle ilişkilidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yalnız I"
+        },
+        {
+          "key": "B",
+          "text": "Yalnız II"
+        },
+        {
+          "key": "C",
+          "text": "Yalnız III"
+        },
+        {
+          "key": "D",
+          "text": "I ve II"
+        },
+        {
+          "key": "E",
+          "text": "II ve III"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0146",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2018,
+      "prompt": "Aşağıdaki illerin hangisinde sanayi diğerlerine göre daha az gelişmiştir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "İstanbul"
+        },
+        {
+          "key": "B",
+          "text": "İzmir"
+        },
+        {
+          "key": "C",
+          "text": "Bursa"
+        },
+        {
+          "key": "D",
+          "text": "Kocaeli"
+        },
+        {
+          "key": "E",
+          "text": "Samsun"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0147",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2018,
+      "prompt": "Türkiye'de aşağıdaki fosil enerji kaynaklarından hangisinin bilinen toplam rezervi diğerlerinden daha azdır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Petrol"
+        },
+        {
+          "key": "B",
+          "text": "Doğal gaz"
+        },
+        {
+          "key": "C",
+          "text": "Asfaltit"
+        },
+        {
+          "key": "D",
+          "text": "Linyit"
+        },
+        {
+          "key": "E",
+          "text": "Taş kömürü"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0148",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2019,
+      "image": "/images/cografya/cog-0148.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0149",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2019,
+      "prompt": "• Tungsten olarak da bilinir.\n• Özellikle uzay ve savaş endüstrisinde kullanılmaktadır.\n• Metalinden özel sanayi çeliği üretilmektedir.\n• Bursa-Uludağ'da rezervleri bulunmaktadır.\nBazı özellikleri verilen bu maden aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Molibden"
+        },
+        {
+          "key": "B",
+          "text": "Manganez"
+        },
+        {
+          "key": "C",
+          "text": "Nikel"
+        },
+        {
+          "key": "D",
+          "text": "Volfram"
+        },
+        {
+          "key": "E",
+          "text": "Çinko"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0150",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2019,
+      "prompt": "Aşağıdakilerden hangisi Türkiye'de ham petrol nakil hatlarından biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kerkük - Yumurtalık"
+        },
+        {
+          "key": "B",
+          "text": "Bakü - Tiflis - Ceyhan"
+        },
+        {
+          "key": "C",
+          "text": "Batman - Dörtyol"
+        },
+        {
+          "key": "D",
+          "text": "Bakü - Tiflis - Erzurum"
+        },
+        {
+          "key": "E",
+          "text": "Ceyhan - Kırıkkale"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0151",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2020,
+      "image": "/images/cografya/cog-0151.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0152",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2020,
+      "prompt": "Aşağıdaki yerleşmelerden hangisi Türkiye'nin önemli taş kömürü yataklarının bulunduğu alanda yer alır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Soma"
+        },
+        {
+          "key": "B",
+          "text": "Elbistan"
+        },
+        {
+          "key": "C",
+          "text": "Kozlu"
+        },
+        {
+          "key": "D",
+          "text": "Tunçbilek"
+        },
+        {
+          "key": "E",
+          "text": "Yatağan"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0153",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2021,
+      "prompt": "Türkiye'de kullanılan önemli enerji kaynaklarından biri de linyittir. 1990'lı yıllarda 50-60 milyon ton civarında olan yıllık üretim miktarı; 2000 yılı ile birlikte 65 milyon tona yükselmiş, 2004 yılında ise 44 milyon tona düşmüştür.\n2004 yılında linyit üretimindeki bu azalmanın nedeni aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Linyit çıkarım maliyetlerinin yükselmesi"
+        },
+        {
+          "key": "B",
+          "text": "Taş kömürü üretiminin artması"
+        },
+        {
+          "key": "C",
+          "text": "Linyit arama faaliyetlerinin gerilemesi"
+        },
+        {
+          "key": "D",
+          "text": "Termik santrallerde doğal gazın tercih edilmesi"
+        },
+        {
+          "key": "E",
+          "text": "Rüzgâr santrallerinin yaygınlaşması"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0154",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2021,
+      "image": "/images/cografya/cog-0154.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0155",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2021,
+      "prompt": "Türkiye'de bazı illerde mobilya sanayisi gelişmiştir. Bu illerde üretilen ürünler, yurt içi ihtiyacını karşılamanın yanı sıra yurt dışına da ihraç edilmektedir.\nAşağıdakilerden hangisi bu illerden biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Afyonkarahisar"
+        },
+        {
+          "key": "B",
+          "text": "Ankara"
+        },
+        {
+          "key": "C",
+          "text": "Bursa"
+        },
+        {
+          "key": "D",
+          "text": "Kayseri"
+        },
+        {
+          "key": "E",
+          "text": "İzmir"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0156",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2022,
+      "prompt": "Sanayinin kuruluş yeri seçiminde ham maddeye yakın olmak önemli unsurlardan biridir. Ancak Türkiye'de ham maddeye uzak alanlarda, bazı sanayi kollarının geliştiği dikkati çeker. Bunlardan biri de tekstil sanayisidir. Nitekim, kimi illerde pamuk yetiştirilmediği hâlde pamuklu dokuma sanayisi gelişmiştir.\nAşağıdaki illerin hangisinde ticari olarak bu tarım ürünü yetiştirilmediği hâlde dokuma sanayisi bulunmaktadır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Gaziantep"
+        },
+        {
+          "key": "B",
+          "text": "Kayseri"
+        },
+        {
+          "key": "C",
+          "text": "Antalya"
+        },
+        {
+          "key": "D",
+          "text": "Denizli"
+        },
+        {
+          "key": "E",
+          "text": "Aydın"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0157",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2022,
+      "image": "/images/cografya/cog-0157.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0158",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2022,
+      "prompt": "I. İzmir - Efemçukuru\nII. Erzurum - Aziziye\nIII. Uşak - Kışladağ\nIV. Antalya - Kumluca\nYukarıdaki alanların hangilerinde altın madeni çıkarılmaktadır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "I ve II"
+        },
+        {
+          "key": "B",
+          "text": "I ve III"
+        },
+        {
+          "key": "C",
+          "text": "II ve III"
+        },
+        {
+          "key": "D",
+          "text": "II ve IV"
+        },
+        {
+          "key": "E",
+          "text": "III ve IV"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0159",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2023,
+      "image": "/images/cografya/cog-0159.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0160",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2023,
+      "image": "/images/cografya/cog-0160.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0161",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2024,
+      "prompt": "I. Çorum\nII. Manisa\nIII. Muğla\nIV. Giresun\nYukarıdakilerden hangileri taşa toprağa dayalı sanayi faaliyetine dönük mevsimlik göç alan illerdendir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "I ve II"
+        },
+        {
+          "key": "B",
+          "text": "I ve III"
+        },
+        {
+          "key": "C",
+          "text": "II ve III"
+        },
+        {
+          "key": "D",
+          "text": "II ve IV"
+        },
+        {
+          "key": "E",
+          "text": "III ve IV"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0162",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2024,
+      "prompt": "Aşağıdakilerden hangisi Türkiye'deki linyit kömürü yataklarına sahip alanlardan biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Soma"
+        },
+        {
+          "key": "B",
+          "text": "Amasra"
+        },
+        {
+          "key": "C",
+          "text": "Seyitömer"
+        },
+        {
+          "key": "D",
+          "text": "Tavşanlı"
+        },
+        {
+          "key": "E",
+          "text": "Elbistan"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0163",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2024,
+      "prompt": "I. Sivas - Erzincan - Kop Dağı\nII. Karaman - Konya - Tuz Gölü\nIII. Fethiye - Köyceğiz - Denizli\nIV. Çankırı - Kastamonu - Ilgaz Dağı\nYukarıdakilerin hangilerinde krom yatakları bulunmaktadır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "I ve II"
+        },
+        {
+          "key": "B",
+          "text": "I ve III"
+        },
+        {
+          "key": "C",
+          "text": "II ve III"
+        },
+        {
+          "key": "D",
+          "text": "II ve IV"
+        },
+        {
+          "key": "E",
+          "text": "III ve IV"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0164",
+      "topic": "Türkiye'de Madencilik, Enerji Kaynakları ve Endüstri",
+      "year": 2024,
+      "prompt": "İskenderun'da demir-çelik fabrikasının, Samsun'da bakır işleme tesislerinin ve Aliağa'da petrol rafinerisinin bulunması bu şehirlerin hangi özelliğiyle açıklanabilir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Maden çeşitliliğinin fazla olmasıyla"
+        },
+        {
+          "key": "B",
+          "text": "Enerjinin ucuz olmasıyla"
+        },
+        {
+          "key": "C",
+          "text": "Ulaşımının elverişli olmasıyla"
+        },
+        {
+          "key": "D",
+          "text": "İklim şartlarının elverişli olmasıyla"
+        },
+        {
+          "key": "E",
+          "text": "Pazar olanaklarının fazla olmasıyla"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0165",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2014,
+      "prompt": "Hasan: \"Türkiye'de özellikle Cumhuriyet'in ilk yıllarında ulaşım politikalarında demir yolu yapımına öncelik verilmiştir.\"\nSerap: \"Hasan seninle aynı görüşte değilim. Özellikle Cumhuriyet'in ilk yıllarında kara yolu ulaşımına ağırlık veren bir politika izlenmiştir ve bu durum hâlen devam etmektedir.\"\nKerem: \"Türkiye'de son yıllarda hava yolu ulaşımında önemli gelişmeler olmaktadır. Örneğin daha önce havaalanı olmayan pek çok kentte havaalanları inşa edilmiş ve hava yolunu kullanan yolcu sayısı artmıştır.\"\nLeyla: \"Türkiye'de son yıllarda demir yollarındaki gelişmeler de dikkat çekicidir. Yeni yapılan hatlarla birlikte demir yolu ana hat uzunluğu 25.000 km'yi geçmiştir.\"\nTürkiye'de ulaşım sistemlerinin gelişimiyle ilgili konuşan bu dört arkadaştan hangilerinin verdiği bilgiler doğrudur?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Hasan ve Kerem"
+        },
+        {
+          "key": "B",
+          "text": "Hasan ve Leyla"
+        },
+        {
+          "key": "C",
+          "text": "Serap ve Kerem"
+        },
+        {
+          "key": "D",
+          "text": "Serap ve Leyla"
+        },
+        {
+          "key": "E",
+          "text": "Kerem ve Leyla"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0166",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2014,
+      "prompt": "Ülkelerin coğrafi özellikleri, ulaşım politikaları ve bu politikalara bağlı olarak oluşturulan ulaşım altyapıları, ulaşım sistemlerinin gelişiminde belirleyici rol oynar.\nBuna göre, Türkiye'deki ulaşım sistemlerine bağlı olarak yurt içi ve yurt dışı yük taşımacılığında egemen olan ulaşım çeşidi aşağıdakilerin hangisinde birlikte verilmiştir? (Yurt içi – Yurt dışı)",
+      "options": [
+        {
+          "key": "A",
+          "text": "Demir yolu – Kara yolu"
+        },
+        {
+          "key": "B",
+          "text": "Kara yolu – Kara yolu"
+        },
+        {
+          "key": "C",
+          "text": "Demir yolu – Deniz yolu"
+        },
+        {
+          "key": "D",
+          "text": "Kara yolu – Deniz yolu"
+        },
+        {
+          "key": "E",
+          "text": "Kara yolu – Hava yolu"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0167",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2014,
+      "prompt": "Türkiye'nin 2023 Turizm Stratejisi'nde 7 tematik turizm gelişim koridoru belirlenmiştir. Bunlardan \"kış koridoru\" Erzurum, Erzincan, Kars ve Ardahan illerini kapsamaktadır.\nBelirtilen bölgenin kış koridoru olarak belirlenmesinde;\nI. kış devresinin uzun olması,\nII. kış mevsiminde ortalama sıcaklıkların düşük olması,\nIII. kış mevsiminde donan çok sayıda göl bulunması\nfaktörlerinden hangileri etkilidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yalnız I"
+        },
+        {
+          "key": "B",
+          "text": "Yalnız III"
+        },
+        {
+          "key": "C",
+          "text": "I ve II"
+        },
+        {
+          "key": "D",
+          "text": "I ve III"
+        },
+        {
+          "key": "E",
+          "text": "II ve III"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0168",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2015,
+      "prompt": "Karadeniz ve Akdeniz kıyı kesimlerinde hızlı tren hatlarının yapımında karşılaşılacak en önemli sorun aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Fay hatlarının demir yolu hattına zarar vermesi"
+        },
+        {
+          "key": "B",
+          "text": "Dağlık alanlarda hattın yapım maliyetinin artması"
+        },
+        {
+          "key": "C",
+          "text": "Kıyıda yaşayan nüfusun yeterli olmaması"
+        },
+        {
+          "key": "D",
+          "text": "Elde edilecek gelirin, yapım maliyetinin altında kalması"
+        },
+        {
+          "key": "E",
+          "text": "Turizm faaliyetlerinin kısıtlayıcı etkisinin olması"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0169",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2015,
+      "image": "/images/cografya/cog-0169.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0170",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2016,
+      "prompt": "Dünyada son yıllarda gelişmekte olan kruvaziyer turizmi, Türkiye'de de gelişmektedir. Kruvaziyer turizminde büyük yolcu gemilerinin yanaşabileceği uygun limanların varlığı önemli olduğu gibi geminin yanaştığı liman ve çevresindeki turistik çekicilikler de önem taşımaktadır.\nTürkiye'de, bu turizm etkinliğinin en fazla gelişme gösterdiği iki liman aşağıdakilerin hangisinde verilmiştir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "İstanbul ve Kuşadası"
+        },
+        {
+          "key": "B",
+          "text": "İzmir ve Mersin"
+        },
+        {
+          "key": "C",
+          "text": "Antalya ve Mersin"
+        },
+        {
+          "key": "D",
+          "text": "İzmir ve Antalya"
+        },
+        {
+          "key": "E",
+          "text": "Kuşadası ve Antalya"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0171",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2016,
+      "prompt": "Avantajlı coğrafi konumu ile bir enerji koridoru hâline gelen Türkiye, petrol ve doğal gaz taşınan birçok boru hattına sahip olmuştur. Enerjiye olan talebin hızla arttığı dünyada Türkiye'nin bu avantajı ülke açısından büyük önem taşımaktadır.\nBu durumun oluşmasında, petrol ve doğal gazın temin edildiği ülkeler arasında aşağıdakilerden hangisi yoktur?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Irak"
+        },
+        {
+          "key": "B",
+          "text": "İran"
+        },
+        {
+          "key": "C",
+          "text": "Rusya"
+        },
+        {
+          "key": "D",
+          "text": "Gürcistan"
+        },
+        {
+          "key": "E",
+          "text": "Azerbaycan"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0172",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2016,
+      "prompt": "Türkiye'de dış ticarete konu olan ürünler dikkate alındığında aşağıdakilerden hangisinin ihracat gelirleri içindeki payı daha azdır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Demir-çelik"
+        },
+        {
+          "key": "B",
+          "text": "Motorlu kara taşıtları"
+        },
+        {
+          "key": "C",
+          "text": "Kazan, makine ve cihazlar"
+        },
+        {
+          "key": "D",
+          "text": "Pamuk ve pamuk ipliği"
+        },
+        {
+          "key": "E",
+          "text": "Elektronik makine ve cihazlar"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0173",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2017,
+      "prompt": "Hazar Havzası, Rusya, Ortadoğu, Güney Akdeniz ülkeleri ve diğer uluslararası kaynaklardan sağlanan doğal gazın Türkiye üzerinden Avrupa pazarlarına taşınması amacıyla 2007 yılında açılan ve 211 km'si Türkiye topraklarından geçen proje aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Bakü - Tiflis - Ceyhan Boru Hattı"
+        },
+        {
+          "key": "B",
+          "text": "Mavi Akım Boru Hattı"
+        },
+        {
+          "key": "C",
+          "text": "Türkiye - Yunanistan - İtalya Boru Hattı"
+        },
+        {
+          "key": "D",
+          "text": "Trans Anadolu Doğalgaz Boru Hattı"
+        },
+        {
+          "key": "E",
+          "text": "Trans Hazar Boru Hattı"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0174",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2017,
+      "prompt": "Türkiye'nin çoğu ilinde, o il ile özdeşleşmiş tarihî ve coğrafi mekânlar önemli bir turizm potansiyeli oluşturmaktadır.\nBuna göre aşağıdaki turistik mekân ve bulunduğu il eşleştirmelerinden hangisi yanlıştır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ahlat Kümbetleri - Bitlis"
+        },
+        {
+          "key": "B",
+          "text": "Balıklı Göl - Adıyaman"
+        },
+        {
+          "key": "C",
+          "text": "İnce Minare Medresesi - Konya"
+        },
+        {
+          "key": "D",
+          "text": "Selimiye Camii - Edirne"
+        },
+        {
+          "key": "E",
+          "text": "Ani Harabeleri - Kars"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0175",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2018,
+      "prompt": "Aşağıda, Türkiye'de yer alan bir millî parkla ilgili bazı özellikler verilmiştir.\n• Türkiye Cumhuriyeti'nin ilk millî parkıdır.\n• Geçmişte Anadolu'nun ormanlarla kaplı olduğunun bir kanıtıdır.\n• Park alanı genellikle karaçam, ardıç ve meşe gibi ağaçlardan oluşur.\nBu özellikler aşağıdaki millî parklardan hangisine aittir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yozgat Çamlığı Millî Parkı"
+        },
+        {
+          "key": "B",
+          "text": "Soğuksu Millî Parkı"
+        },
+        {
+          "key": "C",
+          "text": "Ilgaz Dağı Millî Parkı"
+        },
+        {
+          "key": "D",
+          "text": "Boğazköy-Alacahöyük Millî Parkı"
+        },
+        {
+          "key": "E",
+          "text": "Küre Dağları Millî Parkı"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0176",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2018,
+      "image": "/images/cografya/cog-0176.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0177",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2019,
+      "prompt": "Yerleşim tarihi açısından öneme sahip aşağıdaki yerler ile bulundukları il eşleştirmelerinden hangisi yanlıştır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Karain - Antalya"
+        },
+        {
+          "key": "B",
+          "text": "Çatalhöyük - Konya"
+        },
+        {
+          "key": "C",
+          "text": "Alacahöyük - Çorum"
+        },
+        {
+          "key": "D",
+          "text": "Hattuşa - Yozgat"
+        },
+        {
+          "key": "E",
+          "text": "Truva - Çanakkale"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0178",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2019,
+      "prompt": "Türkiye'de son yıllarda gelişme gösteren turizm türlerinden biri de kongre turizmidir. Kongre turizminin geliştiği yerlerin en önemli özelliği konaklama olanaklarının bolluğu, çeşitliliği ve turistik çekiciliklerin varlığıdır.\nBuna göre aşağıdaki illerin hangisinde kongre turizmi daha fazla gelişmiştir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Antalya"
+        },
+        {
+          "key": "B",
+          "text": "Balıkesir"
+        },
+        {
+          "key": "C",
+          "text": "Sinop"
+        },
+        {
+          "key": "D",
+          "text": "Rize"
+        },
+        {
+          "key": "E",
+          "text": "Mersin"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0179",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2019,
+      "prompt": "Aşağıdaki illerden hangisinin komşu ülkelerle sınırı yoktur?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Edirne"
+        },
+        {
+          "key": "B",
+          "text": "Artvin"
+        },
+        {
+          "key": "C",
+          "text": "Kars"
+        },
+        {
+          "key": "D",
+          "text": "Mardin"
+        },
+        {
+          "key": "E",
+          "text": "Siirt"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0180",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2020,
+      "prompt": "Türkiye'de kıyı turizmi sezonunun en uzun olduğu alan Akdeniz kıyılarıdır.\nBu durumun temel nedeni aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Güneşli gün sayısının fazla olması"
+        },
+        {
+          "key": "B",
+          "text": "Geniş kumsalların varlığı"
+        },
+        {
+          "key": "C",
+          "text": "Tarihî ve doğal güzelliklerin yer alması"
+        },
+        {
+          "key": "D",
+          "text": "Ulaşım ve konaklama imkânlarının gelişmişliği"
+        },
+        {
+          "key": "E",
+          "text": "Uzun kıyı şeridine sahip olması"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0181",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2020,
+      "image": "/images/cografya/cog-0181.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0182",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2021,
+      "prompt": "Türkiye, eski dünya karaları olarak bilinen Asya, Afrika ve Avrupa ana karalarının birbirine en fazla yaklaştıkları bir konumda bulunur.\nBuna göre;\nI. ulaşım güzergâhları,\nII. balık avlanma alanları,\nIII. sanayi üretiminde çeşitlilik\nunsurlarından hangileri Türkiye için avantaj oluşturur?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yalnız I"
+        },
+        {
+          "key": "B",
+          "text": "Yalnız II"
+        },
+        {
+          "key": "C",
+          "text": "Yalnız III"
+        },
+        {
+          "key": "D",
+          "text": "I ve II"
+        },
+        {
+          "key": "E",
+          "text": "I ve III"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0183",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2021,
+      "prompt": "Kasımiye Medresesi, Deyrulzafaran Manastırı ve Zeynel Abidin Türbesi gibi yapılar başta olmak üzere pek çok kültürel çekiciliğin bulunduğu il, Türkiye'deki turizmin çeşitlenmesine ve yaygınlaşmasına örnek oluşturmaktadır.\nBu yapılara sahip olan il aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Diyarbakır"
+        },
+        {
+          "key": "B",
+          "text": "Mardin"
+        },
+        {
+          "key": "C",
+          "text": "Şanlıurfa"
+        },
+        {
+          "key": "D",
+          "text": "Hatay"
+        },
+        {
+          "key": "E",
+          "text": "Adıyaman"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0184",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2021,
+      "prompt": "Yeryüzü koşullarının elverişli olmadığı deniz yakınlarındaki kimi alanlarda denize dolgu yapılarak havalimanı inşa edilmektedir.\nAşağıdakilerden hangisi bu şekilde inşa edilmiş havalimanlarından biridir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Antalya Havalimanı"
+        },
+        {
+          "key": "B",
+          "text": "Ordu-Giresun Havalimanı"
+        },
+        {
+          "key": "C",
+          "text": "Dalaman Havalimanı"
+        },
+        {
+          "key": "D",
+          "text": "İzmir Adnan Menderes Havalimanı"
+        },
+        {
+          "key": "E",
+          "text": "Sinop Havalimanı"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0185",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2022,
+      "prompt": "Gürcistan'dan Artvin üzerinden Türkiye'ye ve buradan da kara yoluyla doğrudan İran'a gidecek olan bir turist kafilesinin sırasıyla aşağıdaki sınır kapılarının hangilerinden geçmesi gerekir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Sarp - Gürbulak"
+        },
+        {
+          "key": "B",
+          "text": "Kapıkule - Cilvegözü"
+        },
+        {
+          "key": "C",
+          "text": "Dilucu - Habur"
+        },
+        {
+          "key": "D",
+          "text": "Sarp - Cilvegözü"
+        },
+        {
+          "key": "E",
+          "text": "Gürbulak - Ceylanpınar"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0186",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2022,
+      "prompt": "Türkiye'nin kara yolu taşımacılığıyla ilgili olarak,\nI. Kara yoluyla petrol ve doğal gaz hızlı ve düşük maliyetle taşınmaktadır.\nII. Kara yoluna ilişkin yatırımlar 1950'lerden sonra hızla artmıştır.\nIII. Kabotaj Kanunu bu ulaşım biçiminin geliştirilmesi için yürürlüğe konmuştur.\nifadelerinden hangileri doğrudur?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yalnız I"
+        },
+        {
+          "key": "B",
+          "text": "Yalnız II"
+        },
+        {
+          "key": "C",
+          "text": "Yalnız III"
+        },
+        {
+          "key": "D",
+          "text": "I ve II"
+        },
+        {
+          "key": "E",
+          "text": "II ve III"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0187",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2022,
+      "prompt": "Aşağıdaki illerin hangisinde UNESCO Dünya Mirası Listesi'nde yer alan birden fazla kültürel varlık bulunmaktadır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kars"
+        },
+        {
+          "key": "B",
+          "text": "İzmir"
+        },
+        {
+          "key": "C",
+          "text": "Karabük"
+        },
+        {
+          "key": "D",
+          "text": "Adıyaman"
+        },
+        {
+          "key": "E",
+          "text": "Çanakkale"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0188",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2023,
+      "prompt": "Aşağıdaki şehirlerin hangisinin kurulması ve gelişmesinde sanayinin etkisi daha azdır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ayvalık"
+        },
+        {
+          "key": "B",
+          "text": "Aliağa"
+        },
+        {
+          "key": "C",
+          "text": "Bandırma"
+        },
+        {
+          "key": "D",
+          "text": "Gebze"
+        },
+        {
+          "key": "E",
+          "text": "İskenderun"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0189",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2023,
+      "prompt": "Aşağıda Türkiye'nin bazı tarihî ve kültürel varlıkları hakkında bilgiler verilmiştir.\n• Sümela Manastırı inanç turizminin önemli merkezlerinden biridir.\n• Troya dünyaca ünlü arkeolojik sit alanlarından biridir.\n• Hititlerin başkenti olan Hattuşa Anadolu'nun ilk şehir yerleşmeleri arasındadır.\n• Kral Midas'a ait olduğu bilinen anıt mezar Gordion'da yer alır.\nAşağıdaki illerden hangisinde bu tarihî ve kültürel varlıklardan biri bulunmaz?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Trabzon"
+        },
+        {
+          "key": "B",
+          "text": "İzmir"
+        },
+        {
+          "key": "C",
+          "text": "Çanakkale"
+        },
+        {
+          "key": "D",
+          "text": "Ankara"
+        },
+        {
+          "key": "E",
+          "text": "Çorum"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0190",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2023,
+      "prompt": "Türkiye'de 1973 yılında 24 kilometre ile başlayan otoyol yapım süreci motorlu taşıtların giderek artmasıyla beraber 1980'li yıllarda hız kazanmıştır. Söz konusu dönemden günümüze kadar birçok merkez otoyollarla birbirine bağlanmıştır.\nAşağıdaki hangi iki merkez arasında bu tür bir yol bağlantısı bulunmaz?",
+      "options": [
+        {
+          "key": "A",
+          "text": "İzmir – Aydın"
+        },
+        {
+          "key": "B",
+          "text": "Adana – Mersin"
+        },
+        {
+          "key": "C",
+          "text": "Edirne – Düzce"
+        },
+        {
+          "key": "D",
+          "text": "Şanlıurfa – Gaziantep"
+        },
+        {
+          "key": "E",
+          "text": "Sivas – Ankara"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0191",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2023,
+      "prompt": "Yeni turizm alternatiflerinden biri olan demir yoluyla seyahat deneyimini yaşamak isteyen bir turist kafilesi Ankara'dan Kars'a Doğu Ekspresi ile seyahat planlamaktadır.\nTurist kafilesinin bu seyahatinde aşağıdaki şehirlerden hangisini ziyaret etmesi beklenmez?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kırıkkale"
+        },
+        {
+          "key": "B",
+          "text": "Erzincan"
+        },
+        {
+          "key": "C",
+          "text": "Muş"
+        },
+        {
+          "key": "D",
+          "text": "Kayseri"
+        },
+        {
+          "key": "E",
+          "text": "Sivas"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0192",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2024,
+      "prompt": "Bir turist kafilesi, İstanbul'dan başlayacak olan Türkiye gezileri sırasında yalnızca yüksek hızlı tren kullanmaya karar vermişlerdir.\nBuna göre turist kafilesi aşağıdaki şehirlerden hangisine ulaşamaz?",
+      "options": [
+        {
+          "key": "A",
+          "text": "İzmir"
+        },
+        {
+          "key": "B",
+          "text": "Ankara"
+        },
+        {
+          "key": "C",
+          "text": "Konya"
+        },
+        {
+          "key": "D",
+          "text": "Karaman"
+        },
+        {
+          "key": "E",
+          "text": "Sivas"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0193",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2024,
+      "prompt": "Aşağıdaki millî park ve bulunduğu il eşleştirmelerinden hangisi yanlıştır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Soğuksu - Ankara"
+        },
+        {
+          "key": "B",
+          "text": "Spil Dağı - Manisa"
+        },
+        {
+          "key": "C",
+          "text": "Altındere Vadisi - Erzincan"
+        },
+        {
+          "key": "D",
+          "text": "Dilek Yarımadası - Aydın"
+        },
+        {
+          "key": "E",
+          "text": "Yedigöller - Bolu"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0194",
+      "topic": "Türkiye'de Ulaşım, Ticaret ve Turizm",
+      "year": 2024,
+      "image": "/images/cografya/cog-0194.png",
+      "options": [
+        {
+          "key": "A"
+        },
+        {
+          "key": "B"
+        },
+        {
+          "key": "C"
+        },
+        {
+          "key": "D"
+        },
+        {
+          "key": "E"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0195",
+      "topic": "Bölgeler ve Bölgesel Kalkınma Projeleri",
+      "year": 2015,
+      "prompt": "Zonguldak, Çanakkale ve Antalya illerinin coğrafi özellikleri göz önüne alındığında aşağıdakilerden hangisinin ortak olduğu söylenebilir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Limanlarının geniş bir hinterlanda sahip olması"
+        },
+        {
+          "key": "B",
+          "text": "Madenciliğin önemli bir ekonomik faaliyet olması"
+        },
+        {
+          "key": "C",
+          "text": "Nüfusun kıyı kesiminde yoğun iç kesimlerde seyrek olması"
+        },
+        {
+          "key": "D",
+          "text": "Yaz ve kış mevsiminde nüfusta büyük fark olması"
+        },
+        {
+          "key": "E",
+          "text": "Tarım ve turizm etkinliklerinin ön planda olması"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0196",
+      "topic": "Bölgeler ve Bölgesel Kalkınma Projeleri",
+      "year": 2016,
+      "prompt": "Aşağıdakilerden hangisi Türkiye'de uygulanan bölgesel kalkınma projelerinin temel amaçlarından biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Bölgeler arası gelişmişlik farkını ortadan kaldırmak"
+        },
+        {
+          "key": "B",
+          "text": "Göç hareketini önleyerek nüfusu yerinde tutmak"
+        },
+        {
+          "key": "C",
+          "text": "Doğal ve beşerî kaynakları en iyi şekilde kullanmak"
+        },
+        {
+          "key": "D",
+          "text": "İstihdamı geliştirecek iş olanakları sağlamak"
+        },
+        {
+          "key": "E",
+          "text": "Bölgedeki yabancı sermaye yatırımlarını artırmak"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0197",
+      "topic": "Bölgeler ve Bölgesel Kalkınma Projeleri",
+      "year": 2017,
+      "prompt": "Türkiye'de Doğu Karadeniz kıyı kuşağıyla ilgili;\nI. Yayvan yapraklı ormanlar geniş yer tutar.\nII. Yüksek ve engebeli araziler azdır.\nIII. Yağışlar genellikle yağmur şeklindedir.\nIV. Akarsular menderesler yaparak akar.\nifadelerinden hangileri doğrudur?",
+      "options": [
+        {
+          "key": "A",
+          "text": "I ve II"
+        },
+        {
+          "key": "B",
+          "text": "I ve III"
+        },
+        {
+          "key": "C",
+          "text": "II ve III"
+        },
+        {
+          "key": "D",
+          "text": "II ve IV"
+        },
+        {
+          "key": "E",
+          "text": "III ve IV"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0198",
+      "topic": "Bölgeler ve Bölgesel Kalkınma Projeleri",
+      "year": 2018,
+      "prompt": "Türkiye'nin en büyük bölgesel kalkınma planlarından biri olan Güneydoğu Anadolu Projesi kapsamında önemli enerji yatırımları yapılmıştır.\nAşağıdakilerden hangisi bu proje kapsamındaki hidroelektrik santrallerinden biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Atatürk"
+        },
+        {
+          "key": "B",
+          "text": "Ilısu"
+        },
+        {
+          "key": "C",
+          "text": "Deriner"
+        },
+        {
+          "key": "D",
+          "text": "Birecik"
+        },
+        {
+          "key": "E",
+          "text": "Karkamış"
+        }
+      ],
+      "correct": "C"
     }
   ]
 }
