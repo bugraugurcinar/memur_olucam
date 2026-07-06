@@ -1,0 +1,457 @@
+{
+  "meta": {
+    "title": "KPSS Coğrafya Çıkmış Sorular",
+    "source": "2025 Yediiklim KPSS Genel Kültür Coğrafya Çıkmış Sorular (Son 11 Yıl)",
+    "note": "Görselli sorular dahildir; görsel içeren sorular resim olarak eklenmiştir. İptal edilen sorular hariç tutulmuştur."
+  },
+  "questions": [
+    {
+      "id": "cog-0001",
+      "topic": "Türkiye'nin Coğrafi Konumu",
+      "year": 2014,
+      "prompt": "Türkiye'de,\n• dört mevsim belirgin olarak yaşanır,\n• Akdeniz iklimi etkilidir,\n• cephesel yağışlar görülür,\n• Batı rüzgârları etkilidir.\nBu özelliklerin ortaya çıkmasında aşağıdakilerden hangisinin etkisi daha fazladır?",
+      "options": [
+        { "key": "A", "text": "Kuzey Yarım Küre'de yer almasının" },
+        { "key": "B", "text": "Orta kuşakta yer almasının" },
+        { "key": "C", "text": "Üç tarafının denizlerle çevrili olmasının" },
+        { "key": "D", "text": "Yüzey şekillerinin çok çeşitli olmasının" },
+        { "key": "E", "text": "26°-45° Doğu meridyenleri arasında bulunmasının" }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0002",
+      "topic": "Türkiye'nin Coğrafi Konumu",
+      "year": 2015,
+      "prompt": "Tatilini geçirmek üzere Türkiye'ye gelen bir turist, Türkiye'de kaldığı dönemde gece süresinin gittikçe kısalmakla birlikte gündüz süresine göre daha uzun olduğunu fark etmiştir.\nBuna göre turistin hangi tarihler arasında Türkiye'de olduğu söylenebilir?",
+      "options": [
+        { "key": "A", "text": "31 Ocak - 11 Şubat" },
+        { "key": "B", "text": "1 - 11 Nisan" },
+        { "key": "C", "text": "8 - 18 Temmuz" },
+        { "key": "D", "text": "30 Eylül - 11 Ekim" },
+        { "key": "E", "text": "11 - 21 Aralık" }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0003",
+      "topic": "Türkiye'nin Coğrafi Konumu",
+      "year": 2017,
+      "prompt": "Aşağıdakilerden hangisi Türkiye'nin özel konumuyla ilgilidir?",
+      "options": [
+        { "key": "A", "text": "Dört mevsimin belirgin olarak yaşanması" },
+        { "key": "B", "text": "Karadeniz'deki ortalama deniz suyu sıcaklıklarının Akdeniz'den düşük olması" },
+        { "key": "C", "text": "Ankara'da ortalama sıcaklıkların Erzurum'dan yüksek olması" },
+        { "key": "D", "text": "Diyarbakır'da güneyden esen rüzgârların sıcaklığı artırması" },
+        { "key": "E", "text": "Antalya'da ortalama sıcaklıkların İstanbul'dan fazla olması" }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0004",
+      "topic": "Türkiye'nin Coğrafi Konumu",
+      "year": 2017,
+      "prompt": "İstanbul ve Çanakkale Boğazları konumlarından dolayı tarih boyunca uluslararası ilişkilerde ve su yolu taşımacılığında büyük bir öneme sahip olmuştur. Bu boğazlar, Karadeniz'e kıyısı olan ülkelerin Akdeniz'e oradan da okyanuslara çıkış kapıları durumundadır.\nAşağıdakilerden hangisi bu ülkelerden biri değildir?",
+      "options": [
+        { "key": "A", "text": "Azerbaycan" },
+        { "key": "B", "text": "Rusya" },
+        { "key": "C", "text": "Romanya" },
+        { "key": "D", "text": "Ukrayna" },
+        { "key": "E", "text": "Gürcistan" }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0005",
+      "topic": "Türkiye'nin Coğrafi Konumu",
+      "year": 2017,
+      "prompt": "I. En uzun kara sınırını oluşturur.\nII. Belirlenen en eski sınırdır.\nIII. Büyük kısmı su bölümü çizgilerinden geçer.\nTürkiye'nin sınır özellikleri dikkate alındığında, yukarıdakilerden hangileri Türkiye-İran sınırına aittir?",
+      "options": [
+        { "key": "A", "text": "Yalnız I" },
+        { "key": "B", "text": "Yalnız II" },
+        { "key": "C", "text": "Yalnız III" },
+        { "key": "D", "text": "I ve II" },
+        { "key": "E", "text": "II ve III" }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0006",
+      "topic": "Türkiye'nin Coğrafi Konumu",
+      "year": 2018,
+      "prompt": "Aşağıdaki coğrafi koordinatlardan hangisi Türkiye sınırları içinde kalmaktadır?",
+      "options": [
+        { "key": "A", "text": "28° Doğu 35° Kuzey" },
+        { "key": "B", "text": "40° Doğu 30° Kuzey" },
+        { "key": "C", "text": "38° Doğu 28° Kuzey" },
+        { "key": "D", "text": "36° Doğu 38° Kuzey" },
+        { "key": "E", "text": "26° Doğu 45° Kuzey" }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0007",
+      "topic": "Türkiye'nin Coğrafi Konumu",
+      "year": 2020,
+      "prompt": "Aşağıdakilerin hangisinde 21 Haziran'da belirtilen doğrultuda hareket edildiğinde hem gündüz süresi uzar hem de yerel saat daha geri olur?",
+      "options": [
+        { "key": "A", "text": "İzmir'den Van'a" },
+        { "key": "B", "text": "Sinop'tan Muğla'ya" },
+        { "key": "C", "text": "Adana'dan Edirne'ye" },
+        { "key": "D", "text": "Antalya'dan Ardahan'a" },
+        { "key": "E", "text": "Samsun'dan Adıyaman'a" }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0008",
+      "topic": "Türkiye'nin Coğrafi Konumu",
+      "year": 2021,
+      "prompt": "Türkiye'de güneşin doğuş ve batış saatleri yaz ile kış mevsimlerinde değişiklik gösterir. Ortalama güneşlenme süresi kış aylarında daha kısa iken yaz aylarında daha uzundur.\nBu süre farkının temel nedeni aşağıdakilerden hangisidir?",
+      "options": [
+        { "key": "A", "text": "Yükselti" },
+        { "key": "B", "text": "Göreceli konum" },
+        { "key": "C", "text": "Bakı faktörü" },
+        { "key": "D", "text": "Mutlak konum" },
+        { "key": "E", "text": "Ülkenin sınırları" }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0009",
+      "topic": "Türkiye'nin Coğrafi Konumu",
+      "year": 2023,
+      "prompt": "I. Uluslararası enerji transferinde üs konumunda olması\nII. Hidrolik enerji potansiyelinin yüksek olması\nIII. Yer altı ve yer üstü tatlı su kaynaklarının zengin olması\nYukarıdakilerden hangileri Türkiye'nin Orta Doğu ülkelerine göre jeopolitik açıdan daha güçlü olduğu doğal unsurlar arasında bulunur?",
+      "options": [
+        { "key": "A", "text": "Yalnız I" },
+        { "key": "B", "text": "Yalnız II" },
+        { "key": "C", "text": "Yalnız III" },
+        { "key": "D", "text": "I ve II" },
+        { "key": "E", "text": "II ve III" }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0010",
+      "topic": "Türkiye'nin Coğrafi Konumu",
+      "year": 2024,
+      "prompt": "Türkiye'nin coğrafi konumu ifade edilirken kuzey, güney, doğu ve batı yönlerindeki uç noktalarına da yer verilir.\nAşağıdakilerden hangisi bu uç noktalardan biri değildir?",
+      "options": [
+        { "key": "A", "text": "Sinop - İnceburun" },
+        { "key": "B", "text": "Dil Yöresi - Dilucu" },
+        { "key": "C", "text": "Yayladağı - Topraktutan Köyü" },
+        { "key": "D", "text": "Gökçeada - İnceburun" },
+        { "key": "E", "text": "İzmir - Karaburun" }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0011",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2015,
+      "image": "/images/cografya/cog-0011.png",
+      "options": [
+        { "key": "A" },
+        { "key": "B" },
+        { "key": "C" },
+        { "key": "D" },
+        { "key": "E" }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0012",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2015,
+      "image": "/images/cografya/cog-0012.png",
+      "options": [
+        { "key": "A" },
+        { "key": "B" },
+        { "key": "C" },
+        { "key": "D" },
+        { "key": "E" }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0013",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2016,
+      "image": "/images/cografya/cog-0013.png",
+      "options": [
+        { "key": "A" },
+        { "key": "B" },
+        { "key": "C" },
+        { "key": "D" },
+        { "key": "E" }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0014",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2014,
+      "prompt": "Türkiye'nin jeomorfolojik özellikleri dikkate alındığında aşağıdakilerden hangisi söylenemez?",
+      "options": [
+        { "key": "A", "text": "Erzurum-Kars-Ardahan Platosu'nun oluşumunda akıcı lavların yayılması etkilidir." },
+        { "key": "B", "text": "Taşeli Platosu'nda karstlaşma etkilidir." },
+        { "key": "C", "text": "Üçüncü Zaman'da geniş alan kaplayan göller zamanla karalaşmıştır." },
+        { "key": "D", "text": "Ege Bölgesi'ndeki doğu-batı uzantılı ovalar birer grabendir." },
+        { "key": "E", "text": "Türkiye'deki volkanik dağlar üzerinde buzullar bulunmamaktadır." }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0015",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2014,
+      "prompt": "Ovalar; tarım, yerleşme, sanayi kuruluşu için uygun alanları oluşturur.\nBuna göre, aşağıdaki ovalardan hangisi diğerlerinden farklı bir özellik göstermektedir?",
+      "options": [
+        { "key": "A", "text": "Konya Ovası" },
+        { "key": "B", "text": "Erzincan Ovası" },
+        { "key": "C", "text": "Bursa Ovası" },
+        { "key": "D", "text": "Eskişehir Ovası" },
+        { "key": "E", "text": "Muş Ovası" }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0016",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2015,
+      "prompt": "Çok sayıda akarsuyun bulunduğu Türkiye'de, akarsu vadilerinin büyük bölümünün \"V\" şeklinde bir profile sahip olduğu görülür.\nBu durumun başlıca nedeni aşağıdakilerden hangisidir?",
+      "options": [
+        { "key": "A", "text": "Yamaç eğim değerlerinin fazla olması" },
+        { "key": "B", "text": "İlkbahardaki kar erimelerinin fazla olması" },
+        { "key": "C", "text": "Akarsuların denge profiline ulaşmamış olması" },
+        { "key": "D", "text": "Zemindeki kayaç yapısının dirençsiz olması" },
+        { "key": "E", "text": "Açık havza akarsuları olması" }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0017",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2014,
+      "prompt": "Ege Bölgesi, genellikle horst ve graben sistemlerini meydana getiren tektonik hareketlerle şekillenmiştir.\nBuna göre, aşağıdakilerden hangisi bu şekillenmenin bir sonucu değildir?",
+      "options": [
+        { "key": "A", "text": "Akarsuların doğu-batı yönünde akması" },
+        { "key": "B", "text": "Kıyı ile iç kesimler arasındaki ulaşımın zor olması" },
+        { "key": "C", "text": "Kıyıların çok fazla girintili-çıkıntılı olması" },
+        { "key": "D", "text": "Kıyılarda çok sayıda doğal liman bulunması" },
+        { "key": "E", "text": "Denizel hava kütlelerinin iç kısımlara kolay erişebilmesi" }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0018",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2014,
+      "prompt": "Türkiye genel hatlarıyla yüksek, dağlık ve engebeli bir arazi yapısına sahiptir.\nBu durumun ortaya çıkmasında aşağıdakilerden hangisi daha az etkili olmuştur?",
+      "options": [
+        { "key": "A", "text": "Alp orojenez kuşağında bulunması" },
+        { "key": "B", "text": "Epirojenez ile yükselmesi" },
+        { "key": "C", "text": "Akarsu aşındırmasının fazla olması" },
+        { "key": "D", "text": "Aktif fayların bulunması" },
+        { "key": "E", "text": "Farklı kayaç türlerinin bulunması" }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0019",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2014,
+      "prompt": "Heyelanlar, Karadeniz Bölgesi'nin önemli doğal afetlerindendir.\nAşağıdakilerden hangisi heyelanların bu bölgede sık görülmesinin nedenlerinden biri değildir?",
+      "options": [
+        { "key": "A", "text": "Yıllık yağış miktarının fazla olması" },
+        { "key": "B", "text": "Akarsu rejimlerinin farklılık göstermesi" },
+        { "key": "C", "text": "Tabaka eğimlerinin fazla olması" },
+        { "key": "D", "text": "Doğal ve beşerî nedenlerle yamaç dengesinin bozulması" },
+        { "key": "E", "text": "Killi kayaçların fazla olması" }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0020",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2014,
+      "prompt": "Doğu Anadolu Bölgesi'nin kuzeydoğusunda, uzun boylu çayır örtüsü altında koyu renkli ve organik madde bakımından zengin topraklar gelişmiştir.\nBuna göre, özellikleri verilen toprak tipi aşağıdakilerden hangisidir?",
+      "options": [
+        { "key": "A", "text": "Solancak" },
+        { "key": "B", "text": "Çernozyom" },
+        { "key": "C", "text": "Podsol" },
+        { "key": "D", "text": "Terra-rossa" },
+        { "key": "E", "text": "Vertisol" }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0021",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2015,
+      "prompt": "Aşağıdaki ova ve oluşum kökeni eşleştirmelerinden hangisi yanlıştır?",
+      "options": [
+        { "key": "A", "text": "Elmalı - Karstik" },
+        { "key": "B", "text": "Bafra - Delta" },
+        { "key": "C", "text": "Nazilli - Tektonik" },
+        { "key": "D", "text": "Merzifon - Tektonik" },
+        { "key": "E", "text": "Ergene - Delta" }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0022",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2016,
+      "prompt": "Bir grup doğa yürüyüşçüsü kıyıdan başlayarak bir dağa tırmanırken; kestane, gürgen, şimşir, kayın, sarıçam, göknar ve ladin gibi ağaçları görmüştür.\nBu doğa yürüyüşünün aşağıdaki dağların hangisinde yapıldığı söylenebilir?",
+      "options": [
+        { "key": "A", "text": "Amanoslar" },
+        { "key": "B", "text": "Bozdağ" },
+        { "key": "C", "text": "Kazdağı" },
+        { "key": "D", "text": "Kaçkar" },
+        { "key": "E", "text": "Bolkar" }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0023",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2016,
+      "image": "/images/cografya/cog-0023.png",
+      "options": [
+        { "key": "A" },
+        { "key": "B" },
+        { "key": "C" },
+        { "key": "D" },
+        { "key": "E" }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0024",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2016,
+      "prompt": "Türkiye'de buzul aşındırma ve biriktirme şekillerinin bulunduğu yerler,\nI. Yüksek dağlık alanlardır.\nII. Plato görünümündeki yerlerdir.\nIII. Genellikle 2000 metrenin üzerindedir.\nIV. Ülkenin kuzeyinde bulunmaktadır.\nözelliklerinden hangileri bakımından ortaktır?",
+      "options": [
+        { "key": "A", "text": "I ve II" },
+        { "key": "B", "text": "I ve III" },
+        { "key": "C", "text": "II ve III" },
+        { "key": "D", "text": "II ve IV" },
+        { "key": "E", "text": "III ve IV" }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0025",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2016,
+      "prompt": "Türkiye'de karstik şekiller yaygın olmakla birlikte polyelerin Batı Toroslarda daha fazla bulunmasının nedeni aşağıdakilerden hangisidir?",
+      "options": [
+        { "key": "A", "text": "Akdeniz yağış rejiminin görülmesi" },
+        { "key": "B", "text": "Bitki örtüsü bakımından zengin olması" },
+        { "key": "C", "text": "Kalın kalker ve kırıklı yapının varlığı" },
+        { "key": "D", "text": "Yükselti ve eğimin fazla olması" },
+        { "key": "E", "text": "4. Jeolojik Zaman'da buzullaşmaya uğraması" }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0026",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2016,
+      "prompt": "I. Kuzey ve güneyde Alp orojeneziyle oluşan sıradağların bulunması\nII. Batı Anadolu'da horst ve grabenlerin bulunması\nIII. Epirojenik hareketlerle Anadolu Yarımadası'nın yükselmesi\nIV. Akarsu aşındırmasıyla oluşan derin vadilerin yer alması\nYukarıdakilerden hangileri, Türkiye arazisinin ortalama yükseltisinin fazla olmasında diğerlerinden daha etkili olmuştur?",
+      "options": [
+        { "key": "A", "text": "I ve II" },
+        { "key": "B", "text": "I ve III" },
+        { "key": "C", "text": "II ve III" },
+        { "key": "D", "text": "II ve IV" },
+        { "key": "E", "text": "III ve IV" }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0027",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2017,
+      "image": "/images/cografya/cog-0027.png",
+      "options": [
+        { "key": "A" },
+        { "key": "B" },
+        { "key": "C" },
+        { "key": "D" },
+        { "key": "E" }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0028",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2017,
+      "prompt": "Aşağıdakilerden hangisi Türkiye'deki set göllerinden biri değildir?",
+      "options": [
+        { "key": "A", "text": "Büyük Çekmece Gölü" },
+        { "key": "B", "text": "Köyceğiz Gölü" },
+        { "key": "C", "text": "Uzungöl" },
+        { "key": "D", "text": "Beyşehir Gölü" },
+        { "key": "E", "text": "Tortum Gölü" }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0029",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2017,
+      "image": "/images/cografya/cog-0029.png",
+      "options": [
+        { "key": "A" },
+        { "key": "B" },
+        { "key": "C" },
+        { "key": "D" },
+        { "key": "E" }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0030",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2018,
+      "prompt": "I. Ege Denizi'nin oluşması - İkinci Jeolojik Zaman\nII. Kuzey Anadolu ve Toros Dağlarının oluşması - Üçüncü Jeolojik Zaman\nIII. İstanbul Boğazı'nın oluşması - Dördüncü Jeolojik Zaman\nTürkiye'deki bazı coğrafi olayların meydana geldiği jeolojik zamanlarla ilgili yukarıdaki eşleştirmelerden hangileri doğrudur?",
+      "options": [
+        { "key": "A", "text": "Yalnız I" },
+        { "key": "B", "text": "Yalnız II" },
+        { "key": "C", "text": "Yalnız III" },
+        { "key": "D", "text": "I ve II" },
+        { "key": "E", "text": "II ve III" }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0031",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2018,
+      "image": "/images/cografya/cog-0031.png",
+      "options": [
+        { "key": "A" },
+        { "key": "B" },
+        { "key": "C" },
+        { "key": "D" },
+        { "key": "E" }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0032",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2018,
+      "image": "/images/cografya/cog-0032.png",
+      "options": [
+        { "key": "A" },
+        { "key": "B" },
+        { "key": "C" },
+        { "key": "D" },
+        { "key": "E" }
+      ],
+      "correct": "C"
+    }
+  ]
+}

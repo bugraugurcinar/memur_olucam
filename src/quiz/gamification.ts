@@ -22,9 +22,9 @@ export function plusTopicLabel(id: PlusTopicId): string {
  * katmanında yaşarlar; bu yüzden `plusQuestionTopicOptions`'a EKLENMEZLER (harita
  * konu seçicisinde çıkmazlar).
  */
-export type TestTopicId = "tarih" | "vatandaslik";
+export type TestTopicId = "tarih" | "vatandaslik" | "cografya";
 
-export const TEST_TOPIC_IDS: TestTopicId[] = ["tarih", "vatandaslik"];
+export const TEST_TOPIC_IDS: TestTopicId[] = ["tarih", "vatandaslik", "cografya"];
 
 export type QuizTopicId = PlusTopicId | TestTopicId;
 

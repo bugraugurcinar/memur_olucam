@@ -16,7 +16,13 @@ const CATEGORY_FILTERS: Array<{ id: TestCategoryFilter; label: string }> = [
   { id: "all", label: "Karma" },
   { id: "tarih", label: TEST_CATEGORY_LABELS.tarih },
   { id: "vatandaslik", label: TEST_CATEGORY_LABELS.vatandaslik },
+  { id: "cografya", label: TEST_CATEGORY_LABELS.cografya },
 ];
+
+// "Karma" sekmesi ipucu: tüm kategori etiketleri.
+const ALL_CATEGORY_HINT = CATEGORY_FILTERS.filter((filter) => filter.id !== "all")
+  .map((filter) => filter.label)
+  .join(" + ");
 
 export type TestPanelProps = {
   questions: TestQuestion[];
@@ -150,9 +156,7 @@ export function TestPanel({ questions, isLoading, error, wrongIds, onAnswer }: T
   const isAnswered = Boolean(answeredKey);
   const correctKey = current?.correct ?? null;
   const categoryHint =
-    categoryFilter === "all"
-      ? "Tarih + Vatandaşlık"
-      : TEST_CATEGORY_LABELS[categoryFilter];
+    categoryFilter === "all" ? ALL_CATEGORY_HINT : TEST_CATEGORY_LABELS[categoryFilter];
 
   return (
     <div className="test-stage">
@@ -205,7 +209,10 @@ export function TestPanel({ questions, isLoading, error, wrongIds, onAnswer }: T
               {current.topic ? ` · ${current.topic}` : ""}
               {current.year ? ` · ${current.year}` : ""}
             </span>
-            <strong className="test-prompt">{current.prompt}</strong>
+            {current.prompt ? <strong className="test-prompt">{current.prompt}</strong> : null}
+            {current.image ? (
+              <img className="test-question-image" src={current.image} alt="Soru görseli" />
+            ) : null}
 
             <div className="test-choice-list" aria-label="Seçenekler">
               {current.options.map((option) => {
@@ -230,9 +237,7 @@ export function TestPanel({ questions, isLoading, error, wrongIds, onAnswer }: T
                     style={{ "--plus-token-color": TEST_TOKEN_COLOR } as CSSProperties}
                     type="button"
                   >
-                    <span>
-                      {option.key}) {option.text}
-                    </span>
+                    <span>{option.text ? `${option.key}) ${option.text}` : option.key}</span>
                   </button>
                 );
               })}
@@ -242,8 +247,10 @@ export function TestPanel({ questions, isLoading, error, wrongIds, onAnswer }: T
               <div className="quiz-result">
                 <strong>{answeredKey === correctKey ? "Doğru" : "Yanlış"}</strong>
                 <span>
-                  Doğru cevap: {correctKey}){" "}
-                  {current.options.find((option) => option.key === correctKey)?.text ?? ""}
+                  Doğru cevap: {correctKey}
+                  {current.options.find((option) => option.key === correctKey)?.text
+                    ? `) ${current.options.find((option) => option.key === correctKey)?.text}`
+                    : ""}
                 </span>
               </div>
             ) : null}

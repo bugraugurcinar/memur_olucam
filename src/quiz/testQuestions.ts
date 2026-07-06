@@ -10,16 +10,20 @@
 export type TestOptionKey = "A" | "B" | "C" | "D" | "E";
 
 /** Test modunun ana kategorileri (oyunlaştırma konusuyla birebir eşleşir). */
-export type TestCategory = "tarih" | "vatandaslik";
+export type TestCategory = "tarih" | "vatandaslik" | "cografya";
 
 export type TestOption = {
   key: TestOptionKey;
-  text: string;
+  /** Metin sorularında zorunlu; görselli sorularda (yalnız A–E düğmeleri) opsiyonel. */
+  text?: string;
 };
 
 export type TestQuestion = {
   id: string;
-  prompt: string;
+  /** Metin sorularında zorunlu; görselli soruda gerekmeyebilir. */
+  prompt?: string;
+  /** Görselli soru: kök-mutlak resim URL'si (ör. "/images/cografya/cog-0001.png"). */
+  image?: string;
   options: TestOption[];
   correct: TestOptionKey;
   category: TestCategory;
@@ -35,6 +39,7 @@ export type TestCategoryFilter = "all" | TestCategory;
 export const TEST_CATEGORY_LABELS: Record<TestCategory, string> = {
   tarih: "Tarih",
   vatandaslik: "Vatandaşlık",
+  cografya: "Coğrafya",
 };
 
 const VALID_KEYS: readonly TestOptionKey[] = ["A", "B", "C", "D", "E"];
@@ -49,19 +54,30 @@ export function parseTestQuestion(value: unknown, category: TestCategory): TestQ
     return null;
   }
   const record = value as Record<string, unknown>;
-  const { id, prompt, options, correct, topic, year } = record;
+  const { id, prompt, image, options, correct, topic, year } = record;
 
   if (typeof id !== "string" || id.length === 0) return null;
-  if (typeof prompt !== "string" || prompt.length === 0) return null;
   if (!isOptionKey(correct)) return null;
   if (!Array.isArray(options) || options.length < 2) return null;
+
+  // Görselli soru: `image` dolu bir string ise soru kökü/şıklar resimde gömülüdür.
+  const isImageQuestion = typeof image === "string" && image.length > 0;
+
+  // Metin sorusunda prompt zorunlu; görselli soruda opsiyonel.
+  if (!isImageQuestion && (typeof prompt !== "string" || prompt.length === 0)) return null;
 
   const parsedOptions: TestOption[] = [];
   for (const raw of options) {
     if (typeof raw !== "object" || raw === null) return null;
     const { key, text } = raw as Record<string, unknown>;
-    if (!isOptionKey(key) || typeof text !== "string" || text.length === 0) return null;
-    parsedOptions.push({ key, text });
+    if (!isOptionKey(key)) return null;
+    if (isImageQuestion) {
+      // Görselli soruda şık metni opsiyonel (yalnız A–E harfi gösterilir).
+      parsedOptions.push({ key, text: typeof text === "string" && text.length > 0 ? text : undefined });
+    } else {
+      if (typeof text !== "string" || text.length === 0) return null;
+      parsedOptions.push({ key, text });
+    }
   }
 
   // Doğru cevap şıklardan biri olmalı.
@@ -69,7 +85,8 @@ export function parseTestQuestion(value: unknown, category: TestCategory): TestQ
 
   return {
     id,
-    prompt,
+    prompt: typeof prompt === "string" && prompt.length > 0 ? prompt : undefined,
+    image: isImageQuestion ? (image as string) : undefined,
     options: parsedOptions,
     correct,
     category,

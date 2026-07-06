@@ -58,6 +58,7 @@ const WRONG_TEST_QUESTION_STORAGE_PREFIX = "kpss-cografya-atlas:wrong-test-quest
 const TEST_QUESTION_SOURCES: TestQuestionSource[] = [
   { url: "/questions/tarih.json", category: "tarih" },
   { url: "/questions/vatandaslik.json", category: "vatandaslik" },
+  { url: "/questions/cografya.json", category: "cografya" },
 ];
 const PLUS_QUESTION_SEED_SEPARATOR = "__";
 

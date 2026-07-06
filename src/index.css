@@ -2398,6 +2398,17 @@ h2 {
   line-height: 1.45;
 }
 
+.test-question-image {
+  display: block;
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  margin: 4px auto 2px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
 .test-choice-list {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
