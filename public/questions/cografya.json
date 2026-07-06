@@ -452,6 +452,174 @@
         { "key": "E" }
       ],
       "correct": "C"
+    },
+    {
+      "id": "cog-0033",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2018,
+      "prompt": "Aşağıdakilerden hangisi, Anadolu'nun iç kısımlarından kaynağını alarak kuzey veya güneydeki sıradağları aşan akarsulardan biri değildir?",
+      "options": [
+        { "key": "A", "text": "Kızılırmak" },
+        { "key": "B", "text": "Fırat Irmağı" },
+        { "key": "C", "text": "Seyhan Nehri" },
+        { "key": "D", "text": "Sakarya Irmağı" },
+        { "key": "E", "text": "Dalaman Çayı" }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0034",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2019,
+      "image": "/images/cografya/cog-0034.png",
+      "options": [
+        { "key": "A" },
+        { "key": "B" },
+        { "key": "C" },
+        { "key": "D" },
+        { "key": "E" }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "cog-0035",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2019,
+      "image": "/images/cografya/cog-0035.png",
+      "options": [
+        { "key": "A" },
+        { "key": "B" },
+        { "key": "C" },
+        { "key": "D" },
+        { "key": "E" }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0036",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2019,
+      "image": "/images/cografya/cog-0036.png",
+      "options": [
+        { "key": "A" },
+        { "key": "B" },
+        { "key": "C" },
+        { "key": "D" },
+        { "key": "E" }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0037",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2020,
+      "prompt": "I. İstanbul ve Çanakkale boğazları\nII. Kuzey Anadolu ve Toros dağları\nIII. Çukurova, Bafra ve Çarşamba deltaları\nYukarıdakilerden hangilerinin oluşumunda orojenik hareketler etkili olmuştur?",
+      "options": [
+        { "key": "A", "text": "Yalnız I" },
+        { "key": "B", "text": "Yalnız II" },
+        { "key": "C", "text": "Yalnız III" },
+        { "key": "D", "text": "I ve II" },
+        { "key": "E", "text": "II ve III" }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "cog-0038",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2020,
+      "prompt": "Volkanik faaliyet sonucu yüzeye çıkan lavlardan oluşan arazinin akarsular tarafından aşındırılmasıyla lav platoları oluşur.\nAşağıdaki platolardan hangisi bu tür oluşum özelliğine sahiptir?",
+      "options": [
+        { "key": "A", "text": "Çatalca - Kocaeli" },
+        { "key": "B", "text": "Cihanbeyli" },
+        { "key": "C", "text": "Haymana" },
+        { "key": "D", "text": "Taşeli" },
+        { "key": "E", "text": "Erzurum - Kars" }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0039",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2020,
+      "prompt": "Aşağıdaki illerin hangisinde jips karstına ait yer şekilleri daha yaygındır?",
+      "options": [
+        { "key": "A", "text": "Yozgat" },
+        { "key": "B", "text": "Diyarbakır" },
+        { "key": "C", "text": "Giresun" },
+        { "key": "D", "text": "Kastamonu" },
+        { "key": "E", "text": "Sivas" }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0040",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2020,
+      "image": "/images/cografya/cog-0040.png",
+      "options": [
+        { "key": "A" },
+        { "key": "B" },
+        { "key": "C" },
+        { "key": "D" },
+        { "key": "E" }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0041",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2021,
+      "prompt": "Kuzey Anadolu Fay Kuşağı, Doğu Anadolu'da Karlıova yakınlarından başlayıp Ege Denizi'ne kadar ulaşmaktadır.\nAşağıdaki illerden hangisi bu fay kuşağı üzerinde yer almaz?",
+      "options": [
+        { "key": "A", "text": "Bolu" },
+        { "key": "B", "text": "Tokat" },
+        { "key": "C", "text": "Yalova" },
+        { "key": "D", "text": "Elâzığ" },
+        { "key": "E", "text": "Erzincan" }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "cog-0042",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2021,
+      "image": "/images/cografya/cog-0042.png",
+      "options": [
+        { "key": "A" },
+        { "key": "B" },
+        { "key": "C" },
+        { "key": "D" },
+        { "key": "E" }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "cog-0043",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2021,
+      "prompt": "I. Tektonik hareketler\nII. Volkanik faaliyetler\nIII. Kimyasal ayrışma\nIV. Kayaç türü\nTürkiye'de dağların geniş alanlar kaplamasında yukarıdakilerden hangileri daha fazla etkili olmuştur?",
+      "options": [
+        { "key": "A", "text": "I ve II" },
+        { "key": "B", "text": "I ve III" },
+        { "key": "C", "text": "II ve III" },
+        { "key": "D", "text": "II ve IV" },
+        { "key": "E", "text": "III ve IV" }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "cog-0044",
+      "topic": "Türkiye'nin Yeryüzü Şekilleri",
+      "year": 2021,
+      "image": "/images/cografya/cog-0044.png",
+      "options": [
+        { "key": "A" },
+        { "key": "B" },
+        { "key": "C" },
+        { "key": "D" },
+        { "key": "E" }
+      ],
+      "correct": "C"
     }
   ]
 }
