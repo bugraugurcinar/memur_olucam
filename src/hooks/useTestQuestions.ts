@@ -1,10 +1,17 @@
-import { useEffect, useState } from "react";
-import { parseTestQuestions, type TestQuestion } from "../quiz/testQuestions";
+import { useEffect, useMemo, useState } from "react";
+import { parseTestQuestions, type TestCategory, type TestQuestion } from "../quiz/testQuestions";
 
 /**
  * `useGeoJson` ile aynı deseni izler: `public/`'ten runtime `fetch` ile test
- * soru bankasını yükler ve doğrulanmış `TestQuestion[]`'e çevirir.
+ * soru bankalarını yükler ve doğrulanmış `TestQuestion[]`'e çevirir. Birden çok
+ * kategori kaynağı (Tarih, Vatandaşlık) verilebilir; hepsi tek havuzda birleşir
+ * ve her soru kaynağına göre `category` ile etiketlenir.
  */
+
+export type TestQuestionSource = {
+  url: string;
+  category: TestCategory;
+};
 
 type TestQuestionsState = {
   data: TestQuestion[];
@@ -12,12 +19,18 @@ type TestQuestionsState = {
   isLoading: boolean;
 };
 
-export function useTestQuestions(url: string): TestQuestionsState {
+export function useTestQuestions(sources: TestQuestionSource[]): TestQuestionsState {
   const [state, setState] = useState<TestQuestionsState>({
     data: [],
     error: null,
     isLoading: true,
   });
+
+  // Kaynak listesi her render'da yeni referans olmasın diye sabit bir anahtar üret.
+  const sourcesKey = useMemo(
+    () => sources.map((source) => `${source.category}:${source.url}`).join("|"),
+    [sources],
+  );
 
   useEffect(() => {
     const controller = new AbortController();
@@ -26,14 +39,18 @@ export function useTestQuestions(url: string): TestQuestionsState {
       setState({ data: [], error: null, isLoading: true });
 
       try {
-        const response = await fetch(url, { signal: controller.signal });
+        const perSource = await Promise.all(
+          sources.map(async (source) => {
+            const response = await fetch(source.url, { signal: controller.signal });
+            if (!response.ok) {
+              throw new Error(`${source.url}: ${response.status} ${response.statusText}`);
+            }
+            const raw = (await response.json()) as unknown;
+            return parseTestQuestions(raw, source.category);
+          }),
+        );
 
-        if (!response.ok) {
-          throw new Error(`${response.status} ${response.statusText}`);
-        }
-
-        const raw = (await response.json()) as unknown;
-        const questions = parseTestQuestions(raw);
+        const questions = perSource.flat();
 
         if (questions.length === 0) {
           throw new Error("Geçerli test sorusu bulunamadı.");
@@ -58,7 +75,9 @@ export function useTestQuestions(url: string): TestQuestionsState {
     return () => {
       controller.abort();
     };
-  }, [url]);
+    // sourcesKey, sources içeriğini temsil eder.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sourcesKey]);
 
   return state;
 }

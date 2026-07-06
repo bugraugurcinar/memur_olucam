@@ -9,6 +9,9 @@
 
 export type TestOptionKey = "A" | "B" | "C" | "D" | "E";
 
+/** Test modunun ana kategorileri (oyunlaştırma konusuyla birebir eşleşir). */
+export type TestCategory = "tarih" | "vatandaslik";
+
 export type TestOption = {
   key: TestOptionKey;
   text: string;
@@ -19,11 +22,20 @@ export type TestQuestion = {
   prompt: string;
   options: TestOption[];
   correct: TestOptionKey;
+  category: TestCategory;
   topic?: string;
   year?: number;
 };
 
 export type TestStudyMode = "all" | "wrong";
+
+/** Kategori seçici: "all" => karma (tüm kategoriler). */
+export type TestCategoryFilter = "all" | TestCategory;
+
+export const TEST_CATEGORY_LABELS: Record<TestCategory, string> = {
+  tarih: "Tarih",
+  vatandaslik: "Vatandaşlık",
+};
 
 const VALID_KEYS: readonly TestOptionKey[] = ["A", "B", "C", "D", "E"];
 
@@ -32,7 +44,7 @@ function isOptionKey(value: unknown): value is TestOptionKey {
 }
 
 /** Ham JSON kaydını doğrulayıp `TestQuestion`'a çevirir; geçersizse null. */
-export function parseTestQuestion(value: unknown): TestQuestion | null {
+export function parseTestQuestion(value: unknown, category: TestCategory): TestQuestion | null {
   if (typeof value !== "object" || value === null) {
     return null;
   }
@@ -60,13 +72,14 @@ export function parseTestQuestion(value: unknown): TestQuestion | null {
     prompt,
     options: parsedOptions,
     correct,
+    category,
     topic: typeof topic === "string" ? topic : undefined,
     year: typeof year === "number" ? year : undefined,
   };
 }
 
 /** Ham JSON dizisini geçerli sorulara indirger (geçersizleri atar). */
-export function parseTestQuestions(value: unknown): TestQuestion[] {
+export function parseTestQuestions(value: unknown, category: TestCategory): TestQuestion[] {
   const list = Array.isArray(value)
     ? value
     : typeof value === "object" && value !== null && Array.isArray((value as { questions?: unknown }).questions)
@@ -75,7 +88,7 @@ export function parseTestQuestions(value: unknown): TestQuestion[] {
 
   const result: TestQuestion[] = [];
   for (const item of list) {
-    const parsed = parseTestQuestion(item);
+    const parsed = parseTestQuestion(item, category);
     if (parsed) result.push(parsed);
   }
   return result;

@@ -17,13 +17,18 @@ export function plusTopicLabel(id: PlusTopicId): string {
 }
 
 /**
- * Harita dışı "Test Soru Modu" konusu. Soru+ harita konularına (mine, river,
- * province...) dokunmadan, yalnız oyunlaştırma/istatistik katmanında yaşar; bu
- * yüzden `plusQuestionTopicOptions`'a EKLENMEZ (harita konu seçicisinde çıkmaz).
+ * Harita dışı "Test Soru Modu" konuları (Tarih, Vatandaşlık). Soru+ harita
+ * konularına (mine, river, province...) dokunmadan, yalnız oyunlaştırma/istatistik
+ * katmanında yaşarlar; bu yüzden `plusQuestionTopicOptions`'a EKLENMEZLER (harita
+ * konu seçicisinde çıkmazlar).
  */
-export type QuizTopicId = PlusTopicId | "tarih";
+export type TestTopicId = "tarih" | "vatandaslik";
 
-export const QUIZ_TOPIC_IDS: QuizTopicId[] = [...PLUS_TOPIC_IDS, "tarih"];
+export const TEST_TOPIC_IDS: TestTopicId[] = ["tarih", "vatandaslik"];
+
+export type QuizTopicId = PlusTopicId | TestTopicId;
+
+export const QUIZ_TOPIC_IDS: QuizTopicId[] = [...PLUS_TOPIC_IDS, ...TEST_TOPIC_IDS];
 
 // --- Veri modeli ------------------------------------------------------------
 

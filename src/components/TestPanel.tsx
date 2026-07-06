@@ -1,6 +1,9 @@
-import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import {
   pickNextTestQuestion,
+  TEST_CATEGORY_LABELS,
+  type TestCategory,
+  type TestCategoryFilter,
   type TestOptionKey,
   type TestQuestion,
   type TestStudyMode,
@@ -9,19 +12,35 @@ import {
 const RECENT_TEST_QUESTION_HISTORY_LIMIT = 8;
 const TEST_TOKEN_COLOR = "#6366f1";
 
+const CATEGORY_FILTERS: Array<{ id: TestCategoryFilter; label: string }> = [
+  { id: "all", label: "Karma" },
+  { id: "tarih", label: TEST_CATEGORY_LABELS.tarih },
+  { id: "vatandaslik", label: TEST_CATEGORY_LABELS.vatandaslik },
+];
+
 export type TestPanelProps = {
   questions: TestQuestion[];
   isLoading: boolean;
   error: string | null;
   wrongIds: string[];
-  onAnswer: (payload: { questionId: string; isCorrect: boolean }) => void;
+  onAnswer: (payload: { questionId: string; isCorrect: boolean; category: TestCategory }) => void;
 };
 
 export function TestPanel({ questions, isLoading, error, wrongIds, onAnswer }: TestPanelProps) {
+  const [categoryFilter, setCategoryFilter] = useState<TestCategoryFilter>("all");
   const [studyMode, setStudyMode] = useState<TestStudyMode>("all");
   const [current, setCurrent] = useState<TestQuestion | null>(null);
   const [answeredKey, setAnsweredKey] = useState<TestOptionKey | null>(null);
   const recentIdsRef = useRef<string[]>([]);
+
+  // Seçili kategoriye göre havuz. "all" => karma (tüm kategoriler).
+  const pool = useMemo(
+    () =>
+      categoryFilter === "all"
+        ? questions
+        : questions.filter((question) => question.category === categoryFilter),
+    [questions, categoryFilter],
+  );
 
   // "Yanlışlar" havuzu study seçimi anındaki id'lerle sabitlensin ki bir soruyu
   // yanıtlayıp havuzdan düşürünce anlık pool değişmesin (döngü akışını bozmaz).
@@ -30,7 +49,7 @@ export function TestPanel({ questions, isLoading, error, wrongIds, onAnswer }: T
 
   const advance = useCallback(
     (mode: TestStudyMode) => {
-      const next = pickNextTestQuestion(questions, recentIdsRef.current, mode, wrongIdsRef.current);
+      const next = pickNextTestQuestion(pool, recentIdsRef.current, mode, wrongIdsRef.current);
       if (next) {
         recentIdsRef.current = [next.id, ...recentIdsRef.current].slice(
           0,
@@ -40,16 +59,31 @@ export function TestPanel({ questions, isLoading, error, wrongIds, onAnswer }: T
       setAnsweredKey(null);
       setCurrent(next);
     },
-    [questions],
+    [pool],
   );
 
   // İlk soruyu (veya havuz boşaldıysa) yükle.
   useEffect(() => {
-    if (questions.length === 0 || current) {
+    if (pool.length === 0 || current) {
       return;
     }
     advance(studyMode);
-  }, [advance, current, questions.length, studyMode]);
+  }, [advance, current, pool.length, studyMode]);
+
+  const handleCategoryChange = useCallback(
+    (next: TestCategoryFilter) => {
+      if (next === categoryFilter) {
+        return;
+      }
+      setCategoryFilter(next);
+      recentIdsRef.current = [];
+      // Havuz değişince (yeni pool bir sonraki render'da geçerli olur) mevcut soruyu
+      // temizle; useEffect yeni havuzdan soru çeker.
+      setAnsweredKey(null);
+      setCurrent(null);
+    },
+    [categoryFilter],
+  );
 
   const handleStudyModeChange = useCallback(
     (mode: TestStudyMode) => {
@@ -70,7 +104,7 @@ export function TestPanel({ questions, isLoading, error, wrongIds, onAnswer }: T
       }
       const isCorrect = key === current.correct;
       setAnsweredKey(key);
-      onAnswer({ questionId: current.id, isCorrect });
+      onAnswer({ questionId: current.id, isCorrect, category: current.category });
     },
     [answeredKey, current, onAnswer],
   );
@@ -78,6 +112,19 @@ export function TestPanel({ questions, isLoading, error, wrongIds, onAnswer }: T
   const handleNext = useCallback(() => {
     advance(studyMode);
   }, [advance, studyMode]);
+
+  // Seçili kategori havuzundaki yanlış soru sayısı ("Yanlışlar" düğmesi için).
+  const wrongCount = useMemo(() => {
+    const poolIds = new Set(pool.map((question) => question.id));
+    return wrongIds.filter((id) => poolIds.has(id)).length;
+  }, [pool, wrongIds]);
+
+  // Kategori değişince yanlış havuzu boşaldıysa "Tümü" havuzuna düş.
+  useEffect(() => {
+    if (studyMode === "wrong" && wrongCount === 0) {
+      setStudyMode("all");
+    }
+  }, [studyMode, wrongCount]);
 
   if (isLoading) {
     return (
@@ -100,16 +147,32 @@ export function TestPanel({ questions, isLoading, error, wrongIds, onAnswer }: T
     );
   }
 
-  const wrongCount = wrongIds.length;
   const isAnswered = Boolean(answeredKey);
   const correctKey = current?.correct ?? null;
+  const categoryHint =
+    categoryFilter === "all"
+      ? "Tarih + Vatandaşlık"
+      : TEST_CATEGORY_LABELS[categoryFilter];
 
   return (
     <div className="test-stage">
       <div className="test-panel glass">
         <div className="quiz-section-heading">
           <h2>Test Soru Modu</h2>
-          <span>KPSS Tarih çıkmış sorular · karışık</span>
+          <span>KPSS çıkmış sorular · {categoryHint} · karışık</span>
+        </div>
+
+        <div className="test-study-switch" role="group" aria-label="Kategori">
+          {CATEGORY_FILTERS.map((filter) => (
+            <button
+              className={categoryFilter === filter.id ? "is-active" : ""}
+              key={filter.id}
+              onClick={() => handleCategoryChange(filter.id)}
+              type="button"
+            >
+              {filter.label}
+            </button>
+          ))}
         </div>
 
         <div className="test-study-switch" role="group" aria-label="Çalışma havuzu">
@@ -138,7 +201,8 @@ export function TestPanel({ questions, isLoading, error, wrongIds, onAnswer }: T
             }`}
           >
             <span className="quiz-card__eyebrow">
-              {current.topic ?? "Tarih"}
+              {TEST_CATEGORY_LABELS[current.category]}
+              {current.topic ? ` · ${current.topic}` : ""}
               {current.year ? ` · ${current.year}` : ""}
             </span>
             <strong className="test-prompt">{current.prompt}</strong>

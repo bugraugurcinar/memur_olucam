@@ -1,0 +1,4736 @@
+{
+  "meta": {
+    "title": "KPSS Vatandaşlık Çıkmış Sorular",
+    "source": "Yediiklim KPSS Vatandaşlık Son 11 Yıl Çıkmış Sorular",
+    "note": "Görsel ve iptal edilen sorular hariç tutulmuştur."
+  },
+  "questions": [
+    {
+      "id": "vat-0001",
+      "topic": "Hukukun Temel Kavramları",
+      "year": 2014,
+      "prompt": "I. Yönetmelik\nII. Kanun hükmünde kararname\nIII. Tüzük\nHukukumuzda normlar hiyerarşisi bakımından, numaralandırılmış normların üstlük-astlık ilişkisine göre sıralanışı aşağıdakilerin hangisinde verilmiştir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "II - I - III"
+        },
+        {
+          "key": "B",
+          "text": "III - II - I"
+        },
+        {
+          "key": "C",
+          "text": "II - III - I"
+        },
+        {
+          "key": "D",
+          "text": "I - III - II"
+        },
+        {
+          "key": "E",
+          "text": "III - I - II"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0002",
+      "topic": "Hukukun Temel Kavramları",
+      "year": 2014,
+      "prompt": "Bir kimsenin, bilerek sebep olmadığı bir tehlikeden kendisini veya bir başkasını kurtarmak için, bu tehlikeyle ilgisi olmayan üçüncü bir kişinin malına zarar vermesi hâline ne ad verilir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Meşru müdafaa"
+        },
+        {
+          "key": "B",
+          "text": "Iztırar hâli"
+        },
+        {
+          "key": "C",
+          "text": "Haksız tahrik"
+        },
+        {
+          "key": "D",
+          "text": "Nispi hak"
+        },
+        {
+          "key": "E",
+          "text": "Hakkın kötüye kullanılması"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0003",
+      "topic": "Hukukun Temel Kavramları",
+      "year": 2015,
+      "prompt": "6098 sayılı Türk Borçlar Kanunu madde 91: “Borcun ifası için bir ayın başlangıcı veya sonu belirlenmişse, bundan ayın birinci ve sonuncu günü; ayın ortası belirlenmişse, bundan da ayın onbeşinci günü anlaşılır.”\nBu kural, niteliğine göre aşağıdakilerden hangisine örnek olarak verilebilir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Emredici hukuk kuralı"
+        },
+        {
+          "key": "B",
+          "text": "Yasaklayıcı hukuk kuralı"
+        },
+        {
+          "key": "C",
+          "text": "Tamamlayıcı hukuk kuralı"
+        },
+        {
+          "key": "D",
+          "text": "Yorumlayıcı hukuk kuralı"
+        },
+        {
+          "key": "E",
+          "text": "Tanımlayıcı hukuk kuralı"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0004",
+      "topic": "Hukukun Temel Kavramları",
+      "year": 2015,
+      "prompt": "Bir otel işletmecisinin, müşterisinin kendisine bıraktığı eşya üzerinde ödenmeyen otel ücreti nedeniyle alacağını güvence altına almak için hapis hakkına sahip olması durumu aşağıdakilerden hangisiyle ifade edilir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Haklı savunma"
+        },
+        {
+          "key": "B",
+          "text": "Zorunluluk hâli"
+        },
+        {
+          "key": "C",
+          "text": "Kendi hakkını kendi gücüyle koruma"
+        },
+        {
+          "key": "D",
+          "text": "Kısas"
+        },
+        {
+          "key": "E",
+          "text": "Diyet usulü"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0005",
+      "topic": "Hukukun Temel Kavramları",
+      "year": 2016,
+      "prompt": "Aşağıdakilerden hangisi kişinin, bizzat hareket ederek kendi fiilleriyle haklar kazanabilme ve borç altına girebilme iktidarını ifade eder?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Erginlik"
+        },
+        {
+          "key": "B",
+          "text": "Hak ehliyeti"
+        },
+        {
+          "key": "C",
+          "text": "Fiil ehliyeti"
+        },
+        {
+          "key": "D",
+          "text": "Kısıtlı olmamak"
+        },
+        {
+          "key": "E",
+          "text": "Hak sahipliği"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0006",
+      "topic": "Hukukun Temel Kavramları",
+      "year": 2017,
+      "prompt": "Türk hukukunda sahibine bir eşya üzerinde kullanma, semerelerinden yararlanma ve hukukun çizdiği sınırlar içinde dilediği gibi tasarrufta bulunma yetkilerinin tümünü veren ayni hak aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kiracılık hakkı"
+        },
+        {
+          "key": "B",
+          "text": "Mülkiyet hakkı"
+        },
+        {
+          "key": "C",
+          "text": "Rehin hakkı"
+        },
+        {
+          "key": "D",
+          "text": "Oturma hakkı"
+        },
+        {
+          "key": "E",
+          "text": "Zilyetlik"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0007",
+      "topic": "Hukukun Temel Kavramları",
+      "year": 2017,
+      "prompt": "Türk hukukunda, kanunlara aykırı olmamak ve Danıştay incelemesinden geçirilmek şartıyla, bir kanunun uygulamasını göstermek veya emrettiği işleri belirtmek üzere çıkarılan hukuki metin aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tüzük"
+        },
+        {
+          "key": "B",
+          "text": "Yönetmelik"
+        },
+        {
+          "key": "C",
+          "text": "Sirküler"
+        },
+        {
+          "key": "D",
+          "text": "Genelge"
+        },
+        {
+          "key": "E",
+          "text": "Statü"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0008",
+      "topic": "Hukukun Temel Kavramları",
+      "year": 2018,
+      "prompt": "Ergin olma, 4721 sayılı Türk Medeni Kanunu'nda kural olarak aşağıdakilerin hangisiyle ilişkili kılınmıştır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Belli bir yaşı doldurma"
+        },
+        {
+          "key": "B",
+          "text": "Ayırt etme gücüne sahip olma"
+        },
+        {
+          "key": "C",
+          "text": "Kısıtlı olmama"
+        },
+        {
+          "key": "D",
+          "text": "Hak ehliyetine sahip olma"
+        },
+        {
+          "key": "E",
+          "text": "Sağ olarak tamamıyla doğma"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0009",
+      "topic": "Hukukun Temel Kavramları",
+      "year": 2018,
+      "prompt": "Bir kimsenin, durumun gereklerine göre kendisinden beklenen özeni göstermesine rağmen bir hakkın kazanılmasına veya hukuki sonucun doğmasına ilişkin engelin farkında olmamasıdır.\nBu ifadeyle açıklanan kavram aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Fiil ehliyeti"
+        },
+        {
+          "key": "B",
+          "text": "Hakkın kötüye kullanılması"
+        },
+        {
+          "key": "C",
+          "text": "Kanuna karşı hile"
+        },
+        {
+          "key": "D",
+          "text": "Muvazaa"
+        },
+        {
+          "key": "E",
+          "text": "İyi niyet"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0010",
+      "topic": "Hukukun Temel Kavramları",
+      "year": 2019,
+      "prompt": "Adını “Cevdet” olarak değiştirmek isteyen Bahadır, aşağıdaki mercilerin hangisine başvurmalıdır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Noter"
+        },
+        {
+          "key": "B",
+          "text": "Cumhuriyet başsavcılığı"
+        },
+        {
+          "key": "C",
+          "text": "Nüfus müdürlüğü"
+        },
+        {
+          "key": "D",
+          "text": "Mahkeme"
+        },
+        {
+          "key": "E",
+          "text": "Valilik"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0011",
+      "topic": "Hukukun Temel Kavramları",
+      "year": 2019,
+      "prompt": "I. Sebepsiz zenginleşme\nII. Haksız fiil\nIII. Sözleşme\n6098 sayılı Türk Borçlar Kanunu'na göre yukarıdakilerden hangileri borcun kaynakları arasında yer alır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yalnız I"
+        },
+        {
+          "key": "B",
+          "text": "Yalnız II"
+        },
+        {
+          "key": "C",
+          "text": "I ve III"
+        },
+        {
+          "key": "D",
+          "text": "II ve III"
+        },
+        {
+          "key": "E",
+          "text": "I, II ve III"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0012",
+      "topic": "Hukukun Temel Kavramları",
+      "year": 2020,
+      "prompt": "Aşağıdakilerden hangisi ana ve babanın, ergin olmayan çocuklarının şahsı ve malları üzerinde sahip oldukları bir yetkidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Vasilik"
+        },
+        {
+          "key": "B",
+          "text": "Velayet"
+        },
+        {
+          "key": "C",
+          "text": "Kayyımlık"
+        },
+        {
+          "key": "D",
+          "text": "Kamu vesayeti"
+        },
+        {
+          "key": "E",
+          "text": "Özel vesayet"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0013",
+      "topic": "Hukukun Temel Kavramları",
+      "year": 2020,
+      "prompt": "6098 sayılı Türk Borçlar Kanunu'na göre, aşağıdakilerden hangisi sözleşmenin kesin hükümsüzlüğü sonucunu doğuran nedenlerden biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Sözleşmenin kanunun emredici hükümlerine aykırı olması"
+        },
+        {
+          "key": "B",
+          "text": "Sözleşmenin kişilik haklarına aykırı olması"
+        },
+        {
+          "key": "C",
+          "text": "Sözleşme konusunun başlangıçtan itibaren objektif ve sürekli olarak imkânsız olması"
+        },
+        {
+          "key": "D",
+          "text": "Sözleşmenin kamu düzenine aykırı olması"
+        },
+        {
+          "key": "E",
+          "text": "Sözleşme bedelinin borçlu tarafından ödenmemiş olması"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0014",
+      "topic": "Hukukun Temel Kavramları",
+      "year": 2021,
+      "prompt": "Biri diğerinden veya ortak kökten gelen kişiler arasında kan hısımlığı bulunur.\nBuna göre bir kişi, kural olarak aşağıdakilerden hangisiyle kan hısmı değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Eşiyle"
+        },
+        {
+          "key": "B",
+          "text": "Kardeşiyle"
+        },
+        {
+          "key": "C",
+          "text": "Teyzesiyle"
+        },
+        {
+          "key": "D",
+          "text": "Torunuyla"
+        },
+        {
+          "key": "E",
+          "text": "Kuzeniyle"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0015",
+      "topic": "Hukukun Temel Kavramları",
+      "year": 2021,
+      "prompt": "4721 sayılı Türk Medeni Kanunu'na göre gerçek veya tüzel en az 7 kişinin; kazanç paylaşma dışında belirli ve ortak bir amacı gerçekleştirmek üzere, bilgi ve çalışmalarını sürekli olarak birleştirmek yoluyla oluşturdukları tüzel kişiliğe sahip kişi topluluğu aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Limitet şirket"
+        },
+        {
+          "key": "B",
+          "text": "Konfederasyon"
+        },
+        {
+          "key": "C",
+          "text": "Federasyon"
+        },
+        {
+          "key": "D",
+          "text": "Dernek"
+        },
+        {
+          "key": "E",
+          "text": "Vakıf"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0016",
+      "topic": "Hukukun Temel Kavramları",
+      "year": 2022,
+      "prompt": "4721 sayılı Türk Medeni Kanunu'na göre erginlik;\nI. 18 yaşın doldurulması,\nII. evlenme,\nIII. kişinin isteği ve velisinin rızası\nhâllerinin hangilerinde mahkeme kararına ihtiyaç duymaksızın kural olarak doğrudan kazanılır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yalnız I"
+        },
+        {
+          "key": "B",
+          "text": "Yalnız III"
+        },
+        {
+          "key": "C",
+          "text": "I ve II"
+        },
+        {
+          "key": "D",
+          "text": "II ve III"
+        },
+        {
+          "key": "E",
+          "text": "I, II ve III"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0017",
+      "topic": "Hukukun Temel Kavramları",
+      "year": 2023,
+      "prompt": "Kişiye bağlı olmayan, bir hukuki işlemle veya miras yoluyla başkalarına geçebilen haklar; devredilebilen haklardır.\nBuna göre\nI. rehin,\nII. nafaka,\nIII. mülkiyet\nhaklarından hangileri devredilebilen haklardandır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yalnız I"
+        },
+        {
+          "key": "B",
+          "text": "Yalnız II"
+        },
+        {
+          "key": "C",
+          "text": "I ve III"
+        },
+        {
+          "key": "D",
+          "text": "II ve III"
+        },
+        {
+          "key": "E",
+          "text": "I, II ve III"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0018",
+      "topic": "Hukukun Temel Kavramları",
+      "year": 2023,
+      "prompt": "Haksız fiilin aşağıdaki unsurlarından hangisini gidermek üzere tazminata hükmedilir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Fiil"
+        },
+        {
+          "key": "B",
+          "text": "Kusur"
+        },
+        {
+          "key": "C",
+          "text": "Zarar"
+        },
+        {
+          "key": "D",
+          "text": "Uygun illiyet bağı"
+        },
+        {
+          "key": "E",
+          "text": "Hukuka aykırılık"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0019",
+      "topic": "Hukukun Temel Kavramları",
+      "year": 2023,
+      "prompt": "4721 sayılı Türk Medeni Kanunu'na göre hakkın kötüye kullanılması yasağı, aşağıdakilerin hangisi kapsamında düzenlenmiştir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Resmî belgelerle ispat"
+        },
+        {
+          "key": "B",
+          "text": "İspat yükü"
+        },
+        {
+          "key": "C",
+          "text": "Hâkimin takdir yetkisi"
+        },
+        {
+          "key": "D",
+          "text": "Dürüst davranma"
+        },
+        {
+          "key": "E",
+          "text": "Hukukun uygulanması ve kaynakları"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0020",
+      "topic": "Hukukun Temel Kavramları",
+      "year": 2024,
+      "prompt": "1982 Anayasası'na göre aşağıdakilerden hangisi kişinin yaşam hakkına müdahale edilerek öldürme fiilinin işlenmesinin haklı gerekçelerinden biri olamaz?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Meşru müdafaa"
+        },
+        {
+          "key": "B",
+          "text": "Yakalama kararının yerine getirilmesi"
+        },
+        {
+          "key": "C",
+          "text": "Tutuklunun kaçmasının önlenmesi"
+        },
+        {
+          "key": "D",
+          "text": "Ayaklanmanın bastırılması"
+        },
+        {
+          "key": "E",
+          "text": "Kişinin kendi rızası"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0021",
+      "topic": "Hukukun Temel Kavramları",
+      "year": 2024,
+      "prompt": "I. Müteselsil borçlulardan birinin feragat etmiş olması, diğerlerine karşı ileri sürülemez.\nII. Borcun ifası için bir ayın başlangıcı veya sonu belirlenmişse, bundan ayın birinci ve sonuncu günü, ayın ortası belirlenmişse, bundan da ayın on beşinci günü anlaşılır.\nIII. Mal değişim sözleşmesi, taraflardan birinin diğer tarafa bir veya birden çok şeyin zilyetlik ve mülkiyetini, diğer tarafın da karşı edim olarak başka bir veya birden çok şeyin zilyetlik ve mülkiyetini devretmeyi üstlendiği sözleşmedir.\n6098 sayılı Türk Borçlar Kanunu'nun bu hükümlerinin hukuki nitelikleri aşağıdakilerin hangisinde sırasıyla verilmiştir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Emredici - Yorumlayıcı - Tanımlayıcı"
+        },
+        {
+          "key": "B",
+          "text": "Emredici - Tanımlayıcı - Tamamlayıcı"
+        },
+        {
+          "key": "C",
+          "text": "Yorumlayıcı - Tamamlayıcı - Emredici"
+        },
+        {
+          "key": "D",
+          "text": "Yorumlayıcı - Emredici - Tanımlayıcı"
+        },
+        {
+          "key": "E",
+          "text": "Tamamlayıcı - Yorumlayıcı - Emredici"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0022",
+      "topic": "Hukukun Temel Kavramları",
+      "year": 2024,
+      "prompt": "4721 sayılı Türk Medeni Kanunu'na göre hak ehliyeti, aşağıdaki koşullardan hangisinin gerçekleşmesiyle ana rahmine düşme anından başlayarak elde edilir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Fiil ehliyetini kazanmak"
+        },
+        {
+          "key": "B",
+          "text": "Bir yaşını tamamlamak"
+        },
+        {
+          "key": "C",
+          "text": "Nüfus siciline kaydedilmek"
+        },
+        {
+          "key": "D",
+          "text": "Sağ doğmak"
+        },
+        {
+          "key": "E",
+          "text": "Ergin olmak"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0023",
+      "topic": "Anayasal Gelişmeler ve 1982 Anayasası'nın Genel Esasları",
+      "year": 2015,
+      "prompt": "Adli yargı kolundaki üst derece mahkemesi aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Danıştay"
+        },
+        {
+          "key": "B",
+          "text": "Yargıtay"
+        },
+        {
+          "key": "C",
+          "text": "Uyuşmazlık Mahkemesi"
+        },
+        {
+          "key": "D",
+          "text": "Anayasa Mahkemesi"
+        },
+        {
+          "key": "E",
+          "text": "Askerî Yüksek İdare Mahkemesi"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0024",
+      "topic": "Anayasal Gelişmeler ve 1982 Anayasası'nın Genel Esasları",
+      "year": 2016,
+      "prompt": "Türk hukukuna göre, metninde herhangi bir yürürlük tarihi gösterilmeyen kanunlar ne zaman yürürlüğe girer?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Resmî Gazete'de yayımlanmasını izleyen günün başlangıcından hesap edilmek üzere kırk beşinci günün sona ermesinden itibaren"
+        },
+        {
+          "key": "B",
+          "text": "Resmî Gazete'de yayımlanmasını izleyen günün başlangıcından hesap edilmek üzere otuzuncu günün sona ermesinden itibaren"
+        },
+        {
+          "key": "C",
+          "text": "TBMM Genel Kurulunda kabul edildiği günden itibaren kırk beş gün sonra"
+        },
+        {
+          "key": "D",
+          "text": "TBMM Genel Kurulunda kabul edildiği günden itibaren otuz gün sonra"
+        },
+        {
+          "key": "E",
+          "text": "Resmî Gazete'de yayımlanmasını izleyen günün başlangıcından hesap edilmek üzere altmışıncı günün dolmasından itibaren"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0025",
+      "topic": "Anayasal Gelişmeler ve 1982 Anayasası'nın Genel Esasları",
+      "year": 2017,
+      "prompt": "Türk hukukunda kanunlarla ilgili aşağıdakilerden hangisi yanlıştır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kanunlar, kural olarak Türkiye Büyük Millet Meclisinde kabul edildiklerinin ertesi günü yürürlüğe girer."
+        },
+        {
+          "key": "B",
+          "text": "Milletvekillerinin her biri kanun teklifinde bulanabilir."
+        },
+        {
+          "key": "C",
+          "text": "Kanun teklif ve tasarılarının görüşülebilmesi için Türkiye Büyük Millet Meclisi üye tam sayısının en az üçte birinin Genel Kurula katılması gerekir."
+        },
+        {
+          "key": "D",
+          "text": "Kanun teklif ve tasarılarının kabulü için, kural olarak Genel Kurulda toplantıya katılan milletvekillerinin salt çoğunluğu aranır."
+        },
+        {
+          "key": "E",
+          "text": "Kanun koyma yetkisi Türkiye Büyük Millet Meclisine aittir."
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0026",
+      "topic": "Anayasal Gelişmeler ve 1982 Anayasası'nın Genel Esasları",
+      "year": 2017,
+      "prompt": "Türk Hukukuna göre, aşağıdakilerden hangisi kanuni hâkim güvencesini ifade eder?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kimse, işlendiği zaman yürürlükte bulunan kanunun suç saymadığı bir fiilden dolayı cezalandırılamaz."
+        },
+        {
+          "key": "B",
+          "text": "Kimseye suçu işlediği zaman kanunda o suç için konulmuş olan cezadan daha ağır bir ceza verilemez."
+        },
+        {
+          "key": "C",
+          "text": "Kimse kendisini ve kanunda gösterilen yakınlarını suçlayan bir beyanda bulunmaya veya bu yolda delil göstermeye zorlanamaz."
+        },
+        {
+          "key": "D",
+          "text": "Kanuna aykırı olarak elde edilmiş bulgular, delil olarak kabul edilemez."
+        },
+        {
+          "key": "E",
+          "text": "Kimse kanunen tabi olduğu mahkemeden başka bir merci önüne çıkarılamaz."
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0027",
+      "topic": "Anayasal Gelişmeler ve 1982 Anayasası'nın Genel Esasları",
+      "year": 2017,
+      "prompt": "Türk hukukuna göre, aşağıdakilerden hangisi olağanüstü hâl ilanının sonuçları arasında yer almaz?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Vatandaşlar için para, mal ve çalışma yükümlülükleri getirilebilir."
+        },
+        {
+          "key": "B",
+          "text": "Temel hakların kullanılması kısmen veya tamamen durdurulabilir."
+        },
+        {
+          "key": "C",
+          "text": "Olağanüstü hâlin gerekli kıldığı konularda kanun hükmünde kararname çıkarılabilir."
+        },
+        {
+          "key": "D",
+          "text": "Genel mahkemelerin yargı yetkisi devam eder."
+        },
+        {
+          "key": "E",
+          "text": "Kolluk yetkileri askerî makamlara geçer."
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0028",
+      "topic": "Anayasal Gelişmeler ve 1982 Anayasası'nın Genel Esasları",
+      "year": 2018,
+      "prompt": "Aşağıdakilerin hangisi 1982 Anayasası'nda koruma altına alınan inkılap kanunlarından biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tevhidi Tedrisat Kanunu"
+        },
+        {
+          "key": "B",
+          "text": "Tekke ve Zaviyelerle Türbelerin Seddine ve Türbedarlıklar ile Birtakım Unvanların Men ve İlgasına Dair Kanun"
+        },
+        {
+          "key": "C",
+          "text": "Türk Harflerinin Kabul ve Tatbiki Hakkında Kanun"
+        },
+        {
+          "key": "D",
+          "text": "Şapka İktisası Hakkında Kanun"
+        },
+        {
+          "key": "E",
+          "text": "Yıpranan Tarihî ve Kültürel Taşınmaz Varlıkların Yenilenerek Korunması ve Yaşatılarak Kullanılması Hakkında Kanun"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0029",
+      "topic": "Anayasal Gelişmeler ve 1982 Anayasası'nın Genel Esasları",
+      "year": 2018,
+      "prompt": "Türkiye'de Cumhuriyet'in ilanından sonra kaç farklı anayasa yürürlüğe girmiştir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "1"
+        },
+        {
+          "key": "B",
+          "text": "2"
+        },
+        {
+          "key": "C",
+          "text": "3"
+        },
+        {
+          "key": "D",
+          "text": "4"
+        },
+        {
+          "key": "E",
+          "text": "5"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0030",
+      "topic": "Anayasal Gelişmeler ve 1982 Anayasası'nın Genel Esasları",
+      "year": 2022,
+      "prompt": "Burak, takipçilerinin vatandaşlık bilincini artırmak amacıyla açtığı sosyal medya hesabı üzerinden 1982 Anayasası hükümleriyle ilgili bilgi paylaşımları yapıyor.\nAşağıdakilerden hangisi Burak'ın, paylaşımlarında “Cumhuriyet'in Nitelikleri” başlığı altında topladığı bilgilerden biri olamaz?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Türkiye Cumhuriyeti demokratik bir devlettir."
+        },
+        {
+          "key": "B",
+          "text": "Türkiye Cumhuriyeti insan haklarına saygılı bir devlettir."
+        },
+        {
+          "key": "C",
+          "text": "Türkiye Cumhuriyeti sosyal bir devlettir."
+        },
+        {
+          "key": "D",
+          "text": "Türkiye Cumhuriyeti kuvvetler birliğine dayalı bir devlettir."
+        },
+        {
+          "key": "E",
+          "text": "Türkiye Cumhuriyeti laik bir devlettir."
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0031",
+      "topic": "Temel Hak ve Hürriyetler",
+      "year": 2015,
+      "prompt": "1982 Anayasası'na göre, aşağıdakilerden hangisi siyasi haklar ve ödevler başlığı altında düzenlenmemiştir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Türk vatandaşlığı"
+        },
+        {
+          "key": "B",
+          "text": "Seçme, seçilme ve siyasi faaliyette bulunma hakları"
+        },
+        {
+          "key": "C",
+          "text": "Kamu hizmetlerine girme hakkı"
+        },
+        {
+          "key": "D",
+          "text": "Dilekçe, bilgi edinme ve kamu denetçisine başvurma hakkı"
+        },
+        {
+          "key": "E",
+          "text": "İspat hakkı"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0032",
+      "topic": "Temel Hak ve Hürriyetler",
+      "year": 2016,
+      "prompt": "Türk hukukuna göre dernekler en az kaç kişi tarafından kurulabilir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "3"
+        },
+        {
+          "key": "B",
+          "text": "5"
+        },
+        {
+          "key": "C",
+          "text": "7"
+        },
+        {
+          "key": "D",
+          "text": "10"
+        },
+        {
+          "key": "E",
+          "text": "15"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0033",
+      "topic": "Temel Hak ve Hürriyetler",
+      "year": 2016,
+      "prompt": "1982 Anayasası'na göre, aşağıdakilerden hangisi kişinin hakları ve ödevlerinden biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Türk vatandaşlığı"
+        },
+        {
+          "key": "B",
+          "text": "Konut dokunulmazlığı"
+        },
+        {
+          "key": "C",
+          "text": "Yerleşme ve seyahat hürriyeti"
+        },
+        {
+          "key": "D",
+          "text": "Basın hürriyeti"
+        },
+        {
+          "key": "E",
+          "text": "Din ve vicdan hürriyeti"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0034",
+      "topic": "Temel Hak ve Hürriyetler",
+      "year": 2019,
+      "prompt": "1982 Anayasası'na göre Türk vatandaşlığıyla ilgili aşağıdaki ifadelerden hangisi yanlıştır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Türk ananın çocuğu Türk'tür."
+        },
+        {
+          "key": "B",
+          "text": "Türk babanın çocuğu Türk'tür."
+        },
+        {
+          "key": "C",
+          "text": "Hiçbir Türk, vatana bağlılıkla bağdaşmayan bir eylemde bulunmadıkça vatandaşlıktan çıkarılamaz."
+        },
+        {
+          "key": "D",
+          "text": "Vatandaşlıktan çıkarmayla ilgili karar ve işlemlere karşı yargı yolu kapalıdır."
+        },
+        {
+          "key": "E",
+          "text": "Vatandaşlık, kanunun gösterdiği şartlarda kazanılır ve ancak kanunda belirtilen durumlarda kaybedilir."
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0035",
+      "topic": "Temel Hak ve Hürriyetler",
+      "year": 2020,
+      "prompt": "1982 Anayasası'nda güvence altına alınan temel hak ve özgürlüklerden; aşağıdakilerin hangisi kapsamındaki herhangi birinin kamu gücü tarafından ihlal edildiği iddiasıyla, Anayasa Mahkemesine bireysel başvuruda bulunulabilir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Uluslararası Adalet Divanı Statüsü"
+        },
+        {
+          "key": "B",
+          "text": "Birleşmiş Milletler İnsan Hakları Evrensel Beyannamesi"
+        },
+        {
+          "key": "C",
+          "text": "Birleşmiş Milletler Antlaşması"
+        },
+        {
+          "key": "D",
+          "text": "Avrupa İnsan Hakları Sözleşmesi"
+        },
+        {
+          "key": "E",
+          "text": "Avrupa Birliği Antlaşması"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0036",
+      "topic": "Temel Hak ve Hürriyetler",
+      "year": 2021,
+      "prompt": "1982 Anayasası'na göre aşağıdaki temel hak ve ödevlerden hangisi herkese değil, yalnızca Türk vatandaşlarına tanınmıştır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kamu hizmetlerine girme hakkı"
+        },
+        {
+          "key": "B",
+          "text": "Vergi ödevi"
+        },
+        {
+          "key": "C",
+          "text": "Sosyal güvenlik hakkı"
+        },
+        {
+          "key": "D",
+          "text": "Toplantı ve gösteri yürüyüşü düzenleme hakkı"
+        },
+        {
+          "key": "E",
+          "text": "Dernek kurma hürriyeti"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0037",
+      "topic": "Temel Hak ve Hürriyetler",
+      "year": 2022,
+      "prompt": "Siyasi parti üyeliği konusunda bilgi edinmek isteyen Demir, avukat olan arkadaşı Meryem'e bazı sorular yöneltiyor. Meryem ise bu soruların hepsine “Hayır!” yanıtını veriyor.\nBuna göre Meryem, Demir'in aşağıdaki sorularından hangisine verdiği yanıtta yanılmıştır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Aynı anda birden fazla siyasi parti üyesi olabilir miyim?"
+        },
+        {
+          "key": "B",
+          "text": "19 yaşında lise son sınıf öğrencisiyken siyasi parti üyesi olabilir miyim?"
+        },
+        {
+          "key": "C",
+          "text": "Bir kamu kurumunda işçi statüsünde çalışırken siyasi parti üyesi olabilir miyim?"
+        },
+        {
+          "key": "D",
+          "text": "17 yaşında üniversite öğrencisiyken siyasi parti üyesi olabilir miyim?"
+        },
+        {
+          "key": "E",
+          "text": "Kamu hizmetlerinden yasaklıyken siyasi parti üyesi olabilir miyim?"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0038",
+      "topic": "Temel Hak ve Hürriyetler",
+      "year": 2023,
+      "prompt": "1982 Anayasası'na göre temel hak ve hürriyetlerin kullanılmasının durdurulmasıyla ilgili aşağıdaki ifadelerden hangisi yanlıştır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Savaş, seferberlik veya olağanüstü hâller dışında temel hak ve hürriyetlerin kullanılmasının durdurulması mümkün değildir."
+        },
+        {
+          "key": "B",
+          "text": "Temel hak ve hürriyetlerin kullanılması kısmen durdurulabilir ancak tamamen durdurulamaz."
+        },
+        {
+          "key": "C",
+          "text": "Savaş hukukuna uygun fiiller sonucunda meydana gelen ölümler dışında kişinin yaşam hakkına dokunulamaz."
+        },
+        {
+          "key": "D",
+          "text": "Suçluluğu mahkeme kararıyla saptanıncaya kadar kimse suçlu sayılamaz."
+        },
+        {
+          "key": "E",
+          "text": "Temel hak ve hürriyetlerin kullanılması durdurulurken milletlerarası hukuktan doğan yükümlülükler ihlal edilemez."
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0039",
+      "topic": "Temel Hak ve Hürriyetler",
+      "year": 2024,
+      "prompt": "Aşağıdaki gruplardan hangisinin devlet tarafından korunacağı veya korumak için gerekli tedbirlerin alınacağı 1982 Anayasası'nda ismen belirtilmemiştir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Sanatçılar"
+        },
+        {
+          "key": "B",
+          "text": "Başarılı sporcular"
+        },
+        {
+          "key": "C",
+          "text": "İşsizler"
+        },
+        {
+          "key": "D",
+          "text": "Yargı mensupları"
+        },
+        {
+          "key": "E",
+          "text": "Yaşlılar"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0040",
+      "topic": "Yasama",
+      "year": 2014,
+      "prompt": "1982 Anayasası'na göre, milletvekillerinin yasama dokunulmazlığını kaldırma yetkisi aşağıdakilerden hangisine aittir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Türkiye Büyük Millet Meclisi Başkanı"
+        },
+        {
+          "key": "B",
+          "text": "Danıştay"
+        },
+        {
+          "key": "C",
+          "text": "Yüksek Seçim Kurulu"
+        },
+        {
+          "key": "D",
+          "text": "Anayasa Mahkemesi"
+        },
+        {
+          "key": "E",
+          "text": "Türkiye Büyük Millet Meclisi Genel Kurulu"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0041",
+      "topic": "Yasama",
+      "year": 2014,
+      "prompt": "Türkiye'de gizli oy-açık sayım ve döküm ilkesine uygun olarak ilk milletvekili seçimi hangi yıl yapılmıştır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "1946"
+        },
+        {
+          "key": "B",
+          "text": "1950"
+        },
+        {
+          "key": "C",
+          "text": "1954"
+        },
+        {
+          "key": "D",
+          "text": "1957"
+        },
+        {
+          "key": "E",
+          "text": "1961"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0042",
+      "topic": "Yasama",
+      "year": 2015,
+      "prompt": "1982 Anayasası'na göre, aşağıdakilerden hangisi milletvekili seçilebilme şartlarından biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Türk vatandaşı olmak"
+        },
+        {
+          "key": "B",
+          "text": "Kısıtlı olmamak"
+        },
+        {
+          "key": "C",
+          "text": "Kamu hizmetlerinden yasaklı olmamak"
+        },
+        {
+          "key": "D",
+          "text": "Yükümlü olduğu askerlik hizmetini yapmış olmak"
+        },
+        {
+          "key": "E",
+          "text": "On sekiz yaşını doldurmuş olmak"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0043",
+      "topic": "Yasama",
+      "year": 2017,
+      "prompt": "1982 Anayasası'na göre, Türkiye Büyük Millet Meclisi seçimleri hangi gerekçeyle ve bir seferde en fazla ne kadar süreyle geriye bırakılabilir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Sıkıyönetim - 6 ay"
+        },
+        {
+          "key": "B",
+          "text": "Seferberlik - 3 ay"
+        },
+        {
+          "key": "C",
+          "text": "Olağanüstü hâl - 1 yıl"
+        },
+        {
+          "key": "D",
+          "text": "Savaş - 1 yıl"
+        },
+        {
+          "key": "E",
+          "text": "Yakın savaş tehdidi - 6 ay"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0044",
+      "topic": "Yasama",
+      "year": 2017,
+      "prompt": "Türk hukukunda kamu başdenetçisi aşağıdakilerden hangisi tarafından seçilir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Bakanlar Kurulu"
+        },
+        {
+          "key": "B",
+          "text": "Halk"
+        },
+        {
+          "key": "C",
+          "text": "Anayasa Mahkemesi"
+        },
+        {
+          "key": "D",
+          "text": "Cumhurbaşkanı"
+        },
+        {
+          "key": "E",
+          "text": "Türkiye Büyük Millet Meclisi"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0045",
+      "topic": "Yasama",
+      "year": 2018,
+      "prompt": "1982 Anayasası'na göre bakanlar hakkında, görevleriyle ilgili bir suç işledikleri iddiasıyla Yüce Divana sevk kararı alma yetkisi aşağıdakilerin hangisine aittir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Cumhurbaşkanı"
+        },
+        {
+          "key": "B",
+          "text": "Türkiye Büyük Millet Meclisi"
+        },
+        {
+          "key": "C",
+          "text": "Anayasa Mahkemesi"
+        },
+        {
+          "key": "D",
+          "text": "Yargıtay Cumhuriyet Başsavcılığı"
+        },
+        {
+          "key": "E",
+          "text": "Yargıtay Ceza Genel Kurulu"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0046",
+      "topic": "Yasama",
+      "year": 2021,
+      "prompt": "1982 Anayasası'na göre milletlerarası antlaşmaların onaylanmasını uygun bulma görev ve yetkisi aşağıdakilerden hangisine aittir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Anayasa Mahkemesi"
+        },
+        {
+          "key": "B",
+          "text": "Millî Güvenlik Kurulu"
+        },
+        {
+          "key": "C",
+          "text": "Türkiye Büyük Millet Meclisi"
+        },
+        {
+          "key": "D",
+          "text": "Dışişleri Bakanlığı"
+        },
+        {
+          "key": "E",
+          "text": "Adalet Bakanlığı"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0047",
+      "topic": "Yasama",
+      "year": 2022,
+      "prompt": "Aşağıdakilerin hangisi Türkiye Büyük Millet Meclisi komisyonlarından biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Maliye Komisyonu"
+        },
+        {
+          "key": "B",
+          "text": "Çevre Komisyonu"
+        },
+        {
+          "key": "C",
+          "text": "Anayasa Komisyonu"
+        },
+        {
+          "key": "D",
+          "text": "Adalet Komisyonu"
+        },
+        {
+          "key": "E",
+          "text": "Dışişleri Komisyonu"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0048",
+      "topic": "Yasama",
+      "year": 2022,
+      "prompt": "Türkiye Büyük Millet Meclisi Başkanlığına bağlı olarak kurulan ve idarenin işleyişiyle ilgili şikâyetleri inceleyip önerilerde bulunmakla görevli merci, aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Devlet Denetleme Kurulu"
+        },
+        {
+          "key": "B",
+          "text": "Kamu Denetçiliği Kurumu"
+        },
+        {
+          "key": "C",
+          "text": "Danıştay"
+        },
+        {
+          "key": "D",
+          "text": "Yüksek Hakem Kurulu"
+        },
+        {
+          "key": "E",
+          "text": "Sayıştay"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0049",
+      "topic": "Yasama",
+      "year": 2024,
+      "prompt": "1982 Anayasası'na göre aşağıdakilerden hangisi Anayasa değişikliğine ilişkin kanun teklifinde bulunabilir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "200 milletvekili"
+        },
+        {
+          "key": "B",
+          "text": "Cumhurbaşkanı"
+        },
+        {
+          "key": "C",
+          "text": "Anayasa Mahkemesi"
+        },
+        {
+          "key": "D",
+          "text": "100.000 seçmen"
+        },
+        {
+          "key": "E",
+          "text": "Adalet Bakanı"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0050",
+      "topic": "Yasama",
+      "year": 2024,
+      "prompt": "Fatih, avukat arkadaşı Murat'ın sohbet sırasında kullandığı “İdare organları her ne kadar disiplin cezası verebilse de 1982 Anayasası uyarınca bu müeyyidenin kişi hürriyetini sınırlandıran bir müeyyide olabilmesi mümkün değildir.” ifadesi üzerine bu durumun bir istisnasının olup olmadığını soruyor. Murat, 1982 Anayasası'nda bu kurala kanunla istisnalar getirilebileceği hususunun da düzenlendiğini ifade ediyor.\nMurat'ın bahsettiği bu istisnalar aşağıdakilerden hangisi için tanınmıştır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Spor federasyonları"
+        },
+        {
+          "key": "B",
+          "text": "Millî İstihbarat Teşkilatı"
+        },
+        {
+          "key": "C",
+          "text": "Yargı organları"
+        },
+        {
+          "key": "D",
+          "text": "Silahlı Kuvvetler"
+        },
+        {
+          "key": "E",
+          "text": "Türkiye Büyük Millet Meclisi"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0051",
+      "topic": "Yürütme",
+      "year": 2016,
+      "prompt": "1982 Anayasası'na göre, bir bakanlığın herhangi bir sebeple boşalması hâlinde en geç kaç gün içinde yerine atama yapılması gerekir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "7"
+        },
+        {
+          "key": "B",
+          "text": "15"
+        },
+        {
+          "key": "C",
+          "text": "20"
+        },
+        {
+          "key": "D",
+          "text": "30"
+        },
+        {
+          "key": "E",
+          "text": "45"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0052",
+      "topic": "Yürütme",
+      "year": 2017,
+      "prompt": "1982 Anayasası'na göre, cumhurbaşkanlığına Meclis dışından aday gösterilmesi için en az kaç milletvekilinin yazılı teklifi gereklidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "10"
+        },
+        {
+          "key": "B",
+          "text": "20"
+        },
+        {
+          "key": "C",
+          "text": "25"
+        },
+        {
+          "key": "D",
+          "text": "30"
+        },
+        {
+          "key": "E",
+          "text": "45"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0053",
+      "topic": "Yürütme",
+      "year": 2018,
+      "prompt": "1982 Anayasası'na göre Millî Güvenlik Kurulunun gündemi, ilgililerin önerileri dikkate alınarak aşağıdakilerin hangisi tarafından düzenlenir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "İçişleri bakanı"
+        },
+        {
+          "key": "B",
+          "text": "Genelkurmay başkanı"
+        },
+        {
+          "key": "C",
+          "text": "Millî savunma bakanı"
+        },
+        {
+          "key": "D",
+          "text": "Cumhurbaşkanı"
+        },
+        {
+          "key": "E",
+          "text": "Millî Güvenlik Kurulu Genel Sekreterliği"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0054",
+      "topic": "Yürütme",
+      "year": 2019,
+      "prompt": "1982 Anayasası'na göre en son yapılan genel seçimlerde toplam geçerli oyların en az yüzde kaçını tek başına veya birlikte alan siyasi partiler, cumhurbaşkanlığına aday gösterebilirler?",
+      "options": [
+        {
+          "key": "A",
+          "text": "1"
+        },
+        {
+          "key": "B",
+          "text": "3"
+        },
+        {
+          "key": "C",
+          "text": "5"
+        },
+        {
+          "key": "D",
+          "text": "7"
+        },
+        {
+          "key": "E",
+          "text": "10"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0055",
+      "topic": "Yürütme",
+      "year": 2020,
+      "prompt": "1982 Anayasası'na göre, aşağıdakilerden hangisi cumhurbaşkanının görev ve yetkilerinden biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Gerekli gördüğü takdirde, yasama yılının ilk günü Türkiye Büyük Millet Meclisinde açılış konuşmasını yapmak"
+        },
+        {
+          "key": "B",
+          "text": "Millî güvenlik politikalarını belirlemek ve gerekli tedbirleri almak"
+        },
+        {
+          "key": "C",
+          "text": "Milletlerarası antlaşmaları onaylamak ve yayımlamak"
+        },
+        {
+          "key": "D",
+          "text": "Kanunların Anayasa'ya şekil veya esas bakımından aykırılığı gerekçesiyle Anayasa Mahkemesinde iptal davası açmak"
+        },
+        {
+          "key": "E",
+          "text": "Genel af ilan edilmesine karar vermek"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0056",
+      "topic": "Yürütme",
+      "year": 2021,
+      "prompt": "Cumhurbaşkanı tarafından bakan olarak atanan bir milletvekili, kural olarak atanmasını takip eden gün Türkiye Büyük Millet Meclisinde aşağıdakilerden hangisini yapar?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yasama dokunulmazlığından feragat ettiğini duyurur."
+        },
+        {
+          "key": "B",
+          "text": "Güven mektubu sunar."
+        },
+        {
+          "key": "C",
+          "text": "Kendisi için yapılan güven oylamasına katılır."
+        },
+        {
+          "key": "D",
+          "text": "Andiçmeyi icra eder."
+        },
+        {
+          "key": "E",
+          "text": "Milletvekilliğinden istifa ettiğine dair dilekçeyi okur."
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0057",
+      "topic": "Yürütme",
+      "year": 2022,
+      "prompt": "Türkiye Büyük Millet Meclisinde kabul edilen bir çevre kanunu aşağıdaki mercilerin hangisi tarafından Resmî Gazete'de yayımlanır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Bilgi Teknolojileri ve İletişim Kurumu"
+        },
+        {
+          "key": "B",
+          "text": "Cumhurbaşkanlığı"
+        },
+        {
+          "key": "C",
+          "text": "Türkiye Büyük Millet Meclisi"
+        },
+        {
+          "key": "D",
+          "text": "Çevre, Şehircilik ve İklim Değişikliği Bakanlığı"
+        },
+        {
+          "key": "E",
+          "text": "İçişleri Bakanlığı"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0058",
+      "topic": "Yürütme",
+      "year": 2023,
+      "prompt": "I. Cumhurbaşkanı\nII. Cumhurbaşkanı yardımcıları\nIII. Bakanlar\nYürütme yetki ve görevinin, yukarıdakilerin hangileri tarafından Anayasa'ya ve kanunlara uygun olarak kullanılacağı ve yerine getirileceği 1982 Anayasası'nda açıkça belirtilmiştir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yalnız I"
+        },
+        {
+          "key": "B",
+          "text": "I ve II"
+        },
+        {
+          "key": "C",
+          "text": "I ve III"
+        },
+        {
+          "key": "D",
+          "text": "II ve III"
+        },
+        {
+          "key": "E",
+          "text": "I, II ve III"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0059",
+      "topic": "Yürütme",
+      "year": 2023,
+      "prompt": "Cumhurbaşkanı ve milletvekilleri, göreve başlarken Türkiye Büyük Millet Meclisinde 1982 Anayasası'nda belirtilen şekilde andiçerler.\nAşağıdaki ifadelerden hangisi andiçme sırasında Cumhurbaşkanı tarafından kullanılırken milletvekilleri tarafından kullanılmaz?",
+      "options": [
+        {
+          "key": "A",
+          "text": "“Türkiye Cumhuriyeti'nin şan ve şerefini”"
+        },
+        {
+          "key": "B",
+          "text": "“Milletin kayıtsız ve şartsız egemenliğini”"
+        },
+        {
+          "key": "C",
+          "text": "“Vatanın ve milletin bölünmez bütünlüğünü”"
+        },
+        {
+          "key": "D",
+          "text": "“Devletin varlığı ve bağımsızlığını”"
+        },
+        {
+          "key": "E",
+          "text": "“Millî dayanışma ve adalet anlayışı içinde”"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0060",
+      "topic": "Yürütme",
+      "year": 2023,
+      "prompt": "1982 Anayasası'na göre idarenin; hukuka uygunluğunun, düzenli ve verimli şekilde yürütülmesinin ve geliştirilmesinin sağlanması amacıyla Cumhurbaşkanlığına bağlı olarak kurulan merci aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kamu Denetçiliği Kurumu"
+        },
+        {
+          "key": "B",
+          "text": "Sayıştay"
+        },
+        {
+          "key": "C",
+          "text": "Adalet Bakanlığı"
+        },
+        {
+          "key": "D",
+          "text": "Strateji ve Bütçe Başkanlığı"
+        },
+        {
+          "key": "E",
+          "text": "Devlet Denetleme Kurulu"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0061",
+      "topic": "Yargı",
+      "year": 2014,
+      "prompt": "Aşağıdakilerden hangisinin yargı denetimi yaptığı alanda, kendisinden başka ilk derece ve üst derece mahkemesi bulunmamaktadır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Askerî Yüksek İdare Mahkemesi"
+        },
+        {
+          "key": "B",
+          "text": "Askerî Yargıtay"
+        },
+        {
+          "key": "C",
+          "text": "Bölge adliye mahkemesi"
+        },
+        {
+          "key": "D",
+          "text": "Danıştay"
+        },
+        {
+          "key": "E",
+          "text": "Bölge idare mahkemesi"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0062",
+      "topic": "Yargı",
+      "year": 2014,
+      "prompt": "1982 Anayasası'na göre, Hâkimler ve Savcılar Yüksek Kurulu Başkanı aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Uyuşmazlık Mahkemesi Başkanı"
+        },
+        {
+          "key": "B",
+          "text": "Danıştay Başkanı"
+        },
+        {
+          "key": "C",
+          "text": "Yargıtay Başkanı"
+        },
+        {
+          "key": "D",
+          "text": "Adalet Bakanı"
+        },
+        {
+          "key": "E",
+          "text": "Adalet Bakanlığı Müsteşarı"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0063",
+      "topic": "Yargı",
+      "year": 2015,
+      "prompt": "1982 Anayasası'na göre, aşağıdaki yüksek mahkemelerden hangisinin üyelerinin tamamı Hâkimler ve Savcılar Yüksek Kurulu tarafından seçilir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yargıtay"
+        },
+        {
+          "key": "B",
+          "text": "Danıştay"
+        },
+        {
+          "key": "C",
+          "text": "Askerî Yargıtay"
+        },
+        {
+          "key": "D",
+          "text": "Askerî Yüksek İdare Mahkemesi"
+        },
+        {
+          "key": "E",
+          "text": "Uyuşmazlık Mahkemesi"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0064",
+      "topic": "Yargı",
+      "year": 2015,
+      "prompt": "Sayıştay, merkezî yönetim bütçesi kapsamındaki kamu idareleri ve sosyal güvenlik kurumlarının bütün gelir ve giderleri ile mallarını aşağıdakilerden hangisi adına denetler?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Cumhurbaşkanı"
+        },
+        {
+          "key": "B",
+          "text": "Türkiye Büyük Millet Meclisi"
+        },
+        {
+          "key": "C",
+          "text": "Bakanlar Kurulu"
+        },
+        {
+          "key": "D",
+          "text": "Başbakan"
+        },
+        {
+          "key": "E",
+          "text": "Maliye Bakanlığı"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0065",
+      "topic": "Yargı",
+      "year": 2016,
+      "prompt": "Askerî Yüksek İdare Mahkemesi, hukukumuzda ilk defa aşağıdakilerden hangisi ile kurulmuştur?",
+      "options": [
+        {
+          "key": "A",
+          "text": "1921 Anayasası"
+        },
+        {
+          "key": "B",
+          "text": "1924 Anayasası"
+        },
+        {
+          "key": "C",
+          "text": "1961 Anayasası'nda 1971 yılında yapılan anayasa değişikliği"
+        },
+        {
+          "key": "D",
+          "text": "1982 Anayasası'nın ilk hâli"
+        },
+        {
+          "key": "E",
+          "text": "1982 Anayasası'nda 2004 yılında yapılan anayasa değişikliği"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0066",
+      "topic": "Yargı",
+      "year": 2018,
+      "prompt": "1982 Anayasası'na göre, merkezî yönetim bütçesi kapsamındaki kamu idareleri ile sosyal güvenlik kurumlarının bütün gelir ve giderleri ile mallarını Türkiye Büyük Millet Meclisi adına denetleme ve sorumluların hesap ve işlemlerini kesin hükme bağlama ve kanunlarla verilen inceleme, denetleme ve hükme bağlama işlerini yapma görevi aşağıdakilerden hangisine aittir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Devlet Denetleme Kurulu"
+        },
+        {
+          "key": "B",
+          "text": "Anayasa Mahkemesi"
+        },
+        {
+          "key": "C",
+          "text": "İçişleri Bakanlığı"
+        },
+        {
+          "key": "D",
+          "text": "Sayıştay"
+        },
+        {
+          "key": "E",
+          "text": "Danıştay"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0067",
+      "topic": "Yargı",
+      "year": 2019,
+      "prompt": "1982 Anayasası'na göre bireysel başvuruları karara bağlamak aşağıdakilerden hangisinin görev ve yetkileri arasındadır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Anayasa Mahkemesi"
+        },
+        {
+          "key": "B",
+          "text": "Kamu Denetçiliği Kurumu"
+        },
+        {
+          "key": "C",
+          "text": "Devlet Denetleme Kurulu"
+        },
+        {
+          "key": "D",
+          "text": "Türkiye Büyük Millet Meclisi"
+        },
+        {
+          "key": "E",
+          "text": "Cumhurbaşkanlığı"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0068",
+      "topic": "Yargı",
+      "year": 2019,
+      "prompt": "Aşağıdakilerden hangisi Türk yargı örgütündeki mahkemelerden biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "İflas mahkemeleri"
+        },
+        {
+          "key": "B",
+          "text": "Asliye ticaret mahkemeleri"
+        },
+        {
+          "key": "C",
+          "text": "Sulh hukuk mahkemeleri"
+        },
+        {
+          "key": "D",
+          "text": "Vergi mahkemeleri"
+        },
+        {
+          "key": "E",
+          "text": "Bölge idare mahkemeleri"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0069",
+      "topic": "Yargı",
+      "year": 2020,
+      "prompt": "Adalet bakanı, aşağıdakilerden hangisinin başkanıdır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Hâkimler ve Savcılar Kurulu"
+        },
+        {
+          "key": "B",
+          "text": "Türkiye Büyük Millet Meclisi Adalet Komisyonu"
+        },
+        {
+          "key": "C",
+          "text": "Yüksek Seçim Kurulu"
+        },
+        {
+          "key": "D",
+          "text": "Türkiye Büyük Millet Meclisi Anayasa Komisyonu"
+        },
+        {
+          "key": "E",
+          "text": "Devlet Denetleme Kurulu"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0070",
+      "topic": "Yargı",
+      "year": 2020,
+      "prompt": "I. İstinaf\nII. Temyiz\nIII. İlk itiraz\nYukarıdakilerin hangileri hukuk yargılamasında, üst derece veya yüksek mahkemede başvurulabilecek kanun yolları arasında yer alır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yalnız I"
+        },
+        {
+          "key": "B",
+          "text": "Yalnız II"
+        },
+        {
+          "key": "C",
+          "text": "I ve II"
+        },
+        {
+          "key": "D",
+          "text": "I ve III"
+        },
+        {
+          "key": "E",
+          "text": "II ve III"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0071",
+      "topic": "Yargı",
+      "year": 2021,
+      "prompt": "Mahkemelerin verdiği kararların kesinleşmeden önce denetlenmesini sağlamak amacıyla üst veya yüksek mahkemeye yapılan başvuru, aşağıdakilerin hangisiyle adlandırılır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tahkim"
+        },
+        {
+          "key": "B",
+          "text": "Kanun yolu"
+        },
+        {
+          "key": "C",
+          "text": "Delil tespiti"
+        },
+        {
+          "key": "D",
+          "text": "Ön inceleme"
+        },
+        {
+          "key": "E",
+          "text": "Islah"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0072",
+      "topic": "Yargı",
+      "year": 2022,
+      "prompt": "Elif; vergi mahkemesinde görülmekte olan davasına uygulanacak kanun hükmünün, Anayasa'ya aykırı olduğu iddiasıyla iptalini istiyor. Elif'in bu iddiasının ciddi olduğu kanısına varan mahkeme, Anayasa Mahkemesi bu konuda karar verinceye kadar davayı geri bırakıp dava dosyasını Anayasa Mahkemesine gönderiyor.\n1982 Anayasası'nda “Anayasaya aykırılığın diğer mahkemelerde ileri sürülmesi” başlığı altında düzenlenen bu husus, aşağıdakilerin hangisiyle adlandırılır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yürütmenin durdurulması"
+        },
+        {
+          "key": "B",
+          "text": "Somut norm denetimi"
+        },
+        {
+          "key": "C",
+          "text": "Kanun yolu"
+        },
+        {
+          "key": "D",
+          "text": "Bireysel başvuru"
+        },
+        {
+          "key": "E",
+          "text": "Tam yargı davası"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0073",
+      "topic": "Yargı",
+      "year": 2024,
+      "prompt": "Danıştayın bir kararında “...aynı idare içerisindeki görevliler arasındaki astlık-üstlük durumunu ifade etmekte olup buna göre üst, astın işlemlerini yerindelik ve hukukilik bakımından denetleyerek işlemi iptal edebilir, geri alabilir, düzeltebilir, ancak astın yerine geçerek karar alamaz, ast da yargısal başvuru hakkına sahip değildir.” ifadesiyle vurguladığı idare hukuku kavramı aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Hizmet"
+        },
+        {
+          "key": "B",
+          "text": "Kadro"
+        },
+        {
+          "key": "C",
+          "text": "Kariyer"
+        },
+        {
+          "key": "D",
+          "text": "Hiyerarşi"
+        },
+        {
+          "key": "E",
+          "text": "Liyakat"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0074",
+      "topic": "Yargı",
+      "year": 2024,
+      "prompt": "Bir çekişmede tarafların, Devletin yargı organına başvurmak yerine aralarındaki hukuki sorunun mahkeme dışı bir yolla hakem ya da hakemler eliyle ve belli yargılama usulleri uygulanmak suretiyle çözüme kavuşturulmasını istemeleri aşağıdakilerin hangisiyle adlandırılır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Uzlaştırma"
+        },
+        {
+          "key": "B",
+          "text": "Tahkim"
+        },
+        {
+          "key": "C",
+          "text": "Arabuluculuk"
+        },
+        {
+          "key": "D",
+          "text": "Konkordato"
+        },
+        {
+          "key": "E",
+          "text": "Kovuşturma"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0075",
+      "topic": "İdare Hukuku",
+      "year": 2014,
+      "prompt": "Türk idare hukukunda, merkezî idareye ait bazı yetkilerin taşradaki idareci tarafından merkez adına kullanılabilmesine ne ad verilir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Hiyerarşi"
+        },
+        {
+          "key": "B",
+          "text": "İdarenin bütünlüğü"
+        },
+        {
+          "key": "C",
+          "text": "İdari vesayet"
+        },
+        {
+          "key": "D",
+          "text": "Yerinden yönetim"
+        },
+        {
+          "key": "E",
+          "text": "Yetki genişliği"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0076",
+      "topic": "İdare Hukuku",
+      "year": 2014,
+      "prompt": "Jandarma Genel Komutanlığı, idari kolluk görevleri bakımından aşağıdakilerden hangisine bağlıdır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "İçişleri Bakanlığı"
+        },
+        {
+          "key": "B",
+          "text": "Başbakanlık"
+        },
+        {
+          "key": "C",
+          "text": "Genelkurmay Başkanlığı"
+        },
+        {
+          "key": "D",
+          "text": "Millî Savunma Bakanlığı"
+        },
+        {
+          "key": "E",
+          "text": "Adalet Bakanlığı"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0077",
+      "topic": "İdare Hukuku",
+      "year": 2014,
+      "prompt": "Bir yerleşim biriminde belediye kurulabilmesi için nüfusun en az kaç olması gerekir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "20.000"
+        },
+        {
+          "key": "B",
+          "text": "10.000"
+        },
+        {
+          "key": "C",
+          "text": "7.500"
+        },
+        {
+          "key": "D",
+          "text": "5.000"
+        },
+        {
+          "key": "E",
+          "text": "1.000"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0078",
+      "topic": "İdare Hukuku",
+      "year": 2015,
+      "prompt": "İllerin kurulması, kaldırılması ve adlarının değiştirilmesi aşağıdakilerden hangisiyle gerçekleşir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kanun"
+        },
+        {
+          "key": "B",
+          "text": "Tüzük"
+        },
+        {
+          "key": "C",
+          "text": "Yönetmelik"
+        },
+        {
+          "key": "D",
+          "text": "Bakanlar Kurulu kararı"
+        },
+        {
+          "key": "E",
+          "text": "Müşterek kararname"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0079",
+      "topic": "İdare Hukuku",
+      "year": 2015,
+      "prompt": "Devlet kamu hizmetleri görevlerine girmek, sınıflar içerisinde ilerlemek ve yükselmek açısından bireylerin bilgi ve yeteneklerini esas alan temel ilke aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Derecelendirme"
+        },
+        {
+          "key": "B",
+          "text": "Kademelendirme"
+        },
+        {
+          "key": "C",
+          "text": "Sınıflandırma"
+        },
+        {
+          "key": "D",
+          "text": "Kariyer"
+        },
+        {
+          "key": "E",
+          "text": "Liyakat"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0080",
+      "topic": "İdare Hukuku",
+      "year": 2016,
+      "prompt": "Türk idare hukukuna göre belediyenin organları aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Belediye meclisi - Belediye encümeni - Belediye başkanı"
+        },
+        {
+          "key": "B",
+          "text": "Belediye meclisi - Genel sekreterlik - Belediye başkanı"
+        },
+        {
+          "key": "C",
+          "text": "İlçe idare kurulu - Genel sekreterlik - Belediye başkanı"
+        },
+        {
+          "key": "D",
+          "text": "Kaymakamlık - Genel sekreterlik - Belediye başkanı"
+        },
+        {
+          "key": "E",
+          "text": "Genel sekreterlik - Belediye meclisi - Belediye encümeni"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0081",
+      "topic": "İdare Hukuku",
+      "year": 2016,
+      "prompt": "Aşağıdakilerden hangisi 657 sayılı Devlet Memurları Kanunu'nda düzenlenen disiplin cezalarından biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yer değiştirme"
+        },
+        {
+          "key": "B",
+          "text": "Aylıktan kesme"
+        },
+        {
+          "key": "C",
+          "text": "Kademe ilerlemesinin durdurulması"
+        },
+        {
+          "key": "D",
+          "text": "Devlet memurluğundan çıkarma"
+        },
+        {
+          "key": "E",
+          "text": "Uyarma"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0082",
+      "topic": "İdare Hukuku",
+      "year": 2016,
+      "prompt": "Türk idare hukukuna göre Devlet Denetleme Kurulu aşağıdakilerden hangisine bağlı olarak çalışır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Millî Güvenlik Kurulu"
+        },
+        {
+          "key": "B",
+          "text": "Cumhurbaşkanlığı"
+        },
+        {
+          "key": "C",
+          "text": "Türkiye Büyük Millet Meclisi Başkanlığı"
+        },
+        {
+          "key": "D",
+          "text": "Kamu Düzeni ve Güvenliği Müsteşarlığı"
+        },
+        {
+          "key": "E",
+          "text": "Bakanlar Kurulu"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0083",
+      "topic": "İdare Hukuku",
+      "year": 2017,
+      "prompt": "Türk idare hukukunda il özel idaresinin başı ve il özel idaresi tüzel kişiliğinin temsilcisi aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Vali"
+        },
+        {
+          "key": "B",
+          "text": "İl genel meclisi başkanı"
+        },
+        {
+          "key": "C",
+          "text": "Belediye başkanı"
+        },
+        {
+          "key": "D",
+          "text": "İl encümeni"
+        },
+        {
+          "key": "E",
+          "text": "İlde kaymakamların en yaşlısı"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0084",
+      "topic": "İdare Hukuku",
+      "year": 2018,
+      "prompt": "Memurların, amirlerinin vermiş olduğu emirleri yerine getirme zorunluluğunun istisnası 1982 Anayasası'nda hangi madde başlığı altında düzenlenmiştir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Merkezî idare"
+        },
+        {
+          "key": "B",
+          "text": "Kanunsuz emir"
+        },
+        {
+          "key": "C",
+          "text": "İdarenin bütünlüğü ve kamu tüzel kişiliği"
+        },
+        {
+          "key": "D",
+          "text": "Suç ve cezalara ilişkin esaslar"
+        },
+        {
+          "key": "E",
+          "text": "Yargı yolu"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0085",
+      "topic": "İdare Hukuku",
+      "year": 2018,
+      "prompt": "5393 sayılı Belediye Kanunu'na göre belediyelerle ilgili,\nI. İlçe merkezlerinde belediye kurulması zorunludur.\nII. Köylerde belediye kurulması zorunludur.\nIII. Nüfusu 5.000 ve üzerinde olan yerleşim birimlerinde belediye kurulabilir.\nifadelerinden hangileri doğrudur?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yalnız I"
+        },
+        {
+          "key": "B",
+          "text": "I ve II"
+        },
+        {
+          "key": "C",
+          "text": "I ve III"
+        },
+        {
+          "key": "D",
+          "text": "II ve III"
+        },
+        {
+          "key": "E",
+          "text": "I, II ve III"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0086",
+      "topic": "İdare Hukuku",
+      "year": 2019,
+      "prompt": "657 sayılı Devlet Memurları Kanunu'na göre aşağıdakilerden hangisi memurluğu sona erdiren nedenlerden biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Memurluktan çekilme"
+        },
+        {
+          "key": "B",
+          "text": "Ölüm"
+        },
+        {
+          "key": "C",
+          "text": "Memurluktan çıkarılma"
+        },
+        {
+          "key": "D",
+          "text": "Görevden uzaklaştırma"
+        },
+        {
+          "key": "E",
+          "text": "Emeklilik"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0087",
+      "topic": "İdare Hukuku",
+      "year": 2019,
+      "prompt": "I. Cumhurbaşkanı\nII. Bakanlıklar\nIII. Kamu tüzel kişileri\n1982 Anayasası'na göre yukarıdakilerden hangileri yönetmelik çıkarabilir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yalnız I"
+        },
+        {
+          "key": "B",
+          "text": "Yalnız III"
+        },
+        {
+          "key": "C",
+          "text": "I ve II"
+        },
+        {
+          "key": "D",
+          "text": "II ve III"
+        },
+        {
+          "key": "E",
+          "text": "I, II ve III"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0088",
+      "topic": "İdare Hukuku",
+      "year": 2019,
+      "prompt": "442 sayılı Köy Kanunu'na göre nüfusu en fazla kaça kadar olan yurtlara köy denir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "500"
+        },
+        {
+          "key": "B",
+          "text": "1.000"
+        },
+        {
+          "key": "C",
+          "text": "1.500"
+        },
+        {
+          "key": "D",
+          "text": "2.000"
+        },
+        {
+          "key": "E",
+          "text": "2.500"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0089",
+      "topic": "İdare Hukuku",
+      "year": 2020,
+      "prompt": "657 sayılı Devlet Memurları Kanunu'na göre, aşağıdakilerden hangisi devlet memurlarına verilecek disiplin cezalarından biridir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "İdari para cezası"
+        },
+        {
+          "key": "B",
+          "text": "Aylıktan kesme"
+        },
+        {
+          "key": "C",
+          "text": "Disiplin hapsi"
+        },
+        {
+          "key": "D",
+          "text": "İdari tedbir"
+        },
+        {
+          "key": "E",
+          "text": "Görevden uzaklaştırma"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0090",
+      "topic": "İdare Hukuku",
+      "year": 2020,
+      "prompt": "Aşağıdakilerden hangisinin seçiminde, siyasi partilerden aday olunamaz?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Belde belediye başkanlığı"
+        },
+        {
+          "key": "B",
+          "text": "İl genel meclisi üyeliği"
+        },
+        {
+          "key": "C",
+          "text": "Büyükşehir ilçe belediye meclis üyeliği"
+        },
+        {
+          "key": "D",
+          "text": "Mahalle muhtarlığı ve ihtiyar heyeti üyeliği"
+        },
+        {
+          "key": "E",
+          "text": "İl belediye başkanlığı"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0091",
+      "topic": "İdare Hukuku",
+      "year": 2020,
+      "prompt": "Türkiye'de bazı şehirlerde belediye otobüsleriyle, belirli hatlarda 24 saat sefer yapılarak toplu taşıma hizmeti sunuluyor.\nBu durum, kamu hizmetlerine egemen olan aşağıdaki ilkelerin hangisiyle ilişkilidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tarafsızlık"
+        },
+        {
+          "key": "B",
+          "text": "Meccanilik"
+        },
+        {
+          "key": "C",
+          "text": "Süreklilik"
+        },
+        {
+          "key": "D",
+          "text": "Eşitlik"
+        },
+        {
+          "key": "E",
+          "text": "Uyarlama"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0092",
+      "topic": "İdare Hukuku",
+      "year": 2021,
+      "prompt": "657 sayılı Devlet Memurları Kanunu'na göre aday olarak atanmış devlet memurunun, asgari ve azami adaylık süresiyle ilgili aşağıdakilerden hangisi doğrudur? (Asgari süresi - Azami süresi)",
+      "options": [
+        {
+          "key": "A",
+          "text": "6 ay - 1 yıl"
+        },
+        {
+          "key": "B",
+          "text": "6 ay - 2 yıl"
+        },
+        {
+          "key": "C",
+          "text": "1 yıl - 2 yıl"
+        },
+        {
+          "key": "D",
+          "text": "1 yıl - 3 yıl"
+        },
+        {
+          "key": "E",
+          "text": "2 yıl - 3 yıl"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0093",
+      "topic": "İdare Hukuku",
+      "year": 2021,
+      "prompt": "İl genel meclisi, aşağıdakilerden hangisinin karar organıdır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "İl genel idaresi"
+        },
+        {
+          "key": "B",
+          "text": "İl özel idaresi"
+        },
+        {
+          "key": "C",
+          "text": "İl idare kurulu"
+        },
+        {
+          "key": "D",
+          "text": "İl idare şube başkanlıkları"
+        },
+        {
+          "key": "E",
+          "text": "İl müdürlükleri"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0094",
+      "topic": "İdare Hukuku",
+      "year": 2021,
+      "prompt": "Nüfus koşulunu sağlayan bir il belediyesi, aşağıdakilerin hangisiyle büyükşehir belediyesine dönüştürülebilir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Cumhurbaşkanı kararıyla"
+        },
+        {
+          "key": "B",
+          "text": "Kanunla"
+        },
+        {
+          "key": "C",
+          "text": "İçişleri Bakanlığı kararıyla"
+        },
+        {
+          "key": "D",
+          "text": "İl idare kurulu kararıyla"
+        },
+        {
+          "key": "E",
+          "text": "Yönetmelikle"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0095",
+      "topic": "İdare Hukuku",
+      "year": 2022,
+      "prompt": "Göreviyle ilgili bir suç işlediği iddiasıyla belediye meclisi üyesi A hakkında soruşturma açılıyor.\nHakkında verilecek kesin hükme kadar geçici bir tedbir olarak A'yı görevinden uzaklaştırabilme yetkisi, aşağıdakilerden hangisine aittir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Cumhurbaşkanı"
+        },
+        {
+          "key": "B",
+          "text": "Danıştay başkanı"
+        },
+        {
+          "key": "C",
+          "text": "Adalet bakanı"
+        },
+        {
+          "key": "D",
+          "text": "İçişleri bakanı"
+        },
+        {
+          "key": "E",
+          "text": "Belediye başkanı"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0096",
+      "topic": "İdare Hukuku",
+      "year": 2022,
+      "prompt": "Danıştay, bir kararındaki “Sadece il idaresinde uygulanabilmekte ve merkeze ait olan karar alma yetkisinin illerde valiler tarafından kullanılması sonucunu yaratmakta, sonuçta merkezî idarenin ortaya çıkardığı sorunların kısmen de olsa giderilmesini amaçlamaktadır.” ifadesiyle Türk idari teşkilatına ilişkin aşağıdaki kavramlardan hangisini vurgulamaktadır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yetki genişliği"
+        },
+        {
+          "key": "B",
+          "text": "Usulde paralellik"
+        },
+        {
+          "key": "C",
+          "text": "Yerinden yönetim"
+        },
+        {
+          "key": "D",
+          "text": "Takdir yetkisi"
+        },
+        {
+          "key": "E",
+          "text": "İdari vesayet"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0097",
+      "topic": "İdare Hukuku",
+      "year": 2023,
+      "prompt": "Görev sırasında amirine sözle saygısızlık etmesi nedeniyle memur A'ya aylıktan kesme disiplin cezası veriliyor.\n657 sayılı Devlet Memurları Kanunu'na göre A; bu cezanın, uygulanmasından başlayarak en az kaç yıl sonra atamaya yetkili amirine başvurarak özlük dosyasından silinmesini isteyebilir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "1"
+        },
+        {
+          "key": "B",
+          "text": "3"
+        },
+        {
+          "key": "C",
+          "text": "5"
+        },
+        {
+          "key": "D",
+          "text": "8"
+        },
+        {
+          "key": "E",
+          "text": "10"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0098",
+      "topic": "İdare Hukuku",
+      "year": 2023,
+      "prompt": "657 sayılı Devlet Memurları Kanunu'na göre devlet memurlarına, yaptıkları hizmetler için lüzumlu bilgilere ve yetişme şartlarına uygun şekilde sınıfları içinde en yüksek derecelere kadar ilerleme imkânının sağlanmasını ifade eden temel ilke aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Liyakat"
+        },
+        {
+          "key": "B",
+          "text": "Kariyer"
+        },
+        {
+          "key": "C",
+          "text": "Sınıflandırma"
+        },
+        {
+          "key": "D",
+          "text": "Rekabet"
+        },
+        {
+          "key": "E",
+          "text": "İltimas"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0099",
+      "topic": "İdare Hukuku",
+      "year": 2024,
+      "prompt": "Devlet memuru; amirinden aldığı emri Anayasa, kanun, Cumhurbaşkanlığı kararnamesi ve yönetmelik hükümlerine aykırı görürse yerine getirmez ve bu aykırılığı o emri verene bildirir. Amir emrinde ısrar eder ve bu emrini yazıyla yenilerse memur bu emri yapmaya mecburdur. Ancak emrin yerine getirilmesinden doğacak sorumluluk emri verene aittir.\n657 sayılı Devlet Memurları Kanunu'nun bu hükmünde bahsedilen idare hukuku terimi aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "İdari vesayet"
+        },
+        {
+          "key": "B",
+          "text": "Kanunsuz emir"
+        },
+        {
+          "key": "C",
+          "text": "Grev yasağı"
+        },
+        {
+          "key": "D",
+          "text": "Çekilme hakkı"
+        },
+        {
+          "key": "E",
+          "text": "Yetki genişliği"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0100",
+      "topic": "Güncel Olaylar",
+      "year": 2014,
+      "prompt": "İktisatın bir bilim hâline gelişinin öncüsü olan, 1776 yılında yayımlanan ve kısaca Ulusların Zenginliği adıyla anılan eserin yazarı aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Adam Smith"
+        },
+        {
+          "key": "B",
+          "text": "David Hume"
+        },
+        {
+          "key": "C",
+          "text": "John Locke"
+        },
+        {
+          "key": "D",
+          "text": "Jacques Turgot"
+        },
+        {
+          "key": "E",
+          "text": "François Quesnay"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0101",
+      "topic": "Güncel Olaylar",
+      "year": 2014,
+      "prompt": "Mesnevî, Divan-ı Kebir adlı eserleriyle tanınan, Mevleviliğin öncüsü olan mutasavvıf şair ve düşünce adamı aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Hacı Bektaş-ı Velî"
+        },
+        {
+          "key": "B",
+          "text": "Yunus Emre"
+        },
+        {
+          "key": "C",
+          "text": "Mevlana"
+        },
+        {
+          "key": "D",
+          "text": "Gazalî"
+        },
+        {
+          "key": "E",
+          "text": "Hacı Bayram-ı Velî"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0102",
+      "topic": "Güncel Olaylar",
+      "year": 2014,
+      "prompt": "“Evrenin merkezinin Dünya değil, Güneş olduğu” tezini geri çekmediği için engizisyon mahkemesi tarafından 1633 yılında hapse mahkûm edilen bilim insanı aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nicolaus Copernicus"
+        },
+        {
+          "key": "B",
+          "text": "Johannes Kepler"
+        },
+        {
+          "key": "C",
+          "text": "Isaac Newton"
+        },
+        {
+          "key": "D",
+          "text": "Galileo Galilei"
+        },
+        {
+          "key": "E",
+          "text": "Leonardo da Vinci"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0103",
+      "topic": "Güncel Olaylar",
+      "year": 2014,
+      "prompt": "8 Mart 2014 tarihinde Malezya'nın başkenti Kuala Lumpur'dan havalandıktan sonra içindeki 227 yolcu ve 12 mürettebatla kaybolan uçak aşağıdaki şehirlerden hangisine gitmekteydi?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Manila"
+        },
+        {
+          "key": "B",
+          "text": "Seul"
+        },
+        {
+          "key": "C",
+          "text": "Bangkok"
+        },
+        {
+          "key": "D",
+          "text": "Tokyo"
+        },
+        {
+          "key": "E",
+          "text": "Pekin"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0104",
+      "topic": "Güncel Olaylar",
+      "year": 2014,
+      "prompt": "Yüzyıllık Yalnızlık romanıyla tanınan ve 2014 yılı Nisan ayında hayatını kaybeden, Nobel ödüllü edebiyatçı aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Gabriel García Márquez"
+        },
+        {
+          "key": "B",
+          "text": "Mario Vargas Llosa"
+        },
+        {
+          "key": "C",
+          "text": "Umberto Eco"
+        },
+        {
+          "key": "D",
+          "text": "Dan Brown"
+        },
+        {
+          "key": "E",
+          "text": "Jorge Luis Borges"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0105",
+      "topic": "Güncel Olaylar",
+      "year": 2015,
+      "prompt": "26 Nisan 2015 tarihinde yapılan seçimde Nursultan Nazarbayev'in %97'nin üzerinde oyla yeniden devlet başkanı seçildiği ülke aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tacikistan"
+        },
+        {
+          "key": "B",
+          "text": "Kazakistan"
+        },
+        {
+          "key": "C",
+          "text": "Türkmenistan"
+        },
+        {
+          "key": "D",
+          "text": "Özbekistan"
+        },
+        {
+          "key": "E",
+          "text": "Kırgızistan"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0106",
+      "topic": "Güncel Olaylar",
+      "year": 2015,
+      "prompt": "10 Şubat 2015 tarihinde yapılan toplantıda Anayasa Mahkemesi Başkanlığına aşağıdakilerden hangisi seçilmiştir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "İsmail Rüştü Cirit"
+        },
+        {
+          "key": "B",
+          "text": "Kenan İpek"
+        },
+        {
+          "key": "C",
+          "text": "Ömer Cihad Vardan"
+        },
+        {
+          "key": "D",
+          "text": "Vacit Öktem"
+        },
+        {
+          "key": "E",
+          "text": "Zühtü Arslan"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0107",
+      "topic": "Güncel Olaylar",
+      "year": 2015,
+      "prompt": "Türkiye'de sokağa çıkma yasağının uygulandığı son nüfus sayımı, aşağıdaki yılların hangisinde gerçekleştirilmiştir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "1980"
+        },
+        {
+          "key": "B",
+          "text": "1985"
+        },
+        {
+          "key": "C",
+          "text": "1990"
+        },
+        {
+          "key": "D",
+          "text": "2000"
+        },
+        {
+          "key": "E",
+          "text": "2009"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0108",
+      "topic": "Güncel Olaylar",
+      "year": 2015,
+      "prompt": "Bilim adamlarının “Kızıl Gezegen” olarak isimlendirdiği ve Dünya'dan yaklaşık iki kat daha küçük olan gezegen aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Neptün"
+        },
+        {
+          "key": "B",
+          "text": "Merkür"
+        },
+        {
+          "key": "C",
+          "text": "Venüs"
+        },
+        {
+          "key": "D",
+          "text": "Mars"
+        },
+        {
+          "key": "E",
+          "text": "Jüpiter"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0109",
+      "topic": "Güncel Olaylar",
+      "year": 2015,
+      "prompt": "Türkiye'nin İstiklal Madalyası'na sahip ilk ili aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "İzmir"
+        },
+        {
+          "key": "B",
+          "text": "Şanlıurfa"
+        },
+        {
+          "key": "C",
+          "text": "Kahramanmaraş"
+        },
+        {
+          "key": "D",
+          "text": "Gaziantep"
+        },
+        {
+          "key": "E",
+          "text": "Samsun"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0110",
+      "topic": "Güncel Olaylar",
+      "year": 2015,
+      "prompt": "Aşağıdakilerden hangisi Yaşar Kemal'in eserlerinden biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "İnce Memed"
+        },
+        {
+          "key": "B",
+          "text": "Yer Demir Gök Bakır"
+        },
+        {
+          "key": "C",
+          "text": "Ağrı Dağı Efsanesi"
+        },
+        {
+          "key": "D",
+          "text": "Esir Şehrin İnsanları"
+        },
+        {
+          "key": "E",
+          "text": "Yılanı Öldürseler"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0111",
+      "topic": "Güncel Olaylar",
+      "year": 2016,
+      "prompt": "Bir kayanın üzerine oturmuş, elini çenesine dayamış ve derin düşüncelere dalmış bir erkek figürünün tasvir edildiği “Düşünen Adam” heykeli aşağıdakilerden hangisinin eseridir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Michelangelo"
+        },
+        {
+          "key": "B",
+          "text": "Pablo Picasso"
+        },
+        {
+          "key": "C",
+          "text": "Leonardo da Vinci"
+        },
+        {
+          "key": "D",
+          "text": "Auguste Rodin"
+        },
+        {
+          "key": "E",
+          "text": "Frederic Auguste Bartholdi"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0112",
+      "topic": "Güncel Olaylar",
+      "year": 2016,
+      "prompt": "Dünya tıp tarihinde önemli bir yere sahip olan, El-Kanun fi't-Tıb adlı eseri yazan ve Batı dünyasında “Avicenna” olarak bilinen İslam bilgini aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Farabi"
+        },
+        {
+          "key": "B",
+          "text": "El-Biruni"
+        },
+        {
+          "key": "C",
+          "text": "El-Cezerî"
+        },
+        {
+          "key": "D",
+          "text": "İbni Sina"
+        },
+        {
+          "key": "E",
+          "text": "İbni Haldun"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0113",
+      "topic": "Güncel Olaylar",
+      "year": 2016,
+      "prompt": "Her yıl adına ödül verilen Türkiye'nin ilk Müslüman Türk kadın tiyatro oyuncusu aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Afife Jale"
+        },
+        {
+          "key": "B",
+          "text": "Cahide Sonku"
+        },
+        {
+          "key": "C",
+          "text": "Neyyire Neyyir"
+        },
+        {
+          "key": "D",
+          "text": "Keriman Halis"
+        },
+        {
+          "key": "E",
+          "text": "Adile Naşit"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0114",
+      "topic": "Güncel Olaylar",
+      "year": 2016,
+      "prompt": "İnsan sağlığı üzerindeki olumsuz etkileri nedeniyle dünyanın en önemli sağlık sorunlarından biri olan sigara bağımlılığına yol açan madde aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Adrenalin"
+        },
+        {
+          "key": "B",
+          "text": "Nikotin"
+        },
+        {
+          "key": "C",
+          "text": "Tein"
+        },
+        {
+          "key": "D",
+          "text": "Kodein"
+        },
+        {
+          "key": "E",
+          "text": "Serotonin"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0115",
+      "topic": "Güncel Olaylar",
+      "year": 2016,
+      "prompt": "2016 yılının Nisan ayında, elde ettiği başarılarla Kadınlar Tenis Birliği (WTA) tekler sıralamasında ilk 100'e giren Türk bayan sporcu aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "İpek Soylu"
+        },
+        {
+          "key": "B",
+          "text": "Çağla Büyükakçay"
+        },
+        {
+          "key": "C",
+          "text": "Başak Eraydın"
+        },
+        {
+          "key": "D",
+          "text": "Pemra Özgen"
+        },
+        {
+          "key": "E",
+          "text": "Ayla Aksu"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0116",
+      "topic": "Güncel Olaylar",
+      "year": 2016,
+      "prompt": "Amerika Birleşik Devletleri Başkanı Barack Obama'nın 2016 yılının Mart ayında diplomatik ilişkileri normalleştirme kapsamında gerçekleştirdiği ziyaretle birlikte seksen sekiz yıl sonra ilk kez bir Amerikan başkanı tarafından ziyaret edilen ülke aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Çin Halk Cumhuriyeti"
+        },
+        {
+          "key": "B",
+          "text": "Afganistan"
+        },
+        {
+          "key": "C",
+          "text": "Küba"
+        },
+        {
+          "key": "D",
+          "text": "Vietnam"
+        },
+        {
+          "key": "E",
+          "text": "İran"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0117",
+      "topic": "Güncel Olaylar",
+      "year": 2017,
+      "prompt": "1986 yılında nükleer bir kazanın gerçekleştiği Çernobil, günümüzde hangi ülkenin sınırları içerisinde yer almaktadır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Rusya Federasyonu"
+        },
+        {
+          "key": "B",
+          "text": "Beyaz Rusya"
+        },
+        {
+          "key": "C",
+          "text": "Ukrayna"
+        },
+        {
+          "key": "D",
+          "text": "Romanya"
+        },
+        {
+          "key": "E",
+          "text": "Ermenistan"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0118",
+      "topic": "Güncel Olaylar",
+      "year": 2017,
+      "prompt": "Aşağıdakilerden hangisi Türkiye Cumhuriyeti'nde 1989 yılından önce il olan yerlerden biridir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nevşehir"
+        },
+        {
+          "key": "B",
+          "text": "Batman"
+        },
+        {
+          "key": "C",
+          "text": "Karabük"
+        },
+        {
+          "key": "D",
+          "text": "Iğdır"
+        },
+        {
+          "key": "E",
+          "text": "Bayburt"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0119",
+      "topic": "Güncel Olaylar",
+      "year": 2017,
+      "prompt": "20 Temmuz 1974 tarihinde başlayan Kıbrıs Barış Harekâtı sırasında Türkiye Cumhuriyeti Başbakanlığı görevini yürüten devlet adamı aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ferit Melen"
+        },
+        {
+          "key": "B",
+          "text": "Süleyman Demirel"
+        },
+        {
+          "key": "C",
+          "text": "Nihat Erim"
+        },
+        {
+          "key": "D",
+          "text": "Bülent Ecevit"
+        },
+        {
+          "key": "E",
+          "text": "Necmettin Erbakan"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0120",
+      "topic": "Güncel Olaylar",
+      "year": 2017,
+      "prompt": "XVII. yüzyılda, Babürlüler Dönemi'nde inşa edilmiş bir eser olan Tac Mahal aşağıdaki ülkelerin hangisinde yer almaktadır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Pakistan"
+        },
+        {
+          "key": "B",
+          "text": "Hindistan"
+        },
+        {
+          "key": "C",
+          "text": "İran"
+        },
+        {
+          "key": "D",
+          "text": "Afganistan"
+        },
+        {
+          "key": "E",
+          "text": "Türkmenistan"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0121",
+      "topic": "Güncel Olaylar",
+      "year": 2017,
+      "prompt": "15 Temmuz 2016 tarihindeki darbe girişimine karşı verdiği mücadele dolayısıyla adına “Kahraman” ibaresi eklenen ilçenin bir önceki adı ve bu ilçenin bağlı olduğu il aşağıdakilerin hangisinde verilmiştir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Fatih, İstanbul"
+        },
+        {
+          "key": "B",
+          "text": "Kazan, Ankara"
+        },
+        {
+          "key": "C",
+          "text": "Marmaris, Muğla"
+        },
+        {
+          "key": "D",
+          "text": "Battalgazi, Malatya"
+        },
+        {
+          "key": "E",
+          "text": "Adapazarı, Sakarya"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0122",
+      "topic": "Güncel Olaylar",
+      "year": 2017,
+      "prompt": "Türkiye Cumhuriyeti Kalkınma Bakanlığı verilerine göre, 2016 yılında kamu yatırımları arasında en büyük paya sahip olan sektör aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Eğitim"
+        },
+        {
+          "key": "B",
+          "text": "Sağlık"
+        },
+        {
+          "key": "C",
+          "text": "Ulaştırma"
+        },
+        {
+          "key": "D",
+          "text": "Enerji"
+        },
+        {
+          "key": "E",
+          "text": "Tarım"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0123",
+      "topic": "Güncel Olaylar",
+      "year": 2018,
+      "prompt": "Ankara'nın önemli tarihî mekânlarından biri olan ve Mehmet Akif Ersoy'un İstiklal Marşı'nı yazmış olduğu yer aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Zağfiran Han"
+        },
+        {
+          "key": "B",
+          "text": "Tâceddin Dergâhı"
+        },
+        {
+          "key": "C",
+          "text": "İbadullah Camii"
+        },
+        {
+          "key": "D",
+          "text": "Hacı Bayram Veli Türbesi"
+        },
+        {
+          "key": "E",
+          "text": "Ahi Şerafettin Türbesi"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0124",
+      "topic": "Güncel Olaylar",
+      "year": 2018,
+      "prompt": "“Olmak ya da olmamak, işte bütün mesele bu.” sözüyle tanınan, Hamlet oyununun yazarı İngiliz edebiyatçı aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "George Eliot"
+        },
+        {
+          "key": "B",
+          "text": "Thomas More"
+        },
+        {
+          "key": "C",
+          "text": "William Shakespeare"
+        },
+        {
+          "key": "D",
+          "text": "Charles Dickens"
+        },
+        {
+          "key": "E",
+          "text": "Daniel Defoe"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0125",
+      "topic": "Güncel Olaylar",
+      "year": 2018,
+      "prompt": "Anadolu'da, kış mevsiminden sonra doğanın canlanması ile bolluk ve bereket beklentisinin simgesi olarak her yıl mayıs ayında kutlanan ve UNESCO tarafından 2017'de İnsanlığın Somut Olmayan Kültürel Mirasının Temsili Listesi'ne kaydedilen gün aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Saya Bayramı"
+        },
+        {
+          "key": "B",
+          "text": "Etik Günü"
+        },
+        {
+          "key": "C",
+          "text": "Aşure Günü"
+        },
+        {
+          "key": "D",
+          "text": "Hıdırellez"
+        },
+        {
+          "key": "E",
+          "text": "Nevruz"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0126",
+      "topic": "Güncel Olaylar",
+      "year": 2018,
+      "prompt": "1998 yılında Atatürk Uluslararası Barış Ödülü'ne layık görülen, özellikle Orta Doğu tarihi üzerinde çalışmalarıyla tanınan ve 2018 yılının Mayıs ayında hayatını kaybeden ünlü tarihçi aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Bernard Lewis"
+        },
+        {
+          "key": "B",
+          "text": "Arnold Joseph Toynbee"
+        },
+        {
+          "key": "C",
+          "text": "Eric Hobsbawm"
+        },
+        {
+          "key": "D",
+          "text": "Fernand Braudel"
+        },
+        {
+          "key": "E",
+          "text": "Stanford Shaw"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0127",
+      "topic": "Güncel Olaylar",
+      "year": 2018,
+      "prompt": "2018 yılının Şubat ayından itibaren Nüfus ve Vatandaşlık İşleri Genel Müdürlüğü tarafından e-Devlet Kapısı üzerinden sunulmaya başlanan ve yoğun bir ilgi gören hizmet aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Adres değişikliği bildirimi"
+        },
+        {
+          "key": "B",
+          "text": "Alt-üst soy bilgisi sorgulama"
+        },
+        {
+          "key": "C",
+          "text": "Geçici kimlik belgesi sorgulama"
+        },
+        {
+          "key": "D",
+          "text": "Nüfus kayıt örneği belgesi sorgulama"
+        },
+        {
+          "key": "E",
+          "text": "Yerleşim yeri (ikametgâh) ve diğer adres belgesi sorgulama"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0128",
+      "topic": "Güncel Olaylar",
+      "year": 2018,
+      "prompt": "Aşağıdakilerden hangisi Türk Dili Konuşan Ülkeler İşbirliği Konseyinin kurucu üyelerinden biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kazakistan"
+        },
+        {
+          "key": "B",
+          "text": "Azerbaycan"
+        },
+        {
+          "key": "C",
+          "text": "Türkiye"
+        },
+        {
+          "key": "D",
+          "text": "Kırgızistan"
+        },
+        {
+          "key": "E",
+          "text": "Özbekistan"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0129",
+      "topic": "Güncel Olaylar",
+      "year": 2019,
+      "prompt": "Defnegillerden, Amerika'da yetişen bir ağacın yemişi olan ve armuda benzediği için Türkiye'de Amerikan armudu olarak da bilinen meyve aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Avokado"
+        },
+        {
+          "key": "B",
+          "text": "Mango"
+        },
+        {
+          "key": "C",
+          "text": "Ejder meyvesi"
+        },
+        {
+          "key": "D",
+          "text": "Kumkuat"
+        },
+        {
+          "key": "E",
+          "text": "Ananas"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0130",
+      "topic": "Güncel Olaylar",
+      "year": 2019,
+      "prompt": "Mustafa Kemal'in “Gözüm cephede kulağım İnebolu'da.” diyerek önemini belirttiği ve Millî Mücadele yıllarında Anadolu'ya silah, cephane ve gönüllü kişilerin sevk edildiği güzergâh, aşağıdaki isimlerden hangisi verilerek bir yürüyüş parkuru hâline getirilmiştir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Gazi Yolu"
+        },
+        {
+          "key": "B",
+          "text": "İstiklâl Yolu"
+        },
+        {
+          "key": "C",
+          "text": "Kurtuluş Yolu"
+        },
+        {
+          "key": "D",
+          "text": "Türk Yolu"
+        },
+        {
+          "key": "E",
+          "text": "Mücadele Yolu"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0131",
+      "topic": "Güncel Olaylar",
+      "year": 2019,
+      "prompt": "Çanakkale savaşlarında attığı top mermisi ile savaşın seyrini değiştiren Seyit Onbaşı'nın vurduğu gemi aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Agamemnon"
+        },
+        {
+          "key": "B",
+          "text": "İnflexible"
+        },
+        {
+          "key": "C",
+          "text": "Majestic"
+        },
+        {
+          "key": "D",
+          "text": "Queen Elizabeth"
+        },
+        {
+          "key": "E",
+          "text": "Ocean"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0132",
+      "topic": "Güncel Olaylar",
+      "year": 2019,
+      "prompt": "İspanya'nın Pamplona kentinde her yıl boğaların koşturulduğu ve güreştirildiği, bu nedenle başta hayvan hakları savunucuları olmak üzere birçok kesimden tepki alan festival aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "La Tomatina"
+        },
+        {
+          "key": "B",
+          "text": "Capella"
+        },
+        {
+          "key": "C",
+          "text": "Las Fallas"
+        },
+        {
+          "key": "D",
+          "text": "San Fermin"
+        },
+        {
+          "key": "E",
+          "text": "Los Mayos"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0133",
+      "topic": "Güncel Olaylar",
+      "year": 2019,
+      "prompt": "Sahip olduğu ileri teknoloji özellikleri nedeniyle 6. nesil olarak adlandırılan ilk Türk sondaj gemisinin adı aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Fatih"
+        },
+        {
+          "key": "B",
+          "text": "Yavuz"
+        },
+        {
+          "key": "C",
+          "text": "Kıbrıs"
+        },
+        {
+          "key": "D",
+          "text": "Atak"
+        },
+        {
+          "key": "E",
+          "text": "Göktürk"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0134",
+      "topic": "Güncel Olaylar",
+      "year": 2019,
+      "prompt": "Antarktika'ya Bilim Üssü Kurulması Projesi kapsamında Türk ekibinin 2019 yılında kamp kurduğu ada aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Elephant"
+        },
+        {
+          "key": "B",
+          "text": "Horseshoe"
+        },
+        {
+          "key": "C",
+          "text": "Brabant"
+        },
+        {
+          "key": "D",
+          "text": "Darnley"
+        },
+        {
+          "key": "E",
+          "text": "Lyddan"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0135",
+      "topic": "Güncel Olaylar",
+      "year": 2020,
+      "prompt": "1945'te Nobel Ödülü'nü Howard Florey ile paylaşan ve penisilini keşfeden bilim insanı aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Albert Einstein"
+        },
+        {
+          "key": "B",
+          "text": "William Harvey"
+        },
+        {
+          "key": "C",
+          "text": "Enrico Fermi"
+        },
+        {
+          "key": "D",
+          "text": "Alexander Fleming"
+        },
+        {
+          "key": "E",
+          "text": "Michael Faraday"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0136",
+      "topic": "Güncel Olaylar",
+      "year": 2020,
+      "prompt": "“Milletlerin kaderi yaşadıkları coğrafyanın etkisindedir. Coğrafyası müsait olmayan, medeni etkileşim ve yayılma alanı bulamayan milletler; medeniyetsiz, geri ve cüce kalırlar.” sözleriyle bilinen ve Mukaddime adlı eseriyle tanınan bilim insanı aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Farabi"
+        },
+        {
+          "key": "B",
+          "text": "Gazali"
+        },
+        {
+          "key": "C",
+          "text": "İbn Haldun"
+        },
+        {
+          "key": "D",
+          "text": "İbn Rüşd"
+        },
+        {
+          "key": "E",
+          "text": "İbn Sina"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0137",
+      "topic": "Güncel Olaylar",
+      "year": 2020,
+      "prompt": "2007'de kanunla kurulup 2009'da faaliyetlerine başlayan, Türkiye'nin tanıtımı amacıyla kültür, sanat faaliyetleri yürütüp bu konuda bilimsel çalışmaları destekleyen ve yurt dışında kurduğu merkezlerde yabancılara Türkçe öğretimi çalışmaları yapan kurum aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Türk Dünyası Araştırma Vakfı"
+        },
+        {
+          "key": "B",
+          "text": "Yunus Emre Enstitüsü"
+        },
+        {
+          "key": "C",
+          "text": "Uluslararası Türk Kültür Teşkilatı"
+        },
+        {
+          "key": "D",
+          "text": "Yurtdışı Türkler ve Akraba Topluluklar Başkanlığı"
+        },
+        {
+          "key": "E",
+          "text": "Türk İşbirliği ve Koordinasyon Ajansı Başkanlığı"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0138",
+      "topic": "Güncel Olaylar",
+      "year": 2020,
+      "prompt": "Türk Edebiyatı'nda şiirin edebî ve estetik boyutunu öne çıkararak Ağrı, Kar ve Fahriye Abla adlı şiirleriyle bilinen şair aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Cahit Sıtkı Tarancı"
+        },
+        {
+          "key": "B",
+          "text": "Ahmet Kutsi Tecer"
+        },
+        {
+          "key": "C",
+          "text": "Ahmet Muhip Dıranas"
+        },
+        {
+          "key": "D",
+          "text": "Necip Fazıl Kısakürek"
+        },
+        {
+          "key": "E",
+          "text": "Faruk Nafiz Çamlıbel"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0139",
+      "topic": "Güncel Olaylar",
+      "year": 2020,
+      "prompt": "UNESCO Yaratıcı Şehirler Ağı Programı; çeşitli bölgelerden, farklı gelir seviyeleri, kapasite ve nüfusa sahip şehirleri yaratıcı endüstriler alanında çalışmak üzere bir araya getiren bir girişimdir. Yaratıcı Şehirler Ağı yedi tema etrafında şekillendirilmiştir. Bu temalar; edebiyat, film, müzik, zanaat ve halk sanatları, tasarım, gastronomi ve medya sanatları olarak belirlenmiştir.\nBu programa müzik alanında 2019 yılında dâhil edilen şehir aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kırşehir"
+        },
+        {
+          "key": "B",
+          "text": "Edirne"
+        },
+        {
+          "key": "C",
+          "text": "Nevşehir"
+        },
+        {
+          "key": "D",
+          "text": "Şanlıurfa"
+        },
+        {
+          "key": "E",
+          "text": "Eskişehir"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0140",
+      "topic": "Güncel Olaylar",
+      "year": 2020,
+      "prompt": "Osman Hamdi Bey tarafından 1880 yılında yapılan ve 2019 yılında Londra'daki bir müzayedede 6 milyon sterlinin üzerinde bir fiyata satılarak en pahalı Türk tablolarından biri olan eser aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kaplumbağa Terbiyecisi"
+        },
+        {
+          "key": "B",
+          "text": "Beyaz Vazoda Çiçekler"
+        },
+        {
+          "key": "C",
+          "text": "İki Genç Kızın Türbe Ziyareti"
+        },
+        {
+          "key": "D",
+          "text": "İstanbul Kadını"
+        },
+        {
+          "key": "E",
+          "text": "Kur'an Okuyan Kız"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0141",
+      "topic": "Güncel Olaylar",
+      "year": 2021,
+      "prompt": "Sinema oyuncusu olarak Ağaçlar Ayakta Ölür (1964) ve İsyancılar (1966) filmlerindeki rolleriyle Antalya Altın Portakal Film Festivali'nde En İyi Yardımcı Kadın Oyuncu Ödülü'nü almıştır. 1995 yılında Kültür Bakanlığınca tiyatro sanatına olan katkılarından dolayı “Onur Ödülü”ne layık görülmüştür. Ben Anadolu, Hep Aşk Vardır, Tanrılar ve İnsanlar gibi tiyatro oyunlarının yanında yüzü aşkın oyunda da rol alan sanatçı 2019 yılında vefat etmiştir.\nHakkında bilgi verilen bu sanatçı aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Çolpan İlhan"
+        },
+        {
+          "key": "B",
+          "text": "Tomris İncer"
+        },
+        {
+          "key": "C",
+          "text": "Suna Pekuysal"
+        },
+        {
+          "key": "D",
+          "text": "Yıldız Kenter"
+        },
+        {
+          "key": "E",
+          "text": "Gülruz Sururi"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0142",
+      "topic": "Güncel Olaylar",
+      "year": 2021,
+      "prompt": "Birçok tarihçi tarafından Rönesans'ı simgeleyen evrensel deha olarak görülen ve insan anatomisine ilişkin son derece ayrıntılı çizimlerini Codex Atlanticus (Codice Atlantico) adlı eserinde toplamış olan bilim insanı aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tycho Brahe"
+        },
+        {
+          "key": "B",
+          "text": "Galilei Galileo"
+        },
+        {
+          "key": "C",
+          "text": "Johannes Kepler"
+        },
+        {
+          "key": "D",
+          "text": "Leonardo Da Vinci"
+        },
+        {
+          "key": "E",
+          "text": "Isaac Newton"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0143",
+      "topic": "Güncel Olaylar",
+      "year": 2021,
+      "prompt": "Frankfurt Seyahatnamesi, Bize Göre ve Göl Saatleri adlı eserlerin yazarı olan edebiyatçı aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ahmet Rasim"
+        },
+        {
+          "key": "B",
+          "text": "Tevfik Fikret"
+        },
+        {
+          "key": "C",
+          "text": "Ahmet Haşim"
+        },
+        {
+          "key": "D",
+          "text": "Namık Kemal"
+        },
+        {
+          "key": "E",
+          "text": "Yahya Kemal Beyatlı"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0144",
+      "topic": "Güncel Olaylar",
+      "year": 2021,
+      "prompt": "“Termessos Antik Kenti” aşağıdaki illerin hangisinde bulunur?",
+      "options": [
+        {
+          "key": "A",
+          "text": "İzmir"
+        },
+        {
+          "key": "B",
+          "text": "Aydın"
+        },
+        {
+          "key": "C",
+          "text": "Antalya"
+        },
+        {
+          "key": "D",
+          "text": "Muğla"
+        },
+        {
+          "key": "E",
+          "text": "Manisa"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0145",
+      "topic": "Güncel Olaylar",
+      "year": 2021,
+      "prompt": "2021 yılında ABD Havacılık ve Uzay Ajansı (NASA) tarafından düzenlenen “Dünya Turnuvası” adlı fotoğraf yarışmasında, Astronot Kate Rubins tarafından çekilen ve birinci olan fotoğraf aşağıdaki göllerden hangisine aittir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Salda"
+        },
+        {
+          "key": "B",
+          "text": "Meke"
+        },
+        {
+          "key": "C",
+          "text": "Sera"
+        },
+        {
+          "key": "D",
+          "text": "Van"
+        },
+        {
+          "key": "E",
+          "text": "Abant"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0146",
+      "topic": "Güncel Olaylar",
+      "year": 2021,
+      "prompt": "2021 yılında Azerbaycan'da düzenlenen Aerobik Jimnastik Dünya Şampiyonası'nda, altın madalya kazanan Türk millî sporcu aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "İrem Yaman"
+        },
+        {
+          "key": "B",
+          "text": "Çağla Büyükakçay"
+        },
+        {
+          "key": "C",
+          "text": "Yasemin Ecem Anagöz"
+        },
+        {
+          "key": "D",
+          "text": "Ayşe Begüm Onbaşı"
+        },
+        {
+          "key": "E",
+          "text": "Aslı Çakır Alptekin"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0147",
+      "topic": "Güncel Olaylar",
+      "year": 2022,
+      "prompt": "Transilvanya kültürü ve tarihinden ilham alan, ana karakteri vampir olan, beyaz perdeye de birçok kez aktarılan kültleşmiş Bram Stoker romanı aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Drakula"
+        },
+        {
+          "key": "B",
+          "text": "Usta ile Margarita"
+        },
+        {
+          "key": "C",
+          "text": "Frankenstein"
+        },
+        {
+          "key": "D",
+          "text": "Dr. Jekyll ile Bay Hyde"
+        },
+        {
+          "key": "E",
+          "text": "Faust"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0148",
+      "topic": "Güncel Olaylar",
+      "year": 2022,
+      "prompt": "III. Selim zamanında zanaatkârların; eğitimi için Venedik'e gönderildiği, atölyesi Beykoz'da kurulan ve sözcük anlamı “bülbül gözü” olan çeşmibülbül sanatının temel yapı maddesi aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Bakır"
+        },
+        {
+          "key": "B",
+          "text": "Plastik"
+        },
+        {
+          "key": "C",
+          "text": "Ahşap"
+        },
+        {
+          "key": "D",
+          "text": "Cam"
+        },
+        {
+          "key": "E",
+          "text": "Altın"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0149",
+      "topic": "Güncel Olaylar",
+      "year": 2022,
+      "prompt": "Bezelye bitkisi yetiştirme çalışmaları sonucunda kalıtımın temel prensiplerini keşfeden bilim insanı aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "L. Pasteur"
+        },
+        {
+          "key": "B",
+          "text": "G. Mendel"
+        },
+        {
+          "key": "C",
+          "text": "I. Newton"
+        },
+        {
+          "key": "D",
+          "text": "A. Fleming"
+        },
+        {
+          "key": "E",
+          "text": "M. Faraday"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0150",
+      "topic": "Güncel Olaylar",
+      "year": 2022,
+      "prompt": "Halk arasında yaygınlaştığı için yanlış olup olmadığına önem verilmeden kullanılagelen söz, terim veya deyimleri ifade etmek için kullanılan, “yaygın yanlış” kavramını ifade eden sözcük aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Münhasır"
+        },
+        {
+          "key": "B",
+          "text": "Ehvenişer"
+        },
+        {
+          "key": "C",
+          "text": "Tevekkeli"
+        },
+        {
+          "key": "D",
+          "text": "Cihanşümul"
+        },
+        {
+          "key": "E",
+          "text": "Galatımeşhur"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0151",
+      "topic": "Güncel Olaylar",
+      "year": 2022,
+      "prompt": "Meslek hayatına 1970 yılında radyoda seslendirme yaparak başlayan, Forrest Gump'ta Tom Hanks'i, Piyanist'te Adrien Brody'i seslendiren, Ağustos 2022'de hayatını kaybeden sanatçı aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nur Subaşı"
+        },
+        {
+          "key": "B",
+          "text": "Nüvit Candaner"
+        },
+        {
+          "key": "C",
+          "text": "Sungun Babacan"
+        },
+        {
+          "key": "D",
+          "text": "Sezai Aydın"
+        },
+        {
+          "key": "E",
+          "text": "Mazlum Kiper"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0152",
+      "topic": "Güncel Olaylar",
+      "year": 2022,
+      "prompt": "3170 metre yükseklikte inşa edilmiş olup bilim dünyası açısından önemli bir teknoloji yatırımı olarak değerlendirilen Doğu Anadolu Gözlemevi aşağıdaki illerin hangisinde yer almaktadır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Erzurum"
+        },
+        {
+          "key": "B",
+          "text": "Iğdır"
+        },
+        {
+          "key": "C",
+          "text": "Erzincan"
+        },
+        {
+          "key": "D",
+          "text": "Van"
+        },
+        {
+          "key": "E",
+          "text": "Malatya"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0153",
+      "topic": "Güncel Olaylar",
+      "year": 2023,
+      "prompt": "Aşağıdakilerden hangisi Abdurrahim Karakoç'un “Mihriban” şiirine ait dizelerden biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Aşk kâğıda yazılmıyor Mihriban!"
+        },
+        {
+          "key": "B",
+          "text": "Bağlamışlar, çözülmüyor Mihriban!"
+        },
+        {
+          "key": "C",
+          "text": "Suya resim çizilmiyor Mihriban!"
+        },
+        {
+          "key": "D",
+          "text": "Çözemedim, çözülmüyor Mihriban!"
+        },
+        {
+          "key": "E",
+          "text": "Görmeyince sezilmiyor Mihriban!"
+        }
+      ],
+      "correct": "C"
+    },
+    {
+      "id": "vat-0154",
+      "topic": "Güncel Olaylar",
+      "year": 2023,
+      "prompt": "Dünyanın ünlü tabloları arasında yer alan ve Belleğin Azmi ya da Eriyen Saatler adıyla bilinen bu eser, aşağıdaki sanatçılardan hangisine aittir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Johannes Vermeer"
+        },
+        {
+          "key": "B",
+          "text": "Salvador Dali"
+        },
+        {
+          "key": "C",
+          "text": "Edward Munch"
+        },
+        {
+          "key": "D",
+          "text": "Vincent Van Gogh"
+        },
+        {
+          "key": "E",
+          "text": "Leonardo da Vinci"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0155",
+      "topic": "Güncel Olaylar",
+      "year": 2023,
+      "prompt": "“Dünya beşten büyüktür.” doktrini doğrultusunda Türkiye Cumhuriyeti, beş daimî üyenin iradesinin mutlak güç kabul edildiği Birleşmiş Milletler Güvenlik Konseyinin; günün ihtiyaçlarını daha iyi karşılayacak, daha geniş bir temsile dayanan, demokratik, şeffaf, etkin ve hesap verebilir bir şekilde oluşumunu ve Birleşmiş Milletlerin tüm organlarını içeren kapsamlı bir reform yapılmasını savunmaktadır.\nAşağıdakilerden hangisi bu doktrin kapsamında yapısı eleştirilen Birleşmiş Milletler Güvenlik Konseyinin veto yetkisine sahip daimî beş üyesinden biridir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Fransa"
+        },
+        {
+          "key": "B",
+          "text": "İtalya"
+        },
+        {
+          "key": "C",
+          "text": "Almanya"
+        },
+        {
+          "key": "D",
+          "text": "İspanya"
+        },
+        {
+          "key": "E",
+          "text": "Portekiz"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0156",
+      "topic": "Güncel Olaylar",
+      "year": 2023,
+      "prompt": "Coğrafi işaretler; herhangi bir ülke, bölge ya da yöre gibi alanlara has ürünlerin yerelliğini korumak amacıyla alınan tedbirlerdir. Avrupa Konseyi Tüzüğü çerçevesinde Avrupa Komisyonu tarafından tescil edilen coğrafi işaretler ise Avrupa Birliği ülkelerinin tamamında koruma sağlamaktadır.\nAşağıdakilerden hangisi bu kapsamda Avrupa Komisyonu tarafından tescil edilmiş coğrafi işarete sahip Türk ürünlerinden biri değildir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Antakya Künefesi"
+        },
+        {
+          "key": "B",
+          "text": "Antep Baklavası"
+        },
+        {
+          "key": "C",
+          "text": "Malatya Kayısısı"
+        },
+        {
+          "key": "D",
+          "text": "Milas Zeytinyağı"
+        },
+        {
+          "key": "E",
+          "text": "Afyon Kaymağı"
+        }
+      ],
+      "correct": "E"
+    },
+    {
+      "id": "vat-0157",
+      "topic": "Güncel Olaylar",
+      "year": 2023,
+      "prompt": "2020 yılında yeniden ibadete açılan Ayasofya-i Kebir Cami-i Şerifi'nde adı geçen “Ayasofya” kelimesinin anlamı aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kutsal Şehir"
+        },
+        {
+          "key": "B",
+          "text": "Doğu ve Batı'nın En Güzeli"
+        },
+        {
+          "key": "C",
+          "text": "Temiz ve Büyük"
+        },
+        {
+          "key": "D",
+          "text": "Kutsal Bilgelik"
+        },
+        {
+          "key": "E",
+          "text": "Doğu'nun Sultanı"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0158",
+      "topic": "Güncel Olaylar",
+      "year": 2023,
+      "prompt": "Cumhurbaşkanlığı Dijital Dönüşüm Ofisi ve Türk Dil Kurumunun koordineli çalışmaları sonucunda “non-fungible token (NFT)” kavramının Türkçe karşılığı olarak belirlenen terim aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nadir Fotoğraf Tescili"
+        },
+        {
+          "key": "B",
+          "text": "Nitelikli Fikrî Tapu"
+        },
+        {
+          "key": "C",
+          "text": "Dijital Resim Kimliği"
+        },
+        {
+          "key": "D",
+          "text": "Değiştirilemez Akıllı Sözleşme"
+        },
+        {
+          "key": "E",
+          "text": "Nesnelerin Farklı Tasarımı"
+        }
+      ],
+      "correct": "B"
+    },
+    {
+      "id": "vat-0159",
+      "topic": "Güncel Olaylar",
+      "year": 2024,
+      "prompt": "Mevlevi dervişlerin sema sırasında giydiği kolsuz, yakasız, yırtmaçlı, beli kırmalı, uzun ve geniş giysi aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Tennure"
+        },
+        {
+          "key": "B",
+          "text": "Hırka"
+        },
+        {
+          "key": "C",
+          "text": "Cübbe"
+        },
+        {
+          "key": "D",
+          "text": "Aba"
+        },
+        {
+          "key": "E",
+          "text": "Kaftan"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0160",
+      "topic": "Güncel Olaylar",
+      "year": 2024,
+      "prompt": "Hz. Muhammed'in İsra ve Miraç Gecesi'nde gerçekleştirdiği yolculuğu ve gökyüzüne yükseldiği mekânı içinde barındıran, Kutsal Harem-i Şerif'in bir parçası olarak da kabul edilen Kubbetü's-Sahra Mescidi aşağıdaki şehirlerin hangisinde yer almaktadır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Han Yunus"
+        },
+        {
+          "key": "B",
+          "text": "Gazze"
+        },
+        {
+          "key": "C",
+          "text": "Refah"
+        },
+        {
+          "key": "D",
+          "text": "Kudüs"
+        },
+        {
+          "key": "E",
+          "text": "Ramallah"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0161",
+      "topic": "Güncel Olaylar",
+      "year": 2024,
+      "prompt": "Semerkant'ta rasathane kuran, Batılı bilim insanlarının “XV. Yüzyılın Astronomu” unvanını verdiği ve Milletlerarası Astronomi Derneği tarafından Ay'ın yüzeyindeki bir bölgeye adı verilen bilim insanı aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "El Cezeri"
+        },
+        {
+          "key": "B",
+          "text": "Nasîreddin Tûsi"
+        },
+        {
+          "key": "C",
+          "text": "Birûni"
+        },
+        {
+          "key": "D",
+          "text": "Uluğ Bey"
+        },
+        {
+          "key": "E",
+          "text": "Harezmi"
+        }
+      ],
+      "correct": "D"
+    },
+    {
+      "id": "vat-0162",
+      "topic": "Güncel Olaylar",
+      "year": 2024,
+      "prompt": "Üniversitede temizlik görevlisi olarak çalışan bir gencin tahtaya yazılmış zor bir matematik sorusunu çözmesiyle dersin profesörü tarafından keşfedilmesini konu edinen Oscar ödüllü film aşağıdakilerden hangisidir?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Can Dostum (Good Will Hunting)"
+        },
+        {
+          "key": "B",
+          "text": "Üç Aptal (Three İdiots)"
+        },
+        {
+          "key": "C",
+          "text": "Ölü Ozanlar Derneği (Dead Poets Society)"
+        },
+        {
+          "key": "D",
+          "text": "Sevgili Öğretmenim (To Sir With Love)"
+        },
+        {
+          "key": "E",
+          "text": "Sınıf (The Class)"
+        }
+      ],
+      "correct": "A"
+    },
+    {
+      "id": "vat-0163",
+      "topic": "Güncel Olaylar",
+      "year": 2024,
+      "prompt": "Aşağıdaki roman ve romanın ana karakteri eşleştirmelerinden hangisi yanlıştır?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Suç ve Ceza - Raskolnikov"
+        },
+        {
+          "key": "B",
+          "text": "Dönüşüm - Gregor Samsa"
+        },
+        {
+          "key": "C",
+          "text": "Anayurt Oteli - Zebercet"
+        },
+        {
+          "key": "D",
+          "text": "Saatleri Ayarlama Enstitüsü - Hayri İrdal"
+        },
+        {
+          "key": "E",
+          "text": "Sefiller - Meursault"
+        }
+      ],
+      "correct": "E"
+    }
+  ]
+}

@@ -42,7 +42,8 @@ import { useLeaderboard } from "./hooks/useLeaderboard";
 import { GamificationFX, buildFxItems, type FxItem } from "./components/GamificationFX";
 import { Hud } from "./components/Hud";
 import { TestPanel } from "./components/TestPanel";
-import { useTestQuestions } from "./hooks/useTestQuestions";
+import { useTestQuestions, type TestQuestionSource } from "./hooks/useTestQuestions";
+import type { TestCategory } from "./quiz/testQuestions";
 import { accuracyPercent, BADGES, PLUS_TOPIC_IDS, plusTopicLabel as getPlusTopicLabel } from "./quiz/gamification";
 
 const PLUS_RECENT_QUESTION_HISTORY_LIMIT = 16;
@@ -53,7 +54,11 @@ const plusTopicChoices = plusQuestionTopicOptions.filter(
 
 const WRONG_PLUS_QUESTION_STORAGE_PREFIX = "kpss-cografya-atlas:wrong-plus-questions:";
 const WRONG_TEST_QUESTION_STORAGE_PREFIX = "kpss-cografya-atlas:wrong-test-questions:";
-const TEST_QUESTIONS_URL = "/questions/tarih.json";
+// Test modu soru bankaları: her kaynak bir kategoriye (oyunlaştırma konusuna) karşılık gelir.
+const TEST_QUESTION_SOURCES: TestQuestionSource[] = [
+  { url: "/questions/tarih.json", category: "tarih" },
+  { url: "/questions/vatandaslik.json", category: "vatandaslik" },
+];
 const PLUS_QUESTION_SEED_SEPARATOR = "__";
 
 type PlusStudyMode = "all" | "wrong";
@@ -253,7 +258,7 @@ function App() {
   const leaderboard = useLeaderboard(auth.user);
   const { recordAnswer, reset: resetProgress } = progress;
   const { refresh: refreshLeaderboard } = leaderboard;
-  const testQuestionsState = useTestQuestions(TEST_QUESTIONS_URL);
+  const testQuestionsState = useTestQuestions(TEST_QUESTION_SOURCES);
   const wrongPlusQuestionStorageKeyValue = useMemo(
     () => wrongPlusQuestionStorageKey(auth.user?.id ?? null),
     [auth.user?.id],
@@ -302,14 +307,22 @@ function App() {
   );
 
   const handleTestAnswer = useCallback(
-    ({ questionId, isCorrect }: { questionId: string; isCorrect: boolean }) => {
+    ({
+      questionId,
+      isCorrect,
+      category,
+    }: {
+      questionId: string;
+      isCorrect: boolean;
+      category: TestCategory;
+    }) => {
       persistWrongTestQuestionIds((currentQuestionIds) =>
         isCorrect
           ? currentQuestionIds.filter((id) => id !== questionId)
           : [questionId, ...currentQuestionIds.filter((id) => id !== questionId)],
       );
 
-      const events = recordAnswer({ topic: "tarih", isCorrect });
+      const events = recordAnswer({ topic: category, isCorrect });
       const builtFx = buildFxItems(events);
       if (builtFx.length > 0) {
         setFxItems((items) => [...items, ...builtFx]);
