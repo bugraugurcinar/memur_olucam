@@ -11,6 +11,8 @@ import {
 
 const RECENT_TEST_QUESTION_HISTORY_LIMIT = 8;
 const TEST_TOKEN_COLOR = "#6366f1";
+// Süreli mod: her soru için geri sayım (saniye). Süre dolarsa soru yanlış sayılır.
+const QUESTION_TIME_SECONDS = 30;
 
 const CATEGORY_FILTERS: Array<{ id: TestCategoryFilter; label: string }> = [
   { id: "all", label: "Karma" },
@@ -37,6 +39,9 @@ export function TestPanel({ questions, isLoading, error, wrongIds, onAnswer }: T
   const [studyMode, setStudyMode] = useState<TestStudyMode>("all");
   const [current, setCurrent] = useState<TestQuestion | null>(null);
   const [answeredKey, setAnsweredKey] = useState<TestOptionKey | null>(null);
+  const [timedMode, setTimedMode] = useState(false);
+  const [timedOut, setTimedOut] = useState(false);
+  const [remaining, setRemaining] = useState(QUESTION_TIME_SECONDS);
   const recentIdsRef = useRef<string[]>([]);
 
   // Seçili kategoriye göre havuz. "all" => karma (tüm kategoriler).
@@ -63,6 +68,8 @@ export function TestPanel({ questions, isLoading, error, wrongIds, onAnswer }: T
         );
       }
       setAnsweredKey(null);
+      setTimedOut(false);
+      setRemaining(QUESTION_TIME_SECONDS);
       setCurrent(next);
     },
     [pool],
@@ -105,15 +112,38 @@ export function TestPanel({ questions, isLoading, error, wrongIds, onAnswer }: T
 
   const handleSelect = useCallback(
     (key: TestOptionKey) => {
-      if (!current || answeredKey) {
+      if (!current || answeredKey || timedOut) {
         return;
       }
       const isCorrect = key === current.correct;
       setAnsweredKey(key);
       onAnswer({ questionId: current.id, isCorrect, category: current.category });
     },
-    [answeredKey, current, onAnswer],
+    [answeredKey, current, onAnswer, timedOut],
   );
+
+  const isAnswered = Boolean(answeredKey) || timedOut;
+
+  // Süreli mod: cevaplanmamış her soruda geri sayım; süre bitince yanlış sayılır.
+  useEffect(() => {
+    if (!timedMode || !current || isAnswered) {
+      return;
+    }
+    setRemaining(QUESTION_TIME_SECONDS);
+    const startedAt = Date.now();
+    const interval = window.setInterval(() => {
+      const left = QUESTION_TIME_SECONDS - Math.floor((Date.now() - startedAt) / 1000);
+      if (left <= 0) {
+        window.clearInterval(interval);
+        setRemaining(0);
+        setTimedOut(true);
+        onAnswer({ questionId: current.id, isCorrect: false, category: current.category });
+      } else {
+        setRemaining(left);
+      }
+    }, 250);
+    return () => window.clearInterval(interval);
+  }, [timedMode, current, isAnswered, onAnswer]);
 
   const handleNext = useCallback(() => {
     advance(studyMode);
@@ -153,7 +183,6 @@ export function TestPanel({ questions, isLoading, error, wrongIds, onAnswer }: T
     );
   }
 
-  const isAnswered = Boolean(answeredKey);
   const correctKey = current?.correct ?? null;
   const categoryHint =
     categoryFilter === "all" ? ALL_CATEGORY_HINT : TEST_CATEGORY_LABELS[categoryFilter];
@@ -195,7 +224,31 @@ export function TestPanel({ questions, isLoading, error, wrongIds, onAnswer }: T
           >
             Yanlışlar ({wrongCount})
           </button>
+          <button
+            className={`test-timed-toggle${timedMode ? " is-active" : ""}`}
+            onClick={() => setTimedMode((value) => !value)}
+            title="Süreli mod: her soru için 30 sn"
+            type="button"
+          >
+            ⏱ Süreli
+          </button>
         </div>
+
+        {timedMode && current && !isAnswered ? (
+          <div
+            className={`test-timer${remaining <= 10 ? " is-urgent" : ""}`}
+            role="timer"
+            aria-label={`${remaining} saniye kaldı`}
+          >
+            <div className="test-timer__track">
+              <div
+                className="test-timer__fill"
+                style={{ width: `${(remaining / QUESTION_TIME_SECONDS) * 100}%` }}
+              />
+            </div>
+            <strong>{remaining}s</strong>
+          </div>
+        ) : null}
 
         {current ? (
           <div
@@ -245,7 +298,7 @@ export function TestPanel({ questions, isLoading, error, wrongIds, onAnswer }: T
 
             {isAnswered ? (
               <div className="quiz-result">
-                <strong>{answeredKey === correctKey ? "Doğru" : "Yanlış"}</strong>
+                <strong>{timedOut ? "Süre doldu" : answeredKey === correctKey ? "Doğru" : "Yanlış"}</strong>
                 <span>
                   Doğru cevap: {correctKey}
                   {current.options.find((option) => option.key === correctKey)?.text

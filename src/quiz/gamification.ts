@@ -63,6 +63,8 @@ export type DailyState = {
   quests: DailyQuest[];
   dailyStreak: number;
   lastActiveDate: string;
+  /** Son "streak dondurma" telafisinin kullanıldığı gün (7 günde bir hak). */
+  lastFreezeDate: string;
 };
 
 export type GamificationEvents = {
@@ -245,7 +247,55 @@ export const BADGES: Badge[] = [
         return stat.answered >= 10 && stat.correct / stat.answered >= 0.9;
       }),
   },
+  {
+    id: "streak-15",
+    label: "Kusursuz Seri",
+    description: "Üst üste 15 doğru.",
+    icon: "💎",
+    isEarned: (c) => c.totals.bestStreak >= 15,
+  },
+  {
+    id: "answered-500",
+    label: "Maraton",
+    description: "500 soru cevapladın.",
+    icon: "🏃",
+    isEarned: (c) => c.totals.answered >= 500,
+  },
+  {
+    id: "daily-30",
+    label: "Sadık",
+    description: "30 gün üst üste çalıştın.",
+    icon: "🗓️",
+    isEarned: (c) => c.dailyStreak >= 30,
+  },
+  {
+    id: "master-cografya",
+    label: "Coğrafya Ustası",
+    description: "Coğrafya testinde %85+ doğruluk (en az 20 soru).",
+    icon: "🌍",
+    isEarned: (c) => hasCategoryMastery(c, "cografya"),
+  },
+  {
+    id: "master-tarih",
+    label: "Tarih Ustası",
+    description: "Tarih testinde %85+ doğruluk (en az 20 soru).",
+    icon: "🏛️",
+    isEarned: (c) => hasCategoryMastery(c, "tarih"),
+  },
+  {
+    id: "master-vatandaslik",
+    label: "Vatandaşlık Ustası",
+    description: "Vatandaşlık testinde %85+ doğruluk (en az 20 soru).",
+    icon: "⚖️",
+    isEarned: (c) => hasCategoryMastery(c, "vatandaslik"),
+  },
 ];
+
+/** Test kategorisinde ustalık: en az 20 soru ve %85+ doğruluk. */
+function hasCategoryMastery(ctx: BadgeContext, category: TestTopicId): boolean {
+  const stat = ctx.totals.byTopic[category];
+  return stat !== undefined && stat.answered >= 20 && stat.correct / stat.answered >= 0.85;
+}
 
 export function evaluateEarnedBadges(ctx: BadgeContext): string[] {
   return BADGES.filter((badge) => badge.isEarned(ctx)).map((badge) => badge.id);
@@ -311,7 +361,13 @@ export function getDailyQuests(dateKey: string): DailyQuest[] {
 }
 
 export function emptyDaily(dateKey: string): DailyState {
-  return { dateKey, quests: getDailyQuests(dateKey), dailyStreak: 0, lastActiveDate: "" };
+  return {
+    dateKey,
+    quests: getDailyQuests(dateKey),
+    dailyStreak: 0,
+    lastActiveDate: "",
+    lastFreezeDate: "",
+  };
 }
 
 /** Gün değiştiyse görevleri bugüne taşı; streak/lastActiveDate korunur. */
@@ -324,25 +380,49 @@ export function rolloverDaily(prev: DailyState | null, todayKey: string): DailyS
     quests: getDailyQuests(todayKey),
     dailyStreak: prev?.dailyStreak ?? 0,
     lastActiveDate: prev?.lastActiveDate ?? "",
+    lastFreezeDate: prev?.lastFreezeDate ?? "",
   };
 }
 
-function isYesterday(dateKey: string, todayKey: string): boolean {
-  if (!dateKey) {
-    return false;
+/** İki tarih anahtarı arasındaki tam gün farkı (b - a). */
+function dayGap(fromKey: string, toKey: string): number {
+  if (!fromKey) {
+    return Number.POSITIVE_INFINITY;
   }
-  const previous = new Date(`${dateKey}T00:00:00`).getTime();
-  const today = new Date(`${todayKey}T00:00:00`).getTime();
-  return today - previous === 86_400_000;
+  const from = new Date(`${fromKey}T00:00:00`).getTime();
+  const to = new Date(`${toKey}T00:00:00`).getTime();
+  return Math.round((to - from) / 86_400_000);
 }
 
-/** Günün ilk cevabında günlük seriyi günceller. */
+/**
+ * Günün ilk cevabında günlük seriyi günceller.
+ * - Ardışık gün (1 gün fark): seri +1.
+ * - Tam bir gün kaçırma (2 gün fark): "streak dondurma" hakkı varsa (son telafiden
+ *   bu yana ≥7 gün) seri korunur ve +1; hak yoksa seri yeniden başlar.
+ * - Daha uzun boşluk: seri 1'e döner.
+ */
 export function registerActiveDay(daily: DailyState, todayKey: string): DailyState {
   if (daily.lastActiveDate === todayKey) {
     return daily;
   }
-  const dailyStreak = isYesterday(daily.lastActiveDate, todayKey) ? daily.dailyStreak + 1 : 1;
-  return { ...daily, dailyStreak, lastActiveDate: todayKey };
+
+  const gap = dayGap(daily.lastActiveDate, todayKey);
+
+  if (gap === 1) {
+    return { ...daily, dailyStreak: daily.dailyStreak + 1, lastActiveDate: todayKey };
+  }
+
+  const freezeAvailable = dayGap(daily.lastFreezeDate, todayKey) >= 7;
+  if (gap === 2 && daily.dailyStreak > 0 && freezeAvailable) {
+    return {
+      ...daily,
+      dailyStreak: daily.dailyStreak + 1,
+      lastActiveDate: todayKey,
+      lastFreezeDate: todayKey,
+    };
+  }
+
+  return { ...daily, dailyStreak: 1, lastActiveDate: todayKey };
 }
 
 export function applyAnswerToQuests(

@@ -44,7 +44,7 @@ import { Hud } from "./components/Hud";
 import { TestPanel } from "./components/TestPanel";
 import { useTestQuestions, type TestQuestionSource } from "./hooks/useTestQuestions";
 import type { TestCategory } from "./quiz/testQuestions";
-import { accuracyPercent, BADGES, PLUS_TOPIC_IDS, plusTopicLabel as getPlusTopicLabel } from "./quiz/gamification";
+import { accuracyPercent, BADGES, formatDateKey, PLUS_TOPIC_IDS, plusTopicLabel as getPlusTopicLabel } from "./quiz/gamification";
 
 const PLUS_RECENT_QUESTION_HISTORY_LIMIT = 16;
 
@@ -54,6 +54,17 @@ const plusTopicChoices = plusQuestionTopicOptions.filter(
 
 const WRONG_PLUS_QUESTION_STORAGE_PREFIX = "kpss-cografya-atlas:wrong-plus-questions:";
 const WRONG_TEST_QUESTION_STORAGE_PREFIX = "kpss-cografya-atlas:wrong-test-questions:";
+// Aralıklı-tekrar-lite: bir soru yanlış havuzundan ancak üst üste bu kadar doğru
+// yapılınca düşer. Her yanlış sayacı sıfırlar. Sayaçlar ayrı bir anahtarda tutulur.
+const WRONG_PLUS_STREAK_STORAGE_PREFIX = "kpss-cografya-atlas:wrong-plus-streak:";
+const WRONG_TEST_STREAK_STORAGE_PREFIX = "kpss-cografya-atlas:wrong-test-streak:";
+const WRONG_POOL_CLEAR_STREAK = 2;
+// C1: sınav geri sayımı + günlük XP hedefi.
+const EXAM_DATE_STORAGE_KEY = "kpss-cografya-atlas:exam-date";
+const DAILY_XP_STORAGE_KEY = "kpss-cografya-atlas:daily-xp";
+const DAILY_XP_GOAL = 100;
+// KPSS sınav tarihi (varsayılan): 6 Eylül 2026. Kullanıcı HUD'dan değiştirebilir.
+const DEFAULT_EXAM_DATE = "2026-09-06";
 // Test modu soru bankaları: her kaynak bir kategoriye (oyunlaştırma konusuna) karşılık gelir.
 const TEST_QUESTION_SOURCES: TestQuestionSource[] = [
   { url: "/questions/tarih.json", category: "tarih" },
@@ -74,6 +85,14 @@ function wrongPlusQuestionStorageKey(userId: string | null) {
 
 function wrongTestQuestionStorageKey(userId: string | null) {
   return `${WRONG_TEST_QUESTION_STORAGE_PREFIX}${userId ?? "guest"}`;
+}
+
+function wrongPlusStreakStorageKey(userId: string | null) {
+  return `${WRONG_PLUS_STREAK_STORAGE_PREFIX}${userId ?? "guest"}`;
+}
+
+function wrongTestStreakStorageKey(userId: string | null) {
+  return `${WRONG_TEST_STREAK_STORAGE_PREFIX}${userId ?? "guest"}`;
 }
 
 function normalizeWrongPlusQuestionIds(value: unknown) {
@@ -123,6 +142,159 @@ function writeWrongPlusQuestionIds(storageKey: string, questionIds: string[]) {
   } catch {
     // localStorage kota/erişim hatası quiz akışını durdurmasın.
   }
+}
+
+// Yanlış havuzu sayaçları: { [soruId]: üst üste doğru sayısı }.
+type WrongStreakMap = Record<string, number>;
+
+function readWrongStreaks(storageKey: string): WrongStreakMap {
+  if (typeof window === "undefined") {
+    return {};
+  }
+
+  try {
+    const rawValue = window.localStorage.getItem(storageKey);
+    const parsed = rawValue ? JSON.parse(rawValue) : {};
+    if (typeof parsed !== "object" || parsed === null) {
+      return {};
+    }
+    const result: WrongStreakMap = {};
+    for (const [key, value] of Object.entries(parsed as Record<string, unknown>)) {
+      if (typeof value === "number" && Number.isFinite(value) && value > 0) {
+        result[key] = value;
+      }
+    }
+    return result;
+  } catch {
+    return {};
+  }
+}
+
+function writeWrongStreaks(storageKey: string, streaks: WrongStreakMap) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  try {
+    if (Object.keys(streaks).length === 0) {
+      window.localStorage.removeItem(storageKey);
+      return;
+    }
+    window.localStorage.setItem(storageKey, JSON.stringify(streaks));
+  } catch {
+    // yut
+  }
+}
+
+/**
+ * Bir cevaba göre yanlış havuzunu + sayaçları günceller (aralıklı-tekrar-lite).
+ * - Yanlış: soru havuzun başına eklenir, sayaç 0'a düşer.
+ * - Doğru & havuzda değil: dokunulmaz (ilk seferde doğru yapılan soru havuza girmez).
+ * - Doğru & havuzda: sayaç +1; WRONG_POOL_CLEAR_STREAK'e ulaşınca havuzdan düşer.
+ */
+function applyWrongPoolAnswer(
+  pool: string[],
+  streaks: WrongStreakMap,
+  id: string,
+  isCorrect: boolean,
+): { pool: string[]; streaks: WrongStreakMap } {
+  if (!isCorrect) {
+    return {
+      pool: [id, ...pool.filter((questionId) => questionId !== id)],
+      streaks: { ...streaks, [id]: 0 },
+    };
+  }
+
+  if (!pool.includes(id)) {
+    return { pool, streaks };
+  }
+
+  const nextStreak = (streaks[id] ?? 0) + 1;
+  if (nextStreak >= WRONG_POOL_CLEAR_STREAK) {
+    const { [id]: _removed, ...restStreaks } = streaks;
+    return { pool: pool.filter((questionId) => questionId !== id), streaks: restStreaks };
+  }
+
+  return { pool, streaks: { ...streaks, [id]: nextStreak } };
+}
+
+// --- C1: sınav geri sayımı + günlük XP hedefi yardımcıları --------------------
+type DailyXpState = { dateKey: string; xp: number };
+
+function readExamDate(): string | null {
+  if (typeof window === "undefined") {
+    return null;
+  }
+  try {
+    const value = window.localStorage.getItem(EXAM_DATE_STORAGE_KEY);
+    return value && /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : null;
+  } catch {
+    return null;
+  }
+}
+
+function writeExamDate(value: string | null) {
+  if (typeof window === "undefined") {
+    return;
+  }
+  try {
+    if (value) {
+      window.localStorage.setItem(EXAM_DATE_STORAGE_KEY, value);
+    } else {
+      window.localStorage.removeItem(EXAM_DATE_STORAGE_KEY);
+    }
+  } catch {
+    // yut
+  }
+}
+
+function readDailyXp(todayKey: string): DailyXpState {
+  if (typeof window === "undefined") {
+    return { dateKey: todayKey, xp: 0 };
+  }
+  try {
+    const raw = window.localStorage.getItem(DAILY_XP_STORAGE_KEY);
+    const parsed = raw ? (JSON.parse(raw) as Partial<DailyXpState>) : null;
+    if (parsed && parsed.dateKey === todayKey && typeof parsed.xp === "number") {
+      return { dateKey: todayKey, xp: Math.max(0, parsed.xp) };
+    }
+  } catch {
+    // yut
+  }
+  return { dateKey: todayKey, xp: 0 };
+}
+
+function writeDailyXp(state: DailyXpState) {
+  if (typeof window === "undefined") {
+    return;
+  }
+  try {
+    window.localStorage.setItem(DAILY_XP_STORAGE_KEY, JSON.stringify(state));
+  } catch {
+    // yut
+  }
+}
+
+/** Bugünün XP toplamına ekler; gün değiştiyse sıfırdan başlatır. */
+function addDailyXp(current: DailyXpState, todayKey: string, gained: number): DailyXpState {
+  if (current.dateKey !== todayKey) {
+    return { dateKey: todayKey, xp: Math.max(0, gained) };
+  }
+  return { dateKey: todayKey, xp: current.xp + Math.max(0, gained) };
+}
+
+/** Bugünden sınav gününe kalan tam gün sayısı (geçmişse 0). */
+function computeExamDaysLeft(examDate: string | null): number | null {
+  if (!examDate) {
+    return null;
+  }
+  const target = new Date(`${examDate}T00:00:00`).getTime();
+  if (Number.isNaN(target)) {
+    return null;
+  }
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return Math.max(0, Math.round((target - today.getTime()) / 86_400_000));
 }
 
 function AccountForm({ auth }: { auth: UseAuthResult }) {
@@ -226,13 +398,21 @@ function App() {
   const [plusTopics, setPlusTopics] = useState<Array<Exclude<PlusQuestionTopic, "mixed">>>([]);
   const [plusMode, setPlusMode] = useState<PlusQuestionMode>("mixed");
   const [plusStudyMode, setPlusStudyMode] = useState<PlusStudyMode>("all");
-  const [wrongPlusQuestionIds, setWrongPlusQuestionIds] = useState<string[]>(() =>
-    readWrongPlusQuestionIds(wrongPlusQuestionStorageKey(null)),
-  );
+  // Yanlış havuzları: havuz (pool) + aralıklı-tekrar sayaçları tek nesnede tutulur
+  // ki güncelleme saf/atomik olsun (bkz. applyWrongPoolAnswer).
+  const [wrongPlus, setWrongPlus] = useState<{ pool: string[]; streaks: WrongStreakMap }>(() => ({
+    pool: readWrongPlusQuestionIds(wrongPlusQuestionStorageKey(null)),
+    streaks: readWrongStreaks(wrongPlusStreakStorageKey(null)),
+  }));
   const [appView, setAppView] = useState<"map" | "test">("map");
-  const [wrongTestQuestionIds, setWrongTestQuestionIds] = useState<string[]>(() =>
-    readWrongPlusQuestionIds(wrongTestQuestionStorageKey(null)),
-  );
+  const [wrongTest, setWrongTest] = useState<{ pool: string[]; streaks: WrongStreakMap }>(() => ({
+    pool: readWrongPlusQuestionIds(wrongTestQuestionStorageKey(null)),
+    streaks: readWrongStreaks(wrongTestStreakStorageKey(null)),
+  }));
+  const wrongPlusQuestionIds = wrongPlus.pool;
+  const wrongTestQuestionIds = wrongTest.pool;
+  const [examDate, setExamDate] = useState<string | null>(() => readExamDate() ?? DEFAULT_EXAM_DATE);
+  const [dailyXp, setDailyXp] = useState<DailyXpState>(() => readDailyXp(formatDateKey(new Date())));
   const [plusAssignments, setPlusAssignments] = useState<Record<string, string>>({});
   const [plusSelectedTokenId, setPlusSelectedTokenId] = useState<string | null>(null);
   const [plusSelectedTargetIds, setPlusSelectedTargetIds] = useState<string[]>([]);
@@ -268,6 +448,14 @@ function App() {
     () => wrongTestQuestionStorageKey(auth.user?.id ?? null),
     [auth.user?.id],
   );
+  const wrongPlusStreakStorageKeyValue = useMemo(
+    () => wrongPlusStreakStorageKey(auth.user?.id ?? null),
+    [auth.user?.id],
+  );
+  const wrongTestStreakStorageKeyValue = useMemo(
+    () => wrongTestStreakStorageKey(auth.user?.id ?? null),
+    [auth.user?.id],
+  );
   const [fxItems, setFxItems] = useState<FxItem[]>([]);
   const [layersOpen, setLayersOpen] = useState(false);
   const dismissFx = useCallback(
@@ -276,36 +464,82 @@ function App() {
   );
 
   useEffect(() => {
-    setWrongPlusQuestionIds(readWrongPlusQuestionIds(wrongPlusQuestionStorageKeyValue));
-  }, [wrongPlusQuestionStorageKeyValue]);
+    setWrongPlus({
+      pool: readWrongPlusQuestionIds(wrongPlusQuestionStorageKeyValue),
+      streaks: readWrongStreaks(wrongPlusStreakStorageKeyValue),
+    });
+  }, [wrongPlusQuestionStorageKeyValue, wrongPlusStreakStorageKeyValue]);
 
   useEffect(() => {
-    setWrongTestQuestionIds(readWrongPlusQuestionIds(wrongTestQuestionStorageKeyValue));
-  }, [wrongTestQuestionStorageKeyValue]);
+    setWrongTest({
+      pool: readWrongPlusQuestionIds(wrongTestQuestionStorageKeyValue),
+      streaks: readWrongStreaks(wrongTestStreakStorageKeyValue),
+    });
+  }, [wrongTestQuestionStorageKeyValue, wrongTestStreakStorageKeyValue]);
 
-  const persistWrongPlusQuestionIds = useCallback(
-    (getNextQuestionIds: (currentQuestionIds: string[]) => string[]) => {
-      setWrongPlusQuestionIds((currentQuestionIds) => {
-        const nextQuestionIds = normalizeWrongPlusQuestionIds(getNextQuestionIds(currentQuestionIds));
-
-        writeWrongPlusQuestionIds(wrongPlusQuestionStorageKeyValue, nextQuestionIds);
-        return nextQuestionIds;
+  // Yanlış havuzu güncelleyicileri: cevaba göre havuz + sayaçları atomik günceller.
+  const recordWrongPlusAnswer = useCallback(
+    (questionId: string, isCorrect: boolean) => {
+      setWrongPlus((current) => {
+        const next = applyWrongPoolAnswer(current.pool, current.streaks, questionId, isCorrect);
+        writeWrongPlusQuestionIds(wrongPlusQuestionStorageKeyValue, next.pool);
+        writeWrongStreaks(wrongPlusStreakStorageKeyValue, next.streaks);
+        return next;
       });
     },
-    [wrongPlusQuestionStorageKeyValue],
+    [wrongPlusQuestionStorageKeyValue, wrongPlusStreakStorageKeyValue],
   );
 
-  const persistWrongTestQuestionIds = useCallback(
-    (getNextQuestionIds: (currentQuestionIds: string[]) => string[]) => {
-      setWrongTestQuestionIds((currentQuestionIds) => {
-        const nextQuestionIds = normalizeWrongPlusQuestionIds(getNextQuestionIds(currentQuestionIds));
-
-        writeWrongPlusQuestionIds(wrongTestQuestionStorageKeyValue, nextQuestionIds);
-        return nextQuestionIds;
+  const recordWrongTestAnswer = useCallback(
+    (questionId: string, isCorrect: boolean) => {
+      setWrongTest((current) => {
+        const next = applyWrongPoolAnswer(current.pool, current.streaks, questionId, isCorrect);
+        writeWrongPlusQuestionIds(wrongTestQuestionStorageKeyValue, next.pool);
+        writeWrongStreaks(wrongTestStreakStorageKeyValue, next.streaks);
+        return next;
       });
     },
-    [wrongTestQuestionStorageKeyValue],
+    [wrongTestQuestionStorageKeyValue, wrongTestStreakStorageKeyValue],
   );
+
+  const clearWrongPlus = useCallback(() => {
+    setWrongPlus({ pool: [], streaks: {} });
+    writeWrongPlusQuestionIds(wrongPlusQuestionStorageKeyValue, []);
+    writeWrongStreaks(wrongPlusStreakStorageKeyValue, {});
+  }, [wrongPlusQuestionStorageKeyValue, wrongPlusStreakStorageKeyValue]);
+
+  // C1: bir cevaptan kazanılan XP'yi bugünün hedef sayacına ekler.
+  const addTodayXp = useCallback((gained: number) => {
+    if (gained <= 0) {
+      return;
+    }
+    setDailyXp((current) => {
+      const next = addDailyXp(current, formatDateKey(new Date()), gained);
+      writeDailyXp(next);
+      return next;
+    });
+  }, []);
+
+  const examDaysLeft = useMemo(() => computeExamDaysLeft(examDate), [examDate]);
+
+  const handleSetExamDate = useCallback(() => {
+    const input = window.prompt("KPSS sınav tarihini gir (YYYY-AA-GG):", examDate ?? "");
+    if (input === null) {
+      return;
+    }
+    const trimmed = input.trim();
+    if (trimmed === "") {
+      setExamDate(null);
+      writeExamDate(null);
+      return;
+    }
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(trimmed) || Number.isNaN(new Date(`${trimmed}T00:00:00`).getTime())) {
+      window.alert("Geçersiz tarih. Örnek: 2026-07-19");
+      return;
+    }
+    setExamDate(trimmed);
+    writeExamDate(trimmed);
+  }, [examDate]);
 
   const handleTestAnswer = useCallback(
     ({
@@ -317,19 +551,16 @@ function App() {
       isCorrect: boolean;
       category: TestCategory;
     }) => {
-      persistWrongTestQuestionIds((currentQuestionIds) =>
-        isCorrect
-          ? currentQuestionIds.filter((id) => id !== questionId)
-          : [questionId, ...currentQuestionIds.filter((id) => id !== questionId)],
-      );
+      recordWrongTestAnswer(questionId, isCorrect);
 
       const events = recordAnswer({ topic: category, isCorrect });
+      addTodayXp(events.xpGained);
       const builtFx = buildFxItems(events);
       if (builtFx.length > 0) {
         setFxItems((items) => [...items, ...builtFx]);
       }
     },
-    [persistWrongTestQuestionIds, recordAnswer],
+    [recordWrongTestAnswer, recordAnswer, addTodayXp],
   );
 
   const accountDisplayName =
@@ -673,12 +904,12 @@ function App() {
       return;
     }
 
-    persistWrongPlusQuestionIds(() => []);
+    clearWrongPlus();
     if (plusStudyMode === "wrong") {
       resetPlusQuestionState();
       setMapGuesses([]);
     }
-  }, [persistWrongPlusQuestionIds, plusStudyMode, resetPlusQuestionState]);
+  }, [clearWrongPlus, plusStudyMode, resetPlusQuestionState]);
 
   const handlePlusTopicToggle = useCallback(
     (topic: Exclude<PlusQuestionTopic, "mixed">) => {
@@ -694,6 +925,19 @@ function App() {
     setPlusTopics([]);
     resetPlusQuestionState();
   }, [resetPlusQuestionState]);
+
+  // Performans panelinden "zayıf konuya tıkla → o konuda pratik yap".
+  const handleWeakTopicPractice = useCallback(
+    (topic: Exclude<PlusQuestionTopic, "mixed">) => {
+      setPlusTopics([topic]);
+      setPlusStudyMode("all");
+      setPlusMode("mixed");
+      resetPlusQuestionState();
+      setMapGuesses([]);
+      setAppView("map");
+    },
+    [resetPlusQuestionState],
+  );
 
   const handlePlusModeChange = useCallback((mode: PlusQuestionMode) => {
     setPlusMode(mode);
@@ -724,21 +968,18 @@ function App() {
       }
 
       const currentQuestionSeedId = plusQuestionSeedId(currentPlusQuestion.id);
-      persistWrongPlusQuestionIds((currentQuestionIds) =>
-        isCorrect
-          ? currentQuestionIds.filter((questionId) => questionId !== currentQuestionSeedId)
-          : [currentQuestionSeedId, ...currentQuestionIds.filter((questionId) => questionId !== currentQuestionSeedId)],
-      );
+      recordWrongPlusAnswer(currentQuestionSeedId, isCorrect);
       setPlusAnswer({ isCorrect, message, detail, wrongTargetIds, selectedTokenId });
       setPlusSelectedTokenId(null);
 
       const events = recordAnswer({ topic: currentPlusQuestion.topic, isCorrect });
+      addTodayXp(events.xpGained);
       const builtFx = buildFxItems(events);
       if (builtFx.length > 0) {
         setFxItems((items) => [...items, ...builtFx]);
       }
     },
-    [currentPlusQuestion, persistWrongPlusQuestionIds, plusAnswer, recordAnswer],
+    [currentPlusQuestion, recordWrongPlusAnswer, plusAnswer, recordAnswer, addTodayXp],
   );
 
   const handlePlusTokenSelect = useCallback(
@@ -1028,6 +1269,10 @@ function App() {
           canReset={Boolean(auth.user) && progress.totals.answered > 0}
           onReset={handleResetProgress}
           accountForm={<AccountForm auth={auth} />}
+          examDaysLeft={examDaysLeft}
+          onSetExamDate={handleSetExamDate}
+          dailyXp={dailyXp.xp}
+          dailyXpGoal={DAILY_XP_GOAL}
         />
 
         {appView === "map" ? (
@@ -1333,7 +1578,13 @@ function App() {
                       {weakTopicRows.slice(0, 3).map((row) => {
                         const accuracy = accuracyPercent(row.stat.correct, row.stat.answered);
                         return (
-                          <div className="progress-topic-row" key={row.id}>
+                          <button
+                            className="progress-topic-row progress-topic-row--practice"
+                            key={row.id}
+                            onClick={() => handleWeakTopicPractice(row.id)}
+                            title={`${row.label} konusunda pratik yap`}
+                            type="button"
+                          >
                             <span className="progress-topic-row__label">{row.label}</span>
                             <div className="progress-bar">
                               <div className="progress-bar__fill" style={{ width: `${accuracy}%` }} />
@@ -1341,7 +1592,10 @@ function App() {
                             <small>
                               {row.stat.correct}/{row.stat.answered}
                             </small>
-                          </div>
+                            <span className="progress-topic-row__cta" aria-hidden="true">
+                              ▶
+                            </span>
+                          </button>
                         );
                       })}
                     </div>

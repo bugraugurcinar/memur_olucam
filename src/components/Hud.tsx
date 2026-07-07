@@ -18,6 +18,10 @@ export type HudProps = {
   canReset: boolean;
   onReset: () => void;
   accountForm: ReactNode;
+  examDaysLeft: number | null;
+  onSetExamDate: () => void;
+  dailyXp: number;
+  dailyXpGoal: number;
 };
 
 /** Üstte yüzen HUD şeridi: marka + seviye/XP/seri + hesap menüsü. Sunum bileşeni. */
@@ -38,6 +42,10 @@ export function Hud({
   canReset,
   onReset,
   accountForm,
+  examDaysLeft,
+  onSetExamDate,
+  dailyXp,
+  dailyXpGoal,
 }: HudProps) {
   const [accountOpen, setAccountOpen] = useState(false);
   const popoverRef = useRef<HTMLDivElement | null>(null);
@@ -66,6 +74,24 @@ export function Hud({
 
   const remainingXp = Math.max(0, span - intoLevel);
   const streakDots = Array.from({ length: 7 }, (_, index) => index < Math.min(streak, 7));
+  const dailyGoalReached = dailyXpGoal > 0 && dailyXp >= dailyXpGoal;
+  const dailyGoalPercent = dailyXpGoal > 0 ? Math.min(100, Math.round((dailyXp / dailyXpGoal) * 100)) : 0;
+
+  const examChip = (
+    <button
+      className="hud__chip hud__chip--exam"
+      onClick={onSetExamDate}
+      title={examDaysLeft !== null ? "Sınav tarihini güncelle" : "KPSS sınav tarihini ekle"}
+      type="button"
+    >
+      <span aria-hidden="true">🗓️</span>
+      {examDaysLeft !== null ? (
+        <strong>{examDaysLeft}</strong>
+      ) : (
+        <small>Sınav tarihi ekle</small>
+      )}
+    </button>
+  );
 
   return (
     <header className="hud glass">
@@ -112,9 +138,22 @@ export function Hud({
             <strong>{totalXp}</strong>
             <small>XP</small>
           </div>
+          <div
+            className={`hud__chip hud__chip--goal${dailyGoalReached ? " is-reached" : ""}`}
+            title={`Bugünkü XP hedefi (${dailyXp}/${dailyXpGoal})`}
+          >
+            <span aria-hidden="true">{dailyGoalReached ? "✅" : "🎯"}</span>
+            <div className="hud__goal-track" aria-hidden="true">
+              <div className="hud__goal-fill" style={{ width: `${dailyGoalPercent}%` }} />
+            </div>
+            <strong>{dailyXp}</strong>
+            <small>/ {dailyXpGoal}</small>
+          </div>
+          {examChip}
         </div>
       ) : (
         <div className="hud__stats hud__stats--guest">
+          {examChip}
           <p>Giriş yap; XP kazan, rozet topla, liderlik tablosuna gir.</p>
         </div>
       )}
