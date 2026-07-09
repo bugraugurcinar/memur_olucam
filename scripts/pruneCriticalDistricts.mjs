@@ -1,11 +1,16 @@
 // turkey-districts.geojson dosyasını (geoBoundaries TUR ADM2, 973 ilçe) KPSS
 // açısından "kritik" ilçelerin oluşturduğu daha küçük bir alt kümeye indirger.
 //
-// Kritik ilçe iki nedenden biriyle seçilir:
-//  1) İl merkez ilçesi: ilin ağırlık merkezi bu ilçenin sınırları içinde kalıyor.
-//  2) Coğrafi/ekonomik öne çıkan ilçe: turkey-physical-features.geojson veya
-//     turkey-economic-features.geojson içindeki en az bir noktayı (maden, dağ,
-//     liman, baraj, ova vb.) barındırıyor.
+// Kritik ilçe: turkey-physical-features.geojson veya turkey-economic-features.geojson
+// içindeki en az bir noktayı (maden, dağ, liman, baraj, ova vb.) barındıran ilçe.
+//
+// İl merkez ilçeleri kümeden HARİÇ tutulur — "ilin kendisi" ilçe kategorisinde
+// ayrı bir soru üretmesin diye. Merkez ilçe, ADI "Merkez" ile eşleşen ilçedir
+// (ör. "Ağrı merkez", "Kırıkkale (merkez)", bare "Merkez") — bu, birçok ilde
+// il merkezinin ayrı bir özgün ad almadan "Merkez" olarak kaldığı için
+// coğrafi ağırlık merkezi hesabından daha güvenilir bir sinyaldir. Sözcük
+// sınırı kontrolü sayesinde "Merkezefendi" (Denizli) gibi gerçek özgün ilçe
+// adları yanlışlıkla eşleşmez.
 //
 // public/geojson/turkey-districts.geojson İÇİNDE ÜZERİNE YAZILIR (973 → kritik
 // alt küme). Baştan üretmek için önce ham ADM2 dosyasını yeniden indirin
@@ -21,9 +26,13 @@ import { dirname, resolve } from "node:path";
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, "..");
 const districtsPath = resolve(root, "public/geojson/turkey-districts.geojson");
-const provincesPath = resolve(root, "public/geojson/turkey-provinces.geojson");
 const physicalPath = resolve(root, "public/geojson/turkey-physical-features.geojson");
 const economicPath = resolve(root, "public/geojson/turkey-economic-features.geojson");
+
+// "Merkez" tam kelime olarak eşleşir (ör. "Ağrı merkez", "(merkez)", bare
+// "Merkez") ya da "merkezi" iyelik biçimiyle (ör. "Rize merkezi") — ama
+// "Merkezefendi" gibi kaynaşık özgün adları yakalamaz.
+const MERKEZ_NAME_PATTERN = /\bmerkez(i)?\b/i;
 
 function eachPolygonPart(geometry, visit) {
   if (geometry.type === "Polygon") {
@@ -103,7 +112,6 @@ function distanceSq(a, b) {
 
 // --- Veriyi oku ---
 const districtsGeojson = JSON.parse(readFileSync(districtsPath, "utf8"));
-const provincesGeojson = JSON.parse(readFileSync(provincesPath, "utf8"));
 const physicalGeojson = JSON.parse(readFileSync(physicalPath, "utf8"));
 const economicGeojson = JSON.parse(readFileSync(economicPath, "utf8"));
 
@@ -128,7 +136,7 @@ const districts = districtsGeojson.features
     const centroid = largestRingCentroid(feature.geometry);
     if (parts.length === 0 || !centroid) return null;
 
-    return { shapeID, name, feature, parts, centroid };
+    return { shapeID, name, feature, parts, centroid, isMerkez: MERKEZ_NAME_PATTERN.test(name) };
   })
   .filter((d) => d !== null);
 
@@ -149,32 +157,7 @@ function findNearestDistrict(point) {
   return nearest;
 }
 
-// --- 1) İl merkez ilçeleri: il ağırlık merkezini içeren ilçe ---
-const criticalShapeIds = new Set();
-const merkezReasons = [];
-let merkezFallbackCount = 0;
-
-for (const feature of provincesGeojson.features) {
-  const name = feature.properties?.shapeName;
-  if (typeof name !== "string" || !feature.geometry) continue;
-
-  const centroid = largestRingCentroid(feature.geometry);
-  if (!centroid) continue;
-
-  let match = findContainingDistrict(centroid);
-  if (!match) {
-    match = findNearestDistrict(centroid);
-    merkezFallbackCount += 1;
-    console.warn(`UYARI: ${name} ili merkez ilçesi poligon-içi eşleşmedi, en yakın ilçe kullanıldı: ${match?.name}`);
-  }
-
-  if (match) {
-    criticalShapeIds.add(match.shapeID);
-    merkezReasons.push({ province: name, district: match.name, shapeID: match.shapeID });
-  }
-}
-
-// --- 2) Coğrafi/ekonomik öne çıkan ilçeler: fiziki/ekonomik nokta barındıran ilçe ---
+// --- Coğrafi/ekonomik öne çıkan ilçeler: fiziki/ekonomik nokta barındıran ilçe ---
 const featureHostShapeIds = new Set();
 let unmatchedFeatureCount = 0;
 
@@ -190,10 +173,18 @@ for (const feature of [...physicalGeojson.features, ...economicGeojson.features]
   }
 
   if (match) {
-    criticalShapeIds.add(match.shapeID);
     featureHostShapeIds.add(match.shapeID);
   }
 }
+
+// --- Merkez ilçeleri (ada göre) hariç tut ---
+const merkezDistricts = districts.filter((district) => district.isMerkez);
+const excludedMerkezCount = [...featureHostShapeIds].filter(
+  (id) => merkezDistricts.some((district) => district.shapeID === id),
+).length;
+const criticalShapeIds = new Set(
+  [...featureHostShapeIds].filter((id) => !merkezDistricts.some((district) => district.shapeID === id)),
+);
 
 // --- Filtrele ve yaz ---
 const keptFeatures = districtsGeojson.features.filter((feature) => criticalShapeIds.has(feature.properties?.shapeID));
@@ -203,8 +194,9 @@ writeFileSync(districtsPath, JSON.stringify(prunedGeojson), "utf8");
 
 console.log(`Yazıldı: ${districtsPath}`);
 console.log(`Toplam kritik ilçe: ${keptFeatures.length} (kaynak: ${districtsGeojson.features.length})`);
-console.log(`İl merkez ilçesi sayısı: ${merkezReasons.length} (${merkezFallbackCount} tanesi en-yakın ilçe yedeğiyle)`);
 console.log(`Coğrafi/ekonomik nokta barındıran ilçe sayısı: ${featureHostShapeIds.size}`);
+console.log(`Adı "Merkez" ile eşleşen ilçe sayısı (hariç tutulan): ${merkezDistricts.length}`);
+console.log(`Merkez ilçe olduğu için elenen coğrafi/ekonomik ilçe sayısı: ${excludedMerkezCount}`);
 if (unmatchedFeatureCount > 0) {
   console.warn(`UYARI: ${unmatchedFeatureCount} fiziki/ekonomik nokta hiçbir ilçe poligonuna düşmedi, en yakın ilçeye atandı.`);
 }

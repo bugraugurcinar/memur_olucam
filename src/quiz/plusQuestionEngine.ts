@@ -2193,25 +2193,43 @@ function buildDistrictChoiceQuestions(districts: DistrictQuizInfo[]): PlusQuesti
   const byId = new Map(districts.map((district) => [district.id, district]));
 
   return districts.map((district): PlusQuestion => {
+    // Seçenekler arasında ayrım netliği için aynı ilden ikinci bir ilçe
+    // seçeneklere girmez (ör. Battalgazi + Yeşilyurt aynı soruda olmaz).
+    const usedProvinces = new Set([district.province]);
     const neighborInfos = district.neighborIds
       .map((id) => byId.get(id))
       .filter((info): info is DistrictQuizInfo => Boolean(info));
 
-    const distractors = shuffle(neighborInfos).slice(0, DISTRICT_OPTION_COUNT - 1);
+    const distractors: DistrictQuizInfo[] = [];
+    for (const candidate of shuffle(neighborInfos)) {
+      if (distractors.length >= DISTRICT_OPTION_COUNT - 1) break;
+      if (usedProvinces.has(candidate.province)) continue;
 
-    // Komşu sayısı yetmezse (ada ilçeleri vb.) en yakın ilçelerle tamamla.
+      distractors.push(candidate);
+      usedProvinces.add(candidate.province);
+    }
+
+    // Komşu sayısı yetmezse (ada ilçeleri vb.) en yakın, farklı illerdeki ilçelerle tamamla.
     if (distractors.length < DISTRICT_OPTION_COUNT - 1) {
-      const chosen = new Set([district.id, ...distractors.map((info) => info.id)]);
+      const chosenIds = new Set([district.id, ...distractors.map((info) => info.id)]);
       const nearest = districts
-        .filter((candidate) => !chosen.has(candidate.id))
+        .filter((candidate) => !chosenIds.has(candidate.id))
         .sort(
           (left, right) =>
             districtPointDistanceSq(left.point, district.point) -
             districtPointDistanceSq(right.point, district.point),
-        )
-        .slice(0, DISTRICT_OPTION_COUNT - 1 - distractors.length);
+        );
 
-      distractors.push(...nearest);
+      // usedProvinces her eklemeden sonra güncellendiği için filtre burada,
+      // döngü içinde adım adım uygulanır (nearest tek seferde önceden
+      // filtrelenirse, aynı ilden iki aday sırayla eklenebilirdi).
+      for (const candidate of nearest) {
+        if (distractors.length >= DISTRICT_OPTION_COUNT - 1) break;
+        if (usedProvinces.has(candidate.province)) continue;
+
+        distractors.push(candidate);
+        usedProvinces.add(candidate.province);
+      }
     }
 
     const options = shuffle([district, ...distractors]);
