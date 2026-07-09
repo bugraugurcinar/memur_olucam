@@ -9,6 +9,11 @@ export const geoJsonSources = {
     url: "/geojson/turkey-provinces.geojson",
     sourceName: "geoBoundaries TUR ADM1",
   },
+  districts: {
+    label: "İlçe sınırları",
+    url: "/geojson/turkey-districts.geojson",
+    sourceName: "geoBoundaries TUR ADM2",
+  },
   physicalFeatures: {
     label: "Fiziki yer şekilleri",
     url: "/geojson/turkey-physical-features.geojson",

@@ -26,7 +26,8 @@ export type PlusQuestionTopic =
   | "coast"
   | "tourism"
   | "port"
-  | "province";
+  | "province"
+  | "district";
 
 export type PlusPoint = {
   lat: number;
@@ -42,6 +43,25 @@ export type ProvinceQuizInfo = {
   /** İl sınırı içinde, kenar/köşelere doğru dağılmış pin aday noktaları. */
   pinPoints: PlusPoint[];
   neighbors: string[];
+};
+
+/** İlçe poligonunun bir parçası (ada/anakara gibi çoklu parçalar için). */
+export type DistrictPolygonPart = { outer: number[][]; holes: number[][][] };
+
+/** İlçe tahmin modu için tek bir ilçenin sorulabilir bilgisi (saf girdi). */
+export type DistrictQuizInfo = {
+  id: string;
+  /** Ham ilçe adı — iller arasında benzersiz DEĞİLDİR (ör. birden fazla "Merkez"), ancak
+   * kritik ilçe alt kümesinde çakışma riski düşüktür ve isim ekranda tek başına gösterilir. */
+  name: string;
+  province: string;
+  /** En büyük halkanın ağırlık merkezi — yalnızca "en yakın ilçe" hesabı için kullanılır. */
+  point: PlusPoint;
+  /** İlçe sınırı içinde, kenar/köşelere doğru dağılmış pin aday noktaları. */
+  pinPoints: PlusPoint[];
+  /** Haritada bul modunda poligon-içi kontrolü için TÜM poligon parçaları. */
+  polygons: DistrictPolygonPart[];
+  neighborIds: string[];
 };
 
 export type PlusMapTarget = {
@@ -100,6 +120,7 @@ export const plusQuestionTopicOptions: Array<{ id: PlusQuestionTopic; label: str
   { id: "tourism", label: "Turizm" },
   { id: "port", label: "Limanlar" },
   { id: "province", label: "İller" },
+  { id: "district", label: "İlçeler" },
 ];
 
 export const plusQuestionModeOptions: Array<{ id: PlusQuestionMode; label: string }> = [
@@ -2154,6 +2175,101 @@ function buildProvinceQuestions(provinces: ProvinceQuizInfo[]): PlusQuestion[] {
   });
 }
 
+const DISTRICT_OPTION_COUNT = 5;
+const DISTRICT_TARGET_COLOR = "#60a5fa";
+
+function districtPointDistanceSq(a: PlusPoint, b: PlusPoint) {
+  const dLat = a.lat - b.lat;
+  const dLng = a.lng - b.lng;
+
+  return dLat * dLat + dLng * dLng;
+}
+
+function buildDistrictChoiceQuestions(districts: DistrictQuizInfo[]): PlusQuestion[] {
+  if (districts.length < DISTRICT_OPTION_COUNT) {
+    return [];
+  }
+
+  const byId = new Map(districts.map((district) => [district.id, district]));
+
+  return districts.map((district): PlusQuestion => {
+    const neighborInfos = district.neighborIds
+      .map((id) => byId.get(id))
+      .filter((info): info is DistrictQuizInfo => Boolean(info));
+
+    const distractors = shuffle(neighborInfos).slice(0, DISTRICT_OPTION_COUNT - 1);
+
+    // Komşu sayısı yetmezse (ada ilçeleri vb.) en yakın ilçelerle tamamla.
+    if (distractors.length < DISTRICT_OPTION_COUNT - 1) {
+      const chosen = new Set([district.id, ...distractors.map((info) => info.id)]);
+      const nearest = districts
+        .filter((candidate) => !chosen.has(candidate.id))
+        .sort(
+          (left, right) =>
+            districtPointDistanceSq(left.point, district.point) -
+            districtPointDistanceSq(right.point, district.point),
+        )
+        .slice(0, DISTRICT_OPTION_COUNT - 1 - distractors.length);
+
+      distractors.push(...nearest);
+    }
+
+    const options = shuffle([district, ...distractors]);
+    const pinCandidates = district.pinPoints.length > 0 ? district.pinPoints : [district.point];
+    const pinPoint = pinCandidates[Math.floor(Math.random() * pinCandidates.length)];
+
+    return makeChoiceQuestion({
+      id: `plus_district_locate_${district.id}`,
+      topic: "district",
+      title: "Hangi ilçe?",
+      prompt: "Haritada işaretli nokta hangi ilçededir?",
+      helper: "İlçe sınırları gizli; komşu ilçeler arasından doğru olanı seç.",
+      targets: [
+        {
+          id: district.id,
+          label: "?",
+          point: pinPoint,
+          name: district.name,
+          detail: "Doğru ilçe",
+          color: DISTRICT_TARGET_COLOR,
+          markerIconName: "",
+        },
+      ],
+      tokens: options.map((option) => token(option.id, option.name, "", DISTRICT_TARGET_COLOR)),
+      correctTokenId: district.id,
+      answerSummary: `İşaretli nokta ${district.name} ilçesindedir.`,
+      kpssNote: `İşaretli nokta ${district.name} ilçesinin sınırları içindedir.`,
+    });
+  });
+}
+
+function buildDistrictMapLocateQuestions(districts: DistrictQuizInfo[]): PlusQuestion[] {
+  return districts.map((district) =>
+    makeMapLocateQuestion({
+      id: `plus_district_map_locate_${district.id}`,
+      topic: "district",
+      title: "Konum tahmini",
+      prompt: `${district.name} ilçesi haritada neresidir?`,
+      helper: "Haritaya, ilçe sınırları içine tıklayarak tahminini bırak.",
+      targets: [
+        {
+          id: district.id,
+          label: "?",
+          point: district.point,
+          name: district.name,
+          detail: "Doğru ilçe",
+          color: DISTRICT_TARGET_COLOR,
+          markerIconName: "",
+        },
+      ],
+      tokens: [],
+      correctTargetIds: [district.id],
+      answerSummary: `${district.name} ilçesinin sınırları haritada gösterildi.`,
+      kpssNote: `İşaretlediğin nokta ${district.name} ilçesinin sınırları içinde mi kontrol edildi.`,
+    }),
+  );
+}
+
 type PlusQuestionBuilderResult = PlusQuestion | PlusQuestion[] | null;
 
 const builders: Array<(features: PlusFeature[]) => PlusQuestionBuilderResult> = [
@@ -2200,6 +2316,7 @@ function buildCandidates(
   mode: PlusQuestionMode,
   questionIds?: string[],
   provinces: ProvinceQuizInfo[] = [],
+  districts: DistrictQuizInfo[] = [],
 ) {
   const allowedQuestionIds = questionIds ? new Set(questionIds) : null;
 
@@ -2210,6 +2327,8 @@ function buildCandidates(
       return Array.isArray(result) ? result : [result];
     }),
     ...buildProvinceQuestions(provinces),
+    ...buildDistrictChoiceQuestions(districts),
+    ...buildDistrictMapLocateQuestions(districts),
   ]
     .filter((question): question is PlusQuestion => Boolean(question))
     .filter((question) => !allowedQuestionIds || allowedQuestionIds.has(question.id))
@@ -2256,8 +2375,9 @@ export function getPlusAvailability(
   mode: PlusQuestionMode,
   questionIds?: string[],
   provinces: ProvinceQuizInfo[] = [],
+  districts: DistrictQuizInfo[] = [],
 ): PlusAvailability {
-  const candidates = buildCandidates(features, [], mode, questionIds, provinces);
+  const candidates = buildCandidates(features, [], mode, questionIds, provinces, districts);
   const byTopic = {
     mine: 0,
     industry: 0,
@@ -2272,6 +2392,7 @@ export function getPlusAvailability(
     tourism: 0,
     port: 0,
     province: 0,
+    district: 0,
   };
 
   for (const question of candidates) {
@@ -2340,6 +2461,7 @@ export function generatePlusQuestion({
   recentQuestionIds,
   questionIds,
   provinces,
+  districts,
 }: {
   features: PlusFeature[];
   topics: Array<Exclude<PlusQuestionTopic, "mixed">>;
@@ -2347,8 +2469,9 @@ export function generatePlusQuestion({
   recentQuestionIds: string[];
   questionIds?: string[];
   provinces?: ProvinceQuizInfo[];
+  districts?: DistrictQuizInfo[];
 }) {
-  const candidates = buildCandidates(features, topics, mode, questionIds, provinces ?? []);
+  const candidates = buildCandidates(features, topics, mode, questionIds, provinces ?? [], districts ?? []);
   const recentSeedIds = recentQuestionIds.map((id) => id.split("__")[0]);
   const seedTopicById = new Map(candidates.map((question) => [question.id, question.topic]));
   const recentTopics = new Set(

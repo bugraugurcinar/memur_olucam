@@ -20,6 +20,14 @@ node scripts/buildEconomicFeatures.mjs
 
 # Rebuild province adjacency map (writes src/geojson/provinceNeighbors.ts)
 node scripts/buildProvinceNeighbors.mjs
+
+# Rebuild district dataset: prune raw ADM2 to KPSS-critical districts (province
+# centers + districts hosting a physical/economic feature), then rebuild the
+# district adjacency map (writes src/geojson/districtNeighbors.ts). Requires a
+# freshly re-downloaded (unpruned) turkey-districts.geojson first — see
+# public/geojson/README.md.
+node scripts/pruneCriticalDistricts.mjs
+node scripts/buildDistrictNeighbors.mjs
 ```
 
 There is no test suite, linter, or formatter configured. `npm run build` is the primary app verification step — it runs `tsc --noEmit` under `strict: true`, so type errors fail the build. Run `npm run validate:data` after marker dataset changes.

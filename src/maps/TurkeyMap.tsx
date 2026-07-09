@@ -34,9 +34,15 @@ export type ProvinceHighlight = {
   status: ProvinceHighlightStatus;
 };
 
+export type DistrictHighlight = {
+  id: string;
+  status: ProvinceHighlightStatus;
+};
+
 type TurkeyMapProps = {
   countryData: FeatureCollection | null;
   provincesData: FeatureCollection | null;
+  districtsData: FeatureCollection | null;
   physicalFeaturesData: FeatureCollection | null;
   economicFeaturesData: FeatureCollection | null;
   activePhysicalTopics: PhysicalFeatureTopic[];
@@ -52,6 +58,8 @@ type TurkeyMapProps = {
   isPlusMapLocateActive: boolean;
   plusHideProvinces: boolean;
   plusHighlightProvinces: ProvinceHighlight[];
+  plusHighlightDistricts: DistrictHighlight[];
+  plusMapLocateDistrictTargetId: string | null;
   plusGuessPoints: QuizPoint[];
   plusMapLocateTargetName: string;
   plusMapLocateTargetPoint: QuizPoint | null;
@@ -98,6 +106,16 @@ const QUESTION_MARKER_COLOR = "#10b981";
 function getShapeName(properties: GeoJsonProperties | null | undefined) {
   const shapeName = properties?.shapeName;
   return typeof shapeName === "string" ? shapeName : "Bilinmeyen il";
+}
+
+function getDistrictShapeId(properties: GeoJsonProperties | null | undefined) {
+  const shapeID = properties?.shapeID;
+  return typeof shapeID === "string" && shapeID.length > 0 ? `district_${shapeID}` : null;
+}
+
+function getDistrictShapeName(properties: GeoJsonProperties | null | undefined) {
+  const shapeName = properties?.shapeName;
+  return typeof shapeName === "string" ? shapeName : "Bilinmeyen ilçe";
 }
 
 function escapeHtml(value: string) {
@@ -307,6 +325,7 @@ function createPlusIcon(
 export function TurkeyMap({
   countryData,
   provincesData,
+  districtsData,
   physicalFeaturesData,
   economicFeaturesData,
   activePhysicalTopics,
@@ -322,6 +341,8 @@ export function TurkeyMap({
   isPlusMapLocateActive,
   plusHideProvinces,
   plusHighlightProvinces,
+  plusHighlightDistricts,
+  plusMapLocateDistrictTargetId,
   plusGuessPoints,
   plusMapLocateTargetName,
   plusMapLocateTargetPoint,
@@ -343,6 +364,7 @@ export function TurkeyMap({
   const mapRef = useRef<L.Map | null>(null);
   const countryLayerRef = useRef<L.GeoJSON | null>(null);
   const provinceLayerRef = useRef<L.GeoJSON | null>(null);
+  const districtLayerRef = useRef<L.GeoJSON | null>(null);
   const physicalFeatureLayerRef = useRef<L.GeoJSON | null>(null);
   const economicFeatureLayerRef = useRef<L.GeoJSON | null>(null);
   const quizLayerRef = useRef<L.LayerGroup | null>(null);
@@ -597,6 +619,60 @@ export function TurkeyMap({
     plusHighlightProvinces,
     onProvinceSelect,
   ]);
+
+  // İlçe katmanı yalnızca "İlçeler" konusu aktifken çizilir — her Soru+
+  // sorusunda ~973 poligonu ambient olarak çizmek performans için gereksiz.
+  useEffect(() => {
+    districtLayerRef.current?.remove();
+    districtLayerRef.current = null;
+
+    const map = mapRef.current;
+
+    if (!map || !districtsData) {
+      return;
+    }
+
+    if (plusHighlightDistricts.length > 0) {
+      // İlçe seçmeli soru: cevaptan sonra tüm şık ilçelerini işaretle.
+      const statusById = new Map(plusHighlightDistricts.map((highlight) => [highlight.id, highlight.status]));
+      const highlightLayer = L.geoJSON(districtsData, {
+        filter: (feature) => statusById.has(getDistrictShapeId(feature?.properties) ?? ""),
+        interactive: true,
+        onEachFeature: (feature, layer) => {
+          const id = getDistrictShapeId(feature?.properties);
+          const status = id ? statusById.get(id) : undefined;
+          const label = getDistrictShapeName(feature?.properties);
+
+          layer.bindTooltip(status === "correct" ? `${label} · Doğru ilçe` : label, {
+            direction: "top",
+            opacity: 0.95,
+            sticky: true,
+          });
+
+          if (status === "correct") {
+            layer.openTooltip();
+          }
+        },
+        style: (feature) =>
+          highlightProvinceStyle(statusById.get(getDistrictShapeId(feature?.properties) ?? "") ?? "option"),
+      }).addTo(map);
+
+      districtLayerRef.current = highlightLayer;
+    } else if (plusMapLocateDistrictTargetId) {
+      // İlçe haritada bul sorusu: cevaptan sonra doğru ilçenin sınırını göster.
+      const revealLayer = L.geoJSON(districtsData, {
+        filter: (feature) => getDistrictShapeId(feature?.properties) === plusMapLocateDistrictTargetId,
+        interactive: false,
+        style: () => highlightProvinceStyle("correct"),
+      }).addTo(map);
+
+      districtLayerRef.current = revealLayer;
+    }
+
+    return () => {
+      districtLayerRef.current?.remove();
+    };
+  }, [districtsData, plusHighlightDistricts, plusMapLocateDistrictTargetId]);
 
   useEffect(() => {
     const map = mapRef.current;

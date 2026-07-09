@@ -19,7 +19,7 @@ import {
 } from "./geojson/physicalFeatures";
 import { geoJsonAttribution, geoJsonSources } from "./geojson/sources";
 import { useGeoJson } from "./hooks/useGeoJson";
-import { TurkeyMap, type ProvinceHighlight } from "./maps/TurkeyMap";
+import { TurkeyMap, type DistrictHighlight, type ProvinceHighlight } from "./maps/TurkeyMap";
 import { QUIZ_CORRECT_RADIUS_KM, formatDistanceKm, getDistanceKm } from "./quiz/geoUtils";
 import {
   generatePlusQuestion,
@@ -35,6 +35,7 @@ import {
   type PlusQuestionTopic,
 } from "./quiz/plusQuestionEngine";
 import { buildProvinceQuizInfos } from "./quiz/provinceUtils";
+import { buildDistrictQuizInfos, isPointInAnyPolygon } from "./quiz/districtUtils";
 import { isSupabaseConfigured } from "./lib/supabase";
 import { useAuth, type UseAuthResult } from "./hooks/useAuth";
 import { useQuizProgress } from "./hooks/useQuizProgress";
@@ -431,6 +432,10 @@ function App() {
   const recentPlusQuestionIdsRef = useRef<string[]>([]);
   const country = useGeoJson(geoJsonSources.country.url);
   const provinces = useGeoJson(geoJsonSources.provinces.url);
+  // İlçe sınırları (~3.9 MB, 973 poligon) yalnızca kullanıcı "İlçeler" konusuyla
+  // etkileşime girdiğinde yüklenir — açılışta diğer 4 kaynak gibi otomatik değil.
+  const [shouldLoadDistricts, setShouldLoadDistricts] = useState(false);
+  const districts = useGeoJson(shouldLoadDistricts ? geoJsonSources.districts.url : null);
   const physicalFeaturesData = useGeoJson(geoJsonSources.physicalFeatures.url);
   const economicFeaturesData = useGeoJson(geoJsonSources.economicFeatures.url);
 
@@ -627,6 +632,11 @@ function App() {
   const activePlusQuestionPool = plusStudyMode === "wrong" ? allQuizQuestionPool : quizQuestionPool;
   const activeWrongPlusQuestionIds = plusStudyMode === "wrong" ? wrongPlusQuestionIds : undefined;
   const provinceQuizInfos = useMemo(() => buildProvinceQuizInfos(provinces.data), [provinces.data]);
+  const districtQuizInfos = useMemo(() => buildDistrictQuizInfos(districts.data), [districts.data]);
+  const districtQuizInfoById = useMemo(
+    () => new Map(districtQuizInfos.map((district) => [district.id, district])),
+    [districtQuizInfos],
+  );
   const plusAvailability = useMemo(
     () =>
       getPlusAvailability(
@@ -635,8 +645,9 @@ function App() {
         plusMode,
         activeWrongPlusQuestionIds,
         provinceQuizInfos,
+        districtQuizInfos,
       ),
-    [activePlusQuestionPool, activeWrongPlusQuestionIds, plusMode, plusTopics, provinceQuizInfos],
+    [activePlusQuestionPool, activeWrongPlusQuestionIds, districtQuizInfos, plusMode, plusTopics, provinceQuizInfos],
   );
   const isLoading =
     country.isLoading || provinces.isLoading || physicalFeaturesData.isLoading || economicFeaturesData.isLoading;
@@ -686,6 +697,7 @@ function App() {
 
     const isUnavailableInPool =
       currentPlusQuestion.topic !== "province" &&
+      currentPlusQuestion.topic !== "district" &&
       !currentPlusQuestion.targets.every((target) =>
         activePlusQuestionPool.some((feature) => feature.properties.id === target.id),
       );
@@ -711,6 +723,7 @@ function App() {
       recentQuestionIds: recentPlusQuestionIdsRef.current,
       questionIds: activeWrongPlusQuestionIds,
       provinces: provinceQuizInfos,
+      districts: districtQuizInfos,
     });
 
     if (!nextQuestion) {
@@ -731,7 +744,14 @@ function App() {
     setSelectedProvinceName(null);
     setSelectedFeature(null);
     setSelectedEconomicFeature(null);
-  }, [activePlusQuestionPool, activeWrongPlusQuestionIds, plusMode, plusTopics, provinceQuizInfos]);
+  }, [
+    activePlusQuestionPool,
+    activeWrongPlusQuestionIds,
+    districtQuizInfos,
+    plusMode,
+    plusTopics,
+    provinceQuizInfos,
+  ]);
 
   const handleProvinceSelect = useCallback((provinceName: string) => {
     setSelectedProvinceName(provinceName);
@@ -874,6 +894,8 @@ function App() {
   }, []);
 
   const handlePrimaryPlusAction = useCallback(() => {
+    setShouldLoadDistricts(true);
+
     if (!canStartPlus) {
       return;
     }
@@ -913,6 +935,10 @@ function App() {
 
   const handlePlusTopicToggle = useCallback(
     (topic: Exclude<PlusQuestionTopic, "mixed">) => {
+      if (topic === "district") {
+        setShouldLoadDistricts(true);
+      }
+
       setPlusTopics((current) =>
         current.includes(topic) ? current.filter((item) => item !== topic) : [...current, topic],
       );
@@ -1114,12 +1140,30 @@ function App() {
     (guess: PlusPoint) => {
       const target = currentPlusQuestion?.kind === "mapLocate" && !plusAnswer ? currentPlusQuestion.targets[0] : null;
 
-      if (!target) {
+      if (!target || !currentPlusQuestion) {
         return;
       }
 
-      const distanceKm = getDistanceKm(guess, target.point);
-      const isCorrect = distanceKm <= QUIZ_CORRECT_RADIUS_KM;
+      let isCorrect: boolean;
+      let detail: string;
+
+      if (currentPlusQuestion.topic === "district") {
+        // İlçe boyutu/şekli çok değişken olduğundan (yarım km²'den geniş kırsal
+        // ilçelere kadar), sabit yarıçap yerine gerçek sınır içinde mi kontrolü
+        // yapılır — noktasal öğeler için ayarlanmış 75 km'lik yarıçap burada
+        // neredeyse her tıklamayı "doğru" sayardı.
+        const info = districtQuizInfoById.get(target.id);
+        isCorrect = info ? isPointInAnyPolygon(guess, info.polygons) : false;
+        detail = isCorrect
+          ? `Doğru! Nokta ${target.name} ilçesinin sınırları içinde.`
+          : `Yanlış. Nokta ${target.name} ilçesinin sınırları dışında kaldı. Doğru sınır haritada gösterildi.`;
+      } else {
+        const distanceKm = getDistanceKm(guess, target.point);
+        isCorrect = distanceKm <= QUIZ_CORRECT_RADIUS_KM;
+        detail = isCorrect
+          ? `${formatDistanceKm(distanceKm)} km uzaklıkta işaretledin.`
+          : `${formatDistanceKm(distanceKm)} km uzaktasın. Doğru nokta haritada gösterildi.`;
+      }
 
       setMapGuesses([guess]);
       setSelectedProvinceName(null);
@@ -1128,14 +1172,12 @@ function App() {
       finalizePlusAnswer({
         isCorrect,
         message: isCorrect ? "Doğru." : "Yanlış.",
-        detail: isCorrect
-          ? `${formatDistanceKm(distanceKm)} km uzaklıkta işaretledin.`
-          : `${formatDistanceKm(distanceKm)} km uzaktasın. Doğru nokta haritada gösterildi.`,
+        detail,
         wrongTargetIds: [],
         selectedTokenId: null,
       });
     },
-    [currentPlusQuestion, finalizePlusAnswer, plusAnswer],
+    [currentPlusQuestion, districtQuizInfoById, finalizePlusAnswer, plusAnswer],
   );
 
   const plusResultStatus = plusAnswer ? (plusAnswer.isCorrect ? "correct" : "wrong") : null;
@@ -1155,9 +1197,28 @@ function App() {
             : "option",
     }));
   }, [currentPlusQuestion, isProvinceQuestion, plusAnswer]);
+  const isDistrictChoiceQuestion = currentPlusQuestion?.topic === "district" && currentPlusQuestion.kind === "choice";
+  const plusHighlightDistricts = useMemo<DistrictHighlight[]>(() => {
+    if (!isDistrictChoiceQuestion || !plusAnswer || !currentPlusQuestion) {
+      return [];
+    }
+
+    return currentPlusQuestion.tokens.map((token) => ({
+      id: token.id,
+      status:
+        token.id === currentPlusQuestion.correctTokenId
+          ? "correct"
+          : token.id === plusAnswer.selectedTokenId
+            ? "wrong"
+            : "option",
+    }));
+  }, [currentPlusQuestion, isDistrictChoiceQuestion, plusAnswer]);
   const isPlusMapLocateQuestion = currentPlusQuestion?.kind === "mapLocate";
   const isPlusMapLocateActive = Boolean(isPlusMapLocateQuestion && !plusAnswer);
   const plusMapLocateTarget = isPlusMapLocateQuestion ? currentPlusQuestion?.targets[0] ?? null : null;
+  const isDistrictMapLocateQuestion = isPlusMapLocateQuestion && currentPlusQuestion?.topic === "district";
+  const plusMapLocateDistrictTargetId =
+    isDistrictMapLocateQuestion && plusAnswer ? plusMapLocateTarget?.id ?? null : null;
   const plusTokenById = useMemo(
     () => new Map(currentPlusQuestion?.tokens.map((token) => [token.id, token]) ?? []),
     [currentPlusQuestion],
@@ -1210,6 +1271,7 @@ function App() {
           <TurkeyMap
             countryData={country.data}
             provincesData={provinces.data}
+            districtsData={districts.data}
             physicalFeaturesData={physicalFeaturesData.data}
             economicFeaturesData={economicFeaturesData.data}
             activePhysicalTopics={activeTopics}
@@ -1225,6 +1287,8 @@ function App() {
             isPlusMapLocateActive={isPlusMapLocateActive}
             plusHideProvinces={isPlusActive}
             plusHighlightProvinces={plusHighlightProvinces}
+            plusHighlightDistricts={plusHighlightDistricts}
+            plusMapLocateDistrictTargetId={plusMapLocateDistrictTargetId}
             plusGuessPoints={mapGuesses}
             plusMapLocateTargetName={plusMapLocateTarget?.name ?? "Soru"}
             plusMapLocateTargetPoint={plusMapLocateTarget?.point ?? null}
@@ -1349,18 +1413,24 @@ function App() {
                 {plusTopicChoices.map((option) => {
                   const isActive = plusTopics.includes(option.id);
                   const count = plusAvailability.byTopic[option.id];
+                  // İlçe verisi lazy-load edildiği için sayı yüklenene kadar 0'dır —
+                  // bu yüzden sıfır sayıya göre devre dışı bırakılmaz, yalnızca
+                  // gerçek bir yükleme hatasında devre dışı kalır.
+                  const isDistrictChip = option.id === "district";
+                  const isChipDisabled = isDistrictChip ? Boolean(districts.error) : count === 0;
+                  const chipCountLabel = isDistrictChip && districts.isLoading ? "…" : count;
 
                   return (
                     <button
                       aria-pressed={isActive}
                       className="category-chip"
-                      disabled={count === 0}
+                      disabled={isChipDisabled}
                       key={option.id}
                       onClick={() => handlePlusTopicToggle(option.id)}
                       type="button"
                     >
                       {option.label}
-                      <small>{count}</small>
+                      <small>{chipCountLabel}</small>
                     </button>
                   );
                 })}
@@ -1438,10 +1508,17 @@ function App() {
                 </div>
               ) : null}
 
-              {currentPlusQuestion?.kind === "mapLocate" && !plusAnswer ? (
+              {currentPlusQuestion?.kind === "mapLocate" && currentPlusQuestion.topic !== "district" && !plusAnswer ? (
                 <div className="quiz-map-hint">
                   <span>{QUIZ_CORRECT_RADIUS_KM} km</span>
                   <strong>Haritada tahmin noktanı bırak</strong>
+                </div>
+              ) : null}
+
+              {currentPlusQuestion?.kind === "mapLocate" && currentPlusQuestion.topic === "district" && !plusAnswer ? (
+                <div className="quiz-map-hint">
+                  <span>Sınır içi</span>
+                  <strong>İlçe sınırları içine tıkla</strong>
                 </div>
               ) : null}
 

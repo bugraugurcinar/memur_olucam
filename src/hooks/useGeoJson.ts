@@ -18,21 +18,27 @@ function isFeatureCollection(value: unknown): value is FeatureCollection {
   );
 }
 
-export function useGeoJson(url: string): GeoJsonState {
+export function useGeoJson(url: string | null): GeoJsonState {
   const [state, setState] = useState<GeoJsonState>({
     data: null,
     error: null,
-    isLoading: true,
+    isLoading: url !== null,
   });
 
   useEffect(() => {
+    if (!url) {
+      setState({ data: null, error: null, isLoading: false });
+      return;
+    }
+
+    const requestUrl = url;
     const controller = new AbortController();
 
     async function loadGeoJson() {
       setState({ data: null, error: null, isLoading: true });
 
       try {
-        const response = await fetch(url, { signal: controller.signal });
+        const response = await fetch(requestUrl, { signal: controller.signal });
 
         if (!response.ok) {
           throw new Error(`${response.status} ${response.statusText}`);
