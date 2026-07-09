@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { AutoAdvanceBar } from "./AutoAdvanceBar";
+import { useAutoAdvanceTimer } from "../hooks/useAutoAdvanceTimer";
 import {
   pickNextTestQuestion,
   TEST_CATEGORY_LABELS,
@@ -13,6 +15,8 @@ const RECENT_TEST_QUESTION_HISTORY_LIMIT = 8;
 const TEST_TOKEN_COLOR = "#6366f1";
 // Süreli mod: her soru için geri sayım (saniye). Süre dolarsa soru yanlış sayılır.
 const QUESTION_TIME_SECONDS = 30;
+// Cevaplandıktan sonra bir sonraki soruya otomatik geçiş süresi.
+const AUTO_ADVANCE_MS = 3000;
 
 const CATEGORY_FILTERS: Array<{ id: TestCategoryFilter; label: string }> = [
   { id: "all", label: "Karma" },
@@ -148,6 +152,9 @@ export function TestPanel({ questions, isLoading, error, wrongIds, onAnswer }: T
   const handleNext = useCallback(() => {
     advance(studyMode);
   }, [advance, studyMode]);
+
+  const isCorrectAnswer = Boolean(current) && answeredKey === current?.correct;
+  const autoAdvanceRemainingMs = useAutoAdvanceTimer(isAnswered, AUTO_ADVANCE_MS, handleNext);
 
   // Seçili kategori havuzundaki yanlış soru sayısı ("Yanlışlar" düğmesi için).
   const wrongCount = useMemo(() => {
@@ -308,9 +315,17 @@ export function TestPanel({ questions, isLoading, error, wrongIds, onAnswer }: T
               </div>
             ) : null}
 
+            {isAnswered ? (
+              <AutoAdvanceBar
+                durationMs={AUTO_ADVANCE_MS}
+                remainingMs={autoAdvanceRemainingMs}
+                variant={isCorrectAnswer ? "correct" : "wrong"}
+              />
+            ) : null}
+
             <div className="quiz-actions plus-actions">
               <button disabled={!isAnswered} onClick={handleNext} type="button">
-                Sonraki soru
+                Şimdi geç
               </button>
             </div>
           </div>

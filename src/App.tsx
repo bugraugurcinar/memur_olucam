@@ -43,11 +43,15 @@ import { useLeaderboard } from "./hooks/useLeaderboard";
 import { GamificationFX, buildFxItems, type FxItem } from "./components/GamificationFX";
 import { Hud } from "./components/Hud";
 import { TestPanel } from "./components/TestPanel";
+import { AutoAdvanceBar } from "./components/AutoAdvanceBar";
+import { useAutoAdvanceTimer } from "./hooks/useAutoAdvanceTimer";
 import { useTestQuestions, type TestQuestionSource } from "./hooks/useTestQuestions";
 import type { TestCategory } from "./quiz/testQuestions";
 import { accuracyPercent, BADGES, formatDateKey, PLUS_TOPIC_IDS, plusTopicLabel as getPlusTopicLabel } from "./quiz/gamification";
 
 const PLUS_RECENT_QUESTION_HISTORY_LIMIT = 16;
+// Soru+ cevaplandıktan sonra bir sonraki soruya otomatik geçiş süresi.
+const PLUS_AUTO_ADVANCE_MS = 3000;
 
 const plusTopicChoices = plusQuestionTopicOptions.filter(
   (option): option is { id: Exclude<PlusQuestionTopic, "mixed">; label: string } => option.id !== "mixed",
@@ -1181,6 +1185,11 @@ function App() {
   );
 
   const plusResultStatus = plusAnswer ? (plusAnswer.isCorrect ? "correct" : "wrong") : null;
+  const plusAutoAdvanceRemainingMs = useAutoAdvanceTimer(
+    Boolean(plusAnswer),
+    PLUS_AUTO_ADVANCE_MS,
+    startNextPlusQuestion,
+  );
   const isProvinceQuestion = currentPlusQuestion?.topic === "province";
   const plusHighlightProvinces = useMemo<ProvinceHighlight[]>(() => {
     if (!isProvinceQuestion || !plusAnswer || !currentPlusQuestion) {
@@ -1437,17 +1446,16 @@ function App() {
               </div>
             </div>
 
-            <button
-              className={`quiz-launch-button plus-launch-button${isPlusActive ? " quiz-launch-button--active" : ""}`}
-              disabled={!canStartPlus}
-              onClick={handlePrimaryPlusAction}
-              type="button"
-            >
-              {currentPlusQuestion && plusAnswer ? "Yeni Soru+"
-                : currentPlusQuestion
-                  ? "Soru+ yenile"
-                  : "Soru+ başlat"}
-            </button>
+            {!currentPlusQuestion || plusAnswer ? (
+              <button
+                className={`quiz-launch-button plus-launch-button${isPlusActive ? " quiz-launch-button--active" : ""}`}
+                disabled={!canStartPlus}
+                onClick={handlePrimaryPlusAction}
+                type="button"
+              >
+                {currentPlusQuestion && plusAnswer ? "Sonraki soru" : "Soru+ başlat"}
+              </button>
+            ) : null}
 
             {progress.session.answered > 0 ? (
               <div className="plus-session-strip" role="status">
@@ -1555,6 +1563,14 @@ function App() {
                   <strong>{plusAnswer.isCorrect ? "Doğru" : "Yanlış"}</strong>
                   <span>{plusAnswer.detail}</span>
                 </div>
+              ) : null}
+
+              {plusAnswer ? (
+                <AutoAdvanceBar
+                  durationMs={PLUS_AUTO_ADVANCE_MS}
+                  remainingMs={plusAutoAdvanceRemainingMs}
+                  variant={plusAnswer.isCorrect ? "correct" : "wrong"}
+                />
               ) : null}
 
               {plusAnswer && currentPlusQuestion ? (

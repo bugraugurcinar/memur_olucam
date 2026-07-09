@@ -2669,3 +2669,40 @@ h2 {
 .test-timer.is-urgent strong {
   color: #f87171;
 }
+
+/* --- Cevap sonrası otomatik geçiş çubuğu (test + Soru+ ortak) --- */
+.auto-advance-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.auto-advance-bar__track {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.08);
+  overflow: hidden;
+}
+
+.auto-advance-bar__fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 100ms linear;
+}
+
+.auto-advance-bar--correct .auto-advance-bar__fill {
+  background: var(--positive);
+}
+
+.auto-advance-bar--wrong .auto-advance-bar__fill {
+  background: var(--danger);
+}
+
+.auto-advance-bar span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
