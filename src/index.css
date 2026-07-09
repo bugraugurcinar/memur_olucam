@@ -2186,6 +2186,17 @@ h2 {
   transform: scale(0.97);
 }
 
+/* Dokunmatik: gri tap-highlight'ı kaldır, çift-dokunuş zoom gecikmesini önle */
+.plus-token,
+.view-switch button,
+.test-study-switch button,
+.quiz-actions button,
+.layers-toggle,
+.side-rail__tab {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -2299,6 +2310,108 @@ h2 {
 
   .leaflet-control-zoom {
     display: none;
+  }
+
+  /* Harita/Test şeridini HUD içinde dikey ortala, dokunma alanını büyüt */
+  .view-switch {
+    top: calc((var(--hud-h) - 40px) / 2);
+  }
+
+  .view-switch button {
+    min-height: 40px;
+    padding: 6px 16px;
+  }
+
+  .hud__title strong {
+    font-size: 0.82rem;
+  }
+
+  /* Harita görünümü: bottom-sheet ve kontrollerde rahat tap alanı */
+  .layers-toggle {
+    min-height: 40px;
+  }
+
+  .side-rail__tab {
+    min-height: 40px;
+  }
+
+  .quiz-dock {
+    gap: var(--sp-3);
+  }
+
+  /* --- Test görünümü: her şey tek ekranda, kompakt (kırpma/kaydırma yok) --- */
+  .test-stage {
+    padding: 8px 10px 10px;
+  }
+
+  .test-panel {
+    width: 100%;
+    gap: 8px;
+    padding: 12px;
+  }
+
+  /* Başlık sadeleşsin: alt açıklama gizli, yer aç */
+  .test-panel .quiz-section-heading h2 {
+    font-size: 0.92rem;
+  }
+
+  .test-panel .quiz-section-heading span {
+    display: none;
+  }
+
+  .test-study-switch {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .test-study-switch button {
+    flex: 1 1 auto;
+    min-height: 34px;
+    padding: 6px 8px;
+    font-size: 0.72rem;
+  }
+
+  .test-timed-toggle {
+    margin-left: 0;
+  }
+
+  .test-panel .quiz-card {
+    gap: 7px;
+    padding: 12px;
+  }
+
+  .test-panel .quiz-card__eyebrow {
+    font-size: 0.66rem;
+  }
+
+  .test-prompt,
+  .test-panel .quiz-card > strong {
+    font-size: 0.92rem;
+    line-height: 1.3;
+  }
+
+  .test-choice-list {
+    gap: 6px;
+  }
+
+  .test-choice-list .plus-token {
+    min-height: 40px;
+    padding: 7px 11px;
+  }
+
+  .test-choice-list .plus-token span {
+    font-size: 0.8rem;
+  }
+
+  .test-panel .quiz-actions button {
+    min-height: 40px;
+  }
+
+  .test-question-image {
+    max-width: 100%;
+    max-height: 20vh;
+    width: auto;
+    object-fit: contain;
   }
 }
 
