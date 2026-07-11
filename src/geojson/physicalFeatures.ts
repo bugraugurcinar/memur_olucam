@@ -13,6 +13,7 @@ export const physicalFeatureCategories = [
   { id: "mountain_fault_block", topic: "mountain", label: "Kırık", color: "#7c3aed" },
   { id: "mountain_fold", topic: "mountain", label: "Kıvrım", color: "#16a34a" },
   { id: "mountain_volcanic", topic: "mountain", label: "Volkanik", color: "#dc2626" },
+  { id: "mountain_plutonic", topic: "mountain", label: "İç püskürük (Batolit)", color: "#78350f" },
   { id: "plain_delta", topic: "plain", label: "Delta", color: "#0891b2" },
   { id: "plain_karstic", topic: "plain", label: "Karstik", color: "#84cc16" },
   { id: "plain_tectonic", topic: "plain", label: "Tektonik", color: "#f97316" },

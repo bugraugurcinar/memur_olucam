@@ -9,6 +9,7 @@ const files = [
       mountain_fault_block: "mountain",
       mountain_fold: "mountain",
       mountain_volcanic: "mountain",
+      mountain_plutonic: "mountain",
       plain_delta: "plain",
       plain_karstic: "plain",
       plain_tectonic: "plain",

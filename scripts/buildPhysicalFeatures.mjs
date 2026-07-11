@@ -18,6 +18,7 @@ const categoryLabels = {
   mountain_fault_block: "Kırık dağ",
   mountain_fold: "Kıvrım dağı",
   mountain_volcanic: "Volkanik dağ",
+  mountain_plutonic: "İç püskürük (Batolit) dağ",
   plain_delta: "Delta ovası",
   plain_karstic: "Karstik ova",
   plain_tectonic: "Tektonik ova",
@@ -254,9 +255,14 @@ addGroup({
 
 addGroup({
   topic: "mountain",
-  category: "mountain_volcanic",
+  category: "mountain_plutonic",
   region: "Marmara",
-  items: [{ name: "Uludağ", note: "İç püskürük/batolit örneği olarak Marmara fiziki coğrafyasında ayrı tutulur." }],
+  items: [
+    {
+      name: "Uludağ",
+      note: "Uludağ volkanik bir dağ değildir: derinlik volkanizması sonucu oluşan granit bir batolittir (iç püskürük). KPSS'de volkanik dağlar listesine dahil edilmemesi gereken klasik bir tuzak sorudur.",
+    },
+  ],
 });
 
 addGroup({
