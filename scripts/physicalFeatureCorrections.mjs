@@ -1,4 +1,19 @@
 export const physicalFeatureCoordinateCorrections = {
+  mountain_koroglu_daglari: {
+    lat: 40.593,
+    lon: 31.807,
+    sourceDisplayName: "Köroğlu Dağları, Kartalkaya/Aladağ çevresi, Bolu, Türkiye",
+  },
+  plain_soke_ovasi: {
+    lat: 37.75,
+    lon: 27.42,
+    sourceDisplayName: "Söke Ovası, Söke, Aydın, Türkiye",
+  },
+  plain_balat_ovasi: {
+    lat: 37.53,
+    lon: 27.27,
+    sourceDisplayName: "Balat Ovası, Büyük Menderes deltası ağzı, Didim, Aydın, Türkiye",
+  },
   plain_cukurova: {
     lat: 36.91,
     lon: 35.33,

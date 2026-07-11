@@ -340,16 +340,16 @@
         "region": "Karadeniz",
         "location": "Karadeniz",
         "kpssNote": "Kıvrım dağı olarak Karadeniz içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap relation 16682148",
-        "sourceUrl": "https://www.openstreetmap.org/relation/16682148",
-        "sourceQuery": "Köroğlu Dağları, Türkiye",
-        "sourceDisplayName": "Köroğlu Dağları, İç Anadolu Bölgesi, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=40.593&mlon=31.807#map=9/40.593/31.807",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Köroğlu Dağları, Kartalkaya/Aladağ çevresi, Bolu, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          32.7203238,
-          40.5484929
+          31.807,
+          40.593
         ]
       }
     },
@@ -1265,16 +1265,16 @@
         "region": "Ege",
         "location": "Ege",
         "kpssNote": "Büyük Menderes deltası çevresindeki ova olarak çalışılır.",
-        "sourceName": "OpenStreetMap node 11348303682",
-        "sourceUrl": "https://www.openstreetmap.org/node/11348303682",
-        "sourceQuery": "Balat Ovası, Türkiye",
-        "sourceDisplayName": "Balat Ovası, Söke, Aydın, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=37.53&mlon=27.27#map=9/37.53/27.27",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Balat Ovası, Büyük Menderes deltası ağzı, Didim, Aydın, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          27.2476386,
-          37.6142995
+          27.27,
+          37.53
         ]
       }
     },
@@ -1890,16 +1890,16 @@
         "region": "Ege",
         "location": "Ege",
         "kpssNote": "Tektonik ova olarak Ege içinde KPSS fiziki coğrafya çalışmasına eklenir.",
-        "sourceName": "OpenStreetMap node 11348303682",
-        "sourceUrl": "https://www.openstreetmap.org/node/11348303682",
-        "sourceQuery": "Söke Ovası, Türkiye",
-        "sourceDisplayName": "Balat Ovası, Söke, Aydın, Türkiye"
+        "sourceName": "Elle düzeltilmiş KPSS temsil noktası",
+        "sourceUrl": "https://www.openstreetmap.org/?mlat=37.75&mlon=27.42#map=9/37.75/27.42",
+        "sourceQuery": "manual:kpss-physical-feature-correction",
+        "sourceDisplayName": "Söke Ovası, Söke, Aydın, Türkiye"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          27.2476386,
-          37.6142995
+          27.42,
+          37.75
         ]
       }
     },
