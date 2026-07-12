@@ -39,13 +39,13 @@
   --danger-soft: rgb(251 113 133 / 0.16);
 
   --map-water: #0b1c16;
-  --dock-w: 384px;
-  /* --hud-h: harita/dock/yüzen kontrollerin başladığı toplam üst boşluk.
-     --hud-bar-h: HUD şeridinin kendi (görsel) yüksekliği. Masaüstünde ikisi
-     eşit; mobilde view-switch için ayrı bir alt sıra açmak üzere ayrışırlar
-     (bkz. 640px medya sorgusu). */
-  --hud-h: 64px;
-  --hud-bar-h: 64px;
+  /* Üst durum şeridi: 56px içerik + iOS standalone status-bar güvenli alanı. */
+  --hud-h: calc(56px + env(safe-area-inset-top));
+  /* Alt sekme çubuğu: içerik + iPhone home-indicator güvenli alanı. */
+  --tabbar-h: calc(58px + env(safe-area-inset-bottom));
+  /* Alt sayfa (BottomSheet): peek'te görünür kalan yükseklik + tam açık boy. */
+  --sheet-peek-h: 92px;
+  --sheet-full-h: calc(100dvh - var(--hud-h) - var(--tabbar-h) - 12px);
 
   /* Ritim (4px tabanı) */
   --sp-1: 4px;
@@ -82,6 +82,8 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  /* iOS lastik sekmesi tam ekran uygulama hissini bozmasın. */
+  overscroll-behavior: none;
   background:
     radial-gradient(1200px 700px at 80% -10%, rgb(52 211 153 / 0.1), transparent 60%),
     radial-gradient(1000px 620px at -5% 112%, rgb(250 204 21 / 0.06), transparent 55%),
@@ -136,16 +138,15 @@ h2 {
 .category-chip,
 .topic-filter-toolbar button,
 .plus-token,
-.side-rail__tab,
+.tab-bar__item,
 .hud__chip,
-.hud__account-button,
 .quiz-control-grid select,
 .icon-button,
 .ghost-button,
 .leaderboard-row,
 .badge,
 .quiz-launch-button,
-.layers-toggle {
+.layers-fab {
   transition:
     background-color 180ms ease,
     border-color 180ms ease,
@@ -191,22 +192,19 @@ h2 {
 }
 
 /* İnce scrollbar */
-.quiz-dock,
-.layers-panel,
-.side-rail__body {
+.sheet__body,
+.profile-stage {
   scrollbar-width: thin;
   scrollbar-color: var(--bg-elev-3) transparent;
 }
 
-.quiz-dock::-webkit-scrollbar,
-.layers-panel::-webkit-scrollbar,
-.side-rail__body::-webkit-scrollbar {
+.sheet__body::-webkit-scrollbar,
+.profile-stage::-webkit-scrollbar {
   width: 8px;
 }
 
-.quiz-dock::-webkit-scrollbar-thumb,
-.layers-panel::-webkit-scrollbar-thumb,
-.side-rail__body::-webkit-scrollbar-thumb {
+.sheet__body::-webkit-scrollbar-thumb,
+.profile-stage::-webkit-scrollbar-thumb {
   border-radius: 999px;
   background: var(--bg-elev-3);
 }
@@ -214,21 +212,21 @@ h2 {
 /* --- Sahne: tam ekran harita + yüzen katmanlar ---------------------------- */
 
 .app-shell {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
+  /* fixed + inset:0, iOS'ta adres çubuğu animasyonlarının 100vh sorunlarını
+     ve sayfa lastiklenmesini birlikte çözer. */
+  position: fixed;
+  inset: 0;
   overflow: hidden;
 }
 
 .map-stage {
   position: absolute;
-  inset: var(--hud-h) 0 0 var(--dock-w);
+  inset: var(--hud-h) 0 var(--tabbar-h) 0;
   background: var(--map-water);
   /* Leaflet'in iç panelleri (marker/tooltip/popup) 200-700 z-index kullanır;
-     izolasyon olmadan bu değerler map-stage'in kardeşlerine (quiz-dock, hud
-     popover vb.) sızıp onların üstünde çizilir. isolate bunu haritanın
-     kendi yığınıyla sınırlar. */
+     izolasyon olmadan bu değerler map-stage'in kardeşlerine (sheet, tab-bar,
+     hud vb.) sızıp onların üstünde çizilir. isolate bunu haritanın kendi
+     yığınıyla sınırlar. */
   isolation: isolate;
 }
 
@@ -242,7 +240,7 @@ h2 {
 
 .map-state {
   position: absolute;
-  left: calc(50% + var(--dock-w) / 2);
+  left: 50%;
   top: calc(var(--hud-h) + 14px);
   transform: translateX(-50%);
   display: grid;
@@ -270,16 +268,13 @@ h2 {
   top: 0;
   left: 0;
   right: 0;
-  height: var(--hud-bar-h);
-  /* view-switch (46) ve diğer yüzen kontrollerin üstünde kalmalı — aksi halde
-     hud__popover'ın kendi z-index'i (60) yalnızca .hud'ın yığın bağlamı
-     içinde geçerli olur ve .hud'ın kendisi daha düşükse dışarıdan üstüne
-     çizilir. */
+  height: var(--hud-h);
   z-index: 50;
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 0 18px;
+  gap: 10px;
+  /* Üst padding iOS standalone status-bar'ın altına içerik itilsin diye. */
+  padding: env(safe-area-inset-top) 12px 0;
   border: 0;
   border-bottom: 1px solid var(--hairline);
   border-radius: 0;
@@ -296,69 +291,30 @@ h2 {
 .hud__mark {
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
   background: linear-gradient(135deg, var(--brand), var(--brand-strong));
   color: var(--brand-ink);
   box-shadow: 0 6px 18px var(--brand-glow);
 }
 
 .hud__mark svg {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
 }
 
 .hud__title strong {
   display: block;
-  font-size: 0.98rem;
+  font-size: 0.88rem;
   letter-spacing: -0.01em;
-}
-
-.hud__title small {
-  display: block;
-  color: var(--muted);
-  font-size: 0.72rem;
-  font-weight: 600;
 }
 
 .hud__stats {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-left: auto;
-}
-
-.hud__stats--guest {
-  color: var(--muted);
-  font-size: 0.82rem;
-  font-weight: 600;
-  max-width: 360px;
-}
-
-.hud__xp {
-  display: grid;
-  gap: 5px;
-  width: clamp(120px, 18vw, 200px);
-}
-
-.hud__xp-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
   gap: 8px;
-}
-
-.hud__xp-head span {
-  font-size: 0.8rem;
-  font-weight: 800;
-}
-
-.hud__xp-head small {
-  color: var(--reward);
-  font-size: 0.72rem;
-  font-weight: 800;
-  white-space: nowrap;
+  margin-left: auto;
 }
 
 .hud__chip {
@@ -391,117 +347,6 @@ h2 {
   color: var(--reward-strong);
 }
 
-.hud__streak-dots {
-  display: inline-flex;
-  gap: 3px;
-}
-
-.hud__streak-dots i {
-  width: 5px;
-  height: 5px;
-  border-radius: 999px;
-  background: rgb(255 255 255 / 0.16);
-}
-
-.hud__streak-dots i.is-on {
-  background: var(--reward);
-  box-shadow: 0 0 6px var(--reward-glow);
-}
-
-.hud__account {
-  position: relative;
-  /* hud__stats gizlendiğinde (mobil) bile sağa yapışık kalsın diye kendi
-     auto margin'i var — hud__stats'ın margin-left:auto'suna bağımlı kalma. */
-  margin-left: auto;
-}
-
-.hud__account-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  max-width: 200px;
-  padding: 6px 12px 6px 6px;
-  border: 1px solid var(--hairline);
-  border-radius: 999px;
-  background: var(--fill);
-  color: var(--text);
-  cursor: pointer;
-}
-
-.hud__account-button:hover {
-  border-color: var(--brand);
-}
-
-.hud__avatar {
-  display: grid;
-  place-items: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, var(--brand), var(--brand-strong));
-  color: var(--brand-ink);
-  font-size: 0.9rem;
-  font-weight: 900;
-}
-
-.hud__account-name {
-  overflow: hidden;
-  font-size: 0.84rem;
-  font-weight: 800;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.hud__account-cta {
-  padding: 3px 8px;
-  font-size: 0.84rem;
-  font-weight: 850;
-  color: var(--brand);
-}
-
-.hud__popover {
-  position: absolute;
-  top: calc(100% + 10px);
-  right: 0;
-  width: min(320px, calc(100vw - 28px));
-  padding: 16px;
-  border-radius: var(--radius);
-  z-index: 60;
-}
-
-.account-menu {
-  display: grid;
-  gap: 12px;
-}
-
-.account-menu__id strong {
-  display: block;
-  font-size: 0.96rem;
-}
-
-.account-menu__id small {
-  display: block;
-  overflow: hidden;
-  color: var(--muted);
-  font-size: 0.76rem;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.account-menu__session {
-  padding: 9px 11px;
-  border-radius: var(--radius-sm);
-  background: var(--brand-soft);
-  color: var(--text);
-  font-size: 0.78rem;
-  font-weight: 700;
-}
-
-.account-menu__actions {
-  display: grid;
-  gap: 8px;
-}
-
 /* --- Seviye halkası ------------------------------------------------------- */
 
 .level-ring {
@@ -531,100 +376,6 @@ h2 {
   font-weight: 900;
   font-variant-numeric: tabular-nums;
   color: var(--reward-strong);
-}
-
-/* --- XP bar --------------------------------------------------------------- */
-
-.xp-bar {
-  position: relative;
-  height: 9px;
-  border-radius: 999px;
-  background: rgb(255 255 255 / 0.08);
-  overflow: hidden;
-}
-
-.xp-bar__fill {
-  position: relative;
-  height: 100%;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--reward), var(--reward-strong));
-  box-shadow: 0 0 12px var(--reward-glow);
-  transition: width 480ms ease;
-}
-
-.xp-bar__fill::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.45), transparent);
-  transform: translateX(-100%);
-  animation: xp-shimmer 2.4s ease-in-out infinite;
-}
-
-@keyframes xp-shimmer {
-  60%,
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-/* --- Katman kontrolü (sol-üst) -------------------------------------------- */
-
-.layers-control {
-  position: absolute;
-  top: calc(var(--hud-h) + 14px);
-  left: calc(var(--dock-w) + 14px);
-  z-index: 30;
-  display: grid;
-  gap: 10px;
-  justify-items: start;
-}
-
-.layers-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 14px;
-  border-radius: 999px;
-  color: var(--text);
-  cursor: pointer;
-  font-size: 0.84rem;
-  font-weight: 800;
-}
-
-.layers-control--open .layers-toggle {
-  color: var(--brand);
-  border-color: var(--brand);
-}
-
-.layers-panel {
-  display: grid;
-  gap: var(--sp-5);
-  width: min(330px, calc(100vw - 28px));
-  max-height: calc(100dvh - 220px);
-  padding: var(--sp-5);
-  border-radius: var(--radius);
-  overflow-y: auto;
-}
-
-/* --- Soru+ dock: tam yükseklikte opak sol kenar çubuğu -------------------- */
-
-.quiz-dock {
-  position: absolute;
-  top: var(--hud-h);
-  left: 0;
-  bottom: 0;
-  z-index: 28;
-  display: grid;
-  gap: var(--sp-4);
-  align-content: start;
-  width: var(--dock-w);
-  padding: var(--sp-5);
-  border: 0;
-  border-right: 1px solid var(--hairline);
-  border-radius: 0;
-  box-shadow: none;
-  overflow-y: auto;
 }
 
 .panel-section {
@@ -1110,11 +861,11 @@ h2 {
   background: var(--danger-soft);
 }
 
+/* Dar ekranda durum + açıklama alt alta durur; iki sütunlu düzen uzun
+   açıklamalarda durum yazısını 0 genişliğe sıkıştırıyordu. */
 .quiz-result {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 8px;
-  align-items: center;
+  gap: 4px;
   padding: 11px 13px;
   border: 1px solid var(--hairline);
   border-radius: var(--radius-sm);
@@ -1178,104 +929,6 @@ h2 {
 .quiz-actions .quiz-actions__secondary:hover {
   border-color: var(--brand);
   color: var(--brand);
-}
-
-/* --- Sağ kenar çekmece (İlerleme / Sıralama) ------------------------------ */
-
-.side-rail {
-  position: absolute;
-  top: calc(var(--hud-h) + 14px);
-  right: 14px;
-  bottom: 14px;
-  z-index: 35;
-  display: flex;
-  align-items: stretch;
-  gap: 10px;
-  pointer-events: none;
-}
-
-.side-rail__tabs {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  align-self: start;
-  margin-left: auto;
-  padding: 8px;
-  border-radius: var(--radius);
-  pointer-events: auto;
-}
-
-.side-rail__tab {
-  display: grid;
-  gap: 3px;
-  place-items: center;
-  width: 58px;
-  padding: 9px 4px;
-  border: 1px solid transparent;
-  border-radius: var(--radius-sm);
-  background: transparent;
-  color: var(--muted);
-  cursor: pointer;
-}
-
-.side-rail__tab span {
-  font-size: 1.2rem;
-  line-height: 1;
-}
-
-.side-rail__tab small {
-  font-size: 0.66rem;
-  font-weight: 800;
-}
-
-.side-rail__tab:hover {
-  color: var(--text);
-  background: var(--fill);
-}
-
-.side-rail__tab--active {
-  color: var(--brand);
-  background: var(--brand-soft);
-  border-color: var(--brand-soft);
-}
-
-.side-rail__drawer {
-  display: flex;
-  flex-direction: column;
-  width: min(340px, calc(100vw - 100px));
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  pointer-events: auto;
-  animation: drawer-in 200ms ease;
-}
-
-@keyframes drawer-in {
-  from {
-    opacity: 0;
-    transform: translateX(12px);
-  }
-}
-
-.side-rail__head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 15px 18px;
-  border-bottom: 1px solid var(--hairline);
-}
-
-.side-rail__head h2 {
-  font-size: 1.06rem;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-}
-
-.side-rail__body {
-  display: grid;
-  gap: var(--sp-6);
-  padding: var(--sp-5);
-  overflow-y: auto;
 }
 
 /* --- Performans paneli ---------------------------------------------------- */
@@ -2086,10 +1739,12 @@ h2 {
 
 .fx-toasts {
   position: fixed;
-  top: calc(var(--hud-h) + 14px);
-  right: 18px;
+  top: calc(var(--hud-h) + 12px);
+  right: 8px;
+  left: 8px;
   display: grid;
   gap: 10px;
+  justify-items: stretch;
   pointer-events: none;
   z-index: 1200;
 }
@@ -2186,19 +1841,6 @@ h2 {
   animation: card-in 280ms cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-@keyframes panel-pop {
-  from {
-    opacity: 0;
-    transform: translateY(-6px) scale(0.99);
-  }
-}
-
-.layers-panel,
-.hud__popover {
-  transform-origin: top;
-  animation: panel-pop 180ms ease;
-}
-
 .quiz-launch-button:active:not(:disabled),
 .quiz-actions button:active:not(:disabled),
 .ghost-button:active,
@@ -2207,19 +1849,15 @@ h2 {
 .category-chip:active,
 .topic-filter-toolbar button:active,
 .plus-token:active:not(:disabled),
-.side-rail__tab:active,
-.layers-toggle:active,
-.hud__account-button:active {
+.layers-fab:active {
   transform: scale(0.97);
 }
 
 /* Dokunmatik: gri tap-highlight'ı kaldır, çift-dokunuş zoom gecikmesini önle */
 .plus-token,
-.view-switch button,
 .test-study-switch button,
 .quiz-actions button,
-.layers-toggle,
-.side-rail__tab {
+.layers-fab {
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
@@ -2235,335 +1873,24 @@ h2 {
   }
 }
 
-/* --- Tablet ortası -------------------------------------------------------- */
-
-@media (max-width: 900px) {
-  :root {
-    --dock-w: 320px;
-  }
-
-  .hud__title small {
-    display: none;
-  }
-
-  .hud__xp {
-    width: clamp(96px, 16vw, 150px);
-  }
-}
-
-/* --- Telefon yatay modu: 640px genişlik eşiğinin üstünde ama kısa boy ------
-   Bottom-sheet'e dönüştürmek dikeyde daha da az yer bırakır (kısa yükseklik),
-   bu yüzden burada yan panel kalır ama daha da daraltılır ki harita sıkışmasın. */
-
-@media (max-width: 900px) and (max-height: 500px) {
-  :root {
-    --dock-w: 260px;
-  }
-
-  .quiz-dock {
-    padding: var(--sp-3);
-    gap: var(--sp-2);
-  }
-}
-
-/* --- Mobil: yüzen kartlar bottom-sheet'e döner ---------------------------- */
-
-@media (max-width: 640px) {
-  :root {
-    /* HUD şeridi 54px kalır; view-switch için altına 46px'lik ayrı bir sıra
-       açılır (bkz. .view-switch override'ı aşağıda) — bu yüzden --hud-h
-       (haritanın/dock'un başladığı toplam boşluk) --hud-bar-h'den büyük. */
-    --hud-bar-h: 54px;
-    --hud-h: 100px;
-  }
-
-  .hud {
-    gap: 10px;
-    padding: 0 12px;
-  }
-
-  .hud__title strong {
-    font-size: 0.86rem;
-  }
-
-  .hud__stats {
-    gap: 8px;
-  }
-
-  .hud__xp,
-  .hud__chip {
-    display: none;
-  }
-
-  .hud__stats--guest {
-    display: none;
-  }
-
-  .hud__account-name {
-    display: none;
-  }
-
-  .map-stage {
-    inset: var(--hud-h) 0 0 0;
-  }
-
-  .map-state {
-    top: calc(var(--hud-h) + 12px);
-    left: 50%;
-  }
-
-  .layers-control {
-    top: calc(var(--hud-h) + 12px);
-    left: 8px;
-  }
-
-  .layers-panel {
-    max-height: 50dvh;
-  }
-
-  .quiz-dock {
-    top: auto;
-    left: 8px;
-    right: 8px;
-    bottom: max(8px, env(safe-area-inset-bottom));
-    width: auto;
-    max-height: 62dvh;
-    padding: 16px;
-    border-right: 0;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-float), var(--glass-edge);
-  }
-
-  .side-rail {
-    top: calc(var(--hud-h) + 12px);
-    right: 8px;
-    bottom: auto;
-  }
-
-  .side-rail__drawer {
-    position: fixed;
-    inset: calc(var(--hud-h) + 8px) 8px 8px;
-    width: auto;
-    max-width: none;
-  }
-
-  .fx-toasts {
-    top: calc(var(--hud-h) + 12px);
-    right: 8px;
-    left: 8px;
-    justify-items: stretch;
-  }
-
-  /* Zoom kontrolünü gizlemek yerine bottom-sheet'in (quiz-dock) üstüne taşı,
-     böylece pinch-zoom yanında görünür +/- butonları da kalır. */
-  .leaflet-bottom.leaflet-right {
-    bottom: calc(62dvh + 16px);
-  }
-
-  .leaflet-control-zoom a {
-    width: 40px !important;
-    height: 40px !important;
-    line-height: 40px !important;
-  }
-
-  .view-switch button {
-    min-height: 40px;
-    padding: 6px 16px;
-  }
-
-  .hud__title strong {
-    font-size: 0.82rem;
-  }
-
-  /* Harita görünümü: bottom-sheet ve kontrollerde rahat tap alanı */
-  .layers-toggle {
-    min-height: 40px;
-  }
-
-  .side-rail__tab {
-    min-height: 40px;
-  }
-
-  .quiz-dock {
-    gap: var(--sp-3);
-  }
-
-  /* --- Test görünümü: her şey tek ekranda, kompakt (kırpma/kaydırma yok) --- */
-  .test-stage {
-    padding: 8px 10px 10px;
-  }
-
-  .test-panel {
-    width: 100%;
-    gap: 8px;
-    padding: 12px;
-  }
-
-  /* Başlık sadeleşsin: alt açıklama gizli, yer aç */
-  .test-panel .quiz-section-heading h2 {
-    font-size: 0.92rem;
-  }
-
-  .test-panel .quiz-section-heading span {
-    display: none;
-  }
-
-  .test-study-switch {
-    flex-wrap: wrap;
-    gap: 5px;
-  }
-
-  .test-study-switch button {
-    flex: 1 1 auto;
-    min-height: 44px;
-    padding: 6px 8px;
-    font-size: 0.72rem;
-  }
-
-  .test-timed-toggle {
-    margin-left: 0;
-  }
-
-  .test-panel .quiz-card {
-    gap: 7px;
-    padding: 12px;
-  }
-
-  .test-panel .quiz-card__eyebrow {
-    font-size: 0.66rem;
-  }
-
-  .test-prompt,
-  .test-panel .quiz-card > strong {
-    font-size: 0.92rem;
-    line-height: 1.3;
-  }
-
-  .test-choice-list {
-    gap: 6px;
-  }
-
-  .test-choice-list .plus-token {
-    min-height: 44px;
-    padding: 7px 11px;
-  }
-
-  .test-choice-list .plus-token span {
-    font-size: 0.8rem;
-  }
-
-  .test-panel .quiz-actions button {
-    min-height: 44px;
-  }
-
-  .test-question-image {
-    max-width: 100%;
-    max-height: 24vh;
-    width: auto;
-    object-fit: contain;
-  }
-
-  .test-stage {
-    padding-bottom: max(48px, env(safe-area-inset-bottom));
-  }
-
-  /* Harita görünümü: dokunma hedeflerini büyüt */
-  .plus-token-list {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .feature-map-marker span {
-    width: 38px;
-    height: 38px;
-  }
-
-  .feature-map-marker--selected span {
-    width: 42px;
-    height: 42px;
-  }
-
-  .quiz-map-marker span {
-    width: 36px;
-    height: 36px;
-  }
-
-  .plus-map-marker span {
-    width: 40px;
-    height: 40px;
-  }
-
-  .plus-map-marker--assigned span {
-    width: auto;
-    min-width: 40px;
-    height: 40px;
-  }
-}
-
 /* --- Test Soru Modu (metin tabanlı çoktan seçmeli) ------------------------ */
-
-.view-switch {
-  position: absolute;
-  top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 46;
-  display: flex;
-  gap: 4px;
-  padding: 4px;
-  border-radius: 999px;
-}
-
-/* HUD şeridi (marka + hesap) dar ekranlarda Harita/Test anahtarıyla aynı
-   satırda sığmıyor ve hesap/giriş butonunu tıklanamaz hale getiriyordu —
-   anahtarı kendi (--hud-h - --hud-bar-h) sırasına indir. */
-@media (max-width: 640px) {
-  .view-switch {
-    top: calc(var(--hud-bar-h) + (var(--hud-h) - var(--hud-bar-h) - 40px) / 2);
-    left: 50%;
-  }
-}
-
-.view-switch button {
-  min-height: 32px;
-  padding: 6px 16px;
-  border: 0;
-  border-radius: 999px;
-  background: transparent;
-  color: var(--muted);
-  cursor: pointer;
-  font-size: 0.82rem;
-  font-weight: 800;
-  transition:
-    background-color 180ms ease,
-    color 180ms ease;
-}
-
-.view-switch button:hover {
-  color: var(--text);
-}
-
-.view-switch button.is-active {
-  background: var(--brand);
-  color: var(--brand-ink);
-}
-
 .test-stage {
   position: absolute;
-  inset: var(--hud-h) 0 0 0;
+  inset: var(--hud-h) 0 var(--tabbar-h) 0;
   z-index: 26;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 24px 16px 48px;
+  padding: 8px 10px 16px;
   overflow-y: auto;
 }
 
 .test-panel {
   display: grid;
-  gap: var(--sp-4);
+  gap: 8px;
   align-content: start;
-  width: min(680px, 100%);
-  padding: var(--sp-5);
+  width: min(560px, 100%);
+  padding: 12px;
   border-radius: var(--radius-lg);
 }
 
@@ -2693,17 +2020,7 @@ h2 {
   opacity: 1;
 }
 
-/* --- HUD: sınav geri sayımı + günlük XP hedefi (C1) --- */
-.hud__chip--exam {
-  cursor: pointer;
-  font: inherit;
-  color: inherit;
-}
-
-.hud__chip--exam:hover {
-  border-color: var(--brand);
-}
-
+/* --- HUD: günlük XP hedefi çipi (C1) --- */
 .hud__chip--goal.is-reached {
   border-color: var(--brand);
   color: var(--brand-strong);
@@ -2799,4 +2116,423 @@ h2 {
   font-weight: 800;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
+}
+
+/* --- Alt sekme çubuğu (Harita / Soru+ / Test / Profil) --------------------- */
+
+.tab-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--tabbar-h);
+  z-index: 55;
+  display: flex;
+  align-items: stretch;
+  padding: 0 var(--sp-2) env(safe-area-inset-bottom);
+  background: var(--bg-elev-1, var(--bg-base));
+  border-top: 1px solid var(--hairline);
+  box-shadow: 0 -6px 18px rgb(0 0 0 / 0.28);
+}
+
+.tab-bar__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-height: 44px;
+  padding: 6px 4px;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.tab-bar__item .tab-bar__icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 26px;
+  border-radius: 999px;
+  transition: background-color 140ms ease, color 140ms ease;
+}
+
+.tab-bar__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.tab-bar__item.is-active {
+  color: var(--brand);
+}
+
+.tab-bar__item.is-active .tab-bar__icon {
+  background: var(--brand-soft);
+}
+
+/* --- Harita sahnesini sekmeye göre gizle (Leaflet mount'lu kalır) ---------- */
+
+.map-stage--hidden {
+  visibility: hidden;
+}
+
+/* --- Alt sayfa (BottomSheet) ------------------------------------------------
+   Konum transform (y) ile framer-motion tarafından sürülür; peek durumunda
+   sheet'in üstünde kalan alan dokunuşları alttaki haritaya geçirir. */
+
+.sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: var(--tabbar-h);
+  height: var(--sheet-full-h);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-elev-1);
+  border: 1px solid var(--hairline);
+  border-bottom: 0;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  box-shadow: var(--shadow-float);
+  will-change: transform;
+}
+
+.sheet__handle {
+  display: grid;
+  place-items: center;
+  min-height: 30px;
+  padding: 10px 0 6px;
+  /* Dikey parmak hareketi tarayıcı kaydırmasına değil sheet sürüklemesine gitsin. */
+  touch-action: none;
+  cursor: grab;
+}
+
+.sheet__grip {
+  width: 42px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.22);
+}
+
+.sheet__body {
+  /* Yükseklik, sheet'in ekranda GÖRÜNEN kısmıyla sınırlı (--sheet-hidden'ı
+     BottomSheet snap değişiminde yazar) — aksi halde half/peek konumunda
+     içeriğin altı tab bar'ın arkasına taşar ve kaydırmayla erişilemez. */
+  flex: none;
+  height: calc(100% - var(--sheet-hidden, 0px) - 30px);
+  min-height: 0;
+  display: grid;
+  gap: var(--sp-3);
+  align-content: start;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 var(--sp-4) var(--sp-4);
+}
+
+.sheet-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 39;
+  background: rgb(0 0 0 / 0.45);
+}
+
+/* Soru+ sekmesinde zoom kontrolü peek'teki sheet'in üstünde kalsın. */
+.app-shell--soru .leaflet-bottom.leaflet-right {
+  bottom: calc(var(--sheet-peek-h) + 12px);
+}
+
+/* --- Katmanlar FAB'ı -------------------------------------------------------- */
+
+.layers-fab {
+  position: absolute;
+  left: 12px;
+  bottom: calc(var(--tabbar-h) + 12px);
+  z-index: 30;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--text);
+  cursor: pointer;
+  box-shadow: var(--shadow-2);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* --- Profil sekmesi -------------------------------------------------------- */
+
+.profile-stage {
+  position: absolute;
+  inset: var(--hud-h) 0 var(--tabbar-h) 0;
+  z-index: 26;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  background: var(--bg-base);
+  padding: var(--sp-4) var(--sp-3) var(--sp-6);
+}
+
+.profile-stage__inner {
+  display: grid;
+  gap: var(--sp-3);
+  width: 100%;
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+.profile-stage .panel-section {
+  padding: var(--sp-4);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elev-1, rgb(255 255 255 / 0.04));
+}
+
+.profile-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-identity__avatar {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+  color: var(--brand-ink);
+  font-size: 1.1rem;
+  font-weight: 900;
+}
+
+.profile-identity__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-identity__body strong {
+  display: block;
+  font-size: 0.98rem;
+}
+
+.profile-identity__body small {
+  display: block;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 0.76rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-2);
+  margin-top: var(--sp-3);
+}
+
+.profile-stat-grid .progress-stat {
+  padding: 10px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-sm);
+  background: var(--fill);
+}
+
+.profile-session-note {
+  margin-top: var(--sp-3);
+  padding: 9px 11px;
+  border-radius: var(--radius-sm);
+  background: var(--brand-soft);
+  color: var(--text);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.profile-exam-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 44px;
+  margin-top: var(--sp-3);
+  padding: 10px 12px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-sm);
+  background: var(--fill);
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.profile-exam-row strong {
+  font-size: 0.92rem;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+}
+
+.profile-exam-row small {
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+
+/* --- Mobil dokunma hedefleri (eski 640px bloğundan tabana terfi) ----------- */
+
+.leaflet-control-zoom a {
+  width: 40px !important;
+  height: 40px !important;
+  line-height: 40px !important;
+}
+
+/* Test görünümü: her şey tek ekranda, kompakt (kırpma/kaydırma yok) */
+.test-panel .quiz-section-heading h2 {
+  font-size: 0.92rem;
+}
+
+.test-panel .quiz-section-heading span {
+  display: none;
+}
+
+.test-study-switch {
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.test-study-switch button {
+  flex: 1 1 auto;
+  min-height: 44px;
+  padding: 6px 8px;
+  font-size: 0.72rem;
+}
+
+.test-timed-toggle {
+  margin-left: 0;
+}
+
+.test-panel .quiz-card {
+  gap: 7px;
+  padding: 12px;
+}
+
+.test-panel .quiz-card__eyebrow {
+  font-size: 0.66rem;
+}
+
+.test-prompt,
+.test-panel .quiz-card > strong {
+  font-size: 0.92rem;
+  line-height: 1.3;
+}
+
+.test-choice-list {
+  gap: 6px;
+}
+
+.test-choice-list .plus-token {
+  min-height: 44px;
+  padding: 7px 11px;
+}
+
+.test-choice-list .plus-token span {
+  font-size: 0.8rem;
+}
+
+.test-panel .quiz-actions button {
+  min-height: 44px;
+}
+
+.test-question-image {
+  max-width: 100%;
+  max-height: 24vh;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Soru+ etiketleri: telefonda tek sütun */
+.plus-token-list {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* Harita markerları: rahat dokunma boyutları */
+.feature-map-marker span {
+  width: 38px;
+  height: 38px;
+}
+
+.feature-map-marker--selected span {
+  width: 42px;
+  height: 42px;
+}
+
+.quiz-map-marker span {
+  width: 36px;
+  height: 36px;
+}
+
+.plus-map-marker span {
+  width: 40px;
+  height: 40px;
+}
+
+.plus-map-marker--assigned span {
+  width: auto;
+  min-width: 40px;
+  height: 40px;
+}
+
+/* Uzak zoom (tüm Türkiye görünümü): yüzlerce marker dar ekranda üst üste
+   binip haritayı örtüyor — küçült; seçili marker okunur boyda kalır. */
+.turkey-map--far .feature-map-marker span {
+  width: 20px;
+  height: 20px;
+  border-width: 1.5px;
+}
+
+.turkey-map--far .feature-map-marker svg {
+  width: 11px;
+  height: 11px;
+}
+
+.turkey-map--far .feature-map-marker--selected span {
+  width: 34px;
+  height: 34px;
+}
+
+.turkey-map--far .feature-map-marker--selected svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* Sheet sürükleme / sekme dokunuşları sırasında metin seçilmesin. */
+.hud,
+.tab-bar,
+.sheet__handle {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* --- Geniş ekran: içerik telefon genişliğine sabitlenir, harita tam kalır -- */
+
+@media (min-width: 700px) {
+  .hud,
+  .tab-bar,
+  .sheet {
+    left: max(0px, calc((100vw - 480px) / 2));
+    right: max(0px, calc((100vw - 480px) / 2));
+  }
+
+  .layers-fab {
+    left: max(12px, calc((100vw - 480px) / 2 + 12px));
+  }
 }

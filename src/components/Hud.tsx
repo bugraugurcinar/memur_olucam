@@ -1,97 +1,18 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
 import { LevelRing } from "./LevelRing";
 
 export type HudProps = {
-  loading: boolean;
   isLoggedIn: boolean;
-  displayName: string;
-  email?: string | null;
   level: number;
   levelProgress: number;
-  intoLevel: number;
-  span: number;
-  totalXp: number;
   streak: number;
-  sessionCorrect: number;
-  sessionAnswered: number;
-  onSignOut: () => void;
-  canReset: boolean;
-  onReset: () => void;
-  accountForm: ReactNode;
-  examDaysLeft: number | null;
-  onSetExamDate: () => void;
   dailyXp: number;
   dailyXpGoal: number;
 };
 
-/** Üstte yüzen HUD şeridi: marka + seviye/XP/seri + hesap menüsü. Sunum bileşeni. */
-export function Hud({
-  loading,
-  isLoggedIn,
-  displayName,
-  email,
-  level,
-  levelProgress,
-  intoLevel,
-  span,
-  totalXp,
-  streak,
-  sessionCorrect,
-  sessionAnswered,
-  onSignOut,
-  canReset,
-  onReset,
-  accountForm,
-  examDaysLeft,
-  onSetExamDate,
-  dailyXp,
-  dailyXpGoal,
-}: HudProps) {
-  const [accountOpen, setAccountOpen] = useState(false);
-  const popoverRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (!accountOpen) {
-      return;
-    }
-    const handlePointer = (event: MouseEvent) => {
-      if (popoverRef.current && !popoverRef.current.contains(event.target as Node)) {
-        setAccountOpen(false);
-      }
-    };
-    const handleKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setAccountOpen(false);
-      }
-    };
-    window.addEventListener("mousedown", handlePointer);
-    window.addEventListener("keydown", handleKey);
-    return () => {
-      window.removeEventListener("mousedown", handlePointer);
-      window.removeEventListener("keydown", handleKey);
-    };
-  }, [accountOpen]);
-
-  const remainingXp = Math.max(0, span - intoLevel);
-  const streakDots = Array.from({ length: 7 }, (_, index) => index < Math.min(streak, 7));
+/** Üstteki ince durum şeridi: marka + seviye/seri/günlük hedef. Detaylar Profil sekmesinde. */
+export function Hud({ isLoggedIn, level, levelProgress, streak, dailyXp, dailyXpGoal }: HudProps) {
   const dailyGoalReached = dailyXpGoal > 0 && dailyXp >= dailyXpGoal;
   const dailyGoalPercent = dailyXpGoal > 0 ? Math.min(100, Math.round((dailyXp / dailyXpGoal) * 100)) : 0;
-
-  const examChip = (
-    <button
-      className="hud__chip hud__chip--exam"
-      onClick={onSetExamDate}
-      title={examDaysLeft !== null ? "Sınav tarihini güncelle" : "KPSS sınav tarihini ekle"}
-      type="button"
-    >
-      <span aria-hidden="true">🗓️</span>
-      {examDaysLeft !== null ? (
-        <strong>{examDaysLeft}</strong>
-      ) : (
-        <small>Sınav tarihi ekle</small>
-      )}
-    </button>
-  );
 
   return (
     <header className="hud glass">
@@ -108,112 +29,25 @@ export function Hud({
         </span>
         <div className="hud__title">
           <strong>Coğrafya Atlas</strong>
-          <small>İnteraktif KPSS coğrafya</small>
         </div>
       </div>
 
       {isLoggedIn ? (
         <div className="hud__stats">
-          <LevelRing level={level} progress={levelProgress} />
-          <div className="hud__xp">
-            <div className="hud__xp-head">
-              <span>Seviye {level}</span>
-              <small>{remainingXp} XP → Sv {level + 1}</small>
-            </div>
-            <div className="xp-bar">
-              <div className="xp-bar__fill" style={{ width: `${Math.round(levelProgress * 100)}%` }} />
-            </div>
-          </div>
-          <div className="hud__chip hud__chip--streak" title={`${streak} günlük seri`}>
+          <LevelRing level={level} progress={levelProgress} size={32} stroke={3} />
+          <div className="hud__chip hud__chip--streak">
             <span aria-hidden="true">🔥</span>
-            <div className="hud__streak-dots" aria-hidden="true">
-              {streakDots.map((on, index) => (
-                <i className={on ? "is-on" : ""} key={index} />
-              ))}
-            </div>
             <strong>{streak}</strong>
           </div>
-          <div className="hud__chip" title="Toplam XP">
-            <span aria-hidden="true">⭐</span>
-            <strong>{totalXp}</strong>
-            <small>XP</small>
-          </div>
-          <div
-            className={`hud__chip hud__chip--goal${dailyGoalReached ? " is-reached" : ""}`}
-            title={`Bugünkü XP hedefi (${dailyXp}/${dailyXpGoal})`}
-          >
+          <div className={`hud__chip hud__chip--goal${dailyGoalReached ? " is-reached" : ""}`}>
             <span aria-hidden="true">{dailyGoalReached ? "✅" : "🎯"}</span>
             <div className="hud__goal-track" aria-hidden="true">
               <div className="hud__goal-fill" style={{ width: `${dailyGoalPercent}%` }} />
             </div>
             <strong>{dailyXp}</strong>
-            <small>/ {dailyXpGoal}</small>
           </div>
-          {examChip}
         </div>
-      ) : (
-        <div className="hud__stats hud__stats--guest">
-          {examChip}
-          <p>Giriş yap; XP kazan, rozet topla, liderlik tablosuna gir.</p>
-        </div>
-      )}
-
-      <div className="hud__account" ref={popoverRef}>
-        <button
-          className="hud__account-button"
-          onClick={() => setAccountOpen((value) => !value)}
-          aria-expanded={accountOpen}
-          type="button"
-        >
-          {isLoggedIn ? (
-            <>
-              <span className="hud__avatar" aria-hidden="true">
-                {displayName.slice(0, 1).toLocaleUpperCase("tr-TR")}
-              </span>
-              <span className="hud__account-name">{displayName}</span>
-            </>
-          ) : (
-            <span className="hud__account-cta">{loading ? "Yükleniyor…" : "Giriş yap"}</span>
-          )}
-        </button>
-
-        {accountOpen ? (
-          <div className="hud__popover glass" role="dialog" aria-label="Hesap">
-            {isLoggedIn ? (
-              <div className="account-menu">
-                <div className="account-menu__id">
-                  <strong>{displayName}</strong>
-                  {email ? <small>{email}</small> : null}
-                </div>
-                <div className="account-menu__session">
-                  {sessionAnswered > 0
-                    ? `Bu oturum: ${sessionCorrect}/${sessionAnswered} doğru`
-                    : "Bu oturumda henüz soru çözmedin."}
-                </div>
-                <div className="account-menu__actions">
-                  {canReset ? (
-                    <button className="ghost-button" onClick={onReset} type="button">
-                      İlerlemeyi sıfırla
-                    </button>
-                  ) : null}
-                  <button
-                    className="ghost-button"
-                    onClick={() => {
-                      onSignOut();
-                      setAccountOpen(false);
-                    }}
-                    type="button"
-                  >
-                    Çıkış yap
-                  </button>
-                </div>
-              </div>
-            ) : (
-              accountForm
-            )}
-          </div>
-        ) : null}
-      </div>
+      ) : null}
     </header>
   );
 }

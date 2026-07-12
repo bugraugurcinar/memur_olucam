@@ -75,7 +75,6 @@ type TurkeyMapProps = {
   onEconomicFeatureSelect: (feature: EconomicFeatureProperties) => void;
   onPlusMapGuess: (point: QuizPoint) => void;
   onPlusTargetSelect: (targetId: string) => void;
-  onPlusTargetDrop: (targetId: string, tokenId: string) => void;
 };
 
 type ProvinceLayer = Layer & {
@@ -97,6 +96,14 @@ type FeatureMarker = L.Marker & {
 const TURKEY_BOUNDS: LatLngBoundsExpression = [
   [35.45, 25.2],
   [42.35, 45.3],
+];
+// Pan sınırı, Türkiye'den özellikle GÜNEYE doğru geniş tutulur: dikey telefon
+// ekranında alt sayfa (soru kartı) haritanın altını kapattığından, soru
+// hedeflerini görünür alana getirmek için haritanın yukarı kaydırılabilmesi
+// gerekir — sıkı bounds bunu Leaflet'in merkez kelepçesiyle engelliyordu.
+const PAN_BOUNDS: LatLngBoundsExpression = [
+  [27.5, 22.0],
+  [44.5, 48.5],
 ];
 const PHYSICAL_FEATURE_PANE = "physical-feature-pane";
 const ECONOMIC_FEATURE_PANE = "economic-feature-pane";
@@ -358,7 +365,6 @@ export function TurkeyMap({
   onEconomicFeatureSelect,
   onPlusMapGuess,
   onPlusTargetSelect,
-  onPlusTargetDrop,
 }: TurkeyMapProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<L.Map | null>(null);
@@ -371,7 +377,6 @@ export function TurkeyMap({
   const isPlusMapLocateActiveRef = useRef(isPlusMapLocateActive);
   const onPlusMapGuessRef = useRef(onPlusMapGuess);
   const onPlusTargetSelectRef = useRef(onPlusTargetSelect);
-  const onPlusTargetDropRef = useRef(onPlusTargetDrop);
   const selectedProvinceRef = useRef<string | null>(selectedProvinceName);
   const selectedFeatureRef = useRef<string | null>(selectedPhysicalFeatureId);
   const selectedEconomicFeatureRef = useRef<string | null>(selectedEconomicFeatureId);
@@ -384,7 +389,7 @@ export function TurkeyMap({
 
     const map = L.map(containerRef.current, {
       attributionControl: false,
-      maxBounds: TURKEY_BOUNDS,
+      maxBounds: PAN_BOUNDS,
       maxBoundsViscosity: 0.65,
       minZoom: 5,
       scrollWheelZoom: true,
@@ -415,6 +420,19 @@ export function TurkeyMap({
     }
 
     map.fitBounds(TURKEY_BOUNDS, { padding: [18, 18] });
+
+    // Uzak zoom'da (tüm Türkiye görünümü) yüzlerce marker dar telefon
+    // ekranında üst üste binip haritayı örtüyor — container'a sınıf verip
+    // CSS ile küçültüyoruz (bkz. .turkey-map--far).
+    const container = containerRef.current;
+    const updateZoomClass = () => {
+      container.classList.toggle("turkey-map--far", map.getZoom() <= 5);
+    };
+    // moveend de dinlenir: fitBounds zoom'u değiştirmeden yalnızca pan
+    // yaptığında zoomend ateşlenmez, sınıf bayat kalırdı.
+    map.on("zoomend moveend", updateZoomClass);
+    updateZoomClass();
+
     mapRef.current = map;
 
     return () => {
@@ -427,8 +445,7 @@ export function TurkeyMap({
     isPlusMapLocateActiveRef.current = isPlusMapLocateActive;
     onPlusMapGuessRef.current = onPlusMapGuess;
     onPlusTargetSelectRef.current = onPlusTargetSelect;
-    onPlusTargetDropRef.current = onPlusTargetDrop;
-  }, [isPlusMapLocateActive, onPlusMapGuess, onPlusTargetDrop, onPlusTargetSelect]);
+  }, [isPlusMapLocateActive, onPlusMapGuess, onPlusTargetSelect]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -541,13 +558,14 @@ export function TurkeyMap({
             const name = getShapeName(feature?.properties);
             const status = statusByName.get(name);
 
-            layer.bindTooltip(
-              status === "correct" ? `${name} · Doğru il` : name,
-              { direction: "top", opacity: 0.95, sticky: true },
-            );
-
-            if (status === "correct") {
-              layer.openTooltip();
+            // Dokunmatikte hover yok: doğru/yanlış iller kalıcı etiket alır;
+            // diğer şıklar etiketsiz kalır (adları zaten şık listesinde).
+            if (status === "correct" || status === "wrong") {
+              layer.bindTooltip(status === "correct" ? `${name} · Doğru il` : name, {
+                direction: "top",
+                opacity: 0.95,
+                permanent: true,
+              });
             }
           },
           style: (feature) =>
@@ -568,31 +586,10 @@ export function TurkeyMap({
         onEachFeature: (feature, layer: ProvinceLayer) => {
           const provinceName = getShapeName(feature.properties);
 
-          layer.bindTooltip(provinceName, {
-            direction: "top",
-            opacity: 0.94,
-            sticky: true,
-          });
-
-          layer.on({
-            click: () => onProvinceSelect(provinceName),
-            mouseout: () => {
-              if (layer instanceof L.Path) {
-                layer.setStyle(provinceStyle(provinceName, selectedProvinceRef.current));
-              }
-            },
-            mouseover: (event: LeafletMouseEvent) => {
-              if (event.target instanceof L.Path) {
-                event.target.setStyle({
-                  color: "#34d399",
-                  fillColor: "#6ee7b7",
-                  fillOpacity: 0.32,
-                  weight: 2,
-                });
-                event.target.bringToFront();
-              }
-            },
-          });
+          // Dokunmatik akış: dokununca il adı popup'ı açılır (hover tooltip yerine);
+          // seçili il stili selectedProvinceName effekti tarafından yönetilir.
+          layer.bindPopup(escapeHtml(provinceName));
+          layer.on("click", () => onProvinceSelect(provinceName));
         },
         style: (feature) => provinceStyle(getShapeName(feature?.properties), selectedProvinceRef.current),
       }).addTo(map);
@@ -643,14 +640,13 @@ export function TurkeyMap({
           const status = id ? statusById.get(id) : undefined;
           const label = getDistrictShapeName(feature?.properties);
 
-          layer.bindTooltip(status === "correct" ? `${label} · Doğru ilçe` : label, {
-            direction: "top",
-            opacity: 0.95,
-            sticky: true,
-          });
-
-          if (status === "correct") {
-            layer.openTooltip();
+          // Dokunmatikte hover yok: doğru/yanlış ilçeler kalıcı etiket alır.
+          if (status === "correct" || status === "wrong") {
+            layer.bindTooltip(status === "correct" ? `${label} · Doğru ilçe` : label, {
+              direction: "top",
+              opacity: 0.95,
+              permanent: true,
+            });
           }
         },
         style: (feature) =>
@@ -702,47 +698,15 @@ export function TurkeyMap({
 
         const physicalFeature = feature.properties;
 
-        layer.bindTooltip(`${physicalFeature.name} · ${physicalFeature.categoryLabel}`, {
-          direction: "top",
-          opacity: 0.96,
-          sticky: true,
-        });
-
+        // Dokunmatik akış: dokununca popup açılır; seçili ikon stilini
+        // selectedPhysicalFeatureId effekti yönetir (hover ikonu yok).
         layer.bindPopup(
           `<strong>${escapeHtml(physicalFeature.name)}</strong><br />${escapeHtml(
             physicalFeature.topicLabel,
           )}<br />${escapeHtml(physicalFeature.categoryLabel)}<br />${escapeHtml(physicalFeature.region)}`,
         );
 
-        layer.on({
-          click: () => onPhysicalFeatureSelect(physicalFeature),
-          mouseout: () => {
-            if (layer instanceof L.Marker) {
-              layer.closeTooltip();
-              layer.setIcon(
-                createPhysicalFeatureIcon(
-                  physicalFeature,
-                  selectedFeatureRef.current,
-                  shouldUsePhysicalCategoryColors,
-                ),
-              );
-              layer.setZIndexOffset(0);
-            }
-          },
-          mouseover: () => {
-            if (layer instanceof L.Marker) {
-              layer.openTooltip();
-              layer.setIcon(
-                createPhysicalFeatureIcon(
-                  physicalFeature,
-                  physicalFeature.id,
-                  shouldUsePhysicalCategoryColors,
-                ),
-              );
-              layer.setZIndexOffset(1000);
-            }
-          },
-        });
+        layer.on("click", () => onPhysicalFeatureSelect(physicalFeature));
       },
       pointToLayer: (feature, latlng) => {
         if (isPhysicalFeature(feature)) {
@@ -805,12 +769,8 @@ export function TurkeyMap({
         const economicFeatureDisplayName = getEconomicFeatureDisplayName(economicFeature);
         const economicFeatureLocationLabel = getEconomicLocationShortLabel(economicFeature.location);
 
-        layer.bindTooltip(economicFeatureDisplayName, {
-          direction: "top",
-          opacity: 0.96,
-          sticky: true,
-        });
-
+        // Dokunmatik akış: dokununca popup açılır; seçili ikon stilini
+        // selectedEconomicFeatureId effekti yönetir (hover ikonu yok).
         layer.bindPopup(
           `<strong>${escapeHtml(economicFeatureDisplayName)}</strong><br />${escapeHtml(
             economicFeature.topicLabel,
@@ -819,35 +779,7 @@ export function TurkeyMap({
           }`,
         );
 
-        layer.on({
-          click: () => onEconomicFeatureSelect(economicFeature),
-          mouseout: () => {
-            if (layer instanceof L.Marker) {
-              layer.closeTooltip();
-              layer.setIcon(
-                createEconomicFeatureIcon(
-                  economicFeature,
-                  selectedEconomicFeatureRef.current,
-                  shouldUseEconomicCategoryColors,
-                ),
-              );
-              layer.setZIndexOffset(0);
-            }
-          },
-          mouseover: () => {
-            if (layer instanceof L.Marker) {
-              layer.openTooltip();
-              layer.setIcon(
-                createEconomicFeatureIcon(
-                  economicFeature,
-                  economicFeature.id,
-                  shouldUseEconomicCategoryColors,
-                ),
-              );
-              layer.setZIndexOffset(1000);
-            }
-          },
-        });
+        layer.on("click", () => onEconomicFeatureSelect(economicFeature));
       },
       pointToLayer: (feature, latlng) => {
         if (isEconomicFeature(feature)) {
@@ -916,42 +848,26 @@ export function TurkeyMap({
         icon: createPlusIcon(target, targetStatus, isSelectedTarget, assignedLabel, safePlusTargetIconName),
         keyboard: true,
         pane: QUIZ_PANE,
-      })
-        .bindTooltip(
-          plusResultStatus
-            ? `${target.label}: ${target.name} · ${target.detail}`
-            : assignedLabel
-              ? `${target.label}: ${assignedLabel}`
-              : `${target.label} hedefi`,
-          {
-            direction: "top",
-            opacity: 0.96,
-          },
-        )
-        .addTo(quizLayer);
+      });
 
-      if (!plusResultStatus) {
-        marker.on("click", () => onPlusTargetSelectRef.current(target.id));
+      // Cevaptan sonra doğru/yanlış hedeflere kalıcı etiket; cevap öncesinde
+      // etiket yok (harf + atanan jeton zaten marker ikonunun içinde).
+      // İl/ilçe vurgusu varsa poligon zaten etiketli — çift etiket bağlama.
+      const hasAreaReveal = plusHighlightProvinces.length > 0 || plusHighlightDistricts.length > 0;
 
-        const element = marker.getElement();
-
-        if (element) {
-          element.addEventListener("dragover", (event) => {
-            event.preventDefault();
-          });
-          element.addEventListener("drop", (event) => {
-            event.preventDefault();
-            const tokenId = event.dataTransfer?.getData("text/plain");
-
-            if (tokenId) {
-              onPlusTargetDropRef.current(target.id, tokenId);
-            }
-          });
-        }
+      if (plusResultStatus && (isCorrectTarget || isWrongTarget) && !hasAreaReveal) {
+        marker.bindTooltip(`${target.label}: ${target.name} · ${target.detail}`, {
+          direction: "top",
+          opacity: 0.96,
+          permanent: true,
+        });
       }
 
-      if (plusResultStatus && (isCorrectTarget || isWrongTarget)) {
-        marker.openTooltip();
+      marker.addTo(quizLayer);
+
+      if (!plusResultStatus) {
+        // Dokunmatik akış: jetonu seç → hedefe dokun.
+        marker.on("click", () => onPlusTargetSelectRef.current(target.id));
       }
     });
 
@@ -960,12 +876,7 @@ export function TurkeyMap({
         icon: createQuizIcon("guess", null, guessLatLngs.length > 1 ? `T${index + 1}` : "T"),
         keyboard: false,
         pane: QUIZ_PANE,
-      })
-        .bindTooltip(guessLatLngs.length > 1 ? `${index + 1}. tahmin` : "Tahmin", {
-          direction: "top",
-          opacity: 0.96,
-        })
-        .addTo(quizLayer);
+      }).addTo(quizLayer);
     });
 
     if (lastGuessLatLng && targetLatLng && plusResultStatus) {
@@ -988,23 +899,29 @@ export function TurkeyMap({
           direction: "top",
           offset: [0, -2],
           opacity: 0.96,
+          permanent: true,
         })
-        .addTo(quizLayer)
-        .openTooltip();
+        .addTo(quizLayer);
     }
-
-    // Harita yalnızca kullanıcı etkileşimiyle hareket eder; yeni soru/cevap
-    // geldiğinde otomatik pan/zoom (flyTo) yapılmaz.
 
     quizLayerRef.current = quizLayer;
 
     return () => {
+      // Kalıcı (permanent) tooltip'ler grup kaldırılırken sızabiliyor —
+      // effect yeniden çalıştığında kopya birikmemesi için açıkça çöz.
+      quizLayer.eachLayer((layer) => {
+        if (layer instanceof L.Marker) {
+          layer.unbindTooltip();
+        }
+      });
       quizLayer.remove();
     };
   }, [
     plusAssignedTokenLabels,
     plusCorrectTargetIds,
     plusGuessPoints,
+    plusHighlightDistricts,
+    plusHighlightProvinces,
     plusMapLocateShowTargetPoint,
     plusMapLocateTargetName,
     plusMapLocateTargetPoint,
@@ -1013,6 +930,56 @@ export function TurkeyMap({
     plusTargets,
     plusWrongTargetIds,
   ]);
+
+  // Dar dikey ekranda soru hedefleri alt sayfanın (bottom sheet) kapattığı
+  // bölgede kalabiliyor; yeni soru geldiğinde hedefleri, sheet'in üstünde
+  // kalan alana sığdır. Alt padding, half konumdaki sheet'in kapladığı ~%45'i
+  // hesaba katar. Cevap/işaretleme değişimlerinde yeniden oynatmamak için
+  // yalnızca hedef kümesi (soru) değişince çalışır.
+  const plusTargetsFitKey = plusTargets.map((target) => target.id).join("|");
+
+  useEffect(() => {
+    const map = mapRef.current;
+
+    if (!map || plusTargets.length === 0) {
+      return;
+    }
+
+    const bounds = L.latLngBounds(
+      plusTargets.map((target) => [target.point.lat, target.point.lng] as [number, number]),
+    );
+
+    map.fitBounds(bounds, {
+      maxZoom: 8,
+      // Yatay pay, kalıcı tooltip'lerin ekran kenarından taşmasını azaltır.
+      paddingTopLeft: [60, 28],
+      // Half konumdaki sheet haritanın ~%60'ını kapatır; +44 marker/tooltip payı.
+      paddingBottomRight: [60, Math.round(map.getSize().y * 0.6) + 44],
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [plusTargetsFitKey]);
+
+  // "Haritada bul" cevabı açıklandığında doğru nokta + tahmin çizgisi de
+  // sheet'in altında kalmasın.
+  useEffect(() => {
+    const map = mapRef.current;
+
+    if (!map || !plusMapLocateShowTargetPoint || !plusMapLocateTargetPoint) {
+      return;
+    }
+
+    const points: Array<[number, number]> = [[plusMapLocateTargetPoint.lat, plusMapLocateTargetPoint.lng]];
+    for (const guess of plusGuessPoints) {
+      points.push([guess.lat, guess.lng]);
+    }
+
+    map.fitBounds(L.latLngBounds(points), {
+      maxZoom: 8,
+      paddingTopLeft: [60, 28],
+      paddingBottomRight: [60, Math.round(map.getSize().y * 0.6) + 44],
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [plusMapLocateShowTargetPoint]);
 
   return <div ref={containerRef} className="turkey-map" aria-label="Türkiye fiziki coğrafya haritası" />;
 }

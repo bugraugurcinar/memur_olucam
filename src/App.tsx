@@ -1,9 +1,7 @@
-import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type FormEvent } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   economicFeatureCategories,
   economicFeatureTopics,
-  getEconomicFeatureDisplayName,
-  getEconomicLocationShortLabel,
   getEconomicFeatures,
   type EconomicFeatureCategory,
   type EconomicFeatureProperties,
@@ -17,7 +15,7 @@ import {
   type PhysicalFeatureProperties,
   type PhysicalFeatureTopic,
 } from "./geojson/physicalFeatures";
-import { geoJsonAttribution, geoJsonSources } from "./geojson/sources";
+import { geoJsonSources } from "./geojson/sources";
 import { useGeoJson } from "./hooks/useGeoJson";
 import { TurkeyMap, type DistrictHighlight, type ProvinceHighlight } from "./maps/TurkeyMap";
 import { QUIZ_CORRECT_RADIUS_KM, formatDistanceKm, getDistanceKm } from "./quiz/geoUtils";
@@ -26,9 +24,6 @@ import {
   getPlusAvailability,
   getPlusPlacementCorrectness,
   getPlusTargetCorrectness,
-  plusQuestionKindLabels,
-  plusQuestionModeOptions,
-  plusQuestionTopicOptions,
   type PlusPoint,
   type PlusQuestion,
   type PlusQuestionMode,
@@ -36,14 +31,16 @@ import {
 } from "./quiz/plusQuestionEngine";
 import { buildProvinceQuizInfos } from "./quiz/provinceUtils";
 import { buildDistrictQuizInfos, isPointInAnyPolygon } from "./quiz/districtUtils";
-import { isSupabaseConfigured } from "./lib/supabase";
-import { useAuth, type UseAuthResult } from "./hooks/useAuth";
+import { useAuth } from "./hooks/useAuth";
 import { useQuizProgress } from "./hooks/useQuizProgress";
 import { useLeaderboard } from "./hooks/useLeaderboard";
 import { GamificationFX, buildFxItems, type FxItem } from "./components/GamificationFX";
 import { Hud } from "./components/Hud";
+import { TabBar, type AppTab } from "./components/TabBar";
+import { ProfilePanel } from "./components/ProfilePanel";
+import { QuizSheet, type PlusAnswerState, type PlusStudyMode } from "./components/QuizSheet";
+import { LayersSheet } from "./components/LayersSheet";
 import { TestPanel } from "./components/TestPanel";
-import { AutoAdvanceBar } from "./components/AutoAdvanceBar";
 import { useAutoAdvanceTimer } from "./hooks/useAutoAdvanceTimer";
 import { useTestQuestions, type TestQuestionSource } from "./hooks/useTestQuestions";
 import type { TestCategory } from "./quiz/testQuestions";
@@ -52,16 +49,6 @@ import { accuracyPercent, BADGES, formatDateKey, PLUS_TOPIC_IDS, plusTopicLabel 
 const PLUS_RECENT_QUESTION_HISTORY_LIMIT = 16;
 // Soru+ cevaplandıktan sonra bir sonraki soruya otomatik geçiş süresi.
 const PLUS_AUTO_ADVANCE_MS = 3000;
-// Dokunmatik cihazlarda native HTML5 drag-and-drop (dragstart/dragover/drop) tetiklenmez,
-// bu yüzden bu cihazlarda etiketleri draggable yapmıyoruz — "seç, sonra hedefe dokun" akışı
-// zaten çalışıyor (bkz. handlePlusTokenSelect / handlePlusTargetSelect).
-const IS_COARSE_POINTER_DEVICE =
-  typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
-
-const plusTopicChoices = plusQuestionTopicOptions.filter(
-  (option): option is { id: Exclude<PlusQuestionTopic, "mixed">; label: string } => option.id !== "mixed",
-);
-
 const WRONG_PLUS_QUESTION_STORAGE_PREFIX = "kpss-cografya-atlas:wrong-plus-questions:";
 const WRONG_TEST_QUESTION_STORAGE_PREFIX = "kpss-cografya-atlas:wrong-test-questions:";
 // Aralıklı-tekrar-lite: bir soru yanlış havuzundan ancak üst üste bu kadar doğru
@@ -82,8 +69,6 @@ const TEST_QUESTION_SOURCES: TestQuestionSource[] = [
   { url: "/questions/cografya.json", category: "cografya" },
 ];
 const PLUS_QUESTION_SEED_SEPARATOR = "__";
-
-type PlusStudyMode = "all" | "wrong";
 
 function plusQuestionSeedId(questionId: string) {
   return questionId.split(PLUS_QUESTION_SEED_SEPARATOR)[0];
@@ -307,96 +292,6 @@ function computeExamDaysLeft(examDate: string | null): number | null {
   return Math.max(0, Math.round((target - today.getTime()) / 86_400_000));
 }
 
-function AccountForm({ auth }: { auth: UseAuthResult }) {
-  const [mode, setMode] = useState<"login" | "register">("login");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
-  const [formError, setFormError] = useState<string | null>(null);
-  const [submitting, setSubmitting] = useState(false);
-
-  const handleSubmit = async (event: FormEvent) => {
-    event.preventDefault();
-    if (submitting) {
-      return;
-    }
-    setSubmitting(true);
-    setFormError(null);
-    const result =
-      mode === "login"
-        ? await auth.signIn(email.trim(), password)
-        : await auth.signUp(email.trim(), password, username);
-    if (result.error) {
-      setFormError(result.error);
-    }
-    setSubmitting(false);
-  };
-
-  return (
-    <form className="account-form" onSubmit={handleSubmit}>
-      {!isSupabaseConfigured ? (
-        <p className="account-form__error">Hesap servisi yapılandırılmamış.</p>
-      ) : null}
-      {mode === "register" ? (
-        <label>
-          <span>Kullanıcı adı</span>
-          <input
-            autoComplete="username"
-            maxLength={20}
-            minLength={3}
-            onChange={(event) => setUsername(event.target.value)}
-            required
-            value={username}
-          />
-        </label>
-      ) : null}
-      <label>
-        <span>E-posta</span>
-        <input
-          autoComplete="email"
-          onChange={(event) => setEmail(event.target.value)}
-          required
-          type="email"
-          value={email}
-        />
-      </label>
-      <label>
-        <span>Parola</span>
-        <input
-          autoComplete={mode === "login" ? "current-password" : "new-password"}
-          minLength={6}
-          onChange={(event) => setPassword(event.target.value)}
-          required
-          type="password"
-          value={password}
-        />
-      </label>
-      {formError ? <p className="account-form__error">{formError}</p> : null}
-      <button className="quiz-launch-button" disabled={submitting || !isSupabaseConfigured} type="submit">
-        {submitting ? "Lütfen bekle…" : mode === "login" ? "Giriş yap" : "Kayıt ol"}
-      </button>
-      <button
-        className="account-form__toggle"
-        onClick={() => {
-          setMode(mode === "login" ? "register" : "login");
-          setFormError(null);
-        }}
-        type="button"
-      >
-        {mode === "login" ? "Hesabın yok mu? Kayıt ol" : "Zaten hesabın var mı? Giriş yap"}
-      </button>
-    </form>
-  );
-}
-
-type PlusAnswerState = {
-  isCorrect: boolean;
-  message: string;
-  detail: string;
-  wrongTargetIds: string[];
-  selectedTokenId: string | null;
-};
-
 function App() {
   const [selectedProvinceName, setSelectedProvinceName] = useState<string | null>(null);
   const [selectedFeature, setSelectedFeature] = useState<PhysicalFeatureProperties | null>(null);
@@ -414,7 +309,7 @@ function App() {
     pool: readWrongPlusQuestionIds(wrongPlusQuestionStorageKey(null)),
     streaks: readWrongStreaks(wrongPlusStreakStorageKey(null)),
   }));
-  const [appView, setAppView] = useState<"map" | "test">("map");
+  const [activeTab, setActiveTab] = useState<AppTab>("harita");
   const [wrongTest, setWrongTest] = useState<{ pool: string[]; streaks: WrongStreakMap }>(() => ({
     pool: readWrongPlusQuestionIds(wrongTestQuestionStorageKey(null)),
     streaks: readWrongStreaks(wrongTestStreakStorageKey(null)),
@@ -603,7 +498,6 @@ function App() {
     }
   }, [refreshLeaderboard, resetProgress]);
 
-  const provinceCount = provinces.data?.features.length ?? 0;
   const physicalFeatures = useMemo(
     () => getPhysicalFeatures(physicalFeaturesData.data),
     [physicalFeaturesData.data],
@@ -675,10 +569,6 @@ function App() {
         ? "Seçili konu veya soru tipine uyan yanlış soru yok."
         : `${plusAvailability.total} yanlış soru bu ayarlarla çalışılabilir.`;
   const isPlusActive = Boolean(currentPlusQuestion);
-  const selectedText = useMemo(
-    () => selectedProvinceName ?? "Henüz seçilmedi",
-    [selectedProvinceName],
-  );
 
   useEffect(() => {
     if (
@@ -920,6 +810,19 @@ function App() {
     setPlusSelectedTargetIds([]);
   }, []);
 
+  // Soru+ sekmesinden ayrılınca aktif soru kapanır: Harita sekmesi her zaman
+  // serbest keşif modudur ve otomatik-ilerleme sayacı sekme dışında çalışmaz.
+  const handleTabChange = useCallback(
+    (tab: AppTab) => {
+      if (tab !== "soru") {
+        resetPlusQuestionState();
+        setMapGuesses([]);
+      }
+      setActiveTab(tab);
+    },
+    [resetPlusQuestionState],
+  );
+
   const handlePlusStudyModeChange = useCallback(
     (mode: PlusStudyMode) => {
       setPlusStudyMode(mode);
@@ -969,7 +872,7 @@ function App() {
       setPlusMode("mixed");
       resetPlusQuestionState();
       setMapGuesses([]);
-      setAppView("map");
+      setActiveTab("soru");
     },
     [resetPlusQuestionState],
   );
@@ -1099,13 +1002,6 @@ function App() {
       }
     },
     [assignPlusTokenToTarget, currentPlusQuestion, finalizePlusAnswer, plusAnswer, plusSelectedTokenId],
-  );
-
-  const handlePlusTargetDrop = useCallback(
-    (targetId: string, tokenId: string) => {
-      assignPlusTokenToTarget(targetId, tokenId);
-    },
-    [assignPlusTokenToTarget],
   );
 
   const handlePlusSubmit = useCallback(() => {
@@ -1247,10 +1143,23 @@ function App() {
       ),
     [plusAssignments, plusTokenById],
   );
-  const plusVisibleSelectedTargetIds =
-    currentPlusQuestion?.kind === "placement" ? Object.keys(plusAssignments) : plusSelectedTargetIds;
-  const plusCorrectTargetIds = plusAnswer ? currentPlusQuestion?.correctTargetIds ?? [] : [];
-  const plusWrongTargetIds = plusAnswer?.wrongTargetIds ?? [];
+  // TurkeyMap'in quiz katmanı effect'i bu dizilere referansla bağlı: her
+  // render'da yeni dizi üretmek, effect'in her tikte (ör. otomatik ilerleme
+  // sayacı) markerları söküp yeniden kurmasına ve kalıcı tooltip kopyalarının
+  // sızmasına yol açıyordu — kimlikleri sabitle.
+  const plusVisibleSelectedTargetIds = useMemo(
+    () => (currentPlusQuestion?.kind === "placement" ? Object.keys(plusAssignments) : plusSelectedTargetIds),
+    [currentPlusQuestion, plusAssignments, plusSelectedTargetIds],
+  );
+  const plusCorrectTargetIds = useMemo(
+    () => (plusAnswer ? currentPlusQuestion?.correctTargetIds ?? [] : []),
+    [currentPlusQuestion, plusAnswer],
+  );
+  const plusWrongTargetIds = useMemo(() => plusAnswer?.wrongTargetIds ?? [], [plusAnswer]);
+  const plusTargetsForMap = useMemo(
+    () => (isPlusMapLocateQuestion ? [] : currentPlusQuestion?.targets ?? []),
+    [currentPlusQuestion, isPlusMapLocateQuestion],
+  );
   const isPlusSubmitVisible =
     currentPlusQuestion?.kind === "placement" || currentPlusQuestion?.kind === "pickMany";
   const isPlusSubmitDisabled =
@@ -1261,27 +1170,11 @@ function App() {
       : currentPlusQuestion.kind === "pickMany"
         ? plusSelectedTargetIds.length === 0
         : true);
-  return (
-    <div className="app-shell">
-        <div className="view-switch glass" role="group" aria-label="Görünüm">
-          <button
-            className={appView === "map" ? "is-active" : ""}
-            onClick={() => setAppView("map")}
-            type="button"
-          >
-            Harita
-          </button>
-          <button
-            className={appView === "test" ? "is-active" : ""}
-            onClick={() => setAppView("test")}
-            type="button"
-          >
-            Test
-          </button>
-        </div>
+  const isMapVisibleTab = activeTab === "harita" || activeTab === "soru";
 
-        {appView === "map" ? (
-        <section className="map-stage">
+  return (
+    <div className={`app-shell${activeTab === "soru" ? " app-shell--soru" : ""}`}>
+        <section className={`map-stage${isMapVisibleTab ? "" : " map-stage--hidden"}`}>
           <TurkeyMap
             countryData={country.data}
             provincesData={provinces.data}
@@ -1307,7 +1200,7 @@ function App() {
             plusMapLocateTargetName={plusMapLocateTarget?.name ?? "Soru"}
             plusMapLocateTargetPoint={plusMapLocateTarget?.point ?? null}
             plusMapLocateShowTargetPoint={plusMapLocateTarget ? Boolean(plusAnswer) : false}
-            plusTargets={isPlusMapLocateQuestion ? [] : currentPlusQuestion?.targets ?? []}
+            plusTargets={plusTargetsForMap}
             plusSelectedTargetIds={plusVisibleSelectedTargetIds}
             plusCorrectTargetIds={plusCorrectTargetIds}
             plusWrongTargetIds={plusWrongTargetIds}
@@ -1318,7 +1211,6 @@ function App() {
             onEconomicFeatureSelect={handleEconomicFeatureSelect}
             onPlusMapGuess={handlePlusMapGuess}
             onPlusTargetSelect={handlePlusTargetSelect}
-            onPlusTargetDrop={handlePlusTargetDrop}
           />
 
           {(isLoading || error) && (
@@ -1328,602 +1220,72 @@ function App() {
             </div>
           )}
         </section>
-        ) : null}
 
         <Hud
-          loading={auth.loading}
           isLoggedIn={Boolean(auth.user)}
-          displayName={accountDisplayName}
-          email={auth.user?.email}
           level={progress.level.level}
           levelProgress={progress.level.progress}
-          intoLevel={progress.level.intoLevel}
-          span={progress.level.span}
-          totalXp={progress.xp}
           streak={progress.daily.dailyStreak}
-          sessionCorrect={progress.session.correct}
-          sessionAnswered={progress.session.answered}
-          onSignOut={() => void auth.signOut()}
-          canReset={Boolean(auth.user) && progress.totals.answered > 0}
-          onReset={handleResetProgress}
-          accountForm={<AccountForm auth={auth} />}
-          examDaysLeft={examDaysLeft}
-          onSetExamDate={handleSetExamDate}
           dailyXp={dailyXp.xp}
           dailyXpGoal={DAILY_XP_GOAL}
         />
 
-        {appView === "map" ? (
-          <>
-        <div className="quiz-dock glass">
-          <div className="panel-section plus-panel">
-            <div className="quiz-section-heading">
-              <h2>Soru+</h2>
-              <span>{plusAvailabilityLabel}</span>
-            </div>
+        {activeTab === "soru" ? (
+          <QuizSheet
+            question={currentPlusQuestion}
+            answer={plusAnswer}
+            availabilityLabel={plusAvailabilityLabel}
+            availability={plusAvailability}
+            studyMode={plusStudyMode}
+            mode={plusMode}
+            topics={plusTopics}
+            canStart={canStartPlus}
+            wrongCount={wrongPlusQuestionCount}
+            wrongStatus={wrongPlusQuestionStatus}
+            session={progress.session}
+            districtsLoading={districts.isLoading}
+            districtsError={districts.error}
+            assignments={plusAssignments}
+            selectedTokenId={plusSelectedTokenId}
+            selectedTargetCount={plusSelectedTargetIds.length}
+            autoAdvanceDurationMs={PLUS_AUTO_ADVANCE_MS}
+            autoAdvanceRemainingMs={plusAutoAdvanceRemainingMs}
+            submitVisible={isPlusSubmitVisible}
+            submitDisabled={isPlusSubmitDisabled}
+            onStudyModeChange={handlePlusStudyModeChange}
+            onWrongPoolClear={handleWrongPlusQuestionPoolClear}
+            onModeChange={handlePlusModeChange}
+            onTopicToggle={handlePlusTopicToggle}
+            onTopicsClear={handlePlusTopicsClear}
+            onPrimaryAction={handlePrimaryPlusAction}
+            onTokenSelect={handlePlusTokenSelect}
+            onSubmit={handlePlusSubmit}
+            onClose={handlePlusClose}
+          />
+        ) : null}
 
-            <div className="plus-study-mode" aria-label="Soru+ çalışma modu">
-              <button
-                aria-pressed={plusStudyMode === "all"}
-                onClick={() => handlePlusStudyModeChange("all")}
-                type="button"
-              >
-                Tüm sorular
-              </button>
-              <button
-                aria-pressed={plusStudyMode === "wrong"}
-                disabled={wrongPlusQuestionCount === 0}
-                onClick={() => handlePlusStudyModeChange("wrong")}
-                type="button"
-              >
-                Yanlışları çalış
-                <small>{wrongPlusQuestionCount}</small>
-              </button>
-            </div>
+        {activeTab === "harita" ? (
+          <LayersSheet
+            open={layersOpen}
+            onOpenChange={setLayersOpen}
+            physicalFeatures={physicalFeatures}
+            economicFeatures={economicFeatures}
+            activeTopics={activeTopics}
+            activeCategories={activeCategories}
+            activeEconomicTopics={activeEconomicTopics}
+            activeEconomicCategories={activeEconomicCategories}
+            onTopicToggle={handleTopicToggle}
+            onCategoryToggle={handleCategoryToggle}
+            onSelectAllTopics={handleSelectAllTopics}
+            onClearAllTopics={handleClearAllTopics}
+            onEconomicTopicToggle={handleEconomicTopicToggle}
+            onEconomicCategoryToggle={handleEconomicCategoryToggle}
+            onSelectAllEconomicTopics={handleSelectAllEconomicTopics}
+            onClearAllEconomicTopics={handleClearAllEconomicTopics}
+          />
+        ) : null}
 
-            {plusStudyMode === "wrong" ? (
-              <div className="wrong-question-pool" role="status">
-                <div>
-                  <strong>Yanlış havuzu</strong>
-                  <span>{wrongPlusQuestionStatus}</span>
-                </div>
-                {wrongPlusQuestionCount > 0 ? (
-                  <button onClick={handleWrongPlusQuestionPoolClear} type="button">
-                    Temizle
-                  </button>
-                ) : null}
-              </div>
-            ) : null}
-
-            <div className="quiz-control-grid" aria-label="Soru+ seçenekleri">
-              <label>
-                <span>Soru Tipi</span>
-                <select value={plusMode} onChange={(event) => handlePlusModeChange(event.target.value as PlusQuestionMode)}>
-                  {plusQuestionModeOptions.map((option) => (
-                    <option key={option.id} value={option.id}>
-                      {option.label}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            </div>
-
-            <div className="plus-topic-select" aria-label="Soru+ konuları">
-              <div className="plus-topic-select__heading">
-                <span>Konular</span>
-                <span className="plus-topic-select__hint">
-                  {plusTopics.length === 0 ? "Tümü seçili" : `${plusTopics.length} konu`}
-                </span>
-              </div>
-              <div className="plus-topic-chip-list">
-                <button
-                  aria-pressed={plusTopics.length === 0}
-                  className="category-chip"
-                  onClick={handlePlusTopicsClear}
-                  type="button"
-                >
-                  Tümü
-                </button>
-                {plusTopicChoices.map((option) => {
-                  const isActive = plusTopics.includes(option.id);
-                  const count = plusAvailability.byTopic[option.id];
-                  // İlçe verisi lazy-load edildiği için sayı yüklenene kadar 0'dır —
-                  // bu yüzden sıfır sayıya göre devre dışı bırakılmaz, yalnızca
-                  // gerçek bir yükleme hatasında devre dışı kalır.
-                  const isDistrictChip = option.id === "district";
-                  const isChipDisabled = isDistrictChip ? Boolean(districts.error) : count === 0;
-                  const chipCountLabel = isDistrictChip && districts.isLoading ? "…" : count;
-
-                  return (
-                    <button
-                      aria-pressed={isActive}
-                      className="category-chip"
-                      disabled={isChipDisabled}
-                      key={option.id}
-                      onClick={() => handlePlusTopicToggle(option.id)}
-                      type="button"
-                    >
-                      {option.label}
-                      <small>{chipCountLabel}</small>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {!currentPlusQuestion || plusAnswer ? (
-              <button
-                className={`quiz-launch-button plus-launch-button${isPlusActive ? " quiz-launch-button--active" : ""}`}
-                disabled={!canStartPlus}
-                onClick={handlePrimaryPlusAction}
-                type="button"
-              >
-                {currentPlusQuestion && plusAnswer ? "Sonraki soru" : "Soru+ başlat"}
-              </button>
-            ) : null}
-
-            {progress.session.answered > 0 ? (
-              <div className="plus-session-strip" role="status">
-                <span>
-                  {progress.session.correct}/{progress.session.answered} doğru
-                </span>
-                <span>Seri: {progress.session.currentStreak}</span>
-              </div>
-            ) : null}
-
-            {currentPlusQuestion ? (
-            <div
-              key={currentPlusQuestion.id}
-              className={`quiz-card plus-card${plusAnswer ? (plusAnswer.isCorrect ? " quiz-card--correct" : " quiz-card--wrong") : ""}`}
-            >
-              <span className="quiz-card__eyebrow">
-                {currentPlusQuestion.title} · {plusQuestionKindLabels[currentPlusQuestion.kind]}
-              </span>
-              <strong>{currentPlusQuestion.prompt}</strong>
-              <p>{plusAnswer ? plusAnswer.message : currentPlusQuestion.helper}</p>
-
-              {currentPlusQuestion?.kind === "placement" ||
-              currentPlusQuestion?.kind === "choice" ||
-              currentPlusQuestion?.kind === "mapMatch" ? (
-                <div className="plus-token-list" aria-label="Soru+ etiketleri">
-                  {currentPlusQuestion.tokens.map((token) => {
-                    const isSelected = plusSelectedTokenId === token.id || plusAnswer?.selectedTokenId === token.id;
-                    const isCorrectToken = plusAnswer && token.id === currentPlusQuestion.correctTokenId;
-                    const isWrongToken =
-                      plusAnswer?.selectedTokenId === token.id && token.id !== currentPlusQuestion.correctTokenId;
-                    const className = [
-                      "plus-token",
-                      isSelected ? "plus-token--selected" : "",
-                      isCorrectToken ? "plus-token--correct" : "",
-                      isWrongToken ? "plus-token--wrong" : "",
-                    ]
-                      .filter(Boolean)
-                      .join(" ");
-
-                    return (
-                      <button
-                        className={className}
-                        disabled={Boolean(plusAnswer)}
-                        draggable={
-                          currentPlusQuestion.kind === "placement" && !plusAnswer && !IS_COARSE_POINTER_DEVICE
-                        }
-                        key={token.id}
-                        onClick={() => handlePlusTokenSelect(token.id)}
-                        onDragStart={(event) => {
-                          event.dataTransfer.setData("text/plain", token.id);
-                          event.dataTransfer.effectAllowed = "move";
-                        }}
-                        style={{ "--plus-token-color": token.color } as CSSProperties}
-                        type="button"
-                      >
-                        <span>{token.label}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              ) : null}
-
-              {currentPlusQuestion?.kind === "mapLocate" && currentPlusQuestion.topic !== "district" && !plusAnswer ? (
-                <div className="quiz-map-hint">
-                  <span>{QUIZ_CORRECT_RADIUS_KM} km</span>
-                  <strong>Haritada tahmin noktanı bırak</strong>
-                </div>
-              ) : null}
-
-              {currentPlusQuestion?.kind === "mapLocate" && currentPlusQuestion.topic === "district" && !plusAnswer ? (
-                <div className="quiz-map-hint">
-                  <span>Sınır içi</span>
-                  <strong>İlçe sınırları içine tıkla</strong>
-                </div>
-              ) : null}
-
-              {currentPlusQuestion?.kind === "placement" ? (
-                <div className="plus-target-list" aria-label="Soru+ yerleştirme durumu">
-                  {currentPlusQuestion.targets.map((target) => {
-                    const assignedToken = plusTokenById.get(plusAssignments[target.id]);
-                    const isWrong = plusWrongTargetIds.includes(target.id);
-                    const isCorrect = plusAnswer && !isWrong;
-
-                    return (
-                      <div
-                        className={`plus-target-row${isCorrect ? " plus-target-row--correct" : ""}${isWrong ? " plus-target-row--wrong" : ""}`}
-                        key={target.id}
-                      >
-                        <strong>{target.label}</strong>
-                        <span>{assignedToken?.label ?? "Boş"}</span>
-                        {plusAnswer ? <small>{target.name}</small> : null}
-                      </div>
-                    );
-                  })}
-                </div>
-              ) : null}
-
-              {currentPlusQuestion?.kind === "pickMany" ? (
-                <div className="quiz-map-hint">
-                  <span>{plusSelectedTargetIds.length} seçili</span>
-                  <strong>Doğru noktaların tamamını işaretle</strong>
-                </div>
-              ) : null}
-
-              {plusAnswer ? (
-                <div className="quiz-result">
-                  <strong>{plusAnswer.isCorrect ? "Doğru" : "Yanlış"}</strong>
-                  <span>{plusAnswer.detail}</span>
-                </div>
-              ) : null}
-
-              {plusAnswer ? (
-                <AutoAdvanceBar
-                  durationMs={PLUS_AUTO_ADVANCE_MS}
-                  remainingMs={plusAutoAdvanceRemainingMs}
-                  variant={plusAnswer.isCorrect ? "correct" : "wrong"}
-                />
-              ) : null}
-
-              {plusAnswer && currentPlusQuestion ? (
-                <p className="quiz-note">{currentPlusQuestion.kpssNote}</p>
-              ) : null}
-
-              {currentPlusQuestion ? (
-                <div className="quiz-actions plus-actions">
-                  {isPlusSubmitVisible ? (
-                    <button disabled={isPlusSubmitDisabled} onClick={handlePlusSubmit} type="button">
-                      {currentPlusQuestion.submitLabel}
-                    </button>
-                  ) : null}
-                  <button className="quiz-actions__secondary" onClick={handlePlusClose} type="button">
-                    Soru+ kapat
-                  </button>
-                </div>
-              ) : null}
-            </div>
-            ) : null}
-          </div>
-
-          {!isPlusActive ? (
-            <>
-              {auth.user ? (
-                <div className="panel-section dock-leaderboard">
-                  <div className="quiz-section-heading">
-                    <h2>Sıralama</h2>
-                    <button className="account-form__toggle" onClick={refreshLeaderboard} type="button">
-                      Yenile
-                    </button>
-                  </div>
-                  {leaderboard.error ? (
-                    <p className="progress-error">{leaderboard.error}</p>
-                  ) : leaderboard.isLoading ? (
-                    <p className="progress-empty">Yükleniyor…</p>
-                  ) : leaderboard.entries.length === 0 ? (
-                    <p className="progress-empty">Henüz veri yok</p>
-                  ) : (
-                    <div className="leaderboard leaderboard--mini">
-                      {leaderboard.entries.slice(0, 5).map((entry) => (
-                        <div
-                          className={`leaderboard-row${entry.isMe ? " leaderboard-row--me" : ""}`}
-                          key={entry.id}
-                        >
-                          <span className="leaderboard-row__rank">{entry.rank}</span>
-                          <span className="leaderboard-row__name">{entry.username}</span>
-                          <small>{entry.xp} XP</small>
-                        </div>
-                      ))}
-                      {leaderboard.myRank &&
-                      !leaderboard.entries.slice(0, 5).some((entry) => entry.isMe) ? (
-                        <>
-                          <div className="leaderboard__divider" aria-hidden="true" />
-                          <div className="leaderboard-row leaderboard-row--me">
-                            <span className="leaderboard-row__rank">{leaderboard.myRank}</span>
-                            <span className="leaderboard-row__name">{accountDisplayName}</span>
-                            <small>{progress.xp} XP</small>
-                          </div>
-                        </>
-                      ) : null}
-                    </div>
-                  )}
-                </div>
-              ) : null}
-
-              <div className="panel-section progress-panel dock-progress">
-                <div className="quiz-section-heading">
-                  <h2>Performans</h2>
-                  {auth.user && progress.totals.answered > 0 ? (
-                    <button className="account-form__toggle" onClick={handleResetProgress} type="button">
-                      Sıfırla
-                    </button>
-                  ) : null}
-                </div>
-                {progress.error ? <p className="progress-error">{progress.error}</p> : null}
-                {progress.isLoading ? (
-                  <p className="progress-empty">Yükleniyor…</p>
-                ) : progress.totals.answered === 0 ? (
-                  <p className="progress-empty">Henüz veri yok</p>
-                ) : (
-                  <>
-                    <div className="progress-summary">
-                      <div className="progress-stat">
-                        <strong>{progress.totals.answered}</strong>
-                        <small>Soru</small>
-                      </div>
-                      <div className="progress-stat">
-                        <strong>%{accuracyPercent(progress.totals.correct, progress.totals.answered)}</strong>
-                        <small>Doğruluk</small>
-                      </div>
-                      <div className="progress-stat">
-                        <strong>{progress.totals.bestStreak}</strong>
-                        <small>En iyi seri</small>
-                      </div>
-                    </div>
-                    <div className="progress-topic-list">
-                      {weakTopicRows.slice(0, 3).map((row) => {
-                        const accuracy = accuracyPercent(row.stat.correct, row.stat.answered);
-                        return (
-                          <button
-                            className="progress-topic-row progress-topic-row--practice"
-                            key={row.id}
-                            onClick={() => handleWeakTopicPractice(row.id)}
-                            title={`${row.label} konusunda pratik yap`}
-                            type="button"
-                          >
-                            <span className="progress-topic-row__label">{row.label}</span>
-                            <div className="progress-bar">
-                              <div className="progress-bar__fill" style={{ width: `${accuracy}%` }} />
-                            </div>
-                            <small>
-                              {row.stat.correct}/{row.stat.answered}
-                            </small>
-                            <span className="progress-topic-row__cta" aria-hidden="true">
-                              ▶
-                            </span>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </>
-                )}
-              </div>
-
-              {!auth.user && !auth.loading ? (
-                <div className="panel-section">
-                  <p className="progress-empty">
-                    Giriş yap; XP kazan, rozet topla ve liderlik tablosuna gir. 🚀
-                  </p>
-                </div>
-              ) : null}
-
-              {auth.user ? (
-                <>
-                  <div className="panel-section daily-panel">
-                    <div className="quiz-section-heading">
-                      <h2>Günlük görevler</h2>
-                      <span className="daily-streak">🔥 {progress.daily.dailyStreak} gün</span>
-                    </div>
-                    <div className="daily-quest-list">
-                      {progress.daily.quests.map((quest) => {
-                        const percent = Math.round((quest.progress / quest.target) * 100);
-                        return (
-                          <div
-                            className={`daily-quest${quest.done ? " daily-quest--done" : ""}`}
-                            key={quest.id}
-                          >
-                            <div className="daily-quest__head">
-                              <span>
-                                {quest.done ? "✅ " : ""}
-                                {quest.label}
-                              </span>
-                              <small>
-                                {quest.progress}/{quest.target} · +{quest.xpReward}
-                              </small>
-                            </div>
-                            <div className="progress-bar">
-                              <div className="progress-bar__fill" style={{ width: `${percent}%` }} />
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  <div className="panel-section badge-panel">
-                    <div className="quiz-section-heading">
-                      <h2>Rozetler</h2>
-                      <span>
-                        {progress.badges.length}/{BADGES.length}
-                      </span>
-                    </div>
-                    {nextBadge ? (
-                      <div className="next-badge">
-                        <span className="next-badge__icon">{nextBadge.icon}</span>
-                        <div className="next-badge__body">
-                          <strong>Sıradaki rozet · {nextBadge.label}</strong>
-                          <small>{nextBadge.description}</small>
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="next-badge next-badge--done">
-                        <span className="next-badge__icon">🏆</span>
-                        <div className="next-badge__body">
-                          <strong>Tüm rozetler açıldı!</strong>
-                          <small>Hepsini topladın, tebrikler.</small>
-                        </div>
-                      </div>
-                    )}
-                    {progress.badges.length > 0 ? (
-                      <div className="badge-grid">
-                        {BADGES.filter((badge) => progress.badges.includes(badge.id)).map((badge) => (
-                          <div className="badge" key={badge.id} title={badge.description}>
-                            <span className="badge__icon">{badge.icon}</span>
-                            <small>{badge.label}</small>
-                          </div>
-                        ))}
-                      </div>
-                    ) : null}
-                  </div>
-                </>
-              ) : null}
-            </>
-          ) : null}
-        </div>
-
-        <div className={`layers-control${layersOpen ? " layers-control--open" : ""}`}>
-          <button
-            className="layers-toggle glass"
-            onClick={() => setLayersOpen((value) => !value)}
-            aria-expanded={layersOpen}
-            type="button"
-          >
-            🗺️ Katmanlar
-          </button>
-          {layersOpen ? (
-            <div className="layers-panel glass">
-          <div className="panel-section">
-            <h2>Fiziki konular</h2>
-            <div className="topic-filter-toolbar">
-              <button onClick={handleSelectAllTopics} type="button">
-                Tümünü göster
-              </button>
-              <button onClick={handleClearAllTopics} type="button">
-                Tümünü gizle
-              </button>
-            </div>
-            <div className="topic-filter-list" aria-label="Fiziki konular">
-              {physicalFeatureTopics.map((topic) => {
-                const isActive = activeTopics.includes(topic.id);
-                const topicCount = physicalFeatures.filter((feature) => feature.properties.topic === topic.id).length;
-                const topicCategories = physicalFeatureCategories.filter((category) => category.topic === topic.id);
-
-                return (
-                  <div className="topic-filter-group" key={topic.id}>
-                    <button
-                      aria-pressed={isActive}
-                      className="topic-chip"
-                      onClick={() => handleTopicToggle(topic.id)}
-                      type="button"
-                    >
-                      <span className="topic-chip__swatch" style={{ backgroundColor: topic.color }} />
-                      <span className="topic-chip__label">{topic.label}</span>
-                      <small>{topicCount}</small>
-                    </button>
-
-                    <div className="category-chip-list" aria-label={`${topic.label} kategorileri`}>
-                      {topicCategories.map((category) => {
-                        const isCategoryActive = activeCategories.includes(category.id);
-                        const categoryCount = physicalFeatures.filter(
-                          (feature) => feature.properties.category === category.id,
-                        ).length;
-
-                        return (
-                          <button
-                            aria-pressed={isCategoryActive}
-                            className="category-chip"
-                            key={category.id}
-                            onClick={() => handleCategoryToggle(category.id)}
-                            style={
-                              isCategoryActive
-                                ? { backgroundColor: category.color, borderColor: category.color }
-                                : undefined
-                            }
-                            type="button"
-                          >
-                            {category.label}
-                            <small>{categoryCount}</small>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="panel-section">
-            <h2>Ekonomik konular</h2>
-            <div className="topic-filter-toolbar">
-              <button onClick={handleSelectAllEconomicTopics} type="button">
-                Tümünü göster
-              </button>
-              <button onClick={handleClearAllEconomicTopics} type="button">
-                Tümünü gizle
-              </button>
-            </div>
-            <div className="topic-filter-list" aria-label="Ekonomik konular">
-              {economicFeatureTopics.map((topic) => {
-                const isActive = activeEconomicTopics.includes(topic.id);
-                const topicCount = economicFeatures.filter((feature) => feature.properties.topic === topic.id).length;
-                const topicCategories = economicFeatureCategories.filter((category) => category.topic === topic.id);
-
-                return (
-                  <div className="topic-filter-group" key={topic.id}>
-                    <button
-                      aria-pressed={isActive}
-                      className="topic-chip"
-                      onClick={() => handleEconomicTopicToggle(topic.id)}
-                      type="button"
-                    >
-                      <span className="topic-chip__swatch" style={{ backgroundColor: topic.color }} />
-                      <span className="topic-chip__label">{topic.label}</span>
-                      <small>{topicCount}</small>
-                    </button>
-
-                    <div className="category-chip-list" aria-label={`${topic.label} kategorileri`}>
-                      {topicCategories.map((category) => {
-                        const isCategoryActive = activeEconomicCategories.includes(category.id);
-                        const categoryCount = economicFeatures.filter(
-                          (feature) => feature.properties.category === category.id,
-                        ).length;
-
-                        return (
-                          <button
-                            aria-pressed={isCategoryActive}
-                            className="category-chip"
-                            key={category.id}
-                            onClick={() => handleEconomicCategoryToggle(category.id)}
-                            style={
-                              isCategoryActive
-                                ? { backgroundColor: category.color, borderColor: category.color }
-                                : undefined
-                            }
-                            type="button"
-                          >
-                            {category.label}
-                            <small>{categoryCount}</small>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          <p className="attribution">{geoJsonAttribution}</p>
-            </div>
-          ) : null}
-        </div>
-          </>
-        ) : (
+        {activeTab === "test" ? (
           <TestPanel
             questions={testQuestionsState.data}
             isLoading={testQuestionsState.isLoading}
@@ -1931,7 +1293,28 @@ function App() {
             wrongIds={wrongTestQuestionIds}
             onAnswer={handleTestAnswer}
           />
-        )}
+        ) : null}
+
+        {activeTab === "profil" ? (
+          <ProfilePanel
+            auth={auth}
+            displayName={accountDisplayName}
+            progress={progress}
+            leaderboard={leaderboard}
+            weakTopicRows={weakTopicRows}
+            nextBadge={nextBadge}
+            examDaysLeft={examDaysLeft}
+            dailyXp={dailyXp.xp}
+            dailyXpGoal={DAILY_XP_GOAL}
+            onRefreshLeaderboard={refreshLeaderboard}
+            onResetProgress={handleResetProgress}
+            onWeakTopicPractice={handleWeakTopicPractice}
+            onSetExamDate={handleSetExamDate}
+            onSignOut={() => void auth.signOut()}
+          />
+        ) : null}
+
+        <TabBar active={activeTab} onChange={handleTabChange} />
 
         <GamificationFX items={fxItems} onDismiss={dismissFx} />
     </div>
