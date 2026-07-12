@@ -52,6 +52,11 @@ import { accuracyPercent, BADGES, formatDateKey, PLUS_TOPIC_IDS, plusTopicLabel 
 const PLUS_RECENT_QUESTION_HISTORY_LIMIT = 16;
 // Soru+ cevaplandıktan sonra bir sonraki soruya otomatik geçiş süresi.
 const PLUS_AUTO_ADVANCE_MS = 3000;
+// Dokunmatik cihazlarda native HTML5 drag-and-drop (dragstart/dragover/drop) tetiklenmez,
+// bu yüzden bu cihazlarda etiketleri draggable yapmıyoruz — "seç, sonra hedefe dokun" akışı
+// zaten çalışıyor (bkz. handlePlusTokenSelect / handlePlusTargetSelect).
+const IS_COARSE_POINTER_DEVICE =
+  typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
 
 const plusTopicChoices = plusQuestionTopicOptions.filter(
   (option): option is { id: Exclude<PlusQuestionTopic, "mixed">; label: string } => option.id !== "mixed",
@@ -1499,7 +1504,9 @@ function App() {
                       <button
                         className={className}
                         disabled={Boolean(plusAnswer)}
-                        draggable={currentPlusQuestion.kind === "placement" && !plusAnswer}
+                        draggable={
+                          currentPlusQuestion.kind === "placement" && !plusAnswer && !IS_COARSE_POINTER_DEVICE
+                        }
                         key={token.id}
                         onClick={() => handlePlusTokenSelect(token.id)}
                         onDragStart={(event) => {
