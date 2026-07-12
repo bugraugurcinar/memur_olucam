@@ -40,7 +40,12 @@
 
   --map-water: #0b1c16;
   --dock-w: 384px;
+  /* --hud-h: harita/dock/yüzen kontrollerin başladığı toplam üst boşluk.
+     --hud-bar-h: HUD şeridinin kendi (görsel) yüksekliği. Masaüstünde ikisi
+     eşit; mobilde view-switch için ayrı bir alt sıra açmak üzere ayrışırlar
+     (bkz. 640px medya sorgusu). */
   --hud-h: 64px;
+  --hud-bar-h: 64px;
 
   /* Ritim (4px tabanı) */
   --sp-1: 4px;
@@ -220,6 +225,11 @@ h2 {
   position: absolute;
   inset: var(--hud-h) 0 0 var(--dock-w);
   background: var(--map-water);
+  /* Leaflet'in iç panelleri (marker/tooltip/popup) 200-700 z-index kullanır;
+     izolasyon olmadan bu değerler map-stage'in kardeşlerine (quiz-dock, hud
+     popover vb.) sızıp onların üstünde çizilir. isolate bunu haritanın
+     kendi yığınıyla sınırlar. */
+  isolation: isolate;
 }
 
 .turkey-map,
@@ -260,8 +270,12 @@ h2 {
   top: 0;
   left: 0;
   right: 0;
-  height: var(--hud-h);
-  z-index: 40;
+  height: var(--hud-bar-h);
+  /* view-switch (46) ve diğer yüzen kontrollerin üstünde kalmalı — aksi halde
+     hud__popover'ın kendi z-index'i (60) yalnızca .hud'ın yığın bağlamı
+     içinde geçerli olur ve .hud'ın kendisi daha düşükse dışarıdan üstüne
+     çizilir. */
+  z-index: 50;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -396,6 +410,9 @@ h2 {
 
 .hud__account {
   position: relative;
+  /* hud__stats gizlendiğinde (mobil) bile sağa yapışık kalsın diye kendi
+     auto margin'i var — hud__stats'ın margin-left:auto'suna bağımlı kalma. */
+  margin-left: auto;
 }
 
 .hud__account-button {
@@ -2253,7 +2270,11 @@ h2 {
 
 @media (max-width: 640px) {
   :root {
-    --hud-h: 54px;
+    /* HUD şeridi 54px kalır; view-switch için altına 46px'lik ayrı bir sıra
+       açılır (bkz. .view-switch override'ı aşağıda) — bu yüzden --hud-h
+       (haritanın/dock'un başladığı toplam boşluk) --hud-bar-h'den büyük. */
+    --hud-bar-h: 54px;
+    --hud-h: 100px;
   }
 
   .hud {
@@ -2343,11 +2364,6 @@ h2 {
     width: 40px !important;
     height: 40px !important;
     line-height: 40px !important;
-  }
-
-  /* Harita/Test şeridini HUD içinde dikey ortala, dokunma alanını büyüt */
-  .view-switch {
-    top: calc((var(--hud-h) - 40px) / 2);
   }
 
   .view-switch button {
@@ -2495,6 +2511,16 @@ h2 {
   gap: 4px;
   padding: 4px;
   border-radius: 999px;
+}
+
+/* HUD şeridi (marka + hesap) dar ekranlarda Harita/Test anahtarıyla aynı
+   satırda sığmıyor ve hesap/giriş butonunu tıklanamaz hale getiriyordu —
+   anahtarı kendi (--hud-h - --hud-bar-h) sırasına indir. */
+@media (max-width: 640px) {
+  .view-switch {
+    top: calc(var(--hud-bar-h) + (var(--hud-h) - var(--hud-bar-h) - 40px) / 2);
+    left: 50%;
+  }
 }
 
 .view-switch button {
